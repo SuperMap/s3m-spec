@@ -1,6 +1,3 @@
-<p align="center">
-<img src="../images/s3m.png" />
-</p>
 
 *Version 1.0*
 
@@ -11,7 +8,8 @@ SuperMap 3D Model (S3M)是一种适用于海量三维模型数据的传输格式
 <p align="center">
 <img src="./images/data.jpg" />
 </p>
-
+图1 S3M渲染效果（由上到下，由左到右，依次为倾斜数据，BIM，精模，点云）
+Fig.1 S3M Rendering. From left to right, from up to down: oblique photogrammetry, BIM, Model, Point Cloud Data
 # 示例数据
 
 # 简介
@@ -104,7 +102,7 @@ SCP是S3M数据的配置信息，以XML形式提供，主要属性如下：
 # 切片
 
 <p align="center">
-<img src="./images/tile.jpg" />
+<img src="./images/tile.png" />
 </p>
 
 在树状结构中，每一个节点对应一个切片(Tile，后缀为s3m)。每个切片都包括四个部分：
@@ -210,13 +208,7 @@ LOD类似于影像金字塔，或二维地图层级的概念，用来负责父�
 
 S3M支持多种LOD策略，如上图的八叉树和四叉树，以及自适应等，同时在对应的端产品中提供对应的图层类来实现（比如WebGL中的S3MTilesLayer），不需要用户关系具体的调度方法。
 
-<p align="center">
-<img src="./images/quad.png" />
-</p>
 
-<p align="center">
-<img src="./images/oct.png" />
-</p>
 
 LOD之间的切换是替换策略，在浏览场景时，从A节点过渡到B节点时，则渲染B节点对应的几何对象，取消甚至卸载A节点内容，并保证较好的过渡效果。
 
