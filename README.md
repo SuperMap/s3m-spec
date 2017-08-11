@@ -7,9 +7,11 @@ SuperMap 3D Model (S3M)是一种适用于海量三维模型数据的传输格式
 
 <p align="center">
 <img src="./images/data.jpg" />
-</p>
-图1 S3M渲染效果（由上到下，由左到右，依次为倾斜数据，BIM，精模，点云）
+图1 S3M渲染效果（由上到下，由左到右，依次为倾斜数据，BIM，精模，点云
+
 Fig.1 S3M Rendering. From left to right, from up to down: oblique photogrammetry, BIM, Model, Point Cloud Data
+</p>
+
 # 示例数据
 
 # 简介
