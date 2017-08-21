@@ -1,5 +1,5 @@
 <p align="center">
-<img src="../images/s3m.png" />
+<img src="./images/s3m.png" />
 </p>
 
 *Version 1.0*
