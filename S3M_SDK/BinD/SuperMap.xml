@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="gb2312"?>
+<ugc version="20071213" Description="UGC setting file Created by SuperMap UGC 6.0">
+
+<!-- version-->
+<Version type="value">6.0</Version>
+
+<!--set current display culture, the default value is 'system' will use system culture. for chinese is 'zh-CN', for english is 'en-US'  -->
+<CurrentCulture>system</CurrentCulture>
+
+<!--is show progress, value include: false,true-->
+<ShowProgress>true</ShowProgress>
+
+<!-- whether support cleartype --> 
+<IsSupportClearType>true</IsSupportClearType>
+<!--is use GraphicsMem, 9:GraphicsMem  7：GraphicsQT-->
+<CustomGraphicsEnable>true</CustomGraphicsEnable>
+<GraphicsType>7</GraphicsType>
+
+<!-- FreeType PoolSize -->
+<FreeTypeLibPoolSize>5</FreeTypeLibPoolSize>
+
+<!--GraphicsMemFont mapping file-->
+<GraphicsMemFonts type="external">GraphicsMemFonts.xml</GraphicsMemFonts>
+
+<!-- datasource cache file location, using at data engine; default is empty, means using the system's temporary directory -->
+<CacheFileLocation>./Cache/DatasetCache/</CacheFileLocation> 
+
+<!--whether to use a CustomDPI-->
+<CustomDPIEnable>TRUE</CustomDPIEnable>
+<!-- DPI in the horizontal direction--> 
+<CustomDPIX>96</CustomDPIX>
+<!-- DPI in the vertical direction--> 
+<CustomDPIY>96</CustomDPIY> 
+
+<!--whether to expand the query range of the map-->
+<IsMapInflated>false</IsMapInflated> 
+<IsShowShaderAtmosphere>true</IsShowShaderAtmosphere>
+
+<!-- full screen anti-aliasing-->
+<IsSceneAntialias>false</IsSceneAntialias>
+<SceneAntialiasValue>2</SceneAntialiasValue>
+
+<RasterPrint_BlockSize>10</RasterPrint_BlockSize>
+<LayoutOverlap>10</LayoutOverlap>
+
+<!-- whether support HighPrecisionMode --> 
+<IsHighPrecisionMode>false</IsHighPrecisionMode>
+
+<!-- SystemPath Format Path1;Path2;Path3 -->
+<SystemPath>./Resource</SystemPath> 
+
+<!-- project config file-->
+<PrjConfig type="external">PrjConfig.xml</PrjConfig>
+
+<!-- EPSG config file-->
+<PrjCode type="external">CodeTransition.xml</PrjCode>
+
+<!-- EPS font mapping file-->
+<EPSFont type="external">EPSFont.xml</EPSFont>
+
+<!--GraphicsMem Fonts only for GraphicsMem-->
+<GraphicsMemFonts type="external">GraphicsMemFonts.xml</GraphicsMemFonts>
+
+<!-- Log Setting-->
+<LogSetting type="object">
+
+	<!-- whether start the log file automatically, when the programming start-->
+	<LogEnabled>true</LogEnabled>
+
+	<!-- Log file Location, default is empty, means using the current directory, which excactly points to the location of the Bin directory.-->
+	<LogFileLocation>./log</LogFileLocation>
+
+	<!-- Log file prefix, only used at the LogTimeInterval is not none-->
+	<LogFilePrefix>iObjects</LogFilePrefix>
+
+	<!-- whether append to the existing log file --> 
+    <IsAppend>true</IsAppend>
+
+	<!-- whether filter the repeat log --> 
+    <IsFilter>false</IsFilter>
+	
+	<!-- Log Time Interval: Month,Week,Day, Hour, None-->
+	<LogTimeInterval>Day</LogTimeInterval>
+
+	<!-- Set the maximum size for an individual log file. When a log file reaches this size, the server will create a new one.Unit: Byte, -1 mean no limit --> 
+	<MaxFileSize> 1048576 </MaxFileSize>
+
+	<!-- When a log file reaches MaxFileSize, Program will deal with the file by ExceedSizeMode.  ExceedSizeMode: Rolling, ReOpen, NewFile -->
+	<ExceedSizeMode>NewFile</ExceedSizeMode>
+
+	
+	<!-- Log Save Mode, include: Text, XML, Memory --> 
+	<StorageType>Text</StorageType> 
+
+	<!-- Log database connection Driver --> 
+	<!-- OraclePlus, SqlPlus --> 
+	<LogDBConnectDriver></LogDBConnectDriver> 
+	
+	<!-- Log database connection Information--> 
+	<!-- Connection Format: Server@Database:User/Pwd--> 
+	<LogDBConnectionInfo></LogDBConnectionInfo> 
+	<!-- whether Log info is saved into the physical media, such as logfile or database; when false, the log info only storage at memory --> 
+	<LogPhysicalSave>true</LogPhysicalSave>
+
+	<!-- Log Level from debug, info, warning, error, fatal-->
+	<LogLevel>error</LogLevel>
+
+	<!-- operationLog Level from  Level0, Level1, Level2, Level3, Level4, LevelErr-->
+	<!-- Level0 record all Oplog and ErrLog,Level1 only record Level1 OpLog, Level2 only record Level1&2 OpLog -->
+	<!-- Level3 only record Level1&2&3 OpLog,Level4 only record Level1&2&3&4 OpLog, LevelErr only record ErrLog(debug, info, warning, error, fatal)-->
+	<OpLogLevel>Level0</OpLogLevel>
+	<!-- When LogCount reach,the logitems will write in physical media -->
+	<LogCountToDisk>1</LogCountToDisk>
+	
+	<!-- The largest number for logitems in memory.When this figure,out of the most ancient of logitem -->
+	<LogCountInMemory>10000</LogCountInMemory>
+
+	<!-- Log format, the expert user can modify to using special log format, %XXX mean the replace content-->
+	<LogFormat>%DATETIME [%LEVEL] %MSG, ThreadID: %THREADID, Timespan(ms): %TIMESPAN, ResourceID: %RESID, SourceCode: %CODEFILE(%CODELINE)</LogFormat>
+
+	<!-- Log data time format, the default is: Year-Moon-Day Hour:Minute:Second-->
+	<DateTimeFormat>%Y-%m-%d %H:%M:%S</DateTimeFormat>
+
+</LogSetting>
+
+<!-- SuperMap SDX+ for SQL Server Setting. For SQL Server Engine in Multi-Thread environment, it must be set to true.-->
+<SqlServerMultiThread>true</SqlServerMultiThread>
+
+<!-- SuperMap SDX+ for PostgreSQL Setting. 0 mean not use connection pool. For PostgreSQL Engine in Multi-Thread environment, it should be bigger than 0, and stands for the connection number.-->
+<PGSQLConnPoolSize>0</PGSQLConnPoolSize>
+
+<!-- whether draw region strokes in symbolmarker with linecolor and fillforecolor of geostyle. the default is "false".-->
+<SymbolDrawWithLineBrushColor>false</SymbolDrawWithLineBrushColor>
+
+<!-- SuperMap SDX+ for WebCache Setting.-->
+<WebCacheFilePath>./Cache/WebCache/</WebCacheFilePath>
+
+<!-- WebMap outputmaptofile default overtime  is 8 Seconds-->
+<OvertimeDownload>8</OvertimeDownload>
+
+<!-- Set the maximum size for  editgeometry list, -1 mean no limit --> 
+<MaxEditGeometrySize>10000</MaxEditGeometrySize>
+
+<!-- the refresh interval, default value is 1000 milliSeconds.  -->
+<OvertimeRefresh>1000</OvertimeRefresh>
+<!-- Dump File path -->
+<DumpEnabled>false</DumpEnabled>
+<DumpPath>./Dumps/</DumpPath>
+
+<!-- OpenMP Number of Threads, default value is 2 Threads-->
+<OMPNumThreads>2</OMPNumThreads>
+
+<!--BlockManager CacheSize,default size is 256 blocks-->
+<ImgBlockCacheSize>256</ImgBlockCacheSize>
+<!--BlockManager :the ways of cache memeory-->
+<ChangeCache_ByDelete>False</ChangeCache_ByDelete>
+
+<!-- Set the memory size for analyst, the unit is MB.
+     -1 mean no memory limit using memory mode, 
+     0 mean using traditional recordset mode -->
+<AnalystMemorySize>0</AnalystMemorySize>
+
+<MapProfilesSetting  type="object">
+	
+    <!--whether to profiling-->
+   <IsEnabled>false</IsEnabled>
+   
+    <!-- whether the Map Profile save to local file (Default Path is "./log")-->
+   <IsToFile>false</IsToFile>
+   
+    <!-- Wether to get the records count when drawing each layer.By set FALSE it can improve the performance，but can’t see the information in performance diagnosis.So the Default set is TRUE  -->
+   <IsGetDrawGeometryCount>false</IsGetDrawGeometryCount>
+   
+   <!-- whether the Map Profile output the detail info, will influence the performance-->
+   <IsOutputExternal>false</IsOutputExternal>
+   
+</MapProfilesSetting  >
+
+<!-- whether use GraphicsQT draw lines when current graphics type is GraphicsMem-->
+<UseQtWhenDrawGraphicsMemLine>true</UseQtWhenDrawGraphicsMemLine>
+
+<!-- allow current graphics draw objects with alpha channel-->
+<IsGraphicsAlphaEnable>true</IsGraphicsAlphaEnable>
+
+<!--When this value is false,the GraphicsQT will use QImage to draw picture,when it's true use QPixmap. Default value is false-->
+<QPixmapEnable>false</QPixmapEnable>
+
+<!--MySQL连接池最多剩下的空闲连接数-->
+<MySQLMaxConn>100</MySQLMaxConn>
+
+<!-- The number of thread use to build map cache,when set it as "0",UGC will use main thread to build map cache. Default value is 1.  -->
+<HPMapCacheThreadNum>1</HPMapCacheThreadNum>
+
+<!--The tolerance of deduplication, when draw geometry -->
+<DrawGeometryDeduplicateTolerance>0.5</DrawGeometryDeduplicateTolerance>
+
+<!-- simplify for telecom station -->
+<IsSimplifyForTelStation>true</IsSimplifyForTelStation>
+
+<!-- simplify start when the recordset count larger than the number -->
+<SimplifyRecordCount>25000</SimplifyRecordCount>
+
+</ugc>
