@@ -19,9 +19,13 @@ public:
 	UGbool Save(UGString& strSCPXML);
 
 	UGbool SaveToFile(const UGString& strSCPPath);
-	
+
 	//! \brief 版本号
 	UGdouble GetVersion();
+
+	//! \brief 数据生产描述信息
+	UGString GetAsset();
+	void SetAsset(const UGString& strAsset);
 
 	//! \brief 文件类型
 	UGString GetFileType();
@@ -52,6 +56,22 @@ public:
 	UGRect2D GetGeoBounds();
 	void SetGeoBounds(UGRect2D &rcBounds);
 
+	//! \brief 高度最小值
+	UGdouble GetHeightMin();
+	void SetHeightMin(UGdouble dValue);
+	
+	//! \brief 高度最大值
+	UGdouble GetHeightMax();
+	void SetHeightMax(UGdouble dValue);
+
+	//! \brief W位特征值最小值
+	UGdouble GetWCategoryMin();
+	void SetWCategoryMin(UGdouble dValue);
+
+	//! \brief W位特征值最大值
+	UGdouble GetWCategoryMax();
+	void SetWCategoryMax(UGdouble dValue);
+
 	//! \brief 坐标系信息
 	UGbool GetPrjCoords(UGPrjCoordSys& prjCoordj);
 	void SetPrjCoords(UGPrjCoordSys& prjCoordj);
@@ -65,6 +85,9 @@ public:
 
 private:
 	UGdouble m_dbVersion;
+	//! \brief 数据生产描述信息
+	UGString m_strAsset;
+
 	UGString m_strFileType;
 	UGString m_strPyramidSplitType;
 	UGString m_strRenderMode;
@@ -80,6 +103,15 @@ private:
 
 	//! \brief 整个缓存的地理范围
 	UGRect2D m_rcGeoBounds;
+
+	//! \brief 最大高度
+	UGdouble m_dbHeightMax;
+	//! \brief 最小高度
+	UGdouble m_dbHeightMin;
+
+	//! \brief w位的含义
+	UGdouble m_dbWMax;
+	UGdouble m_dbWMin;
 
 	//! \brief TileInfo(s)
 	std::vector<UGString> m_vecRootNames;

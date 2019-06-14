@@ -82,6 +82,7 @@
 			<res name="UGS_ACTIONID_IS_ZERO" id="EAf019">Action ID cannot be 0</res>
 			<res name="UGS_FORMAT_IS_NULL" id="EAf020">Null format</res>
 			<res name="UGS_EDITION_INVALID" id="EAf021">Invalid edition</res>
+			<res name="UGS_SAME_NAME_TABLE_EXIST" id="EAf023">Same name table exist</res>
 		</ECode>
 		<ECode description="File operation errors">
 			<res name="UGS_FROMXML_FAILED" id="EAg001">Failed to parse XML file</res>

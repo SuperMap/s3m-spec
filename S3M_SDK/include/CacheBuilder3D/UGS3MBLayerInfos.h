@@ -58,6 +58,11 @@ public:
 	//! \brief 属性信息加载
 	static UGbool LoadLayerInfoFromJson( const UGString& strAttFilePath, std::vector<UGLayerCacheInfo> &vecLayerInfos);
 
+	//! \brief 点云属性信息保存到文件
+	static UGbool SaveLayerInfoToJson(std::map<UGuchar, UGlong>& mapClassificationInfos, UGString& strAttFilePath);
+
+	//! \brief 点云属性信息加载
+	static UGbool LoadLayerInfoFromJson(const UGString& strAttFilePath, std::map<UGuchar, UGlong>& mapClassificationInfos);
 
 	//! \brief 属性值保存到文件
 	static UGbool SaveAttributeDataToJson(const UGArray<UGFeature*> arrFeature, UGString strFileName);
@@ -72,8 +77,12 @@ public:
 private:
 	//-----------------------------Json-------------------------------------------------------------
 	//! \brief 构造json对象
-	static void ToJson(std::vector<UGLayerCacheInfo> &vecLayerInfos, UGJsonValue & jsonValue);
-	static void FromJson(UGJsonValue & jsonValue, std::vector<UGLayerCacheInfo> &vecLayerInfos);
+	static void ToJson(std::vector<UGLayerCacheInfo>& vecLayerInfos, UGJsonValue& jsonValue);
+	static void FromJson(UGJsonValue& jsonValue, std::vector<UGLayerCacheInfo>& vecLayerInfos);
+
+	//! \brief 点云
+	static void ToJson(std::map<UGuchar, UGlong> &mapClassificationInfos, UGJsonValue & jsonValue);
+	static void FromJson(UGJsonValue & jsonValue, std::map<UGuchar, UGlong> &mapClassificationInfos);
 
 	static UGbool AttributeDataToJson(std::map<UGint, std::pair<UGint, UGArray<UGFeature*> > >& mapDatasetFeature, UGJsonValue & jsonValue);
 	static UGbool AttributeDataFromJson(std::map<UGuint, UGFeature*>& mapFeature, UGJsonValue & jsonValue);
@@ -88,6 +97,10 @@ private:
 
 	static void AddFeatureValuesToJson(UGJsonValue & jsonValue, UGFeature *pFeature);
 	static UGbool GetFeatureValuesFromJson(UGFeature *pFeature, UGJsonValue & jsonValue);
+
+	//FieldInfo Type
+	static UGString GetFieldInfoType(OgdcFieldInfo::FieldType nType);
+	static OgdcFieldInfo::FieldType GetFieldInfoType(UGString strType);
 };
 
 }

@@ -617,6 +617,9 @@ public: //三维风格相关接口
 	UGString GetPicturePath() const;
 	void SetPicturePath(UGString picturePath);
 
+	UGString GetSVGPath() const;
+	void SetSVGPath(UGString svgPath);
+
 public:
 
 	//! \brief 是否使用用户自定义的固定颜色
@@ -655,6 +658,7 @@ private:
 	UGint m_nMarkerWidth;
 	UGint m_nMarkerHeight;
 	UGString m_PicturePath;
+	UGString m_SVGPath;
 
 	UGint m_nLineStyle;
 	UGColor m_LineColor;

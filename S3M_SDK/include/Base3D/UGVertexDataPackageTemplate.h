@@ -147,6 +147,7 @@ enum VertexCompressOptions
 	SVC_VertexColor		= 4,				//顶点颜色带压缩
 	SVC_SecondColor		= 8,				//SecondColor带压缩
 	SVC_TexutreCoord	= 16,				//纹理坐标带压缩
+	SVC_TexutreCoordIsW = 32,  // 表示第一重纹理坐标存储顶点的W位
 };
 
 //! \brief 顶点数组

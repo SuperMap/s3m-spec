@@ -10,17 +10,18 @@
 <!--is show progress, value include: false,true-->
 <ShowProgress>true</ShowProgress>
 
-<!-- whether support cleartype --> 
-<IsSupportClearType>true</IsSupportClearType>
-<!--is use GraphicsMem, 9:GraphicsMem  7：GraphicsQT-->
-<CustomGraphicsEnable>true</CustomGraphicsEnable>
-<GraphicsType>7</GraphicsType>
+<!--Choose a GraphicsEngine 1 means GDI, 9 means GraphicsMem-->
+<CustomGraphicsEnable>false</CustomGraphicsEnable>
+<GraphicsType>1</GraphicsType>
 
 <!-- FreeType PoolSize -->
 <FreeTypeLibPoolSize>5</FreeTypeLibPoolSize>
 
-<!--GraphicsMemFont mapping file-->
-<GraphicsMemFonts type="external">GraphicsMemFonts.xml</GraphicsMemFonts>
+<!-- Font Path for GraphicsMem-->
+<WorldFilePath>C:/Windows/Fonts/</WorldFilePath>
+
+<!-- Fonts Path for GraphicsMem-->
+<FontsPath>C:/Windows/Fonts/</FontsPath>
 
 <!-- datasource cache file location, using at data engine; default is empty, means using the system's temporary directory -->
 <CacheFileLocation>./Cache/DatasetCache/</CacheFileLocation> 
@@ -36,9 +37,15 @@
 <IsMapInflated>false</IsMapInflated> 
 <IsShowShaderAtmosphere>true</IsShowShaderAtmosphere>
 
+<!--whether image more clear of the scene-->
+<IsImageClearer>false</IsImageClearer>
+
 <!-- full screen anti-aliasing-->
-<IsSceneAntialias>false</IsSceneAntialias>
+<IsSceneAntialias>True</IsSceneAntialias>
 <SceneAntialiasValue>2</SceneAntialiasValue>
+
+<!--whether to support float texture-->
+<IsSupportFloatTexture>true</IsSupportFloatTexture>
 
 <RasterPrint_BlockSize>10</RasterPrint_BlockSize>
 <LayoutOverlap>10</LayoutOverlap>
@@ -61,6 +68,9 @@
 <!--GraphicsMem Fonts only for GraphicsMem-->
 <GraphicsMemFonts type="external">GraphicsMemFonts.xml</GraphicsMemFonts>
 
+<!--Graphics3D Default Fonts only for Graphics3D-->
+<Graphics3DDefaultFonts type="external">Graphics3DDefaultFonts.xml</Graphics3DDefaultFonts>
+
 <!-- Log Setting-->
 <LogSetting type="object">
 
@@ -81,6 +91,7 @@
 	
 	<!-- Log Time Interval: Month,Week,Day, Hour, None-->
 	<LogTimeInterval>Day</LogTimeInterval>
+
 
 	<!-- Set the maximum size for an individual log file. When a log file reaches this size, the server will create a new one.Unit: Byte, -1 mean no limit --> 
 	<MaxFileSize> 1048576 </MaxFileSize>
@@ -129,11 +140,19 @@
 <!-- SuperMap SDX+ for PostgreSQL Setting. 0 mean not use connection pool. For PostgreSQL Engine in Multi-Thread environment, it should be bigger than 0, and stands for the connection number.-->
 <PGSQLConnPoolSize>0</PGSQLConnPoolSize>
 
+<!-- SuperMap SDX+ for UDB Setting. Set "true" when create dataset raster to manage large number of blocks more efficiently, but may course unexpected errors in old versions.-->
+<UDBCreateRasterPro>false</UDBCreateRasterPro>
+
+<!-- <OracleGeomStoreAsBlob>false</OracleGeomStoreAsBlob>-->
+
 <!-- whether draw region strokes in symbolmarker with linecolor and fillforecolor of geostyle. the default is "false".-->
 <SymbolDrawWithLineBrushColor>false</SymbolDrawWithLineBrushColor>
 
 <!-- SuperMap SDX+ for WebCache Setting.-->
 <WebCacheFilePath>./Cache/WebCache/</WebCacheFilePath>
+
+<!--  Workspace cache folder for sqlserver, oracle workspace file-->
+<WorkspaceCacheFolder>./Cache/Workspace/</WorkspaceCacheFolder>
 
 <!-- WebMap outputmaptofile default overtime  is 8 Seconds-->
 <OvertimeDownload>8</OvertimeDownload>
@@ -142,39 +161,52 @@
 <MaxEditGeometrySize>10000</MaxEditGeometrySize>
 
 <!-- the refresh interval, default value is 1000 milliSeconds.  -->
-<OvertimeRefresh>1000</OvertimeRefresh>
+<OvertimeRefresh>500</OvertimeRefresh>
+
 <!-- Dump File path -->
-<DumpEnabled>false</DumpEnabled>
+<DumpEnabled>true</DumpEnabled>
 <DumpPath>./Dumps/</DumpPath>
+<!-- The minidump type whith define in DbgHelp.h of WindowsKits. Hex value,default is 0x0 -->
+<DumpType>0x1826</DumpType>
 
 <!-- OpenMP Number of Threads, default value is 2 Threads-->
 <OMPNumThreads>2</OMPNumThreads>
-
 <!--BlockManager CacheSize,default size is 256 blocks-->
 <ImgBlockCacheSize>256</ImgBlockCacheSize>
 <!--BlockManager :the ways of cache memeory-->
 <ChangeCache_ByDelete>False</ChangeCache_ByDelete>
+
+<!-- whether paint raster data tile by tile --> 
+<RasterPaint_IsTiled>false</RasterPaint_IsTiled>
+
+<IsAutoAvoid_MapCache>true</IsAutoAvoid_MapCache>
 
 <!-- Set the memory size for analyst, the unit is MB.
      -1 mean no memory limit using memory mode, 
      0 mean using traditional recordset mode -->
 <AnalystMemorySize>0</AnalystMemorySize>
 
-<MapProfilesSetting  type="object">
-	
+<!-- whether enabled CUDA computing in SpatialAnalyst-->
+<IsCUDAComputingEnabled>false</IsCUDAComputingEnabled>
+
+<!-- whether enabled OpenCL computing in SpatialAnalyst-->
+<IsOpenCLComputingEnabled>false</IsOpenCLComputingEnabled>
+
+<MapProfilesSetting type="object">
+
     <!--whether to profiling-->
    <IsEnabled>false</IsEnabled>
    
     <!-- whether the Map Profile save to local file (Default Path is "./log")-->
    <IsToFile>false</IsToFile>
    
-    <!-- Wether to get the records count when drawing each layer.By set FALSE it can improve the performance，but can’t see the information in performance diagnosis.So the Default set is TRUE  -->
+   <!-- Wether to get the records count when drawing each layer.By set FALSE it can improve the performance，but can’t see the information in performance diagnosis.So the Default set is TRUE  -->
    <IsGetDrawGeometryCount>false</IsGetDrawGeometryCount>
    
    <!-- whether the Map Profile output the detail info, will influence the performance-->
    <IsOutputExternal>false</IsOutputExternal>
    
-</MapProfilesSetting  >
+</MapProfilesSetting>
 
 <!-- whether use GraphicsQT draw lines when current graphics type is GraphicsMem-->
 <UseQtWhenDrawGraphicsMemLine>true</UseQtWhenDrawGraphicsMemLine>
@@ -182,22 +214,129 @@
 <!-- allow current graphics draw objects with alpha channel-->
 <IsGraphicsAlphaEnable>true</IsGraphicsAlphaEnable>
 
+<!--MYISAM:1, InnoDB:2MEMORY:3,NDB:4 after 802-->
+<MySQLEngineType>1</MySQLEngineType>
+
+<!-- Use freetype draw text on Windows platform, false means use default GDI or GDI+-->
+<IsFreeTypeDrawTextOnWindows>false</IsFreeTypeDrawTextOnWindows>
+  
 <!--When this value is false,the GraphicsQT will use QImage to draw picture,when it's true use QPixmap. Default value is false-->
 <QPixmapEnable>false</QPixmapEnable>
 
-<!--MySQL连接池最多剩下的空闲连接数-->
+<!-- Set the pagesize and packagesize for UDB,0 means 32K,1 means 64K and so on ,valued from 0 to 15--> 
+<UDBPagePackageSize>0</UDBPagePackageSize>
+
+<!--MySQL connetion left in connection pool-->
 <MySQLMaxConn>100</MySQLMaxConn>
 
-<!-- The number of thread use to build map cache,when set it as "0",UGC will use main thread to build map cache. Default value is 1.  -->
+<!--When do boundsQuery, Set the percent as Entire Query,int value from 0-100-->
+<EntirePercent>100</EntirePercent>
+
+<!-- whether use GPU to speed up the map rending --> 
+<MapHardwareAccelerationEnable>false</MapHardwareAccelerationEnable>
+
+<!-- The number of thread use to build map cache,when set it as "0",UGC will use main thread to build map cache  -->
 <HPMapCacheThreadNum>1</HPMapCacheThreadNum>
+
+<!-- The count of tile layer cache in memory -->
+<TileLayerBufferSize>1000</TileLayerBufferSize>
+
+<!-- The thread count of each tile layer to download tile -->
+<TileLayerDownLoadThreadCount>8</TileLayerDownLoadThreadCount>
 
 <!--The tolerance of deduplication, when draw geometry -->
 <DrawGeometryDeduplicateTolerance>0.5</DrawGeometryDeduplicateTolerance>
 
+<!-- simplify for PostGis -->
+<IsSimplifyForPostGis>true</IsSimplifyForPostGis>
+
 <!-- simplify for telecom station -->
-<IsSimplifyForTelStation>true</IsSimplifyForTelStation>
+<IsSimplifyForTelStation>false</IsSimplifyForTelStation>
 
 <!-- simplify start when the recordset count larger than the number -->
 <SimplifyRecordCount>25000</SimplifyRecordCount>
+
+<!-- The size of the group when the vector tiles are building, default is 4 -->
+<MapVectorTileGroupSize>4</MapVectorTileGroupSize>
+  
+ <!-- Use proj4 for prjcoord translate -->
+<IsTranslateUsePROJ4>true</IsTranslateUsePROJ4>
+
+ <!-- The count of threads in processing data, default is 4 -->
+<ProcessThreadsCount>4</ProcessThreadsCount>
+
+<!-- Drawing vector elements of map by other thread -->
+<MapThreadDrawingEnabled>true</MapThreadDrawingEnabled>
+
+<!-- Exclude overlapping small objects when drawing vector geometry -->
+<OverlapGeometryEnabled>false</OverlapGeometryEnabled>
+<!-- Multiple of resolution, [1,10] -->
+<OverlapGeometryThreshold>1.0</OverlapGeometryThreshold>
+<!-- mUltiple of pixel, [1,10] -->
+<OverlapGeometryPixel>1</OverlapGeometryPixel>
+
+<!-- render scene use render texture buffer-->
+<IsRenderSceneWithTextureBuffer>false</IsRenderSceneWithTextureBuffer>
+
+<!-- Wether RasterBinary Storage As Longraw,True yes,False No;Engine ugengtoolkit.cpp(1239)-->
+<!-- <OracleRasterStoreAslongraw>false</OracleRasterStoreAslongraw> -->
+  
+<!-- Wether dump memory UDB directory,if true,do not get usable memory,dump directory;  EngineUDB ugpagemanager.cpp(1270)-->
+<!-- <DiagnosticMode>false</DiagnosticMode> -->
+  
+<!-- Set MaxSize of Memory UDB,default X86 100M，X64 500M, More than this value,dump;EngineUDB	ugpagemanager.cpp(1277)--->
+<!-- <MemoryEngineMax>100</MemoryEngineMax> -->
+  
+<!-- Set MinMemoryleft of OS, if Avaliable Memory Left less than this value,dump;EngineUDB 		ugpagemanager.cpp(1292)-->
+<!-- <MemoryEngineMin>false</MemoryEngineMin> -->
+  
+<!-- Store Geometry as JsonXML in EngineMongo,True as JsonXML,False as Binary;EngineMongo 	ugdatasetvectormongo.cpp(130)-->
+<!-- <MongoGeoJSON>false</MongoGeoJSON> -->
+
+<!-- Use by Compress of Zip,from 1 to 8,default 8-->
+<!-- Bigger means more memory but fater and higher compression ratio,Smaller means less memory but slowly and smaller compression ratio;Geometry ugdatacodec.cpp(670) -->
+<!-- <BlockLZWLevel>false</BlockLZWLevel> -->
+  
+<!-- Set the default value of "Point Symbol"(Marker) size.The initial value in UGC is 10 -->
+<!-- <GeoLegendPointStyleSize>10</GeoLegendPointStyleSize> -->
+  
+<!-- Set the default value of text size.The initial value in UGC is 100 -->
+<!-- <GeoLegendTextStyleSize>100</GeoLegendTextStyleSize> -->
+  
+<!-- Set the value of raster file block size,the value 1,2,3 corresponding to block size 64,128,256.Else the block size will be 512. -->
+<!-- <RasterFile_BlockSize>1</RasterFile_BlockSize> -->
+  
+<!-- The number of blocks, when use the block print.The UGC will print pictures as a intact block by default. you can set the block number between 1-6 by this-->
+<!-- <RasterPrint_BigBlock>1</RasterPrint_BigBlock> -->
+  
+<!-- Set the edit mode,"0"| mean "SuperMap" and "1" mean "AutoCAD"  -->
+<!-- <EditMode>0</EditMode> -->
+  
+<!-- The address of GoogleMap service-->
+<!-- <GoogleMapsWebURL>http://maps.google.com</GoogleMapsWebURL> -->
+  
+<!-- NetToolkit 		ughttphelper.cpp(1308): UGString strProxy = UGRegistry::Root()[_U("WebProxy")]; -->
+<!-- <WebProxy>false</WebProxy> -->
+  
+<!-- MapServiceStub 	ugwmtsparams.cpp(193): UGString strBoundsChange  = UGRegistry::Root()[_U("IsBoundsCornerExchange")]; -->
+<!-- <IsBoundsCornerExchange>false</IsBoundsCornerExchange> -->
+  
+<!-- OracleCI 		ugoracleciconnection.cpp(50): UGString strIsPool = UGRegistry::Root()[_U("OracleConnectPool")]; -->
+<!-- <OracleConnectPool>false</OracleConnectPool> -->
+  
+<!-- whether to dynamically make tiles to padded the map when the tiles is not existent -->
+<!-- <MapCacheProviderOutputDynamic>false</MapCacheProviderOutputDynamic> -->
+  
+<!-- The hight of the map,when build the map cache.The default value in UGC is 6000 pixel -->
+<!-- <MapCacheBigHeight>600</MapCacheBigHeight> -->
+  
+<!-- The width of the map,when build the map cache.The default value in UGC is 6000 pixel -->
+<!-- <MapCacheBigWidth>6000</MapCacheBigWidth> -->
+  
+<!-- Data 			environment.cpp(299): return (UGRegistry::Root()[_U("DiagnosticMode")].CompareNoCase(_U("true")) == 0); -->
+<!-- <DiagnosticMode>false</DiagnosticMode> -->
+  
+<!-- DataExchange	ugexchangeraster.cpp(300): UGString strRasterMode = UGRegistry::Root()[_U("BeyonDBRasterMode")]; -->
+<!-- <BeyonDBRasterMode>false</BeyonDBRasterMode> -->
 
 </ugc>

@@ -221,6 +221,8 @@ public:
 		ORANGETAB      = 207,
 		//! \breif google protocol buffers数据序列化格式
 		PBF				= 208,
+		//! \breif NetCDF	格式
+		NetCDF	        = 209,
 
 		//! \brief 用户自定义矢量开始。
 		//! \remarks 暂不支持。
@@ -273,6 +275,8 @@ public:
 		S3MB			= 515,
 		//! \brief ZIP压缩的s3mb标准格式
 		S3MBZ			= 516,
+		//! \brief WEBP数据格式
+		WEBP			= 517,
 	};
 
 

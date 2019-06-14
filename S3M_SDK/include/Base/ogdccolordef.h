@@ -36,6 +36,8 @@ enum PixelFormat
 	IPF_FLOAT			= 3200,
 	//! \brief 96位格式，R通道32位（float），B通道32位（float），G通道32位（float）
 	IPF_FLOAT32_RGB     = 4800,
+	//! \brief 128位格式，R通道32位（float），B通道32位（float），G通道32位（float）, A通道32位（float）
+	IPF_FLOAT32_RGBA     = 4801,
 	//! \brief 64位,双精度浮点型
 	IPF_DOUBLE			= 6400	
 };

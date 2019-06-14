@@ -555,6 +555,13 @@ public:
 	static UGbool IsValidFieldOrTableName(const UGString& strFieldOrTableName, InvalidNameState& nInvalidStata);
 
 	static UGbool IsUnicodeVersion();
+
+	//! \brief 字节流+伪随机字节流(由strKey生成)=加密字节流
+	//! \brief 加密字节流+伪随机字节流(使用与加密相同的strKey)=原始字节流
+	//! \param  pMessage		字节流的开始指针
+	//! \param  nLen			字节流的长度
+	//! \param  strKey			密匙（加密和解密需用同样的密匙）
+	static void AddRandomStream(UGbyte* pMessage,UGint nLen,UGString strKey);
 private:
 	// added by zengzm 2007-3-26 仅供内部使用,把得到的数据存在内部全局变量中
 	static void SaveScreenSize(UGuint nScreen, UGuint ScreenValue);

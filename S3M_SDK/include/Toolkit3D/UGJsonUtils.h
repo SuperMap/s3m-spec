@@ -1,9 +1,11 @@
 #pragma once
+
+
 #include "Stream/ugdefs.h"
 #include "Base3D/UGBoundingSphere.h"
 #include "Base3D/UGMatrix4d.h"
 #include "Toolkit/UGColorValue3DEx.h"
-#include "Projection/UGPjCon.h"
+
 
 namespace UGC{
 
@@ -51,6 +53,7 @@ public:
 	//! \brief 构造Json对象
 	void Add(const UGString strTag, const  UGbool value);	
 	void Add(const UGString strTag, const UGint value);
+	void Add(const UGString strTag, const UGlong value);
 	void Add(const UGString strTag, const UGdouble value);
 	void Add(const UGString strTag, const UGfloat value);
 	void Add(const UGString strTag, const UGString &value);
@@ -68,6 +71,7 @@ public:
 	//! \brief 更新对象
 	void Update(const UGString strTag, const UGbool newValue);
 	void Update(const UGString strTag, const UGint newValue);
+	void Update(const UGString strTag, const UGlong newValue);
 	void Update(const UGString strTag, const UGdouble newValue);
 	void Update(const UGString strTag, const UGfloat newValue);
 	void Update(const UGString strTag, const UGString &newValue);
@@ -96,16 +100,14 @@ public:
 	void Add(const UGdouble value);
 	void Add(UGJsonValue& value);
 
-	// 设置配置json文件名
-	void SetFileName(const UGString & strFile);
-
 	//! \brief 从Json对象 取值
 	UGbool GetValue(const UGString strTag, UGbool& bValue);
 	UGbool GetValue(const UGString strTag, UGint& nValue);
+	UGbool GetValue(const UGString strTag, UGlong& nValue);
 	UGbool GetValue(const UGString strTag, UGdouble& dbValue);
 	UGbool GetValue(const UGString strTag, UGfloat& dbValue);
 	UGbool GetValue(const UGString strTag, UGString& strValue);
-	UGint  GetValue(const UGString strTag, UGbyte *&pValue);
+	UGint   GetValue(const UGString strTag, UGbyte *&pValue);
 	UGbool GetValue(const UGString strTag, UGJsonValue*& pObject);
 	//! \brief 从Json对象取对象的值
 	UGbool GetValue(const UGString strTag, UGPoint3D& pnt3D);
@@ -116,10 +118,16 @@ public:
 	UGbool GetValue(const UGString strTag, UGRect2D& rcBounds);
 	UGbool GetValue(const UGString strTag, UGMatrix4d& mat);
 	UGbool GetValue(const UGString strTag, UGColorValue3D& nColor);
+	//! \brief 从Json对象取出所有的Key
+	UGbool GetAllKeys(UGArray<UGString>& arr);
+
 	//! \brief 数组
 	UGint GetArrarySize();
 	UGbool GetAt(const UGint i, UGJsonValue* pObject);
 	UGbool GetAt(const UGint i, UGdouble& dbValue);
+	UGbool GetAt(const UGint i, UGString& strValue);
+	UGbool GetAt(const UGint i, UGint& nValue);
+	UGbool GetAt(const UGint i, UGuint& nValue);
 	void RemoveAt(const UGint i);
 
 	void* /*rapidjson::Value* */GetValue();
@@ -148,43 +156,7 @@ private:
 //////////////////////////////////////////////////////////////////////////
 class TOOLKIT3D_API UGJsonUtils
 {
-private:
-	// 配置源文件
-	UGString strConfigJson;
-	// LOD层数
-	UGuint nLodNum;
-	// 瓦片长度
-	UGuint nTileLength;
-	// 插入点坐标
-	UGPoint3D m_postion;
-	// 投影坐标系
-	EmPrjCoordSysType priCoordSysType;
 public:
-	UGint GetLodNum()
-	{
-		return nLodNum;
-	}
-	UGint GetTileLength()
-	{
-		return nTileLength;
-	}
-	UGPoint3D GetPostion()
-	{
-		return m_postion;
-	}
-	UGString GetConfigJson()
-	{
-		return strConfigJson;
-	}
-	EmPrjCoordSysType GetProjection()
-	{
-		return priCoordSysType;
-	}
-	//! \brief 	// 设置json文件路径
-	void SetFileName(const UGString & strFile);
-	//! \brief 	// 解析json文件
-	void ParseJson();
-	static UGuint Get2n(UGuint n); 
 	//! \brief 打开文件（明码字符串），加载json对象
 	static UGbool LoadFromStdFile(UGString strFilePath, UGJsonValue*& pValue, UGString::Charset charset = UGString::Default);
 

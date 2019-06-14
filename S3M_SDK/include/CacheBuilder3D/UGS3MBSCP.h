@@ -18,6 +18,10 @@ public:
 	~UGS3MBSCP(void);
 public:
 	//--------------------------升级---------------------------
+
+	//! \brief 判断是否是JSON文件格式
+	static UGbool IsJsonFile(UGString strScpFile);
+
 	//! \brief 读取配置文件
 	UGbool LoadFromJsonFile(const UGString strS3MBProfile);
 
@@ -34,6 +38,7 @@ public:
 	UGbool ToSCPFile(const UGString strSCPPath);
 
 	UGdouble GetVersion();
+	void SetVersion(UGdouble dVersion);
 
 	UGString GetAsset();
 	void SetAsset(const UGString& strAsset);

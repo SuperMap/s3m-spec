@@ -86,6 +86,7 @@
 #define	UGS_FORMAT_IS_NULL                      _U("EAf020")	/*! 格式为空*/
 #define	UGS_EDITION_INVALID                     _U("EAf021")	/*! 版本号不对*/
 #define	UGS_SAME_SUBDATASET_NAME				_U("EAf022")	/*! 子数据集名已被占用*/
+#define	UGS_SAME_NAME_TABLE_EXIST               _U("EAf023")	/*! 相同名称的表在数据库中已存在*/
 
 // 文件相关操作错误，如创建、删除、打开、保存等
 #define	UGS_FROMXML_FAILED                      _U("EAg001")	/*! 解析XML文件失败*/
@@ -228,6 +229,7 @@
 #define	UGS_FAILED_TO_INIT_FIELD_INFO           _U("ECd029")	/*! 初始化字段信息失败*/
 #define	UGS_FAILED_TO_SET_DATASET_FIELD_VALUE_FLOAT _U("ECd030")	/*! 无法为数据集%s设置无值%.16f*/
 #define	UGS_FAILED_TO_MODIFY_FIELD              _U("ECd031")	/*! 修改字段属性失败*/
+#define UGS_FIELD_ORDER_NOTVALID				_U("ECd032")	/*! 重新修改字段顺序字段信息非法*/
 
 
 
@@ -1636,6 +1638,8 @@
 #define UGS_COUNTS_VALUE_IDENTICAL_1				_U("ESa086")    /*! 每个聚合区域中的点数相同.请尝试提供其它聚合区域或提供分析字段.*/
 #define UGS_COUNTS_VALUE_IDENTICAL_2				_U("ESa087")    /*! 每个网格内的点数相同.请尝试提供其它边界面区域或提供分析字段.*/
 #define UGS_COUNTS_VALUE_IDENTICAL_3				_U("ESa088")    /*! 整合后的每个点的计数值相同.请尝试其它聚合方法或提供分析字段.*/
+#define UGS_DATA_REDUNDANCY							_U("ESa089")    /*! 由于多重共线性,从而无法对模型进行估计.*/
+#define UGS_REMOVE_DEPENDENT_VARIABLE_S				_U("ESa090")    /*! 解释变量不能包含因变量,删除模型解释变量中的 %s 字段.*/
 
 // 引擎各种状态特征不匹配，（数据库当前事务，时序，版本等的状态不适合某类操作）
 #define	UGS_ODBC_DS_DISPOSE_VERSION_FAILED      _U("ELe001")	/*! 处理版本失败*/
@@ -2296,6 +2300,9 @@
 #define UGS_QUARTER_OBJ_TO_S3MB_EXPORT			_U("IMb392") /*! 正在导出S3M...*/
 #define UGS_QUARTER_OBJ_TO_S3MB_TREE				_U("IMb393") /*! 正在创建Lod四分树节点...*/
 
+#define UGS_ORDINARYLEASTSQUARES				_U("IMb394") /*! 普通最小二乘法...*/
+#define UGS_ANALYST_ORDINARYLEASTSQUARES		_U("IMb395") /*! 正在进行普通最小二乘法分析[%d/%d]...*/
+
 // 地图单位信息
 #define	UGS_SYMBOL_DEGREE                       _U("IMc001")	/*! °*/
 #define	UGS_SYMBOL_MINUTE                       _U("IMc002")	/*! ˊ*/
@@ -2723,7 +2730,6 @@
 
 
 
-
 #define UGS_LOG_READING_INFO_OF_RDT				_U("IMu012")    /*"正在读取栅格数据集(%s)的相关信息..."*/
 
 #define UGS_LOG_LOGIN_LONG_TRANS				_U("IMu013")    /*"登录数据源(%s)的长事务环境"*/
@@ -2919,6 +2925,7 @@
 #define  UGS_LOG_DR_CLIP						_U("IMu0105")	/*"栅格数据集 (%s) 裁剪"*/
 #define  UGS_LOG_DR_RESAMPLE					_U("IMu0106")	/*"栅格数据集 (%s) 重采样"*/
 #define  UGS_LOG_DR_MATH_ANALYST				_U("IMu0107")	/*"栅格数据集 (%s) 代数运算"*/
+#define UGS_LOG_UDBX_DELETEFIELD_NEEDCLOSE_DT	_U("IMu0108")    /*"udbx删除字段需要先释放所有查出的记录集"*/
 
 //3dsMax插件说明信息
 #define UGS_MAX_MENU        _U("IMp000") /*超图Max插件*/
@@ -3490,6 +3497,7 @@
 #define  UGC_GEOMETRY3D_GOCELL_LINEMARKING      _U("EGE078")
 #define  UGC_GEOMETRY3D_GOCELL_TEXTBOX          _U("EGE079")
 #define  UGC_GEOMETRY3D_GOCELL_GEOTOOLTIPBOXM   _U("EGE080")
+#define  UGC_GEOMETRY3D_5021401					_U("EGE081")
 #define  UGS_PLOT_FONT							_U("EGE900")
 
 // 捕捉类型

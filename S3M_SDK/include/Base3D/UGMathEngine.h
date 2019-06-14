@@ -1159,6 +1159,7 @@ public:
 	//! \param point			测试点[in]
 	//! \return 返回点在直线上的投影点
 	static UGVector3d PointProjectLine(UGVector3d &pntLine,UGVector3d &vectorLine, UGVector3d &point);
+	static UGPoint3D PointProjectLine(const UGVector3d& vAxis, const UGPoint3D& pntThru, const UGPoint3D& pntTest);  // Right
 
 	//! \brief 三点是否共线
 	//! \param pntLine		直线上一点[in]

@@ -251,6 +251,12 @@ public:
 	//! \brief 设置顶点压缩参数
 	void SetVertexCompressOptions(UGint nVertexCompressOptions);
 
+	//! \brief 用来设置纹理压缩类型,默认为enrS3TCDXTN
+	void SetTextureCompressType(UGuint nCompressType);
+
+	//! \brief 设置纹理是否保持不变
+	void SetIsChangeTexture(UGbool bChanged);
+
 protected:
 
 	//! \brief 填充实体包
@@ -275,6 +281,12 @@ protected:
 
 	//! \brief 压缩参数（全部解压\不压缩（0）;其他参照VertexCompressOptions各个位的意义）
 	UGint m_nVertexCompressOptions;
+
+	//! \brief 纹理压缩类型
+	UGuint m_nTextureCompressType;
+
+	//! \brief 模型保存纹理是否保持原样
+	UGbool m_bIsChangeTexture;
 
 };
 
@@ -326,6 +338,9 @@ public:
 
 	//! \brief 用来设置纹理压缩类型,默认为enrS3TCDXTN
 	void SetTextureCompressType(UGuint nCompressType);
+
+	//! \brief 设置纹理是否保持不变
+	void SetIsChangeTexture(UGbool bChanged);
 
 	//! \brief 解析一个Tile
 	virtual UGTileStuff::PatchDatas GetTilePatchDatas(const UGString& strDir, const UGString& strTile,UGRangeMode& nMode);
@@ -388,6 +403,9 @@ protected:
 
 	//! \brief 纹理压缩类型
 	UGuint m_nTextureCompressType;
+
+	//! \brief 模型保存纹理是否保持原样
+	UGbool m_bIsChangeTexture;
 
 	//! \brief 模型保存对象
 	UGModelNodeWriter* m_pModelNodeWriter;

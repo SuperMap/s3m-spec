@@ -48,7 +48,129 @@ void AltizureToS3MB::SetOutputFilePath(const UGString & strOutputPath)
 
 void AltizureToS3MB::ParseJson()
 {
+	if (!UGFile::IsExist(strConfigJson))
+	{
+		return;
+	}
 
+	UGJsonValue *jsonValue = NULL;
+	if (!UGJsonUtils::LoadFromStdFile(strConfigJson, jsonValue, UGString::UTF8))
+	{
+		return;
+	}
+
+	UGJsonValue *utmJsonValue = NULL;
+	if (jsonValue->GetValue(_U("utm_zone"), utmJsonValue))
+	{
+		UGString strLatitude;
+		UGint nLongitude = 0;
+		utmJsonValue->GetValue(_U("latitude_zone"), strLatitude);
+		utmJsonValue->GetValue(_U("longitude_zone"), nLongitude);
+
+		UGint nNum = nLongitude - 1;
+
+		if (strLatitude.CompareNoCase(_U("N")) == 0 || 
+			strLatitude.CompareNoCase(_U("P")) == 0 ||
+			strLatitude.CompareNoCase(_U("Q")) == 0 ||
+			strLatitude.CompareNoCase(_U("R")) == 0 ||
+			strLatitude.CompareNoCase(_U("S")) == 0 ||
+			strLatitude.CompareNoCase(_U("T")) == 0 ||
+			strLatitude.CompareNoCase(_U("U")) == 0 ||
+			strLatitude.CompareNoCase(_U("V")) == 0 ||
+			strLatitude.CompareNoCase(_U("W")) == 0 ||
+			strLatitude.CompareNoCase(_U("X")) == 0 )
+		{
+			// WGS UTM ZONE 1-60 North
+			priCoordSysType = EmPrjCoordSysType(EmPrjCoordSysType::PCS_WGS_1984_UTM_1N + nNum);
+		}
+		else if (strLatitude.CompareNoCase(_U("M")) == 0 || 
+				 strLatitude.CompareNoCase(_U("L")) == 0 ||
+				 strLatitude.CompareNoCase(_U("K")) == 0 ||
+				 strLatitude.CompareNoCase(_U("J")) == 0 ||
+				 strLatitude.CompareNoCase(_U("H")) == 0 ||
+				 strLatitude.CompareNoCase(_U("G")) == 0 ||
+				 strLatitude.CompareNoCase(_U("F")) == 0 ||
+				 strLatitude.CompareNoCase(_U("E")) == 0 ||
+				 strLatitude.CompareNoCase(_U("D")) == 0 ||
+				 strLatitude.CompareNoCase(_U("C")) == 0 )
+		{
+			// WGS UTM ZONE 1-60 South
+			priCoordSysType = EmPrjCoordSysType(EmPrjCoordSysType::PCS_WGS_1984_UTM_1S + nNum);
+		}
+
+		if (!utmJsonValue)
+		{
+			delete utmJsonValue;
+			utmJsonValue = NULL;
+		}
+	}
+
+	UGJsonValue *modelTransformJsonValue = NULL;
+	if (jsonValue->GetValue(_U("model_transform"), modelTransformJsonValue))
+	{
+		// ×ª»¯¾ØÕó
+		if(modelTransformJsonValue->GetArrarySize() != 0)
+		{
+			UGJsonValue *modelTransform0 = new UGJsonValue(FALSE);
+			UGdouble dModelTransform03 = 0;
+			if (modelTransformJsonValue->GetAt(0, modelTransform0) &&
+				modelTransform0->GetAt(3, dModelTransform03))
+			{
+				m_postion.x = dModelTransform03;
+			}
+
+			UGJsonValue *modelTransform1 = new UGJsonValue(FALSE);
+			UGdouble dModelTransform13 = 0;
+			if (modelTransformJsonValue->GetAt(1, modelTransform1) &&
+				modelTransform1->GetAt(3, dModelTransform13))
+			{
+				m_postion.y = dModelTransform13;
+			}
+
+			UGJsonValue *modelTransform2 = new UGJsonValue(FALSE);
+			UGdouble dModelTransform23 = 0;
+			if (modelTransformJsonValue->GetAt(2, modelTransform2) &&
+				modelTransform2->GetAt(3, dModelTransform23))
+			{
+				m_postion.z = dModelTransform23;
+			}
+
+			delete modelTransform0;
+			modelTransform0 = NULL;
+			delete modelTransform1;
+			modelTransform1 = NULL;
+			delete modelTransform2;
+			modelTransform2 = NULL;
+		}
+
+		if (!modelTransformJsonValue) 
+		{
+			delete modelTransformJsonValue;
+			modelTransformJsonValue = NULL;
+		}
+	}
+
+	UGJsonValue *tileJsonValue = NULL;
+	if (jsonValue->GetValue(_U("tile"), tileJsonValue))
+	{
+		if (tileJsonValue->GetArrarySize() != 0 && 
+			tileJsonValue->GetAt(0, nTileLength)) 
+		{
+			nLodNum = Get2n(nTileLength);
+		}
+
+		if (!tileJsonValue)
+		{
+			delete tileJsonValue;
+			tileJsonValue = NULL;
+		}
+	}
+
+	if (!jsonValue) 
+	{
+		delete jsonValue;
+		jsonValue = NULL;
+	}
 }
 static void PrjCoordTransBBox(UGBoundingBox & bbox, UGPoint3D & pos, UGPrjCoordSys * pPrjCoordSys)
 {
@@ -133,6 +255,11 @@ void AltizureToS3MB::GenerateScp()
 
 void AltizureToS3MB::GenerateS3MB()
 {
+	if (!UGFile::IsExist(strOutputFilePath))
+	{
+		UGFile::MkDirEx(strOutputFilePath);
+	}
+
 	UGStringEx strMessage;
 	strMessage.LoadResString(UGS_QUARTER_OBJ_TO_S3MB_EXPORT);
 	m_nTotalRecCount = pow(2, nLodNum * 2) - 1;

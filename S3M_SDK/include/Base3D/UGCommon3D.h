@@ -664,6 +664,8 @@ enum DrawMode
 	DRAW_BILLBOARD = 12,
 	//! \brief 渲染到法线和深度纹理上
 	DRAW_NORMAL_DEPTH = 13,
+	//! \brief OIT绘制
+	DRAW_OIT = 14,
 };
 
 /*
@@ -932,7 +934,9 @@ enum RenderStateSet
 	RSS_VertexSelection				= 0x10,				// 只在顶点捕捉场景渲染
 	RSS_Query_Result				= 0x20,				// 只在绘制查询结果场景渲染
 	RSS_Height						= 0x40,				// 只在绘制高度场景渲染
-	RSS_NormalAndDepth		= 0x80,				// 只在绘制法线和深度场景渲染
+	RSS_NormalAndDepth				= 0x80,				// 只在绘制法线和深度场景渲染
+	RSS_OIT                         = 0x100,            // 只在绘制OIT场景渲染
+	RSS_Composite                   = 0x200             // 只在绘制屏幕合成场景时绘制的渲染状态
 };
 
 //! \brief 顶点状态类型

@@ -416,6 +416,9 @@ namespace UGC
 		//! \brief 获得子切片
 		std::vector<UGString>& GetFileNames();
 
+		//! \brief 获取子切片的包围球
+		std::map<UGString, UGBoundingSphere>& GetLODSphere();
+
 		//! \brief 切换范围模式
 		void SetRangeMode(UGRangeMode nMode) { m_nRangeMode = nMode; };
 
@@ -428,6 +431,9 @@ namespace UGC
 
 		//! \brief LOD切片名
 		std::vector<UGString> m_vecFileName;
+
+		//! \brief LOD切片包围盒
+		std::map<UGString, UGBoundingSphere> m_mapBoundingSphere;
 
 		//! \brief 切换范围模式
 		UGRangeMode m_nRangeMode;

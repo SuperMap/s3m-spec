@@ -45,7 +45,8 @@ namespace UGC{
 #define SCPS_DATATYPE_PNTCLOUD				_U("PointCloud")	//点云
 #define SCPS_DATATYPE_BIM							_U("BIM")				//BIM
 #define SCPS_DATATYPE_VECTOR						_U("Vector")			//矢量
-#define SCPS_DATATYPE_PIPELINE				    _U("PipeLine")		//管线
+#define SCPS_DATATYPE_PIPELINE				    _U("PipeLine")		// 管线
+#define SCPS_DATATYPE_INSTANCEMODEL				_U("InstanceModel") // 点外挂实例化
 
 #define SCPS_PYRAMIDSPLITTYPE_OCTREE						_U("Octree")			//八叉树
 #define SCPS_PYRAMIDSPLITTYPE_QUADTREE				    _U("QuadTree")		//四叉树
@@ -126,6 +127,22 @@ namespace UGC{
 #define UGS3MB_JSON_FIELD_ATT_SIZE					_U("size")
 #define UGS3MB_JSON_FIELD_ATT_ISREQUIRED			_U("isRequired")
 
+#define UGS3MB_JSON_FIELD_ATT_TYPE_BOOL			_U("bool")
+#define UGS3MB_JSON_FIELD_ATT_TYPE_INT16			_U("int16")
+#define UGS3MB_JSON_FIELD_ATT_TYPE_UINT16			_U("uint16")
+#define UGS3MB_JSON_FIELD_ATT_TYPE_INT32			_U("int32")
+#define UGS3MB_JSON_FIELD_ATT_TYPE_UINT32			_U("uint32")
+#define UGS3MB_JSON_FIELD_ATT_TYPE_INT64			_U("int64")
+#define UGS3MB_JSON_FIELD_ATT_TYPE_FLOAT			_U("float")
+#define UGS3MB_JSON_FIELD_ATT_TYPE_DOUBLE		_U("double")
+#define UGS3MB_JSON_FIELD_ATT_TYPE_WCHAR			_U("wchar")
+#define UGS3MB_JSON_FIELD_ATT_TYPE_STRING			_U("String")
+// 点云
+#define UGS3MB_JSON_CLASSIFICATIONINFOS				_U("classificationInfos")
+#define UGS3MB_JSON_CLASSIFICATION_ATT_NAME			_U("name")
+#define UGS3MB_JSON_CLASSIFICATION_ATT_ID			_U("id")
+#define UGS3MB_JSON_CLASSIFICATION_ATT_POINTNUM		_U("pointCount")
+
 #define UGS3MB_JSON_ATT_RECORDS						_U("records")
 #define UGS3MB_JSON_ATT_RECORD						_U("record")
 #define UGS3MB_JSON_ATT_VALUES						_U("values")
@@ -149,6 +166,7 @@ namespace UGC{
 #define SCPS_JSON_WRANGE_MIN						_U("min")
 #define SCPS_JSON_WRANGE_MAX						_U("max")
 #define SCPS_JSON_PRJCOORD							_U("crs")					//坐标系
+#define SCPS_JSON_PRJCOORD_EPSG					_U("epsg:")				//前缀
 
 #define SCPS_JSON_UNITS								_U("units")
 #define SCPS_JSON_UNITS_METER						_U("Meter")
@@ -161,6 +179,7 @@ namespace UGC{
 #define SCPS_JSON_EXTENSIONS						_U("extensions")
 #define SCPS_JSON_EXTENSIONS_TYPE					_U("type")
 #define SCPS_JSON_EXTENSIONS_NAME					_U("name")
+#define SCPS_JSON_EXTENSIONS_NEU				_U("neu")
 
 #define SCPS_JSON_ATTACH_FILES						_U("attachFiles")
 #define SCPS_JSON_ATTACH_FILE						_U("attachFile")
@@ -177,6 +196,7 @@ enum SCPSDataType
 	SDT_PointCloud,
 	SDT_Vector,
 	SDT_PipeLine,
+	SDT_InstanceModel
 };
 
 enum SCPSPyramidSplitType

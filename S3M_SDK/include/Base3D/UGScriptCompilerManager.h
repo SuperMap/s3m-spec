@@ -24,7 +24,7 @@
 #endif // _MSC_VER > 1000
 
 #include "Base3D/UGPrerequisites3D.h"
-#include "Base3D/UGSingleton.h"
+#include "Toolkit/UGSingleton.h"
 #include "Stream/UGStream.h"
 #include "Base3D/UGScriptCompiler.h"
 #include "Base3D/UGScriptTranslatorManager.h"

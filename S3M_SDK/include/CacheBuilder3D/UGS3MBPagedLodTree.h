@@ -45,6 +45,9 @@ private:
 	//! \brief 构造json对象，准备保存
 	void MakeJsonValue(UGJsonValue& jsonValue) const;
 
+	//! \brief 获取根节点Patch
+	std::vector<UGModelPagedPatch*> GetRootPatches() const;
+
 private:
 	//! \brief 模型对象
 	UGModelNode* m_pModelNode;

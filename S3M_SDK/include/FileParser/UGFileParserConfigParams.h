@@ -267,6 +267,9 @@ namespace UGC {
 		//! \return 目标数据集名称。
 		UGString GetDestDTName() const;
 
+		//! \brief 获取目标数据集名称,本方法只返回用户设置的数据集名称，没有设置返回空
+		UGString GetDTName() const { return m_strDTName; }
+
 		//! \brief 获取是否以多层导入。
 		//! \return 是否以多层导入。
 		virtual UGbool GetImportByLayer() const{return FALSE;}

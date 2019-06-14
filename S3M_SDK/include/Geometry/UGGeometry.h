@@ -171,7 +171,8 @@ public:
 		GeoTIM = 140,
 		//! \brief 复合对象, 该值同时代表Geometry对象类型的上限
 		GeoCompound			=1000,
-		GeoUser				=1001,		
+		GeoUser				=1001,	
+		GeoUserSVG          =1002, //sgv对象类型
 		GeoPicture			=1101, 
 		GeoModel			=1201,
 		//! \brief malq-三维中依地形的图片
