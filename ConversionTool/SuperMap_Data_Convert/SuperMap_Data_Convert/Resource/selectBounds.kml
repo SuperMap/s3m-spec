@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Folder>
+    <name/>
+    <visibility>1</visibility>
+    <GroundOverlay>
+      <name>selectBounds</name>
+      <visibility>1</visibility>
+      <color>ffffffff</color>
+      <Icon>
+        <href>./selectBounds.png</href>
+      </Icon>
+      <altitude>0</altitude>
+      <altitudeMode>clampToGround</altitudeMode>
+      <LatLonBox>
+        <north>43.5485810220397</north>
+        <south>28.4299985035212</south>
+        <east>116.249290561293</east>
+        <west>101.130708042775</west>
+        <rotation>0</rotation>
+      </LatLonBox>
+    </GroundOverlay>
+  </Folder>
+</kml>
