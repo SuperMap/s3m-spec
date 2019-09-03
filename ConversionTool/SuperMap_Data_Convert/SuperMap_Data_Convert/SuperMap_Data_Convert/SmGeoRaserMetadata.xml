@@ -1,0 +1,76 @@
+<georasterMetadata xmlns="http://xmlns.oracle.com/spatial/georaster">
+  <objectInfo>
+    <rasterType>21001</rasterType>
+    <isBlank>false</isBlank>
+    <defaultRed>1</defaultRed>
+    <defaultGreen>1</defaultGreen>
+    <defaultBlue>1</defaultBlue>
+  </objectInfo>
+  <rasterInfo>
+    <cellRepresentation>UNDEFINED</cellRepresentation>
+    <cellDepth>8BIT_U</cellDepth>
+    <totalDimensions>3</totalDimensions>
+    <dimensionSize type="ROW">
+      <size>0</size>
+    </dimensionSize>
+    <dimensionSize type="COLUMN">
+      <size>0</size>
+    </dimensionSize>
+    <dimensionSize type="BAND">
+      <size>1</size>
+    </dimensionSize> 
+    <ULTCoordinate>
+      <row>0</row>
+      <column>0</column>
+    </ULTCoordinate>
+    <blocking>
+      <type>REGULAR</type>
+      <totalRowBlocks>0</totalRowBlocks>
+      <totalColumnBlocks>0</totalColumnBlocks>
+      <rowBlockSize>512</rowBlockSize>
+      <columnBlockSize>512</columnBlockSize>
+    </blocking>
+    <interleaving>BIP</interleaving>
+    <pyramid>
+      <type>NONE</type>
+    </pyramid>
+    <compression>
+      <type>NONE</type>
+    </compression>
+  </rasterInfo>
+  <spatialReferenceInfo>
+    <isReferenced>true</isReferenced>
+    <isRectified>true</isRectified>
+    <SRID>999999</SRID>
+    <spatialResolution dimensionType="X">
+      <resolution>1</resolution>
+    </spatialResolution>
+    <spatialResolution dimensionType="Y">
+      <resolution>1</resolution>
+    </spatialResolution>
+    <modelCoordinateLocation>UPPERLEFT</modelCoordinateLocation>
+    <modelType>FunctionalFitting</modelType>
+    <polynomialModel rowOff="0" columnOff="0" xOff="0" yOff="0" zOff="0" rowScale="1" columnScale="1" xScale="1" yScale="1" zScale="1">
+      <pPolynomial pType="1" nVars="2" order="1" nCoefficients="3">
+        <polynomialCoefficients>0 0 -1</polynomialCoefficients>
+      </pPolynomial>
+      <qPolynomial pType="1" nVars="0" order="0" nCoefficients="1">
+        <polynomialCoefficients>1</polynomialCoefficients>
+      </qPolynomial>
+      <rPolynomial pType="1" nVars="2" order="1" nCoefficients="3">
+        <polynomialCoefficients>0 1 0</polynomialCoefficients>
+      </rPolynomial>
+      <sPolynomial pType="1" nVars="0" order="0" nCoefficients="1">
+        <polynomialCoefficients>1</polynomialCoefficients>
+      </sPolynomial>
+    </polynomialModel>
+  </spatialReferenceInfo>
+  <layerInfo>
+    <layerDimension>BAND</layerDimension>
+    <subLayer>
+      <layerNumber>1</layerNumber>
+      <layerDimensionOrdinate>0</layerDimensionOrdinate>
+      <layerID>subLayer1</layerID>
+    </subLayer>
+  </layerInfo>
+</georasterMetadata>
