@@ -1,0 +1,3997 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ObjectClasses>
+	<ObjectClass Acronym="ADMARE" Code="1" >
+		<Primitives value="A" />
+		<Name>Administration Area (Named)</Name>
+		<LocalName>行政区</LocalName>
+		<Attributes>
+			<Attribute Code="103" Required="1" />
+			<Attribute Code="111" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="AIRARE" Code="2" >
+		<Primitives value="PA" />
+		<Name>Airport/airfield</Name>
+		<LocalName>机场</LocalName>
+		<Attributes>
+			<Attribute Code="7" />
+			<Attribute Code="81" />
+			<Attribute Code="83" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="ACHBRT" Code="3" >
+		<Primitives value="PA" />
+		<Name>Anchor berth</Name>
+		<LocalName>锚位</LocalName>
+		<Attributes>
+			<Attribute Code="8" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="127" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="304" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="ACHARE" Code="4" >
+		<Primitives value="PA" />
+		<Name>Anchorage area</Name>
+		<LocalName>锚泊区</LocalName>
+		<Attributes>
+			<Attribute Code="8" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="131" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="304" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="BCNCAR" Code="5" >
+		<Primitives value="P" />
+		<Name>Beacon, cardinal</Name>
+		<LocalName>方位立标</LocalName>
+		<Attributes>
+			<Attribute Code="2" Required="1" />
+			<Attribute Code="13" Required="1" />
+			<Attribute Code="75" Required="1" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="90" />
+			<Attribute Code="95" />
+			<Attribute Code="109" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+		  <Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />				
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="BCNISD" Code="6" >
+		<Primitives value="P" />
+		<Name>Beacon, isolated danger</Name>
+		<LocalName>孤立危险物立标</LocalName>
+		<Attributes>
+			<Attribute Code="2" Required="1" />
+			<Attribute Code="75" Required="1" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="90" />
+			<Attribute Code="95" />
+			<Attribute Code="109" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+      <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="BCNLAT" Code="7" >
+		<Primitives value="P" />
+		<Name>Beacon, lateral</Name>
+		<LocalName>侧面立标</LocalName>
+		<Attributes>
+			<Attribute Code="2" Required="1" />
+			<Attribute Code="36" Required="1" />
+			<Attribute Code="75" Required="1" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="90" />
+			<Attribute Code="95" />
+			<Attribute Code="109" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+      <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="BCNSAW" Code="8" >
+		<Primitives value="P" />
+		<Name>Beacon, safe water</Name>
+		<LocalName>安全水域立标</LocalName>
+		<Attributes>
+			<Attribute Code="2" Required="1" />
+			<Attribute Code="75" Required="1" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="90" />
+			<Attribute Code="95" />
+			<Attribute Code="109" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+      <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="BCNSPP" Code="9" >
+		<Primitives value="P" />
+		<Name>Beacon, special purpose/general</Name>
+		<LocalName>专用通用立标</LocalName>
+		<Attributes>
+			<Attribute Code="2" Required="1" />
+			<Attribute Code="66" Required="1" />
+			<Attribute Code="75" Required="1" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="90" />
+			<Attribute Code="95" />
+			<Attribute Code="109" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+      <Attribute Code="133" />
+			<Attribute Code="158" />	
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="BERTHS" Code="10" >
+		<Primitives value="PLA" />
+		<Name>Berth</Name>
+		<LocalName>泊位</LocalName>
+		<Attributes>
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="87" />
+			<Attribute Code="301" />
+			<Attribute Code="116" Required="1" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="125" />
+			<Attribute Code="144" />
+			<Attribute Code="149" />
+			<Attribute Code="185" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+      <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="BRIDGE" Code="11" >
+		<Primitives value="PLA" />
+		<Name>Bridge</Name>
+		<LocalName>桥梁</LocalName>
+		<Attributes>
+			<Attribute Code="9" Required="2" />
+			<Attribute Code="75" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="97" />
+			<Attribute Code="98" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="180" />
+			<Attribute Code="182" Required="2" />
+			<Attribute Code="181" Required="2" />
+			<Attribute Code="183" Required="2" />
+			<Attribute Code="185" />
+	    <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+      <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="BUISGL" Code="12" >
+		<Primitives value="PA" />
+		<Name>Building, single</Name>
+		<LocalName>单体建筑物</LocalName>
+		<Attributes>
+			<Attribute Code="3" />
+			<Attribute Code="75" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="90" />
+			<Attribute Code="94" />
+			<Attribute Code="95" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />
+	    <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+  
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="BUAARE" Code="13" >
+		<Primitives value="PA" />
+		<Name>Built-up area</Name>
+		<LocalName>建筑群区</LocalName>
+		<Attributes>
+			<Attribute Code="10" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="95" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="180" />
+		  <Attribute Code="185" />
+		  <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />	
+			<Attribute Code="147" />
+			<Attribute Code="148" />	
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="BOYCAR" Code="14" >
+		<Primitives value="P" />
+		<Name>Buoy, cardinal</Name>
+		<LocalName>方位浮标</LocalName>
+		<Attributes>
+			<Attribute Code="4" Required="1" />
+			<Attribute Code="13" Required="1" />
+			<Attribute Code="75" Required="1" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="82" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="109" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="186" />
+		  <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />	
+	
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="BOYINB" Code="15" >
+		<Primitives value="P" />
+		<Name>Buoy, installation</Name>
+		<LocalName>作业浮标</LocalName>
+		<Attributes>
+			<Attribute Code="4" Required="1" />
+			<Attribute Code="33" />
+			<Attribute Code="75" Required="1" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="82" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="109" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="123" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="186" />		
+	    <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />	
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="BOYISD" Code="16" >
+		<Primitives value="P" />
+		<Name>Buoy, isolated danger</Name>
+		<LocalName>孤立危险物浮标</LocalName>
+		<Attributes>
+			<Attribute Code="4" Required="1" />
+			<Attribute Code="75" Required="1" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="82" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="109" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="186" />
+      <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />	
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="BOYLAT" Code="17" >
+		<Primitives value="P" />
+		<Name>Buoy, lateral</Name>
+		<LocalName>侧面浮标</LocalName>
+		<Attributes>
+			<Attribute Code="4" Required="1" />
+			<Attribute Code="36" Required="1" />
+			<Attribute Code="75" Required="1" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="82" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="109" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="BOYSAW" Code="18" >
+		<Primitives value="P" />
+		<Name>Buoy, safe water</Name>
+		<LocalName>安全水域浮标</LocalName>
+		<Attributes>
+			<Attribute Code="4" Required="1" />
+			<Attribute Code="75" Required="1" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="82" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="109" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="186" />
+		  <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="BOYSPP" Code="19" >
+		<Primitives value="P" />
+		<Name>Buoy, special purpose/general</Name>
+		<LocalName>专用通用浮标</LocalName>
+		<Attributes>
+			<Attribute Code="4" Required="1" />
+			<Attribute Code="66" Required="1" />
+			<Attribute Code="75" Required="1" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="82" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="109" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="186" />
+		  <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="CBLARE" Code="20" >
+		<Primitives value="A" />
+		<Name>Cable area</Name>
+		<LocalName>电缆区</LocalName>
+		<Attributes>
+			<Attribute Code="11" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="131" />
+			<Attribute Code="149" />
+      <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="CBLOHD" Code="21" >
+		<Primitives value="L" />
+		<Name>Cable, overhead</Name>
+		<LocalName>架空电缆</LocalName>
+		<Attributes>
+			<Attribute Code="11" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="101" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="181" Required="2" />
+			<Attribute Code="184" Required="2" />
+			<Attribute Code="185" />
+      <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="CBLSUB" Code="22" >
+		<Primitives value="L" />
+		<Name>Cable, submarine</Name>
+		<LocalName>海底电缆</LocalName>
+		<Attributes>
+			<Attribute Code="5" />
+			<Attribute Code="11" />
+			<Attribute Code="81" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="87" />
+			<Attribute Code="88" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="185" />		
+      <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="CANALS" Code="23" >
+		<Primitives value="LA" />
+		<Name>Canal</Name>
+		<LocalName>运河渠道</LocalName>
+		<Attributes>
+			<Attribute Code="12" />
+			<Attribute Code="81" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="97" />
+			<Attribute Code="98" />
+			<Attribute Code="100" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />		
+      <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="CTSARE" Code="25" >
+		<Primitives value="PA" />
+		<Name>Cargo transhipment area</Name>
+		<LocalName>货物过驳区</LocalName>
+		<Attributes>
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="CAUSWY" Code="26" >
+		<Primitives value="LA" />
+		<Name>Causeway</Name>
+		<LocalName>长堤栈道</LocalName>
+		<Attributes>
+			<Attribute Code="81" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="187" />	
+		  <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="CTNARE" Code="27" >
+		<Primitives value="PA" />
+		<Name>Caution area</Name>
+		<LocalName>警告区</LocalName>
+		<Attributes>
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+	    <Attribute Code="102" Required="2"/>
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158"  Required="2"/>
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="CHKPNT" Code="28" >
+		<Primitives value="PA" />
+		<Name>Checkpoint</Name>
+		<LocalName>检查站</LocalName>
+		<Attributes>
+			<Attribute Code="14" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+      <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="CGUSTA" Code="29" >
+		<Primitives value="P" />
+		<Name>Coastguard station</Name>
+		<LocalName>海岸警卫站</LocalName>
+		<Attributes>
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+      <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="COALNE" Code="30" >
+		<Primitives value="L" />
+		<Name>Coastline</Name>
+		<LocalName>海岸线</LocalName>
+		<Attributes>
+			<Attribute Code="15" />
+			<Attribute Code="75" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="90" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+      <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="CONZNE" Code="31" >
+		<Primitives value="A" />
+		<Name>Contiguous zone</Name>
+		<LocalName>毗连区</LocalName>
+		<Attributes>
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="111" Required="1" />
+			<Attribute Code="149" />
+      <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />	
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="COSARE" Code="32" >
+		<Primitives value="A" />
+		<Name>Continental shelf area</Name>
+		<LocalName>大陆架</LocalName>
+		<Attributes>
+			<Attribute Code="111" Required="1" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+		  <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="CTRPNT" Code="33" >
+		<Primitives value="P" />
+		<Name>Control point</Name>
+		<LocalName>控制点</LocalName>
+		<Attributes>
+			<Attribute Code="16" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="90" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="304" />
+			<Attribute Code="185" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="CONVYR" Code="34" >
+		<Primitives value="LA" />
+		<Name>Conveyor</Name>
+		<LocalName>传送装置</LocalName>
+		<Attributes>
+			<Attribute Code="17" />
+			<Attribute Code="75" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="95" />
+			<Attribute Code="106" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="123" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="181" Required="2" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />	
+	    <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="CRANES" Code="35" >
+		<Primitives value="PA" />
+		<Name>Crane</Name>
+		<LocalName>起重机</LocalName>
+		<Attributes>
+			<Attribute Code="19" />
+			<Attribute Code="75" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="95" />
+			<Attribute Code="106" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="117" />
+			<Attribute Code="127" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="181" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />		
+      <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="CURENT" Code="36" >
+		<Primitives value="P" />
+		<Name>Current - non-gravitational</Name>
+		<LocalName>非重力流</LocalName>
+		<Attributes>
+			<Attribute Code="84" Required="1" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="117" Required="1" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="158" />
+			<Attribute Code="304" />
+	    <Attribute Code="102" />
+			<Attribute Code="300" />
+		  <Attribute Code="133" />	
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="CUSZNE" Code="37" >
+		<Primitives value="A" />
+		<Name>Custom zone</Name>
+		<LocalName>关税区</LocalName>
+		<Attributes>
+			<Attribute Code="111" Required="1" />
+		   <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="DAMCON" Code="38" >
+		<Primitives value="PLA" />
+		<Name>Dam</Name>
+		<LocalName>水坝</LocalName>
+		<Attributes>
+			<Attribute Code="20" />
+			<Attribute Code="75" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="95" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="180" />
+		 <Attribute Code="185" />
+			<Attribute Code="186" />
+		  <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />	
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="DAYMAR" Code="39" >
+		<Primitives value="P" />
+		<Name>Daymark</Name>
+		<LocalName>昼标</LocalName>
+		<Attributes>
+			<Attribute Code="66" />
+			<Attribute Code="75" Required="1" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="90" />
+			<Attribute Code="95" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="171" Required="1" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />			
+		  <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="DWRTCL" Code="40" >
+		<Primitives value="L" />
+		<Name>Deep water route centerline</Name>
+		<LocalName>深水航道中心线</LocalName>
+		<Attributes>
+			<Attribute Code="54" Required="1" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="87" />
+			<Attribute Code="88" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="117" Required="1" />
+			<Attribute Code="125" />
+			<Attribute Code="144" />
+			<Attribute Code="149" />
+			<Attribute Code="156" />
+			<Attribute Code="172" Required="1" />
+			<Attribute Code="185" />
+		  <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="DWRTPT" Code="41" >
+		<Primitives value="A" />
+		<Name>Deep water route part</Name>
+		<LocalName>深水航道部分</LocalName>
+		<Attributes>
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="87" Required="1" />
+			<Attribute Code="88" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="117" Required="1" />
+			<Attribute Code="125" />
+			<Attribute Code="131" />
+			<Attribute Code="144" />
+			<Attribute Code="149" />
+			<Attribute Code="156" />
+			<Attribute Code="172" Required="1" />
+	   <Attribute Code="185" />	
+		  <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="DEPARE" Code="42" >
+		<Primitives value="LA" />
+		<Name>Depth area</Name>
+		<LocalName>深度范围</LocalName>
+		<Attributes>
+			<Attribute Code="87" Required="1" />
+			<Attribute Code="88" Required="1" />
+			<Attribute Code="125" />
+			<Attribute Code="144" />
+			<Attribute Code="185" />
+	    <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="DEPCNT" Code="43" >
+		<Primitives value="L" />
+		<Name>Depth contour</Name>
+		<LocalName>等深线</LocalName>
+		<Attributes>
+			<Attribute Code="174" Required="1" />
+			<Attribute Code="185" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="DISMAR" Code="44" >
+		<Primitives value="P" />
+		<Name>Distance mark</Name>
+		<LocalName>距离标志</LocalName>
+		<Attributes>
+			<Attribute Code="21" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="DOCARE" Code="45" >
+		<Primitives value="A" />
+		<Name>Dock area</Name>
+		<LocalName>港池区</LocalName>
+		<Attributes>
+			<Attribute Code="22" />
+			<Attribute Code="81" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="97" />
+			<Attribute Code="98" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />		
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="DRGARE" Code="46" >
+		<Primitives value="A" />
+		<Name>Dredged area</Name>
+		<LocalName>疏浚区</LocalName>
+		<Attributes>
+			<Attribute Code="87" Required="1" />
+			<Attribute Code="88" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="125" />
+			<Attribute Code="131" />
+			<Attribute Code="144" />
+			<Attribute Code="185" />	
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="DRYDOC" Code="47" >
+		<Primitives value="A" />
+		<Name>Dry dock</Name>
+		<LocalName>干船坞</LocalName>
+		<Attributes>
+			<Attribute Code="81" />
+			<Attribute Code="87" />
+			<Attribute Code="97" />
+			<Attribute Code="98" />
+			<Attribute Code="99" />
+			<Attribute Code="100" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="125" />
+			<Attribute Code="144" />
+			<Attribute Code="149" />
+			<Attribute Code="185" />	
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="DMPGRD" Code="48" >
+		<Primitives value="PA" />
+		<Name>Dumping ground</Name>
+		<LocalName>倾废厂</LocalName>
+		<Attributes>
+			<Attribute Code="23" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="131" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="DYKCON" Code="49" >
+		<Primitives value="LA" />
+		<Name>Dyke</Name>
+		<LocalName>堤</LocalName>
+		<Attributes>
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="95" />
+			<Attribute Code="112" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="EXEZNE" Code="50" >
+		<Primitives value="A" />
+		<Name>Exclusive economic zone</Name>
+		<LocalName>专属经济区</LocalName>
+		<Attributes>
+			<Attribute Code="111" Required="1" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+		  <Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="FAIRWY" Code="51" >
+		<Primitives value="A" />
+		<Name>Fairway</Name>
+		<LocalName>航道</LocalName>
+		<Attributes>
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="87" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="117" />
+			<Attribute Code="125" />
+			<Attribute Code="131" />
+			<Attribute Code="144" />
+			<Attribute Code="149" />
+			<Attribute Code="172" />
+			<Attribute Code="185" />		
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="FNCLNE" Code="52" >
+		<Primitives value="L" />
+		<Name>Fence</Name>
+		<LocalName>栅栏线</LocalName>
+		<Attributes>
+			<Attribute Code="24" />
+			<Attribute Code="75" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="90" />
+			<Attribute Code="95" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />			
+			<Attribute Code="300" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="FERYRT" Code="53" >
+		<Primitives value="LA" />
+		<Name>Ferry route</Name>
+		<LocalName>轮渡航路</LocalName>
+		<Attributes>
+			<Attribute Code="25" Required="1" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />			
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="FSHZNE" Code="54" >
+		<Primitives value="A" />
+		<Name>Fishery zone</Name>
+		<LocalName>渔业区</LocalName>
+		<Attributes>
+			<Attribute Code="111" Required="1" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="FSHFAC" Code="55" >
+		<Primitives value="PLA" />
+		<Name>Fishing facility</Name>
+		<LocalName>捕鱼设备</LocalName>
+		<Attributes>
+			<Attribute Code="26" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="FSHGRD" Code="56" >
+		<Primitives value="A" />
+		<Name>Fishing ground</Name>
+		<LocalName>渔场</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="FLODOC" Code="57" >
+		<Primitives value="LA" />
+		<Name>Floating dock</Name>
+		<LocalName>浮船坞</LocalName>
+		<Attributes>
+			<Attribute Code="75" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="85" />
+			<Attribute Code="83" />
+			<Attribute Code="86" />
+			<Attribute Code="87" />
+			<Attribute Code="97" />
+			<Attribute Code="98" />
+			<Attribute Code="99" />
+			<Attribute Code="100" />
+			<Attribute Code="106" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="FOGSIG" Code="58" >
+		<Primitives value="P" />
+		<Name>Fog signal</Name>
+		<LocalName>雾号</LocalName>
+		<Attributes>
+			<Attribute Code="27" Required="1" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="139" />
+			<Attribute Code="140" />
+			<Attribute Code="141" />
+			<Attribute Code="142" />
+			<Attribute Code="143" />
+			<Attribute Code="149" />
+			<Attribute Code="177" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="FORSTC" Code="59" >
+		<Primitives value="PLA" />
+		<Name>Fortified structure</Name>
+		<LocalName>防御工事</LocalName>
+		<Attributes>
+			<Attribute Code="28" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="95" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="FRPARE" Code="60" >
+		<Primitives value="A" />
+		<Name>Free port area</Name>
+		<LocalName>自由港区</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="GATCON" Code="61" >
+		<Primitives value="PLA" />
+		<Name>Gate</Name>
+		<LocalName>门</LocalName>
+		<Attributes>
+			<Attribute Code="29" />
+			<Attribute Code="81" />
+			<Attribute Code="87" />
+			<Attribute Code="97" />
+			<Attribute Code="98" Required="2" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="125" />
+			<Attribute Code="144" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="181" />
+			<Attribute Code="185" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="GRIDRN" Code="62" >
+		<Primitives value="PA" />
+		<Name>Gridiron</Name>
+		<LocalName>船台</LocalName>
+		<Attributes>
+			<Attribute Code="97" />
+			<Attribute Code="99" />
+			<Attribute Code="100" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="186" />
+			<Attribute Code="187" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="HRBARE" Code="63" >
+		<Primitives value="A" />
+		<Name>Harbour area (administrative)</Name>
+		<LocalName>行政港区</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="HRBFAC" Code="64" >
+		<Primitives value="PA" />
+		<Name>Harbour facility</Name>
+		<LocalName>港口设备</LocalName>
+		<Attributes>
+			<Attribute Code="30" Required="1" />
+			<Attribute Code="81" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="HULKES" Code="65" >
+		<Primitives value="PA" />
+		<Name>Hulk</Name>
+		<LocalName>趸船</LocalName>
+		<Attributes>
+			<Attribute Code="31" />
+			<Attribute Code="75" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="97" />
+			<Attribute Code="99" />
+			<Attribute Code="100" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="180" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="ICEARE" Code="66" >
+		<Primitives value="A" />
+		<Name>Ice area</Name>
+		<LocalName>冰区</LocalName>
+		<Attributes>
+			<Attribute Code="32" Required="1" />
+			<Attribute Code="83" />
+			<Attribute Code="90" />
+			<Attribute Code="95" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="ICNARE" Code="67" >
+		<Primitives value="PA" />
+		<Name>Incineration area</Name>
+		<LocalName>废物焚烧场</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="131" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="ISTZNE" Code="68" >
+		<Primitives value="A" />
+		<Name>Inshore traffic zone</Name>
+		<LocalName>近岸交通区</LocalName>
+		<Attributes>
+			<Attribute Code="67" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="131" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="LAKARE" Code="69" >
+		<Primitives value="A" />
+		<Name>Lake</Name>
+		<LocalName>湖泊</LocalName>
+		<Attributes>
+			<Attribute Code="90" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="304" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="LNDARE" Code="71" >
+		<Primitives value="PLA" />
+		<Name>Land area</Name>
+		<LocalName>陆地区</LocalName>
+		<Attributes>
+			<Attribute Code="81" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="LNDELV" Code="72" >
+		<Primitives value="PL" />
+		<Name>Land elevation</Name>
+		<LocalName>地面高程</LocalName>
+		<Attributes>
+			<Attribute Code="83" />
+			<Attribute Code="90" Required="1" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />	
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="LNDRGN" Code="73" >
+		<Primitives value="PA" />
+		<Name>Land region</Name>
+		<LocalName>地面地带</LocalName>
+		<Attributes>
+			<Attribute Code="34" Required="2" />
+			<Attribute Code="114" />
+			<Attribute Code="113" />
+			<Attribute Code="301" />
+			<Attribute Code="116" Required="2" />
+			<Attribute Code="187" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="LNDMRK" Code="74" >
+		<Primitives value="PLA" />
+		<Name>Landmark</Name>
+		<LocalName>陆标</LocalName>
+		<Attributes>
+			<Attribute Code="35" Required="1" />
+			<Attribute Code="75" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" Required="1" />
+			<Attribute Code="90" />
+			<Attribute Code="94" />
+			<Attribute Code="95" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />
+			<Attribute Code="66" />	
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="LIGHTS" Code="75" >
+		<Primitives value="P" />
+		<Name>Light</Name>
+		<LocalName>灯标</LocalName>
+		<Attributes>
+			<Attribute Code="37" Required="2" />
+			<Attribute Code="75" Required="2" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="92" />
+			<Attribute Code="95" />
+			<Attribute Code="107" Required="2" />
+			<Attribute Code="108" />
+			<Attribute Code="109" />
+			<Attribute Code="110" />	
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="117" Required="2" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="136" Required="2" />
+			<Attribute Code="137" Required="2" />
+			<Attribute Code="141" Required="2" />
+			<Attribute Code="142" Required="2" />
+			<Attribute Code="143" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="178" />
+			<Attribute Code="185" />	
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="LITFLT" Code="76" >
+		<Primitives value="P" />
+		<Name>Light float</Name>
+		<LocalName>灯浮</LocalName>
+		<Attributes>
+			<Attribute Code="75" Required="1" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="97" />
+			<Attribute Code="99" />
+			<Attribute Code="100" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="LITVES" Code="77" >
+		<Primitives value="P" />
+		<Name>Light vessel</Name>
+		<LocalName>灯船</LocalName>
+		<Attributes>	
+			<Attribute Code="75" Required="1" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="97" />
+			<Attribute Code="99" />
+			<Attribute Code="100" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="LOCMAG" Code="78" >
+		<Primitives value="PLA" />
+		<Name>Local magnetic anomaly</Name>
+		<LocalName>局部磁力异常</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="175" Required="1" />
+		  <Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="LOKBSN" Code="79" >
+		<Primitives value="A" />
+		<Name>Lock basin</Name>
+		<LocalName>船闸</LocalName>
+		<Attributes>
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="97" />
+			<Attribute Code="98" />
+			<Attribute Code="99" />
+			<Attribute Code="100" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />		
+			<Attribute Code="149" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="LOGPON" Code="80" >
+		<Primitives value="PA" />
+		<Name>Log pond</Name>
+		<LocalName>储木池</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="MAGVAR" Code="81" >
+		<Primitives value="PLA" />
+		<Name>Magnetic variation</Name>
+		<LocalName>磁差</LocalName>
+		<Attributes>	
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="130" Required="1" />
+			<Attribute Code="173" Required="1" />
+			<Attribute Code="176" Required="1" />	
+			<Attribute Code="158" />
+			<Attribute Code="304" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="133" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="MARCUL" Code="82" >
+		<Primitives value="PLA" />
+		<Name>Marine farm/culture</Name>
+		<LocalName>海水养殖场</LocalName>
+		<Attributes>
+			<Attribute Code="38" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="93" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="125" />
+			<Attribute Code="131" />
+			<Attribute Code="144" />
+			<Attribute Code="149" />
+			<Attribute Code="179" Required="2" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />
+			<Attribute Code="187" Required="2" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="MIPARE" Code="83" >
+		<Primitives value="PA" />
+		<Name>Military practice area</Name>
+		<LocalName>军事演习区</LocalName>
+		<Attributes>	
+			<Attribute Code="39" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="131" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="MORFAC" Code="84" >
+		<Primitives value="PLA" />
+		<Name>Mooring/warping facility</Name>
+		<LocalName>系泊绞缆设备</LocalName>
+		<Attributes>	
+			<Attribute Code="4" />
+			<Attribute Code="40" Required="1" />
+			<Attribute Code="75" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="95" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />
+			<Attribute Code="187" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="NAVLNE" Code="85" >
+		<Primitives value="L" />
+		<Name>Navigation line</Name>
+		<LocalName>导航线</LocalName>
+		<Attributes>
+			<Attribute Code="41" Required="1" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="117" Required="1" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="OBSTRN" Code="86" >
+		<Primitives value="PLA" />
+		<Name>Obstruction</Name>
+		<LocalName>障碍物</LocalName>
+		<Attributes>
+			<Attribute Code="42" />
+			<Attribute Code="81" />
+			<Attribute Code="93" />
+			<Attribute Code="95" />
+			<Attribute Code="112" />
+			<Attribute Code="114" />
+			<Attribute Code="113" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="123" />
+			<Attribute Code="125" />
+			<Attribute Code="144" />
+			<Attribute Code="149" />
+			<Attribute Code="156" />
+			<Attribute Code="179" Required="1" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />			
+			<Attribute Code="186" />
+			<Attribute Code="187" Required="1" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="OFSPLF" Code="87" >
+		<Primitives value="PA" />
+		<Name>Offshore platform</Name>
+		<LocalName>海上平台</LocalName>
+		<Attributes>
+			<Attribute Code="43" />
+			<Attribute Code="75" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="95" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="123" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />		
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="OSPARE" Code="88" >
+		<Primitives value="A" />
+		<Name>Offshore production area</Name>
+		<LocalName>海上作业区</LocalName>
+		<Attributes>
+			<Attribute Code="48" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="95" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="123" />
+			<Attribute Code="131" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="OILBAR" Code="89" >
+		<Primitives value="L" />
+		<Name>Oil barrier</Name>
+		<LocalName>油障</LocalName>
+		<Attributes>
+			<Attribute Code="44" />
+			<Attribute Code="81" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="PILPNT" Code="90" >
+		<Primitives value="P" />
+		<Name>Pile</Name>
+		<LocalName>木桩</LocalName>
+		<Attributes>
+			<Attribute Code="45" />
+			<Attribute Code="75" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="81" />
+			<Attribute Code="83" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="95" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="PILBOP" Code="91" >
+		<Primitives value="PA" />
+		<Name>Pilot boarding place</Name>
+		<LocalName>引航员登船点</LocalName>
+		<Attributes>
+			<Attribute Code="6" />
+			<Attribute Code="46" />
+			<Attribute Code="77" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="302" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="121" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="PIPARE" Code="92" >
+		<Primitives value="PA" />
+		<Name>Pipeline area</Name>
+		<LocalName>管道区</LocalName>
+		<Attributes>
+			<Attribute Code="47" />
+			<Attribute Code="81" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="123" />
+			<Attribute Code="131" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="PIPOHD" Code="93" >
+		<Primitives value="L" />
+		<Name>Pipeline, overhead</Name>
+		<LocalName>架空管道</LocalName>
+		<Attributes>
+			<Attribute Code="47" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="123" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="181" Required="2" />
+			<Attribute Code="185" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="PIPSOL" Code="94" >
+		<Primitives value="PL" />
+		<Name>Pipeline, submarine/on land</Name>
+		<LocalName>海底陆地管道</LocalName>
+		<Attributes>
+			<Attribute Code="5" />
+			<Attribute Code="47" />
+			<Attribute Code="81" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="87" />
+			<Attribute Code="88" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="123" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />		
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />				
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="PONTON" Code="95" >
+		<Primitives value="LA" />
+		<Name>Pontoon</Name>
+		<LocalName>浮码头</LocalName>
+		<Attributes>
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="94" /> 
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="PRCARE" Code="96" >
+		<Primitives value="PA" />
+		<Name>Precautionary area</Name>
+		<LocalName>警戒区</LocalName>
+		<Attributes>
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="131" />
+			<Attribute Code="149" />
+			<Attribute Code="102" Required="2" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" Required="2" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="PRDARE" Code="97" >
+		<Primitives value="PA" />
+		<Name>Production/storage area</Name>
+		<LocalName>生产仓储区</LocalName>
+		<Attributes>
+			<Attribute Code="48" Required="1" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />			
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="90" />
+			<Attribute Code="95" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="123" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />		
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />		
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="PYLONS" Code="98" >
+		<Primitives value="PA" />
+		<Name>Pylon/bridge support</Name>
+		<LocalName>支架桥墩</LocalName>
+		<Attributes>
+			<Attribute Code="49" Required="1" />
+			<Attribute Code="75" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="95" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />		
+			<Attribute Code="186" />
+			<Attribute Code="187" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />		
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="RADLNE" Code="99" >
+		<Primitives value="L" />
+		<Name>Radar line</Name>
+		<LocalName>雷达线</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="117" Required="1" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="RADRNG" Code="100" >
+		<Primitives value="A" />
+		<Name>Radar range</Name>
+		<LocalName>雷达有效作用范围</LocalName>
+		<Attributes>
+			<Attribute Code="77" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="RADRFL" Code="101" >
+		<Primitives value="P" />
+		<Name>Radar reflector</Name>
+		<LocalName>雷达反射器</LocalName>
+		<Attributes>
+			<Attribute Code="95" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />		
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="RADSTA" Code="102" >
+		<Primitives value="P" />
+		<Name>Radar station</Name>
+		<LocalName>雷达站</LocalName>
+		<Attributes>
+
+			<Attribute Code="51" />
+			<Attribute Code="77" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="95" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="177" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="RTPBCN" Code="103" >
+		<Primitives value="P" />
+		<Name>Radar transponder beacon</Name>
+		<LocalName>雷达应答器</LocalName>
+		<Attributes>
+			<Attribute Code="52" Required="1" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="126" />
+			<Attribute Code="136" />
+			<Attribute Code="137" />			
+			<Attribute Code="141" />
+			<Attribute Code="143" />
+			<Attribute Code="149" />
+			<Attribute Code="177" />
+			<Attribute Code="118" />
+		  <Attribute Code="119" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />		  
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="RDOCAL" Code="104" >
+		<Primitives value="PL" />
+		<Name>Radio calling-in point</Name>
+		<LocalName>无线电呼叫点</LocalName>
+		<Attributes>
+			<Attribute Code="77" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="117" Required="1" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="172" Required="1" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="RDOSTA" Code="105" >
+		<Primitives value="P" />
+		<Name>Radio station</Name>
+		<LocalName>无线电台</LocalName>
+		<Attributes>
+			<Attribute Code="6" />
+			<Attribute Code="53" />
+			<Attribute Code="77" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="91" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="117" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="139" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="RAILWY" Code="106" >
+		<Primitives value="L" />
+		<Name>Railway</Name>
+		<LocalName>铁路</LocalName>
+		<Attributes>
+			<Attribute Code="81" />
+			<Attribute Code="95" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="RAPIDS" Code="107" >
+		<Primitives value="PLA" />
+		<Name>Rapids</Name>
+		<LocalName>急流</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="180" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="RCRTCL" Code="108" >
+		<Primitives value="L" />
+		<Name>Recommended route centerline</Name>
+		<LocalName>推荐航道中心线</LocalName>
+		<Attributes>
+			<Attribute Code="54" Required="1" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="87" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="117" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="125" />
+			<Attribute Code="144" />
+			<Attribute Code="149" />
+			<Attribute Code="156" />
+			<Attribute Code="172" />
+			<Attribute Code="185" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />						
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="RECTRC" Code="109" >
+		<Primitives value="LA" />
+		<Name>Recommended track</Name>
+		<LocalName>推荐航道</LocalName>
+		<Attributes>
+			<Attribute Code="54" Required="1" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="87" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="117" Required="1" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="125" />
+			<Attribute Code="144" />
+			<Attribute Code="149" />
+			<Attribute Code="156" />
+			<Attribute Code="172" Required="1" />
+			<Attribute Code="185" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />						
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="RCTLPT" Code="110" >
+		<Primitives value="PA" />
+		<Name>Recommended traffic lane part</Name>
+		<LocalName>推荐航道分道</LocalName>
+		<Attributes>
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="117" Required="1" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="RSCSTA" Code="111" >
+		<Primitives value="P" />
+		<Name>Rescue station</Name>
+		<LocalName>救助站</LocalName>
+		<Attributes>
+			<Attribute Code="55" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="RESARE" Code="112" >
+		<Primitives value="A" />
+		<Name>Restricted area</Name>
+		<LocalName>受限区域</LocalName>
+		<Attributes>
+			<Attribute Code="56" Required="2" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="131" Required="2" />
+			<Attribute Code="149" />
+			<Attribute Code="102" Required="2" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" Required="2" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="RETRFL" Code="113" >
+		<Primitives value="P" />
+		<Name>Retro-reflector</Name>
+		<LocalName>反射器</LocalName>
+		<Attributes>
+			<Attribute Code="75" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="95" />
+			<Attribute Code="109" />			
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />		
+			<Attribute Code="102" />
+			<Attribute Code="300" />				
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="RIVERS" Code="114" >
+		<Primitives value="LA" />
+		<Name>River</Name>
+		<LocalName>河流</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="ROADWY" Code="116" >
+		<Primitives value="PLA" />
+		<Name>Road</Name>
+		<LocalName>道路</LocalName>
+		<Attributes>
+			<Attribute Code="57" />
+			<Attribute Code="81" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="RUNWAY" Code="117" >
+		<Primitives value="PLA" />
+		<Name>Runway</Name>
+		<LocalName>跑道</LocalName>
+		<Attributes>
+			<Attribute Code="58" />
+			<Attribute Code="81" />
+			<Attribute Code="83" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="SNDWAV" Code="118" >
+		<Primitives value="PLA" />
+		<Name>Sand waves</Name>
+		<LocalName>沙纹</LocalName>
+		<Attributes>
+			<Attribute Code="180" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="SEAARE" Code="119" >
+		<Primitives value="PA" />
+		<Name>Sea area/named water area</Name>
+		<LocalName>海域命名水域</LocalName>
+		<Attributes>
+			<Attribute Code="59" Required="2" />
+			<Attribute Code="301" />
+			<Attribute Code="116" Required="2" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="SPLARE" Code="120" >
+		<Primitives value="PA" />
+		<Name>Sea-plane landing area</Name>
+		<LocalName>海上飞机起降区</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="131" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="SBDARE" Code="121" >
+		<Primitives value="PLA" />
+		<Name>Seabed area</Name>
+		<LocalName>海床区</LocalName>
+		<Attributes>
+			<Attribute Code="75" />
+			<Attribute Code="114" Required="2" />
+			<Attribute Code="113" Required="2" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="187" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="SLCONS" Code="122" >
+		<Primitives value="PLA" />
+		<Name>Shoreline Construction</Name>
+		<LocalName>岸线结构物</LocalName>
+		<Attributes>
+			<Attribute Code="60" />
+			<Attribute Code="75" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="95" />
+			<Attribute Code="97" />
+			<Attribute Code="98" />
+			<Attribute Code="99" />
+			<Attribute Code="100" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />
+			<Attribute Code="187" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="SISTAT" Code="123" >
+		<Primitives value="P" />
+		<Name>Signal station, traffic</Name>
+		<LocalName>交通信号站</LocalName>
+		<Attributes>
+			<Attribute Code="61" Required="1" />
+			<Attribute Code="77" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="SISTAW" Code="124" >
+		<Primitives value="P" />
+		<Name>Signal station, warning</Name>
+		<LocalName>告警信号站</LocalName>
+		<Attributes>
+			<Attribute Code="62" Required="1" />
+			<Attribute Code="77" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="SILTNK" Code="125" >
+		<Primitives value="PA" />
+		<Name>Silo/tank</Name>
+		<LocalName>筒仓罐</LocalName>
+		<Attributes>
+			<Attribute Code="3" />
+			<Attribute Code="63" />
+			<Attribute Code="75" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="90" />
+			<Attribute Code="95" />
+			<Attribute Code="112" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="123" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="SLOTOP" Code="126" >
+		<Primitives value="L" />
+		<Name>Slope topline</Name>
+		<LocalName>坡顶线</LocalName>
+		<Attributes>
+			<Attribute Code="64" />
+			<Attribute Code="75" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="90" />
+			<Attribute Code="112" />
+			<Attribute Code="114" />
+			<Attribute Code="113" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="SLOGRD" Code="127" >
+		<Primitives value="PA" />
+		<Name>Sloping ground</Name>
+		<LocalName>倾斜地面</LocalName>
+		<Attributes>
+			<Attribute Code="64" />
+			<Attribute Code="75" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="112" />
+			<Attribute Code="114" />			
+			<Attribute Code="113" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="SMCFAC" Code="128" >
+		<Primitives value="PA" />
+		<Name>Small craft facility</Name>
+		<LocalName>小型船用设备</LocalName>
+		<Attributes>
+			<Attribute Code="65" Required="1" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="SOUNDG" Code="129" >
+		<Primitives value="P" />
+		<Name>Sounding</Name>
+		<LocalName>水深</LocalName>
+		<Attributes>
+			<Attribute Code="93" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="125" />
+			<Attribute Code="144" />
+			<Attribute Code="149" />
+			<Attribute Code="156" />
+			<Attribute Code="185" />			
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="SPRING" Code="130" >
+		<Primitives value="P" />
+		<Name>Spring</Name>
+		<LocalName>喷泉</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="STSLNE" Code="132" >
+		<Primitives value="L" />
+		<Name>Straight territorial sea baseline</Name>
+		<LocalName>连续领海基线</LocalName>
+		<Attributes>
+			<Attribute Code="111" Required="1" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="SUBTLN" Code="133" >
+		<Primitives value="A" />
+		<Name>Submarine transit lane</Name>
+		<LocalName>潜水艇航道</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="131" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="SWPARE" Code="134" >
+		<Primitives value="A" />
+		<Name>Swept area</Name>
+		<LocalName>扫测区</LocalName>
+		<Attributes>
+			<Attribute Code="87" Required="1" />
+			<Attribute Code="125" />
+			<Attribute Code="144" />
+			<Attribute Code="156" />
+			<Attribute Code="185" />			
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="TESARE" Code="135" >
+		<Primitives value="A" />
+		<Name>Territorial sea area</Name>
+		<LocalName>领海区</LocalName>
+		<Attributes>
+			<Attribute Code="111" Required="1" />
+			<Attribute Code="131" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="TS_PRH" Code="136" >
+		<Primitives value="PA" />
+		<Name>Tidal stream - harmonic prediction</Name>
+		<LocalName>调和常数预测潮流</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="163" Required="1" />
+			<Attribute Code="167" Required="1" />
+			<Attribute Code="149" />	
+			<Attribute Code="102" />
+			<Attribute Code="300" />		
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="TS_PNH" Code="137" >
+		<Primitives value="PA" />
+		<Name>Tidal stream - non harmonic prediction</Name>
+		<LocalName>非调和常数预测潮流</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="164" Required="1" />	
+			<Attribute Code="163" Required="1" />					
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="TS_PAD" Code="138" >
+		<Primitives value="PA" />
+		<Name>Tidal stream panel data</Name>
+		<LocalName>潮流表数据</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="159" Required="1" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="TS_TIS" Code="139" >
+		<Primitives value="PA" />
+		<Name>Tidal stream time series</Name>
+		<LocalName>时序潮流</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="168" Required="1" />		
+			<Attribute Code="169" Required="1" />	
+			<Attribute Code="165" Required="1" />	
+			<Attribute Code="160" Required="1" />					
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="T_HMON" Code="140" >
+		<Primitives value="PA" />
+		<Name>Tide - harmonic prediction</Name>
+		<LocalName>调和常数预测潮汐</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="161" />
+			<Attribute Code="163" Required="1" />
+			<Attribute Code="167" Required="1" />
+		  <Attribute Code="149" />	
+			<Attribute Code="102" />
+			<Attribute Code="300" />		  		
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="T_NHMN" Code="141" >
+		<Primitives value="PA" />
+		<Name>Tide - non-harmonic prediction</Name>
+		<LocalName>非调和常数预测潮汐</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="161" />
+			<Attribute Code="163" Required="1" />
+			<Attribute Code="164" Required="1" />
+			<Attribute Code="149" />		
+			<Attribute Code="102" />
+			<Attribute Code="300" />				
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="T_TIMS" Code="142" >
+		<Primitives value="PA" />
+		<Name>Tide - time series</Name>
+		<LocalName>时序潮汐</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="161" />		
+			<Attribute Code="162" Required="1" />
+			<Attribute Code="165" />	
+			<Attribute Code="166" />						
+			<Attribute Code="168" Required="1" />
+			<Attribute Code="169" Required="1" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />						
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="TIDEWY" Code="143" >
+		<Primitives value="LA" />
+		<Name>Tideway</Name>
+		<LocalName>潮路</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="TOPMAR" Code="144" >
+		<Primitives value="P" />
+		<Name>Topmark</Name>
+		<LocalName>顶标</LocalName>
+		<Attributes>
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="86" />
+			<Attribute Code="85" />
+			<Attribute Code="75" />
+			<Attribute Code="76" Required="2" />
+			<Attribute Code="95" />	
+			<Attribute Code="109" />					
+			<Attribute Code="149" />
+			<Attribute Code="171" Required="1" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />			
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="TSELNE" Code="145" >
+		<Primitives value="L" />
+		<Name>Traffic separation line</Name>
+		<LocalName>通航分隔线</LocalName>
+		<Attributes>
+			<Attribute Code="67" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="TSSBND" Code="146" >
+		<Primitives value="L" />
+		<Name>Traffic separation scheme boundary</Name>
+		<LocalName>分道通航制边界</LocalName>
+		<Attributes>
+			<Attribute Code="67" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="TSSCRS" Code="147" >
+		<Primitives value="A" />
+		<Name>Traffic separation scheme crossing</Name>
+		<LocalName>分道通航制交汇处</LocalName>
+		<Attributes>
+			<Attribute Code="67" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="131" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="TSSLPT" Code="148" >
+		<Primitives value="A" />
+		<Name>Traffic separation scheme lane part</Name>
+		<LocalName>分道通航制分道</LocalName>
+		<Attributes>
+			<Attribute Code="67" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="117" Required="2" />
+			<Attribute Code="131" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="TSSRON" Code="149" >
+		<Primitives value="A" />
+		<Name>Traffic separation scheme roundabout</Name>
+		<LocalName>分道通航制环形道</LocalName>
+		<Attributes>
+			<Attribute Code="67" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="131" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="TSEZNE" Code="150" >
+		<Primitives value="A" />
+		<Name>Traffic separation zone</Name>
+		<LocalName>通航分隔带</LocalName>
+		<Attributes>
+			<Attribute Code="67" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="149" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="TUNNEL" Code="151" >
+		<Primitives value="PLA" />
+		<Name>Tunnel</Name>
+		<LocalName>隧道</LocalName>
+		<Attributes>
+			<Attribute Code="5" />
+			<Attribute Code="81" />
+			<Attribute Code="97" />
+			<Attribute Code="98" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="149" />
+			<Attribute Code="180" />
+			<Attribute Code="181" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="TWRTPT" Code="152" >
+		<Primitives value="A" />
+		<Name>Two-way route part</Name>
+		<LocalName>双向航道分道</LocalName>
+		<Attributes>
+			<Attribute Code="54" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="87" />
+			<Attribute Code="88" />
+			<Attribute Code="117" Required="1" />
+			<Attribute Code="125" />
+			<Attribute Code="144" />
+			<Attribute Code="149" />
+			<Attribute Code="156" />
+			<Attribute Code="172" Required="1" />
+			<Attribute Code="185" />	
+			<Attribute Code="102" />
+			<Attribute Code="300" />					
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="UWTROC" Code="153" >
+		<Primitives value="P" />
+		<Name>Underwater/awash rock</Name>
+		<LocalName>暗礁适淹礁</LocalName>
+		<Attributes>
+			<Attribute Code="93" />
+			<Attribute Code="114" />
+			<Attribute Code="113" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="125" />
+			<Attribute Code="144" />
+			<Attribute Code="149" />
+			<Attribute Code="156" />
+			<Attribute Code="179" Required="1" />
+			<Attribute Code="185" />			
+			<Attribute Code="187" Required="1" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="UNSARE" Code="154" >
+		<Primitives value="A" />
+		<Name>Unsurveyed area</Name>
+		<LocalName>未测区</LocalName>
+		<Attributes>
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="VEGATN" Code="155" >
+		<Primitives value="PLA" />
+		<Name>Vegetation</Name>
+		<LocalName>植被</LocalName>
+		<Attributes>
+			<Attribute Code="68" Required="1" />
+			<Attribute Code="83" />
+			<Attribute Code="90" />
+			<Attribute Code="95" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />			
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="WATTUR" Code="156" >
+		<Primitives value="PLA" />
+		<Name>Water turbulence</Name>
+		<LocalName>紊流</LocalName>
+		<Attributes>
+			<Attribute Code="69" Required="1" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="WATFAL" Code="157" >
+		<Primitives value="PL" />
+		<Name>Waterfall</Name>
+		<LocalName>瀑布</LocalName>
+		<Attributes>
+
+			<Attribute Code="83" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="180" />			
+			<Attribute Code="186" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="WEDKLP" Code="158" >
+		<Primitives value="PA" />
+		<Name>Weed/Kelp</Name>
+		<LocalName>海草巨型海藻</LocalName>
+		<Attributes>
+			<Attribute Code="70" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="WRECKS" Code="159" >
+		<Primitives value="PA" />
+		<Name>Wreck</Name>
+		<LocalName>沉船</LocalName>
+		<Attributes>
+			<Attribute Code="71" Required="2" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="93" />
+			<Attribute Code="95" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="125" />
+			<Attribute Code="144" />
+			<Attribute Code="149" />
+			<Attribute Code="156" />
+			<Attribute Code="179" Required="2" />
+			<Attribute Code="180" />
+			<Attribute Code="185" />	
+			<Attribute Code="186" />								
+			<Attribute Code="187" Required="1" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="TS_FEB" Code="160" >
+		<Primitives value="PA" />
+		<Name>Tidal streams - Flood/Ebb</Name>
+		<LocalName>涨退潮流</LocalName>
+		<Attributes>
+			<Attribute Code="188" Required="1" />
+			<Attribute Code="84" Required="1" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="117" Required="1" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="ARCSLN" Code="161" >
+		<Primitives value="A" />
+		<Name>Archipelagic Sea Lane</Name>
+		<LocalName>群岛海域航道</LocalName>
+		<Attributes>
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="111" Required="1" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="102" Required="2" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />
+			<Attribute Code="158" Required="2" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="ASLXIS" Code="162" >
+		<Primitives value="L" />
+		<Name>Archipelagic Sea Lane Axis</Name>
+		<LocalName>群岛海域航道中心线</LocalName>
+		<Attributes>
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="111" Required="1" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="102" Required="2" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />
+			<Attribute Code="158" Required="2" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="NEWOBJ" Code="163" >
+		<Primitives value="PLA" />
+		<Name>New ObjectClass</Name>
+		<LocalName>新物标</LocalName>
+		<Attributes>
+			<Attribute Code="190" Required="1" />
+			<Attribute Code="191" Required="1" />
+			<Attribute Code="75" />
+			<Attribute Code="76" />
+			<Attribute Code="81" />
+			<Attribute Code="82" />
+			<Attribute Code="83" />
+			<Attribute Code="85" />
+			<Attribute Code="86" />
+			<Attribute Code="111" />
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="118" />
+			<Attribute Code="119" />
+			<Attribute Code="131" />
+			<Attribute Code="149" />
+			<Attribute Code="187" />
+			<Attribute Code="102" Required="2" />
+			<Attribute Code="300" />
+			<Attribute Code="304" />					
+			<Attribute Code="120" />
+			<Attribute Code="133" />			
+			<Attribute Code="192" />
+			<Attribute Code="158" Required="2" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="M_ACCY" Code="300" >
+		<Primitives value="A" />
+		<Name>Accuracy of data</Name>
+		<LocalName>数据精度</LocalName>
+		<Attributes>
+			<Attribute Code="97" />			
+			<Attribute Code="401" Required="1" />
+			<Attribute Code="144" />	
+			<Attribute Code="180" />					
+			<Attribute Code="304" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="M_CSCL" Code="301" >
+		<Primitives value="A" />
+		<Name>Compilation scale of data</Name>
+		<LocalName>数据编辑比例尺</LocalName>
+		<Attributes>
+			<Attribute Code="80" Required="1" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="M_COVR" Code="302" >
+		<Primitives value="A" />
+		<Name>Coverage</Name>
+		<LocalName>覆盖范围</LocalName>
+		<Attributes>
+			<Attribute Code="18" Required="1" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />						
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="M_HOPA" Code="304" >
+		<Primitives value="A" />
+		<Name>Horizontal datum shift parameters</Name>
+		<LocalName>水平基准面变换参数</LocalName>
+		<Attributes>
+			<Attribute Code="400" Required="1" />
+			<Attribute Code="138" Required="1" />
+     	<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="M_NPUB" Code="305" >
+		<Primitives value="PA" />
+		<Name>Nautical publication information</Name>
+		<LocalName>航海出版物信息</LocalName>
+		<Attributes>
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="124" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="M_NSYS" Code="306" >
+		<Primitives value="A" />
+		<Name>Navigational system of marks</Name>
+		<LocalName>航海标志</LocalName>
+		<Attributes>
+			<Attribute Code="109" Required="2" />
+			<Attribute Code="117" Required="2" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="M_QUAL" Code="308" >
+		<Primitives value="A" />
+		<Name>Quality of data</Name>
+		<LocalName>数据质量</LocalName>
+		<Attributes>
+			<Attribute Code="72" Required="1" />
+			<Attribute Code="87" />
+			<Attribute Code="88" />
+			<Attribute Code="401" />
+			<Attribute Code="144" />
+			<Attribute Code="151" />
+			<Attribute Code="152" />
+			<Attribute Code="156" />
+			<Attribute Code="185" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="M_SDAT" Code="309" >
+		<Primitives value="A" />
+		<Name>Sounding datum</Name>
+		<LocalName>水深基准面</LocalName>
+		<Attributes>
+			<Attribute Code="185" Required="1" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="M_SREL" Code="310" >
+		<Primitives value="LA" />
+		<Name>Survey reliability</Name>
+		<LocalName>测量可靠性</LocalName>
+		<Attributes>
+			<Attribute Code="402" />
+			<Attribute Code="125" />
+			<Attribute Code="134" />
+			<Attribute Code="135" />
+			<Attribute Code="146" />
+			<Attribute Code="145" />
+			<Attribute Code="150" />
+			<Attribute Code="151" />
+			<Attribute Code="152" />
+			<Attribute Code="153" />
+			<Attribute Code="156" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="M_VDAT" Code="312" >
+		<Primitives value="A" />
+		<Name>Vertical datum of data</Name>
+		<LocalName>数据垂直基准面</LocalName>
+		<Attributes>
+			<Attribute Code="185" Required="1" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="C_AGGR" Code="400" >
+		<Primitives value="N" />
+		<Name>Aggregation</Name>
+		<LocalName>集合</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="C_ASSO" Code="401" >
+		<Primitives value="N" />
+		<Name>Association</Name>
+		<LocalName>关联</LocalName>
+		<Attributes>
+			<Attribute Code="301" />
+			<Attribute Code="116" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+	<ObjectClass Acronym="TEXTS_" Code="504" >
+		<Primitives value="P" />
+		<Name>Text</Name>
+		<LocalName>文本</LocalName>
+		<Attributes>
+			<Attribute Code="74" />
+			<Attribute Code="75" />
+			<Attribute Code="104" />
+			<Attribute Code="105" />
+			<Attribute Code="303" />
+			<Attribute Code="73" />
+			<Attribute Code="157" />
+			<Attribute Code="102" />
+			<Attribute Code="300" />			
+			<Attribute Code="304" />
+			<Attribute Code="120" />
+			<Attribute Code="132" />
+			<Attribute Code="133" />			
+			<Attribute Code="158" />
+			<Attribute Code="128" />
+			<Attribute Code="129" />
+			<Attribute Code="147" />
+			<Attribute Code="148" />
+		</Attributes>
+	</ObjectClass>
+</ObjectClasses>

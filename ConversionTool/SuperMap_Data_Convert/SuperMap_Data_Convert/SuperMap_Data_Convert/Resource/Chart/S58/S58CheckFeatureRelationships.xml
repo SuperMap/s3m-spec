@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<S58>
+	<Features>
+		<Feature acronym="AIRARE">
+			<Test id="1625" />
+		</Feature>
+		<Feature acronym="BUISGL">
+			<Test id="1781" />
+		</Feature>
+		<Feature acronym="DAYMAR">
+			<Test id="1775" />
+		</Feature>
+		<Feature acronym="DWRTCL">
+			<Test id="1693" />
+		</Feature>
+		<Feature acronym="DWRTPT">
+			<Test id="1693" />
+		</Feature>
+		<Feature acronym="FOGSIG">
+			<Test id="1775" />
+		</Feature>
+		<Feature acronym="LIGHTS">
+			<Test id="1750" />
+			<Test id="1775" />
+			<Test id="1790" />
+			<Test id="1794" />
+		</Feature>
+		<Feature acronym="LNDMRK">
+			<Test id="1781" />
+		</Feature>
+		<Feature acronym="M_NHMN">
+			<Test id="1559" />
+		</Feature>
+		<Feature acronym="NAVLNE">
+			<Test id="1682" />
+		</Feature>
+		<Feature acronym="SISTAT">
+			<Test id="1775" />
+		</Feature>
+		<Feature acronym="SISTAW">
+			<Test id="1775" />
+		</Feature>
+		<Feature acronym="RADSRA">
+			<Test id="1775" />
+		</Feature>
+		<Feature acronym="RADRFL">
+			<Test id="1721" />
+		</Feature>
+		<Feature acronym="RDOSTA">
+			<Test id="1775" />
+		</Feature>
+		<Feature acronym="RECTRC">
+			<Test id="1682" />
+		</Feature>
+		<Feature acronym="RETRFL">
+			<Test id="1775" />
+		</Feature>
+		<Feature acronym="RTPBCN">
+			<Test id="1775" />
+		</Feature>
+		<Feature acronym="RUNWAY">
+			<Test id="1625" />
+		</Feature>
+		<Feature acronym="TOPMAR">
+			<Test id="1775" />
+		</Feature>
+		<Feature acronym="TS_PNH">
+			<Test id="1562" />
+		</Feature>
+	</Features>
+</S58>
