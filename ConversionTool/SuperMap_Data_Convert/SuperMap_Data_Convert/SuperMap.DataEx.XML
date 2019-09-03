@@ -1,0 +1,353 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SuperMap.DataEx</name>
+    </assembly>
+    <members>
+        <member name="T:SuperMap.Data.GeoLineEPS">
+            <summary>
+            EPS线几何对象类。
+            </summary>
+        </member>
+        <member name="M:SuperMap.Data.GeoLineEPS.#ctor">
+            <summary>
+            构造一个新的 GeoLineEPS 类对象。
+            </summary>
+        </member>
+        <member name="P:SuperMap.Data.GeoLineEPS.Length">
+            <summary>
+            获取线对象的长度。
+            </summary>
+        </member>
+        <member name="M:SuperMap.Data.GeoLineEPS.Clone">
+            <summary>
+            克隆本对象。
+            </summary>
+            <returns>返回克隆的新对象。</returns>
+        </member>
+        <member name="M:SuperMap.Data.GeoLineEPS.ConvertToLine">
+            <summary>
+            转换为GeoLine对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SuperMap.Data.GeoLineEPS.ConvertToRegion">
+            <summary>
+            转换为GeoRegion对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SuperMap.Data.GeoLineEPS.ConvertToLine3D">
+            <summary>
+            转换为GeoLine3D对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SuperMap.Data.GeoLineEPS.ConvertToRegion3D">
+            <summary>
+            转换为GeoRegion3D对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SuperMap.Data.GeometryEPS">
+            <summary>
+            所有EPS几何对象的基类。
+            </summary>
+        </member>
+        <member name="M:SuperMap.Data.GeometryEPS.InitializeGlobalAssembly">
+            <summary>
+            程序集初始化。
+            </summary>
+        </member>
+        <member name="M:SuperMap.Data.GeometryEPS.Add(SuperMap.Data.PointEPS)">
+            <summary>
+            将指定的点对象添加到构成对象的点序列的末尾。
+            </summary>
+            <param name="point">要添加到此对象的点对象。</param>
+            <returns>添加的点对象的序号。</returns>
+        </member>
+        <member name="M:SuperMap.Data.GeometryEPS.Insert(System.Int32,SuperMap.Data.PointEPS)">
+            <summary>
+            将指定的点对象添加到构成对象的点序列中的指定序号处。
+            </summary>
+            <param name="index">要插入点对象的插入位置。</param>
+            <param name="point">要插入的点对象。</param>
+            <returns>添加成功，返回true；否则，返回false。</returns>
+        </member>
+        <member name="M:SuperMap.Data.GeometryEPS.Remove(System.Int32)">
+            <summary>
+            将构成对象的点序列中的指定点对象删除。
+            </summary>
+            <param name="index">要删除的点对象的序号。</param>
+            <returns>删除成功，返回true；否则返回false。</returns>
+        </member>
+        <member name="P:SuperMap.Data.GeometryEPS.Item(System.Int32)">
+            <summary>
+            获取或设置构成对象的点序列中指定位置的点对象。
+            </summary>
+            <param name="index">指定的点对象的序号。</param>
+            <returns>构成对象的点序列中指定位置的点对象。</returns>
+        </member>
+        <member name="P:SuperMap.Data.GeometryEPS.Count">
+            <summary>
+            获取构成此对象的点对象的总数。 
+            </summary>
+        </member>
+        <member name="M:SuperMap.Data.GeometryEPS.SetEmpty">
+            <summary>
+            清空构成对象的所有点。
+            </summary>
+        </member>
+        <member name="M:SuperMap.Data.GeometryEPS.Clone">
+            <summary>
+            克隆本对象。
+            </summary>
+            <returns>本基类无法克隆，返回null。</returns>
+        </member>
+        <member name="T:SuperMap.Data.GeoPointEPS">
+            <summary>
+            EPS点几何对象类。
+            </summary>
+        </member>
+        <member name="M:SuperMap.Data.GeoPointEPS.#ctor">
+            <summary>
+            构造一个新的 GeoPointEPS 类对象。
+            </summary>
+        </member>
+        <member name="M:SuperMap.Data.GeoPointEPS.#ctor(SuperMap.Data.PointEPS)">
+            <summary>
+            根据指定的 PointEPS 对象构造一个GeoPointEPS类对象。
+            </summary>
+            <param name="point">指定的 PointEPS 对象。</param>
+        </member>
+        <member name="M:SuperMap.Data.GeoPointEPS.Clone">
+            <summary>
+            克隆本对象。
+            </summary>
+            <returns>返回克隆后的对象。</returns>
+        </member>
+        <member name="T:SuperMap.Data.GeoRegionEPS">
+            <summary>
+            EPS面几何对象类。
+            </summary>
+        </member>
+        <member name="M:SuperMap.Data.GeoRegionEPS.#ctor">
+            <summary>
+            构造一个新的 GeoRegionEPS 类对象。
+            </summary>
+        </member>
+        <member name="P:SuperMap.Data.GeoRegionEPS.Area">
+            <summary>
+            获取面对象的面积。
+            </summary>
+        </member>
+        <member name="P:SuperMap.Data.GeoRegionEPS.Perimeter">
+            <summary>
+            获取面对象的周长。
+            </summary>
+        </member>
+        <member name="M:SuperMap.Data.GeoRegionEPS.Clone">
+            <summary>
+            克隆本对象。
+            </summary>
+            <returns>返回克隆的新对象。</returns>
+        </member>
+        <member name="M:SuperMap.Data.GeoRegionEPS.ConvertToLine">
+            <summary>
+            转换成GeoLine对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SuperMap.Data.GeoRegionEPS.ConvertToRegion">
+            <summary>
+            转换成GeoRegion对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SuperMap.Data.GeoRegionEPS.ConvertToLine3D">
+            <summary>
+            转换为GeoLine3D对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SuperMap.Data.GeoRegionEPS.ConvertToRegion3D">
+            <summary>
+            转换为GeoRegion3D对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SuperMap.Data.GeoTextEPS">
+            <summary>
+            EPS文本几何对象类。
+            </summary>
+        </member>
+        <member name="M:SuperMap.Data.GeoTextEPS.#ctor">
+            <summary>
+            构造一个新的 GeoTextEPS 类对象。
+            </summary>
+        </member>
+        <member name="M:SuperMap.Data.GeoTextEPS.#ctor(SuperMap.Data.PointEPS,System.String)">
+            <summary>
+            根据指定参数构造一个GeoTextEPS类对象。
+            </summary>
+            <param name="point">指定的文本几何对象的锚点。</param>
+            <param name="text">指定的文本几何对象的文本内容</param>
+        </member>
+        <member name="P:SuperMap.Data.GeoTextEPS.Text">
+            <summary>
+            获取或设置文本几何对象的文本内容。
+            </summary>
+        </member>
+        <member name="P:SuperMap.Data.GeoTextEPS.TextStyle">
+            <summary>
+            获取或设置文本几何对象的文本风格。
+            </summary>
+        </member>
+        <member name="M:SuperMap.Data.GeoTextEPS.Clone">
+            <summary>
+            克隆本对象。
+            </summary>
+            <returns>返回克隆后的对象。</returns>
+        </member>
+        <member name="T:SuperMap.Data.PointEPS">
+            <summary>
+            EPS基础点类。
+            </summary>
+        </member>
+        <member name="P:SuperMap.Data.PointEPS.X">
+            <summary>
+            获取或设置点的X坐标值。
+            </summary>
+        </member>
+        <member name="P:SuperMap.Data.PointEPS.Y">
+            <summary>
+            获取或设置点的Y坐标值。
+            </summary>
+        </member>
+        <member name="P:SuperMap.Data.PointEPS.Z">
+            <summary>
+            获取或设置点的Z值。
+            </summary>
+        </member>
+        <member name="P:SuperMap.Data.PointEPS.Type">
+            <summary>
+             获取或设置点类型。
+            </summary>
+        </member>
+        <member name="P:SuperMap.Data.PointEPS.Name">
+            <summary>
+            获取或设置点名称。
+            </summary>
+        </member>
+        <member name="M:SuperMap.Data.PointEPS.#ctor(System.Double,System.Double,System.Double,SuperMap.Data.PointEPSType,System.String)">
+            <summary>
+            根据给定的参数构造一个PointEPS类对象。
+            </summary>
+            <param name="x">指定点的X坐标值。</param>
+            <param name="y">指定点的Y坐标值。</param>
+            <param name="z">指定点Z的值。</param>
+            <param name="type">指定点的类型。</param>
+            <param name="name">指定点的名称。</param>
+        </member>
+        <member name="T:SuperMap.Data.PointEPSType">
+            <summary>
+            EPS基础点的类型。
+            </summary>
+        </member>
+        <member name="F:SuperMap.Data.PointEPSType.None">
+            <summary>
+            无
+            </summary>
+        </member>
+        <member name="F:SuperMap.Data.PointEPSType.SurveyPoint">
+            <summary>
+            实测的或计算的
+            </summary>
+        </member>
+        <member name="F:SuperMap.Data.PointEPSType.HeightMark">
+            <summary>
+            高程注记否
+            </summary>
+        </member>
+        <member name="F:SuperMap.Data.PointEPSType.EnterDtm">
+            <summary>
+            参加建模否
+            </summary>
+        </member>
+        <member name="F:SuperMap.Data.PointEPSType.NewPoint">
+            <summary>
+            新产生的点或旧点
+            </summary>
+        </member>
+        <member name="F:SuperMap.Data.PointEPSType.TurnPoint">
+            <summary>
+            转向点或一般点
+            </summary>
+        </member>
+        <member name="F:SuperMap.Data.PointEPSType.BreakPoint">
+            <summary>
+            断点
+            </summary>
+        </member>
+        <member name="F:SuperMap.Data.PointEPSType.LTypeLine">
+            <summary>
+            直线
+            </summary>
+        </member>
+        <member name="F:SuperMap.Data.PointEPSType.LTypeCurve">
+            <summary>
+            曲线
+            </summary>
+        </member>
+        <member name="F:SuperMap.Data.PointEPSType.LTypeArc">
+            <summary>
+            圆弧
+            </summary>
+        </member>
+        <member name="F:SuperMap.Data.PointEPSType.FlagPoint1">
+            <summary>
+            标志1, 为方便内部计算而设置的标志位，不存数据库，使用后应清空
+            </summary>
+        </member>
+        <member name="F:SuperMap.Data.PointEPSType.FlagPoint2">
+            <summary>
+            标志2
+            </summary>
+        </member>
+        <member name="F:SuperMap.Data.PointEPSType.FlagPoint3">
+            <summary>
+            标志3
+            </summary>
+        </member>
+        <member name="F:SuperMap.Data.PointEPSType.FlagPoint4">
+            <summary>
+            标志4
+            </summary>
+        </member>
+        <member name="F:SuperMap.Data.PointEPSType.AttachPoint">
+            <summary>
+            依附点
+            </summary>
+        </member>
+        <member name="F:SuperMap.Data.PointEPSType.FormicatePoint">
+            <summary>
+            群集点
+            </summary>
+        </member>
+        <member name="F:SuperMap.Data.PointEPSType.SmoothPoint">
+            <summary>
+            平滑点
+            </summary>
+        </member>
+        <member name="F:SuperMap.Data.PointEPSType.FrameworkPoint">
+            <summary>
+            特征点
+            </summary>
+        </member>
+        <member name="F:SuperMap.Data.PointEPSType.UnknownPoint">
+            <summary>
+            未知点
+            </summary>
+        </member>
+    </members>
+</doc>
