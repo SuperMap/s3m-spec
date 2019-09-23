@@ -1,0 +1,7 @@
+D:\程序样例\XML+OSGToUDB\XML+OSGToUDB\bin\x64\Debug\XML+OSGToUDB.exe
+D:\程序样例\XML+OSGToUDB\XML+OSGToUDB\bin\x64\Debug\XML+OSGToUDB.pdb
+D:\程序样例\XML+OSGToUDB\XML+OSGToUDB\obj\x64\Debug\XML_OSGToUDB.Form1.resources
+D:\程序样例\XML+OSGToUDB\XML+OSGToUDB\obj\x64\Debug\XML_OSGToUDB.Properties.Resources.resources
+D:\程序样例\XML+OSGToUDB\XML+OSGToUDB\obj\x64\Debug\XML+OSGToUDB.csproj.GenerateResource.Cache
+D:\程序样例\XML+OSGToUDB\XML+OSGToUDB\obj\x64\Debug\XML+OSGToUDB.exe
+D:\程序样例\XML+OSGToUDB\XML+OSGToUDB\obj\x64\Debug\XML+OSGToUDB.pdb
