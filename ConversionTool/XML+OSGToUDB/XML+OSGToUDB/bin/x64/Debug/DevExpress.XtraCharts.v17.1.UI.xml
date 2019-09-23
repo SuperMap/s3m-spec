@@ -1,0 +1,1974 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DevExpress.XtraCharts.v17.1.UI</name>
+    </assembly>
+    <members>
+        <member name="T:DevExpress.XtraCharts.ChartControl">
+
+            <summary>
+                <para>Visualizes data as bars, areas, lines and other shapes. See Chart Control.
+
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.#ctor">
+            <summary>
+                <para>Initializes a new instance of the ChartControl class with default settings.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.About">
+            <summary>
+                <para>Invokes the chart's <b>About</b> dialog box.
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.AllowGesture">
+            <summary>
+                <para>Gets or sets a value which specifies whether an end-user can interact with the chart using a touchscreen device.  
+</para>
+            </summary>
+            <value><b>true</b>, if a chart interaction via a touchscreen device is allowed; otherwiise - <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.Animate">
+            <summary>
+                <para>Starts the series animations.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.AnimationEnded">
+            <summary>
+                <para>Occurs after animations end.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.AnimationStartMode">
+            <summary>
+                <para>Gets or sets the series animation start mode.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.ChartAnimationMode"/> enumeration value.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.AnnotationRepository">
+            <summary>
+                <para>Provides centralized access to all annotations that are present in the ChartControl.
+</para>
+            </summary>
+            <value>An <see cref="T:DevExpress.XtraCharts.AnnotationRepository"/> object that stores the chart control's annotations.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.Annotations">
+            <summary>
+                <para>Provides access to the annotations collection of the ChartControl.
+</para>
+            </summary>
+            <value>An <see cref="T:DevExpress.XtraCharts.AnnotationCollection"/> object that represents the chart's collection of annotations.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.AppearanceName">
+            <summary>
+                <para>Gets or sets the name of the appearance which is currently being used to draw the chart elements.
+</para>
+            </summary>
+            <value>A <see cref="T:System.String"/> value that is the appearance name.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.AppearanceNameSerializable">
+            <summary>
+                <para>For internal use. This property is used to support serialization of the <see cref="P:DevExpress.XtraCharts.ChartControl.AppearanceName"/> property.
+
+</para>
+            </summary>
+            <value>A <see cref="T:System.String"/> value.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.AppearanceRepository">
+            <summary>
+                <para>Provides access to the repository of a chart's appearances.
+
+</para>
+            </summary>
+            <value>An <see cref="T:DevExpress.XtraCharts.AppearanceRepository"/> object.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.AutoBindingSettingsEnabled">
+            <summary>
+                <para>Specifies whether or not the chart's <i>data binding</i> is automatically adjusted during the creation of a Pivot Chart.
+</para>
+            </summary>
+            <value><b>true</b> to automatically adjust the chart's binding settings; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.AutoLayout">
+            <summary>
+                <para>Gets or sets a value, which specifies whether the adaptive layout feature is enabled for chart elements in the chart control.   
+</para>
+            </summary>
+            <value><b>true</b>, to apply the adaptive layout algorithm to the chart;  otherwise, <b>false</b>. 
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.AutoLayoutSettingsEnabled">
+            <summary>
+                <para>Specifies whether or not the chart's <i>layout</i> is automatically adjusted during the creation of a Pivot Chart.
+</para>
+            </summary>
+            <value><b>true</b> to automatically adjust the chart's layout settings; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.AxisScaleChanged">
+            <summary>
+                <para>Occurs when the scale mode, measure unit, grid alignment or grid spacing of the axis scale has been changed.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.AxisVisualRangeChanged">
+            <summary>
+                <para>Occurs when the axis visual range has been changed.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.AxisWholeRangeChanged">
+            <summary>
+                <para>Occurs when the axis whole range has been changed.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.BackColor">
+            <summary>
+                <para>Gets or sets the chart control's background color.
+
+</para>
+            </summary>
+            <value>A <see cref="T:System.Drawing.Color"/> value which specifies the chart control's background color.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.BackgroundImage">
+            <summary>
+                <para>Overrides the <see cref="P:System.Windows.Forms.Control.BackgroundImage"/> property.
+
+</para>
+            </summary>
+            <value>A <see cref="T:System.Drawing.Image"/> value which represents the background image for a control.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.BackgroundImageLayout">
+            <summary>
+                <para>Overrides the <see cref="P:System.Windows.Forms.Control.BackgroundImageLayout"/> property.
+</para>
+            </summary>
+            <value>A <see cref="T:System.Windows.Forms.ImageLayout"/>  enumeration value.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.BackImage">
+            <summary>
+                <para>Gets the background image settings of the chart control.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.BackgroundImage"/> object which provides settings that specify the chart control's background image.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.BeginInit">
+            <summary>
+                <para>Starts the ChartControl's initialization. Initialization occurs at runtime.
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.BindToData(DevExpress.XtraCharts.ViewType,System.Object,System.String,System.String,System.String[])">
+            <summary>
+                <para>Binds a chart to data.
+</para>
+            </summary>
+            <param name="viewType">
+		A <see cref="T:DevExpress.XtraCharts.ViewType"/> enumeration value specifying the view type of the series to be generated.
+
+
+            </param>
+            <param name="dataSource">
+		A <see cref="T:System.Object"/> that is the datasource for a chart. This value is assigned to the <see cref="P:DevExpress.XtraCharts.ChartControl.DataSource"/> property.
+
+            </param>
+            <param name="seriesDataMember">
+		A <see cref="T:System.String"/> that is the name of the data field whose values are used to automatically generate and populate series. This value is assigned to the <see cref="P:DevExpress.XtraCharts.ChartControl.SeriesDataMember"/> property.
+
+            </param>
+            <param name="argumentDataMember">
+		A <see cref="T:System.String"/> that is the name of the data field that contains arguments for series points. This value is assigned to the <see cref="P:DevExpress.XtraCharts.SeriesBase.ArgumentDataMember"/> property of a <see cref="P:DevExpress.XtraCharts.ChartControl.SeriesTemplate"/> object.
+
+            </param>
+            <param name="valueDataMembers">
+		An array of <see cref="T:System.String"/> values that are the names of data fields that contain information on data values of series points. These values are assigned to the <see cref="P:DevExpress.XtraCharts.SeriesBase.ValueDataMembers"/> property of a <see cref="P:DevExpress.XtraCharts.ChartControl.SeriesTemplate"/> object.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.BindToData(DevExpress.XtraCharts.SeriesViewBase,System.Object,System.String,System.String,System.String[])">
+            <summary>
+                <para>Binds a chart to data.
+</para>
+            </summary>
+            <param name="view">
+		A <see cref="T:DevExpress.XtraCharts.SeriesViewBase"/> class descendant that contains initial settings for series that will be generated when binding a chart to data.
+
+
+            </param>
+            <param name="dataSource">
+		A <see cref="T:System.Object"/> that is the datasource for a chart. This value is assigned to the <see cref="P:DevExpress.XtraCharts.ChartControl.DataSource"/> property.
+
+            </param>
+            <param name="seriesDataMember">
+		A <see cref="T:System.String"/> that is the name of the data field whose values are used to automatically generate and populate series. This value is assigned to the <see cref="P:DevExpress.XtraCharts.ChartControl.SeriesDataMember"/> property.
+
+            </param>
+            <param name="argumentDataMember">
+		A <see cref="T:System.String"/> that is the name of the data field that contains arguments for series points. This value is assigned to the <see cref="P:DevExpress.XtraCharts.SeriesBase.ArgumentDataMember"/> property of a <see cref="P:DevExpress.XtraCharts.ChartControl.SeriesTemplate"/> object.
+
+            </param>
+            <param name="valueDataMembers">
+		An array of <see cref="T:System.String"/> values that are the names of data fields that contain information on data values of series points. These values are assigned to the <see cref="P:DevExpress.XtraCharts.SeriesBase.ValueDataMembers"/> property of a <see cref="P:DevExpress.XtraCharts.ChartControl.SeriesTemplate"/> object.
+
+            </param>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.Border">
+            <summary>
+                <para>Gets the chart control's border style.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.RectangularBorder"/> object which specifies the border style.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.BorderOptions">
+            <summary>
+                <para>Gets the chart control's border style.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.RectangularBorder"/> object which specifies the border style.
+</value>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.BoundDataChanged">
+            <summary>
+                <para>Occurs every time a chart control generates its series points from the underlying data source.
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.CacheToMemory">
+            <summary>
+                <para>Gets or sets a value indicating if the chart should cache its data to the system memory.
+</para>
+            </summary>
+            <value><b>true</b> if the chart should cache its data to the memory; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.CalcHitInfo(System.Int32,System.Int32)">
+            <summary>
+                <para>Returns information on the chart elements located at the point with the specified x and y coordinates.
+
+</para>
+            </summary>
+            <param name="x">
+		An integer value which specifies the x-coordinate of the test point relative to the chart's top-left corner.
+
+
+            </param>
+            <param name="y">
+		An integer value which specifies the y-coordinate of the test point relative to the chart's top-left corner.
+
+
+            </param>
+            <returns>A <see cref="T:DevExpress.XtraCharts.ChartHitInfo"/> object which contains information about the chart elements located at the test point.
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.CalcHitInfo(System.Drawing.Point)">
+            <summary>
+                <para>Returns information on the chart elements located at the specified point.
+
+</para>
+            </summary>
+            <param name="point">
+		A <see cref="T:System.Drawing.Point"/> structure, which specifies the test point coordinates relative to the chart's top-left corner.
+
+            </param>
+            <returns>A <see cref="T:DevExpress.XtraCharts.ChartHitInfo"/> object which contains information about the chart elements located at the test point.
+
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ClearCache">
+            <summary>
+                <para>Releases all memory resources used by the chart to cache its data in case the <see cref="P:DevExpress.XtraCharts.ChartControl.CacheToMemory"/> is <b>true</b>.
+
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ClearSelection">
+            <summary>
+                <para>Deselects all chart elements at runtime.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ClearSelection(System.Boolean)">
+            <summary>
+                <para>Deselects all selected chart elements; optionally deselects hot-tracked elements as well.
+
+
+</para>
+            </summary>
+            <param name="clearHot">
+		<b>true</b> to deselect hot-tracked elements; otherwise, <b>false</b>.
+
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.Clone">
+            <summary>
+                <para>Creates a copy of the current ChartControl object.
+</para>
+            </summary>
+            <returns>A ChartControl object which is a copy of the current object.
+</returns>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.CrosshairEnabled">
+            <summary>
+                <para>Gets or sets a value that specifies whether or not a crosshair cursor is enabled for a chart. 
+</para>
+            </summary>
+            <value><b>Default</b> - a crosshair cursor's state (enabled/disabled) is automatically determined based on the type of diagram currently displayed on a chart; <b>True</b> - a crosshair cursor is enabled for a chart; <b>False</b> - a crosshair cursor is disabled.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.CrosshairOptions">
+            <summary>
+                <para>Gets the settings for a crosshair cursor allowing you to specify its position and appearance on a diagram. 
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.CrosshairOptions"/> object which represents crosshair cursor options on a diagram.
+</value>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.CustomDrawAxisLabel">
+            <summary>
+                <para>Occurs before axis label items are drawn when the chart's contents are being drawn.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.CustomDrawCrosshair">
+            <summary>
+                <para>Occurs before crosshair items are drawn when the chart's contents are being drawn.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.CustomDrawSeries">
+            <summary>
+                <para>Occurs before a series is drawn when the chart's contents are being drawn.
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.CustomDrawSeriesPoint">
+            <summary>
+                <para>Occurs before a series point is drawn when the chart's contents is being drawn.
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.CustomizeAutoBindingSettings">
+            <summary>
+                <para>Occurs after automatic settings are applied to a chart's data source.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.CustomizeLegend">
+            <summary>
+                <para>Occurs before automatic settings are applied to the legend's layout properties.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.CustomizeResolveOverlappingMode">
+            <summary>
+                <para>Occurs before an automatic setting is applied to the overlap resolving mode of series labels.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.CustomizeSimpleDiagramLayout">
+            <summary>
+                <para>Occurs after the adaptive layout is enabled for the chart control to customize the  Simple Diagram's layout properties.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.CustomizeXAxisLabels">
+            <summary>
+                <para>Occurs after automatic layout settings are applied to the X-axis' labels.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.CustomPaint">
+            <summary>
+                <para>Occurs after all the chart's visual elements have been drawn.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.DataAdapter">
+            <summary>
+                <para>Gets or sets the data adapter used to populate the chart control's data source.
+</para>
+            </summary>
+            <value>A <see cref="T:System.Object"/> which represents the chart's data adapter.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.DataBindings">
+            <summary>
+                <para>Overrides the <see cref="P:System.Windows.Forms.Control.DataBindings"/> property.
+
+</para>
+            </summary>
+            <value>A <see cref="T:System.Object"/> value. Always returns <b>null</b> (<b>Nothing</b> in Visual Basic).
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.DataSource">
+            <summary>
+                <para>Gets or sets the chart control's data source.
+</para>
+            </summary>
+            <value>A <see cref="T:System.Object"/> representing the chart control's data source.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.Diagram">
+            <summary>
+                <para>Gets the chart control's diagram and provides access to its settings.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.Diagram"/> object that represents the chart control's diagram.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.DisplayBounds">
+            <summary>
+                <para>Gets the bounding rectangle of the chart control.
+</para>
+            </summary>
+            <value>A <see cref="T:System.Drawing.Rectangle"/> structure which specifies the chart control's boundaries.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.DisplayUnits">
+            <summary>
+                <para>Gets the unit of measurement for the chart control's data.
+
+</para>
+            </summary>
+            <value>A <see cref="T:System.Drawing.GraphicsUnit"/> value.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.EmptyChartText">
+            <summary>
+                <para>Provides access to the settings of the text to be displayed in the chart control, when it has no data to display.
+
+
+</para>
+            </summary>
+            <value>An <see cref="T:DevExpress.XtraCharts.EmptyChartText"/> object, representing the empty chart text options.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.EndInit">
+            <summary>
+                <para>Ends the ChartControl's initialization.
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.EndLoading">
+            <summary>
+                <para>Occurs when the Chart Control's object model is completely initialized.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToHtml(System.IO.Stream)">
+            <summary>
+                <para>Exports the chart's layout as HTML and sends it to the specified stream.
+</para>
+            </summary>
+            <param name="stream">
+		A <see cref="T:System.IO.Stream"/> object to which the created document is exported.
+
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToHtml(System.IO.Stream,System.String,System.String,System.Boolean)">
+            <summary>
+                <para>Exports the chart's layout to an HTML document with the specified encoding and title and sends it to the specified stream.
+
+</para>
+            </summary>
+            <param name="stream">
+		A <see cref="T:System.IO.Stream"/> object to which the created document is exported.
+
+
+            </param>
+            <param name="htmlCharSet">
+		A <see cref="T:System.String"/> which specifies the encoding name set in the HTML file (e.g. "UTF-8").
+
+            </param>
+            <param name="title">
+		A <see cref="T:System.String"/> which specifies the name shown as the title of the created HTML document.
+
+            </param>
+            <param name="compressed">
+		<b>true</b> to compress the HTML code (secondary characters e.g. spaces are removed); otherwise, <b>false</b>.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToHtml(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+                <para>Exports the chart's layout to an HTML file with the specified encoding and title.
+
+</para>
+            </summary>
+            <param name="filePath">
+		A <see cref="T:System.String"/> which specifies the full path (including the file name and extension) to where the HTML file will be created.
+
+            </param>
+            <param name="htmlCharSet">
+		A <see cref="T:System.String"/> which specifies the encoding name set in the HTML file (e.g. "UTF-8").
+
+
+            </param>
+            <param name="title">
+		A <see cref="T:System.String"/> which specifies the name shown as the title of the created HTML document.
+
+            </param>
+            <param name="compressed">
+		<b>true</b> to compress the HTML code (secondary characters e.g. spaces are removed); otherwise, <b>false</b>.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToHtml(System.String)">
+            <summary>
+                <para>Exports the chart's layout a to the specified file as HTML.
+</para>
+            </summary>
+            <param name="filePath">
+		A <see cref="T:System.String"/> which specifies the full path (including the file name and extension) to where the HTML file will be created.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToHtml(System.IO.Stream,DevExpress.XtraPrinting.HtmlExportOptions)">
+            <summary>
+                <para>Exports a chart to the specified stream in HTML format using the specified HTML-specific options.
+
+</para>
+            </summary>
+            <param name="stream">
+		A <see cref="T:System.IO.Stream"/> object to which the created chart is exported.
+
+
+            </param>
+            <param name="options">
+		A <see cref="T:DevExpress.XtraPrinting.HtmlExportOptions"/> object which specifies the HTML export options to be applied when a chart is exported.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToHtml(System.String,DevExpress.XtraPrinting.HtmlExportOptions)">
+            <summary>
+                <para>Exports a chart to the specified file path in HTML format using the specified HTML-specific options.
+
+</para>
+            </summary>
+            <param name="filePath">
+		A <see cref="T:System.String"/> which specifies the full path (including the file name and extension) to where the HTML file will be created.
+
+            </param>
+            <param name="options">
+		A <see cref="T:DevExpress.XtraPrinting.HtmlExportOptions"/> object which specifies the HTML export options to be applied when a chart is exported.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToImage(System.IO.Stream,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+                <para>Creates an image file in the specified format from the current chart and exports it to a stream.
+</para>
+            </summary>
+            <param name="stream">
+		A <see cref="T:System.IO.Stream"/> object to which the current chart is exported.
+
+            </param>
+            <param name="format">
+		A <see cref="T:System.Drawing.Imaging.ImageFormat"/> value representing the format in which the chart is exported.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToImage(System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+                <para>Creates an image file in the specified format from the current chart and outputs it to the specified path.
+</para>
+            </summary>
+            <param name="filePath">
+		A <see cref="T:System.String"/> containing the full path to where the image file will be created.
+
+
+            </param>
+            <param name="format">
+		A <see cref="T:System.Drawing.Imaging.ImageFormat"/> value representing the format in which the chart is exported.
+
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToMht(System.IO.Stream,System.String,System.String,System.Boolean)">
+            <summary>
+                <para>Exports the chart's layout to an MHT document (Web archive, single file) on the specified path, with the specified title and sends it to the specified stream. 
+</para>
+            </summary>
+            <param name="stream">
+		A <see cref="T:System.IO.Stream"/> object to which the created MHT document is exported.
+
+
+            </param>
+            <param name="htmlCharSet">
+		A <see cref="T:System.String"/> which specifies the encoding name set in the MHT file (e.g. "UTF-8").
+
+
+            </param>
+            <param name="title">
+		A <see cref="T:System.String"/> which specifies the name shown as the title of the created MHT document.
+
+            </param>
+            <param name="compressed">
+		<b>true</b> to compress the MHT code (secondary characters e.g. spaces are removed); otherwise, <b>false</b>.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToMht(System.String)">
+            <summary>
+                <para>Exports the chart's layout to an MHT file (Web archive, single file) at the specified path. 
+
+</para>
+            </summary>
+            <param name="filePath">
+		A <see cref="T:System.String"/> specifying the full path (including the file name and extension) where the MHT file will be created.
+
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToMht(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+                <para>Exports the chart's layout to an MHT file (Web archive, single file) on the specified path, with the specified title.
+
+</para>
+            </summary>
+            <param name="filePath">
+		A <see cref="T:System.String"/> specifying the full path (including the file name and extension) where the MHT file will be created.
+
+
+            </param>
+            <param name="htmlCharSet">
+		A <see cref="T:System.String"/> which specifies the encoding name set in the MHT file (e.g. "UTF-8").
+
+
+            </param>
+            <param name="title">
+		A <see cref="T:System.String"/> which specifies the name shown as the title of the created MHT document.
+
+
+            </param>
+            <param name="compressed">
+		<b>true</b> to compress the MHT code (secondary characters e.g. spaces are removed); otherwise, <b>false</b>.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToMht(System.IO.Stream,DevExpress.XtraPrinting.MhtExportOptions)">
+            <summary>
+                <para>Exports a chart to the specified stream in MHT format using the specified MHT-specific options.
+
+</para>
+            </summary>
+            <param name="stream">
+		A <see cref="T:System.IO.Stream"/> object to which the created MHT file should be sent.
+
+            </param>
+            <param name="options">
+		A <see cref="T:DevExpress.XtraPrinting.MhtExportOptions"/> object which specifies the MHT export options to be applied when a chart is exported.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToMht(System.String,DevExpress.XtraPrinting.MhtExportOptions)">
+            <summary>
+                <para>Exports a chart to the specified file path in MHT format using the specified MHT-specific options.
+
+</para>
+            </summary>
+            <param name="filePath">
+		A <see cref="T:System.String"/> which specifies the file name (including the full path) for the created MHT file.
+
+            </param>
+            <param name="options">
+		A <see cref="T:DevExpress.XtraPrinting.MhtExportOptions"/> object which specifies the MHT export options to be applied when a chart is exported.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToPdf(System.IO.Stream)">
+            <summary>
+                <para>Exports the chart's layout to a PDF document and sends it to the specified stream.
+</para>
+            </summary>
+            <param name="stream">
+		A <see cref="T:System.IO.Stream"/> object to which the created document is exported.
+
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToPdf(System.String)">
+            <summary>
+                <para>Exports the chart's layout to the specified PDF file.
+</para>
+            </summary>
+            <param name="filePath">
+		A <see cref="T:System.String"/> specifying the full path (including the file name and extension)  where the PDF file will be created.
+
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToPdf(System.String,DevExpress.XtraPrinting.PdfExportOptions)">
+            <summary>
+                <para>Exports the chart's data to the specified PDF file, with the specified options.
+
+</para>
+            </summary>
+            <param name="filePath">
+		A <see cref="T:System.String"/> specifying the full path (including the file name and extension)  where the PDF file will be created.
+
+
+            </param>
+            <param name="options">
+		A <see cref="T:DevExpress.XtraPrinting.PdfExportOptions"/> object, containing the options for the resulting PDF file.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToPdf(System.IO.Stream,DevExpress.XtraPrinting.PdfExportOptions)">
+            <summary>
+                <para>Exports the chart's data to a PDF document and sends it to the specified stream, with the specified options.
+</para>
+            </summary>
+            <param name="stream">
+		A <see cref="T:System.IO.Stream"/> object to which the created document is exported.
+
+
+            </param>
+            <param name="options">
+		A <see cref="T:DevExpress.XtraPrinting.PdfExportOptions"/> object, containing the options for the resulting PDF file.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToRtf(System.IO.Stream)">
+            <summary>
+                <para>Exports the chart's data to an RTF document, and sends it to the specified stream.
+
+</para>
+            </summary>
+            <param name="stream">
+		A <see cref="T:System.IO.Stream"/> object to which the created document is exported.
+
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToRtf(System.String)">
+            <summary>
+                <para>Exports the chart's data to the specified RTF file.
+
+</para>
+            </summary>
+            <param name="filePath">
+		A <see cref="T:System.String"/> specifying the full path (including the file name and extension)  where the RTF file will be created.
+
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToXls(System.IO.Stream)">
+            <summary>
+                <para>Creates an XLS document with a chart inserted as an image and sends it to a stream.
+
+</para>
+            </summary>
+            <param name="stream">
+		A <see cref="T:System.IO.Stream"/> object to which the created document is exported.
+
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToXls(System.String)">
+            <summary>
+                <para>Creates an XLS file with a chart inserted as an image. 
+
+</para>
+            </summary>
+            <param name="filePath">
+		A <see cref="T:System.String"/> which specifies the full path (including the file name and extension) to where the XLS file will be created.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToXls(System.String,DevExpress.XtraPrinting.XlsExportOptions)">
+            <summary>
+                <para>Creates an XLS file with a chart inserted as an image, with the specified options.
+
+</para>
+            </summary>
+            <param name="filePath">
+		A <see cref="T:System.String"/> specifying the full path (including the file name and extension)  where the XLS file will be created.
+
+
+            </param>
+            <param name="options">
+		An <see cref="T:DevExpress.XtraPrinting.XlsExportOptions"/> object, containing the options for the resulting XLS file.
+
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToXls(System.IO.Stream,DevExpress.XtraPrinting.XlsExportOptions)">
+            <summary>
+                <para>Creates an XLS document with a chart inserted as an image and sends it to a stream, with the specified options.
+
+</para>
+            </summary>
+            <param name="stream">
+		A <see cref="T:System.IO.Stream"/> object to which the created document is exported.
+
+
+            </param>
+            <param name="options">
+		An <see cref="T:DevExpress.XtraPrinting.XlsExportOptions"/> object, containing the options for the resulting XLS file.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToXlsx(System.String,DevExpress.XtraPrinting.XlsxExportOptions)">
+            <summary>
+                <para>Creates an XLSX file with a chart inserted as an image, with the specified options.
+
+</para>
+            </summary>
+            <param name="filePath">
+		A <see cref="T:System.String"/> specifying the full path (including the file name and extension)  where the XLSX file will be created.
+
+
+            </param>
+            <param name="options">
+		An <see cref="T:DevExpress.XtraPrinting.XlsxExportOptions"/> object, containing the options for the resulting XLSX file.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToXlsx(System.IO.Stream)">
+            <summary>
+                <para>Creates an XLSX document with a chart inserted as an image and sends it to a stream.
+
+</para>
+            </summary>
+            <param name="stream">
+		A <see cref="T:System.IO.Stream"/> object to which the created document is exported.
+
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToXlsx(System.IO.Stream,DevExpress.XtraPrinting.XlsxExportOptions)">
+            <summary>
+                <para>Creates an XLSX document with a chart inserted as an image and sends it to a stream, with the specified options.
+
+</para>
+            </summary>
+            <param name="stream">
+		A <see cref="T:System.IO.Stream"/> object to which the created document is exported.
+
+
+            </param>
+            <param name="options">
+		An <see cref="T:DevExpress.XtraPrinting.XlsxExportOptions"/> object, containing the options for the resulting XLSX file.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ExportToXlsx(System.String)">
+            <summary>
+                <para>Creates an XLSX file with a chart inserted as an image. 
+
+</para>
+            </summary>
+            <param name="filePath">
+		A <see cref="T:System.String"/> specifying the full path (including the file name and extension)  where the XLS file will be created.
+
+
+            </param>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.FillStyle">
+            <summary>
+                <para>Gets the chart control's background fill style.
+
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.RectangleFillStyle"/> object which specifies the background fill style.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.Font">
+            <summary>
+                <para>Overrides the <see cref="P:System.Windows.Forms.Control.Font"/> property.
+
+</para>
+            </summary>
+            <value>A <see cref="T:System.Drawing.Font"/> value. Always returns <b>null</b> (<b>Nothing</b> in Visual Basic).
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.ForeColor">
+            <summary>
+                <para>Overrides the <see cref="P:System.Windows.Forms.Control.ForeColor"/> property.
+
+</para>
+            </summary>
+            <value>A <see cref="T:System.Drawing.Color"/> value. Always returns <see cref="F:System.Drawing.Color.Empty"/>.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.GetAppearanceNames">
+            <summary>
+                <para>Returns an array of strings that represent the names of all the appearances in the Chart.
+
+
+</para>
+            </summary>
+            <returns>An array of <see cref="T:System.String"/> values which represent the appearances' names.
+
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.GetLocalizedAppearanceNames">
+            <summary>
+                <para>Returns an array of localized names of appearances.
+
+</para>
+            </summary>
+            <returns>An array of <see cref="T:System.String"/> objects representing localized appearance names.
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.GetLocalizedPaletteNames">
+            <summary>
+                <para>Returns an array of localized names of palettes.
+
+</para>
+            </summary>
+            <returns>An array of <see cref="T:System.String"/> objects representing localized palette names.
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.GetPaletteEntries(System.Int32)">
+            <summary>
+                <para>Gets the colors that comprise the palette.
+</para>
+            </summary>
+            <param name="count">
+		An integer value, representing the number of entries to return.
+
+            </param>
+            <returns>An array of <see cref="T:DevExpress.XtraCharts.PaletteEntry"/> objects.
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.GetPaletteNames">
+            <summary>
+                <para>Returns an array of strings that represent the names of all the palettes in the Chart.
+
+</para>
+            </summary>
+            <returns>An array of <see cref="T:System.String"/> values that represent the palettes names.
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.GetSeriesByName(System.String)">
+            <summary>
+                <para>Gets a series within the chart's series collection by its name.
+
+</para>
+            </summary>
+            <param name="seriesName">
+		A <see cref="T:System.String"/> which specifies the name of the series to find.
+
+            </param>
+            <returns>A <see cref="T:DevExpress.XtraCharts.Series"/> object that represents the series with the specified name.
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.GetToolTipController">
+            <summary>
+                <para>Returns the tooltip controller component that controls the appearance, position and the content of the hints displayed by the Chart control. 
+
+</para>
+            </summary>
+            <returns>A <see cref="T:DevExpress.Utils.ToolTipController"/> component which controls the appearance and behavior of the hints displayed by the Chart control.
+</returns>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.HardwareAcceleration">
+            <summary>
+                <para>Gets or sets a value indicating whether a ChartControl uses a Video Card's resources (if any are available) when drawing 3D-charts.
+
+</para>
+            </summary>
+            <value><b>true</b> if hardware acceleration is enabled; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.HitTest(System.Int32,System.Int32)">
+            <summary>
+                <para>Returns specific chart elements, which are located under the test point.
+
+</para>
+            </summary>
+            <param name="x">
+		An integer value that specifies the x coordinate of the test point.
+
+            </param>
+            <param name="y">
+		An integer value that specifies the y coordinate of the test point.
+
+            </param>
+            <returns>An array of <see cref="T:System.Object"/>s, that represent the chart elements located under the test point.
+
+</returns>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.IndicatorsPaletteName">
+            <summary>
+                <para>Specifies the palette that is used to paint all indicators that exist in a chart control.
+
+</para>
+            </summary>
+            <value>A <see cref="T:System.String"/> value, specifying the palette name.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.IndicatorsPaletteRepository">
+            <summary>
+                <para>Gets the indicators palette repository of the chart.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.PaletteRepository"/> object which represents the indicators palette repository of the chart.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.IsPrintingAvailable">
+            <summary>
+                <para>Indicates whether or not the chart can be printed and exported.
+</para>
+            </summary>
+            <value><b>true</b> if the Chart can be printed; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.Legend">
+            <summary>
+                <para>Provides access to the chart control's legend.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.Legend"/> object that represents the chart control's legend.
+</value>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.LegendItemChecked">
+            <summary>
+                <para>Occurs when a legend item is checked in the legend checkbox.
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.Legends">
+            <summary>
+                <para>Returns a collection of additional legends.
+</para>
+            </summary>
+            <value>A collection of <see cref="T:DevExpress.XtraCharts.Legend"/> objects.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.LoadFromFile(System.String)">
+            <summary>
+                <para>Restores the chart's layout from the specified file.
+</para>
+            </summary>
+            <param name="path">
+		A <see cref="T:System.String"/> value which specifies the path to the file that contains the layout to be loaded.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.LoadFromStream(System.IO.Stream)">
+            <summary>
+                <para>Restores the chart's layout from the specified stream.
+</para>
+            </summary>
+            <param name="stream">
+		A <see cref="T:System.IO.Stream"/> descendant from which settings are read.
+
+            </param>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.LookAndFeel">
+            <summary>
+                <para>Provides access to the settings that specify the look and feel of the Chart control.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.LookAndFeel.UserLookAndFeel"/> object whose properties specify the Chart control's look and feel.
+</value>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.ObjectHotTracked">
+            <summary>
+                <para>Occurs before any chart element is hot-tracked at runtime.
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.ObjectSelected">
+            <summary>
+                <para>Occurs before any chart element is selected at runtime.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.OptionsPrint">
+            <summary>
+                <para>Provides access to the chart's printing options.
+
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.Printing.ChartOptionsPrint"/> object which provides access to the chart's printing options.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.Padding">
+            <summary>
+                <para>Specifies the internal space between the chart control's content (the diagram and legend) and its edge, in pixels.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.RectangleIndents"/> object, representing the chart's inner indents, measured in pixels.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.PaletteBaseColorNumber">
+            <summary>
+                <para>Gets or sets the number of a color within the selected palette, which will be used as a base color to paint series points.
+</para>
+            </summary>
+            <value>An integer value representing a 1-based color number.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.PaletteName">
+            <summary>
+                <para>Gets or sets the name of the palette currently used to draw the chart's series.
+
+
+
+</para>
+            </summary>
+            <value>A <see cref="T:System.String"/> value which represents the palette name.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.PaletteRepository">
+            <summary>
+                <para>Gets the palette repository of the chart.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.PaletteRepository"/> object which represents the palette repository of the chart.
+</value>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.PieSeriesPointExploded">
+            <summary>
+                <para>Fires when a pie slice, representing a series point, is moved to or from the pie center.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.PivotChartingCustomizeLegend">
+            <summary>
+                <para>Occurs before automatic settings are applied to the legend's layout properties.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.PivotChartingCustomizeResolveOverlappingMode">
+            <summary>
+                <para>Occurs before an automatic setting is applied to the overlap resolving mode of series labels.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.PivotChartingCustomizeXAxisLabels">
+            <summary>
+                <para>Occurs after automatic layout settings are applied to the X-axis' labels.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.PivotGridDataSourceOptions">
+            <summary>
+                <para>Provides access to the settings that determine the Chart's behavior after it has bridged with a Pivot Grid.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.PivotGridDataSourceOptions"/> object, storing the Pivot Chart settings.
+</value>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.PivotGridSeriesExcluded">
+            <summary>
+                <para>Occurs after a chart has been bound to a Pivot Grid.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.PivotGridSeriesPointsExcluded">
+            <summary>
+                <para>Occurs after a chart has been bound to a Pivot Grid.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.Print">
+            <summary>
+                <para>Prints the chart.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.Print(DevExpress.XtraCharts.Printing.PrintSizeMode)">
+            <summary>
+                <para>Prints the Chart using the specified size mode.
+</para>
+            </summary>
+            <param name="sizeMode">
+		A <see cref="T:DevExpress.XtraCharts.Printing.PrintSizeMode"/> enumeration value which specifies the size mode used to print the chart.
+
+            </param>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.QueryCursor">
+            <summary>
+                <para>Occurs when there is a request to display the cursor.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.RefreshData">
+            <summary>
+                <para>Reloads data from the underlying data source and repaints the diagram area.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.RefreshDataOnRepaint">
+            <summary>
+                <para>Gets or sets a value indicating whether to refresh data in the underlying data source every time a chart is repainted.
+
+
+</para>
+            </summary>
+            <value><b>true</b> to refresh data on every repainting; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.RegisterSummaryFunction(System.String,System.String,DevExpress.XtraCharts.ScaleType,System.Int32,DevExpress.XtraCharts.SummaryFunctionArgumentDescription[],DevExpress.XtraCharts.SummaryFunction)">
+            <summary>
+                <para>Registers the custom summary function with the specified settings.
+</para>
+            </summary>
+            <param name="name">
+		A <see cref="T:System.String"/> value containing the function's name.
+
+            </param>
+            <param name="displayName">
+		A <see cref="T:System.String"/> value containing the function's display name, which is used for localization purposes.
+
+            </param>
+            <param name="resultScaleType">
+		A <see cref="T:DevExpress.XtraCharts.ScaleType"/> enumeration value representing the type of the function's result.
+
+            </param>
+            <param name="resultDimension">
+		An integer value representing the dimension of the resulting series point's values.
+
+            </param>
+            <param name="argumentDescriptions">
+		An array of <see cref="T:DevExpress.XtraCharts.SummaryFunctionArgumentDescription"/> objects containing argument descriptions.
+
+            </param>
+            <param name="function">
+		A <see cref="T:DevExpress.XtraCharts.SummaryFunction"/> delegate to be registered.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.RegisterSummaryFunction(System.String,System.String,System.Int32,DevExpress.XtraCharts.SummaryFunctionArgumentDescription[],DevExpress.XtraCharts.SummaryFunction)">
+            <summary>
+                <para>Registers the custom summary function with the specified settings.
+</para>
+            </summary>
+            <param name="name">
+		A <see cref="T:System.String"/> value containing the function's name.
+
+            </param>
+            <param name="displayName">
+		A <see cref="T:System.String"/> value containing the function's display name, which is used for localization purposes.
+
+
+            </param>
+            <param name="resultDimension">
+		An integer value representing the dimension of the resulting series point's values.
+
+
+            </param>
+            <param name="argumentDescriptions">
+		An array of <see cref="T:DevExpress.XtraCharts.SummaryFunctionArgumentDescription"/> objects containing argument descriptions.
+
+
+            </param>
+            <param name="function">
+		A <see cref="T:DevExpress.XtraCharts.SummaryFunction"/> delegate to be registered.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ResetLegendPointOptions">
+            <summary>
+                <para>Cancels the changes applied to the <see cref="P:DevExpress.XtraCharts.SeriesBase.LegendPointOptions"/> for each series and makes it equal to the <see cref="P:DevExpress.XtraCharts.SeriesBase.PointOptions"/>. 
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ResetLegendTextPattern">
+            <summary>
+                <para>Resets the text pattern applied to the legend items via the <see cref="P:DevExpress.XtraCharts.SeriesBase.LegendTextPattern"/> property.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ResetSummaryFunctions">
+            <summary>
+                <para>Resets the collection of the chart's summary functions.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.RightToLeft">
+            <summary>
+                <para>Gets or sets a value indicating whether chart elements are aligned using right-to-left alignment.
+</para>
+            </summary>
+            <value>A <see cref="T:System.Windows.Forms.RightToLeft"/> enumeration value.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.RuntimeHitTesting">
+            <summary>
+                <para>Specifies whether or not hit-testing is enabled for a Chart control. 
+</para>
+            </summary>
+            <value><b>true</b>, if a chart provides hit information at runtime; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.RuntimeRotation">
+            <summary>
+                <para>Gets or sets a value indicating if the 3D Chart's diagram can be rotated by end-users at runtime via the mouse pointer.
+
+</para>
+            </summary>
+            <value><b>true</b> if rotation is enabled; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.RuntimeSelection">
+            <summary>
+                <para>Gets or sets a value indicating if chart elements can be selected by end-users at runtime.
+</para>
+            </summary>
+            <value><b>true</b> if selection is enabled; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.RuntimeSeriesSelectionMode">
+            <summary>
+                <para>Gets or sets the value specifying which diagram element is selected by the end-user's click.
+
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.SeriesSelectionMode"/> enumeration value, specifying the selected element.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.SaveToFile(System.String)">
+            <summary>
+                <para>Saves the chart's layout to the specified file.
+</para>
+            </summary>
+            <param name="path">
+		A <see cref="T:System.String"/> value, which specifies the path to the file where the layout should be stored. If an empty string is specified, an exception is raised.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.SaveToStream(System.IO.Stream)">
+            <summary>
+                <para>Saves the chart's layout to the specified stream.
+
+</para>
+            </summary>
+            <param name="stream">
+		A <see cref="T:System.IO.Stream"/> descendant to which the chart's layout is written.
+
+            </param>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.Scroll">
+            <summary>
+                <para>Occurs when an end-user scrolls the ChartControl.
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.Scroll3D">
+            <summary>
+                <para>Occurs when an end-user scrolls the 3D diagram.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.SelectedItems">
+            <summary>
+                <para>Gets the collection of selected items (chart points and series) and business data objects (in the case of using a data source) of the ChartControl object.
+
+</para>
+            </summary>
+            <value>A list which contains selected chart points,  series and business data objects (in the case of using a data source).
+
+</value>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.SelectedItemsChanged">
+            <summary>
+                <para>Occurs after the selection of a chart item has been changed. 
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.SelectionMode">
+            <summary>
+                <para>Gets or sets a value which specifies how the chart elements are selected. 
+</para>
+            </summary>
+            <value>An <see cref="T:DevExpress.XtraCharts.ElementSelectionMode"/> enumeration member specifying the chart's selection behavior.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.Series">
+            <summary>
+                <para>Provides access to the chart control's collection of series objects.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.SeriesCollection"/> object that represents the collection of series.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.SeriesDataMember">
+            <summary>
+                <para>Gets or sets the name of the data field that contains names for automatically generated series.
+
+
+</para>
+            </summary>
+            <value>A <see cref="T:System.String"/> value that specifies the data field's name.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.SeriesNameTemplate">
+            <summary>
+                <para>Gets the settings used to name data bound series.
+
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.SeriesNameTemplate"/> object that contains naming settings.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.SeriesSelectionMode">
+            <summary>
+                <para>Gets or sets a value specifying how the series is selected in the chart control.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.SeriesSelectionMode"/> enumeration member specifying the selection behavior of a series.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.SeriesSerializable">
+            <summary>
+                <para>Gets or sets the value used to support serialization of the <see cref="P:DevExpress.XtraCharts.ChartControl.Series"/> property.
+</para>
+            </summary>
+            <value>An array of <see cref="T:DevExpress.XtraCharts.Series"/> objects.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.SeriesSorting">
+            <summary>
+                <para>Gets or sets a value that specifies how series are sorted within the chart control based upon the series names.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.SortingMode"/> enumeration value.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.SeriesTemplate">
+            <summary>
+                <para>Gets the template settings for bound series.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.SeriesBase"/> object that contains the template settings for bound series.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.SetObjectSelection(System.Object)">
+            <summary>
+                <para>Selects the specified chart element at runtime.
+</para>
+            </summary>
+            <param name="obj">
+		A <see cref="T:System.Object"/> which specifies the chart element to select.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ShowPrintPreview">
+            <summary>
+                <para>Invokes the Print Preview Form, which shows the print preview of the chart. 
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ShowPrintPreview(DevExpress.XtraCharts.Printing.PrintSizeMode)">
+            <summary>
+                <para>Invokes the Print Preview Form, which shows the print preview of the chart using the specified zoom settings.
+
+</para>
+            </summary>
+            <param name="sizeMode">
+		A <see cref="T:DevExpress.XtraCharts.Printing.PrintSizeMode"/> enumeration value which specifies the size mode used to print the chart.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.ShowRibbonPrintPreview">
+            <summary>
+                <para>Invokes the Ribbon Print Preview Form, which shows the print preview of the chart. 
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.SideBySideBarDistanceFixed">
+            <summary>
+                <para>Gets or sets the fixed distance value between bars in all side-by-side series views (2D Side-by-Side Bar, Side-by-Side Range Bar, Side-by-Side Gantt and 3D Side-by-Side Bar) of this chart.
+
+</para>
+            </summary>
+            <value>An integer value which represents the fixed distance between bars, measured in pixels.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.SideBySideBarDistanceVariable">
+            <summary>
+                <para>Gets or sets the variable distance value between bars in all side-by-side series views (2D Side-by-Side Bar, Side-by-Side Range Bar, Side-by-Side Gantt and 3D Side-by-Side Bar) of this chart.
+
+</para>
+            </summary>
+            <value>A <see cref="T:System.Double"/> value which represents the variable bar distance between bars, measured in fractions of <b>axis units</b>.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.SideBySideEqualBarWidth">
+            <summary>
+                <para>Gets or sets a value indicating whether all bars of a series should have equal width in all side-by-side series views (2D Side-by-Side Bar, Side-by-Side Range Bar, Side-by-Side Gantt and 3D Side-by-Side Bar) of this chart.
+
+</para>
+            </summary>
+            <value><b>true</b> if all bars of the same series should always have equal width; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.SmallChartText">
+            <summary>
+                <para>Gets the settings for the text to be displayed in the chart control, when it's too small to fit the diagram.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.SmallChartText"/> object, representing the small chart text options.
+</value>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.SmallChartTextShowing">
+            <summary>
+                <para>Occurs when the control size does not allow displaying a readable chart.
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.StackedStepAreaInvertedStep">
+            <summary>
+                <para>Gets or sets the value indicating whether or not Stacked Step areas are plotted using inverted step.
+</para>
+            </summary>
+            <value><b>true</b> if series should be plotted using inverted step; otherwise <b>false</b>
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.Tag">
+            <summary>
+                <para>Overrides the <see cref="P:System.Windows.Forms.Control.Tag"/> property.
+
+</para>
+            </summary>
+            <value>A <see cref="T:System.Object"/> value. Always returns <b>null</b> (<b>Nothing</b> in Visual Basic).
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.Text">
+            <summary>
+                <para>Overrides the <see cref="P:System.Windows.Forms.Control.Text"/> property.
+
+</para>
+            </summary>
+            <value>A <see cref="T:System.String"/> value. Always returns <see cref="F:System.String.Empty"/>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.Titles">
+            <summary>
+                <para>Gets the collection of chart titles.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.ChartTitleCollection"/> object that represents the collection of chart titles.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.ToolTipController">
+            <summary>
+                <para>Specifies the tooltip controller component that controls the appearance, position and other settings of tooltips displayed for the Chart control. 
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.Utils.ToolTipController"/> object. 
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.ToolTipEnabled">
+            <summary>
+                <para>Gets or sets a value that specifies whether or not a tooltip is enabled for a chart. 
+</para>
+            </summary>
+            <value><b>Default</b> - a tooltip's state (enabled/disabled) is automatically determined according to the type of a diagram currently displayed on a chart; <b>True</b> - a tooltip is enabled in a chart; <b>False</b> - a tooltip is disabled.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartControl.ToolTipOptions">
+            <summary>
+                <para>Gets the tooltip settings allowing you to specify its position and appearance on a diagram. 
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.ToolTipOptions"/> object descendant which represents tooltip options on a diagram.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartControl.UnregisterSummaryFunction(System.String)">
+            <summary>
+                <para>Unregisters the summary function with the specified name.
+</para>
+            </summary>
+            <param name="name">
+		A <see cref="T:System.String"/> value representing the name of the summary function to be unregistered.
+
+
+            </param>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.Zoom">
+            <summary>
+                <para>Occurs when an end-user zooms in or out of the ChartControl.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.ChartControl.Zoom3D">
+            <summary>
+                <para>Occurs when an end-user zooms in or out of the 3D diagram.
+</para>
+            </summary>
+
+
+        </member>
+    </members>
+</doc>
