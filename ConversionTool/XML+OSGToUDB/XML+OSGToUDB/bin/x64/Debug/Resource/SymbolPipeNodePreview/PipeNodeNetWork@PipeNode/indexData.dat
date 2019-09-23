@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SuperMapCache xmlns:sml="http://www.supermap.com/SuperMapCache/vectortile">
+<FieldDefines>
+<FieldDefine Name="SmID" Type="4" Size="4" Caption="SmID" IsRequired="1"/>
+<FieldDefine Name="SmSdriW" Type="6" Size="4" Caption="SmSdriW" IsRequired="1"/>
+<FieldDefine Name="SmSdriN" Type="6" Size="4" Caption="SmSdriN" IsRequired="1"/>
+<FieldDefine Name="SmSdriE" Type="6" Size="4" Caption="SmSdriE" IsRequired="1"/>
+<FieldDefine Name="SmSdriS" Type="6" Size="4" Caption="SmSdriS" IsRequired="1"/>
+<FieldDefine Name="SmUserID" Type="4" Size="4" Caption="SmUserID" IsRequired="1"/>
+<FieldDefine Name="SmResistanceA" Type="7" Size="8" Caption="SmResistanceA" IsRequired="1"/>
+<FieldDefine Name="SmResistanceB" Type="7" Size="8" Caption="SmResistanceB" IsRequired="1"/>
+<FieldDefine Name="SmLength" Type="7" Size="8" Caption="SmLength" IsRequired="1"/>
+<FieldDefine Name="SmTopoError" Type="4" Size="4" Caption="SmTopoError" IsRequired="1"/>
+<FieldDefine Name="SmFNode" Type="4" Size="4" Caption="SmFNode" IsRequired="1"/>
+<FieldDefine Name="SmTNode" Type="4" Size="4" Caption="SmTNode" IsRequired="1"/>
+<FieldDefine Name="SmEdgeID" Type="4" Size="4" Caption="SmEdgeID" IsRequired="1"/>
+<FieldDefine Name="SmGeometrySize" Type="4" Size="4" Caption="SmGeometrySize" IsRequired="0"/>
+<FieldDefine Name="SmPPoint" Type="11" Size="24" Caption="SmPPoint" IsRequired="0"/>
+<FieldDefine Name="SmNPoint" Type="11" Size="24" Caption="SmNPoint" IsRequired="0"/>
+</FieldDefines>
+<sml:IndexTiles>
+<sml:MaxID>2</sml:MaxID>
+<sml:IndexTile>
+<sml:Row>0</sml:Row>
+<sml:Col>0</sml:Col>
+<sml:Left>2.000000</sml:Left>
+<sml:Top>10.000000</sml:Top>
+<sml:Right>102.000000</sml:Right>
+<sml:Bottom>-90.000000</sml:Bottom>
+</sml:IndexTile>
+</sml:IndexTiles>
+</SuperMapCache>

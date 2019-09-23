@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SuperMapCache xmlns:sml="http://www.supermap.com/SuperMapCache/vectorltile">
+<sml:Version>5.00</sml:Version>
+<sml:Provider/>
+<sml:CacheName>PipeNodeNetWork_Node@PipeNode</sml:CacheName>
+<sml:ParentCacheName>PipeNodeNetWork@PipeNode</sml:ParentCacheName>
+<sml:Level0MPSize>8.000000</sml:Level0MPSize>
+<sml:Level0DPSize>256</sml:Level0DPSize>
+<sml:Origin>
+<sml:X>2.000000000000000</sml:X>
+<sml:Y>10.000000000000000</sml:Y>
+</sml:Origin>
+<sml:DatasetType>101</sml:DatasetType>
+<sml:TileStorageType>MixedFiles</sml:TileStorageType>
+<sml:TileSplitType>LOCAL</sml:TileSplitType>
+<sml:TileCompressionType>ZIP</sml:TileCompressionType>
+<sml:TextureCompressionType>DDS</sml:TextureCompressionType>
+<sml:DPI>96.0</sml:DPI>
+<sml:VectorCacheType>SCV</sml:VectorCacheType>
+<sml:Bounds>
+<sml:Left>2</sml:Left>
+<sml:Top>10</sml:Top>
+<sml:Right>10</sml:Right>
+<sml:Bottom>2</sml:Bottom>
+</sml:Bounds>
+<sml:Scales>
+<sml:Scale>
+<sml:Value>0.0006773333333333333</sml:Value>
+<sml:Caption>1476</sml:Caption>
+</sml:Scale>
+</sml:Scales>
+<sml:RevisionNumber>0</sml:RevisionNumber>
+<sml:LOD_2_SceondColor>0.125000</sml:LOD_2_SceondColor>
+<sml:LOD_3_SceondColor>0.250000</sml:LOD_3_SceondColor>
+<sml:BuildLOD>FALSE</sml:BuildLOD>
+<sml:CoordinateReferenceSystem>
+<sml:Name>Planar Coordinate System---m</sml:Name>
+<sml:Type>0</sml:Type>
+<sml:EPSGCode>0</sml:EPSGCode>
+<sml:Units>METER</sml:Units>
+<sml:DistUnits>METER</sml:DistUnits>
+</sml:CoordinateReferenceSystem>
+</SuperMapCache>
