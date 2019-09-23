@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SuperMapCache xmlns:sml="http://www.supermap.com/SuperMapCache/vectortile">
+<FieldDefines>
+<FieldDefine Name="SmID" Type="4" Size="4" Caption="SmID" IsRequired="1"/>
+<FieldDefine Name="SmX" Type="7" Size="8" Caption="SmX" IsRequired="1"/>
+<FieldDefine Name="SmY" Type="7" Size="8" Caption="SmY" IsRequired="1"/>
+<FieldDefine Name="SmZ" Type="7" Size="8" Caption="SmZ" IsRequired="1"/>
+<FieldDefine Name="SmNodeID" Type="4" Size="4" Caption="SmNodeID" IsRequired="1"/>
+<FieldDefine Name="SmUserID" Type="4" Size="4" Caption="SmUserID" IsRequired="1"/>
+<FieldDefine Name="SmGeometrySize" Type="4" Size="4" Caption="SmGeometrySize" IsRequired="0"/>
+</FieldDefines>
+<sml:IndexTiles>
+<sml:MaxID>3</sml:MaxID>
+<sml:IndexTile>
+<sml:Row>0</sml:Row>
+<sml:Col>0</sml:Col>
+<sml:Left>2.000000</sml:Left>
+<sml:Top>10.000000</sml:Top>
+<sml:Right>102.000000</sml:Right>
+<sml:Bottom>-90.000000</sml:Bottom>
+</sml:IndexTile>
+</sml:IndexTiles>
+</SuperMapCache>

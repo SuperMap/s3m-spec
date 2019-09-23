@@ -1,0 +1,1900 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- S-58 check -->
+<S58 version="Edition 4.2.0, February 2011">
+	<Test id="1" level="Warning">
+		<Description>Check that no part of an edge is duplicated (i.e. a pair of coordinates identical for two edges).</Description>
+		<Reference>Part 2 (2.2.1.2)</Reference>
+	</Test>
+	<Test id="2" level="Error">
+		<Description>Check that all VE edges have a beginning node and an end node.</Description>
+		<Reference>Part 2 (2.2.1.2)</Reference>
+	</Test>
+	<Test id="3" level="Error">
+		<Description>Check that the record identifier NAME is unique within the file.</Description>
+		<Reference>Part 3 (2.2)</Reference>
+	</Test>
+	<Test id="4" level="Error">
+		<Description>Check that Record Name RCNM contains only the values in table 2.2.</Description>
+		<Reference>Part 3 (2.2.1)</Reference>
+	</Test>
+	<Test id="5" level="Error">
+		<Description>Check that the Record Identification Number RCID is in the range 1 to 2^32-2.</Description>
+		<Reference>Part 3 (2.2.2)</Reference>
+	</Test>
+	<Test id="7" level="Error">
+		<Description>Check that all objects have legal AGEN, FIDN and FIDS subfield values.</Description>
+		<Reference>Part 3 (4.3.1) and (4.3.2)</Reference>
+	</Test>
+	<Test id="8" level="Error">
+		<Description>Check that an attribute code does not repeat for a single object.</Description>
+		<Reference>Part 3 (4.4), (4.5) and (5.1.2)</Reference>
+	</Test>
+	<Test id="9" level="Error">
+		<Description>For line objects, check that ORNT = 1 [forward] or 2 [reverse], USAG = 255 [null], and MASK = 1 [mask], 2 [show] or 255 [masking is not relevant].</Description>
+		<Reference>Part 3 (4.7.2) and Appendix B.1 (3.8)</Reference>
+	</Test>
+	<Test id="10" level="Error">
+		<Description>For point objects, check that ORNT = 255 [direction is not relevant], USAG = 255 [null], and MASK = 255 [masking is not relevant].</Description>
+		<Reference>Part 3 (4.7.1)</Reference>
+	</Test>
+	<Test id="11" level="Error">
+		<Description>Check that all segments with USAG = 3 [exterior boundary truncated by the data limit] are linked to an object M_COVR.</Description>
+		<Reference>Part 3 (4.7.3.3)</Reference>
+	</Test>
+	<Test id="12" level="Error">
+		<Description>Check that all feature objects except C_(collection) have a FSPT.</Description>
+		<Reference>Part 3 (4.7)</Reference>
+	</Test>
+	<Test id="13" level="Warning">
+		<Description>Check that for linear features comprising multiple edges, the vector records making up the linear feature are referenced sequentially and that the end node of a vector record is the same as the start node of the following vector record.</Description>
+		<Reference>Part 3 (4.7.2)</Reference>
+	</Test>
+	<Test id="14" level="Error">
+		<Description>Check for any area object having outer and inner boundaries that two of these boundaries do not share more than one node.</Description>
+		<Reference>Part 3 (4.7.3)</Reference>
+	</Test>
+	<Test id="15" level="Error">
+		<Description>Check that the first and last edges bounding an area meet at a common connected node.</Description>
+		<Reference>Part 3 (4.7.3.1)</Reference>
+	</Test>
+	<Test id="16" level="Error">
+		<Description>Check that area outer boundaries are encoded clockwise.</Description>
+		<Reference>Part 3 (4.7.3.2)</Reference>
+	</Test>
+	<Test id="17" level="Error">
+		<Description>Check that area inner boundaries are encoded counter clockwise.</Description>
+		<Reference>Part 3 (4.7.3.2)</Reference>
+	</Test>
+	<Test id="18" level="Error">
+		<Description>Check that all areas are defined by:
+1.Only one outer boundary (referenced first),
+2.Optional zero or more inner boundaries which are closed, sequential and with proper use of USAG.</Description>
+		<Reference>Part 3 (4.7.3.2) and (4.7.3.3)</Reference>
+	</Test>
+	<Test id="19" level="Warning">
+		<Description>Check that all spatial edges which coincide with data limit borders (i.e. limits of M_COVR with CATCOV = 1 [coverage available]) are using USAG = 3 [Exterior boundary truncated by the data limit].</Description>
+		<Reference>Part 3 (4.7.3.3)</Reference>
+	</Test>
+	<Test id="20" level="Error">
+		<Description>Check that geometry primitive is compatible with object class.</Description>
+		<Reference>Appendix B.1 (3.3), Part 3 (5.1.1) and Supplement No2 Ch.4 (3.3.1)</Reference>
+	</Test>
+	<Test id="21" level="Error">
+		<Description>Check that all vector record pointer (VRPT) fields are pointed to by an edge vector record.</Description>
+		<Reference>Part 3 (5.1.3)</Reference>
+	</Test>
+	<Test id="22" level="Error">
+		<Description>Check for correct sequence of begin/end nodes for edges.</Description>
+		<Reference>Part 3 (5.1.3.2)</Reference>
+	</Test>
+	<Test id="23" level="Error">
+		<Description>Check that only SG2D and  SG3D coordinates are used in files.</Description>
+		<Reference>Part 3 (5.1.4)</Reference>
+	</Test>
+	<Test id="24" level="Error">
+		<Description>Check that soundings are coordinate type SG3D with X, Y and Z values.</Description>
+		<Reference>Part 3 (5.1.4.1)</Reference>
+	</Test>
+	<Test id="25" level="Error">
+		<Description>1. Check that the beginning and end of an edge are explicitly encoded as connected nodes. 
+2. Check that the geometry of the connected node is not part of an edge. 
+3. Check that edges directly reference their begin/end nodes using the vector record pointer.</Description>
+		<Reference>Part 3 (5.1.4.4)</Reference>
+	</Test>
+	<Test id="26" level="Error">
+		<Description>Check that values in subfields are within the allowable range where applicable:
+1. Subfield value ranges according to S-57 format description. 
+2. Legal ranges for attribute values (for attribute values of type "float", the resolution given in the format statement by the integer part (e.g. XX.X) must not be checked).
+(see check 91)</Description>
+		<Reference>Part 3 (7.2.2.1), (7.3) and Appendix A, Chapter 2.</Reference>
+	</Test>
+	<Test id="27" level="Error">
+		<Description>Check all formatted subfields in S-57. </Description>
+		<Reference>Part 3 (7.2.2.2) </Reference>
+	</Test>
+	<Test id="28" level="Error">
+		<Description>Check that the count of records in DSSI is correct. </Description>
+		<Reference>Part 3 (7.3.1.2) </Reference>
+	</Test>
+	<Test id="29" level="Error">
+		<Description>Check for valid index position for updating in FFPC-NFPT, FSPC-NSPT, SGCC-CCNC, and VRPC-NVPT. </Description>
+		<Reference>Part 3 (7.6.5) (7.6.7), (7.7.1.5) and (7.7.1.3) </Reference>
+	</Test>
+	<Test id="30" level="Error">
+		<Description>Check for valid index position for updating in FFPC-FFIX, FSPC-FSIX, SGCC-CCIX, and VRPC-VPIX. </Description>
+		<Reference>Part 3 (7.7.1.5), (7.6.5), (7.6.7) and (7.7.1.3) </Reference>
+	</Test>
+	<Test id="31" level="Error">
+		<Description>For all edges, check that all SG2D coordinates are different from the start and end node coordinates. </Description>
+		<Reference>Part 3 (7.7.1.6) </Reference>
+	</Test>
+	<Test id="32" level="Error">
+		<Description>Check that record updates refer to a valid record NAME. </Description>
+		<Reference>Part 3 (8.3.2) </Reference>
+	</Test>
+	<Test id="33" level="Error">
+		<Description>Check that any attribute update refers to a valid record NAME and attribute label. </Description>
+		<Reference>Part 3 (8.3.3) </Reference>
+	</Test>
+	<Test id="34" level="Error">
+		<Description>Check that pointer index updating refers to a valid record NAME and index within pointer fields FFPT, FSPT and VRPT. </Description>
+		<Reference>Part 3 (8.3.4) </Reference>
+	</Test>
+	<Test id="35" level="Error">
+		<Description>Check if record version RVER is out of sequence for objects. </Description>
+		<Reference>Part 3 (8.4.2.1) and (8.4.3.1) </Reference>
+	</Test>
+	<Test id="36" level="Error">
+		<Description>For record updates for feature/vector updates, check that if it is 
+1. DELETE: the record does not contain further fields, or 
+2. MODIFY/INSERT: the record contains more information about the update. </Description>
+		<Reference>Part 3 (8.4.2.2) and (8.4.3.1) </Reference>
+	</Test>
+	<Test id="37" level="Error">
+		<Description>Check that update and base data have the same lexical level. </Description>
+		<Reference>Part 3 (8.4.2.2a) </Reference>
+	</Test>
+	<Test id="38" level="Error">
+		<Description>Check that an update record only contains one FFPC field [8.4.2.3], and one VRPC field [8.4.3.2b], and one FSPC field [8.4.2.4], and one SGCC field [8.4.3.3]. </Description>
+		<Reference>See references in the column to the left. </Reference>
+	</Test>
+	<Test id="39" level="Error">
+		<Description>Check for connectivity of line segments in an edge after updating. </Description>
+		<Reference>Part 3 (8.4.3.3) </Reference>
+	</Test>
+	<Test id="40" level="Warning">
+		<Description>Check that any two feature objects of type Line satisfying all of the following conditions are chained together: 
+1. both objects are encoded with the same class and attribute values, 
+2. both objects refer to linear features for which all referenced edges are encoded with the same spatial attribute values, 
+3. linear features of both objects have one (or two) common connected node(s) which is (are) a beginning node or an end node of each linear feature, 
+4. each common connected node is not shared by more than two objects satisfying the three above conditions. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="41" level="Error">
+		<Description>Check that all areas are closed. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="42" level="Error">
+		<Description>Check that VE edges linked to Group 1 objects appear twice with different ORNT values, or are linked to objects M_COVR with CATCOV = 1 [coverage available]. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="43" level="Warning">
+		<Description>Check that all DEPCNT objects coincide with a boundary of two Group 1 objects, except for cases where they appear within an  UNSARE or DRGARE. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="44" level="Warning">
+		<Description>Check that all values (except the shallowest and deepest) DRVAL1 and DRVAL2 of DEPARE of type area are also values of VALDCO. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="45" level="Warning">
+		<Description>Check that no edge is shared by two or more line objects of the same object class, except for objects from the following list which may share geometry if they are populated with different attribute values: BERTHS, CBLOHD, CBLSUB, CONVYR, DWRTCL, FERYRT, MARCUL, MORFAC, NAVLNE, PIPSOL, RCRTCL, RECTRC. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="46" level="Error">
+		<Description>Check for any object having both attributes DATEND and DATSTA encoded with explicit values that DATEND is the same or later than DATSTA. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="47" level="Error">
+		<Description>Check for any LIGHTS and RTPBCN object having SECTR1 encoded that SECTR2 is also encoded (with a different value) and vice versa. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="48" level="Error">
+		<Description>Check for any M_SREL object having SCVAL1 and SCVAL2 encoded that the value of SCVAL1 has been set to a larger scale than SCVAL2 (i.e. attribute value for SCVAL1 is smaller than attribute value for SCVAL2). </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="49" level="Error">
+		<Description>Check for any object having DRVAL1 and DRVAL2 encoded that DRVAL1 is smaller than or equal to DRVAL2. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="50" level="Warning">
+		<Description>Check that all the nodes that compose the geometry of any RECTRC with CATTRK=1 [based on a system of fixed marks], or NAVLNE are on a straight line. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="51" level="Warning">
+		<Description>Check that no edge is shared by a COALNE object and a SLCONS object of type line, or by a COALNE object and a SLCONS object of type area covered by a LNDARE, and having WATLEV undefined or encoded with the values (2) [always dry] or (1) [partly submerged at high water]. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="52" level="Error">
+		<Description>Check that any LNDELV object of type Point or Line is situated within a LNDARE object of type Area, or on a LNDARE object of type Line, or shares the geometry of a LNDARE object of type Point, except where the LNDELV object is encoded on an area WRECKS object which is always dry (WATLEV = 2 [always dry]) or is partially submerged at high water (WATLEV = 1 [partly submerged at high water]). </Description>
+		<Reference>Appendix B1, Annex A (4.7.2, 4.7.4, 6.1.1 and 6.2.1) </Reference>
+	</Test>
+	<Test id="53" level="Error">
+		<Description>Check that any SLOGRD object is covered by a LNDARE object of type Area. 
+Check that any SLOTOP object is covered by a LNDARE object of type Area or is on its border. </Description>
+		<Reference>Appendix B1, Annex A (4.7.4, 4.7.5, 4.8.4) </Reference>
+	</Test>
+	<Test id="54 " level="Warning">
+		<Description>Check for any CRANES, BUISGL, FORSTC, LNDMRK or SILTNK object, and for any DAYMAR object which is not a slave in a master/slave relationship: 
+1. if it is of type Area, that it is covered by a LNDARE, BRIDGE, FLODOC, OFSPLF or PONTON object of type Area, 
+2. if it is of type Point, that: 
+- it is situated within a LNDARE, BRIDGE, FLODOC, OFSPLF or PONTON object of type Area, or 
+- it is coincident with one LNDARE, PILPNT, PYLONS, OFSPLF, SLCONS or UWTROC object of type Point, or 
+- it is situated on a COALNE, DAMCON, BRIDGE, FLODOC, LNDARE, PONTON or SLCONS object of type Line. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="55" level="Warning">
+		<Description>Check that no line or point LNDARE object is situated within a LNDARE object of type Area, except for cases where it is covered by a LAKARE, RIVERS, DOCARE, LOKBSN or CANALS object. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="56" level="Warning">
+		<Description>Check that any BUAARE object is covered by a LNDARE object of type Area, or is coincident with a LNDARE of type point.  </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="57" level="Warning">
+		<Description>Check for any COALNE object which does not share spatial geometry with a LNDARE or SLCONS object with CONDTN = 1 [under construction] or 3 [under reclamation] or 5 [planned construction], that it is not situated within a LNDARE object of type Area, or that it does not have a LNDARE object of type Area on both sides. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="58" level="Warning">
+		<Description>Check that no SBDARE object of type Line bounds a SBDARE object of type Area . </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="59" level="Warning">
+		<Description>Check that no OBSTRN object of type Line bounds an OBSTRN object of type Area. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="60" level="Warning">
+		<Description>Check that no CBLSUB object is situated within a LNDARE object of type Area. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="61" level="Warning">
+		<Description>Check for any object with WATLEV = 3 [always under water/submerged]: 
+1. if it is of type Line or Area, that: 
+- it is not within or overlaps an intertidal area (DEPARE with DRVAL2 ≤ 0), or  
+- it is not within or overlaps a LNDARE object of type Area, 
+2. if it is of type Point, that: 
+- it is not within an intertidal area, or 
+- it is not within a LNDARE object of type Area, or 
+- it is not coincident with a LNDARE object of type point, or 
+- it is not situated on a LNDARE object of type line. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="62" level="Warning">
+		<Description>Check for all PONTON, HULKES or FLODOC objects of type Area that no edge of their limits shares the geometry of a line COALNE or SLCONS object, except when this edge also shares the geometry of a LNDARE object of type Area. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="63" level="Error">
+		<Description>Check that no RECTRC object overlaps or intersects a linear or area object LNDARE, PONTON, HULKES, FLODOC or any other object having WATLEV = 1 [partly submerged at high water] or 2 [always dry]. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="64" level="Warning">
+		<Description>Check that no point or area ACHARE object (except with the value CATACH = 8 [small craft mooring area])  is situated within or overlaps another object with attribute RESTRN containing value 1 [anchoring prohibited]. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="65" level="Warning">
+		<Description>Check that LIGHTS objects in the same spatial position whose sectors overlap each other have at least one of the values encoded differently for these attributes: CATLIT, EXCLIT, LITCHR, SIGPER or SIGGRP. 
+Remark: This check must not be applied to LIGHTS objects with STATUS containing at least one of values 4 [not in use], 6 [reserved], 11 [extinguished]. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="67" level="Warning">
+		<Description>Check that no object is duplicated (same class, same attribute description and same geometry). </Description>
+		<Reference>Data structure </Reference>
+	</Test>
+	<Test id="68" level="Warning">
+		<Description>Check if there is an update to an object without the corresponding text/graphic file. </Description>
+		<Reference> </Reference>
+	</Test>
+	<Test id="70" level="Error">
+		<Description>Check that all line DEPARE objects coincide with a Group 1 boundary.  </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="71" level="Warning">
+		<Description>Check that no object of type Area (except for objects where all of the edges have USAG = 3) has all of its edges masked (i.e. USAG = 3 [exterior boundary truncated by the data limit] or MASK = 1 [mask]). Check that no object of type Line has any of it’s edges masked (i.e. MASK = 1 [mask]). </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="72" level="Warning">
+		<Description>Check that no loop exists in the graph of hierarchical relationships (e.g. no master object is slave of its own slave, ...). </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="73" level="Warning">
+		<Description>Check that no attribute value contains a leading or a trailing space, and that no attribute of type List contains any space. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="74" level="Error">
+		<Description>Check for any floating DEPCNT object (i.e. does not share any edge with a Group 1 object) which is within an area DEPARE object, that DRVAL2 &gt;VALDCO &gt;DRVAL1. 
+Remark: This check must only be applied if both DRVAL1 and DRVAL2 for the DEPARE object are encoded with explicit and different attribute values. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="75" level="Warning">
+		<Description>Check for any floating DEPCNT object (i.e. does not share any edge with a Group 1 object) which is within an area DRGARE object, that    VALDCO &gt; DRVAL1. 
+Remark: This check must only be applied if DRVAL1 for the DRGARE object is encoded with an explicit value. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="76" level="Error">
+		<Description>Check that no DEPCNT object is within a FLODOC, HULKES, LNDARE or PONTON object of type Area. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="77" level="Error">
+		<Description>Check that no DEPCNT object crosses another DEPCNT object. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="78" level="Error">
+		<Description>Check for any area object that no boundary crosses itself. </Description>
+		<Reference>Topology </Reference>
+	</Test>
+	<Test id="79" level="Warning">
+		<Description>Check for any line object that no component edges of a line object cross without a connected node at the crossing point. </Description>
+		<Reference>Topology </Reference>
+	</Test>
+	<Test id="80" level="Error">
+		<Description>Check that no area object has incorrect boundary nesting. 
+i.e. at least one of the following cases detected: 
+1. An internal boundary is completely within an internal boundary; 
+2. An internal boundary is completely outside an external boundary; 
+3. An external boundary is completely within an internal boundary. </Description>
+		<Reference>Topology </Reference>
+	</Test>
+	<Test id="81" level="Error">
+		<Description>Check that no spot sounding coincides with another spot sounding (of the same or different depth).  </Description>
+		<Reference>Topology </Reference>
+	</Test>
+	<Test id="82" level="Error">
+		<Description>Check that no linear or area object is using the same edge more than once.  </Description>
+		<Reference>Topology </Reference>
+	</Test>
+	<Test id="83" level="Warning">
+		<Description>Check that no node coincides with another node (connected or isolated). </Description>
+		<Reference>Topology </Reference>
+	</Test>
+	<Test id="84" level="Error">
+		<Description>Check that no physically isolated node is marked as connected (and vice versa).  </Description>
+		<Reference>Part 3 (2.2.1) </Reference>
+	</Test>
+	<Test id="85" level="Error">
+		<Description>Check that all AGEN subfield values (in DSID and FOID fields) in an update (ER) file are identical to the AGEN subfield values in the DSID base (EN) file. </Description>
+		<Reference>Part 3 (4.3.1) and (7.3.1.1) </Reference>
+	</Test>
+	<Test id="86" level="Warning">
+		<Description>Check that any feature record of type Point (including sounding feature record) only references one vector record. </Description>
+		<Reference>Part 3 ( 4.7.1 ) </Reference>
+	</Test>
+	<Test id="87" level="Error">
+		<Description>Check for edges with degenerated geometry (when consecutive vertices coincide). </Description>
+		<Reference>Part 3 (4.7.2) </Reference>
+	</Test>
+	<Test id="88" level="Error">
+		<Description>For area features, check that ORNT = 1 [forward] or 2 [reverse], USAG = 1 [exterior], 2 [interior] or 3 [exterior boundary truncated by the data limit] and MASK = 1 [mask], 2 [show] or 255 [masking is not relevant]. </Description>
+		<Reference>Part 3 (4.7.3) </Reference>
+	</Test>
+	<Test id="89" level="Error">
+		<Description>Check that no master object references the same object as slave more than once and that no slave object is referenced by more than one master object. </Description>
+		<Reference>Part 3 (6.3) </Reference>
+	</Test>
+	<Test id="90" level="Warning">
+		<Description>Check the conformity of the DDR (Data Descriptive Record). (In a catalogue file, it only contains the description of the catalogue file structure. In an EN file, it only contains the description of the base cell file structure. In an ER file, it only contains the description of the update cell file structure). </Description>
+		<Reference>Part 3 ( 7 ) and Part 3 (A.2) </Reference>
+	</Test>
+	<Test id="91" level="Warning">
+		<Description>Check for all attribute values of type "float", that the number of digits in the integer part is smaller than or equal to the number of digits given in the format statement (e.g. XX.X). </Description>
+		<Reference>Part 3 (7.2.2.1), (7.3) and Appendix A, Chapter 2. </Reference>
+	</Test>
+	<Test id="92" level="Error">
+		<Description>Check for any update (ER) file having RUIN = 3 [modify] in the FRID field, that the FOID field for the modified object is identical in the base (EN) and update (ER) files.  </Description>
+		<Reference>Part 3 (8.4.2) </Reference>
+	</Test>
+	<Test id="93" level="Warning">
+		<Description>Check for any object with WATLEV = 4 [covers and uncovers] or 5 [awash]: 
+1. if it is of type Line or Area, that: 
+- it is not within or overlaps a LNDARE object of type Area, 
+2. if it is of type Point, that: 
+- it is not within a LNDARE object of type Area, or 
+- it is not coincident with a LNDARE object of type point, or 
+- it is not situated on a LNDARE object of type line. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="94" level="Error">
+		<Description>Check that no ER file contains instructions for the FSPC field to modify a FSPT field of a feature object to a value that it already contains. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="500" level="Error">
+		<Description>Check that all data are within the cell limits. </Description>
+		<Reference>2.2</Reference>
+	</Test>
+	<Test id="501" level="Error">
+		<Description>Check that cells are rectangular. </Description>
+		<Reference>2.2</Reference>
+	</Test>
+	<Test id="502" level="Error">
+		<Description>Check that the dataset file contains no more than 5 megabytes of data. </Description>
+		<Reference>2.2</Reference>
+	</Test>
+	<Test id="503" level="Warning">
+		<Description>Check that all objects in a cell have a unique FOID. </Description>
+		<Reference>3.1</Reference>
+	</Test>
+	<Test id="504" level="Error">
+		<Description>Check for all prohibited object classes for ENC. </Description>
+		<Reference>3.2</Reference>
+	</Test>
+	<Test id="505" level="Error">
+		<Description>Check for mandatory meta object classes. </Description>
+		<Reference>3.4</Reference>
+	</Test>
+	<Test id="506" level="Error">
+		<Description>Check that mandatory subfields in EN and ER files contain a value (which may be a missing attribute value in the ATVL subfield of the ATTF field). </Description>
+		<Reference>3.5.1 and Part 3 (2.1) </Reference>
+	</Test>
+	<Test id="507" level="Error">
+		<Description>Check for all mandatory attributes. </Description>
+		<Reference>3.5.2 and Supplement No2 Ch.4 (3.5.2.1) </Reference>
+	</Test>
+	<Test id="508" level="Error">
+		<Description>Check that COLPAT is encoded for every object (except LIGHTS) with more than one COLOUR. Check that no object with a value for COLPAT has only one COLOUR. </Description>
+		<Reference>3.5.2 Logical consistency </Reference>
+	</Test>
+	<Test id="509" level="Warning">
+		<Description>Check for all the following cases that the mandatory attribute has a value: ARCSLN: NATION ASLXIS: NATION CTNARE: INFORM or TXTDSC DEPARE: DRVAL1 and DRVAL2 DRGARE: DRVAL1 NEWOBJ: CLSDEF and CLSNAM SWPARE: DRVAL1 DEPCNT: VALDCO LNDELV: ELEVAT MAGVAR: VALMAG CONZNE: NATION COSARE: NATION CUSZNE: NATION EXEZNE: NATION FSHZNE: NATION STSLNE: NATION TESARE: NATION M_COVR: CATCOV M_CSCL: CSCALE M_QUAL: CATZOC M_SDAT: VERDAT M_VDAT: VERDAT TS_PAD: TS_TSP DWRTPT: ORIENT DWRTCL: ORIENT M_NSYS: MARSYS or ORIENT RCTLPT: ORIENT Remark: For these objects, the above mandatory attributes are meaningless without values. </Description>
+		<Reference>3.5.2 and Supplement No2 Ch.4 (3.5.2.1) </Reference>
+	</Test>
+	<Test id="510" level="Error">
+		<Description>Check that HORDAT only appears in M_HOPA. </Description>
+		<Reference>3.5.3 </Reference>
+	</Test>
+	<Test id="511" level="Error">
+		<Description>Check that the prohibited attributes DUNITS, HUNITS, RECDAT, RECIND, SCAMAX, PUNITS, CATQUA are not used. </Description>
+		<Reference>3.5.3 </Reference>
+	</Test>
+	<Test id="512" level="Error">
+		<Description>Check for numeric attribute values (i.e. of type float ('F') or integer('I')) padded with non-significant zeroes. </Description>
+		<Reference>3.5.4 </Reference>
+	</Test>
+	<Test id="513" level="Error">
+		<Description>Check that an attribute on an individual Geo object does not have the same value as the general value defined by the meta object. </Description>
+		<Reference>3.5.6 </Reference>
+	</Test>
+	<Test id="515" level="Error">
+		<Description>Check that all edges with USAG = 3 [exterior boundary, truncated by the data limit] have MASK = 255 [null]. </Description>
+		<Reference>3.8</Reference>
+	</Test>
+	<Test id="516" level="Warning">
+		<Description>Check that all master/slave relations are valid. 
+1. If the master object is of type point, check that the slave object is sharing the same node as the master object. 
+2. If the master object is of type line, check that the slave object is situated on the line covered by the master object. 
+3. If the master object is of type area, check that the slave object is situated within or on the boundary of the area covered by the master object. 
+NOTE: CRANES, FLODOC, FORSTC, FSHFAC, HULKES, PONTON, OBSTRN, PYLONS, SILTNK and WRECKS objects must be considered as possible structure objects, in addition to the list given in Annex A (12.1.1). </Description>
+		<Reference>3.9 and Appendix B1, Annex A (12.1.1 &amp; 12.1.2) </Reference>
+	</Test>
+	<Test id="517" level="Error">
+		<Description>For a collection feature record: 1. Check that it references at least two other feature objects. 2. Check that it does not reference itself. 3. Check that PRIM = 255 [no geometry]. 4. Check that there is only one master relationship per collection feature – all others must be slaves. 5. Check that if a relationship is peer, then all other features in the collection are peer. </Description>
+		<Reference>3.9 and Appendix B1, Annex A (15), and Part 3 (6.2) </Reference>
+	</Test>
+	<Test id="518" level="Error">
+		<Description>Check that all feature objects belong to the correct group: 1. Check for all Group 1 objects having a Geometric Primitive of type Area, that the GROUP subfield [GRUP] of the Feature Record Identifier [FRID] is set to (1) [Group 1]. 2. Check for all others feature objects that the GROUP subfield [GRUP] of the Feature Record Identifier [FRID] is set to (2) [Group 2]. </Description>
+		<Reference>3.1</Reference>
+	</Test>
+	<Test id="519" level="Error">
+		<Description>Check Group 1 coverage and consistency. </Description>
+		<Reference>3.10.1 </Reference>
+	</Test>
+	<Test id="520" level="Error">
+		<Description>Check that the use of international character sets complies with ENC Prod Spec: 1. Check that the general text in the ATTF field is lexical level (0) or (1), with appropriate encoding of DSSI-ATTF. 2. Check that the general text in the NATF field is lexical levels (0), (1) or (2) with appropriate encoding of DSSI-NATF. 3. If attributes NINFOM and NPLDST contain data, check that corresponding INFORM and PILDST contain data: or report an error if they do not contain data. 4. Report an error if lexical level (2) is used anywhere else than in the NATF field. The report should contain a statement if international character sets are used and the invoking sequence, so that a check can be made on the language used. 5. Check the consistency between the use of international characters and the encoding of DSSI-AALL/NALL. 6. Check that the UT and FT are encoded at the lexical level specified and used for that field. 7. Check that all national language attributes are encoded in the Feature Record National Attribute (NATF) field. 8. Check that all feature object attributes (non national) are encoded in the Feature Record  Attribute (ATTF) field. </Description>
+		<Reference>3.11 and 3.5.5 </Reference>
+	</Test>
+	<Test id="521" level="Warning">
+		<Description>Check that OBJNAM and NOBJNM values, or INFORM and NINFOM values, or PILDST and NPLDST values, are different for any particular object. </Description>
+		<Reference>3.11.1 </Reference>
+	</Test>
+	<Test id="522" level="Warning">
+		<Description>Check that if NOBJNM is encoded, then OBJNAM has also been encoded. </Description>
+		<Reference>3.11.1 </Reference>
+	</Test>
+	<Test id="523" level="Error">
+		<Description>Check that HDAT = 2 [WGS 84]. </Description>
+		<Reference>4.1</Reference>
+	</Test>
+	<Test id="524" level="Error">
+		<Description>Check that DUNI = 1 [metres]. </Description>
+		<Reference>4.4</Reference>
+	</Test>
+	<Test id="525" level="Error">
+		<Description>Check that PUNI = 1 [metres]. </Description>
+		<Reference>4.4</Reference>
+	</Test>
+	<Test id="526" level="Error">
+		<Description>Check that COUN = 1 [latitude/longitude]. </Description>
+		<Reference>4.4</Reference>
+	</Test>
+	<Test id="527" level="Error">
+		<Description>Check that all files referenced by TXTDSC, NTXTDS and PICREP attributes exist and that the file names are in accordance with the ENC Product Specification. </Description>
+		<Reference>5.4.1 and 5.6.4 </Reference>
+	</Test>
+	<Test id="528" level="Error">
+		<Description>Check for existence of a catalogue file. </Description>
+		<Reference>5.4.1 </Reference>
+	</Test>
+	<Test id="529" level="Error">
+		<Description>Check that volume names are in accordance with the ENC Product Specification. </Description>
+		<Reference>5.4.2 </Reference>
+	</Test>
+	<Test id="530" level="Error">
+		<Description>Check that the directory structure for physical media is in accordance with the ENC Product Specification. 1. An ENC_ROOT directory must exist in the first volume. </Description>
+		<Reference>5.4.3 </Reference>
+	</Test>
+	<Test id="531" level="Error">
+		<Description>Check that file names are in accordance with the ENC Product Specification. </Description>
+		<Reference>5.6.1, 5.6.2 and 5.6.3 </Reference>
+	</Test>
+	<Test id="532" level="Warning">
+		<Description>Check that text and graphic file names are unique, with extension (e.g. .TXT and .TIF) for new editions and re-issues. </Description>
+		<Reference>5.6.4 </Reference>
+	</Test>
+	<Test id="533" level="Error">
+		<Description>Check that the DSID-UADT subfield is not used in an ER file. </Description>
+		<Reference>5.7</Reference>
+	</Test>
+	<Test id="534" level="Error">
+		<Description>Check that a delete cell message only contains the DSID field with EDTN = 0. </Description>
+		<Reference>5.7</Reference>
+	</Test>
+	<Test id="535" level="Error">
+		<Description>Check that the CRC value computed on the received file is the same as the CRC value transmitted. </Description>
+		<Reference>5.9.1 </Reference>
+	</Test>
+	<Test id="536" level="Error">
+		<Description>Check that only fields that have a repetition factor repeat. </Description>
+		<Reference>6.1.3 </Reference>
+	</Test>
+	<Test id="537" level="Error">
+		<Description>Check that the format of the catalogue file is correct. </Description>
+		<Reference>6.2</Reference>
+	</Test>
+	<Test id="538" level="Error">
+		<Description>Check that CADT-IMPL = “BIN”. </Description>
+		<Reference>6.2.2 </Reference>
+	</Test>
+	<Test id="539" level="Error">
+		<Description>Check that DSID-PROF subfield value is either 1 [EN] or 2 [ER].  </Description>
+		<Reference>6.3 and 6.4, Part 3 (7.3.1.1) </Reference>
+	</Test>
+	<Test id="540" level="Error">
+		<Description>Check that mandatory records, fields and subfields for EN and ER files are included and contain data. Prohibited records, fields and subfields should not be used. </Description>
+		<Reference>6.3 and 6.4 </Reference>
+	</Test>
+	<Test id="541" level="Error">
+		<Description>Check that the SIGGRP format is correct for all LIGHTS, except for fixed LIGHTS, which must not have a value for SIGGRP. </Description>
+		<Reference>Appendix A Ch.2 (code 141) </Reference>
+	</Test>
+	<Test id="542" level="Error">
+		<Description>Check that any attribute value SIGGRP starts and finishes with a bracket. </Description>
+		<Reference>Appendix A Ch.2 (code 141) </Reference>
+	</Test>
+	<Test id="543" level="Error">
+		<Description>Check that any TS_TSP attribute value conforms to the correct structure, (i.e. values separated by commas). </Description>
+		<Reference>Appendix A Ch.2 (code 159) </Reference>
+	</Test>
+	<Test id="544" level="Error">
+		<Description>Check that any area covered by a M_COVR object with CATCOV = 2 [no coverage available] does not contain any other object. </Description>
+		<Reference>2.2</Reference>
+	</Test>
+	<Test id="545" level="Error">
+		<Description>Check that each object has a valid object class code as defined by the Object Catalogue and S-57 Supplement No 2. </Description>
+		<Reference>3.2 and Supplement No2 Ch.2 </Reference>
+	</Test>
+	<Test id="546" level="Error">
+		<Description>Check that each attribute has a valid attribute class code as defined by the Object Catalogue and S-57 Supplement No 2. </Description>
+		<Reference>3.2 and Supplement No2 Ch.3 </Reference>
+	</Test>
+	<Test id="547" level="Error">
+		<Description>Check that no object contains attributes outside the list of permissible attributes for the object’s class (as defined in the Object Catalogue and S-57 Supplement No 2 for the specified object. </Description>
+		<Reference>3.2 and Supplement No2 Ch.2 </Reference>
+	</Test>
+	<Test id="548" level="Error">
+		<Description>Check that M_COVR meta objects provide exhaustive non-overlapping coverage of the whole cell. </Description>
+		<Reference>3.4</Reference>
+	</Test>
+	<Test id="549" level="Error">
+		<Description>Check that all DEPARE and DRGARE objects are covered by M_QUAL objects without gaps or overlaps. </Description>
+		<Reference>3.4</Reference>
+	</Test>
+	<Test id="550" level="Warning">
+		<Description>Check that any UNSARE object that contains or is partly covered by a DEPCNT, OBSTRN, SOUNDG, UWTROC or WRECKS object is covered by M_QUAL objects without gaps or overlaps. </Description>
+		<Reference>3.4</Reference>
+	</Test>
+	<Test id="551" level="Error">
+		<Description>Check that text attribute values do not use format effecting (C0) characters (C0 as defined in S-57 Part 3, Annex B). Check that the delete character is only used in the update mechanism (i.e. in records with RUIN = 3 [modify]). </Description>
+		<Reference>3.5.5 </Reference>
+	</Test>
+	<Test id="553" level="Error">
+		<Description>Check that no Group 1 object contains the attributes DATSTA, DATEND, PERSTA or PEREND. </Description>
+		<Reference>3.10.1 and logical consistency </Reference>
+	</Test>
+	<Test id="554" level="Error">
+		<Description>Check for any edge used by only one M_COVR object with CATCOV = 1 [coverage available], that it is also shared with one, and only one, Group 1 object. </Description>
+		<Reference>3.10.1 </Reference>
+	</Test>
+	<Test id="555" level="Error">
+		<Description>Check that the order of data in each base or update file is correct. </Description>
+		<Reference>6.1.1 </Reference>
+	</Test>
+	<Test id="556" level="Error">
+		<Description>Check for the limits of data set files given in the Catalogue Directory field (CATD) of the catalogue file (subfields SLAT, WLON, NLAT, ELON): 1. That the limits for base cell files are identical to the furthest coordinates of M_COVR geometry found in the corresponding base cell files. 2. That the limits for update cell files are identical to the limits of the base cell file to which they apply. </Description>
+		<Reference>5.6.3, 6.2.2 and logical consistency </Reference>
+	</Test>
+	<Test id="557" level="Error">
+		<Description>Check that any SIGSEQ attribute value conforms to the correct structure (i.e. string content in accordance with format specification). </Description>
+		<Reference>Appendix A Ch.2 (code 143) </Reference>
+	</Test>
+	<Test id="558" level="Error">
+		<Description>Check for any object having SIGSEQ encoded that the value of SIGPER is equal to the sum of intervals of light and intervals of eclipse described by SIGSEQ. </Description>
+		<Reference>Appendix A Ch.2 (code 143) and logical consistency </Reference>
+	</Test>
+	<Test id="559" level="Warning">
+		<Description>Check that no STATUS attribute value contains an impossible combination: 1. 1 [permanent] with at least one of 2 [occasional], 5 [periodic/intermittent], 7 [temporary]; 2. 3 [recommended] with at least one of 4 [not in use],11 [extinguished]; 3. 4 [not in use] with at least one of 5 [periodic/intermittent], 9 [mandatory]; 4. 5 [periodic/intermittent] with 11 [extinguished]; 5. 9 [mandatory] with 11 [extinguished]; 6. 16 [watched] with 17 [un-watched]; 7. 8 [private] with 14 [public]. </Description>
+		<Reference>Appendix A Ch.2 (code 149) and logical consistency </Reference>
+	</Test>
+	<Test id="560" level="Error">
+		<Description>Check that all feature objects in a data set having the same FOID have the same description (same object class and attribute values) and are of type Line or Area. </Description>
+		<Reference>3.1</Reference>
+	</Test>
+	<Test id="562" level="Error">
+		<Description>Check for any NEWOBJ object, that at least one of the attributes INFORM or TXTDSC contains the name of the feature object. The text must commence with the approved object class name (CLSNAM) of the feature (i.e. New Object). </Description>
+		<Reference>Supplement No2 Ch.4 (3.3.1) and Ch.5 (16) </Reference>
+	</Test>
+	<Test id="566" level="Error">
+		<Description>Check that there is no NEWOBJ object in the data that has not been approved by an IHO ENC Encoding Bulletin. </Description>
+		<Reference>Supplement No2 Ch.2 (2.8), Ch.4 (3.3.1) and Ch.5 (16) </Reference>
+	</Test>
+	<Test id="1500" level="Warning">
+		<Description>Check that certain area objects do not overlap for logical reasons: 1. LNDARE and SBDARE. 2. LNDARE and CBLARE. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="1502" level="Error">
+		<Description>Check that no spatial object contains the attribute HORDAT. </Description>
+		<Reference>2.1.1 </Reference>
+	</Test>
+	<Test id="1503" level="Warning">
+		<Description>Check that no object has an attribute value for VERDAT without a value for at least one of ELEVAT, HEIGHT, VERCCL, VERCLR, VERCOP or VERCSA. Exceptions are M_VDAT and M_SDAT objects (subject to their own QA tests). </Description>
+		<Reference>2.1.2 </Reference>
+	</Test>
+	<Test id="1504" level="Error">
+		<Description>Check that the value in the Vertical Datum subfield (VDAT) of the Data Set Parameter field (DSPM) is not null. </Description>
+		<Reference>2.1.2 </Reference>
+	</Test>
+	<Test id="1505" level="Error">
+		<Description>Check that there are no M_VDAT objects which have an attribute value for VERDAT equal to that given in the Vertical Datum subfield (VDAT) of the Data Set Parameter field (DSPM). </Description>
+		<Reference>2.1.2 </Reference>
+	</Test>
+	<Test id="1506" level="Error">
+		<Description>Check that all Geo objects which have attribute values relative to a Height Datum and which cross a M_VDAT object boundary are split at that boundary. </Description>
+		<Reference>2.1.2 </Reference>
+	</Test>
+	<Test id="1507" level="Error">
+		<Description>Check that no M_VDAT objects overlap one another. </Description>
+		<Reference>2.1.2 </Reference>
+	</Test>
+	<Test id="1508" level="Error">
+		<Description>Check that no M_SDAT objects overlap one another. </Description>
+		<Reference>2.1.3 </Reference>
+	</Test>
+	<Test id="1510" level="Error">
+		<Description>Check that the value in the Sounding Datum subfield (SDAT) of the Data Set Parameter field (DSPM) is not null. </Description>
+		<Reference>2.1.3 </Reference>
+	</Test>
+	<Test id="1511" level="Error">
+		<Description>Check that there are no M_SDAT objects, that have an attribute value for VERDAT equal to that given in the Sounding Datum subfield (SDAT) of the Data Set Parameter field (DSPM). </Description>
+		<Reference>2.1.3 </Reference>
+	</Test>
+	<Test id="1512" level="Error">
+		<Description>Check that all SOUNDG objects and all those objects that have at least one of VALSOU, VALDCO, WATLEV, EXPSOU, DRVAL1 or DRVAL2 encoded with an explicit value and which cross a M_SDAT object boundary are split at that boundary. </Description>
+		<Reference>2.1.3 </Reference>
+	</Test>
+	<Test id="1513" level="Error">
+		<Description>Check that the value for the Units of Height measurement subfield (HUNI) of the Data Set Parameter field (DSPM) is (1) [metre]. </Description>
+		<Reference>2.1.4 </Reference>
+	</Test>
+	<Test id="1515" level="Error">
+		<Description>Check that if an object contains a value for the attributes DATEND, DATSTA, PEREND, PERSTA, SORDAT, CPDATE,  SUREND or SURSTA, that this value conforms to ISO 8601:1988. </Description>
+		<Reference>2.1.5 </Reference>
+	</Test>
+	<Test id="1516" level="Warning">
+		<Description>Check that any Group 2 seasonal/periodic object (if the object class is concerned at once by the attributes STATUS, PERSTA and PEREND) with the attribute STATUS containing the value (5) [periodic/intermittent] also has the start and end of the active period encoded in PERSTA and PEREND, and vice versa. </Description>
+		<Reference>2.1.5.1 </Reference>
+	</Test>
+	<Test id="1517" level="Error">
+		<Description>Check that if an object contains values for the attributes TIMSTA and TIMEND, that these values conform to the format defined in Chapter 2 of S-57 Appendix A. </Description>
+		<Reference>2.1.6 </Reference>
+	</Test>
+	<Test id="1518" level="Error">
+		<Description>Check that the value of the Producing agency subfield (AGEN) of the Data Set Identification field (DSID) is correct, and that it is the same as the first two characters of the data set file name. </Description>
+		<Reference>2.2.1 </Reference>
+	</Test>
+	<Test id="1520" level="Error">
+		<Description>Check that the value of the Edition Number (EDTN) subfield of the Data Set Identification field (DSID) is correct. </Description>
+		<Reference>2.2.2 </Reference>
+	</Test>
+	<Test id="1521" level="Error">
+		<Description>Check that the value of the Update Number (UPDN) subfield of the Data Set Identification field (DSID) is correct, and that it is equivalent to the extension of the data set file name, except in the case of a re-issue; in which case, it should be equal to the last update number. </Description>
+		<Reference>2.2.2 </Reference>
+	</Test>
+	<Test id="1522" level="Error">
+		<Description>Check that the value of the Update application date (UADT) subfield of the Data Set Identification field (DSID) is correct for data sets with a file name extension of “.000”, or that it is null in all other cases. </Description>
+		<Reference>2.2.2 </Reference>
+	</Test>
+	<Test id="1523" level="Error">
+		<Description>Check that the value of the Issue date (ISDT) subfield of the Data Set Identification field (DSID) is correct, and that for data sets with a file name extension of “.000” it is greater than or equal to the value of the Update application date (UADT) subfield. </Description>
+		<Reference>2.2.2 </Reference>
+	</Test>
+	<Test id="1524" level="Error">
+		<Description>Check that no M_QUAL object contains the attribute DRVAL1, unless a swept area occupies the entire M_QUAL object. </Description>
+		<Reference>2.2.3.1 </Reference>
+	</Test>
+	<Test id="1525" level="Error">
+		<Description>Check that no M_QUAL object that has an attribute value for DRVAL1 contains a value for POSACC. </Description>
+		<Reference>2.2.3.1 </Reference>
+	</Test>
+	<Test id="1526" level="Error">
+		<Description>Check that any M_QUAL object, which has an attribute value for SOUACC, also has an attribute value for DRVAL1. </Description>
+		<Reference>2.2.3.1 </Reference>
+	</Test>
+	<Test id="1529" level="Error">
+		<Description>Check that no object falling within a given M_QUAL object coverage has an attribute value for TECSOU that is equivalent to an attribute value for TECSOU on the M_QUAL object. </Description>
+		<Reference>2.2.3.1 and 2.2.3.5 </Reference>
+	</Test>
+	<Test id="1530" level="Error">
+		<Description>Check that no object falling within a given M_QUAL object coverage has an attribute value for SOUACC that is equivalent to the SOUACC or CATZOC attributes for the M_QUAL object. </Description>
+		<Reference>2.2.3.1 and 2.2.3.4 </Reference>
+	</Test>
+	<Test id="1531" level="Error">
+		<Description>Check that no M_QUAL object has attribute values for POSACC, SOUACC, QUASOU or TECSOU which are equivalent to or degrade the accuracy indicated by the attribute value of CATZOC. </Description>
+		<Reference>2.2.3.1 </Reference>
+	</Test>
+	<Test id="1532" level="Error">
+		<Description>Check that if there is an attribute value for SURSTA for a given M_QUAL object that it relates to the oldest survey of two or more surveys for that M_QUAL object coverage. </Description>
+		<Reference>2.2.3.1 </Reference>
+	</Test>
+	<Test id="1533" level="Error">
+		<Description>Check that no DRGARE object has a value for SOUACC that is equivalent to or degrades the accuracy indicated by the attribute value of CATZOC on the meta object M_QUAL. </Description>
+		<Reference>2.2.3.1 </Reference>
+	</Test>
+	<Test id="1534" level="Error">
+		<Description>Check that no UWTROC object has a value for SOUACC that is equivalent to or degrades the accuracy indicated by the attribute value of CATZOC on the meta object M_QUAL. </Description>
+		<Reference>2.2.3.1 </Reference>
+	</Test>
+	<Test id="1535" level="Error">
+		<Description>Check that no UWTROC object has a value for SOUACC that is equivalent to or degrades the SOUACC attribute on the object M_QUAL. </Description>
+		<Reference>2.2.3.1 </Reference>
+	</Test>
+	<Test id="1536" level="Error">
+		<Description>Check that no WRECKS object has a value for SOUACC that is equivalent to or degrades the accuracy indicated by the attribute value of CATZOC on the meta object M_QUAL. </Description>
+		<Reference>2.2.3.1 </Reference>
+	</Test>
+	<Test id="1537" level="Error">
+		<Description>Check that no WRECKS object has a value for SOUACC that is equivalent to or degrades the SOUACC attribute on the object M_QUAL. </Description>
+		<Reference>2.2.3.1 </Reference>
+	</Test>
+	<Test id="1538" level="Error">
+		<Description>Check that no OBSTRN object has a value for SOUACC that is equivalent to or degrades the accuracy indicated by the attribute value of CATZOC on the meta object M_QUAL. </Description>
+		<Reference>2.2.3.1 </Reference>
+	</Test>
+	<Test id="1539" level="Error">
+		<Description>Check that no OBSTRN object has a value for SOUACC that is equivalent to or degrades the SOUACC attribute on the object M_QUAL. </Description>
+		<Reference>2.2.3.1 </Reference>
+	</Test>
+	<Test id="1541" level="Error">
+		<Description>Check that QUASOU when used on SOUNDG is not identical to the value in M_SREL. </Description>
+		<Reference>2.2.3.3 </Reference>
+	</Test>
+	<Test id="1542" level="Error">
+		<Description>Check that no object falling within a given M_ACCY object coverage has an attribute value for POSACC that is equivalent to the POSACC attribute for the M_ACCY object. </Description>
+		<Reference>2.2.4.1 </Reference>
+	</Test>
+	<Test id="1544" level="Error">
+		<Description>Check that no M_ACCY object contains the attributes HORACC, SOUACC and VERACC. </Description>
+		<Reference>2.2.4.1 </Reference>
+	</Test>
+	<Test id="1545" level="Error">
+		<Description>Check that no object has an attribute value for HORACC without an attribute value for HORCLR. </Description>
+		<Reference>2.2.4.2 </Reference>
+	</Test>
+	<Test id="1546" level="Error">
+		<Description>Check that no object has an attribute value for VERACC without a corresponding attribute value for at least one of VERCLR, VERCOP, VERCSA or VERCCL. </Description>
+		<Reference>2.2.4.3 </Reference>
+	</Test>
+	<Test id="1548" level="Warning">
+		<Description>Check that any non-bathymetric object, which has an attribute value for SORIND has a corresponding attribute value for SORDAT. </Description>
+		<Reference>2.2.5.2 </Reference>
+	</Test>
+	<Test id="1549" level="Error">
+		<Description>Check that the value in the Compilation Scale of data subfield (CSCL) of the Data Set Parameter field (DSPM) is not null. </Description>
+		<Reference>2.2.6 </Reference>
+	</Test>
+	<Test id="1550" level="Error">
+		<Description>Check that no M_CSCL object has a value for the attribute CSCALE equal to that given in the Compilation Scale of data subfield (CSCL) of the Data Set Parameter field (DSPM). </Description>
+		<Reference>2.2.6 </Reference>
+	</Test>
+	<Test id="1551" level="Error">
+		<Description>Check that no two M_CSCL objects overlap. </Description>
+		<Reference>2.2.6 </Reference>
+	</Test>
+	<Test id="1553" level="Error">
+		<Description>Check that any value of SCAMIN is set to a scale value smaller than or equal to the compilation scale of the data for the area. </Description>
+		<Reference>2.2.6 and 2.2.7 </Reference>
+	</Test>
+	<Test id="1554" level="Error">
+		<Description>Check that no Group 1 objects and no meta objects have been encoded with the attribute SCAMIN. </Description>
+		<Reference>2.2.7 </Reference>
+	</Test>
+	<Test id="1556" level="Error">
+		<Description>Check that any text files forming part of the dataset are ASCII files, except for the national language attribute NTXTDS when NATF lexical level subfield [NALL] of the Data Set Structure Information field [DSSI] is set to (2). </Description>
+		<Reference>2.3</Reference>
+	</Test>
+	<Test id="1557" level="Error">
+		<Description>Check that all T_HMON objects have a value of (1) [simplified harmonic method of tidal prediction] or (2) [full harmonic method of tidal prediction] for the attribute T_MTOD. </Description>
+		<Reference>3.2.2 </Reference>
+	</Test>
+	<Test id="1558" level="Error">
+		<Description>Check that all T_NHMN objects have a value of (3) [time and height difference non-harmonic method] for the attribute T_MTOD. </Description>
+		<Reference>3.2.3 </Reference>
+	</Test>
+	<Test id="1559" level="Error">
+		<Description>Check that any T_NHMN object is associated (using the collection object C_ASSO with a T_TIMS or T_HMON object). </Description>
+		<Reference>3.2.3 </Reference>
+	</Test>
+	<Test id="1560" level="Error">
+		<Description>Check that all TS_PRH objects have a value of (1) [simplified harmonic method of tidal prediction] or (2) [full harmonic method of tidal prediction] for the attribute T_MTOD. </Description>
+		<Reference>3.3.3 </Reference>
+	</Test>
+	<Test id="1561" level="Error">
+		<Description>Check that all TS_PNH objects have a value of (3) [time and height difference non-harmonic method] for the attribute T_MTOD. </Description>
+		<Reference>3.3.4 </Reference>
+	</Test>
+	<Test id="1562" level="Error">
+		<Description>Check that any TS_PNH object is associated (using the collection object C_ASSO) with a TS_TIS or TS_PRH object. </Description>
+		<Reference>3.3.4 </Reference>
+	</Test>
+	<Test id="1563" level="Error">
+		<Description>Check that any RIVERS, CANALS, LAKARE, DOCARE or LOKBSN objects are covered by a LNDARE or UNSARE object of type Area. </Description>
+		<Reference>4.1</Reference>
+	</Test>
+	<Test id="1564" level="Error">
+		<Description>Check that no CTRPNT object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>4.3</Reference>
+	</Test>
+	<Test id="1565" level="Warning">
+		<Description>Check for all LNDARE objects of type Area that any edge of the limits shares the geometry of at least one object of the following list: 1. linear objects: COALNE, SLCONS, GATCON, DAMCON. 2. area objects: M_COVR, GATCON, DAMCON, RIVERS, TUNNEL, DRYDOC, CANALS, LAKARE, LOKBSN, DOCARE, LNDARE. 3. area objects with WATLEV = 1 [partly submerged at high water], 2 [always dry] or 6 [subject to inundation or flooding]: CAUSWY, SLCONS, MORFAC, WRECKS, OBSTRN, PYLONS. </Description>
+		<Reference>4.5</Reference>
+	</Test>
+	<Test id="1566" level="Error">
+		<Description>Check that no edge of a COALNE or linear SLCONS object bounds an area RIVERS, CANALS, LAKARE, DOCARE, DRYDOC or LOKBSN object, except when this edge is also shared by a boundary of a DEPARE, DRGARE, UNSARE, PONTON, FLODOC or HULKES object for which the direction of the edge is the opposite of the one encoded for the RIVERS, CANALS, LAKARE, DOCARE, DRYDOC or LOKBSN object (i.e. …except when this edge separates the area RIVERS, CANALS, LAKARE, DOCARE, DRYDOC or LOKBSN object from an area navigable at compilation scale). </Description>
+		<Reference>4.5 4.6.6.1 4.6.6.3 </Reference>
+	</Test>
+	<Test id="1567" level="Error">
+		<Description>Check that no COALNE object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>4.5.1 </Reference>
+	</Test>
+	<Test id="1568" level="Error">
+		<Description>Check that any SLCONS objects of type Area are covered by a LNDARE, DEPARE or UNSARE object of type Area. </Description>
+		<Reference>4.5.2 </Reference>
+	</Test>
+	<Test id="1569" level="Error">
+		<Description>Check that any SLCONS objects of type Area with WATLEV = 3 [always under water/submerged], 4 [covers and uncovers] or 5 [awash] are covered by DEPARE and/or UNSARE objects of type Area. </Description>
+		<Reference>4.5.2 </Reference>
+	</Test>
+	<Test id="1570" level="Error">
+		<Description>Check that no SLCONS object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>4.5.2 </Reference>
+	</Test>
+	<Test id="1571" level="Error">
+		<Description>Check that no BERTHS object contains the attribute VERDAT. </Description>
+		<Reference>4.6.2 </Reference>
+	</Test>
+	<Test id="1572" level="Error">
+		<Description>Check that no DRYDOC object contains the attribute VERDAT. </Description>
+		<Reference>4.6.6.1 </Reference>
+	</Test>
+	<Test id="1573" level="Error">
+		<Description>Check that any DRYDOC object is covered by a LNDARE object of type Area. </Description>
+		<Reference>4.6.6.1 </Reference>
+	</Test>
+	<Test id="1575" level="Error">
+		<Description>Check that no FLODOC object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>4.6.6.2 </Reference>
+	</Test>
+	<Test id="1577" level="Error">
+		<Description>Check that no DOCARE object shares the same geo-spatial position and geometry as a SEAARE object. </Description>
+		<Reference>4.6.6.3 </Reference>
+	</Test>
+	<Test id="1578" level="Error">
+		<Description>Check that no GATCON object has an attribute value for VERDAT without an attribute value for VERCLR. </Description>
+		<Reference>4.6.6.4 </Reference>
+	</Test>
+	<Test id="1580" level="Warning">
+		<Description>Check that any area GATCON object is covered by a DEPARE or LNDARE object of type Area. </Description>
+		<Reference>4.6.6.4 </Reference>
+	</Test>
+	<Test id="1581" level="Error">
+		<Description>Check that no LOKBSN object shares the same geo-spatial position and geometry as a SEAARE object. </Description>
+		<Reference>4.6.6.5 </Reference>
+	</Test>
+	<Test id="1582" level="Error">
+		<Description>Check that no GRIDRN object contains the attributes HORACC and VERACC. </Description>
+		<Reference>4.6.6.6 </Reference>
+	</Test>
+	<Test id="1583" level="Error">
+		<Description>Check that no MORFAC object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>4.6.7.1 </Reference>
+	</Test>
+	<Test id="1584" level="Error">
+		<Description>Check that any area MORFAC object with a WATLEV attribute value of 1 [partly submerged at high water], 2 [always dry] or 6 [subject to inundation or flooding] is covered by a LNDARE object of type Area. </Description>
+		<Reference>4.6.7.1 </Reference>
+	</Test>
+	<Test id="1585" level="Error">
+		<Description>Check that no PILPNT object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>4.6.7.2 </Reference>
+	</Test>
+	<Test id="1586" level="Error">
+		<Description>Check that no PONTON object contains the attribute VERACC. </Description>
+		<Reference>4.6.7.3 </Reference>
+	</Test>
+	<Test id="1587" level="Error">
+		<Description>Check that no HULKES object contains the attributes HORACC and VERACC. </Description>
+		<Reference>4.6.8 </Reference>
+	</Test>
+	<Test id="1589" level="Warning">
+		<Description>Check that any object having a value of (1) [under construction], (3) [under reclamation] or (5) [planned construction] for the attribute CONDTN contains the year or date of the information in SORDAT. </Description>
+		<Reference>4.6.10 </Reference>
+	</Test>
+	<Test id="1590" level="Warning">
+		<Description>Check that any LNDRGN object is covered (partially or entirely) by a LNDARE object of type Area (or contains a point or a line LNDARE).  </Description>
+		<Reference>4.7.1 </Reference>
+	</Test>
+	<Test id="1591" level="Error">
+		<Description>Check that no LNDELV object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>4.7.2 </Reference>
+	</Test>
+	<Test id="1592" level="Warning">
+		<Description>Check that any COALNE object adjacent to a LNDRGN object with a value of (2) [marsh] for CATLND contains a value of (8) [marshy shore] for the attribute CATCOA, and that the coastline’s spatial object has a value of (4) [approximate] for the attribute QUAPOS. </Description>
+		<Reference>4.7.3 </Reference>
+	</Test>
+	<Test id="1593" level="Error">
+		<Description>Check that no SLOGRD object contains the attributes NATCON and NATQUA. </Description>
+		<Reference>4.7.4 </Reference>
+	</Test>
+	<Test id="1594" level="Error">
+		<Description>Check that no SLOTOP object contains the attributes NATCON, NATQUA, VERACC and VERDAT. </Description>
+		<Reference>4.7.5 </Reference>
+	</Test>
+	<Test id="1595" level="Warning">
+		<Description>Check that no SLOTOP object with a value of (6) [cliff] for the attribute CATSLO shares the same geo-spatial position and geometry as a COALNE object.  </Description>
+		<Reference>4.7.5 </Reference>
+	</Test>
+	<Test id="1597" level="Error">
+		<Description>Check that no RIVERS object shares the same geo-spatial position and geometry as a SEAARE object. </Description>
+		<Reference>4.7.6 </Reference>
+	</Test>
+	<Test id="1598" level="Error">
+		<Description>Check that no RAPIDS object contains the attribute VERACC. </Description>
+		<Reference>4.7.7.1 </Reference>
+	</Test>
+	<Test id="1599" level="Warning">
+		<Description>Check that any RAPIDS or WATFAL object is covered by a RIVERS object of type area (or is coincident with a RIVERS object of type line) and a LNDARE or UNSARE object. </Description>
+		<Reference>4.7.7.1 and 4.7.7.2 </Reference>
+	</Test>
+	<Test id="1600" level="Error">
+		<Description>Check that no WATFAL object contains the attribute VERACC. </Description>
+		<Reference>4.7.7.2 </Reference>
+	</Test>
+	<Test id="1601" level="Error">
+		<Description>Check that no LAKARE object contains the attributes VERACC and VERDAT. </Description>
+		<Reference>4.7.8 </Reference>
+	</Test>
+	<Test id="1602" level="Error">
+		<Description>Check that no LAKARE object shares the same geo-spatial position and geometry as a SEAARE object. </Description>
+		<Reference>4.7.8 </Reference>
+	</Test>
+	<Test id="1604" level="Warning">
+		<Description>Check that any COALNE object adjacent to a LNDRGN object with a value of (15) [salt pan] for CATLND contains a value of (2) [flat coast] for the attribute CATCOA. </Description>
+		<Reference>4.7.9 </Reference>
+	</Test>
+	<Test id="1605" level="Error">
+		<Description>Check that any ICEARE object is covered by a LNDARE or an UNSARE or a DEPARE object. </Description>
+		<Reference>4.7.10 </Reference>
+	</Test>
+	<Test id="1606" level="Warning">
+		<Description>Check that any COALNE object adjacent to an ICEARE object with a value of (5) [glacier] for CATICE contains a value of (6) [glacier (seaward end)] for the attribute CATCOA. </Description>
+		<Reference>4.7.10 </Reference>
+	</Test>
+	<Test id="1607" level="Warning">
+		<Description>Check that any COALNE object adjacent to a VEGATN object with a value of (7) [mangroves] for CATVEG contains a value of (7) [mangrove] for the attribute CATCOA and that the mangrove area’s spatial object has a value of (4) [approximate] for the attribute QUAPOS. </Description>
+		<Reference>4.7.11 </Reference>
+	</Test>
+	<Test id="1608" level="Error">
+		<Description>Check that no VEGATN object contains the attributes VERACC and VERDAT. </Description>
+		<Reference>4.7.11 </Reference>
+	</Test>
+	<Test id="1609" level="Error">
+		<Description>Check that no CANALS object shares the same geo-spatial position and geometry as a SEAARE object. </Description>
+		<Reference>4.8.1 </Reference>
+	</Test>
+	<Test id="1610" level="Error">
+		<Description>Check that no RAILWY object contains the attribute VERACC. </Description>
+		<Reference>4.8.2 </Reference>
+	</Test>
+	<Test id="1611" level="Error">
+		<Description>Check that no TUNNELS object contains the attribute BURDEP. </Description>
+		<Reference>4.8.3 </Reference>
+	</Test>
+	<Test id="1612" level="Warning">
+		<Description>Check that any TUNNEL object is covered by LNDARE, DEPARE, UNSARE or DRGARE objects. </Description>
+		<Reference>4.8.3 </Reference>
+	</Test>
+	<Test id="1613" level="Error">
+		<Description>Check, for any TUNNEL object, which covers a CANALS object, that the attributes HORACC, HORCLR, VERACC and VERCLR are not encoded. </Description>
+		<Reference>4.8.3 </Reference>
+	</Test>
+	<Test id="1614" level="Error">
+		<Description>Check that no TUNNEL object has any other non-hydrographic object (RAILWY, ROADWY etc) encoded within it. </Description>
+		<Reference>4.8.3 </Reference>
+	</Test>
+	<Test id="1616" level="Error">
+		<Description>Check that no DAMCON object contains the attributes VERACC and VERDAT. </Description>
+		<Reference>4.8.5 </Reference>
+	</Test>
+	<Test id="1617" level="Error">
+		<Description>Check that any DAMCON object of type Area is covered by a LNDARE object of type Area. </Description>
+		<Reference>4.8.5 </Reference>
+	</Test>
+	<Test id="1618" level="Error">
+		<Description>Check that no DYKCON object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>4.8.7 </Reference>
+	</Test>
+	<Test id="1619" level="Error">
+		<Description>Check that any DYKCON object of type Area is covered by a LNDARE object of type Area. </Description>
+		<Reference>4.8.7 </Reference>
+	</Test>
+	<Test id="1620" level="Error">
+		<Description>Check for any edge of a DYKCON object which is shared by both a LNDARE object of type area and a DEPARE, DRGARE or UNSARE object of type area, that it is also shared by a linear SLCONS object without a value for CATSLC.  </Description>
+		<Reference>4.8.7 </Reference>
+	</Test>
+	<Test id="1623" level="Error">
+		<Description>Check that if an object BRIDGE overlaps navigable water, its supports are encoded as PYLONS with a value of (4) [bridge pylon/tower] or (5) [bridge pier] for the attribute CATPYL. </Description>
+		<Reference>4.8.10 </Reference>
+	</Test>
+	<Test id="1625" level="Warning">
+		<Description>Check that, if one of the component objects (AIRARE or RUNWAY) of an airfield is encoded using a collection object, that only C_ASSO is used.  </Description>
+		<Reference>4.8.12 </Reference>
+	</Test>
+	<Test id="1626" level="Error">
+		<Description>Check that no AIRARE object contains the attribute CONVIS. </Description>
+		<Reference>4.8.12 </Reference>
+	</Test>
+	<Test id="1627" level="Error">
+		<Description>Check that no RUNWAY object contains the attribute CONVIS. </Description>
+		<Reference>4.8.12 </Reference>
+	</Test>
+	<Test id="1628" level="Error">
+		<Description>Check that no PRDARE object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>4.8.13 </Reference>
+	</Test>
+	<Test id="1629" level="Error">
+		<Description>Check that no BUAARE object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>4.8.14 </Reference>
+	</Test>
+	<Test id="1630" level="Error">
+		<Description>Check that no RIVERS, LOKBSN, DOCARE, LAKARE or CANALS object of type Area overlaps a BUAARE object. </Description>
+		<Reference>4.8.14 </Reference>
+	</Test>
+	<Test id="1631" level="Error">
+		<Description>Check that no BUISGL object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>4.8.15 </Reference>
+	</Test>
+	<Test id="1632" level="Error">
+		<Description>Check that no SILTNK object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>4.8.15 </Reference>
+	</Test>
+	<Test id="1633" level="Error">
+		<Description>Check that no LNDMRK object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>4.8.15 </Reference>
+	</Test>
+	<Test id="1634" level="Error">
+		<Description>Check that no FNCLNE object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>4.8.16 </Reference>
+	</Test>
+	<Test id="1635" level="Error">
+		<Description>Check that no FORSTC object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>4.8.17 </Reference>
+	</Test>
+	<Test id="1636" level="Error">
+		<Description>Check that no PYLONS object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>4.8.18 </Reference>
+	</Test>
+	<Test id="1637" level="Error">
+		<Description>Check that any PYLONS object of type Area with a WATLEV attribute value of 1 [partly submerged at high water], 2 [always dry] or 6 [subject to inundation or flooding] is covered by a LNDARE object of type Area. </Description>
+		<Reference>4.8.18 </Reference>
+	</Test>
+	<Test id="1638" level="Error">
+		<Description>Check that any picture files that form part of the ENC are in TIFF format. </Description>
+		<Reference>4.8.20 </Reference>
+	</Test>
+	<Test id="1639" level="Error">
+		<Description>Check that no DEPCNT object contains the attribute VERDAT. </Description>
+		<Reference>5.2</Reference>
+	</Test>
+	<Test id="1640" level="Error">
+		<Description>Check that no SOUNDG object contains the attribute VERDAT. </Description>
+		<Reference>5.3</Reference>
+	</Test>
+	<Test id="1641" level="Error">
+		<Description>Check that no UWTROC object shares the same spatial position as a SOUNDG object. </Description>
+		<Reference>5.3</Reference>
+	</Test>
+	<Test id="1642" level="Error">
+		<Description>Check that no DEPARE object contains the attributes VERDAT and SOUACC. </Description>
+		<Reference>5.4.1 </Reference>
+	</Test>
+	<Test id="1644" level="Warning">
+		<Description>Check that the data set's outermost DEPARE objects of type Area are bounded by line spatial objects without associated geo objects. </Description>
+		<Reference>5.4.2 (Fig.5) </Reference>
+	</Test>
+	<Test id="1646" level="Warning">
+		<Description>Check for any DRGARE object, if a value exists for the attribute DRVAL2, that it is different to the value for DRVAL1. </Description>
+		<Reference>5.5</Reference>
+	</Test>
+	<Test id="1647" level="Error">
+		<Description>Check that no DRGARE object contains the attribute VERDAT. </Description>
+		<Reference>5.5</Reference>
+	</Test>
+	<Test id="1648" level="Error">
+		<Description>Check for any DRGARE object, if the attribute QUASOU is encoded, that the value is (10) [maintained depth] or (11) [not regularly maintained]. </Description>
+		<Reference>5.5</Reference>
+	</Test>
+	<Test id="1649" level="Error">
+		<Description>Check that no DRGARE object has a value for SOUACC that is equivalent to or degrades the SOUACC attribute on the object M_QUAL. </Description>
+		<Reference>5.5 and 2.2.3.1 </Reference>
+	</Test>
+	<Test id="1650" level="Error">
+		<Description>Check that no SWPARE object contains the attribute VERDAT. </Description>
+		<Reference>5.6</Reference>
+	</Test>
+	<Test id="1651" level="Error">
+		<Description>Check that any SWPARE object is covered by DEPARE and/or DRGARE objects of type Area. </Description>
+		<Reference>5.6</Reference>
+	</Test>
+	<Test id="1652" level="Error">
+		<Description>Check, for any SWPARE object that shares the same geo-spatial position and geometry as a M_QUAL object, that the values for DRVAL1 on both objects are the same. </Description>
+		<Reference>5.6</Reference>
+	</Test>
+	<Test id="1653" level="Error">
+		<Description>Check that where a SWPARE falls within an M_QUAL object and the attribute SOUACC is encoded for M_QUAL, that the SOUACC value refers to the area inside the SWPARE as well as the soundings outside. </Description>
+		<Reference>5.6</Reference>
+	</Test>
+	<Test id="1654" level="Error">
+		<Description>Check for any SWPARE object, if the attribute TECSOU is encoded, that the value is (6) [swept by wire-drag] , (8) [swept by vertical acoustic system] or (13) [swept by side-scan sonar]. </Description>
+		<Reference>5.6</Reference>
+	</Test>
+	<Test id="1655" level="Error">
+		<Description>Check that no SWPARE object sharing the same geo-spatial position and geometry as a M_QUAL object contains the attribute POSACC if the SOUACC is encoded. </Description>
+		<Reference>5.6</Reference>
+	</Test>
+	<Test id="1656" level="Error">
+		<Description>Check that no UWTROC object contains the attribute VERDAT. </Description>
+		<Reference>6.1.2 </Reference>
+	</Test>
+  <Test id="1657" level="Warning">
+    <Description>Check for any UWTROC object that the combination of attribute values corresponds to the following table. "undefined” means that no value is encoded. "any value" means, - for mandatory attribute: any predefined value or unknown value, - for optional attribute: any predefined value or undefined. For each specific case, when QUASOU and TECSOU (attributes of type List) are encoded, they should contain one or more values selected from the lists of allowed values given in the table.In addition, other attributes which do not appear in the table may be encoded.
+      <![CDATA[
+      
+VALSOU      QUASOU                            WATLEV        TECSOU/SOUACC
+======      ======                            ======        ============
+unknown     2 or undefined                    3,4 or 5      undefined
+unknown     2 or undefined                    unknown       undefined
+< 0         1, 3, 4, 6, 8, 9 or undefined     4             any value
+< 0         7                                 4             undefined
+0           1, 3, 4, 6, 8, 9 or undefined     5             any value
+0           7                                 5             undefined
+> 0         1, 3, 4, 6, 8, 9 or undefined     3             any value
+> 0         7                                 3             undefined
+      ]]></Description>
+    <Reference>6.1.2 </Reference>
+  </Test>
+	<Test id="1658" level="Error">
+		<Description>Check that no WRECKS object contains the attributes VERDAT, VERACC and VERLEN. </Description>
+		<Reference>6.2.1 </Reference>
+	</Test>
+	<Test id="1659" level="Error">
+		<Description>Check for any WRECKS object with VALSOU encoded with an explicit attribute value, if the value for EXPSOU is (1) [within the range of depth of the surrounding depth area] or if EXPSOU is not used, that the value for VALSOU is greater than DRVAL1 and less than or equal to DRVAL2 of the overlying DEPARE or DRGARE object. Remark: This check must only be applied if both DRVAL1 and DRVAL2 for the overlying Group 1 object are encoded with explicit and different attribute values. </Description>
+		<Reference>6.2.1 </Reference>
+	</Test>
+	<Test id="1660" level="Error">
+		<Description>Check for any WRECKS object with VALSOU encoded with an explicit attribute value, if the value for EXPSOU is (2) [shoaler than the range of depth of the surrounding depth area], that the value for VALSOU is less than or equal to DRVAL1 of the overlying DEPARE or DRGARE object. Remark: This check must only be applied if  DRVAL1 for the overlying Group 1 object is not encoded as “unknown". </Description>
+		<Reference>6.2.1 </Reference>
+	</Test>
+	<Test id="1661" level="Error">
+		<Description>Check for any WRECKS object with VALSOU encoded with an explicit attribute value, if the value for EXPSOU is (3) [deeper than the range of depth of the surrounding depth area], that the value for VALSOU is: 1. greater than DRVAL2 of the overlying DEPARE, or 2. greater than DRVAL2 of the overlying DRGARE, when both DRVAL1 and DRVAL2 of the DRGARE are encoded, or 3. greater than DRVAL1 of the overlying DRGARE, when only DRVAL1 of the DRGARE is encoded. Remark: This check must only be applied if DRVAL2 for the overlying DEPARE object or DRVAL1 for the overlying DRGARE object are not encoded as “unknown”. </Description>
+		<Reference>6.2.1 </Reference>
+	</Test>
+	<Test id="1662" level="Error">
+		<Description>Check that any area WRECKS or area OBSTRN object is covered by a DEPARE, LNDARE or UNSARE object of type Area. </Description>
+		<Reference>6.2.1 and 6.2.2 </Reference>
+	</Test>
+  <Test id="1663" level="Warning">
+    <Description>Check for any WRECKS object that the combination of attribute values corresponds to the following table. "undefined” means that no value is encoded. "any value" means, - for mandatory attribute: any predefined value or unknown value, - for optional attribute: any predefined value or undefined. For each specific case, when QUASOU, TECSOU and STATUS (attributes of type List) are encoded, they should contain one or more values selected from the lists of allowed values given in the table. In addition, other attributes which do not appear in the table may be encoded. 
+      <![CDATA[
+    
+VALSOU        WATLEV          CATWRK                QUASOU                      HEIGHT        TECSOU SOUACC
+======        ======          ======                ======                      ======        =============
+Undefined     3 or unknown    1,2,3 or unknown      2 or undefined              Undefined     Undefined
+Undefined     4 or 5          Any value             2 or undefined              Undefined     Undefined
+Undefined     1 or 2          4 or 5 or unknown     Undefined                   Any value     Undefined
+unknown       3 or unknown    1,2,3 or undefined    2 or undefined              Undefined     Undefined
+unknown       4 or 5          Any value             2 or undefined              Undefined     Undefined
+unknown       1 or 2          4 or 5 or undefined   Undefined                   Any value     Undefined
+< 0           4               Any value             7                           Undefined     Undefined
+< 0           4               Any value             1,3,4,6,8,9 or undefined    Undefined     Any value
+0             5               Any value             1,3,4,6,8,9 or undefined    Undefined     Any value
+> 0           3               1,2,3 or undefined    7                           Undefined     Undefined
+> 0           3               1,2,3 or undefined    1,3,4,6,8,9 or undefined    Undefined     Any value
+      ]]></Description>
+    <Reference>6.2.1 </Reference>
+  </Test>
+	<Test id="1664" level="Error">
+		<Description>Check that no OBSTRN object contains the attribute VERACC or VERDAT. </Description>
+		<Reference>6.2.2 </Reference>
+	</Test>
+	<Test id="1665" level="Error">
+		<Description>Check for any OBSTRN object with VALSOU encoded with an explicit attribute value, if the value for EXPSOU is (1) [within the range of depth of the surrounding depth area] or if EXPSOU is not used, that the value for VALSOU is greater than DRVAL1 and less than or equal to DRVAL2 of the overlying DEPARE or DRGARE object. Remark: This check must only be applied if both DRVAL1 and DRVAL2 for the overlying Group 1 object are encoded with explicit and different attribute values. </Description>
+		<Reference>6.2.2 </Reference>
+	</Test>
+	<Test id="1666" level="Error">
+		<Description>Check for any OBSTRN object with VALSOU encoded with an explicit attribute value, if the value for EXPSOU is (2) [shoaler than the range of depth of the surrounding depth area], that the value for VALSOU is less than or equal to DRVAL1 of the overlying DEPARE or DRGARE object. Remark: This check must only be applied if  DRVAL1 for the overlying Group 1 object is not encoded as “unknown". </Description>
+		<Reference>6.2.2 </Reference>
+	</Test>
+	<Test id="1667" level="Error">
+		<Description>Check for any OBSTRN object with VALSOU encoded with an explicit attribute value, if the value for EXPSOU is (3) [deeper than the range of depth of the surrounding depth area], that the value for VALSOU is: 1. greater than DRVAL2 of the overlying DEPARE, or 2. greater than DRVAL2 of the overlying DRGARE, when both DRVAL1 and DRVAL2 for the DRGARE are encoded, or 3. greater than DRVAL1 of the overlying DRGARE, when only DRVAL1 for the DRGARE is encoded. Remark: This check must only be applied if DRVAL2 for the overlying DEPARE object or DRVAL1 for the overlying DRGARE object are not encoded as “unknown”. </Description>
+		<Reference>6.2.2 </Reference>
+	</Test>
+	<Test id="1668" level="Warning">
+		<Description>Check that no OBSTRN object has a value for the attribute PRODCT without a value of (2) [wellhead] or (3) [diffuser] for CATOBS. </Description>
+		<Reference>6.2.2 </Reference>
+	</Test>
+  <Test id="1669" level="Warning">
+    <Description> Check for any OBSTRN object that the combination of attribute values corresponds to the following table. "undefined” means that no value is encoded. "any value" means, - for mandatory attribute: any predefined value or unknown value, - for optional attribute: any predefined value or undefined. For each specific case, when QUASOU and TECSOU (attributes of type List) are encoded, they should contain one or more values selected from the lists of allowed values given in the table. In addition, other attributes which do not appear in the table may be encoded.
+      <![CDATA[
+      
+VALSOU        WATLEV              QUASOU                      TECSOU SOUACC     HEIGHT
+======        ======              ======                      =============     ======
+unknown       3,4,5 or unknown    2 or undefined              Undefined         Undefined
+unknown       1 or 2              Undefined                   Undefined         Any value
+unknown       7                   Undefined                   Undefined         Undefined
+VALSOU < 0    4                   1,3,4,6,8,9 or undefined    Any value         Undefined
+VALSOU < 0    4                   7                           Undefined         Undefined
+VALSOU = 0    5                   1,3,4,6,8,9 or undefined    Any value         Undefined
+VALSOU > 0    3                   1,3,4,6,8,9 or undefined    Any value         Undefined
+VALSOU > 0    3                   7                           Undefined         Undefined
+      ]]>
+    </Description>
+  </Test>
+	<Test id="1670" level="Warning">
+		<Description>Check where a WRECKS or OBSTRN area includes other WRECKS or OBSTRN point objects, that the encoded values of  the attributes EXPSOU, QUASOU, SOUACC, TECSOU, VALSOU and WATLEV for the area object are identical to the values for the shallowest point object. </Description>
+		<Reference>6.3.2 </Reference>
+	</Test>
+	<Test id="1671" level="Error">
+		<Description>Check for any line object whose geometry is coincident with the geometry of an area object of the same class and attribute values except for attributes SORIND, SORDAT and SCAMIN. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="1672" level="Error">
+		<Description>Check for the occurrence of any point object lying inside an area object of the same class and attribute values, except for LNDARE, WRECKS and OBSTRN objects. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="1673" level="Warning">
+		<Description>Check for any SBDARE objects: 1. That the different NATSUR values are separated by a slash or a comma, without a space. 2. That the attribute NATSUR does not begin or finish with a comma or a slash. 3. That the attribute NATSUR does not have more than one consecutive comma (or slash). 4. With a value for NATQUA, that the NATSUR and NATQUA attribute values have the same number of commas (or slashes). 5. That the attribute NATSUR does not contain the character chain “ 9/ ”. </Description>
+		<Reference>7.1</Reference>
+	</Test>
+	<Test id="1674" level="Warning">
+		<Description>Check for any SBDARE object of type Area, located in an intertidal area, that WATLEV has a value of (4) [covers and uncovers]. </Description>
+		<Reference>7.1(e) and 7.1 (g) </Reference>
+	</Test>
+	<Test id="1675" level="Error">
+		<Description>Check that no SNDWAV object contains the attribute VERACC. </Description>
+		<Reference>7.2.1 </Reference>
+	</Test>
+	<Test id="1677" level="Error">
+		<Description>Check that no MORFAC object has a value for the attribute BOYSHP unless the object contains a value of (7) [mooring buoy] for the attribute CATMOR. </Description>
+		<Reference>4.6.7.1 </Reference>
+	</Test>
+	<Test id="1678" level="Error">
+		<Description>Check that no RECTRC object contains the attributes VERDAT and DRVAL2. </Description>
+		<Reference>10.1.1 </Reference>
+	</Test>
+	<Test id="1679" level="Error">
+		<Description>Check for any object that attributes of type enumerated ('E'), float ('F'), integer ('I') or code string ('A') contain only one value. </Description>
+		<Reference> </Reference>
+	</Test>
+	<Test id="1681" level="Error">
+		<Description>Check for any one way RECTRC object of type Line with a value for ORIENT encoded, that the direction of digitizing is consistent (i.e. deviation less than 5 degrees) with the direction of the traffic flow (as encoded in ORIENT). </Description>
+		<Reference>10.1.1 </Reference>
+	</Test>
+	<Test id="1682" level="Warning">
+		<Description>Check that any RECTRC or NAVLNE object belongs to a C_AGGR collection object, except for RECTRC objects with a value of (2) [not based on a system of fixed marks] for CATTRK, which may exist as isolated objects. </Description>
+		<Reference>10.1.2 </Reference>
+	</Test>
+	<Test id="1683" level="Warning">
+		<Description>If only one RECTRC and only one NAVLNE belong to the same C_AGGR collection object, check that the RECTRC and NAVLNE objects have the same or reciprocal attribute value for ORIENT. </Description>
+		<Reference>10.1.2 </Reference>
+	</Test>
+	<Test id="1684" level="Error">
+		<Description>Check for any measured distance that each transit line and its beacons are aggregated into collection objects C_AGGR, and that these collection objects, along with the track to be followed, are aggregated into another C_AGGR object. </Description>
+		<Reference>10.1.3 </Reference>
+	</Test>
+	<Test id="1685" level="Error">
+		<Description>Check that any object encoded as TSSBND is the outer limit of a traffic lane/separation scheme roundabout. </Description>
+		<Reference>10.2.1.2 </Reference>
+	</Test>
+	<Test id="1686" level="Warning">
+		<Description>Check that any object encoded as TSELNE separates either of the following: 1) Two traffic lanes, 2) Traffic lane and Inshore traffic zone. </Description>
+		<Reference>10.2.1.3 </Reference>
+	</Test>
+	<Test id="1687" level="Warning">
+		<Description>Check that any object encoded as TSEZNE separates either of the following: 1) Two traffic lanes, 2) Traffic lane and Inshore traffic zone, 3) Centre of roundabout. </Description>
+		<Reference>10.2.1.4 </Reference>
+	</Test>
+	<Test id="1688" level="Error">
+		<Description>Check that any object encoded as TSSCRS encodes a crossing between at least four traffic lanes. </Description>
+		<Reference>10.2.1.5 </Reference>
+	</Test>
+	<Test id="1689" level="Error">
+		<Description>Check that no TSSCRS object overlaps a TSEZNE object. </Description>
+		<Reference>10.2.1.5 </Reference>
+	</Test>
+	<Test id="1690" level="Error">
+		<Description>Check that no TSSRON object overlaps a TSEZNE object. </Description>
+		<Reference>10.2.1.6 </Reference>
+	</Test>
+	<Test id="1691" level="Error">
+		<Description>Check that no DWRTPT object contains the attributes VERDAT and DRVAL2. </Description>
+		<Reference>10.2.2.1 </Reference>
+	</Test>
+	<Test id="1692" level="Error">
+		<Description>Check that any DWRTPT object is covered by DEPARE and/or DRGARE objects. </Description>
+		<Reference>10.2.2.1 </Reference>
+	</Test>
+	<Test id="1693" level="Warning">
+		<Description>Check for any DWRTPT and DWRTCL object, that if the attribute OBJNAM is encoded, the DWRTPT or DWRTCL object is not aggregated in a collection object. </Description>
+		<Reference>10.2.2.1 </Reference>
+	</Test>
+	<Test id="1694" level="Error">
+		<Description>Check for any one way DWRTCL object with a value for ORIENT encoded, the direction of digitizing is consistent (i.e. deviation less than 5 degrees) with the direction of the traffic flow (as encoded in ORIENT). </Description>
+		<Reference>10.2.2.2 </Reference>
+	</Test>
+	<Test id="1695" level="Error">
+		<Description>Check that no DWRTCL object contains the attributes VERDAT and DRVAL2. </Description>
+		<Reference>10.2.2.2 </Reference>
+	</Test>
+	<Test id="1696" level="Error">
+		<Description>Check for any one way RCRTCL object with a value for ORIENT encoded, the direction of digitizing is consistent (i.e. deviation less than 5 degrees) with the direction of the traffic flow (as encoded in ORIENT). </Description>
+		<Reference>10.2.4 </Reference>
+	</Test>
+	<Test id="1697" level="Error">
+		<Description>Check that no RCRTCL object contains the attributes VERDAT and DRVAL2. </Description>
+		<Reference>10.2.4 </Reference>
+	</Test>
+	<Test id="1698" level="Error">
+		<Description>Check that no TWRTPT object contains the attributes VERDAT and DRVAL2. </Description>
+		<Reference>10.2.6 </Reference>
+	</Test>
+	<Test id="1699" level="Error">
+		<Description>Check that no FAIRWY object contains the attribute VERDAT. </Description>
+		<Reference>10.4</Reference>
+	</Test>
+	<Test id="1700" level="Error">
+		<Description>Check that no TESARE object overlaps an EXEZNE object. </Description>
+		<Reference>11.2</Reference>
+	</Test>
+	<Test id="1701" level="Error">
+		<Description>Check that no CBLSUB object contains the attribute VERDAT. </Description>
+		<Reference>11.5.1 </Reference>
+	</Test>
+	<Test id="1702" level="Warning">
+		<Description>Check that no CBLSUB object that has a value of (4) [not in use] for the attribute STATUS has a value for the attribute CATCBL. </Description>
+		<Reference>11.5.1 </Reference>
+	</Test>
+	<Test id="1703" level="Error">
+		<Description>Check for any CBLSUB object, if the attribute CATCBL is encoded, that the value is (1) [power line], (4) [telephone], (5) [telegraph]  or (6) [mooring cable/chain]. </Description>
+		<Reference>11.5.1 </Reference>
+	</Test>
+	<Test id="1704" level="Error">
+		<Description>Check that no CBLOHD object contains an attribute value for VERDAT, without an attribute value for at least one of VERCLR or VERCSA. </Description>
+		<Reference>11.5.2 </Reference>
+	</Test>
+	<Test id="1706" level="Error">
+		<Description>Check for any CBLOHD, CBLSUB, PIPSOL or PIPOHD object, if the attribute CONDTN is encoded, that the value is (1) [under construction] or (5) [planned construction]. </Description>
+		<Reference>11.5.1 11.5.2 11.6.1 and 11.6.3 </Reference>
+	</Test>
+	<Test id="1707" level="Error">
+		<Description>Check for any CBLARE object, if the attribute CATCBL is encoded, that the value is (1) [power line], (4) [telephone] or (5) [telegraph]. </Description>
+		<Reference>11.5.3 </Reference>
+	</Test>
+	<Test id="1708" level="Error">
+		<Description>Check that no PIPSOL object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>11.6.1 </Reference>
+	</Test>
+	<Test id="1709" level="Warning">
+		<Description>Check that no PIPSOL object that has a value of (4) [not in use] for the attribute STATUS has a value for the attribute CATPIP. </Description>
+		<Reference>11.6.1 </Reference>
+	</Test>
+	<Test id="1712" level="Warning">
+		<Description>Check that no PIPOHD object that has a value of (4) [not in use] for the attribute STATUS has a value for the attributes CATPIP or PRODCT. </Description>
+		<Reference>11.6.3 </Reference>
+	</Test>
+	<Test id="1713" level="Error">
+		<Description>Check that no PIPARE object contains the attribute CONDTN. </Description>
+		<Reference>11.6.4 </Reference>
+	</Test>
+	<Test id="1715" level="Error">
+		<Description>Check that no OFSPLF object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>11.7.2 </Reference>
+	</Test>
+	<Test id="1716" level="Error">
+		<Description>Check that no OSPARE object contains the attribute VERACC. </Description>
+		<Reference>11.7.4 </Reference>
+	</Test>
+	<Test id="1717" level="Error">
+		<Description>Check that no FSHFAC object contains the attribute VERACC. </Description>
+		<Reference>11.9.1 </Reference>
+	</Test>
+	<Test id="1718" level="Error">
+		<Description>Check that no MARCUL object contains the attribute VERDAT. </Description>
+		<Reference>11.9.2 </Reference>
+	</Test>
+  <Test id="1719" level="Warning">
+    <Description>Check for any MARCUL object that the combination of attribute values corresponds to the following table. "undefined” means that no value is encoded. "any value" means, - for mandatory attribute: any predefined value or unknown value, - for optional attribute: any predefined value or undefined. For each specific case, when QUASOU (attribute of type List) is encoded, it should contain one or more values selected from the list of allowed values given in the table. In addition, other attributes which do not appear in the table may be encoded. 
+      <![CDATA[
+    
+WATLEV          VALSOU                  QUASOU
+======          ======                  ======
+1,2,5 or 7      Undefined               Undefined
+4               VALSOU < 0              1,3,4,6,7,8,9 or undefined
+4               Undefined or unknown    2 or undefined
+5               VALSOU = 0              1,3,4,6,8,9 or undefined
+5               Undefined or unknown    2 or undefined
+3               VALSOU > 0              1,3,4,6,7,8,9 or undefined
+3               Unknown                 2 or undefined
+Unknown         Unknown                 2 or undefined
+      ]]>
+    </Description>
+    <Reference>11.9.2 </Reference>
+  </Test>
+	<Test id="1720" level="Error">
+		<Description>Check that no ICEARE object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>11.13.1 </Reference>
+	</Test>
+	<Test id="1721" level="Error">
+		<Description>Check that no RADRFL object is attached to a navigational aid having CONRAD as a relevant attribute (the navigational aid must use CONRAD = (3) [radar conspicuous (has reflector radar)]). </Description>
+		<Reference>12.1.1 </Reference>
+	</Test>
+	<Test id="1722" level="Warning">
+		<Description>Check that any navigational aid equipment object is a slave to a navigational aid structure object or another navigational aid equipment object. When two objects (including one DAYMAR) contained in the list of structure objects are part of the navigational aid, then the DAYMAR object must be considered as an equipment object. NOTE: CRANES, FLODOC, FORSTC, FSHFAC, HULKES, PONTON, OBSTRN, PYLONS, SILTNK and WRECKS objects must be considered as possible structure objects, in addition to the list given in Annex A (12.1.1). </Description>
+		<Reference>12.1.2 and 12.1.1 </Reference>
+	</Test>
+	<Test id="1723" level="Error">
+		<Description>Check that all point objects comprising a navigational aid are pointing to the same point spatial object. </Description>
+		<Reference>12.1.2 </Reference>
+	</Test>
+	<Test id="1724" level="Warning">
+		<Description>Check that no navigational aid equipment object contains a value for OBJNAM equivalent to the OBJNAM value of the master object. </Description>
+		<Reference>12.1.2 </Reference>
+	</Test>
+	<Test id="1725" level="Warning">
+		<Description>Check, for a navigational aid containing only equipment objects that point to the same point spatial object, that a DAYMAR object (if one exists) is encoded as the master object else a LIGHTS object (if one exists) is encoded as the master object. </Description>
+		<Reference>12.1.2 </Reference>
+	</Test>
+	<Test id="1726" level="Error">
+		<Description>Check that the entire area of the data set is covered by one or more M_NSYS objects, with a value for the attribute MARSYS indicating the buoyage system in operation. </Description>
+		<Reference>12.2</Reference>
+	</Test>
+	<Test id="1727" level="Error">
+		<Description>Check that no M_NSYS object with a value for MARSYS overlaps any other M_NSYS object that contains a value for MARSYS. </Description>
+		<Reference>12.2</Reference>
+	</Test>
+	<Test id="1728" level="Error">
+		<Description>Check that no M_NSYS object with a value for ORIENT overlaps any other M_NSYS object that contains a value for ORIENT. </Description>
+		<Reference>12.2</Reference>
+	</Test>
+	<Test id="1729" level="Warning">
+		<Description>Check for any geo object forming part of a navigational aid (buoy or beacon), that the combination of characteristics for structure, topmark and lights conforms to the IALA system being used (given in MARSYS of the geo object or, if not encoded, in MARSYS of the meta-object M_NSYS). This check must not be applied to objects having a value of (9) [no system] or (10) [other system]  for the attribute MARSYS, and to slave objects if the master object has a value of (9) [no system] or (10) [other system] for the attribute MARSYS. Optional attributes may be either encoded or undefined. Mandatory attributes must be encoded with explicit values (i.e. not "unknown"). </Description>
+		<Reference>12.2 and Encoding Bulletin EB19 </Reference>
+	</Test>
+	<Test id="1730" level="Error">
+		<Description>Check that no BCNCAR object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>12.3.1 </Reference>
+	</Test>
+	<Test id="1731" level="Error">
+		<Description>Check that no BCNISD object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>12.3.1 </Reference>
+	</Test>
+	<Test id="1732" level="Error">
+		<Description>Check that no BCNLAT object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>12.3.1 </Reference>
+	</Test>
+	<Test id="1733" level="Error">
+		<Description>Check that no BCNSAW object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>12.3.1 </Reference>
+	</Test>
+	<Test id="1734" level="Error">
+		<Description>Check that no BCNSPP object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>12.3.1 </Reference>
+	</Test>
+	<Test id="1735" level="Error">
+		<Description>Check that no Beacon object contains a value for the attribute MARSYS that is identical to the value for MARSYS within the object M_NSYS that covers the Beacon object. </Description>
+		<Reference>12.3.1 </Reference>
+	</Test>
+	<Test id="1736" level="Error">
+		<Description>Check that no DAYMAR object contains the attributes VERDAT and VERACC. </Description>
+		<Reference>12.3.3 </Reference>
+	</Test>
+	<Test id="1737" level="Error">
+		<Description>Check that no BOYCAR object contains the attribute VERACC. </Description>
+		<Reference>12.4.1 </Reference>
+	</Test>
+	<Test id="1738" level="Error">
+		<Description>Check that no BOYINB object contains the attribute VERACC. </Description>
+		<Reference>12.4.1 </Reference>
+	</Test>
+	<Test id="1739" level="Error">
+		<Description>Check that no BOYISD object contains the attribute VERACC. </Description>
+		<Reference>12.4.1 </Reference>
+	</Test>
+	<Test id="1740" level="Error">
+		<Description>Check that no BOYLAT object contains the attribute VERACC. </Description>
+		<Reference>12.4.1 </Reference>
+	</Test>
+	<Test id="1741" level="Error">
+		<Description>Check that no BOYSPP object contains the attribute VERACC. </Description>
+		<Reference>12.4.1 </Reference>
+	</Test>
+	<Test id="1742" level="Error">
+		<Description>Check that no BOYSAW object contains the attribute VERACC. </Description>
+		<Reference>12.4.1 </Reference>
+	</Test>
+	<Test id="1743" level="Error">
+		<Description>Check that no Buoy object contains a value for the attribute MARSYS that is identical to the value for MARSYS within the object M_NSYS that covers the Buoy object. </Description>
+		<Reference>12.4.1 </Reference>
+	</Test>
+	<Test id="1744" level="Error">
+		<Description>Check that no LITVES object contains the attributes HORACC and VERACC. </Description>
+		<Reference>12.4.2 </Reference>
+	</Test>
+	<Test id="1745" level="Error">
+		<Description>Check that no LITFLT object contains the attributes HORACC and VERACC. </Description>
+		<Reference>12.4.2 </Reference>
+	</Test>
+	<Test id="1746" level="Error">
+		<Description>Check that no TOPMAR object contains the attributes VERACC, VERDAT, VERLEN, HEIGHT and MARSYS. </Description>
+		<Reference>12.6</Reference>
+	</Test>
+	<Test id="1747" level="Error">
+		<Description>Check that no RETRFL object contains the attributes VERACC and MARSYS. </Description>
+		<Reference>12.7</Reference>
+	</Test>
+	<Test id="1748" level="Error">
+		<Description>Check that no RETRFL object contains the attribute VERDAT. </Description>
+		<Reference>12.7</Reference>
+	</Test>
+	<Test id="1749" level="Error">
+		<Description>Check that no LIGHTS object contains the attribute VERACC. </Description>
+		<Reference>12.8.1 </Reference>
+	</Test>
+	<Test id="1750" level="Error">
+		<Description>Check that no LIGHTS object that is a slave to a buoy object, has a value for the attribute HEIGHT. </Description>
+		<Reference>12.8.1 </Reference>
+	</Test>
+	<Test id="1751" level="Error">
+		<Description>Check that no LIGHTS object has a value for ORIENT without a value of (1) [directional function] or (16) [moiré effect] for CATLIT. </Description>
+		<Reference>12.8.1 and Appendix B.1 (3.5.2) </Reference>
+	</Test>
+	<Test id="1752" level="Error">
+		<Description>Check that no LIGHTS object with a value of (1) [fixed] for LITCHR contains the attributes SIGGRP, SIGPER and SIGSEQ. </Description>
+		<Reference>12.8.1 </Reference>
+	</Test>
+	<Test id="1754" level="Error">
+		<Description>Check that no LIGHTS object has an attribute value for VERDAT that is identical to the VERDAT value within M_VDAT. </Description>
+		<Reference>12.8.1 </Reference>
+	</Test>
+	<Test id="1755" level="Error">
+		<Description>Check that no LIGHTS object has an attribute value for VERDAT that is identical to the value given in the Vertical Datum subfield (VDAT) of the Data Set Parameter field (DSPM). </Description>
+		<Reference>12.8.1 </Reference>
+	</Test>
+	<Test id="1756" level="Error">
+		<Description>Check that no LIGHTS object having a value of (4) [leading light] for the attribute CATLIT has a value for ORIENT, unless CATLIT also contains a value of (1) [directional function]. </Description>
+		<Reference>12.8.6.4 and 12.8.6.5 </Reference>
+	</Test>
+	<Test id="1757" level="Error">
+		<Description>Check that any LIGHTS object having values of (19) [horizontally disposed] or (20) [vertically disposed] for the attribute CATLIT also has the number of lights encoded in MLTYLT. </Description>
+		<Reference>12.8.7 </Reference>
+	</Test>
+	<Test id="1758" level="Error">
+		<Description>Check that no LIGHTS object has a value of (17) [emergency] for the attribute CATLIT without another LIGHTS object encoded with the same spatial position. </Description>
+		<Reference>12.8.7 </Reference>
+	</Test>
+	<Test id="1759" level="Error">
+		<Description>Check that no RDOSTA object contains a value for the attribute ORIENT without a value of (2) [directional radiobeacon] for the attribute CATROS. </Description>
+		<Reference>12.9.1 </Reference>
+	</Test>
+	<Test id="1760" level="Error">
+		<Description>Check that no RADSTA object contains the attributes VERACC and VERDAT. </Description>
+		<Reference>12.11.3 </Reference>
+	</Test>
+	<Test id="1761" level="Error">
+		<Description>Check that no RADRFL object contains the attributes VERACC and VERDAT. </Description>
+		<Reference>12.12</Reference>
+	</Test>
+	<Test id="1762" level="Error">
+		<Description>Check that no RADRFL object is encoded on an Area or Point type object, except for DAYMAR or PILPNT objects. </Description>
+		<Reference>12.12</Reference>
+	</Test>
+	<Test id="1763" level="Error">
+		<Description>Check that the Relationship Indicator [RIND] subfield of the Feature Record to Feature object Pointer [FFPT] field for any C_ASSO or C_AGGR object is set to (3) [peer]. </Description>
+		<Reference>15 and Appendix B.1 (3.9) </Reference>
+	</Test>
+	<Test id="1764" level="Error">
+		<Description>Check that no permanent object with a value of (1) [permanent] for the attribute STATUS has PERSTA and/or PEREND encoded. </Description>
+		<Reference>2.1.5.1 and logical consistency </Reference>
+	</Test>
+	<Test id="1765" level="Warning">
+		<Description>Check when both M_QUAL and M_ACCY objects are used in a cell, that these meta objects provide exhaustive, non-overlapping coverage of those areas covered by M_COVR objects with CATCOV = 1 [coverage available]. </Description>
+		<Reference>2.2.4.1 </Reference>
+	</Test>
+	<Test id="1766" level="Error">
+		<Description>Check for any attribute PICREP, TXTDSC and NTXTDS that the attribute value only contains one file name. </Description>
+		<Reference>2.3 and 4.8.20 </Reference>
+	</Test>
+	<Test id="1767" level="Warning">
+		<Description>Check for any edge which fulfils the following conditions: 1. it is shared by an area SBDARE object with WATLEV = 4 [covers and uncovers], and 2. it is shared by an area DEPARE or DRGARE object, with DRVAL2 ≤ 0, and 3. it is shared by an area DEPARE or DRGARE object, with DRVAL1 ≥ 0, or by an area UNSARE object, and 4. it is not shared by a line DAMCON, GATCON, SLCONS or LNDARE that it is also shared by a DEPCNT object with VALDCO = 0. </Description>
+		<Reference>5.2</Reference>
+	</Test>
+	<Test id="1768" level="Warning">
+		<Description>Check for any SOUNDG object, that any depth value is greater than DRVAL1 of the overlying DEPARE or DRGARE object. Remark: This check must only be applied if DRVAL1 for the overlying DEPARE or DRGARE object is encoded with an explicit value. </Description>
+		<Reference>5.3</Reference>
+	</Test>
+	<Test id="1769" level="Warning">
+		<Description>Check for any SOUNDG object, if the value for EXPSOU is not (3) [deeper than the range of depth of the surrounding depth area], that any depth value is shoaler than or equal to DRVAL2 of the overlying DEPARE object. Remark: This check must only be applied if DRVAL2 for the overlying DEPARE object is encoded with an explicit value. </Description>
+		<Reference>5.3</Reference>
+	</Test>
+	<Test id="1770" level="Warning">
+		<Description>Check for any SOUNDG object, if the value for EXPSOU is (3) [deeper than the range of depth of the surrounding depth area], that any depth value is: 1. greater than DRVAL2 of the overlying DEPARE, or 2. greater than DRVAL2 of the overlying DRGARE, when both DRVAL1 and DRVAL2 for the DRGARE are encoded, or 3. greater than DRVAL1 of the overlying DRGARE, when only DRVAL1 for the DRGARE is encoded. Remark: This check must only be applied if DRVAL2 for the overlying DEPARE object or DRVAL1 for the overlying DRGARE object are not encoded as “unknown”. </Description>
+		<Reference>5.3</Reference>
+	</Test>
+	<Test id="1771" level="Warning">
+		<Description>Check for any edge which is shared by a DEPCNT (VALDCO) and two area DEPARE (DRVAL1, DRVAL2), but by no line DEPARE, that: 1. (Maximum value of DRVAL2) ＞ VALDCO ＞ (Minimum value of DRVAL1), 2. and (Minimum value of DRVAL2) = VALDCO </Description>
+		<Reference>5.4.3 </Reference>
+	</Test>
+	<Test id="1772" level="Error">
+		<Description>Check for any UWTROC object with VALSOU encoded with an explicit attribute value, if the value for EXPSOU is (1) [within the range of depth of the surrounding depth area] or if EXPSOU is not used , that the value for VALSOU is greater than DRVAL1 and less than or equal to DRVAL2 of the overlying DEPARE or DRGARE object. Remark: This check must only be applied if both DRVAL1 and DRVAL2 for the overlying Group 1 object are encoded with explicit and different attribute values. </Description>
+		<Reference>6.1.2 </Reference>
+	</Test>
+	<Test id="1773" level="Error">
+		<Description>Check for any UWTROC object with VALSOU encoded with an explicit attribute value, if the value for EXPSOU is (2) [shoaler than the range of depth of the surrounding depth area], that the value for VALSOU is less than or equal to DRVAL1 of the overlying DEPARE or DRGARE object. Remark: This check must only be applied if  DRVAL1  for the overlying Group 1 object is not encoded as “unknown”. </Description>
+		<Reference>6.1.2 </Reference>
+	</Test>
+	<Test id="1774" level="Error">
+		<Description>Check for any UWTROC object with VALSOU encoded with an explicit attribute value, if the value for EXPSOU is (3) [deeper than the range of depth of the surrounding depth area], that the value for VALSOU is: 1. greater than DRVAL2 of the overlying DEPARE, or 2. greater than DRVAL2 of the overlying DRGARE, when both DRVAL1 and DRVAL2 for the DRGARE are encoded, or 3. greater than DRVAL1 of the overlying DRGARE, when only DRVAL1 for the DRGARE is encoded. Remark: This check must only be applied if DRVAL2 for the overlying DEPARE object or DRVAL1 for the overlying DRGARE object are not encoded as “unknown”. </Description>
+		<Reference>6.1.2 </Reference>
+	</Test>
+	<Test id="1775" level="Warning">
+		<Description>Check for any equipment object (see UOC 12.1.1) which is situated within a DEPARE, DRGARE or UNSARE, that: 1. it has a navigational aid structure as master, or 2. it shares the same spatial object as a point FLODOC, HULKES, LNDARE, PONTON or PYLONS object, or 3. it is situated on a line CBLOHD, CONVYR, COALNE, DAMCON (with CATDAM = 3 [flood barrage]), BRIDGE, FLODOC, LNDARE, MORFAC, PIPOHD, PONTON or SLCONS object, or 4. it is situated within an area CONVYR or BRIDGE object. </Description>
+		<Reference>12.1.1 and 12.8.8 </Reference>
+	</Test>
+	<Test id="1776" level="Warning">
+		<Description>Check that any LIGHTS object having value 6, 7, 9, 10, 11 or 28  for LITCHR is encoded with the corresponding value for SIGGRP: 1. LITCHR = 6 [ultra quick-flashing], then SIGGRP = (1) 2. LITCHR = 7 [isophase], then SIGGRP = (1) 3. LITCHR = 9 [interrupted quick-flashing], then SIGGRP = () 4. LITCHR = 10 [interrupted very quick-flashing], then SIGGRP = () 5. LITCHR = 11 [interrupted ultra quick-flashing], then SIGGRP = () 6. LITCHR = 28 [alternating], then SIGGRP = () </Description>
+		<Reference>12.8.3 </Reference>
+	</Test>
+	<Test id="1777" level="Warning">
+		<Description>Check that all the pointers of any collection object in a cell reference objects that exist in that cell. </Description>
+		<Reference>15</Reference>
+	</Test>
+	<Test id="1778" level="Warning">
+		<Description>Check that no LIGHTS object has CATLIT = 1 [directional function] with the angle defined by SECTR1 and SECTR2 being greater than 10 degrees. </Description>
+		<Reference>12.8.6.5 and Appendix A Ch.2 (code 37) </Reference>
+	</Test>
+	<Test id="1779" level="Error">
+		<Description>Check that no area DEPARE object has DRVAL1 equal to DRVAL2. </Description>
+		<Reference>5.4 and logical consistency </Reference>
+	</Test>
+	<Test id="1780" level="Warning">
+		<Description>Check that for a SBDARE object, if NATSUR is encoded, the associated attribute value for NATQUA (if encoded) is correct (the symbol "x" indicates the possible attribute combinations): 
+      <![CDATA[
+    
+NATQUA    1     2     3     4     5     6     7     8     9     10
+NATSUR
+======  ====  ====  ====  ====  ====  ====  ====  ====  ====  ====
+1                                 x     x     x     x     x     x
+2                                 x     x     x                 x
+3         x     x     x           x     x     x                 x
+4         x     x     x                 x           x     x     x
+5         x     x     x                             x     x
+6         x     x     x                             x     x
+7         x     x     x                             x     x
+8                                                   x     x
+9                                                   x     x
+11                                                  x
+14                          x
+17        x     x     x     x                             x
+18                                                  x     x
+      ]]>
+    </Description>
+		<Reference>logical consistency </Reference>
+	</Test>
+	<Test id="1781" level="Warning">
+		<Description>Check that any BUISGL or LNDMRK object which is part of a master/slave relationship and references a LIGHTS object (except with the value of (6) [air obstruction light], (8) [flood light] or (9) [strip light] for CATLIT) as slave, has a value of (33) [light support] for the attribute FUNCTN. </Description>
+		<Reference>12.3.2 and S52 </Reference>
+	</Test>
+	<Test id="1782" level="Warning">
+		<Description>Check that SWPARE objects do not overlap. </Description>
+		<Reference>logical consistency </Reference>
+	</Test>
+	<Test id="1783" level="Warning">
+		<Description>Check that no object of type Area with: 1. WATLEV = 4 [covers and uncovers] overlaps a DEPARE object with DRVAL1 &gt;=  0. 2. WATLEV = 5 [awash] overlaps a DEPARE object with DRVAL1 &gt; 0. </Description>
+		<Reference>logical consistency </Reference>
+	</Test>
+	<Test id="1784" level="Warning">
+		<Description>Check for any spatial object that no attribute HORDAT, POSACC, or QUAPOS is populated with a missing value (unknown). </Description>
+		<Reference>logical consistency </Reference>
+	</Test>
+	<Test id="1785" level="Warning">
+		<Description>Check that only LNDMRK objects having CATLMK = 18 [windmill] or 19 [windmotor], have been encoded with CONDTN = 4 [wingless]. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="1786" level="Warning">
+		<Description>Check that any objects of type Area with WATLEV = 2 [always dry] are covered by LNDARE objects of type Area. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="1787" level="Warning">
+		<Description>Check for any objects NAVLNE and RECTRC sharing an edge that they have the same or reciprocal attribute value for ORIENT. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="1788" level="Warning">
+		<Description>Check that when one object NAVLNE and one object RECTRC share an edge, they belong to the same C_AGGR object. </Description>
+		<Reference>10.1.2 </Reference>
+	</Test>
+	<Test id="1789" level="Warning">
+		<Description>Check for any object DWRTCL, NAVLNE, RECTRC and RCRTCL of type Line with a value for ORIENT encoded, that the orientation of the spatial geometry is consistent (i.e. deviation less than 5 degrees) with the attribute value (or the reciprocal value) encoded in ORIENT. </Description>
+		<Reference>Logical consistency </Reference>
+	</Test>
+	<Test id="1790" level="Warning">
+		<Description>Check for any LIGHTS having ORIENT encoded with an explicit value, that: 1. SECTR1 and SECTR2 are not populated, or 2. it is not aggregated to a RECTRC or a NAVLNE in a collection object C_AGGR, or 3. the structure object which is the master of this LIGHTS in a master/slave relationship is not aggregated to a RECTRC or a NAVLNE in a collection object C_AGGR. </Description>
+		<Reference>Encoding Bulletin EB9 </Reference>
+	</Test>
+	<Test id="1791" level="Warning">
+		<Description>Check for any NAVLNE having CATNAV = 3 [leading line bearing a recommended track] that a RECTRC with CATTRK=1 [based on a system of fixed marks] shares a part of the line geometry used for the NAVLNE, and vice versa. </Description>
+		<Reference>logical consistency </Reference>
+	</Test>
+	<Test id="1792" level="Warning">
+		<Description>Check that no cell crosses the 180° meridian. </Description>
+		<Reference>Encoding Bulletin EB18 </Reference>
+	</Test>
+	<Test id="1793" level="Warning">
+		<Description>Check for any master/slave relationship which references one or more LIGHTS, that there is at least one LIGHTS which is not encoded with LITVIS = 6 [visibility deliberately restricted] or LITVIS = 7 [obscured]. </Description>
+		<Reference>logical consistency </Reference>
+	</Test>
+	<Test id="1794" level="Warning">
+		<Description>Check for any LIGHTS object having CATLIT = 1 [directional function] and which is a slave in a master/slave relationship, that the master object is not a BOYCAR, BOYINB, BOYISD, BOYLAT, BOYSAW, BOYSPP, LITFLT or LITVES. </Description>
+		<Reference>logical consistency </Reference>
+	</Test>
+	<Test id="1795" level="Warning">
+		<Description>Check for any master object in a master/slave relationship containing temporal attribution (DATEND, DATSTA, PEREND, PERSTA) that its slave objects also contain the same temporal attributes. </Description>
+		<Reference>logical consistency </Reference>
+	</Test>
+	<Test id="1797" level="Warning">
+		<Description>Check that none of the following feature object and geometric primitive combinations, which do not display in ECDIS, are present in the dataset: 1. BRIDGE of type point; 2. DAMCON of type point, with attribute CATDAM ≠ 3; 3. GRIDRN of type point; 4. PIPSOL of type point; 5. PRDARE of type point, with attribute CATPRA = [Empty (null) value]; 6. RAPIDS of type point; 7. ROADWY of type point; 8. RUNWAY of type point; 9. SLOGRD of type area, with attributes CATSLO = 1, 2, 3, 4, 5, 7 and CONRAD ≠ 1, or CATSLO = [Empty (null) value]; 10. TUNNEL of type point; 11. VEGATN of type point or area, with attribute CATVEG = 1, 10, 11, 12, [Empty (null) value]; and 12. WATFAL of type point. </Description>
+		<Reference>Encoding Bulletin EB29 </Reference>
+	</Test>
+	<Test id="2000" level="Warning">
+		<Description>Check for any object that attributes of type "L" (list) and "Error" (enumerated) only contain allowable values listed in the following table for the given object class. 1. x-y-z  allowable values (alone or in a list) 2. *  all the pre-defined attribute values as listed in S-57 3.1 Appendix A, Chapter 2 are allowed. 3. #  the attribute is mandatory, and the missing value (Unknown)   is allowed. 4. (#)  the attribute is mandatory, but the missing value (Unknown) is prohibited (no logical sense). </Description>
+		<Reference>logical consistency </Reference>
+	</Test>
+	<Test id="10001" level="Error">
+		<Description>空间线对象记录ID(Object Record ID)值重复</Description>
+		<Reference>拓扑错误</Reference>
+	</Test>
+	<Test id="10002" level="Error">
+		<Description>特征物标对象记录ID(Object Record ID)值无效</Description>
+		<Reference>拓扑错误</Reference>
+	</Test>
+	<Test id="10003" level="Error">
+		<Description>特征物标对象记录ID(Object Record ID)值重复</Description>
+		<Reference>拓扑错误</Reference>
+	</Test>
+	<Test id="10004" level="Warning">
+		<Description>水深点对象的水深值(DEPTH)无效复</Description>
+		<Reference>属性错误</Reference>
+	</Test>
+	<Test id="10005" level="Error">
+		<Description> 属于同一水深特征物标对象的水深点属性不同</Description>
+		<Reference>逻辑错误</Reference>
+	</Test>
+	<Test id="10006" level="Error">
+		<Description>空间孤立节点对象记录ID(Object Record ID)值重复</Description>
+		<Reference>拓扑错误</Reference>
+	</Test>
+	<Test id="10007" level="Error">
+		<Description>空间连接节点对象记录ID(Object Record ID)值重</Description>
+		<Reference>拓扑错误</Reference>
+	</Test>
+	<Test id="10008" level="Warning">
+		<Description> 空间线对象没有被任何特征物标对象所引用</Description>
+		<Reference>拓扑错误</Reference>
+	</Test>
+	<Test id="10009" level="Waring">
+		<Description>空间孤立节点对象没有被任何特征物标对象所引用</Description>
+		<Reference>拓扑错误</Reference>
+	</Test>
+	<Test id="10010" level="Waring">
+		<Description>空间连接节点对象没有被任何空间线对象或物标所引用</Description>
+		<Reference>拓扑错误</Reference>
+	</Test>
+	<Test id="10011" level="Error">
+		<Description>空间线对象获取起始连接节点记录ID失败</Description>
+		<Reference>拓扑错误</Reference>
+	</Test>
+	<Test id="10012" level="Error">
+		<Description>空间线对象获取终止连接节点记录ID失败</Description>
+		<Reference>拓扑错误</Reference>
+	</Test>	
+	<Test id="10013" level="Error">
+		<Description>空间线对象起始节点与连接节点坐标位置不匹配</Description>
+		<Reference>拓扑错误</Reference>
+	</Test>	
+	<Test id="10014" level="Waring">
+		<Description>空间线对象终止节点与连接节点坐标位置不匹配</Description>
+		<Reference>拓扑错误</Reference>
+	</Test>	
+	<Test id="10015" level="Error">
+		<Description>特征物标对象获取特征对象到空间对象引用关系失败</Description>
+		<Reference>拓扑错误</Reference>
+	</Test>	
+	<Test id="10016" level="Error">
+		<Description>特征物标对象坐标位置与所引用的空间对象坐标位置不匹配</Description>
+		<Reference>拓扑错误</Reference>
+	</Test>	
+	<Test id="10017" level="Error">
+		<Description>线特征物标对象含有多个子对象但不节点不连续</Description>
+		<Reference>拓扑错误</Reference>
+	</Test>	
+	<Test id="10018" level="Error">
+		<Description>面特征物标对象含有多个岛对象(面特征物标对象最多只能含有一个岛多边形)</Description>
+		<Reference>拓扑错误</Reference>
+	</Test>	
+	<Test id="10019" level="Error">
+		<Description>面特征物标对象第一个子对象线的走向错误，为逆时针</Description>
+		<Reference>拓扑错误</Reference>
+	</Test>	
+	<Test id="10020" level="Error">
+		<Description>在特征物标对象关系表中，根据特征物标对象标示（FOID）找不到对应的物标对象</Description>
+		<Reference>拓扑错误</Reference>
+	</Test>	
+	<Test id="10021" level="Waring">
+		<Description>线或面特征物标对象几何对象自相交</Description>
+		<Reference>特征物标对象错误</Reference>
+	</Test>	
+	<Test id="10022" level="Waring">
+		<Description>线或面特征物标对象几何对象与其他相同类型的特征物标对象交叠</Description>
+		<Reference>特征物标对象</Reference>
+	</Test>	
+	<Test id="10023" level="Waring">
+		<Description>线或面特征物标对象几何对象边界有冗余点</Description>
+		<Reference>特征物标对象</Reference>
+	</Test>		
+	<Test id="10024" level="Waring">
+		<Description>线特征物标几何对象有假节点</Description>
+		<Reference>特征物标对象</Reference>
+	</Test>			
+</S58>

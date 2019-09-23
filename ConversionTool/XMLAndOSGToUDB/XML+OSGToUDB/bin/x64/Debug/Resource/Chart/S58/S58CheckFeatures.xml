@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<S58>
+	<Features>
+		<Feature acronym="ACHARE">
+			<Test id="64" />
+		</Feature>
+		<Feature acronym="AIRARE">
+			<Test id="1626" />
+		</Feature>
+		<Feature acronym="BCNCAR">
+			<Test id="1730" />
+			<Test id="1735" />
+		</Feature>
+		<Feature acronym="BCNISD">
+			<Test id="1731" />
+			<Test id="1735" />
+		</Feature>
+		<Feature acronym="BCNLAT">
+			<Test id="1732" />
+			<Test id="1735" />
+		</Feature>
+		<Feature acronym="BCNSAW">
+			<Test id="1733" />
+			<Test id="1735" />
+		</Feature>
+		<Feature acronym="BCNSPP">
+			<Test id="1734" />
+			<Test id="1735" />
+		</Feature>
+		<Feature acronym="BERTHS">
+			<Test id="1571"/>
+		</Feature>
+		<Feature acronym="BOYCAR">
+			<Test id="1737" />
+			<Test id="1743" />
+		</Feature>
+		<Feature acronym="BOYINB">
+			<Test id="1738" />
+			<Test id="1743" />
+		</Feature>
+		<Feature acronym="BOYISD">
+			<Test id="1739" />
+			<Test id="1743" />
+		</Feature>
+		<Feature acronym="BOYLAT">
+			<Test id="1740" />
+			<Test id="1743" />
+		</Feature>
+		<Feature acronym="BOYSAW">
+			<Test id="1742" />
+			<Test id="1743" />
+		</Feature>
+		<Feature acronym="BOYSPP">
+			<Test id="1741" />
+			<Test id="1743" />
+		</Feature>
+		<Feature acronym="BUAARE">
+			<Test id="56" />
+			<Test id="1629" />
+		</Feature>
+		<Feature acronym="BUISGL">
+			<Test id="54" />
+			<Test id="1631" />
+		</Feature>
+		<Feature acronym="CANALS">
+			<Test id="1563" />
+			<Test id="1609" />
+			<Test id="1630" />
+		</Feature>
+		<Feature acronym="CAUSWY">
+			<Test id="61" />
+			<Test id="1783" />
+			<Test id="1786" />
+		</Feature>
+		<Feature acronym="CBLARE">
+			<Test id="1707" />
+		</Feature>
+		<Feature acronym="CBLSUB">
+			<Test id="60"/>
+			<Test id="1701" />
+			<Test id="1702" />
+			<Test id="1703" />
+			<Test id="1706" />
+		</Feature>
+		<Feature acronym="CBLOHD">
+			<Test id="1704" />
+			<Test id="1706" />
+		</Feature>
+		<Feature acronym="COALNE">
+			<Test id="1567"/>
+			<Test id="1604" />
+			<Test id="1606" />
+		</Feature>
+		<Feature acronym="CTRPNT">
+			<Test id="1564" />
+		</Feature>
+		<Feature acronym="CRANES">
+			<Test id="5" />
+		</Feature>
+		<Feature acronym="DAMCON">
+			<Test id="1616" />
+			<Test id="1617" />
+		</Feature>
+		<Feature acronym="DAYMAR">
+			<Test id="53 DAYMAR" />
+			<Test id="1736" />
+		</Feature>
+		<Feature acronym="DEPARE">
+			<Test id="70"/>
+			<Test id="1642" />
+			<Test id="1644" />
+		</Feature>
+		<Feature acronym="DEPCNT">
+			<Test id="43" />
+			<Test id="74" />
+			<Test id="75" />
+			<Test id="76" />
+			<Test id="77" />
+			<Test id="1639" />
+		</Feature>
+		<Feature acronym="DOCARE">
+			<Test id="1563" />
+			<Test id="1577" />
+			<Test id="1630" />
+		</Feature>
+		<Feature acronym="DRGARE">
+			<Test id="1533" />
+			<Test id="1646" />
+			<Test id="1647" />
+			<Test id="1648" />
+			<Test id="1649" />
+		</Feature>
+		<Feature acronym="DRYDOC">
+			<Test id="1572"/>
+			<Test id="1573"/>
+		</Feature>
+		<Feature acronym="DWRTCL">
+			<Test id="1694"/>
+			<Test id="1695"/>
+			<Test id="1789"/>
+		</Feature>
+		<Feature acronym="DWRTPT">
+			<Test id="1691"/>
+			<Test id="1692"/>
+		</Feature>
+		<Feature acronym="DYKCON">
+			<Test id="1618" />
+			<Test id="1619" />
+			<Test id="1620" />
+		</Feature>
+		<Feature acronym="FAIRWY">
+			<Test id="1699" />
+		</Feature>
+		<Feature acronym="FLODOC">
+			<Test id="62" />
+			<Test id="1575"/>
+		</Feature>
+		<Feature acronym="FNCLNE">
+			<Test id="1634" />
+		</Feature>
+		<Feature acronym="FORSTC">
+			<Test id="5" />
+			<Test id="1635" />
+		</Feature>
+		<Feature acronym="FSHFAC">
+			<Test id="1717" />
+		</Feature>
+		<Feature acronym="GATCON">
+			<Test id="1578"/>
+			<Test id="1580"/>
+		</Feature>
+		<Feature acronym="GRIDRN">
+			<Test id="61" />
+			<Test id="1582"/>
+			<Test id="1783" />
+			<Test id="1786" />
+		</Feature>
+		<Feature acronym="HULKES">
+			<Test id="62" />
+			<Test id="1587"/>
+		</Feature>
+		<Feature acronym="ICEARE">
+			<Test id="1605" />
+			<Test id="1720"/>
+		</Feature>
+		<Feature acronym="LAKARE">
+			<Test id="1563" />
+			<Test id="1601" />
+			<Test id="1602" />
+			<Test id="1630" />
+		</Feature>
+		<Feature acronym="LIGHTS">
+			<Test id="1748" />
+			<Test id="1749" />
+			<Test id="1754" />
+			<Test id="1758" />
+		</Feature>
+		<Feature acronym="LITFLT">
+			<Test id="1745" />
+		</Feature>
+		<Feature acronym="LITVES">
+			<Test id="1744" />
+		</Feature>
+		<Feature acronym="LNDARE">
+			<Test id="55" />
+			<Test id="1500" />
+			<Test id="1565" />
+		</Feature>
+		<Feature acronym="LNDELV">
+			<Test id="52"/>
+			<Test id="1591" />
+		</Feature>
+		<Feature acronym="LNDMRK">
+			<Test id="5" />
+			<Test id="1633" />
+		</Feature>
+		<Feature acronym="LNDRGN">
+			<Test id="61" />
+			<Test id="1590" />
+			<Test id="1783" />
+			<Test id="1786" />
+		</Feature>
+		<Feature acronym="LOKBSN">
+			<Test id="1563"/>
+			<Test id="1581"/>
+			<Test id="1630"/>
+		</Feature>
+		<Feature acronym="M_NSYS">
+			<Test id="1727" />
+			<Test id="1728" />
+		</Feature>
+		<Feature acronym="M_ACCY">
+			<Test id="1544"/>
+		</Feature>
+		<Feature acronym="M_CSCL">
+			<Test id="1550"/>
+			<Test id="1551"/>
+		</Feature>
+		<Feature acronym="M_HMON">
+			<Test id="1557"/>
+		</Feature>
+		<Feature acronym="M_NHMN">
+			<Test id="1558"/>
+		</Feature>
+		<Feature acronym="M_VDAT">
+			<Test id="1505" />
+			<Test id="1507" />
+		</Feature>
+		<Feature acronym="M_SDAT">
+			<Test id="1508" />
+			<Test id="1511" />
+		</Feature>
+		<Feature acronym="M_QUAL">
+			<Test id="1524" />
+			<Test id="1525" />
+			<Test id="1526" />
+		</Feature>
+		<Feature acronym="MARCUL">
+			<Test id="61" />
+			<Test id="1718" />
+			<Test id="1719" />
+			<Test id="1783" />
+			<Test id="1786" />
+		</Feature>
+		<Feature acronym="MORFAC">
+			<Test id="61" />
+			<Test id="1583"/>
+			<Test id="1584"/>
+			<Test id="1677"/>
+			<Test id="1783" />
+			<Test id="1786" />
+		</Feature>
+		<Feature acronym="NAVLNE">
+			<Test id="1787"/>
+			<Test id="1789"/>
+			<Test id="1791"/>
+		</Feature>
+		<Feature acronym="OBSTRN">
+			<Test id="59"/>
+			<Test id="61" />
+			<Test id="1538"/>
+			<Test id="1539"/>
+			<Test id="1662"/>
+			<Test id="1664"/>
+			<Test id="1665"/>
+			<Test id="1666"/>
+			<Test id="1667"/>
+			<Test id="1668"/>
+			<Test id="1669"/>
+			<Test id="1670"/>
+			<Test id="1783"/>
+			<Test id="1786"/>
+		</Feature>
+		<Feature acronym="OFSPLF">
+			<Test id="1715" />
+		</Feature>
+		<Feature acronym="OSPARE">
+			<Test id="1716" />
+		</Feature>
+		<Feature acronym="PILPNT">
+			<Test id="1585"/>
+		</Feature>
+		<Feature acronym="PIPARE">
+			<Test id="1713" />
+		</Feature>
+		<Feature acronym="PIPOHD">
+			<Test id="1706" />
+			<Test id="1712" />
+		</Feature>
+		<Feature acronym="PIPSOL">
+			<Test id="1706" />
+			<Test id="1708" />
+			<Test id="1709" />
+		</Feature>
+		<Feature acronym="PONTON">
+			<Test id="62" />
+			<Test id="1586"/>
+		</Feature>
+		<Feature acronym="PRDARE">
+			<Test id="1628" />
+		</Feature>
+		<Feature acronym="PYLONS">
+			<Test id="61" />
+			<Test id="1636" />
+			<Test id="1637" />
+			<Test id="1783" />
+			<Test id="1786" />
+		</Feature>
+		<Feature acronym="SBDARE">
+			<Test id="58" />
+			<Test id="61" />
+			<Test id="1674"/>
+			<Test id="1767"/>
+			<Test id="1780"/>
+			<Test id="1783"/>
+			<Test id="1786"/>
+		</Feature>
+		<Feature acronym="SILTNK">
+			<Test id="54" />
+			<Test id="1632" />
+		</Feature>
+		<Feature acronym="SLCONS">
+			<Test id="51" />
+			<Test id="61" />
+			<Test id="1568"/>
+			<Test id="1569"/>
+			<Test id="1570" />
+			<Test id="1783" />
+			<Test id="1786" />
+		</Feature>
+		<Feature acronym="SLOGRD">
+			<Test id="53" />
+			<Test id="1593" />
+		</Feature>
+		<Feature acronym="SLOTOP">
+			<Test id="53" />
+			<Test id="1594" />
+			<Test id="1595" />
+		</Feature>
+		<Feature acronym="SNDWAV">
+			<Test id="1675"/>
+		</Feature>
+		<Feature acronym="SWPARE">
+			<Test id="1650"/>
+			<Test id="1651"/>
+			<Test id="1652"/>
+			<Test id="1653"/>
+			<Test id="1654"/>
+			<Test id="1655"/>
+		</Feature>
+		<Feature acronym="RADRFL">
+			<Test id="1761" />
+			<Test id="1762" />
+		</Feature>
+		<Feature acronym="RADSTA">
+			<Test id="1760" />
+		</Feature>
+		<Feature acronym="RAILWY">
+			<Test id="1610" />
+		</Feature>
+		<Feature acronym="RAPIDS">
+			<Test id="1598" />
+			<Test id="1599" />
+		</Feature>
+		<Feature acronym="RCRTCL">
+			<Test id="1696" />
+			<Test id="1697" />
+			<Test id="1789" />
+		</Feature>
+		<Feature acronym="RDOSTA">
+			<Test id="1759" />
+		</Feature>
+		<Feature acronym="RECTRC">
+			<Test id="63"/>
+			<Test id="1678"/>
+			<Test id="1681"/>
+			<Test id="1789"/>
+		</Feature>
+		<Feature acronym="RETRFL">
+			<Test id="1747" />
+			<Test id="1748" />
+		</Feature>
+		<Feature acronym="RIVERS">
+			<Test id="1563" />
+			<Test id="1597" />
+			<Test id="1630" />
+		</Feature>
+		<Feature acronym="RUNWAY">
+			<Test id="1627" />
+		</Feature>
+		<Feature acronym="TESARE">
+			<Test id="1700" />
+		</Feature>
+		<Feature acronym="TOPMAR">
+			<Test id="1746" />
+		</Feature>
+		<Feature acronym="TS_PRH">
+			<Test id="1560" />
+		</Feature>
+		<Feature acronym="TS_PNH">
+			<Test id="1561" />
+		</Feature>
+		<Feature acronym="TSSCRS">
+			<Test id="1689"/>
+		</Feature>
+		<Feature acronym="TSSRON">
+			<Test id="1690"/>
+		</Feature>
+		<Feature acronym="TUNNEL">
+			<Test id="1611" />
+			<Test id="1612" />
+			<Test id="1613" />
+			<Test id="1614" />
+		</Feature>
+		<Feature acronym="TWRTPT">
+			<Test id="1698" />
+		</Feature>
+		<Feature acronym="UWTROC">
+			<Test id="61" />
+			<Test id="1534"/>
+			<Test id="1536"/>
+			<Test id="1641"/>
+			<Test id="1656"/>
+			<Test id="1657"/>
+			<Test id="1783"/>
+			<Test id="1786"/>
+		</Feature>
+		<Feature acronym="VEGATN">
+			<Test id="1608" />
+		</Feature>
+		<Feature acronym="WATFAL">
+			<Test id="1599" />
+			<Test id="1600" />
+		</Feature>
+		<Feature acronum="WRECKS">
+			<Test id="61" />
+			<Test id="1535" />
+			<Test id="1537" />
+			<Test id="1658" />
+			<Test id="1659" />
+			<Test id="1660" />
+			<Test id="1661" />
+			<Test id="1662" />
+			<Test id="1663" />
+			<Test id="1670"/>
+			<Test id="1783"/>
+			<Test id="1786"/>
+		</Feature>
+	</Features>
+</S58>
