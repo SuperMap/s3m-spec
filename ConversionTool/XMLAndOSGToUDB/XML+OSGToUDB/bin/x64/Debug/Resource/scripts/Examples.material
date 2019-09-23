@@ -1,0 +1,106 @@
+material Examples/Smoke
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			scene_blend alpha_blend
+			depth_write off
+			diffuse vertexcolour
+
+			texture_unit
+			{
+				texture smoke.png
+				tex_address_mode clamp
+			}
+		}
+	}
+}
+
+
+material Examples/CloudySky
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+
+			texture_unit
+			{
+				texture clouds.jpg
+				scroll_anim 0.02 0
+			}
+		}
+	}
+}
+
+material Ogre/SketchModel
+{
+	technique
+	{
+		pass
+		{
+			scene_blend alpha_blend
+			cull_hardware none
+			ambient 0.4 0.4 0.4 1.0
+			diffuse 0.4 0.4 0.4 1.0
+			specular 0.4 0.4 0.4 1.0				
+		}
+		
+		pass 1
+		{
+			cull_hardware none
+			polygon_mode wireframe
+			ambient 0.2 0.2 0.2 1.0
+			diffuse 0.2 0.2 0.2 1.0
+			specular 0.2 0.2 0.2 1.0			
+		}
+	}
+}
+
+material Examples/LightRibbonTrail
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			scene_blend add 
+			depth_write off
+			depth_check off
+			diffuse vertexcolour
+
+			texture_unit
+			{
+				texture ribbonband.png 1d
+				//texture flare.png
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+}
+
+material Examples/Flare
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			scene_blend add
+			depth_write off
+			depth_check off
+			diffuse vertexcolour
+
+			texture_unit
+			{
+				//texture flare.png
+				texture flare.png
+			}
+		}
+	}
+}
