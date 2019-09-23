@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="gb2312"?>
+<fontsname version="20071213" Description="UGC setting file Created by SuperMap UGC 6.0">
+<!--宋体-->
+<宋体>simsun.ttc</宋体>
+<!--新宋体-->
+<新宋体>simsun.ttc</新宋体>
+<!--微软雅黑-->
+<微软雅黑>MSYH.TTF</微软雅黑>
+<!--幼圆-->
+<幼圆>SIMYOU.TTF</幼圆>
+<!--隶书-->
+<隶书>SIMLI.TTF</隶书>
+<!--黑体-->
+<黑体>simhei.ttf</黑体>
+<!--楷体-->
+<楷体>SIMKAI.TTF</楷体>
+<!--华文彩云-->
+<华文彩云>STCAIYUN.TTF</华文彩云>
+<!--华文琥珀-->
+<华文琥珀>STFANGSO.TTF</华文琥珀>
+<!--华文楷体-->
+<华文楷体>STKAITI.TTF</华文楷体>
+<!--华文隶书-->
+<华文隶书>STLITI.TTF</华文隶书>
+<!--华文宋体-->
+<华文宋体>STSONG.TTF</华文宋体>
+<!--华文细黑-->
+<华文细黑>STXIHEI.TTF</华文细黑>
+<!--华文行楷-->
+<华文行楷>STXINGKA.TTF</华文行楷>
+<!--华文新魏-->
+<华文新魏>STXINWEI.TTF</华文新魏>
+<!--华文中宋-->
+<华文中宋>STZHONGS.TTF</华文中宋>
+</fontsname>

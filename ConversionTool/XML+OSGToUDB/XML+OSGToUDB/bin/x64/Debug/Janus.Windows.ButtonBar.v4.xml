@@ -1,0 +1,3338 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Janus.Windows.ButtonBar.v4</name>
+    </assembly>
+    <members>
+        <member name="T:Janus.Windows.ButtonBar.ButtonBar">
+            <summary>
+            Janus ButtonBar control for Microsoft.Net
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBar.AlphaEmpty">
+            <summary>
+            Represents the empty alpha value. This field is read-only.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.#ctor">
+            <summary>
+            Initializes a new instance of the ButtonBar control.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.LoadComponentSettings">
+            <summary>
+            Reads the control's application settings into their corresponding properties and updates the control's state.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ResetComponentSettings">
+            <summary>
+            Resets the control's application settings properties to their default values. 
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.SaveComponentSettings">
+            <summary>
+            Persists the control's application settings properties. 
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.GetButtonBarVersion">
+            <summary>
+            Gets a string representing with the version number.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.LoadLayout(Janus.Windows.ButtonBar.ButtonBarLayout)">
+            <summary>
+            Loads the settings preserved in a ButtonBarLayout object without setting it as the current layout.
+            </summary>
+            <param name="layout">The ButtonBarLayout with the ButtonBar control settings.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.GetLayout">
+            <summary>
+            Creates a ButtonBarLayout object containing settings of the ButtonBar control.
+            </summary>
+            <returns>The ButtonBarLayout created.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.LoadLayoutFile(System.IO.Stream)">
+            <summary>
+            Loads a ButtonBar control settings persisted in a stream.
+            </summary>
+            <param name="stream">A Stream object with the ButtonBar control settings.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.SaveLayoutFile(System.IO.Stream)">
+            <summary>
+            Persist in a stream all the ButtonBar control settings.
+            </summary>
+            <param name="stream">A Stream object where settings will be persisted.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.Dispose(System.Boolean)">
+            <summary>
+            Releases the unmanaged resources used by the System.ComponentModel.Component and optionally releases the managed resources.
+            </summary>
+            <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.SetButtonBarStyle(Janus.Windows.ButtonBar.ButtonBarStyle)">
+            <summary>
+            Changes appearance properties to display the control as the specified pattern.
+            </summary>
+            <param name="style">The style desired for the ButtonBar control.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.HitTest">
+            <summary>
+            Determines which element of the ButtonBar control is at the current position of the cursor.
+            </summary>
+            <returns>One of the HitTest values that contains information about the specified location in the ButtonBar.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.HitTest(System.Int32,System.Int32)">
+            <summary>
+            Determines which element of the ButtonBar control is at the specified coordinates.
+            </summary>
+            <param name="x">The x coordinate of the point to be hit-tested.</param>
+            <param name="y">The y coordinate of the point to be hit-tested.</param>
+            <returns>One of the HitTest values that contains information about the specified location in the ButtonBar.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.HitTest(System.Drawing.Point)">
+            <summary>
+            Determines which element of the ButtonBar control is at the specified point.
+            </summary>
+            <param name="point">A Point containing the x and y coordinates of the point to be hit-tested.</param>
+            <returns>One of the HitTest values that contains information about the specified point in the ButtonBar.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.GetItemFromPoint">
+            <summary>
+            Retrieves the ButtonBarItem object that is located at the current position of the cursor.
+            </summary>
+            <returns>A ButtonBarItem object that represents the item that is located at the curren position of the cursor.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.GetItemFromPoint(System.Int32,System.Int32)">
+            <summary>
+            Retrieves the ButtonBarItem object that is located at the specified coordinates.
+            </summary>
+            <param name="x">The x-coordinate where you want to look for the ButtonBarItem.</param>
+            <param name="y">The y-coordinate where you want to look for the ButtonBarItem.</param>
+            <returns>A ButtonBarItem object that represents the item that is located at the specified coordinates.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.GetItemFromPoint(System.Drawing.Point)">
+            <summary>
+            Retrieves the ButtonBarItem object that is located at the specified point.
+            </summary>
+            <param name="point">A Point that contains the coordinates where you want to look for the ButtonBarItem.</param>
+            <returns>A ButtonBarItem object that represents the item that is located at the specified point.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.GetGroupFromPoint">
+            <summary>
+            Retrieves the ButtonBarGroup object that is located at the current position of the cursor.
+            </summary>
+            <returns>A ButtonBarGroup object that represents the group that is located at the current position of the cursors.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.GetGroupFromPoint(System.Int32,System.Int32)">
+            <summary>
+            Retrieves the ButtonBarGroup object that is located at the specified coordinates.
+            </summary>
+            <param name="x">An int that contains the x-coordinate where you want to look for the ButtonBarGroup. Coordinates are expressed relative to the upper-left corner of the control's client area.</param>
+            <param name="y">An int that contains the y-coordinate where you want to look for the ButtonBarGroup. Coordinates are expressed relative to the upper-left corner of the control's client area. </param>
+            <returns>A ButtonBarGroup object that represents the group that is located at the specified coordinates.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.GetGroupFromPoint(System.Drawing.Point)">
+            <summary>
+            Retrieves the ButtonBarGroup object that is located at the specified point.
+            </summary>
+            <param name="point">A Point that contains the coordinates where you want to look for the ButtonBarGroup. Coordinates are expressed relative to the upper-left corner of the control's client area.</param>
+            <returns>A ButtonBarGroup object that represents the group that is located at the specified point.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnParentVisibleChanged(System.EventArgs)">
+            <summary>
+            Overrides Control.OnParentVisibleChanged
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnDragDrop(System.Windows.Forms.DragEventArgs)">
+            <summary>
+            Raises the System.Windows.Forms.Control.DragDrop event.
+            </summary>
+            <param name="e"> A System.Windows.Forms.DragEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ResetDropLineColor">
+            <summary>
+            Resets the DropLineColor property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ShouldSerializeDropLineColor">
+            <summary>
+            Gets a value indicating whether the DropLineColor property should be persisted.
+            </summary>
+            <returns>true if the property value has been changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnDragLeave(System.EventArgs)">
+            <summary>
+            Raises the System.Windows.Forms.Control.DragLeave event.
+            </summary>
+            <param name="e"> A System.Windows.Forms.DragEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnDragOver(System.Windows.Forms.DragEventArgs)">
+            <summary>
+            Raises the System.Windows.Forms.Control.DragOver event.
+            </summary>
+            <param name="e">A System.Windows.Forms.DragEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnDragEnter(System.Windows.Forms.DragEventArgs)">
+            <summary>
+            Raises the System.Windows.Forms.Control.DragEnter event.
+            </summary>
+            <param name="e">A System.Windows.Forms.DragEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnQueryContinueDrag(System.Windows.Forms.QueryContinueDragEventArgs)">
+            <summary>
+            Raises the System.Windows.Forms.Control.QueryContinueDrag event.
+            </summary>
+            <param name="e">A System.Windows.Forms.QueryContinueDragEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnMouseLeave(System.EventArgs)">
+            <summary>
+            Raises the System.Windows.Forms.Control.MouseLeave event.
+            </summary>
+            <param name="e">A System.EventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnEnabledChanged(System.EventArgs)">
+            <summary>
+            Raises the System.Windows.Forms.Control.EnabledChanged event.
+            </summary>
+            <param name="e">A System.EventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ResetUseCompatibleTextRendering">
+            <summary>
+            Resets the UseCompatibleTextRendering property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ShouldSerializeUseCompatibleTextRendering">
+            <summary>
+            Gets a value indicating whether the UseCompatibleTextRendering property should be persisted.
+            </summary>
+            <returns>true if the property value has been changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnMouseMove(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Raises the System.Windows.Forms.Control.MouseMove event.
+            </summary>
+            <param name="e">A System.Windows.Forms.MouseEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.RenameItem(Janus.Windows.ButtonBar.ButtonBarItem)">
+            <summary>
+            Displays a textbox control over the item's area to let the user rename the item. 
+            </summary>
+            <param name="item">The ButtonBarItem to be renamed</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.RenameGroup(Janus.Windows.ButtonBar.ButtonBarGroup)">
+            <summary>
+            Displays a textbox control over the group's header area to let the user rename the group.
+            </summary>
+            <param name="group">The ButtonBarGroup to be renamed.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnLeave(System.EventArgs)">
+            <summary>
+            Raises the System.Windows.Forms.Control.Leave event.
+            </summary>
+            <param name="e">A System.EventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ProcessDialogKey(System.Windows.Forms.Keys)">
+            <summary>
+            Processes a dialog key.
+            </summary>
+            <param name="key">One of the System.Windows.Forms.Keys values that represents the key to process.</param>
+            <returns>true if the key was processed by the control; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnMouseWheel(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Overrides Control.OnMouseWheel
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnFontChanged(System.EventArgs)">
+            <summary>
+            Overrides Control.OnFontChanged
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Raises the System.Windows.Forms.Control.MouseDown event.
+            </summary>
+            <param name="e">A System.Windows.Forms.MouseEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ShouldSerializeThemedAreas">
+            <summary>
+            Gets a value indicating whether the ThemedAreas property should be persisted.
+            </summary>
+            <returns>true if the property value has been changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ResetThemedAreas">
+            <summary>
+            Resets the ThemedAreas property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnMouseUp(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Raises the System.Windows.Forms.Control.MouseUp event.
+            </summary>
+            <param name="e">A System.Windows.Forms.MouseEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ShouldSerializeFlatBorderColor">
+            <summary>
+            Gets a value indicating whether the FlatBorderColor property should be persisted.
+            </summary>
+            <returns>true if the property value has been changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ResetFlatBorderColor">
+            <summary>
+            Resets the FlatBorderColor property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.CreateAccessibilityInstance">
+            <summary>
+            Overrides Control.CreateAccessibilityInstance
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.EnsureVisible(Janus.Windows.ButtonBar.ButtonBarItem)">
+            <summary>
+            Ensures that the specified item is visible within the ButtonBar , scrolling the contents of the control if necessary.
+            </summary>
+            <param name="item">The ButtonBarItem to scroll into view.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Raises the System.Windows.Forms.Control.Paint event.
+            </summary>
+            <param name="e">A System.Windows.Forms.PaintEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnResize(System.EventArgs)">
+            <summary>
+            Raises the System.Windows.Forms.Control.Resize event.
+            </summary>
+            <param name="e">A System.EventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnPaintBackground(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Raises the System.Windows.Forms.Control.PaintBackground event.
+            </summary>
+            <param name="e">A System.Windows.Forms.PintEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ShouldSerializeSmallImageSize">
+            <summary>
+            Gets a value indicating whether the SmallImageSize property should be persisted.
+            </summary>
+            <returns>true if the property value has been changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ResetSmallImageSize">
+            <summary>
+            Resets the SmallImageSize property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ShouldSerializeLargeImageSize">
+            <summary>
+            Gets a value indicating whether the LargeImageSize property should be persisted.
+            </summary>
+            <returns>true if the property value has been changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ResetLargeImageSize">
+            <summary>
+            Resets the LargeImageSize property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.FindLayout(System.String)">
+            <summary>
+            Finds the first layout with the key specified in the layout hierarchy.
+            </summary>
+            <param name="key">A String that specifies the key to search.</param>
+            <returns>The first layout which key is equal to the key specified or null if no layout is found.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnSelectingGroup(Janus.Windows.ButtonBar.GroupCancelEventArgs)">
+            <summary>
+            Raises the Janus.Windows.ButtonBar.ButtonBar.SelectingGroup event.
+            </summary>
+            <param name="e">A Janus.Windows.ButtonBar.GroupCancelEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnGroupSelected(System.EventArgs)">
+            <summary>
+            Raises the Janus.Windows.ButtonBar.ButtonBar.GroupSelected event.
+            </summary>
+            <param name="e">A System.EventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnSelectingItem(Janus.Windows.ButtonBar.ItemCancelEventArgs)">
+            <summary>
+            Raises the Janus.Windows.ButtonBar.ButtonBar.SelectingItem event.
+            </summary>
+            <param name="e">A Janus.Windows.ButtonBar.ItemCancelEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnItemSelected(System.EventArgs)">
+            <summary>
+            Raises the Janus.Windows.ButtonBar.ButtonBar.ItemSelected event.
+            </summary>
+            <param name="e">A System.EventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnItemClick(Janus.Windows.ButtonBar.ItemEventArgs)">
+            <summary>
+            Raises the Janus.Windows.ButtonBar.ButtonBar.ItemClick event.
+            </summary>
+            <param name="e">A Janus.Windows.ButtonBar.ItemEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnGroupClick(Janus.Windows.ButtonBar.GroupEventArgs)">
+            <summary>
+            Raises the Janus.Windows.ButtonBar.ButtonBar.GroupClick event.
+            </summary>
+            <param name="e">A Janus.Windows.ButtonBar.GroupEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnGroupRenamed(Janus.Windows.ButtonBar.GroupEventArgs)">
+            <summary>
+            Raises the Janus.Windows.ButtonBar.ButtonBar.GroupRenamed event.
+            </summary>
+            <param name="e">A Janus.Windows.ButtonBar.GroupEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnItemRenamed(Janus.Windows.ButtonBar.ItemEventArgs)">
+            <summary>
+            Raises the Janus.Windows.ButtonBar.ButtonBar.ItemRenamed event.
+            </summary>
+            <param name="e">A Janus.Windows.ButtonBar.ItemEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnDrawButtonBarArea(Janus.Windows.ButtonBar.DrawButtonBarAreaEventArgs)">
+            <summary>
+            Raises the Janus.Windows.ButtonBar.ButtonBar.DrawButtonBarAreaEventArgs event.
+            </summary>
+            <param name="e">A Janus.Windows.ButtonBar.DrawButtonBarAreaEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnLayoutLoad(System.EventArgs)">
+            <summary>
+            Raises the LayoutLoad event.
+            </summary>
+            <param name="e">An EventArgs that contain the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnCurrentLayoutChanged(System.EventArgs)">
+            <summary>
+            Raises the CurrentLayoutChanged event.
+            </summary>
+            <param name="e">A CancelEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnCurrentLayoutChanging(System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Raises the CurrentLayoutChanging event.
+            </summary>
+            <param name="e">A CancelEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ShouldSerializeVisualStyle">
+            <summary>
+            Gets a value indicating whether the VisualStyle property should be persisted.
+            </summary>
+            <returns>true if the property value has been changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ResetVisualStyle">
+            <summary>
+            Resets the VisualStyle property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ShouldSerializeOffice2007ColorScheme">
+            <summary>
+            Deprecated
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ResetOffice2007ColorScheme">
+            <summary>
+            Deprecated
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ShouldSerializeOffice2007CustomColor">
+            <summary>
+            Deprecated
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ResetOffice2007CustomColor">
+            <summary>
+            Deprecated
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ShouldSerializeOfficeCustomColor">
+            <summary>
+            Indicates whether the OfficeCustomColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ResetOfficeCustomColor">
+            <summary>
+            Resets the OfficeCustomColor property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.OnSystemColorsChanged(System.EventArgs)">
+            <summary>
+            Raises the System.Windows.Forms.SystemColorsChanged.Paint event.
+            </summary>
+            <param name="e">A System.EventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ProcessMnemonic(System.Char)">
+            <summary>
+            Overrides Control.ProcessMnemonic
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ResetBlendColor">
+            <summary>
+            Resets the BlendColor property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ShouldSerializeBlendColor">
+            <summary>
+            Gets a value indicating whether the BlendColor property should be persisted.
+            </summary>
+            <returns>true if the property value has been changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ShouldSerializeGroupsFormatStyle">
+            <summary>
+            Gets a value indicating whether the GroupsFormatStyle property should be persisted.
+            </summary>
+            <returns>true if the property value has been changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ResetGroupsFormatStyle">
+            <summary>
+            Resets the GroupsFormatStyle property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ShouldSerializeGroupsBackgroundFormatStyle">
+            <summary>
+            Gets a value indicating whether the GroupsBackgroundFormatStyle property should be persisted.
+            </summary>
+            <returns>true if the property value has been changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ResetGroupsBackgroundFormatStyle">
+            <summary>
+            Resets the GroupsBackgroundFormatStyle property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ShouldSerializeItemsFormatStyle">
+            <summary>
+            Gets a value indicating whether the ItemsFormatStyle property should be persisted.
+            </summary>
+            <returns>true if the property value has been changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ResetItemsFormatStyle">
+            <summary>
+            Resets the ItemsFormatStyle property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ShouldSerializeSelectedItemFormatStyle">
+            <summary>
+            Gets a value indicating whether the SelectedItemFormatStyle property should be persisted.
+            </summary>
+            <returns>Gets a value indicating whether the ItemsFormatStyle property should be persisted.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ResetSelectedItemFormatStyle">
+            <summary>
+            Resets the SelectedItemFormatStyle property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ShouldSerializeHoverItemFormatStyle">
+            <summary>
+            Gets a value indicating whether the HoverItemFormatStyle property should be persisted.
+            </summary>
+            <returns>true if the property value has been changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ResetHoverItemFormatStyle">
+            <summary>
+            Resets the HoverItemFormatStyle property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ShouldSerializeHoverGroupFormatStyle">
+            <summary>
+            Gets a value indicating whether the HoverGroupFormatStyle property should be persisted.
+            </summary>
+            <returns>true if the property value has been changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBar.ResetHoverGroupFormatStyle">
+            <summary>
+            Resets the HoverGroupFormatStyle property to its default value.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.SaveSettings">
+            <summary>
+            Gets or sets a value indicating whether the control should automatically persist its application settings properties.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.SettingsKey">
+            <summary>
+            Gets or sets the value of the application settings key for the current instance of the control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.UnfoldEffect">
+            <summary>
+            Gets or sets a value specifying which effect is used when groups are expanded/collapsed.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.Layouts">
+            <summary>
+            Gets the collection of ButtonBarLayout objects in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.CurrentLayout">
+            <summary>
+            Gets or sets the current ButtonBarLayout.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.DragStyle">
+            <summary>
+            Gets or sets a velue specifying how the drop target will be represented in a drag operation.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.KeepSelection">
+            <summary>
+            Gets or sets a value indicating if the ButtonBarItem appears sunken while its selected.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.Site">
+            <summary>
+            Overrides Component.Site
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.SmallImageList">
+            <summary>
+            Gets or sets the ImageList that contains the Image objects used by the ButtonBarGroup objects and ButtonBarItem objects with small icons.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.ScrollLocation">
+            <summary>
+            Gets or sets a value indicating the location of the scroll buttons in the ButtonBar.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.LargeImageList">
+            <summary>
+            Gets or sets the ImageList that contains the Image objects to use when displaying ButtonBarItems as large icons in the ButtonBar.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.HeaderGroupVisible">
+            <summary>
+            Gets or sets a value indicating whether the header of the groups are visible.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.DefaultGroupImageIndex">
+            <summary>
+            Gets or sets a value specifying the default image list index value of the image displayed in the groups.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.DefaultGroupImageKey">
+            <summary>
+            Gets or sets a value specifying the default key accessor for the image in the ImageList displayed in the groups.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.DefaultItemSmallImageIndex">
+            <summary>
+            Gets or sets a value specifying the default image list index value of the image displayed by the items when thy are in small icons view.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.DefaultItemSmallImageKey">
+            <summary>
+            Gets or sets a value specifying the default key accessor for the image in the ImageList displayed by the items when thy are in small icons view.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.DefaultItemLargeImageIndex">
+            <summary>
+            Gets or sets a value specifying the default image list index value of the image displayed by the items when thy are in large icons view.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.DefaultItemLargeImageKey">
+            <summary>
+            Gets or sets a value specifying the default key accessor for the image in the ImageList displayed by the items when thy are in large icons view.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.DropLineColor">
+            <summary>
+            Gets or sets a value specifying the color of the line indicating the drop target.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.ShowToolTips">
+            <summary>
+            Gets or sets a value indicating whether a ToolTip is shown when the mouse passes over a group or item.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.UseCompatibleTextRendering">
+            <summary>
+            Gets or sets a value specifying whether the text rendering should be compatible with previous release of Windows Forms.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.UseMnemonic">
+            <summary>
+            Gets or sets a value indicating whether an ampersand is included in the text of the control. 
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.AllowDragGroups">
+            <summary>
+            Gets or sets a value indicating whether the user can drag groups to change their position in the ButtonBar.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.OwnerDrawnArea">
+            <summary>
+            Gets or sets a value specifying which area of a ButtonBar control needs to be drawn manually.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.ThemedAreas">
+            <summary>
+            Gets or sets a value specifying which parts of the ButtonBar will be drawn using Windows XP Visual Styles.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.Groups">
+            <summary>
+            Gets an object representing the collection of the ButtonBarGroup objects contained in this ButtonBar.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.FlatBorderColor">
+            <summary>
+            Gets or sets the color of the border of the control and headers when its border style is flat.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.SelectedItem">
+            <summary>
+            Gets or sets the ButtonBarItem object currently selected.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.DragMode">
+            <summary>
+            Gets or sets a value that indicates how the control handles an item drag operation.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.SelectedGroup">
+            <summary>
+            Get or sets the ButtonBarGroup object currently selected.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.GroupAppearance">
+            <summary>
+            Gets or sets the value that determines the appearance of the groups' headers in the ButtonBar.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.BorderStyle">
+            <summary>
+            Gets or sets the ButtonBar's border style.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.DefaultBlend">
+            <summary>
+            Gets or sets a value indicating the default percentage of the BlendColor to use with the ButtonBarFormatStyle objects associated with this ButtonBar.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.Orientation">
+            <summary>
+            Gets or sets a value specifying the orientation of the ButtonBar control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.SmallImageSize">
+            <summary>
+            Gets or sets a System.Drawing.Size that determines the size that images will have when drawing a group or an item in small icons view.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.LargeImageSize">
+            <summary>
+            Gets or sets a System.Drawing.Size that determines the size that images will have when drawing an item in large icons view.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.ShadowOnHover">
+            <summary>
+            Gets or sets a value indicating whether the image of the items should be painted with a shadow when the mouse hovers over them.
+            </summary>
+        </member>
+        <member name="E:Janus.Windows.ButtonBar.ButtonBar.SelectingGroup">
+            <summary>
+            Occurs when a new ButtonBarGroup is about to be selected by either a programmatic modification or user interaction.
+            </summary>
+        </member>
+        <member name="E:Janus.Windows.ButtonBar.ButtonBar.GroupSelected">
+            <summary>
+            Occurs when a new ButtonBarGroup is selected by either a programmatic modification or user interaction.
+            </summary>
+        </member>
+        <member name="E:Janus.Windows.ButtonBar.ButtonBar.SelectingItem">
+            <summary>
+            Occurs when a new ButtonBarItem is about to be selected by either a programmatic modification or user interaction.
+            </summary>
+        </member>
+        <member name="E:Janus.Windows.ButtonBar.ButtonBar.ItemSelected">
+            <summary>
+            Occurs when a new ButtonBarItem is selected by either a programmatic modification or user interaction.
+            </summary>
+        </member>
+        <member name="E:Janus.Windows.ButtonBar.ButtonBar.ItemClick">
+            <summary>
+            Occurs when the user clicks on a ButtonBarItem.
+            </summary>
+        </member>
+        <member name="E:Janus.Windows.ButtonBar.ButtonBar.GroupClick">
+            <summary>
+            Occurs when the user clicks on a ButtonBarGroup.
+            </summary>
+        </member>
+        <member name="E:Janus.Windows.ButtonBar.ButtonBar.GroupRenamed">
+            <summary>
+            Occurs when the user renames a ButtonBarGroup.
+            </summary>
+        </member>
+        <member name="E:Janus.Windows.ButtonBar.ButtonBar.ItemRenamed">
+            <summary>
+            Occurs when the user renames a ButtonBarItem.
+            </summary>
+        </member>
+        <member name="E:Janus.Windows.ButtonBar.ButtonBar.DrawButtonBarArea">
+            <summary>
+            Occurs when a visual owner draw area needs to be painted.
+            </summary>
+        </member>
+        <member name="E:Janus.Windows.ButtonBar.ButtonBar.LayoutLoad">
+            <summary>
+            Occurs after a layout is loaded.
+            </summary>
+        </member>
+        <member name="E:Janus.Windows.ButtonBar.ButtonBar.CurrentLayoutChanged">
+            <summary>
+            Occurs after the CurrentLayout property has changed.
+            </summary>
+        </member>
+        <member name="E:Janus.Windows.ButtonBar.ButtonBar.CurrentLayoutChanging">
+            <summary>
+            Occurs after the CurrentLayout property changes.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.BackgroundImageDrawMode">
+            <summary>
+            Gets or sets a value specifying how the background image of the ButtonBar is drawn.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.SelectionArea">
+            <summary>
+            Gets or sets a value specifying which part of the ButtonBarItem objects will be selected when the mouse pointer moves over them.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.VisualStyleAreas">
+            <summary>
+            Returns the ButtonBarAreasStyle object used to specify the Style for the areas in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.VisualStyle">
+            <summary>
+            Gets or sets a value specifying the appearance for the ButtonBar control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.OfficeColorScheme">
+            <summary>
+            Gets or sets a value specifying the color scheme to be used when Office2007 or Office2010 VisualStyle is used in the control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.OfficeCustomColor">
+            <summary>
+            Gets or set a value specifying the base color used to paint the control when the OfficeColorScheme property is set to Custom.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.Office2007ColorScheme">
+            <summary>
+            Deprecated.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.Office2007CustomColor">
+            <summary>
+            Deprecated
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.VisualStyleManager">
+            <summary>
+            Gets or sets the VisualStyleManager that defines the appearance of the control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.ColorScheme">
+            <summary>
+            Gets or sets the name of the ColorScheme in the VisualStyleManager that defines the appearance of the control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.ItemAppearance">
+            <summary>
+            Gets or set a value indicating the appearance of the ButtonBarItem objects in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.BlendColor">
+            <summary>
+            Gets or sets the color that blends with the BackColor and BackColorGradient properties of the ButtonBarFormatStyle when its Blend or BlendGradient properties are not zero.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.GroupsStateStyles">
+            <summary>
+            Gets the ExplorerBarStateStyles that holds the format styles used to draw the groups' header in their different states.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.GroupsFormatStyle">
+            <summary>
+            Returns the ButtonBarFormatStyle object used to draw the groups' header in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.GroupsBackgroundFormatStyle">
+            <summary>
+            Returns the ButtonBarFormatStyle object used to draw the groups' background in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.ItemsStateStyles">
+            <summary>
+            Gets the ExplorerBarStateStyles that holds the format styles used to draw the items in their different states.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.ItemsFormatStyle">
+            <summary>
+            Returns the ButtonBarFormatStyle object used to draw the items in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.SelectedItemFormatStyle">
+            <summary>
+            Returns the ButtonBarFormatStyle object used to draw the selected item in the ButtonBar.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.HoverItemFormatStyle">
+            <summary>
+            Returns the ButtonBarFormatStyle object used to draw the items in the ButtonBar control when the mouse is over them.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.HoverGroupFormatStyle">
+            <summary>
+            Returns the ButtonBarFormatStyle object used to draw the groups' header in the ButtonBar control when the mouse is over them.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.Alpha">
+            <summary>
+            Gets or sets a value specifying the level of alpha (transparency) used to draw the objects in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.AlphaMode">
+            <summary>
+            Gets or sets a value specifying the level of alpha to use in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.BackColorAlphaMode">
+            <summary>
+            Gets or sets a value specifying the level of alpha (transparency) to use in the background.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBar.ForeColorAlphaMode">
+            <summary>
+            Gets or sets a value specifying the level of alpha (transparency) to use in the foreground.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Design.ImageIndexConverter">
+            <summary>
+            This class is not intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.ImageIndexConverter.#ctor">
+            <summary>
+            Initialize a new instance of the ImageIndexConverter.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.ImageIndexConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>
+            Overrides TypeConverter.CanConvertTo
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.ImageIndexConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <summary>
+            Overrides TypeConverter.ConvertTo
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Design.ImageKeyConverter">
+            <summary>
+            This class is not intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.ImageKeyConverter.#ctor">
+            <summary>
+            Initialize a new instance of the ImageKeyConverter.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.ImageKeyConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>
+            Overrides TypeConverter.CanConvertTo
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.ImageKeyConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <summary>
+            Overrides TypeConverter.ConvertTo
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Design.SmallImageIndexEditor">
+            <summary>
+            Provides a user interface for selecting images from an ImageList.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.SmallImageIndexEditor.#ctor">
+            <summary>
+            Initialize a new instance of the SmallImageIndexEditor.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.SmallImageIndexEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <summary>
+            Overrides UITypeEditor.EditValue
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.SmallImageIndexEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Overrides UITypeEditor.GetEditStyle
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.SmallImageIndexEditor.GetPaintValueSupported(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Overrides UITypeEditor.GetPaintValueSupported
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.SmallImageIndexEditor.PaintValue(System.Drawing.Design.PaintValueEventArgs)">
+            <summary>
+            Overrides UITypeEditor.GetPaintValueSupported
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Design.LargeImageIndexEditor">
+            <summary>
+            Provides a user interface for selecting images from an ImageList.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.LargeImageIndexEditor.#ctor">
+            <summary>
+            Initialize a new instance of the LargeImageIndexEditor.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.LargeImageIndexEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <summary>
+            Overrides UITypeEditor.EditValue
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.LargeImageIndexEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Overrides UITypeEditor.GetEditStyle
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.LargeImageIndexEditor.GetPaintValueSupported(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Overrides UITypeEditor.GetPaintValueSupported
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.LargeImageIndexEditor.PaintValue(System.Drawing.Design.PaintValueEventArgs)">
+            <summary>
+            Overrides UITypeEditor.PaintValue
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Design.SmallImageKeyEditor">
+            <summary>
+            Provides a user interface for selecting images from an ImageList.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.SmallImageKeyEditor.#ctor">
+            <summary>
+            Initialize a new instance of the SmallImageKeyEditor.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.SmallImageKeyEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <summary>
+            Overrides UITypeEditor.EditValue
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.SmallImageKeyEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Overrides UITypeEditor.GetEditStyle
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.SmallImageKeyEditor.GetPaintValueSupported(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Overrides UITypeEditor.GetPaintValueSupported
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.SmallImageKeyEditor.PaintValue(System.Drawing.Design.PaintValueEventArgs)">
+            <summary>
+            Overrides UITypeEditor.GetPaintValueSupported
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Design.LargeImageKeyEditor">
+            <summary>
+            Provides a user interface for selecting images from an ImageList.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.LargeImageKeyEditor.#ctor">
+            <summary>
+            Initialize a new instance of the LargeImageKeyEditor.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.LargeImageKeyEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <summary>
+            Overrides UITypeEditor.EditValue
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.LargeImageKeyEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Overrides UITypeEditor.GetEditStyle
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.LargeImageKeyEditor.GetPaintValueSupported(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Overrides UITypeEditor.GetPaintValueSupported
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.LargeImageKeyEditor.PaintValue(System.Drawing.Design.PaintValueEventArgs)">
+            <summary>
+            Overrides UITypeEditor.PaintValue
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Design.ImageEditor">
+            <summary>
+            Summary description for ImageEditor.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.ImageEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <summary>
+            This class is not intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.ImageEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.ImageEditor.GetPaintValueSupported(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.ImageEditor.PaintValue(System.Drawing.Design.PaintValueEventArgs)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ButtonBarFormatStyle">
+            <summary>
+            Specifies the appearance and text formatting of the ButtonBar, ButtonBarGroup and ButtonBarItem classes.
+            </summary>
+            
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarFormatStyle.AlphaEmpty">
+            <summary>
+            Represents the empty alpha value. This field is read-only.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarFormatStyle.Reset">
+            <summary>
+            Resets all the properties of this ButtonBarFormatStyle to its default values.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarFormatStyle.ShouldSerialize">
+            <summary>
+            Indicates whether the ButtonbarFormatStyle object has changed from its default value.
+            </summary>
+            <returns>true if the one of the properties of the ButtonBarFormatStyle has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarFormatStyle.#ctor(Janus.Windows.ButtonBar.ButtonBarFormatStyle)">
+            <summary>
+            Initializes a new instance of the ButtonBarFormatStyle class based on the given ButtonBarFormatStyle.
+            </summary>
+            <param name="baseStyle">A ButtonBarFormatStyle which properties will be copied to create a new ButtonBarFormatStyle class.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarFormatStyle.ResetBackColor">
+            <summary>
+            Resets the BackColor property to its default color.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarFormatStyle.ShouldSerializeBackColor">
+            <summary>
+            Indicates whether the BackColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarFormatStyle.ResetForeColor">
+            <summary>
+            Resets the ForeColor property to its default color.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarFormatStyle.ShouldSerializeForeColor">
+            <summary>
+            Indicates whether the ForeColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarFormatStyle.ResetBackColorGradient">
+            <summary>
+            Resets the BackColorGradient property to its default color.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarFormatStyle.ShouldSerializeBackColorGradient">
+            <summary>
+            Indicates whether the BackColorGradient property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarFormatStyle.ShouldSerializeBackgroundGradientMode">
+            <summary>
+            Indicates whether the BackgroundGradientMode property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarFormatStyle.ResetBackgroundGradientMode">
+            <summary>
+            Resets the BackgroundGradientMode property to its default color.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarFormatStyle.ButtonBar">
+            <summary>
+            Get the ButtonBar control that this ButtonBarFormatStyle is assigned to. 
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarFormatStyle.Alpha">
+            <summary>
+            Gets or sets a value specifying the level of alpha (transparency).
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarFormatStyle.BackColor">
+            <summary>
+            Gets or sets the background color for this ButtonBarFormatStyle.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarFormatStyle.BackColorAlphaMode">
+            <summary>
+            Gets or sets a value specifying the level of alpha (transparency) to use in the background.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarFormatStyle.BackColorGradientAlphaMode">
+            <summary>
+            Gets or sets a value specifying the level of alpha (transparency) to use in the background of the second color in a linear gradient pattern.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarFormatStyle.ForeColor">
+            <summary>
+            Gets or sets the foreground color for this ButtonBarFormatStyle.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarFormatStyle.ForeColorAlphaMode">
+            <summary>
+            Gets or sets a value specifying the level of alpha (transparency) to use in the foreground.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarFormatStyle.Font">
+            <summary>
+            Gets or sets the Font object used by this ButtonBarFormatStyle.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarFormatStyle.FontBold">
+            <summary>
+            Gets or sets a value indicating whether the Font object of this ButtonBarFormatStyle is bold.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarFormatStyle.FontItalic">
+            <summary>
+            Gets or sets a value indicating whether the Font object of this ButtonBarFormatStyle is italic.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarFormatStyle.FontUnderline">
+            <summary>
+            Gets or sets a value indicating whether the Font object of this ButtonBarFormatStyle is underlined.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarFormatStyle.FontStrikeout">
+            <summary>
+            Gets or sets a value indicating whether the Font object of this ButtonBarFormatStyle specifies a horizontal line through the font.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarFormatStyle.FontName">
+            <summary>
+            Gets or sets the face name of the font used by the ButtonBarFormatSrtyle class.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarFormatStyle.FontSize">
+            <summary>
+            Gets or sets the size of the Font object used by this ButtonBarFormatStyle object.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarFormatStyle.Blend">
+            <summary>
+            Gets or sets a value indicating the percentage of the BlendColor to blend with the BackColor.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarFormatStyle.BackColorGradient">
+            <summary>
+            Gets or sets a value specifying the background color used in a linear gradient pathern.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarFormatStyle.BackgroundGradientMode">
+            <summary>
+            Gets or sets a value specifying if a linear gradient will be applied and its direction.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarFormatStyle.BlendGradient">
+            <summary>
+            Gets or sets a value indicating the percentage of the BlendColor to blend with the BackColorGradient.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.AlphaMode">
+            <summary>
+            Specifies the alpha level to use.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.AlphaMode.Empty">
+            <summary>
+            Indicates that the value for this property should be inherited from the parent object.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.AlphaMode.Opaque">
+            <summary>
+            Indicates an alpha level of 255.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.AlphaMode.Transparent">
+            <summary>
+            Indicates an alpha level of 0.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.AlphaMode.UseAlpha">
+            <summary>
+            Use the value of the Alpha property.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.UnfoldEffect">
+            <summary>
+            Specifies which effect is used when groups are expanded/collapsed.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.UnfoldEffect.Slide">
+            <summary>
+            Groups are expanded/collapsed using smoth scrolling.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.UnfoldEffect.None">
+            <summary>
+            No effect is used when a group is expanded/collapsed
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.OwnerDrawnArea">
+            <summary>
+            Specifies which area of a ButtonBar control needs to be drawn manually.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.OwnerDrawnArea.None">
+            <summary>
+            The control won't be drawn manually.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.OwnerDrawnArea.Background">
+            <summary>
+            Specifies that the area to be manually drawn is the control's background.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.OwnerDrawnArea.GroupHeader">
+            <summary>
+            Specifies that the area to be manually drawn is the header of the groups.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.OwnerDrawnArea.GroupBackground">
+            <summary>
+            Specifies that the area to be manually drawn is the background of the groups.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.OwnerDrawnArea.Items">
+            <summary>
+            Specifies that the area to be manually drawn are the ButtonBarItem ojects of the control.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.OwnerDrawnArea.All">
+            <summary>
+            All flags except None are set.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ButtonBarArea">
+            <summary>
+            Specifies the type of an area in a ButtonBar control.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarArea.Background">
+            <summary>
+            Represents the background of the ButtonBar control.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarArea.GroupHeader">
+            <summary>
+            Represents the header of a ButtonBarGroup.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarArea.GroupBackground">
+            <summary>
+            Represents the background of a ButtonBarGroup.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarArea.Item">
+            <summary>
+            Represents a ButtonBarItem.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.TriState">
+            <summary>
+            Represents a boolean value for a property that can inherit its value from a base or parent object.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.TriState.Empty">
+            <summary>
+            Indicates that the value for this property should be inherited from the parent object.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.TriState.False">
+            <summary>
+            Specifies that False should be used in a property ignoring settings in the parent object.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.TriState.True">
+            <summary>
+            Specifies that True should be used in a property ignoring settings in the parent object.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.BackgroundGradientMode">
+            <summary>
+            Specifies how the background of an object will be filled.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.BackgroundGradientMode.Empty">
+            <summary>
+            Indicates that the value for this property should be inherited from the parent object.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.BackgroundGradientMode.Solid">
+            <summary>
+            Specifies a solid background.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.BackgroundGradientMode.Horizontal">
+            <summary>
+            Specifies a gradient from left to right.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.BackgroundGradientMode.Vertical">
+            <summary>
+            Specifies a gradient from top to bottom.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.BackgroundGradientMode.Diagonal">
+            <summary>
+            Specifies a gradient from upper left to lower right.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.BackgroundGradientMode.DiagonalBackwards">
+            <summary>
+            Specifies a gradient from upper right to lower left.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.VisualStyle">
+            <summary>
+            Specifies which apperance style the control is formatted after.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.VisualStyle.Default">
+            <summary>
+            Unspecified. The value of the property is inherited from the settings specified in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.VisualStyle.Standard">
+            <summary>
+            The control is formatted using its default appearance.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.VisualStyle.Office2003">
+            <summary>
+            The control is formatted as the controls in Office 2003.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.VisualStyle.VS2005">
+            <summary>
+            The control is formatted as its related control in VS 2005.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.VisualStyle.Office2007">
+            <summary>
+            The control is formatted as its related control in Office 2007.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.VisualStyle.Office2010">
+            <summary>
+            The control is formatted as its related control in Office 2010.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.VisualStyle.VS2010">
+            <summary>
+            The control is formatted as its related control in VS 2010.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ThemedArea">
+            <summary>
+            Specifies which portion of the ButtonBar control will be drawn using Windows XP Visual Styles.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ThemedArea.None">
+            <summary>
+            The control won't use Windows XP Visual Styles.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ThemedArea.Background">
+            <summary>
+            The background of the control will be drawn using Windows XP Visual Styles.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ThemedArea.Border">
+            <summary>
+            The border of the control will be drawn using Windows XP Visual Styles.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ThemedArea.Groups">
+            <summary>
+            The headers of the ButtonBarGroup objects will be drawn using Windows XP Visual Styles.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ThemedArea.Items">
+            <summary>
+            The ButtonBarItem objects will be drawn using Windows XP Visual Styles.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ThemedArea.ScrollButton">
+            <summary>
+            The scroll buttons of the control objects will be drawn using Windows XP Visual Styles.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ThemedArea.All">
+            <summary>
+            All flags except None are set.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ButtonBarStyle">
+            <summary>
+            Specifies which apperance style a ButtonBar is formatted after.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarStyle.Default">
+            <summary>
+            Unspecified. The value of the property is inherited from the settings specified in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarStyle.OfficeXP">
+            <summary>
+            The ButtonBar control is formatted as the Bar used in Office XP.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarStyle.Office2000">
+            <summary>
+            The ButtonBar control is formatted as the Bar used in Office 2000.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarStyle.OutlookExpress">
+            <summary>
+            The ButtonBar control is formatted as the Bar used in Outlook Express.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarStyle.VisualStudio">
+            <summary>
+            The ButtonBar control is formatted as the Bar used in Visual Studio .Net.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarStyle.CommonDialog">
+            <summary>
+            The ButtonBar control is formatted as the Bar used in Windows Common Dialogs.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarStyle.Office2003">
+            <summary>
+            The ButtonBar control is formatted as the controls in Office 2003.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarStyle.VS2005">
+            <summary>
+            The ButtonBar control is formatted as its related control in VS 2005.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarStyle.Office2007">
+            <summary>
+            The ButtonBar control is formatted as its related control in Office 2007.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarStyle.Office2010">
+            <summary>
+            The ButtonBar control is formatted as its related control in Office 2010.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarStyle.VS2010">
+            <summary>
+            The ButtonBar control is formatted as its related control in VS 2010.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.OfficeColorScheme">
+            <summary>
+            Determines the color scheme a control uses to draw itself when the VisualStyle of a control is Office2007 or Office2010.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.OfficeColorScheme.Default">
+            <summary>
+            The control is drawn using the OfficeColorScheme specified as the DefaultOfficeColorScheme in the Janus.Windows.Common.VisualStyleManager component.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.OfficeColorScheme.Blue">
+            <summary>
+            The control is drawn using the built-in 'Blue' color scheme.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.OfficeColorScheme.Silver">
+            <summary>
+            The control is drawn using the built-in 'Silver' color scheme.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.OfficeColorScheme.Black">
+            <summary>
+            The control is drawn using the built-in 'Black' color scheme.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.OfficeColorScheme.Custom">
+            <summary>
+            The control is drawn using a custom color scheme created based on the color specified in the OfficeCustomColor property.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Office2007ColorScheme">
+            <summary>
+            Deprecated.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.Office2007ColorScheme.Default">
+            <summary>
+            The control is drawn using the OfficeColorScheme specified as the DefaultOffice2007ColorScheme in the Janus.Windows.Common.VisualStyleManager component.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.Office2007ColorScheme.Blue">
+            <summary>
+            The control is drawn using the built-in 'Blue' color scheme.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.Office2007ColorScheme.Silver">
+            <summary>
+            The control is drawn using the built-in 'Silver' color scheme.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.Office2007ColorScheme.Black">
+            <summary>
+            The control is drawn using the built-in 'Black' color scheme.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.Office2007ColorScheme.Custom">
+            <summary>
+            The control is drawn using a custom color scheme created based on the color specified in the Office2007CustomColor property.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ImageDrawMode">
+            <summary>
+            Specifies how the background image is positioned within the ButtonBar.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ImageDrawMode.Stretched">
+            <summary>
+            The image is stretched or shrunk to fit the size of the ButtonBar.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ImageDrawMode.Tiled">
+            <summary>
+            The image is tiled.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ImageDrawMode.Centered">
+            <summary>
+            The image is displayed in the center if the ButtonBar is larger than the image. If the image is larger than the ButtonBar, the picture is placed in the center of the ButtonBar and the outside edges are clipped.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.DragMode">
+            <summary>
+            Specifies how the control handles an item drag operation.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.DragMode.Manual">
+            <summary>
+            Drag can only be done in code using DoDragDrop method.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.DragMode.Automatic">
+            <summary>
+            The ButtonBar control handles the drag operation allowing the user to move an item in the same group as well as in other groups of the same control.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.DragMode.MoveInSameGroup">
+            <summary>
+            The ButtonBar control handles the drag operation allowing the user to move an item in the same group but not in other groups.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.DragMode.AutomaticNoMove">
+            <summary>
+            The ButtonBar control starts a drag operation but it doesn't allow the user to move the dragged item in the control. The drag events are handled by the developer.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.DragStyle">
+            <summary>
+            Specifies how the drop target will be represented in a drag operation.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.DragStyle.DropLine">
+            <summary>
+            A line will be representing the drop target.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.DragStyle.InvertedRect">
+            <summary>
+            The colors of item in the position of the drop target will be inverted.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.SelectionArea">
+            <summary>
+            Specifies which part of the ButtonBarItem objects will be selected when the mouse pointer moves over them.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.SelectionArea.Image">
+            <summary>
+            Only the boundaries of the image will be selected.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.SelectionArea.FullItem">
+            <summary>
+            All the ButtonBarItem, including the text, will be selected.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ItemAppearance">
+            <summary>
+            Specifies the appearance of the ButtonBarItem objects.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ItemAppearance.PopUp">
+            <summary>
+            The ButtonBarItem appear flat, but the items change to three-dimensional as the mouse pointer moves over them.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ItemAppearance.Flat">
+            <summary>
+            The ButtonBarItem's border has no three-dimensional effects.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ButtonBarOrientation">
+            <summary>
+            Specifies the orientation of the ButtonBar.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarOrientation.Vertical">
+            <summary>
+            The orientation of the ButtonBar will be vertical.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarOrientation.Horizontal">
+            <summary>
+            The orientation of the ButtonBar will be horizontal.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.GroupAppearance">
+            <summary>
+            Specifies the appearance of the ButtonBarGroup objects in the ButtonBar.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.GroupAppearance.Light3D">
+            <summary>
+            The ButtonBarGroup header has a raised inner edge and no outer edge.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.GroupAppearance.Standard">
+            <summary>
+            The ButtonBarGroup headers has raised inner and outer edges.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.GroupAppearance.Flat">
+            <summary>
+            The ButtonBarGroup headers has no three-dimensional effects.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.GroupAppearance.PopUp">
+            <summary>
+            The ButtonBarGroup header appears flat until the mouse pointer moves over it, at which point it appears three-dimensional.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.BorderStyle">
+            <summary>
+            Specify the border style for the  ButtonBar control.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.BorderStyle.Light3D">
+            <summary>
+            The border has a sunken outer edge and no inner edge.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.BorderStyle.Standard">
+            <summary>
+            The border has sunken inner and outer edges.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.BorderStyle.Flat">
+            <summary>
+            The border has no three-dimensional effects.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.BorderStyle.None">
+            <summary>
+            The ButtonBar control has no border.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.HitTest">
+            <summary>
+            Determines which element of the ButtonBar control is at a specified location.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.HitTest.ButtonBarItem">
+            <summary>
+            A ButtonBarItem in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.HitTest.ButtonBarGroup">
+            <summary>
+            A ButtonBarGroup in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.HitTest.None">
+            <summary>
+            The background area, visible when the control contains few ButtonBarItem objects, or when the ButtonBar is scrolled to its bottom.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Alignment">
+            <summary>
+            Specifies the alignment of a text or an image relative to its layout rectangle.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.Alignment.Near">
+            <summary>
+            Specifies that the text or the image is aligned in near of the layout rectangle.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.Alignment.Center">
+            <summary>
+            Specifies that the text or the image is aligned in the center of the layout rectangle.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.Alignment.Far">
+            <summary>
+            Specifies that the text or the image is aligned far from the origin position of the layout rectangle.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ScrollLocation">
+            <summary>
+            Specifies the location of the scroll buttons in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ScrollLocation.GroupsLevel">
+            <summary>
+            The scroll buttons will be placed at the same level of the ButtonBarGroup headers.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ScrollLocation.ItemsLevel">
+            <summary>
+            The scroll buttons will be placed inside the boundaries of the selected ButtonBarGroup.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ButtonBarView">
+            <summary>
+            Specifies how ButtonBarItem objects are displayed in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarView.SmallIcons">
+            <summary>
+            Each ButtonBarItem appears as a small icon with a label to its right.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarView.LargeIcons">
+            <summary>
+            Each ButtonBarItem appears as a full-sized icon with a label below it.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Design.AboutBox">
+            <summary>
+            Summary description for Form1.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.Design.AboutBox.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.AboutBox.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.AboutBox.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.AboutBox.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.AboutBox.OnLoad(System.EventArgs)">
+            <summary>
+            Overrides Form.OnLoad
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ResourceFile">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ResourceFile.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ResourceFile.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ButtonBarGroup">
+            <summary>
+            Represents a group in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarGroup.#ctor">
+            <summary>
+            Initializes a new instance of the ButtonBarGroup class.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarGroup.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ButtonBarGroup class and displays the assigned text on the group.
+            </summary>
+            <param name="text">The text to display on the new ButtonBarGroup.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarGroup.ShouldSerializeFormatStyle">
+            <summary>
+            Indicates whether the FormatStyle property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarGroup.ResetFormatStyle">
+            <summary>
+            Resets the FormatStyle property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarGroup.ShouldSerializeBackgroundFormatStyle">
+            <summary>
+            Indicates whether the BackgroundFormatStyle property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarGroup.ResetBackgroundFormatStyle">
+            <summary>
+            Resets the BackgroundFormatStyle property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarGroup.ShouldSerializeItemsFormatStyle">
+            <summary>
+            Indicates whether the ItemsFormatStyle property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarGroup.ResetItemsFormatStyle">
+            <summary>
+            Resets the ItemsFormatStyle property to its default value.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.Cursor">
+            <summary>
+            Gets or sets the cursor that is displayed when the mouse pointer is over the group.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.Tag">
+            <summary>
+            Gets or sets an object that contains data to associate with the ButtonBarGroup.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.TagString">
+            <summary>
+            Gets or sets a string that contains data to associate with the ButtonBarGroup.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.Index">
+            <summary>
+            Gets the position of the ButtonBarGroup in the ButtonBarGroupCollection.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.AccessibleRole">
+            <summary>
+            Gets or sets a value representing the role that will be reported to accessibility clients.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.AccessibleName">
+            <summary>
+            Gets or sets a string representing the name that will be reported to accessibility clients.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.AccessibleDescription">
+            <summary>
+            Gets or sets a string representing the description that will be reported to accessibility clients.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.Key">
+            <summary>
+            Gets or sets a string that uniquely identifies this ButtonBarGroup in a collection.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.View">
+            <summary>
+            Gets or sets an object specifying how ButtonBarItem objects whitin this group are displayed in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.TextAlignment">
+            <summary>
+            Gets or sets the alignment of the text in the ButtonBarGroup.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.ImageAlignment">
+            <summary>
+            Gets or sets the alignment of the image in the ButtonBarGroup.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.Enabled">
+            <summary>
+            Gets or sets a value indicating whether the ButtonBarGroup is enabled.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.Visible">
+            <summary>
+            Gets or sets a value indicating whether the ButtonBarGroup is visble.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.Bounds">
+            <summary>
+            Gets or sets the size and location of the group in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.HeaderHeight">
+            <summary>
+            Gets the height of the header of ButtonBarBarGroup in pixels.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.Items">
+            <summary>
+            Gets a collection containing all the items in this group.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.Icon">
+            <summary>
+            Gets or sets the icon that is displayed on the ButtonBarGroup.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.Image">
+            <summary>
+            Gets or sets the image that is displayed on the ButtonBarGroup.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.FocusImageIndex">
+            <summary>
+            Gets or sets the image list index value of the image displayed by the ButtonBarGroup when the mouse moves over it.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.FocusImageKey">
+            <summary>
+            Gets or sets the key accessor for the image in the ImageList displayed by the ButtonBarGroup when the mouse moves over it.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.DisabledImageIndex">
+            <summary>
+            Gets or sets the image list index value of the image displayed by the ButtonBarGroup when it is disabled.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.DisabledImageKey">
+            <summary>
+            Gets or sets the key accessor for the image in the ImageList displayed by the ButtonBarGroup when it is disabled.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.ImageIndex">
+            <summary>
+            Gets or sets the image list index value of the image displayed by the ButtonBarGroup. 
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.ImageKey">
+            <summary>
+            Gets or sets the key accessor for the image in the ImageList displayed by the ButtonBarGroup. 
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.Text">
+            <summary>
+            Gets or sets the text displayed on the ButtonBarGroup.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.ToolTipText">
+            <summary>
+            Gets or sets the text that appears as a ToolTip for the ButtonBarGroup.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.Selected">
+            <summary>
+            Gets or sets a value indicating whether this ButtonBarGroup is selected.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.BackgroundImage">
+            <summary>
+            Gets or sets the background image displayed by the ButtonBar when this ButtonBarGroup is selected.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.BackGroundImageDrawMode">
+            <summary>
+            Gets or sets a value specifying how the background image is draw on the ButtonBar.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.Container">
+            <summary>
+            Gets or sets a value that indicates whether the group should act as a container for other controls.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.ContainerControl">
+            <summary>
+            Gets or sets the ButtonBarContainerControl associated to a ButtonBarGroup acting as container for other controls.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.ButtonBar">
+            <summary>
+            Gets the ButtonBar control that this ButtonBarGroup object is assigned to.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.FormatStyle">
+            <summary>
+            Gets the ButtonBarFormatStyle used to draw this ButtonBarGroup in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.StateStyles">
+            <summary>
+            Gets the ExplorerBarStateStyles that holds the format styles used to draw the header in its different states.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.ItemsFormatStyle">
+            <summary>
+            Gets the ButtonBarFormatStyle used to draw the ButtonBarItem objects whitin this group.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.ItemsStateStyles">
+            <summary>
+            Gets the ButtonBarStateStyles that holds the format styles used to draw the items whitin this group in their different states.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroup.BackgroundFormatStyle">
+            <summary>
+            Gets the ButtonBarFormatStyle used to draw background of this ButtonBarGroup in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ButtonBarGroupConverter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarGroupConverter.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarGroupConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+            <param name="destinationType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarGroupConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+            <param name="culture"></param>
+            <param name="value"></param>
+            <param name="destinationType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ScrollButton">
+            <summary>
+               Summary description for ScrollButton.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ScrollButton.components">
+            <summary> 
+               Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ScrollButton.Dispose(System.Boolean)">
+            <summary> 
+               Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ScrollButton.CreateAccessibilityInstance">
+            <summary>
+            Overrides Control.CreateAccessibilityInstance
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ScrollButton.InitializeComponent">
+            <summary> 
+               Required method for Designer support - do not modify 
+               the contents of this method with the code editor.
+            </summary>
+            
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Design.LayoutNameDialog">
+            <summary>
+            Summary description for LayoutNameDialog.
+            </summary>
+            
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Design.GroupEditor">
+            <summary>
+            This class is not intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.GroupEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+            <param name="provider"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.GroupEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ControlStyle">
+            <summary>
+            Summary description for ControlStyle.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Design.FlagsEnumConverter">
+            <summary>
+            This class is not intended to be used directly from your code.
+            </summary>
+            
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.FlagsEnumConverter.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.FlagsEnumConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.FlagsEnumConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+            <param name="culture"></param>
+            <param name="value"></param>
+            <param name="destinationType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Design.FlagsEnumEditor">
+            <summary>
+            This class is not intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.FlagsEnumEditor.#ctor">
+            <summary>
+            Initialize a new instance of the FlagsEnumEditor class
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.FlagsEnumEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <summary>
+            Overrides UITypeEditor.EditValue
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ButtonBarLayout">
+            <summary>
+            Contains persisted properties of a ButtonBar control.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayout.FromStream(System.IO.Stream)">
+            <summary>
+            Creates an ButtonBarLayout object from the specified data stream.
+            </summary>
+            <param name="stream">A Stream object that contains the data for this ButtonBarLayout object.</param>
+            <returns>The ButtonBarLayout object created.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayout.FromXMLString(System.String)">
+            <summary>
+            Creates an ButtonBarLayout object from the specified string.
+            </summary>
+            <param name="xmlString">A string that contains the data for this ButtonBarLayout object.</param>
+            <returns>The ButtonBarLayout object created.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayout.FromXMLReader(System.Xml.XmlReader)">
+            <summary>
+            Creates an ButtonBarLayout object from the specified Xml reader.
+            </summary>
+            <param name="xmlReader">An XmlReader object that contains the data for this ButtonBarLayout object.</param>
+            <returns>The ButtonBarLayout object created.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayout.#ctor">
+            <summary>
+            Initializes a new instance of tho ButtonBarLayout class.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayout.Update">
+            <summary>
+            Updates the layout with the changes in the ButtonBar properties when it is the current layout.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayout.Save(System.IO.Stream)">
+            <summary>
+            Saves this ButtonBarLayout object to the specified Stream object.
+            </summary>
+            <param name="stream">The Stream object to which to save this ButtonBarLayout object.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayout.Save(System.Xml.XmlWriter)">
+            <summary>
+            Saves this ButtonBarLayout object to the specified XmlWriter object.
+            </summary>
+            <param name="xmlWriter">The XmlWriter object to which to save this ButtonBarLayout object.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayout.GetXmlString">
+            <summary>
+            Saves this ButtonBarLayout object as an Xml string.
+            </summary>
+            <returns>A Xml string containing the ButtonBarLayout object persisted properties.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayout.Clone">
+            <summary>
+            Creates a new object that is a copy of the current instance.
+            </summary>
+            <returns>A ButtonBarLayout that is the copy of the current instance.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayout.CloneLayout(System.Boolean)">
+            <summary>
+            Creates a new object that is a copy of the current instance.
+            </summary>
+            <param name="includeChildren">A Boolean that specifies whether the ChildLayouts are copied or not.</param>
+            <returns>A ButtonBarLayout that is the copy of the current instance.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayout.IsDirty">
+            <summary>
+            Indicates whether the properties in the ButtonBar control differ from the persisted information.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayout.ConvertToStandAlone">
+            <summary>
+            Creates a new ButtonBarLayout that can be used as a stand alone layout.
+            </summary>
+            <returns>A ButtonBarLayout that can be used a stand alone layout</returns>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarLayout.ParentLayout">
+            <summary>
+            Gets the parent ButtonBarLayout instance.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarLayout.Key">
+            <summary>
+            Gets or sets the key used to identify an object in a collection.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarLayout.Tag">
+            <summary>
+            Gets or sets an object that contains data to associate with the field.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarLayout.LayoutString">
+            <summary>
+            Gets or sets an Xml string containing the persisted properties in a ButtonBar control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarLayout.IsCurrentLayout">
+            <summary>
+            Gets or sets a value indicating whether this instance is the current layout in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarLayout.Description">
+            <summary>
+            Gets or sets a string that can be used to store an informational description in the layout.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarLayout.ChildLayouts">
+            <summary>
+            Gets the collection of ButtonBarLayout objects that inherit their values from the layout.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarLayout.StandAlone">
+            <summary>
+            Gets a value that determines whether the layout is a stand alone layout or if it is a child of another layout.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarLayout.LayoutReferences">
+            <summary>
+            Design time support property.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ButtonBarLayoutConverter">
+            <summary>
+            ButtonBarLayoutConverter class.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayoutConverter.#ctor">
+            <summary>
+            Initializes a new instance of the ButtonBarLayoutConverter class.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayoutConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>
+            Overrides TypeConverter.CanConvertTo
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayoutConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <summary>
+            Overrides TypeConverter.ConvertTo
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ResourceFile2.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ResourceFile2.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Design.AutoFormatDialog">
+            <summary>
+            This class is not intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.AutoFormatDialog.#ctor">
+            <summary>
+            Initialize a new instance of the AutoFormatDialogClass.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.AutoFormatDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.AutoFormatDialog.OnLoad(System.EventArgs)">
+            <summary>
+            Raises the System.Windows.Forms.Form.Load event.
+            </summary>
+            <param name="e">A System.EventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.AutoFormatDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.Design.AutoFormatDialog.ButtonBar">
+            <summary>
+            Gets or sets the ButtonBar that this form is assigned to.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Global">
+            <summary>
+            Summary description for Global.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ON">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ON.#ctor(System.Object,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ON.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ON.Object">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ON.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Design.ColorSchemeEditor">
+            <summary>
+            Provides a user interface for selecting controls objects in a Properties window.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.ColorSchemeEditor.#ctor">
+            <summary>
+            Initializes a new instance of the ColorSchemeEditor class.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.ColorSchemeEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <summary>
+            Overrides UITypeEditor.EditValue.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.ColorSchemeEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Overrides UITypeEditor.GetEditStyle
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Design.ColorSchemeConverter">
+            <summary>
+            Provides a type converter to convert a ColorScheme property to a string
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.ColorSchemeConverter.#ctor">
+            <summary>
+            Initialize a new instance of the ColorSchemeConverter.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.ColorSchemeConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>
+            Overrides TypeConverter.CanConvertTo.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.ColorSchemeConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <summary>
+            Overrides TypeConverter.ConvertTo.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ButtonBarLicenseProvider">
+            <summary>
+            ButtonBarLicenseProvider class.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLicenseProvider.#ctor">
+            <summary>
+            Initializes a new instance of the Janus.Windows.ButtonBar.ButtonBarLicenseProvider class
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLicenseProvider.GetLicense(System.ComponentModel.LicenseContext,System.Type,System.Object,System.Boolean)">
+            <summary>
+            See LicenseProvider.GetLicense
+            </summary>
+            <param name="context"></param>
+            <param name="type"></param>
+            <param name="instance"></param>
+            <param name="allowExceptions"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ButtonBarLayoutCollection">
+            <summary>
+            Summary description for ButtonBarLayoutCollection.
+            </summary>
+            
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayoutCollection.Add(Janus.Windows.ButtonBar.ButtonBarLayout)">
+            <summary>
+            Appends the specified ButtonBarLayout object at the end of the collection.
+            </summary>
+            <param name="layout">The ButtonBarLayout object to add.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayoutCollection.AddRange(Janus.Windows.ButtonBar.ButtonBarLayout[])">
+            <summary>
+            Copies the elements of the specified ButtonBarLayout array to the end of the collection.
+            </summary>
+            <param name="layouts">The array of ButtonBarLayout objects to add to the collection.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayoutCollection.OnInsert(System.Int32,System.Object)">
+            <summary>
+            Overrides CollectionBase.OnInsert
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayoutCollection.OnInsertComplete(System.Int32,System.Object)">
+            <summary>
+            Overrides CollectionBase.OnInsertComplete
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayoutCollection.Remove(Janus.Windows.ButtonBar.ButtonBarLayout)">
+            <summary>
+            Removes the specified ButtonBarLayout object from the collection.
+            </summary>
+            <param name="layout">The ButtonBarLayout object to remove.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayoutCollection.OnRemoveComplete(System.Int32,System.Object)">
+            <summary>
+            Overrides CollectionBase.OnRemoveComplete
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayoutCollection.OnClear">
+            <summary>
+            Overrides CollectionBase.OnClear
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayoutCollection.IndexOf(Janus.Windows.ButtonBar.ButtonBarLayout)">
+            <summary>
+            Retrieves the index of the specified ButtonBarLayout in the collection.
+            </summary>
+            <param name="layout">The ButtonBarLayout to locate in the collection.</param>
+            <returns>A zero-based index value that represents the position of the specified ButtonBarLayout in the collection.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayoutCollection.Contains(Janus.Windows.ButtonBar.ButtonBarLayout)">
+            <summary>
+            Determines whether a ButtonBarLayout is in the collection.
+            </summary>
+            <param name="layout">The ButtonBarLayout to locate in the collection.</param>
+            <returns>true if item is found in the collection; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarLayoutCollection.Contains(System.String)">
+            <summary>
+            Determines whether a ButtonBarLayout with the specified key is in the collection.
+            </summary>
+            <param name="layoutKey">The Key of the ButtonBarLayout to locate in the collection.</param>
+            <returns>true if item is found in the collection; otherwise, false.</returns>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarLayoutCollection.Item(System.Int32)">
+            <summary>
+            Gets a ButtonBarLayout object from the collection at the specified index.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarLayoutCollection.Item(System.String)">
+            <summary>
+            Gets a ButtonBarLayout object from the collection with the specified key.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ButtonBarVisualStyleAreas">
+            <summary>
+            Summary description for AreaStyles.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarVisualStyleAreas.BackgroundStyle">
+            <summary>
+            Gets or sets a value specifying the style for the background of the ButtonBar control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarVisualStyleAreas.GroupsStyle">
+            <summary>
+            Gets or sets a value specifying the style for the group in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarVisualStyleAreas.ItemsStyle">
+            <summary>
+            Gets or sets a value specifying the style for the items in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarVisualStyleAreas.ControlBorderStyle">
+            <summary>
+            Gets or sets a value specifying the style for the border of the ButtonBar control.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ButtonBarItemCollection">
+            <summary>
+            Represents a collection of ButtonBarItem objects.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItemCollection.OnClear">
+            <summary>
+            Performs additional custom processes when clearing the contents of the ButtonBarItemCollection class.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItemCollection.OnClearComplete">
+            <summary>
+            Performs additional custom processes after clearing the contents of the ButtonBarGroupCollection class.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItemCollection.Contains(Janus.Windows.ButtonBar.ButtonBarItem)">
+            <summary>
+            Determines if the specified ButtonBarItem object is a member of the collection.
+            </summary>
+            <param name="item">The ButtonBarItem object to locate in the collection.</param>
+            <returns>true if the item is found in the ButtonBarItemCollection; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItemCollection.Insert(System.Int32,Janus.Windows.ButtonBar.ButtonBarItem)">
+            <summary>
+            Inserts a new ButtonBarItem object in the ButtonBarItemCollection at the specified location.
+            </summary>
+            <param name="index">The indexed location within the collection to insert the ButtonBarItem object.</param>
+            <param name="item">The ButtonBarItem object to insert.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItemCollection.RemoveAt(System.Int32)">
+            <summary>
+            Removes the ButtonBarItem at the specified index of the collection.
+            </summary>
+            <param name="index">The indexed location of the ButtonBarItem object in the collection.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItemCollection.Remove(Janus.Windows.ButtonBar.ButtonBarItem)">
+            <summary>
+            Removes a given ButtonBarItem from the collection.
+            </summary>
+            <param name="item">The ButtonBarItem object to remove from the collection.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItemCollection.Clear">
+            <summary>
+            Overrides CollectionBase.Clear
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItemCollection.Add(Janus.Windows.ButtonBar.ButtonBarItem)">
+            <summary>
+            Adds a new ButtonBarItem object to the end of the ButtonBarItemCollection.
+            </summary>
+            <param name="item">The ButtonBarItem to be added after all existing items.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItemCollection.AddRange(Janus.Windows.ButtonBar.ButtonBarItem[])">
+            <summary>
+            Adds an array of ButtonBarItem objects to the collection.
+            </summary>
+            <param name="items">An array of ButtonBarItem objects to add to the collection.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItemCollection.Add(System.String)">
+            <summary>
+            Creates a new ButtonBarItem using the specified value and adds it to the end of the ButtonBarItemCollection.
+            </summary>
+            <param name="text">The text of the new ButtonBarItem.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItemCollection.Add(System.String,System.Int32)">
+            <summary>
+            Creates a new ButtonBarItem using the specified values and adds it to the end of the ButtonBarItemCollection. 
+            </summary>
+            <param name="text">The text of the new ButtonBarItem.</param>
+            <param name="imageIndex">The index for the SmallImageIndex property of the new ButtonBarItem.</param>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItemCollection.Item(System.Int32)">
+            <summary>
+            Gets the ButtonBarItem  object at the specified indexed location in the ButtonBarItemCollection.
+            </summary>
+            <param name="index">The indexed location of the ButtonBarItem in the collection.</param>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItemCollection.Item(System.String)">
+            <summary>
+            Gets the ButtonBarItem object with the specified key in the ButtonBarItemCollection.
+            </summary>
+            <param name="key">The key of the ButtonBarItem in the collection.</param>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ButtonBarContainerControl">
+            <summary>
+            Summary description for ButtonBarContainerControl.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.ButtonBar.ButtonBarContainerControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarContainerControl.#ctor">
+            <summary>
+            Initialize a new instance of the ButtonBarContainerControl class.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarContainerControl.OnPaintBackground(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Raises the System.Windows.Forms.Control.PaintBackground event.
+            </summary>
+            <param name="e">A System.Windows.Forms.PaintEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarContainerControl.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Raises the System.Windows.Forms.Control.Paint event.
+            </summary>
+            <param name="e">A System.Windows.Forms.PaintEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarContainerControl.OnVisibleChanged(System.EventArgs)">
+            <summary>
+            See Control.OnVisibleChanged
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarContainerControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarContainerControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarContainerControl.ButtonBar">
+            <summary>
+            Gets the ButtonBar control that this ButtonBarContainerControl is assigned to.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarContainerControl.Group">
+            <summary>
+            Gets the ButtonBarGroup control that this ButtonBarContainerControl is assigned to.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Internal.DrawHelper">
+            <summary>	
+               Summary description for ImageDrag.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ButtonBarGroupCollection">
+            <summary>
+            Encapsulates a collection of ButtonBarGroup objects for use by the ButtonBar control.
+            </summary>
+            
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarGroupCollection.Contains(Janus.Windows.ButtonBar.ButtonBarGroup)">
+            <summary>
+            Determines if the specified ButtonBarGroup object is a member of the collection.
+            </summary>
+            <param name="group">The ButtonBarGroup object to locate in the collection.</param>
+            <returns>true if the group is found in the ButtonBarGroupCollection; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarGroupCollection.Insert(System.Int32,Janus.Windows.ButtonBar.ButtonBarGroup)">
+            <summary>
+            Inserts a new ButtonBarGroup object in the collection at the specified location.
+            </summary>
+            <param name="index">The indexed location within the collection to insert the ButtonBarGroup object.</param>
+            <param name="group">The ButtonBarGroup object to insert.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarGroupCollection.AddRange(Janus.Windows.ButtonBar.ButtonBarGroup[])">
+            <summary>
+            Adds an array of type ButtonBarGroup to the collection.
+            </summary>
+            <param name="groups">An array of ButtonBarGroup objects to add to the collection.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarGroupCollection.Add(Janus.Windows.ButtonBar.ButtonBarGroup)">
+            <summary>
+            Adds the ButtonBarGroup object to the end of the ButtonBarGroupCollection.
+            </summary>
+            <param name="group">The ButtonBarGroup to be added after all existing groups.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarGroupCollection.Add(System.String)">
+            <summary>
+            Creates a new ButtonBarGroup using the specified value and adds it to the end of the ButtonBarGroupCollection.
+            </summary>
+            <param name="text">The text of the new ButtonBarGroup.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarGroupCollection.Remove(Janus.Windows.ButtonBar.ButtonBarGroup)">
+            <summary>
+            Removes a given ButtonBarGroup from the collection.
+            </summary>
+            <param name="group">The ButtonBarGroup object to remove from the collection.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarGroupCollection.OnClear">
+            <summary>
+            Performs additional custom processes when clearing the contents of the ButtonBarGroupCollection class.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarGroupCollection.OnClearComplete">
+            <summary>
+            Performs additional custom processes after clearing the contents of the ButtonBarGroupCollection class.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroupCollection.Item(System.String)">
+            <summary>
+            Gets the ButtonBarGroup object with the specified key in the ButtonBarGroupCollection.
+            </summary>
+            <param name="key">The key of the ButtonBarGroup in the collection.</param>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarGroupCollection.Item(System.Int32)">
+            <summary>
+            Gets the ButtonBarGroup object at the specified indexed location in the ButtonBarGroupCollection.
+            </summary>
+            <param name="index">The indexed location of the ButtonBarGroup in the collection.</param>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Internal.ThemeHeader">
+            <summary>
+            Summary description for ThemeHeader.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Design.GroupsDesigner">
+            <summary>
+            Summary description for GroupsDesigner.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.GroupsDesigner.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.GroupsDesigner.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.GroupsDesigner.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.GroupsDesigner.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.Design.GroupsDesigner.ButtonBar">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ButtonBarStateStyles">
+            <summary>
+            Encapsulates the ButtonBarFormatStyle for the different states of an item.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarStateStyles.#ctor">
+            <summary>
+            Initialize a new instance of the ButtonBarStateStyles class.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarStateStyles.ShouldSerialize">
+            <summary>
+            Indicates whether the ButtonBarFormatStateStyle class should be persisted.
+            </summary>
+            <returns>true if the class has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarStateStyles.Reset">
+            <summary>
+            Resets all the property values in the object to their default values.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarStateStyles.FormatStyle">
+            <summary>
+            Gets the ButtonBarFormatStyle used to draw the items.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarStateStyles.HotFormatStyle">
+            <summary>
+            Gets the ButtonBarFormatStyle used to draw the items when the mouse is over them.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarStateStyles.DisabledFormatStyle">
+            <summary>
+            Gets the ButtonBarFormatStyle used to draw the disabled items.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarStateStyles.SelectedFormatStyle">
+            <summary>
+            Returns the ButtonBarFormatStyle object used to draw the selected items.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarStateStyles.PressedFormatStyle">
+            <summary>
+            Gets the ButtonBarFormatStyle used to draw the items when they are pressed or when the item is selected and the mouse is over them.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ItemCancelEventArgs">
+            <summary>
+            Provides date for the SelectingItem event.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ItemCancelEventArgs.Item">
+            <summary>
+            Gets the ButtonBarItem containig the data.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ItemCancelEventArgs.Cancel">
+            <summary>
+            Gets or sets a value indicating whether the event should be canceled.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.GroupCancelEventArgs">
+            <summary>
+            Provides data for the SelectingGroup event.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.GroupCancelEventArgs.Group">
+            <summary>
+            Gets the ButtonBarGroup containing the data.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.GroupCancelEventArgs.Cancel">
+            <summary>
+            Gets or sets a value indicating whether the event should be canceled.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.DrawButtonBarAreaEventArgs">
+            <summary>
+            Provides data for the DrawButtonBarArea event.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.DrawButtonBarAreaEventArgs.PaintBackground">
+            <summary>
+            Draws the background of the area being painted.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.DrawButtonBarAreaEventArgs.Graphics">
+            <summary>
+            Gets the graphics surface to draw the ButtonBar area on.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.DrawButtonBarAreaEventArgs.Bounds">
+            <summary>
+            Gets the rectangle that represents the bounds of the area being drawn.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.DrawButtonBarAreaEventArgs.Group">
+            <summary>
+            Gets the ButtonBarGroup object being painted.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.DrawButtonBarAreaEventArgs.Item">
+            <summary>
+            Gets the ButtonBarItem object being painted.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.DrawButtonBarAreaEventArgs.BackBrush">
+            <summary>
+            Gets a Brush object that can be used to draw the background.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.DrawButtonBarAreaEventArgs.ForeBrush">
+            <summary>
+            Gets a Brush object that can be used to draw the foreground.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.DrawButtonBarAreaEventArgs.BackColor">
+            <summary>
+            Gets the background color of the area being draw.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.DrawButtonBarAreaEventArgs.ForeColor">
+            <summary>
+            Gets the foreground color of the area being drawn.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.DrawButtonBarAreaEventArgs.ButtonBarArea">
+            <summary>
+            Gets the type of the ButtonBar area being drawn.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.DrawButtonBarAreaEventArgs.Handled">
+            <summary>
+            Gets or sets a value that specifies whether the area was drawn by the owner.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.GroupEventArgs">
+            <summary>
+            Provides data for the GroupClick event.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.GroupEventArgs.#ctor(Janus.Windows.ButtonBar.ButtonBarGroup)">
+            <summary>
+            Initialize a new instance of the GroupEventArgs class
+            </summary>
+            <param name="group"></param>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.GroupEventArgs.Group">
+            <summary>
+            Gets the ButtonBarGroup containing the data.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ItemEventArgs">
+            <summary>
+            Provides data for the ItemClick event.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ItemEventArgs.#ctor(Janus.Windows.ButtonBar.ButtonBarItem)">
+            <summary>
+            Initialize a new instance of the ItemEventArgs class
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ItemEventArgs.Item">
+            <summary>
+            Gets the ButtonBarItem containing the data.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ItemEventHandler">
+            <summary>
+            Represents the method that will handle the ItemClick event of the ButtonBar.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.GroupEventHandler">
+            <summary>
+            Represents the method that will handle the GroupClick event of the ButtonBar.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.GroupCancelEventHandler">
+            <summary>
+            Represents the method that will handle the SelectingGroup event of the ButtonBar.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ItemCancelEventHandler">
+            <summary>
+            Represents the method that will handle the SelectingItem event of the ButtonBar.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.DrawButtonBarAreaEventHandler">
+            <summary>
+            Represents the method that will handle the DrawButtonBarArea event of the ButtonBar.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.Design.LayoutTreePage">
+            <summary>
+            Summary description for LayoutTreePage.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.LayoutTreePage.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.Design.LayoutTreePage.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ButtonBarItem">
+            <summary>
+            Represents a item in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItem.#ctor">
+            <summary>
+            Initializes a new intance of the ButtonBarItem class.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItem.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ButtonBarItem class and displays the assigned text on the item.
+            </summary>
+            <param name="text">The text of the new ButtonBarItem.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItem.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the ButtonBarItem class and sets the Text and SmallImageIndex properties to the specified values.
+            </summary>
+            <param name="text">The text of the new ButtonBarItem.</param>
+            <param name="smallImageIndex">The image list index value of the image displayed when the item is in small icons view.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItem.InvokeOnClick">
+            <summary>
+            Raises the ItemClick event
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItem.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the ButtonBarItem class and sets the Text, SmallImageIndex and LargeImageIndex properties to the specified values.
+            </summary>
+            <param name="text">The text of the new ButtonBarItem.</param>
+            <param name="smallImageIndex">The image list index value of the image displayed when the item is in small icons view.</param>
+            <param name="largeImageIndex">The image list index value of the image displayed when the item is in large icons view.</param>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItem.ShouldSerializeFormatStyle">
+            <summary>
+            Indicates whether the FormatStyle property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItem.ResetFormatStyle">
+            <summary>
+            Resets the FormatStyle property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItem.OnClick(Janus.Windows.ButtonBar.ItemEventArgs)">
+            <summary>
+            Raises the Janus.Windows.ButtonBar.ButtonBarItem.Click event
+            </summary>
+            <param name="e">A ItemEventArgs that contains the event data</param>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.Cursor">
+            <summary>
+            Gets or sets the cursor that is displayed when the mouse pointer is over the item.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.AccessibleRole">
+            <summary>
+            Gets or sets a value representing the role that will be reported to accessibility clients.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.AccessibleName">
+            <summary>
+            Gets or sets a string representing the name that will be reported to accessibility clients.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.AccessibleDescription">
+            <summary>
+            Gets or sets a string representing the description that will be reported to accessibility clients.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.Key">
+            <summary>
+            Gets or sets a string that uniquely identifies this ButtonBarItem in a collection.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.Tag">
+            <summary>
+            Gets or sets an object that contains data to associate with the ButtonBarItem.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.TagString">
+            <summary>
+            Gets or sets a string that contains data to associate with the ButtonBarItem.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.Text">
+            <summary>
+            Gets or sets the text displayed on the ButtonBarItem.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.ToolTipText">
+            <summary>
+            Gets or sets the text that appears as a ToolTip for the ButtonBarItem.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.Index">
+            <summary>
+            Gets the position of the ButtonBarItem in the ButtonBarItemCollection.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.Enabled">
+            <summary>
+            Gets or sets a value indicating whether the ButtonBarItem is enabled.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.Visible">
+            <summary>
+            Gets or sets a value indicating whether the ButtonBarItem is visible.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.ImageAlignment">
+            <summary>
+            Gets or sets the alignment of the image in the ButtonBarItem.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.TextAlignment">
+            <summary>
+            Gets or sets the alignment of the text in the ButtonBarItem.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.Bounds">
+            <summary>
+            Gets or sets the size and location of the item in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.Icon">
+            <summary>
+            Gets or sets the icon that is displayed on the ButtonBarItem.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.Image">
+            <summary>
+            Gets or sets the image that is displayed on the ButtonBarItem.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.LargeImageIndex">
+            <summary>
+            Gets or sets the image list index value of the image displayed by the ButtonBarItem when it is in large icons view.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.LargeImageKey">
+            <summary>
+            Gets or sets the key accessor for the image in the ImageList displayed by the ButtonBarItem when it is in large icons view.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.LargeImageDisabledIndex">
+            <summary>
+            Gets or sets the image list index value of the image displayed by the ButtonBarItem when it is in large icons view and disabled.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.LargeImageDisabledKey">
+            <summary>
+            Gets or sets the key accessor for the image in the ImageList displayed by the ButtonBarItem when it is in large icons view and disabled.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.LargeImageFocusIndex">
+            <summary>
+            Gets or sets the image list index value of the image displayed by the ButtonBarItem when it is in large icons view and the mouse is over it.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.LargeImageFocusKey">
+            <summary>
+            Gets or sets the key accessor for the image in the ImageList displayed by the ButtonBarItem when it is in large icons view and the mouse is over it.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.SmallImageDisabledIndex">
+            <summary>
+            Gets or sets the image list index value of the image displayed by the ButtonBarItem when it is in small icons view and disabled.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.SmallImageDisabledKey">
+            <summary>
+            Gets or sets the key accessor for the image in the ImageList displayed by the ButtonBarItem when it is in small icons view and disabled.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.SmallImageFocusIndex">
+            <summary>
+            Gets or sets the image list index value of the image displayed by the ButtonBarItem when it is in small icons view and the mouse is over it.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.SmallImageFocusKey">
+            <summary>
+            Gets or sets the key accessor for the image in the ImageList displayed by the ButtonBarItem when it is in small icons view and the mouse is over it.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.SmallImageIndex">
+            <summary>
+            Gets or sets the image list index value of the image displayed by the ButtonBarItem when it is in small view.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.SmallImageKey">
+            <summary>
+            Gets or sets the key accessor for the image in the ImageList displayed by the ButtonBarItem when it is in small view.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.Selected">
+            <summary>
+            Gets a value indicating whether this ButtonBarItem is selected.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.ButtonBar">
+            <summary>
+            Gets the ButtonBar control that this ButtonBarItem object is assigned to.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.Group">
+            <summary>
+            Gets the ButtonBarGroup object that this ButtonBarItem is assigned to.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.StateStyles">
+            <summary>
+            Gets the ExplorerBarStateStyles that holds the format styles used to draw the item in its different states.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.ButtonBar.ButtonBarItem.FormatStyle">
+            <summary>
+            Gets the ButtonBarFormatStyle object used to draw this item in the ButtonBar control.
+            </summary>
+        </member>
+        <member name="E:Janus.Windows.ButtonBar.ButtonBarItem.Click">
+            <summary>
+            Occurs when the ButtonBarItem is clicked.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.ButtonBar.ButtonBarItemConverter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItemConverter.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItemConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+            <param name="destinationType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Janus.Windows.ButtonBar.ButtonBarItemConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

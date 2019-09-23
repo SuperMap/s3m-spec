@@ -1,0 +1,1274 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Janus.Windows.Common.v4</name>
+    </assembly>
+    <members>
+        <member name="T:Janus.Windows.Common.VisualStyleManager">
+            <summary>
+            Represents the component that contains visual style settings for the Janus Controls associated to it.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.VisualStyleManager.#ctor">
+            <summary>
+            Creates a new instance of Janus.Windows.Common.VisualStyleManager class.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.VisualStyleManager.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Creates a new instance of Janus.Windows.Common.VisualStyleManager class.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.VisualStyleManager.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Janus.Windows.Common.VisualStyleManager.AddControl(System.Windows.Forms.Control,System.Boolean)">
+            <summary>
+            Associates a control and its children controls (optional), to the VisualStyleManager.
+            </summary>
+            <param name="ctl">The control to associate with the VisualStyleManager.</param>
+            <param name="includeChildren">Determines whether the child controls should also be associated to the VisualStyleManager.</param>
+        </member>
+        <member name="M:Janus.Windows.Common.VisualStyleManager.AddControl(System.Windows.Forms.Control,System.String,System.Boolean)">
+            <summary>
+            Associates a control and its children controls (optional), to the VisualStyleManager with the colorScheme specified.
+            </summary>
+            <param name="ctl">The control to associate with the VisualStyleManager.</param>
+            <param name="colorScheme">The name of the ColorScheme to use in the control.</param>
+            <param name="includeChildren">Determines whether the child controls should also be associated to the VisualStyleManager.</param>
+        </member>
+        <member name="M:Janus.Windows.Common.VisualStyleManager.OnColorSchemeChanged(Janus.Windows.Common.ColorSchemeChangedEventArgs)">
+            <summary>
+            Raises the ColorSchemeChanged event.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="P:Janus.Windows.Common.VisualStyleManager.DefaultUseCompatibleTextRendering">
+            <summary>
+            This property supports Janus controls behavior. Do not use.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.VisualStyleManager.ColorSchemes">
+            <summary>
+            Gets the collection of JanusColorSchemes defined in the VisualStyleManager.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.VisualStyleManager.DefaultColorScheme">
+            <summary>
+            Gets or sets the name of the ColorScheme in the ColorSchemes collection to be used in a control with no ColorScheme specified.
+            </summary>
+        </member>
+        <member name="E:Janus.Windows.Common.VisualStyleManager.ColorSchemeChanged">
+            <summary>
+            Occurs when a property in a JanusColorScheme handled by the VisualStyleManager changes.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.VisualStyleManager.DefaultOffice2007ColorScheme">
+            <summary>
+            Deprecated property. Use DefaultOfficeColorScheme property instead.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.VisualStyleManager.DefaultOfficeColorScheme">
+            <summary>
+            Gets or set the OfficeColorScheme to be used in controls with OfficeColorScheme property set to Default.
+            <Remarks>This static property allows you to change the OfficeColorScheme of all janus controls in an application with just one line of code. Assumming that the OfficeColorScheme is set to Default in all controls and the VisualStyle property is set to VisualStyle.Office2007 or VisualStyle.Office2010</Remarks>
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.VisualStyleManager.DefaultOffice2007CustomColor">
+            <summary>
+            Deprecated. Use DefaultOfficeCustomColor property instead.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.VisualStyleManager.DefaultOfficeCustomColor">
+            <summary>
+            Gets or set the Color to be used in controls with Office2007CustomColor property set to Color.Empty.
+            <Remarks>This static property allows you to change the OfficeCustomColor property of all janus controls in an application with just one line of code. Assumming that the OfficeCustomColor is set to Color.Empty in all controls and the VisualStyle property is set to VisualStyle.Office2007 or VisualStyle.Office2010</Remarks>
+            </summary>
+        </member>
+        <member name="E:Janus.Windows.Common.VisualStyleManager.Office2007DefaultChanged">
+            <summary>
+            Deprecated. Use OfficeDefaultStyleChanged event instead.
+            </summary>
+        </member>
+        <member name="E:Janus.Windows.Common.VisualStyleManager.OfficeDefaultStyleChanged">
+            <summary>
+            Occurs when DefaultOffice2007ColorScheme or DefaultOffice2007CustomColor properties changed in the VisualStyleManager class.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.Common.ColorSchemeChangedEventHandler">
+            <summary>
+            Represents the method that handles the ColorSchemeChanged event.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.Common.ColorSchemeChangedEventArgs">
+            <summary>
+            Contains the data for the ColorSchemeChanged event.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.ColorSchemeChangedEventArgs.ColorScheme">
+            <summary>
+            Get the JanusColorScheme that changed.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.Common.Layouts.JanusLayoutWriter">
+            <summary>
+            Summary description for JanusLayoutWriter.
+            </summary>
+            
+        </member>
+        <member name="T:Janus.Windows.Common.Layouts.JanusLayoutReader">
+            <summary>
+            Summary description for JanusLayoutReader.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.Common.IImageListProvider">
+            <summary>
+            Provides an interface that supplies an ImageList component to be used in a ToolTip.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.IImageListProvider.ImageList">
+            <summary>
+            Gets the ImageList component to be used in tooltip associated to the provider.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.Common.JanusSuperTip">
+            <summary>
+            Represents the component that contains tooltip settings for the 
+            controls associated to it.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.Common.JanusSuperTip.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.#ctor">
+            <summary>
+            Creates a new instance of JanusSuperTip class
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Creates a new instance of JanusSuperTip class
+            </summary>
+            <param name="container"></param>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.GetSuperTip(System.ComponentModel.Component)">
+            <summary>
+            Retrieves the SuperTipSettings associated with the specified control.
+            </summary>
+            <param name="component">The control for which to retrieve the SuperTipSettings</param>
+            <returns>The SuperTipSettings for the specified control.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.SetSuperTip(System.ComponentModel.Component,Janus.Windows.Common.SuperTipSettings)">
+            <summary>
+            Associates the SuperTipSettings with the specified control.
+            </summary>
+            <param name="component">The Control to associate the tooltip with.</param>
+            <param name="value">The settings for the tooltip to display when the pointer is on the control. </param>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.OnToolTipPopUp(Janus.Windows.Common.ToolTipPopUpEventArgs)">
+            <summary>
+            Raises the ToolTipPopUp event.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.ShouldSerializeBackColor">
+            <summary>
+            Indicates whether the BackColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.ResetBackColor">
+            <summary>
+            Resets the BackColor property to its default.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.ShouldSerializeForeColor">
+            <summary>
+            Indicates whether the ForeColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.ResetForeColor">
+            <summary>
+            Resets the ForeColor property to its default.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.ShouldSerializeHeaderForeColor">
+            <summary>
+            Indicates whether the HeaderForeColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.ResetHeaderForeColor">
+            <summary>
+            Resets the HeaderForeColor property to its default.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.ShouldSerializeFooterForeColor">
+            <summary>
+            Indicates whether the FooterForeColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.ResetFooterForeColor">
+            <summary>
+            Resets the FooterForeColor property to its default.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.ShouldSerializeOffice2007CustomColor">
+            <summary>
+            Deprecated
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.ResetOffice2007CustomColor">
+            <summary>
+            Deprecated.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.ShouldSerializeOfficeCustomColor">
+            <summary>
+            Indicates whether the OfficeCustomColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.ResetOfficeCustomColor">
+            <summary>
+            Resets the Office2007CustomColor property to its default.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.Show(Janus.Windows.Common.SuperTipSettings)">
+            <summary>
+            Creates a tooltip with the specified settings, and then displays the tooltip.
+            </summary>
+            <param name="settings">A SuperTipSettingsInstance that contains the settings for the tooltip to be shown.</param>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.Show(Janus.Windows.Common.SuperTipSettings,System.Drawing.Point)">
+            <summary>
+            Creates a tooltip with the specified settings, and then displays the tooltip at the specified position.
+            </summary>
+            <param name="settings">A SuperTipSettingsInstance that contains the settings for the tooltip to be shown.</param>
+            <param name="position">A System.Drawing.Point containing the position, in pixels, of the tooltip.</param>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.Show(Janus.Windows.Common.SuperTipSettings,System.Drawing.Point,System.Int32)">
+            <summary>
+            Creates a tooltip with the specified settings, and then displays the tooltip for the specified duration at the specified position.
+            </summary>
+            <param name="settings">A SuperTipSettingsInstance that contains the settings for the tooltip to be shown.</param>
+            <param name="position">A System.Drawing.Point containing the position, in pixels, of the tooltip.</param>
+            <param name="duration">The duration, in milliseconds, to diplay the tool tip.</param>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.Show(Janus.Windows.Common.SuperTipSettings,System.Windows.Forms.Control)">
+            <summary>
+            Shows a tooltip with the specified settings.
+            </summary>
+            <param name="settings">A SuperTipSettingsInstance that contains the settings for the tooltip to be shown.</param>
+            <param name="tooltipOwner">The control that owns the toltip.</param>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.Show(Janus.Windows.Common.SuperTipSettings,System.Windows.Forms.Control,System.Drawing.Point)">
+            <summary>
+            Creates a tooltip with the specified settings, and then displays the tooltip at the specified position.
+            </summary>
+            <param name="settings">A SuperTipSettingsInstance that contains the settings for the tooltip to be shown.</param>
+            <param name="tooltipOwner">The control that owns the toltip.</param>
+            <param name="position">A System.Drawing.Point containing the position, in pixels, of the tooltip.</param>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.Show(Janus.Windows.Common.SuperTipSettings,System.Windows.Forms.Control,System.Drawing.Point,System.Int32)">
+            <summary>
+            Creates a tooltip with the specified settings, and then displays the tooltip for the specified duration at the specified position.
+            </summary>
+            <param name="settings">A SuperTipSettingsInstance that contains the settings for the tooltip to be shown.</param>
+            <param name="tooltipOwner">The control that owns the toltip.</param>
+            <param name="position">A System.Drawing.Point containing the position, in pixels, of the tooltip.</param>
+            <param name="duration">The duration, in milliseconds, to diplay the tool tip.</param>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusSuperTip.HideActiveToolTip">
+            <summary>
+            Hides the active tooltip.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusSuperTip.BodyWidth">
+            <summary>
+            Gets or sets the width of the description area in a tool tip.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusSuperTip.RightToLeft">
+            <summary>
+            Gets or sets a value indicating whether tooltip elements are aligned to support locales using right-to-left fonts.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusSuperTip.AutoPopDelay">
+            <summary>
+            Gets or sets the period of time (in milliseconds) the tool tip remains visible if the pointer is stationary on a control with specified ToolTip text.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusSuperTip.InitialDelay">
+            <summary>
+            Gets or sets the time (in milliseconds) that passes before the ToolTip appears.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusSuperTip.ShowAlways">
+            <summary>
+            Gets or sets a value indicating whether a ToolTip window is displayed, even when its parent control is not active.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusSuperTip.ImageList">
+            <summary>
+            Gets or sets the ImageList to use when displaying tooltips.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusSuperTip.Font">
+            <summary>
+            Gets or sets the font of the text displayed in a tooltip.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusSuperTip.HeaderFont">
+            <summary>
+            Gets or sets the font of the text displayed in the header of a tooltip.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusSuperTip.FooterFont">
+            <summary>
+            Gets or sets the font of the text displayed in the footer of a tooltip.
+            </summary>
+        </member>
+        <member name="E:Janus.Windows.Common.JanusSuperTip.ToolTipPopUp">
+            <summary>
+            Occurs when a tool tip is about to be shown.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusSuperTip.BackColor">
+            <summary>
+            Gets or sets the background color for the tooltip.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusSuperTip.ForeColor">
+            <summary>
+            Gets or set the froeground color for the tooltip.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusSuperTip.HeaderForeColor">
+            <summary>
+            Gets or sets the foreground color for the header in a tooltip.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusSuperTip.FooterForeColor">
+            <summary>
+            Gets or sets the foreground color for the footer in a tooltip.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusSuperTip.Office2007ColorScheme">
+            <summary>
+            Deprecated. Use OfficeColorScheme property instead. 
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusSuperTip.OfficeColorScheme">
+            <summary>
+            Gets or sets a value specifying the color scheme to be used when Office2007 or Office2010 VisualStyle is used in the tooltip.  
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusSuperTip.OfficeCustomColor">
+            <summary>
+            Gets or set a value specifying the base color used to paint the tooltips when the OfficeColorScheme property is set to Custom. 
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusSuperTip.Office2007CustomColor">
+            <summary>
+            Deprecated. Use OfficeCustomColor property instead.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusSuperTip.Active">
+            <summary>
+            Gets a value indicating whether the JAnusSupertTip is currently active.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.Common.ToolTipPopUpEventArgs">
+            <summary>
+            Contains the data for the ToolTipPopUp event.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.ToolTipPopUpEventArgs.AssociatedControl">
+            <summary>
+            Gets the control associated with the tooltip that is about to be displayed.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.ToolTipPopUpEventArgs.ToolTipSettings">
+            <summary>
+            Gets the settings of the tooltip that is about to be displayed.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.ToolTipPopUpEventArgs.Cancel">
+            <summary>
+            Gets or sets a value that determines whether the tooltip should be displayed or not.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.Common.ToolTipPopUpEventHandler">
+            <summary>
+            Represents the method that handles the ToolTipPopUp event.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.Common.SuperTipSettings">
+            <summary>
+            Contains the JanusSuperTip settings associate of  associated
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.SuperTipSettings.#ctor">
+            <summary>
+            Initializes a new instance of Janus.Windows.Common.SupperTipSettings class.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.SuperTipSettings.Clone">
+            <summary>
+            Creates an exact copy of the SuperTipSettings instance
+            </summary>
+            <returns>The copied SuperTipSettings</returns>
+        </member>
+        <member name="P:Janus.Windows.Common.SuperTipSettings.Text">
+            <summary>
+            Get or sets the text to display as tool tip for a control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.SuperTipSettings.ImageListProvider">
+            <summary>
+            Gets or sets the objects that contains the ImageList from which the tool tip gets its images.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.SuperTipSettings.WordWrap">
+            <summary>
+             Gets or sets a value that determines whether Text in a tooltip should be wrapped to the begining of the next line when necessary.
+            <remarks>
+            This option applies only when a tooltip has no header nor footer specified. If a header or a footer is specified, the text will be wrapped when necessary.
+            </remarks>
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.SuperTipSettings.HeaderText">
+            <summary>
+            Get or sets the text to display as the header in a tool tip associated to a control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.SuperTipSettings.FooterText">
+            <summary>
+            Get or sets the text to display as the footer in a tool tip associated to a control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.SuperTipSettings.IsEmpty">
+            <summary>
+            Gets a value that determines whether a SuperTipSettings contains data or is empty and should not be displayed.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.SuperTipSettings.ToolTipStyle">
+            <summary>
+            Gets or sets a value specifying the visual style of a tool tip.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.SuperTipSettings.Image">
+            <summary>
+            Get or sets the Image to display in a tool tip associated to a control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.SuperTipSettings.ImageIndex">
+            <summary>
+            Gets or sets the image list index value of the image displayed in a tool tip.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.SuperTipSettings.ImageKey">
+            <summary>
+            Gets or sets the key of the image displayed in a tool tip.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.SuperTipSettings.HeaderImage">
+            <summary>
+            Gets or sets the Image displayed in the header of a tool tip.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.SuperTipSettings.FooterImage">
+            <summary>
+            Gets or sets the Image displayed in the footer of a tool tip.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.SuperTipSettings.FooterImageIndex">
+            <summary>
+            Gets or sets the image list index value of the image displayed in the footer of a tool tip.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.SuperTipSettings.FooterImageKey">
+            <summary>
+            Gets or sets the key of the image displayed in the footer of a tool tip.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.SuperTipSettings.HeaderImageIndex">
+            <summary>
+            Gets or sets the image list index value of the image displayed in the header of a tool tip.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.SuperTipSettings.HeaderImageKey">
+            <summary>
+            Gets or sets the key of the image displayed in the header of a tool tip.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.Common.ToolTipStyle">
+            <summary>
+            Determines the visual style of a tool tip.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.Common.ToolTipStyle.Standard">
+            <summary>
+            Tool tip is drawn using system colors
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.Common.ToolTipStyle.Office2007">
+            <summary>
+            Tool tip is drawn using Office 2007 color scheme.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.Common.ToolTipStyle.Office2010">
+            <summary>
+            Tool tip is drawn using Office 2007 color scheme.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.Office2010SchemeInformation.GetControlRenderer(Janus.Windows.Common.Office2007ColorScheme,System.Drawing.Color)">
+            <summary>
+            Deprecated. Use GetControlRenderer overload that accepts OfficeColorScheme as parameter instead of Office2007ColorScheme
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.Office2010SchemeInformation.GetSchemeColors">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Janus.Windows.Common.Office2010SchemeInformation.GetSchemeColors(Janus.Windows.Common.OfficeColorScheme)">
+            <summary>
+            
+            </summary>
+            <param name="officeColorScheme"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Janus.Windows.Common.Office2010SchemeInformation.GetSchemeColors(Janus.Windows.Common.Office2007ColorScheme)">
+            <summary>
+            Deprecated. Use GetSchemeColors overload that accepts OfficeColorScheme as parameter instead of Office2007ColorScheme
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.Office2010SchemeInformation.GetSchemeColors(Janus.Windows.Common.OfficeColorScheme,System.Drawing.Color)">
+            <summary>
+            
+            </summary>
+            <param name="officeColorScheme"></param>
+            <param name="customColor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Janus.Windows.Common.Office2010SchemeInformation.GetSchemeColors(Janus.Windows.Common.Office2007ColorScheme,System.Drawing.Color)">
+            <summary>
+            Deprecated. Use GetSchemeColors overload that accepts OfficeColorScheme as parameter instead of Office2007ColorScheme
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.Office2010SchemeInformation.GetScrollbarRenderer(Janus.Windows.Common.OfficeColorScheme,System.Drawing.Color)">
+            <summary>
+            
+            </summary>
+            <param name="officeColorScheme"></param>
+            <param name="customColor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Janus.Windows.Common.Office2010SchemeInformation.GetScrollbarRenderer(Janus.Windows.Common.Office2007ColorScheme,System.Drawing.Color)">
+            <summary>
+            Deprecated. Use GetScrollbarRenderer overload that accepts OfficeColorScheme as parameter instead of Office2007ColorScheme
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.Common.Layouts.JanusLayoutReference">
+            <summary>
+            Constains objects instances to help in the design time serialization
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.Layouts.JanusLayoutReference.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of JanusLayoutReference class with the specified ReferenceID
+            </summary>
+            <param name="referenceId">The ReferenceID for the JanusLayoutReference</param>
+        </member>
+        <member name="M:Janus.Windows.Common.Layouts.JanusLayoutReference.#ctor(System.String,System.Object)">
+            <summary>
+            Initializes a new instance of JanusLayoutReference class with the specified ReferenceID and Instance
+            </summary>
+            <param name="referenceId">The ReferenceID for the JanusLayoutReference.</param>
+            <param name="instance">The Instance to abe associated with the JanusLayoutReference.</param>
+        </member>
+        <member name="P:Janus.Windows.Common.Layouts.JanusLayoutReference.ReferenceId">
+            <summary>
+            Gets or sets an identifier for the JanusLayoutReference. This property supports design time serialization in janus control. Do not use.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.Layouts.JanusLayoutReference.Instance">
+            <summary>
+            Gets or sets the object reference associated to the JanusLayoutReference. This property supports design time serialization in janus control. Do not use.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.Common.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.Common.Layouts.JanusLayoutReferenceCollection">
+            <summary>
+            A collection of JanusLayoutReference objects associated to a layout at design time.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.Layouts.JanusLayoutReferenceCollection.#ctor">
+            <summary>
+            Initializes a new instance of JanusLayoutRerence class.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.Layouts.JanusLayoutReferenceCollection.Add(System.Object)">
+            <summary>
+            Creates a new JanusLayoutReference instance with the specified instance property and appends it at the end of the collection.
+            </summary>
+            <param name="instance">The Instance property of JanusLayoutReference object added.</param>
+            <returns>The newly created JanusLayoutReference.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.Layouts.JanusLayoutReferenceCollection.Add(System.String,System.Object)">
+            <summary>
+            Creates a new JanusLayoutReference instance with the specified id and instance properties and appends it at the end of the collection.
+            </summary>
+            <param name="instance">The Instance property of JanusLayoutReference object added.</param>
+            <returns>The newly created JanusLayoutReference.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.Layouts.JanusLayoutReferenceCollection.Add(Janus.Windows.Common.Layouts.JanusLayoutReference)">
+            <summary>
+            Appends the specified JanusLayoutReference object at the end of the collection.
+            </summary>
+            <param name="reference">The JanusLayoutReference object to add.</param>
+        </member>
+        <member name="M:Janus.Windows.Common.Layouts.JanusLayoutReferenceCollection.AddRange(Janus.Windows.Common.Layouts.JanusLayoutReference[])">
+            <summary>
+            Copies the elements of the specified JanusLayoutReference array to the end of the collection.
+            </summary>
+            <param name="references">The array of JanusLayoutReference objects to add to the collection.</param>
+        </member>
+        <member name="M:Janus.Windows.Common.Layouts.JanusLayoutReferenceCollection.Contains(System.String)">
+            <summary>
+            Determines whether a JanusLayoutReference with the specified ReferenceID exist is in the list.
+            </summary>
+            <param name="referenceId">The ReferenceID to search</param>
+            <returns>True if a JanusLayoutReference with the specified ReferenceID is in the list; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.Layouts.JanusLayoutReferenceCollection.Contains(Janus.Windows.Common.Layouts.JanusLayoutReference)">
+            <summary>
+            Determines whether a JanusLayoutReference instance belongs to this collection.
+            </summary>
+            <param name="reference">The JanusLayoutReference instance to search</param>
+            <returns>True if the JanusLayoutReference is in the collection; otherwise false</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.Layouts.JanusLayoutReferenceCollection.IndexOf(Janus.Windows.Common.Layouts.JanusLayoutReference)">
+            <summary>
+            Gets the index of the specified JanusLayoutReference in the collection.
+            </summary>
+            <param name="dropDown">The JanusLayoutReference to locate in the collection.</param>
+            <returns>The index of the given JanusLayoutReference, if found; otherwise -1,</returns>
+        </member>
+        <member name="P:Janus.Windows.Common.Layouts.JanusLayoutReferenceCollection.Item(System.Int32)">
+            <summary>
+            Gets a JanusLayoutReference object from the collection at the specified index.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.Layouts.JanusLayoutReferenceCollection.Item(System.String)">
+            <summary>
+            Gets a JanusLayoutReference object from the collection with the specified ReferenceID.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.Common.Layouts.PropertyValue">
+            <summary>
+            Summary description for PropertyValue.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.Layouts.JanusLayoutReferenceConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>
+            Overrides TypeConverter.CanConvertTo
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.Layouts.JanusLayoutReferenceConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <summary>
+            Overrides TypeConverter.ConvertTo
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.Office2010ScrollBarRenderer.#ctor(Janus.Windows.Common.Office2007ColorScheme,System.Drawing.Color)">
+            <summary>
+            Deprecated.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.Office2010ScrollBarRenderer.#ctor(Janus.Windows.Common.Office2007ColorScheme,System.Drawing.Color,System.Boolean)">
+            <summary>
+            Deprecated.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.Common.Office2007SchemeInformation">
+            <summary>
+            Internal class used that provides color schemes for janus control using Office2007 VisualStyle
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.Office2007SchemeInformation.GetSchemeColors">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Janus.Windows.Common.Office2007SchemeInformation.GetSchemeColors(Janus.Windows.Common.OfficeColorScheme)">
+            <summary>
+            
+            </summary>
+            <param name="officeColorScheme"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Janus.Windows.Common.Office2007SchemeInformation.GetSchemeColors(Janus.Windows.Common.Office2007ColorScheme)">
+            <summary>
+            Deprecated. Use GetSchemeColors overload that accepts OfficeColorScheme as parameter instead of Office2007ColorScheme
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.Office2007SchemeInformation.GetSchemeColors(Janus.Windows.Common.Office2007ColorScheme,System.Drawing.Color)">
+            <summary>
+            Deprecated. Use GetSchemeColors overload that accepts OfficeColorScheme as parameter instead of Office2007ColorScheme
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.Office2007SchemeInformation.GetScrollbarRenderer(Janus.Windows.Common.OfficeColorScheme,System.Drawing.Color)">
+            <summary>
+            
+            </summary>
+            <param name="officeColorScheme"></param>
+            <param name="customColor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Janus.Windows.Common.Office2007SchemeInformation.GetScrollbarRenderer(Janus.Windows.Common.Office2007ColorScheme,System.Drawing.Color)">
+            <summary>
+            Deprecated. Use GetScrollbarRenderer overload that accepts OfficeColorScheme as parameter instead of Office2007ColorScheme
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.Office2007SchemeInformation.GetControlRenderer(Janus.Windows.Common.Office2007ColorScheme,System.Drawing.Color)">
+            <summary>
+            Deprecated. Use GetControlRenderer overload that accepts OfficeColorScheme as parameter instead of Office2007ColorScheme
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.Common.VisualStyle">
+            <summary>
+            Specifies which apperance style the controls are formatted after. 
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.Common.VisualStyle.Standard">
+            <summary>
+            The control are formatted as its related control in Windows.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.Common.VisualStyle.Office2003">
+            <summary>
+            The control are formatted as its related control in Office 2003. 
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.Common.VisualStyle.VS2005">
+            <summary>
+            The control are formatted as its related control in VS 2005
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.Common.VisualStyle.Office2007">
+            <summary>
+            The control are formatted as its related control in Office2007.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.Common.Office2007ColorScheme">
+            <summary>
+            Deprecated. Use OfficeColorScheme instead
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.Common.Office2007ColorScheme.Default">
+            <summary>
+            Controls are drawn using the OfficeColorScheme specified as the DefaultOffice2007ColorScheme in the Janus.Windows.Common.VisualStyleManager component.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.Common.Office2007ColorScheme.Blue">
+            <summary>
+            Controls are drawn using the built-in 'Blue' color scheme.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.Common.Office2007ColorScheme.Silver">
+            <summary>
+            Control are drawn using the built-in 'Silver' color scheme.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.Common.Office2007ColorScheme.Black">
+            <summary>
+            Controls are drawn using the built-in 'Black' color scheme.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.Common.Office2007ColorScheme.Custom">
+            <summary>
+            Controls drawn using a custom color scheme created based on the color specified in the Office2007CustomColor property.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.Common.OfficeColorScheme">
+            <summary>
+            Determines the color scheme controls use to draw when the VisualStyle of a control is Office2007.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.Common.OfficeColorScheme.Default">
+            <summary>
+            Controls are drawn using the OfficeColorScheme specified as the DefaultOffice2007ColorScheme in the Janus.Windows.Common.VisualStyleManager component.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.Common.OfficeColorScheme.Blue">
+            <summary>
+            Controls are drawn using the built-in 'Blue' color scheme.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.Common.OfficeColorScheme.Silver">
+            <summary>
+            Control are drawn using the built-in 'Silver' color scheme.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.Common.OfficeColorScheme.Black">
+            <summary>
+            Controls are drawn using the built-in 'Black' color scheme.
+            </summary>
+        </member>
+        <member name="F:Janus.Windows.Common.OfficeColorScheme.Custom">
+            <summary>
+            Controls drawn using a custom color scheme created based on the color specified in the OfficeCustomColor property.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.Common.JanusColorSchemeCollection">
+            <summary>
+            A collection of JanusColorScheme objects of a VisualStyleManager. 
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorSchemeCollection.Add(Janus.Windows.Common.JanusColorScheme)">
+            <summary>
+            Appends the specified JanusColorScheme object at the end of the collection.
+            </summary>
+            <param name="colorScheme">The JanusColorScheme object to add.</param>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorSchemeCollection.OnInsert(System.Int32,System.Object)">
+            <summary>
+            Overrides CollectionBase.OnInsert
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorSchemeCollection.OnInsertComplete(System.Int32,System.Object)">
+            <summary>
+            Overrides CollectionBase.OnInsertComplete
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorSchemeCollection.Contains(System.String)">
+            <summary>
+            Determines whether a JanusColorScheme with the specified name exist is in the list.
+            </summary>
+            <param name="colorSchemeName">The name to search</param>
+            <returns>True if a JanusColorScheme with the specified name is in the list; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorSchemeCollection.OnClear">
+            <summary>
+            Overrides CollectionBase.OnClear
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorSchemeCollection.OnClearComplete">
+            <summary>
+            Overrides CollectionBase.OnClearComplete
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorSchemeCollection.OnSet(System.Int32,System.Object,System.Object)">
+            <summary>
+            Overrides CollectionBase.OnSet
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorSchemeCollection.OnRemove(System.Int32,System.Object)">
+            <summary>
+            Overrides CollectionBase.OnRemove
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorSchemeCollection.IndexOf(System.String)">
+            <summary>
+            Gets the index of the JanusColorScheme with the given name in the collection.
+            </summary>
+            <param name="colorSchemeName">The name of the JanusColorScheme to look for.</param>
+            <returns>The index of the color scheme with the given key, if found; otherwise -1.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorSchemeCollection.Remove(Janus.Windows.Common.JanusColorScheme)">
+            <summary>
+            Removes the specified JanusColorScheme object from the collection.
+            </summary>
+            <param name="colorScheme">The JanusColorScheme object to remove.</param>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorSchemeCollection.Item(System.Int32)">
+            <summary>
+            Gets a JanusColorScheme object from the collection with the specified index.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorSchemeCollection.Item(System.String)">
+            <summary>
+            Gets a JanusColorScheme object from the collection with the specified name.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.Common.JanusColorScheme">
+            <summary>
+            Contains style and color settings used to draw the janus controls associated with the JanusColorScheme class.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.#ctor">
+            <summary>
+            Initializes a new instance of JanusColorScheme class.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of JanusColorScheme class with the specified name.
+            </summary>
+            <param name="name">The name of the JanusColorScheme in the collection.</param>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.#ctor(System.String,System.Drawing.Color)">
+            <summary>
+            Initializes a new instance of JanusColorScheme class with the specified name and using the specified color as the base color from which other colors are calculated.
+            </summary>
+            <param name="name">The name of the JanusColorScheme in the collection.</param>
+            <param name="controlColor">The base color from which all the colors are calculated.</param>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.SetColors(System.Drawing.Color)">
+            <summary>
+            Sets all colors in the JanusColorScheme with different shades of the provided color.
+            </summary>
+            <param name="controlColor">The base color from which all the colors are calculated.</param>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ResetColors">
+            <summary>
+            Resets all colors to their default values.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ShouldSerializeMenuColor">
+            <summary>
+            Indicates whether the MenuColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ResetMenuColor">
+            <summary>
+            Resets the MenuColor property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ShouldSerializeMenuTextColor">
+            <summary>
+            Indicates whether the MenuTextColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ResetMenuTextColor">
+            <summary>
+            Resets the MenuTextColor property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ShouldSerializeDisabledColor">
+            <summary>
+            Indicates whether the DisabledColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ResetDisabledColor">
+            <summary>
+            Resets the DisabledColor property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ShouldSerializeGrayTextColor">
+            <summary>
+            Indicates whether the GrayTextColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ResetGrayTextColor">
+            <summary>
+            Resets the GrayTextColor property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ShouldSerializeActiveCaptionColor">
+            <summary>
+            Indicates whether the ActiveCaptionColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ResetActiveCaptionColor">
+            <summary>
+            Resets the ActiveCaptionColor property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ShouldSerializeActiveCaptionTextColor">
+            <summary>
+            Indicates whether the ActiveCaptionTextColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ResetActiveCaptionTextColor">
+            <summary>
+            Resets the ActiveCaptionTextColor property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ShouldSerializeWindowColor">
+            <summary>
+            Indicates whether the WindowColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ResetWindowColor">
+            <summary>
+            Resets the WindowColor property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ShouldSerializeControlColor">
+            <summary>
+            Indicates whether the ControlColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ResetControlColor">
+            <summary>
+            Resets the ControlColor property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ShouldSerializeHighlighTextColor">
+            <summary>
+            Indicates whether the HighlightTextColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ResetHighlightTextColor">
+            <summary>
+            Resets the HightlightTextColor property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ShouldSerializeWindowTextColor">
+            <summary>
+            Indicates whether the WindowTextColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ResetWindowTextColor">
+            <summary>
+            Resets the WindowTextColor property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ShouldSerializeControlTextColor">
+            <summary>
+            Indicates whether the ControlTextColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ResetControlTextColor">
+            <summary>
+            Resets the ControlTextColor property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ShouldSerializeControlDarkColor">
+            <summary>
+            Indicates whether the ControlDarkColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ResetControlDarkColor">
+            <summary>
+            Resets the ControlDarkColor property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ShouldSerializeHighlightColor">
+            <summary>
+            Indicates whether the HighlightColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ResetHighlightColor">
+            <summary>
+            Resets the HighlightColor property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ShouldSerializeInfoColor">
+            <summary>
+            Indicates whether the InfoColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ResetInfoColor">
+            <summary>
+            Resets the InfoColor property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ShouldSerializeInfoTextColor">
+            <summary>
+            Indicates whether the InfoTextColor property should be persisted.
+            </summary>
+            <returns>true if the property value has changed from its default; otherwise, false.</returns>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.ResetInfoTextColor">
+            <summary>
+            Resets the InfoTextColor property to its default value.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.BeginEdit">
+            <summary>
+            Begins edit of properties in the JanusColorSheme.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorScheme.EndEdit">
+            <summary>
+            Ends edit of properties in the JanusColorScheme and forces the refresh on all the associated controls.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.Name">
+            <summary>
+            Gets or sets the name of the JanusColorScheme.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.UseThemes">
+            <summary>
+            Gets or sets a value that determines whether control should be drawn using the colors specified in the color scheme or the colors in used by Windows themes.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.VisualStyle">
+            <summary>
+            Gets or sets a value specifying the visual style used to draw controls associated with the JanusColorScheme.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.Office2007ColorScheme">
+            <summary>
+            Deprecated use OfficeColorScheme property instead.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.OfficeColorScheme">
+            <summary>
+            Gets or sets a value specifying the color scheme to be used when Office2007 or Office2010 VisualStyle is used in the color scheme.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.Office2007CustomColor">
+            <summary>
+            Deprecated. Use OfficeCustomColor property instead.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.OfficeCustomColor">
+            <summary>
+            Gets or sets the color used as the base color from which controls will create the custom Office color scheme.
+            </summary>
+            <remarks>
+            This property is only used when OfficeColorScheme property is set to OfficeColorScheme.Custom and the VisualStyle property is set to VisualStyle.Office2007 or VisualStyle.Office2010.
+            </remarks>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.MenuColor">
+            <summary>
+            Gets or sets a value specifying the background color of menu items.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.MenuTextColor">
+            <summary>
+            Gets or sets a value specifying the foregorund color of menu items.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.DisabledColor">
+            <summary>
+            Gets or sets a value specifying the background color of disabled controls.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.GrayTextColor">
+            <summary>
+            Gets or sets a value specifying the color of text in disabled controls.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.ActiveCaptionColor">
+            <summary>
+            Gets or sets a value specifying the background color of the caption in an active control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.ActiveCaptionTextColor">
+            <summary>
+            Gets or sets a value specifying the foregorund color of the caption in an active control.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.WindowColor">
+            <summary>
+            Gets or sets a value specifying the background color of input controls.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.ControlColor">
+            <summary>
+            Gets or sets a value specifying the background color of controls.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.HighlightTextColor">
+            <summary>
+            Gets or sets a value specifying the foreground color of selected items in controls.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.WindowTextColor">
+            <summary>
+            Gets or sets a value specifying the foreground color of input controls.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.ControlTextColor">
+            <summary>
+            Gets or sets a value specifying the foreground color of controls.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.ControlDarkColor">
+            <summary>
+            Gets or sets a value specifying the shadow color of a 3-D elements. 
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.HighlightColor">
+            <summary>
+            Gets or sets a value specifying the background color of selected items in controls.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.InfoColor">
+            <summary>
+            Gets or sets a value specifying the background color of tooltips.
+            </summary>
+        </member>
+        <member name="P:Janus.Windows.Common.JanusColorScheme.InfoTextColor">
+            <summary>
+            Gets or sets a value specifying the foreground color of tool tips.
+            </summary>
+        </member>
+        <member name="T:Janus.Windows.Common.JanusColorSchemeConverter">
+            <summary>
+            JanusColorSchemeConverter class.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorSchemeConverter.#ctor">
+            <summary>
+            Initializes a new instance of the GridEXLayoutConverter class.
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorSchemeConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>
+            Overrides TypeConverter.CanConvertTo
+            </summary>
+        </member>
+        <member name="M:Janus.Windows.Common.JanusColorSchemeConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <summary>
+            Overrides TypeConverter.ConvertTo
+            </summary>
+        </member>
+    </members>
+</doc>
