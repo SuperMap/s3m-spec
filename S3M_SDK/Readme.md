@@ -7,6 +7,6 @@ S3M_SDK是用于S3MB数据读写的软件开发工具包（Win64位 C++），为
 
 3、Bin/BinD:动态库
 
-4、Sample：读写S3MB数据的范例程序。其中的Sample.sln为VS2012的工程文件，运行时需要将Plugins下的SuFileParser3DModel.fps拷贝到S3M_SDK/Bin目录下，将SuFileParser3DModeld.fps拷贝至S3M_SDK/BinD目录下。
+4、Sample：读写S3MB数据的范例程序。
 
 5、SampleData：范例数据

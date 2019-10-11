@@ -36,7 +36,6 @@ void S3MBReader::GetFiles(const std::string& path,std::vector<std::string>& file
 			} 
 			else
 			{
-				files.push_back(p.assign(path).append("\\").append(fileinfo.name));
 				char *s3mattribute = "s3md";
 				if (strstr(fileinfo.name,s3mattribute))
 				{
