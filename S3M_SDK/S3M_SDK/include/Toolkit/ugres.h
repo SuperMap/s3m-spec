@@ -1640,6 +1640,9 @@
 #define UGS_COUNTS_VALUE_IDENTICAL_3				_U("ESa088")    /*! 整合后的每个点的计数值相同.请尝试其它聚合方法或提供分析字段.*/
 #define UGS_DATA_REDUNDANCY							_U("ESa089")    /*! 由于多重共线性,从而无法对模型进行估计.*/
 #define UGS_REMOVE_DEPENDENT_VARIABLE_S				_U("ESa090")    /*! 解释变量不能包含因变量,删除模型解释变量中的 %s 字段.*/
+#define UGS_FIELD_UNIQUE_VALUE_LESS_THAN_S			_U("ESa091")    /*! 数据分布应分散, %s 字段唯一值(分组)个数应小于记录总数的一半.*/
+#define UGS_FIELD_UNIQUE_VALUE_MORE_THAN_ONE		_U("ESa092")    /*! 数据错误, %s 字段唯一值(分组)个数应大于1.*/
+#define UGS_EXPLANATORY_VARIABLES_MORE_THAN_D		_U("ESa093")    /*! 解释变量数目应大于 %d.*/
 
 // 引擎各种状态特征不匹配，（数据库当前事务，时序，版本等的状态不适合某类操作）
 #define	UGS_ODBC_DS_DISPOSE_VERSION_FAILED      _U("ELe001")	/*! 处理版本失败*/
@@ -2302,6 +2305,11 @@
 
 #define UGS_ORDINARYLEASTSQUARES				_U("IMb394") /*! 普通最小二乘法...*/
 #define UGS_ANALYST_ORDINARYLEASTSQUARES		_U("IMb395") /*! 正在进行普通最小二乘法分析[%d/%d]...*/
+#define UGS_CREATE_MEASURE						_U("IMb396")	/*! 生成刻度值*/
+#define UGS_GEOGRAPHICALDETECTOR				_U("IMb397") /*! 地理探测器...*/
+#define UGS_ANALYST_GEOGRAPHICALDETECTOR		_U("IMb398") /*! 正在进行地理探测器分析[%d/%d]...*/
+
+#define UGS_BUILDING_SPATIALINDEX				_U("IMb399") /*! 正在生成空间索引[%d/%d]...*/
 
 // 地图单位信息
 #define	UGS_SYMBOL_DEGREE                       _U("IMc001")	/*! °*/
@@ -3164,218 +3172,6 @@
 
 //嵌入式下的一些错误定义
 #define LIC_UNSUPORT_MODULE _U("ErrLic01") /*许可模块不支持*/
-
-
-// 以下定义python相关的日志信息，直接用宏代表实际字符串，不使用resource.xml
-
-// {{ python接口帮助信息，非Unicode字符串，不带_U，python接口限制
-
-#define	UGS_PYTHON_INIT                                        ""
-#define	UGS_PYTHON_EXIT                                        ""
-#define	UGS_PYTHON_SETUSEFME                                   ""
-#define	UGS_PYTHON_SETLOG2FILE                                 "将Python层的日志信息写到文件，设置False则打印到控制台"
-#define	UGS_PYTHON_CREATEWORKSPACE                             "创建工作空间，可以保存当前打开的数据源 \n 参数：UGString strPath 工作空间全路径（smwu格式） \n 成功返回True "
-#define	UGS_PYTHON_EXPORTMAPTOFILE                             ""
-#define	UGS_PYTHON_CREATEDATASOURCE                            ""
-#define	UGS_PYTHON_OPENDATASOURCE                              "打开数据源"
-#define	UGS_PYTHON_CLOSEDATASOURCE                             ""
-#define	UGS_PYTHON_CREATEDATASETGROUP                          ""
-#define	UGS_PYTHON_CREATEDATASETRASTER                         "\n 创建栅格数据集 \n UGString strAlias 数据源别名; \n UGString strName 数据集名称; \n UGString strType 数据集类型,取值为: \n   -Image \n   -DEM \n   -Grid \n UGString strEncType 编码类型,取值为: \n   -encNONE \n   -encDCT \n   -encSGL \n   -encLZW \n   -encCompound \n UGString strPixfmt 像素类型; \n   -IPF_MONO // 1位,单色 \n   -IPF_FBIT //4位,16色 \n   -IPF_UBYTE //8位无符号,256色 \n   -IPF_BYTE //8位,256色 \n   -IPF_TBYTE //16位,彩色 \n   -IPF_UTBYTE //16位无符号,彩色 \n   -IPF_RGB //24位,真彩色 \n   -IPF_RGBA //32位,增强真彩色 \n   -IPF_TRGB //48位,真彩色 \n   -IPF_LONG //32位,有符号整型 \n   -IPF_ULONG //32位,无符号整型 \n   -IPF_LONGLONG //64位,长整型 \n   -IPF_FLOAT //32位,浮点型 \n   -IPF_DOUBLE //64位,双精度浮点型 \n int iWidth 影像宽; \n int iHeight 影像高; \n double dLeft 地理范围left; \n double dTop 地理范围top; \n double dRight 地理范围right; \n double dBottom 地理范围bottom; \n int iBlkSize 影像分块大小,取值为: \n   -64 \n   -128 \n   -256 \n   -512 \n   -1024 \n   -2048 \n   -4096 \n   -8192 \n int nBandCount 波段数默认为1 \n 成功返回true. "
-#define	UGS_PYTHON_CREATEDATASETVECTOR                         "创建矢量数据集 \n @param[in]  UGString strAlias 数据源别名 \n @param[in]  UGString strName 新数据集名称 \n @param[in]  UGString strType 数据集类型,取值为 \n  - Tabular \n - Point \n  - Line \n  - Region \n  - NetWork \n   - Text\n   - CAD \n  - Point3D \n  - Line3D \n  - Region3D  \n @param[in]  UGString strEncType 编码类型,取值为: \n  - encDOUBLE \n   - encBYTE \n  - encWORD \n  - encDWORD \n"
-#define	UGS_PYTHON_COPYDATASET                                 "复制数据集 \n @param[in]  UGString strSrcAlias 原数据源别名 \n @param[in]  UGString strSrcName 原数据集名称 \n @param[in]  UGString strDesAlias 目标数据源别名 \n @param[in]  UGString strDesName 目标数据集名称"
-#define	UGS_PYTHON_CREATEIMAGECOLLECTION                       "\n 创建影像数据集集合"
-#define	UGS_PYTHON_ADDDATASETRASTER                            "\n 给栅格数据集集合添加栅格数据集"
-#define	UGS_PYTHON_CREATEDATASETFROM                           "\n 通过模板创建数据集 \n UGString strDataSourceSrc 源数据源名称; \n UGString strDatasetSrc 源数据集名称; \n UGString strDataSourceDst 目标数据源名称; \n UGString strNewDtName 新数据集名称:\n UGString strEncType 编码类型,取值为: \n  - encDOUBLE\n  - encBYTE\n  - encWORD \n  - enc3BYTE \n  - encDWORD \n  - encNONE \n  - encDCT \n  - encSGL \n  - encLGL \n  - encLZW \n  - encPNG \n  - encCompound \n 成功返回true."
-#define	UGS_PYTHON_GETALLDATASETNAME                           "返回数据源下所有数据集名字 \n 参数：strDsAlias \n 返回名字数组"
-#define	UGS_PYTHON_DELETEDATASET                               ""
-#define	UGS_PYTHON_GETDATASETINFO                              ""
-#define	UGS_PYTHON_GETDATASETCOUNT                             ""
-#define	UGS_PYTHON_SETGEOREFERENCE                             ""
-#define	UGS_PYTHON_SETNOVALUE                                  ""
-#define	UGS_PYTHON_GETGRIDTABULAR                              "获取栅格属性表 \n 参数1：strDsAlias \n 参数2：strGridName \n 参数3：strTabName \n 成功返回True"
-#define	UGS_PYTHON_BUILDPYRAMID                                "创建金字塔 \n 参数1：strDsAlias \n 参数2：strGridName \n 成功返回True"
-#define	UGS_PYTHON_BUILDPYRAMIDTIERSONLY                       "只创建金字塔数据集 \n 参数1：strDsAlias \n 参数2：strGridName \n 成功返回True \n 这个方法废弃，目前空数据集创建金字塔速度已经非常快了，此方法过时"
-#define	UGS_PYTHON_BUILDPYRAMIDTIERSONLYEX                     "只创建金字塔数据集,同时设定编码 \n 参数1：strDsAlias \n 参数2：strGridName \n 参数3：strEncType ,取值为: \n   -encNONE \n   -encDCT \n   -encSGL \n   -encLZW \n   -encCompound \n 成功返回True "
-#define	UGS_PYTHON_UPDATEPYRAMIDBYBOUND                        "局部更新金字塔 \n 参数1：strDsAlias \n 参数2：strGridName \n 参数3：dLeft \n 参数4：dTop \n 参数5：dRight \n 参数6：dBottom \n 成功返回True"
-#define	UGS_PYTHON_REMOVEPYRAMIDS                              "删除数据集的金字塔 \n 参数1：strDsAlias \n 参数2：strGridName \n 成功返回True"
-#define	UGS_PYTHON_BUILDSPATIALINDEX                           ""
-#define	UGS_PYTHON_REBUILDSPATIALINDEX                         ""
-#define	UGS_PYTHON_GETFILETYPEBYFILENAME                       "由完整路径判断FileType \n @param[in]  UGString strFilePath 数据完整路径 \n return 成功返回 FileType 字符串"
-#define	UGS_PYTHON_DROPSPATIALINDEX                            ""
-#define	UGS_PYTHON_BUILDFIELDINDEX                             ""
-#define	UGS_PYTHON_DROPFIELDINDEX                              ""
-#define	UGS_PYTHON_COMPUTEBOUNDS                               ""
-#define	UGS_PYTHON_SETPROJECTION                               ""
-#define	UGS_PYTHON_GETPROJECTION                               ""
-#define	UGS_PYTHON_GETIMAGEGEOREF                              ""
-#define	UGS_PYTHON_GETIMAGEPIXELFORMAT                         ""
-#define	UGS_PYTHON_GETIMAGEPIXELFORMATNAME                     ""
-#define	UGS_PYTHON_GETIMAGEBANDSCOUNT                          ""
-#define	UGS_PYTHON_GETDATASETNAME                              ""
-#define	UGS_PYTHON_GETDATASETTYPE                              ""
-
-#define	UGS_PYTHON_APPENDRASTERFILE                            "栅格数据集追加 \n 参数1：strDsAlias \n 参数2：strName 数据集名字 \n 参数3：strType 文件类型 \n  fileTIF \n  fileIMG \n  fileBMP \n  filePNG \n  fileJPG \n  fileGIF \n  fileGRD \n  fileRAW \n  fileUSGSGRID \n  fileSIT \n  fileArcinfoGrid \n  fileIDR \n 参数4：strFilePath \n 成功返回True"
-#define	UGS_PYTHON_APPENDRASTERFILEIGNOREBORDERVALUE           ""
-#define	UGS_PYTHON_APPENDRASTERFILEIGNOREVALUE                 ""
-#define	UGS_PYTHON_APPENDDATASETRASTER                         ""
-#define	UGS_PYTHON_IMPORTRASTERFILE                            ""
-#define	UGS_PYTHON_SETCLIPREGION                               ""
-#define	UGS_PYTHON_STRETCHRASTER                               "拉伸影像数据集，现仅支持像素格式为无符号8位、RGB、RGBA的多波段影像"
-#define	UGS_PYTHON_IMPORTVECTORFILE                            ""
-#define	UGS_PYTHON_APPENDVECTORFILE                            ""
-#define	UGS_PYTHON_APPENDVECTORFILETOTILE                      ""
-#define	UGS_PYTHON_SPLITTILE			                       ""
-#define	UGS_PYTHON_EXPORTRASTER                                ""
-#define	UGS_PYTHON_EXPORTVECTOR                                ""
-#define	UGS_PYTHON_EXTRACTREGION                               ""
-
-#define	UGS_PYTHON_CHANGEVECTORPROJECTION                      ""
-#define	UGS_PYTHON_CHANGERASTERPROJECTION                      ""
-#define	UGS_PYTHON_CHANGEPROJECTION                            ""
-       	                           
-#define	UGS_PYTHON_QUERY                                       ""
-#define	UGS_PYTHON_RESAMPLE                                    ""
-#define	UGS_PYTHON_COMPUTEGEOAREA                              ""
-#define	UGS_PYTHON_REGIONTOLINE                                ""
-#define	UGS_PYTHON_VECTORTORASTER                              ""
-#define	UGS_PYTHON_RASTERTOVECTOR                              ""
-#define	UGS_PYTHON_BUFFER                                      ""
-#define	UGS_PYTHON_BUFFERMULTI                                 ""
-#define	UGS_PYTHON_REGIONINNERTOPOINT                          ""
-#define	UGS_PYTHON_ELIMINATE                                   ""
-#define	UGS_PYTHON_OVERLAYINDEX                                ""
-#define	UGS_PYTHON_VISIBILITYANALYST                           ""
-#define	UGS_PYTHON_VISIBILITYANALYST2                          ""
-#define	UGS_PYTHON_CALCULATEVIEWSHED                           ""
-#define	UGS_PYTHON_CALCULATESLOPE                              ""
-#define	UGS_PYTHON_CUTFILL                                     ""
-#define	UGS_PYTHON_EXTRACTISOLINE                              "dem提取等值线 \n UGString strDataSourceSrc 源数据源名称; \n UGString strDatasetGrid 待提取等值线的栅格数据集;\n double dBase 等值线起始值;\n double dInterval 等值线间距;\n int nSmoothDegree 等值线光滑度;\n   -小于2时不进行光滑\n   -推荐范围：2-5\n   -推荐值：3\n int nSmoothMethod 等值线光滑方法;\n   -小于0则不进行光滑\n   -0：B样条法光滑\n   -1：磨角法光滑\n   -推荐值：0，即B样条法\n double dTolerance 等值线采样过滤参数，该参数越大，结果点越少;\n  -小于等于0时不进行重采样，一般取值为源栅格分辨率的 0-1 倍\n  -推荐值：0，即不进行重采样\n UGString strDataSourceDst 结果数据源名称;\n UGString strDatasetName 结果数据集的名称;\n UGString strZFieldName 结果数据集的名称;\n 成功返回true."
-       	                           
-#define	UGS_PYTHON_GENERATEDEFAULTCONFIGFILE                   ""
-#define	UGS_PYTHON_GENERATETEMPLETFILE                         ""
-#define	UGS_PYTHON_BUILDFROMTASKFILE                           ""
-#define	UGS_PYTHON_GENERATECACHE                               ""
-#define	UGS_PYTHON_VERSION								       ""
-
-
-// }} python接口帮助信息
-
-// 以下为函数操作日志
-
-// {{ 无效操作相关
-#define UGS_PYTHON_NOTSUPPORT_ENGINETYPE					   "无效的引擎类型[%s].\n"
-#define UGS_PYTHON_NOTSUPPORT_ENCTYPE					       "无效的编码类型[%s].\n"
-#define UGS_PYTHON_NOTSUPPORT_PIXELFORMAT					   "无效的像素格式[%s].\n"
-#define UGS_PYTHON_NOTSUPPORT_BLOCKSIZE					       "无效的影像块大小[%s].\n"
-#define UGS_PYTHON_INVALID_DATASETNAME     				       "无效的数据集名称[%s].\n"
-#define UGS_PYTHON_NOTFIND_DATASET     					       "未找到数据集[%s].\n"
-// }} 无效操作相关
-
-// {{ 工作空间、地图相关
-#define UGS_PYTHON_OPENWORKSPACE_SUCCESS                       "打开工作空间[%s]成功.\n"
-#define UGS_PYTHON_OPENWORKSPACE_FAIL                          "打开工作空间[%s]失败.\n"
-#define UGS_PYTHON_OPENMAP_SUCCESS                             "地图[%s]打开成功.\n"
-#define UGS_PYTHON_OPENMAP_FAIL                                "地图[%s]打开失败.\n"
-#define UGS_PYTHON_OPENSCI_FAIL                                "SCI文件[%s]打开失败.\n"
-#define UGS_PYTHON_TASK_SUCCESS                                "任务[%s]成功.\n"
-#define UGS_PYTHON_TASK_FAIL                                   "任务[%s]失败.\n"
-// }} 工作空间、地图相关
-
-// {{ 数据源相关
-#define UGS_PYTHON_CREATEDATASOURCE_SUCCESS                    "创建数据源[%s]成功.\n"
-#define UGS_PYTHON_CREATEDATASOURCE_FAIL                       "创建数据源[%s]失败.\n"
-#define UGS_PYTHON_OPENDATASOURCE_SUCCESS                      "打开数据源[%s]成功.\n"
-#define UGS_PYTHON_OPENDATASOURCE_FAIL                         "打开数据源[%s]失败.\n"
-#define UGS_PYTHON_DATASOURCE_IS_NULL                          "数据源[%s]为NULL.\n"
-// }} 数据源相关
-
-// {{ 数据集相关
-#define UGS_PYTHON_CREATEDATASET_SUCCESS                       "创建数据集[%s]成功.\n"
-#define UGS_PYTHON_CREATEDATASET_FAIL                          "创建数据集[%s]失败.\n"
-#define UGS_PYTHON_DELETEDATASET_SUCCESS                       "删除数据集[%s]成功.\n"
-#define UGS_PYTHON_DELETEDATASET_FAIL                          "删除数据集[%s]失败.\n"
-#define UGS_PYTHON_IMPORTFILE_SUCCESS                          "导入文件[%s]成功.\n"
-#define UGS_PYTHON_IMPORTFILE_FAIL                             "导入文件[%s]失败.\n"
-#define UGS_PYTHON_EXPORTFILE_SUCCESS                          "导出文件[%s]成功.\n"
-#define UGS_PYTHON_EXPORTFILE_FAIL                             "导出文件[%s]失败.\n"
-#define UGS_PYTHON_APPENDDATASET_SUCCESS                       "追加数据集[%s]至数据集[%s]成功.\n"
-#define UGS_PYTHON_APPENDDATASET_FAIL                          "追加数据集[%s]至数据集[%s]失败.\n"
-#define UGS_PYTHON_STRETCHDATASET_SUCCESS                      "数据集[%s]拉伸成功.\n"
-#define UGS_PYTHON_STRETCHDATASET_FAIL                         "数据集[%s]拉伸失败.\n"
-#define UGS_PYTHON_ADDSUBDATASET_FAIL                          "添加子数据集[%s]到集合[%s]中失败.\n"
-#define UGS_PYTHON_INVALID_CLIP_RASTER     				       "被裁剪数据集[% s]为NULL,或不是影像数据集.\n"
-#define UGS_PYTHON_INVALID_CLIP_VECTOR     				       "裁剪数据集[%s ]为NULL, 或不是矢量数据集.\n"
-#define UGS_PYTHON_INVALID_DATASET1     				       "数据集[%s]为NUL L,或不是影像数据集.\n"
-#define UGS_PYTHON_QUERY_FAIL                                  "查询数据集[%s]失败.\n"
-#define UGS_PYTHON_HAS_BUILD_PYRAMID                           "数据集[%s]已创建金字塔.\n"
-#define UGS_PYTHON_BUILD_PYRAMID_SUCCESS                       "数据集[%s]创建金字塔成功.\n"
-#define UGS_PYTHON_BUILD_PYRAMID_FAIL                          "数据集[%s]创建金字塔失败.\n"
-#define UGS_PYTHON_REMOVE_PYRAMID_SUCCESS                      "数据集[%s]删除金字塔成功.\n"
-#define UGS_PYTHON_REMOVE_PYRAMID_FAIL                         "数据集[%s]删除金字塔失败.\n"
-#define UGS_PYTHON_GETGRIDTABULAR_SUCCESS                      "获取栅格属性表[%s]成功.\n"
-#define UGS_PYTHON_GETGRIDTABULAR_FAIL                         "获取栅格属性表[%s]失败.\n"
-#define UGS_PYTHON_LOAD_XML_FAIL                               "读取xml文件失败.\n"
-#define UGS_PYTHON_QUERY_AND_SAVE_SUCCESS                      "查询数据并保持结果成功.\n"
-#define UGS_PYTHON_QUERY_AND_SAVE_FAIL                         "查询数据并保持结果失败.\n"
-#define UGS_PYTHON_PROJECT_CONVERT_SUCCESS                     "数据集[%s]投影转换成功.\n"
-#define UGS_PYTHON_PROJECT_CONVERT_FAIL                        "数据集[%s]投影转换失败.\n"
-#define UGS_PYTHON_DATASOURCE_PROJECT_CONVERT_SUCCESS          "数据源[%s]投影转换成功.\n"
-#define UGS_PYTHON_DATASOURCE_PROJECT_CONVERT_FAIL             "数据源[%s]投影转换失败.\n"
-// }} 数据集相关
-
-//{{
-#define UGS_PYTHON_DATASETINDEX_NOT_TILE						"目标数据集不是图幅索引，不能按图幅追加导入.\n"
-#define UGS_PYTHON_CREATE_FAILED_MEMORYDS						"内存数据源创建失败.\n"
-#define UGS_PYTHON_IMPORT_TO_TEMPDS								"导入临时数据源......\n"
-#define UGS_PYTHON_IMPORT_TO_TEMPDS_SUCCESS						"导入临时数据源完成.\n"
-#define UGS_PYTHON_SPLITTILE_BEGIN								"开始切分临时数据......\n"
-#define UGS_PYTHON_SPLITTILE_END								"切分临时数据完成.\n"
-#define UGS_PYTHON_APPENDTO_DESDT_BEGIN							"开始追加到目标数据集.....\n"
-#define UGS_PYTHON_APPENDTO_TILE_END							"追加完成.\n"
-#define UGS_PYTHON_UPDATE_PYRAMID_PIXEL_BEGIN					"更新金字塔开始\n"
-#define UGS_PYTHON_UPDATE_PYRAMID_PIXEL_END						"更新金字塔结束\n"
-//}}
-// {{ 分析相关
-#define UGS_PYTHON_DATASET_RESAMPLE_SUCCESS                    "数据集[%s]重采样成功.\n"
-#define UGS_PYTHON_DATASET_RESAMPLE_FAIL                       "数据集[%s]重采样失败.\n"
-#define UGS_PYTHON_INVALID_DATASET_TYPE                        "数据集类型不符合要求，操作失败，请检查.\n"
-#define UGS_PYTHON_INVALID_FIELD_TYPE                          "字段类型不符合要求，操作失败，请检查.\n"
-#define UGS_PYTHON_COMPUTE_AREA_SUCCESS                        "数据集[%s]计算经纬度面积成功.\n"
-#define UGS_PYTHON_RECORDSET_COUNT                             "总记录数[%s].\n"
-#define UGS_PYTHON_COMPLETED_RECORDSET_COUNT                   "已处理记录数[%s].\r"
-#define UGS_PYTHON_REGION_TO_LINE_SUCCESS                      "面数据集[%s]转为线数据集[%s]成功.\n"
-#define UGS_PYTHON_VECTOR_TO_RASTER_SUCCESS                    "矢量数据集[%s]转栅格[%s]成功.\n"
-#define UGS_PYTHON_VECTOR_TO_RASTER_FAIL                       "矢量数据集[%s]转栅格[%s]失败.\n"
-#define UGS_PYTHON_RASTER_TO_VECTOR_SUCCESS                    "栅格数据集[%s]转矢量[%s]成功.\n"
-#define UGS_PYTHON_RASTER_TO_VECTOR_FAIL                       "栅格数据集[%s]转矢量[%s]失败.\n"
-#define UGS_PYTHON_EXTRACTREGION_SUCCESS                       "提取等值面成功,结果数据集[%s].\n"
-#define UGS_PYTHON_EXTRACTREGION_FAIL                          "提取等值面失败.\n"
-#define UGS_PYTHON_INVALID_FILTER                              "无效的过滤条件[%s].\n"
-#define UGS_PYTHON_BUFFER_SUCCESS                              "数据集[%s]创建缓冲区成功,结果数据集[%s].\n"
-#define UGS_PYTHON_BUFFER_FAIL                                 "数据集[%s]创建缓冲区失败.\n"
-#define UGS_PYTHON_ELIMINATE_SUCCESS                           "数据集[%s]合并碎多边形成功.\n"
-#define UGS_PYTHON_ELIMINATE_FAIL                              "数据集[%s]合并碎多边形失败.\n"
-#define UGS_PYTHON_POINT_VISIBILITY                            "两点间通视.\n"
-#define UGS_PYTHON_POINT_NOT_VISIBILITY                        "两点间不通视.\n"
-#define UGS_PYTHON_VISIBILITY_COOR                             "第一阻视点坐标(x=%s, y=%s, z=%s).\n"
-#define UGS_PYTHON_VISIBILITYANALYST_SUCCESS                   "两点间通视分析成功,结果数据集[%s].\n"
-#define UGS_PYTHON_VISIBILITYANALYST_FAIL                      "两点间通视分析失败.\n"
-#define UGS_PYTHON_VIEWSHED_SUCCESS                            "可视域分析成功,结果数据集[%s].\n"
-#define UGS_PYTHON_VIEWSHED_FAIL                               "可视域分析失败,结果数据集[%s].\n"
-#define UGS_PYTHON_CALCULATESLOPE_SUCCESS                      "坡度计算成功,结果数据集[%s].\n"
-#define UGS_PYTHON_CALCULATESLOPE_FAIL                         "坡度计算失败,结果数据集[%s].\n"
-#define UGS_PYTHON_EXTRACTISOLINE_SUCCESS                      "提取等值线成功,结果数据集[%s].\n"
-#define UGS_PYTHON_EXTRACTISOLINE_FAIL                         "提取等值线失败,结果数据集[%s].\n"
-#define UGS_PYTHON_CUTFILL_SUCCESS                             "填挖方分析成功,结果数据集[%s].\n"
-#define UGS_PYTHON_CUTFILL_SUCCESS_INFO                        "结果填充面积[%s].\n结果填充体积[%s].\n结果挖掘面积[%s].\n结果挖掘体积[%s].\n未进行填挖方的面积[%s].\n"
-#define UGS_PYTHON_CUTFILL_FAIL                                "填挖方分析失败.\n"
-#define UGS_PYTHON_OVERLAY_INDEX_BEGIN                         "数据集[%s].[%s]图幅索引叠加分析开始.\n"
-#define UGS_PYTHON_OVERLAY_INDEX_OVERLAY                       "叠加数据集[%s].[%s].\n"
-#define UGS_PYTHON_OVERLAY_INDEX_RES                           "结果数据集[%s].[%s].\n"
-#define UGS_PYTHON_OVERLAY_INDEX_PATH                          "结果文件路径[%s].\n"
-#define UGS_PYTHON_OVERLAY_INDEX_SUCCESS                       "数据集[%s].[%s]图幅索引叠加分析成功.\n"
-#define UGS_PYTHON_OVERLAY_INDEX_FAIL                          "数据集[%s].[%s]图幅索引叠加分析失败.\n"
-// }} 分析相关
 
 
 // 导航数据编译相关

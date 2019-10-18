@@ -107,6 +107,9 @@ public:
 
 	//! \brief 是否解析材质。提取PagedLOD信息时不需要解析材质
 	virtual void SetParseMaterial(UGbool bParseMaterial);
+	
+	//! \brief 是否解析顶点。提取PagedLOD信息时计算Bound之后就不需要骨架了
+	virtual void SetParseSkeleton(UGbool bParseSkeleton);
 
 	//! \brief 设置obj解析时绕X轴的旋转方式.仅支持osgb插件的obj
 	void SetRotateOption(UGint obj_opt);
@@ -148,6 +151,9 @@ protected:
 
 	//! \brief 是否解析材质。提取PagedLOD信息时不需要解析材质
 	UGbool m_bParseMaterial;
+
+	//! \brief 是否解析骨架。提取PagedLOD信息时计算好了Bound，骨架就不需要了
+	UGbool m_bParseSkeleton;
 
 	//! \brief 字符集
 	UGString::Charset m_charset;

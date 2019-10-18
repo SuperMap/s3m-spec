@@ -101,7 +101,7 @@ protected:
 public:
 	static Instance& GetInstance()
 	{
-		UGMutexLock locker(ms_mLocker);
+		UGAutoLock locker(ms_mLocker);
 		Instance* pInstance = ms_pInstance;
 		if (pInstance == NULL)
 		{
@@ -113,13 +113,13 @@ public:
 
 	static UGbool HasInstance()
 	{
-		UGMutexLock locker(ms_mLocker);
+		UGAutoLock locker(ms_mLocker);
 		return ms_pInstance != NULL;
 	}
 
 	static void DelInstance()
 	{
-		UGMutexLock locker(ms_mLocker);
+		UGAutoLock locker(ms_mLocker);
 		Instance* pInstance = ms_pInstance;
 		if (pInstance != NULL)
 		{

@@ -219,6 +219,12 @@ public:
 	UGVertexDataPackageTemplate(const UGVertexDataPackageTemplate& other)
 	{
 		Init();
+		m_nCompressOptions = other.m_nCompressOptions;
+		m_fVertCompressConstant = other.m_fVertCompressConstant;
+		m_minVerticesValue[0] = other.m_minVerticesValue[0];
+		m_minVerticesValue[1] = other.m_minVerticesValue[1];
+		m_minVerticesValue[2] = other.m_minVerticesValue[2];
+		m_minVerticesValue[3] = other.m_minVerticesValue[3];
 		*this = other;
 	}
 
@@ -229,7 +235,14 @@ public:
 			{
 				m_nVertexDimension = other.m_nVertexDimension;
 				SetVertexNum(other.m_nVerticesCount, other.m_nVertexStride);
-				memcpy(m_pVertices, other.m_pVertices, m_nVerticesCount * m_nVertexDimension * sizeof(T));
+				if(m_nCompressOptions  & SVC_Vertex)
+				{
+					memcpy(m_pVertices, other.m_pVertices, m_nVerticesCount * m_nVertexDimension * sizeof(UGshort));
+				}
+				else
+				{
+					memcpy(m_pVertices, other.m_pVertices, m_nVerticesCount * m_nVertexDimension * sizeof(T));
+				}
 			}
 			else
 			{

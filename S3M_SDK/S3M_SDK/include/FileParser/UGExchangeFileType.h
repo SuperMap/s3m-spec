@@ -277,6 +277,8 @@ public:
 		S3MBZ			= 516,
 		//! \brief WEBP数据格式
 		WEBP			= 517,
+		//! \brief Dassault Systems的3dxml格式
+		Model3DXML			= 518,
 	};
 
 

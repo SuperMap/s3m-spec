@@ -1266,6 +1266,9 @@ public:
 	//! \brief 将视图矩阵解析为 orientation / scale / position
 	static void DecomposeViewMatrix(const UGMatrix4d& viewMatrix, UGVector3d& position, UGVector3d &scale, UGQuaternion4d& orientation);
 
+	//! \brief 将矩阵解析为 orientation / scale / position
+	static void DecomposeMatrix(const UGMatrix4d& viewMatrix, UGVector3d& position, UGVector3d &scale, UGQuaternion4d& orientation);
+
 	//! \brief 将世界矩阵分解为 插入点vPosition / 局部矩阵(mScaleMatrix * mRotateMatrix)
 	static void DecomposeWorldMatrix(const UGMatrix4d& mWorldMatrix, UGVector3d& vPosition, UGMatrix4d& mLocalMatrix);
 

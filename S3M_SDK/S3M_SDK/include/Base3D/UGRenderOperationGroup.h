@@ -329,6 +329,9 @@ namespace UGC
 		//! \brief 移除所有Geometry
 		void RemoveAllGeometry();
 
+		//! \brief 移除指定Geometry
+		virtual void RemoveGeometry(UGString strName);
+
 		//! \brief 清空所有材质
 		void ClearMaterial3D() { m_mapMaterial3D.clear(); };
 
@@ -474,6 +477,9 @@ namespace UGC
 		//! \param 替换的Geometry[in]
 		//! \param 是否删除原对象
 		void ReplaceGeometry(UGint nIndex, UGRenderOperationGeometry* pGeometry, UGbool bRelease = FALSE);
+
+		//! \brief 移除指定Geometry
+		virtual void RemoveGeometry(UGString strName);
 
 		//! \brief 清理Geometry
 		void Release();

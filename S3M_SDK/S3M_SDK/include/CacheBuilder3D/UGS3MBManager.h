@@ -12,7 +12,7 @@ class CACHEBUILDER3D_API UGS3MBManager
 public:
 	//! \brief 配置文件转换
 	static UGbool SCPFile2Profile(UGSCPFile& fileSrc, const UGString& strSCPBFileDes);
-	static UGbool ProfileFile2SCP(UGS3MBSCP& fileSrc, const UGString& strSCPFileDes);
+	static UGbool ProfileFile2SCP(UGS3MBSCP& fileSrc, const UGString& strSCPFileDes,UGString extChange=_U(""));
 	
 	//! \brief 配置文件枚举值对应
 	static SCPSDataType SCPFileType2Profile(const UGString& strFileType);

@@ -216,7 +216,7 @@ public:
 		GeoMapGrid			=2012,//added by xuxr 2011-10-27
 
 		GraphicObject		= 3000, //test zhangyl
-		//GraphicObject3D		= 3001
+		GraphicCompound		= 3001,
 
 		// 清华山维对象
 		GeoPointEPS			=4000,

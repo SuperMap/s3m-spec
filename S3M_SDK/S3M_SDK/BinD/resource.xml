@@ -1748,6 +1748,9 @@
 			<res name="UGS_COUNTS_VALUE_IDENTICAL_2 id="ESa087">If points number amoung every aggreation area are the same, please try to provide other aggregation area or analytic string.</res>
 			<res name="UGS_COUNTS_VALUE_IDENTICAL_3 id="ESa088">if count value amoung every intergrated points are the same please try to provide other aggregation area or analytic string.</res>
 			<res name="UGS_REMOVE_DEPENDENT_VARIABLE_S" id="ESa090">Model cannot include the dependent variable as an independent variable.Droppping %s field from the model.</res>
+			<res name="UGS_FIELD_UNIQUE_VALUE_LESS_THAN_S" id="ESa091">Data should be dispersed, the number of %s field unique value (or groups) should be less than half of the total number of records.</res>
+			<res name="UGS_FIELD_UNIQUE_VALUE_MORE_THAN_ONE" id="ESa092">Data error, the number of %s field unique value (or groups) should be greater than 1.</res>
+			<res name="UGS_EXPLANATORY_VARIABLES_MORE_THAN_D" id="ESa093">The number of dependent variable should be greater than %d.</res>
     		</ECode>
 
 		<ECode description="The status features of the engine do not match. (The current transaction, sequence, and version of database are not appropriate for certain operations.)">
@@ -2429,6 +2432,11 @@
 	  <res name="UGS_ANALYST_DENSITYBASEDCLUSTERING" id="IMb391">Proceeding density based clustering[%d/%d]...</res>
 	  <res name="UGS_QUARTER_OBJ_TO_S3MB_EXPORT" id="IMb392">Exporting S3MB.......</res>
 	  <res name="UGS_QUARTER_OBJ_TO_S3MB_TREE" id="IMb393">Creating LOD QuadTree Node...</res>
+	  <res name="UGS_ORDINARYLEASTSQUARES" id="IMb394">Ordinary Least Squares...</res>
+	  <res name="UGS_ANALYST_ORDINARYLEASTSQUARES" id="IMb395">Proceeding Ordinary Least Squares[%d/%d]...</res>
+	  <res name="UGS_GEOGRAPHICALDETECTOR" id="IMb397">Geographical Detector...</res>
+	  <res name="UGS_ANALYST_GEOGRAPHICALDETECTOR" id="IMb398">Proceeding GeographicalDetector[%d/%d]...</res>
+	  <res name="UGS_BUILDING_SPATIALINDEX" id="IMb399">Building SpatialIndex[%d/%d]...</res>
     </ICode>
 		<ICode description="Map units">
 			<res name="UGS_SYMBOL_DEGREE" id="IMc001">бу</res>
@@ -2767,7 +2775,7 @@
 		<ICode description="Fonts">
 			<res name="UGS_SONG" id="IMl001">SimSun</res>
 			<res name="UGS_BLACK" id="IMl002">SimHei</res>						
-			<res name="UGS_MSYH" id="IMl003">MicrosoftYaHei</res>	
+			<res name="UGS_MSYH" id="IMl003">Microsoft YaHei</res>	
 			<res name="UGS_LIKE_SONG" id="IMl004">FangSong</res>	
 			<res name="UGS_SQUARE" id="IMl005">KaiTi</res>	
             <res name="UGS_HUA_SQUARE" id="IMl006">STKaiti</res>

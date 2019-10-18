@@ -67,8 +67,14 @@ public:
 	void AddExtension(const UGString &strTag, const UGString &strValue);
 	UGString GetExtension(const UGString &strTag);
 
+	void AddExtension(UGExtensionObjectValue & pObjValue);
+	void GetExtension(UGArray<UGExtensionObjectValue> & arrExtensionObjValues);
+
 	void GetAttachFile(std::vector<UGString>& vecAttachFile);
 	void SetAttachFile(std::vector<UGString>& vecAttachFile);
+
+	void GetPointCloudLayers(std::vector<UGString>& vecPointCloudLayers);
+	void SetPointCloudLayers(std::vector<UGString>& vecPointCloudLayers);
 
 	//! \brief 设置/获取高度最小值
 	void SetHeightMin(UGdouble dValue);
@@ -90,6 +96,13 @@ public:
 	void SetIsDegree(UGbool bIsDegree);
 	UGbool GetIsDegree();
 
+	//! \brief 构造Markup对象
+	void SaveToMarkup(UGMarkup& markup);
+
+	//! \brief 设置/获取层级
+	void SetGlobalLevels(std::vector<UGint>& vecGlobalLevel);
+	void GetGlobalLevels(std::vector<UGint>& vecGlobalLevel);
+
 private:
 	//! \brief 枚举与字符串的转换函数
 	static UGString ToDataTypeString(const SCPSDataType enDataType);
@@ -100,10 +113,6 @@ private:
 
 	static UGString ToLODTypeString(const SCPSLODType enType);
 	static SCPSLODType ToLODType(const UGString &strType);
-
-private:
-	//! \brief 构造Markup对象
-	void SaveToMarkup(UGMarkup& markup);
 
 public:
 	//! \brief 从Markup对象加载
@@ -152,11 +161,20 @@ private:
 	std::vector<UGBoundingBox> m_vecBBox;
 
 	//==============  扩展信息 ================
+	//! \brief 拓展类
+	UGArray<UGExtensionObjectValue> m_arrExtensionObjValues;
+
 	//! \brief 扩展信息 Tag <-> Value
 	std::map<UGString, UGString> m_mapExtensions;
 
 	//! \brief 外挂文件名字
 	std::vector<UGString> m_vecAttachFile;
+
+	//! \brief 点云图层名
+	std::vector<UGString> m_vecPointCloudLayer;
+
+	//! \brief 层级信息
+	std::vector<UGint> m_vecGlobalLevel;
 	//==============  扩展信息 ================
 };
 

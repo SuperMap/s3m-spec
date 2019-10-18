@@ -118,6 +118,9 @@ public:
 
 		//! \brief JPG
 		enrJPG = 23,
+
+		//! \brief pvr PVRTCFAST
+		enrPVRTPF_PVRTC_FAST = 24,
 	};
 
 public:

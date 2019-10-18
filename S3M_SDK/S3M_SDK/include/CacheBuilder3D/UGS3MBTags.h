@@ -36,6 +36,7 @@ namespace UGC{
 #define SCPS_EXTENSIONS						_U("s3m:Extensions")
 #define SCPS_ATTACH_FILES					_U("s3m:AttachFiles")
 #define SCPS_ATTACH_FILE						_U("s3m:AttachFile")
+#define SCPS_POINTCLOUD_LAYERS					_U("s3m:PointCloudLayers")
 //动态拉伸 高度存纹理坐标里了
 
 //SCP标签枚举值
@@ -136,7 +137,11 @@ namespace UGC{
 #define UGS3MB_JSON_FIELD_ATT_TYPE_FLOAT			_U("float")
 #define UGS3MB_JSON_FIELD_ATT_TYPE_DOUBLE		_U("double")
 #define UGS3MB_JSON_FIELD_ATT_TYPE_WCHAR			_U("wchar")
-#define UGS3MB_JSON_FIELD_ATT_TYPE_STRING			_U("String")
+#define UGS3MB_JSON_FIELD_ATT_TYPE_STRING			_U("text")
+#define UGS3MB_JSON_FIELD_ATT_TYPE_NTEXT			_U("ntext")
+#define UGS3MB_JSON_FIELD_ATT_TYPE_DATE				_U("date")
+#define UGS3MB_JSON_FIELD_ATT_TYPE_TIME				_U("time")
+#define UGS3MB_JSON_FIELD_ATT_TYPE_TIMESTAMP		_U("timestamp")
 // 点云
 #define UGS3MB_JSON_CLASSIFICATIONINFOS				_U("classificationInfos")
 #define UGS3MB_JSON_CLASSIFICATION_ATT_NAME			_U("name")
@@ -183,7 +188,17 @@ namespace UGC{
 
 #define SCPS_JSON_ATTACH_FILES						_U("attachFiles")
 #define SCPS_JSON_ATTACH_FILE						_U("attachFile")
+#define SCPS_JSON_POINTCLOUD_LAYERS			_U("pointCloudLayers")
+#define SCPS_JSON_POINTCLOUD_LAYER		    _U("layer")
 
+#define SCPS_JSON_VOLS						_U("vol")
+#define SCPS_JSON_VOLS_NAME					_U("volName")
+#define SCPS_JSON_VOLS_TYPE					_U("volType")
+#define SCPS_JSON_VOLS_RANGE_MAX			_U("volRangeMax")
+#define SCPS_JSON_VOLS_RANGE_MIN			_U("volRangeMin")
+
+#define  SCPS_JSON_GLOBAL_LEVELS		_U("levels")
+#define  SCPS_JSON_GLOBAL_LEVEL			_U("level")
 
 #define UGS3MB_JSON_X								_U("x")
 #define UGS3MB_JSON_Y								_U("y")
@@ -227,4 +242,15 @@ struct UGLayerCacheInfo
 		return m_pairIDRange.first < info.m_pairIDRange.first;
 	}
 };
+
+struct UGExtensionObjectValue
+{
+	// 字符串
+	UGString m_strName;
+	UGString m_strType;
+	// 双精度
+	UGdouble m_dMax;
+	UGdouble m_dMin;
+};
+
 }

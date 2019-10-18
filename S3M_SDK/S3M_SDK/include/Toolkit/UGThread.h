@@ -169,6 +169,17 @@ public:
   };
 #endif
 
+//! \brief 自动锁。
+class UGAutoLock
+{
+public:
+	explicit UGAutoLock(UGMutex& locker) : m_locker(locker) { m_locker.lock(); }
+	virtual ~UGAutoLock() { m_locker.unlock(); }
+
+private:
+	UGMutex& m_locker;
+};
+
 //! \brief 读者操作锁。
 class UGReadLock
 {

@@ -1751,6 +1751,9 @@
 			<res name="UGS_COUNTS_VALUE_IDENTICAL_3" id="ESa088">整合后的每个点的计数值相同.请尝试其它聚合方法或提供分析字段.</res>
 			<res name="UGS_DATA_REDUNDANCY" id="ESa089">由于多重共线性,从而无法对模型进行估计.</res>
 			<res name="UGS_REMOVE_DEPENDENT_VARIABLE_S" id="ESa090">解释变量不能包含因变量,删除模型解释变量中的 %s 字段.</res>
+			<res name="UGS_FIELD_UNIQUE_VALUE_LESS_THAN_S" id="ESa091">数据分布应分散, %s 字段唯一值(分组)个数应小于记录总数的一半.</res>
+			<res name="UGS_FIELD_UNIQUE_VALUE_MORE_THAN_ONE" id="ESa092">数据错误, %s 字段唯一值(分组)个数应大于1.</res>
+			<res name="UGS_EXPLANATORY_VARIABLES_MORE_THAN_D" id="ESa093">解释变量数目应大于 %d.</res>
     		</ECode>
 
 		<ECode description="引擎各种状态特征不匹配，（数据库当前事务，时序，版本等的状态不适合某类操作）">
@@ -2433,7 +2436,11 @@
 	  <res name="UGS_QUARTER_OBJ_TO_S3MB_EXPORT" id="IMb392">正在导出S3MB...</res>
 	  <res name="UGS_QUARTER_OBJ_TO_S3MB_TREE" id="IMb393">正在创建Lod四分树节点...</res>
 	  <res name="UGS_ORDINARYLEASTSQUARES" id="IMb394">普通最小二乘法...</res>
-	  <res name="UGS_ANALYST_ORDINARYLEASTSQUARES" id="IMb395">正在进行普通最小二乘法分析...</res>
+	  <res name="UGS_ANALYST_ORDINARYLEASTSQUARES" id="IMb395">正在进行普通最小二乘法分析[%d/%d]...</res>
+    <res name="UGS_CREATE_MEASURE" id="IMb396">生成刻度值</res>
+	  <res name="UGS_GEOGRAPHICALDETECTOR" id="IMb397">地理探测器...</res>
+	  <res name="UGS_ANALYST_GEOGRAPHICALDETECTOR" id="IMb398">正在进行地理探测器分析[%d/%d]...</res>
+	  <res name="UGS_BUILDING_SPATIALINDEX" id="IMb399">正在生成空间索引[%d/%d]...</res>
     </ICode>
 		<ICode description="地图单位信息">
 			<res name="UGS_SYMBOL_DEGREE" id="IMc001">°</res>

@@ -29462,7 +29462,7 @@
 			<sml:Name>Sphere</sml:Name>
 			<sml:Type>7035</sml:Type>
 			<sml:SemiMajorAxis>6371000</sml:SemiMajorAxis>
-			<sml:InverseFlattening>0</sml:InverseFlattening>
+			<sml:InverseFlattening>298.257222101</sml:InverseFlattening>
 		</sml:Spheroid>
 		<sml:Spheroid>
 			<sml:Name>Struve_1860</sml:Name>

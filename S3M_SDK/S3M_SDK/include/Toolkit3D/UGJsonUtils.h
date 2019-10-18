@@ -128,6 +128,7 @@ public:
 	UGbool GetAt(const UGint i, UGJsonValue* pObject);
 	UGbool GetAt(const UGint i, UGdouble& dbValue);
 	UGbool GetAt(const UGint i, UGString& strValue);
+	UGbool GetAt(const UGint i, UGbool& bValue);
 	UGbool GetAt(const UGint i, UGint& nValue);
 	UGbool GetAt(const UGint i, UGuint& nValue);
 	void RemoveAt(const UGint i);

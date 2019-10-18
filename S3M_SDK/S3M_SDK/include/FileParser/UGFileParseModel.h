@@ -333,6 +333,9 @@ public:
 	//! \brief 是否解析材质。提取PagedLOD信息时不需要解析材质
 	void SetParseMaterial(UGbool bParseMaterial);
 
+	//! \brief 是否解析骨架。提取PagedLOD信息时计算Bound之后，骨架就不需要了
+	void SetParseSkeleton(UGbool bParseSkeleton);
+
 	//! \brief 用来设置压缩参数（全部解压\不压缩（0）;其他参照VertexCompressOptions各个位的意义）
 	void SetVertexCompressOptions(UGint nVertexCompressOptions);
 
@@ -368,6 +371,8 @@ public:
 
 	virtual UGbool Save(const UGExportParams& expParams, UGRenderOperationGroup* pGroup);
 
+	virtual UGbool Save(UGMemoryStream& stream, UGRenderOperationGroup* pGroup);
+
 	//! \brief 保存ModelNode
 	virtual UGbool Save(const UGExportParams& expParams, UGModelNode* pModelNode);
 
@@ -397,6 +402,9 @@ protected:
 
 	//! \brief 是否解析材质
 	UGbool m_bParseMaterial;
+
+	//! \brief 是否解析顶点数据（解析骨架，计算bound之后就删除了）
+	UGbool m_bParseSkeleton;
 
 	//! \brief 压缩参数（全部解压\不压缩（0）;其他参照VertexCompressOptions各个位的意义）
 	UGint m_nVertexCompressOptions;
