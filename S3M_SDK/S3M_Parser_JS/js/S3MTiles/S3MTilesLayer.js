@@ -1,10 +1,8 @@
 define([
-    './XmlParser',
     './S3MTile',
     './S3MLayerScheduler',
     './S3MLayerCache'
     ], function(
-    XmlParser,
     S3MTile,
     S3MLayerScheduler,
     S3MLayerCache
@@ -60,54 +58,23 @@ define([
                 that._url = resource.url;
                 that._basePath = basePath;
                 that._baseResource = resource;
-                if(resource.extension === 'scp') {
-                    return resource.fetchXML();
-                }
-
-                if (resource.extension === 'json') {
-                    return resource.fetchJson();
-                }
+                return resource.fetchJson();
             })
-            .then(function(doc) {
-                let rootNode = doc.firstChild;
-                let namespace = rootNode.namespace;
-                that.fileType = XmlParser.queryStringValue(rootNode, 'FileType', namespace);
-                let positionNode = XmlParser.queryFirstNode(rootNode, 'Position', namespace);
-                let lon = XmlParser.queryNumericValue(positionNode, 'X', namespace);
-                let lat = XmlParser.queryNumericValue(positionNode, 'Y',namespace);
-                let height = XmlParser.queryNumericValue(positionNode, 'Z', namespace);
+            .then(function(config) {
+                let extensions = config.extensions;
+                that.fileType = extensions["s3m:FileType"];
+                let lon = config.position.x;
+                let lat = config.position.y;
+                let height = config.position.z;
                 that._position = Cesium.Cartesian3.fromDegrees(lon, lat, height);
                 that.modelMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(that._position);
-                let boundsNode = XmlParser.queryFirstNode(rootNode, 'Bounds', namespace);
-                if(Cesium.defined(boundsNode)){
-                    let left = XmlParser.queryNumericValue(boundsNode, 'Left', namespace);
-                    let top = XmlParser.queryNumericValue(boundsNode, 'Top', namespace);
-                    let right = XmlParser.queryNumericValue(boundsNode, 'Right', namespace);
-                    let bottom = XmlParser.queryNumericValue(boundsNode, 'Bottom', namespace);
-                    that._rectangle = Cesium.Rectangle.fromDegrees(left, bottom, right, top);
-                }
+                that._rectangle = Cesium.Rectangle.fromDegrees(config.geoBounds.left, config.geoBounds.bottom, config.geoBounds.right, config.geoBounds.top);
 
-                let osgFilesNode = XmlParser.queryFirstNode(rootNode, 'OSGFiles', namespace);
-                let filesNodes = XmlParser.queryNodes(osgFilesNode, 'Files', namespace);
-                for(let i = 0,j = filesNodes.length;i < j;i++){
-                    let fileNode = filesNodes[i];
-                    let fileName = XmlParser.queryStringValue(fileNode, 'FileName', namespace);
-                    fileName = fileName.replace(/\\/gm, '\/');
-                    let sphereNode = XmlParser.queryFirstNode(fileNode, 'BoundingSphere', namespace);
-                    let boundingVolume;
-                    if(Cesium.defined(sphereNode) && Cesium.defined(sphereNode.childNodes) && sphereNode.childNodes.length){
-                        let centerX = XmlParser.queryNumericValue(sphereNode, 'CenterX', namespace);
-                        let centerY = XmlParser.queryNumericValue(sphereNode, 'CenterY', namespace);
-                        let centerZ = XmlParser.queryNumericValue(sphereNode, 'CenterZ', namespace);
-                        let radius = XmlParser.queryNumericValue(sphereNode, 'Radius', namespace);
-                        let center = new Cesium.Cartesian3(centerX, centerY, centerZ);
-                        boundingVolume = {
-                            sphere : {
-                                center : center,
-                                radius : radius
-                            }
-                        };
-                    }
+                for (let i = 0, len = config.tiles.length; i < len; i++) {
+                    let fileName = config.tiles[i].url;
+                    let boundingVolume = {
+                        box : config.tiles[i].boundingbox
+                    };
 
                     let tile = new S3MTile(that, undefined, boundingVolume, fileName);
                     that._rootTiles.push(tile);

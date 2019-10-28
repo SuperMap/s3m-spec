@@ -66,9 +66,25 @@ define([
         return new Cesium.TileBoundingSphere(center, radius);
     }
 
+    function createBoundingBox(box, transform) {
+        let min = new Cesium.Cartesian3(box.min.x, box.min.y, box.min.z);
+        let max = new Cesium.Cartesian3(box.max.x, box.max.y, box.max.z);
+        let sphere = Cesium.BoundingSphere.fromCornerPoints(min, max, new Cesium.BoundingSphere());
+        let center = sphere.center;
+        center = Cesium.Matrix4.multiplyByPoint(transform, center, center);
+        let radius = sphere.radius;
+        let scale = Cesium.Matrix4.getScale(transform, scratchScale);
+        let maxScale = Cesium.Cartesian3.maximumComponent(scale);
+        radius *= maxScale;
+        return new Cesium.TileBoundingSphere(center, radius);
+    }
+
     S3MTile.prototype.createBoundingVolume = function(parameter, transform) {
         if (Cesium.defined(parameter.sphere)) {
             return createSphere(parameter.sphere, transform);
+        }
+        else if(Cesium.defined(parameter.box)) {
+            return createBoundingBox(parameter.box, transform);
         }
 
         return undefined;

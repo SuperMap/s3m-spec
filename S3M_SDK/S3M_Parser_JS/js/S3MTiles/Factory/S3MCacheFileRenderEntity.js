@@ -35,11 +35,12 @@ define([
             fp.defines.push('VertexNormal');
         }
 
-        if(material.textures.length == 1) {
+        if(material.textures.length > 0) {
             vp.defines.push('TexCoord');
             fp.defines.push('TexCoord');
         }
-        else if(material.textures.length == 2) {
+
+        if(material.textures.length == 2) {
             vp.defines.push('TexCoord2');
             fp.defines.push('TexCoord2');
         }
@@ -87,7 +88,7 @@ define([
                 return material.textures[0]._width;
             },
             uTexture2 : function() {
-                return material.texture[1];
+                return material.textures[1];
             },
             uTexture2Width : function() {
                 return material.textures[1]._width;

@@ -26,8 +26,7 @@ define([
         let texHeight = this._height;
         do{
             let levelSize = Cesium.PixelFormat.compressedTextureSizeInBytes(this._internalFormat, texWidth, texHeight);
-            console.log(texWidth + '_' + texHeight);
-            let subArrayBuffer = new Uint8Array(source.imageBuffer, source.imageBuffer.byteOffset + offset, levelSize);
+            let subArrayBuffer = new Uint8Array(source.imageBuffer.buffer, source.imageBuffer.byteOffset + offset, levelSize);
             gl.compressedTexImage2D(gl.TEXTURE_2D, i++, this._internalFormat, texWidth, texHeight, 0, subArrayBuffer);
             texWidth = Math.max(texWidth >> 1,1);
             texHeight = Math.max(texHeight >> 1,1);

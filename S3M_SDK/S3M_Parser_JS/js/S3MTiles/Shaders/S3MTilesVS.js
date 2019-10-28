@@ -13,7 +13,6 @@ define(function() {
     #endif
     #ifdef TexCoord2
         attribute vec4 aTexCoord1;
-        varying vec4 vTexCoord2;
         varying vec4 vTexMatrix2;
     #endif
         attribute vec4 aColor;
