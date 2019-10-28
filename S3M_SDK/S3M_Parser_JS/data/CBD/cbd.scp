@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SuperMapCache xmlns:sml="http://www.supermap.com/SuperMapCache/vectorltile">
+<sml:Version>1.00000</sml:Version>
+<sml:FileType>OSGBCacheFile</sml:FileType>
+<sml:TileSplitType>LOCAL</sml:TileSplitType>
+<sml:Scales>
+<sml:Scale>
+<sml:Value>0.0001107600000000000</sml:Value>
+<sml:Caption>9028</sml:Caption>
+</sml:Scale>
+</sml:Scales>
+<sml:Position>
+<sml:X>116.453</sml:X>
+<sml:Y>39.908</sml:Y>
+<sml:Z>0.00000</sml:Z>
+</sml:Position>
+<sml:Bounds>
+<sml:Left>116.44446344944893</sml:Left>
+<sml:Top>39.921712359330876</sml:Top>
+<sml:Right>116.47175750366088</sml:Right>
+<sml:Bottom>39.902884646380322</sml:Bottom>
+</sml:Bounds>
+<sml:OSGFiles>
+<sml:Files>
+<sml:FileName>.\Tile_-0003_-0002\Tile_-0003_-0002.s3m</sml:FileName>
+<sml:BoundingSphere>
+<sml:CenterX>-966.033702</sml:CenterX>
+<sml:CenterY>834.869728</sml:CenterY>
+<sml:CenterZ>65.611490</sml:CenterZ>
+<sml:Radius>342.182238</sml:Radius>
+</sml:BoundingSphere>
+</sml:Files>
+</sml:OSGFiles>
+</SuperMapCache>
