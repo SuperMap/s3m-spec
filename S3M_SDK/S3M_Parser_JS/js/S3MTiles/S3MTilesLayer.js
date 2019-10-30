@@ -26,6 +26,8 @@ define([
         this._requestTiles = [];
         this._selectedTiles = [];
         this._cache = new S3MLayerCache();
+        this._maximumMemoryUsage = -1;
+        this._totalMemoryUsageInBytes = 0;
         this._readyPromise = Cesium.when.defer();
         this.loadConfig(options.url);
     }
@@ -44,6 +46,22 @@ define([
         rectangle : {
             get : function() {
                 return this._rectangle;
+            }
+        },
+        totalMemoryUsageInBytes : {
+            get : function() {
+                return this._totalMemoryUsageInBytes;
+            },
+            set : function(value) {
+                this._totalMemoryUsageInBytes = value;
+            }
+        },
+        maximumMemoryUsage : {
+            get : function() {
+                return this._maximumMemoryUsage;
+            },
+            set : function(value) {
+                this._maximumMemoryUsage = value;
             }
         }
     });
@@ -77,6 +95,7 @@ define([
                     };
 
                     let tile = new S3MTile(that, undefined, boundingVolume, fileName);
+                    that._cache.add(tile);
                     that._rootTiles.push(tile);
                 }
 
@@ -107,6 +126,14 @@ define([
         }
     }
 
+    function unloadTile(layer, tile) {
+        tile.destroy();
+    }
+
+    function freeResource(layer) {
+        layer._cache.unloadTiles(layer, unloadTile);
+    }
+
     S3MTilesLayer.prototype.prePassesUpdate = function(frameState) {
         if (!this.ready) {
             return;
@@ -125,6 +152,7 @@ define([
         this._schuduler.scheduler(this, frameState);
         requestTiles(this);
         updateTiles(this, frameState);
+        //freeResource(this);
     };
 
     return S3MTilesLayer;

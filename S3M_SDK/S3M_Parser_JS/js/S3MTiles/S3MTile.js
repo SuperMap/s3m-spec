@@ -9,10 +9,11 @@ define([
         ) {
     'use strict';
 
-    function S3MTile(layer, parent, boundingVolume, fileName, rangeData, renderEntityMap) {
+    function S3MTile(layer, parent, boundingVolume, fileName, rangeData, renderEntityMap, isLeafTile) {
         this.layer = layer;
         this.parent = parent;
         this.fileName = fileName;
+        this.isLeafTile = Cesium.defaultValue(isLeafTile, false);
         this.boundingVolume = this.createBoundingVolume(boundingVolume, layer.modelMatrix);
         let baseResource = Cesium.Resource.createIfNeeded(layer._baseResource);
         if(Cesium.defined(parent)){
@@ -35,7 +36,7 @@ define([
         this.visibilityPlaneMask = 0;
         this.visible = false;
         this.children = [];
-        this.rangeData = rangeData;
+        this.lodRangeData = rangeData;
         this.renderEntityMap = renderEntityMap;
         this.contentState = ContentState.UNLOADED;
         this.readerable = false;
@@ -68,10 +69,11 @@ define([
 
     function createBoundingBox(box, transform) {
         let min = new Cesium.Cartesian3(box.min.x, box.min.y, box.min.z);
+        Cesium.Matrix4.multiplyByPoint(transform, min, min);
         let max = new Cesium.Cartesian3(box.max.x, box.max.y, box.max.z);
+        Cesium.Matrix4.multiplyByPoint(transform, max, max);
         let sphere = Cesium.BoundingSphere.fromCornerPoints(min, max, new Cesium.BoundingSphere());
         let center = sphere.center;
-        center = Cesium.Matrix4.multiplyByPoint(transform, center, center);
         let radius = sphere.radius;
         let scale = Cesium.Matrix4.getScale(transform, scratchScale);
         let maxScale = Cesium.Cartesian3.maximumComponent(scale);
@@ -80,6 +82,10 @@ define([
     }
 
     S3MTile.prototype.createBoundingVolume = function(parameter, transform) {
+        if(this.isLeafTile) {
+            return new Cesium.TileBoundingSphere(parameter.center, parameter.radius);
+        }
+
         if (Cesium.defined(parameter.sphere)) {
             return createSphere(parameter.sphere, transform);
         }
@@ -91,15 +97,15 @@ define([
     };
 
     S3MTile.prototype.canTraverse = function() {
-        if (this.children.length === 0) {
+        if (this.children.length === 0 || this.isLeafTile) {
             return false;
         }
 
-        if(!Cesium.defined(this.pagelod)) {
+        if(!Cesium.defined(this.lodRangeData)) {
             return true;
         }
 
-        return this.pixel > this.pagelod.rangeDataList;
+        return this.pixel > this.lodRangeData;
     };
 
     function getBoundingVolume (tile, frameState) {
@@ -107,7 +113,15 @@ define([
     }
 
     S3MTile.prototype.getPixel = function(frameState) {
-        return 200;
+        let boundingVolume = this.boundingVolume;
+        let radius = boundingVolume.radius;
+        let center = boundingVolume.center;
+        let distance = Cesium.Cartesian3.distance(frameState.camera.positionWC, center);
+        let height = frameState.context.drawingBufferHeight;
+        let theta = frameState.camera.frustum._fovy * 0.5;
+        let screenYPix = height * 0.5;
+        let lamat = screenYPix / Math.tan(theta);
+        return lamat * radius / distance;
     };
 
     S3MTile.prototype.distanceToTile = function(frameState) {
@@ -152,8 +166,9 @@ define([
             fileName = parent.baseUri + fileName;
             let rangeData = data.rangeList;
             let renderEntitieMap = data.geoMap;
-            let tile = new S3MTile(layer, parent, boundingVolume, fileName, rangeData, renderEntitieMap);
+            let tile = new S3MTile(layer, parent, boundingVolume, fileName, rangeData, renderEntitieMap, data.isLeafTile);
             parent.children.push(tile);
+            parent.layer._cache.add(tile);
         }
     }
 
@@ -222,6 +237,21 @@ define([
     };
 
     S3MTile.prototype.destroy = function() {
+        for(let key in this.renderEntityMap) {
+            if(this.renderEntityMap.hasOwnProperty(key)) {
+                this.renderEntityMap[key].destroy();
+            }
+        }
+
+        this.renderEntityMap = undefined;
+
+        for(let i = 0,j = this.children.length;i < j;i++) {
+            let child = this.children[i];
+            child.destroy();
+        }
+
+        this.children.length = 0;
+
         return Cesium.destroyObject(this);
     };
 

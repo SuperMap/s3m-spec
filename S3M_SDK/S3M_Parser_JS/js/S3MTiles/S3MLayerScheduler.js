@@ -22,7 +22,7 @@
     }
 
     function sortComparator(a, b) {
-        return b.distanceToCamera - a.distanceToCamera;
+        return a.distanceToCamera - b.distanceToCamera;
     }
 
 
@@ -45,14 +45,14 @@
     }
 
     function selectTile(layer, tile, frameState) {
-        if(tile.renderable/* && tile.contentVisibility(frameState) !== Intersect.OUTSIDE*/) {
+        if(tile.renderable) {
             layer._selectedTiles.push(tile);
             tile.selectedFrame = frameState.frameNumber;
         }
     }
 
     function loadTile(layer, tile, frameState) {
-        if(tile.requestedFrame === frameState.frameNumber || tile.contentState !== ContentState.UNLOADED) {
+        if(tile.requestedFrame === frameState.frameNumber || tile.contentState !== ContentState.UNLOADED || tile.isLeafTile) {
             return ;
         }
 
@@ -77,6 +77,7 @@
             }
 
             if (tile.canTraverse()) {
+                touchTile(layer, tile, frameState);
                 updateChildren(layer, tile, stack, frameState);
                 continue ;
             }

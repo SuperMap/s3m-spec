@@ -18,6 +18,8 @@ define(function() {
     #ifdef VertexNormal
         varying vec3 vNormalEC;
     #endif
+        uniform vec4 uDiffuseColor;
+        uniform vec4 uAmbientColor;
         varying vec4 vColor;
     #ifdef TexCoord
         void calculateTexCoord(in vec2 inTexCoord, in float scale, in float XTran, in float YTran, in float fTile, in float mipLevel, inout vec2 outTexCoord)
@@ -74,9 +76,9 @@ define(function() {
         #endif
         #ifdef VertexNormal
             float diffuseIntensity = max(dot(czm_sunDirectionEC, normalize(vNormalEC)), 0.0);
-            color = vec4(color.rgb * diffuseIntensity, color.a);
+            color = vec4(color.rgb * (vec3(0.8) * uDiffuseColor.rgb * diffuseIntensity + vec3(0.6) * uAmbientColor.rgb), color.a);
         #endif
-            gl_FragColor = color;
+            gl_FragColor = czm_gammaCorrect(color);
         }
     `;
 });

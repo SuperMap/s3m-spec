@@ -12,9 +12,6 @@ define([
 
     function S3MCacheFileRenderEntity(options) {
         RenderEntity.call(this, options);
-        this.shaderProgram = undefined;
-        this.vertexArray = undefined;
-        this.colorCommand = undefined;
     }
 
     S3MCacheFileRenderEntity.prototype = Object.create( RenderEntity.prototype );
@@ -93,6 +90,12 @@ define([
             uTexture2Width : function() {
                 return material.textures[1]._width;
             },
+            uDiffuseColor : function() {
+                return material.diffuseColor;
+            },
+            uAmbientColor : function() {
+                return material.ambientColor;
+            }
         };
     }
 
@@ -154,6 +157,11 @@ define([
     };
 
     S3MCacheFileRenderEntity.prototype.destroy = function() {
+        this.shaderProgram = this.shaderProgram && !this.shaderProgram.isDestroyed() && this.shaderProgram.destroy();
+        this.vertexArray = this.vertexArray && !this.vertexArray.isDestroyed() && this.vertexArray.destroy();
+        this.colorCommand = undefined;
+        this.vertexPackage = null;
+        this.arrIndexPackage = null;
         return Cesium.destroyObject(this);
     };
 

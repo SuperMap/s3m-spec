@@ -26,7 +26,7 @@ define([
         }
     };
 
-    S3MLayerCache.prototype.unloadTile = function(tileset, tile, unloadCallback) {
+    S3MLayerCache.prototype.unloadTile = function(layer, tile, unloadCallback) {
         let node = tile.cacheNode;
         if (!Cesium.defined(node)) {
             return;
@@ -34,20 +34,20 @@ define([
 
         this._list.remove(node);
         tile.cacheNode = undefined;
-        unloadCallback(tileset, tile);
+        unloadCallback(layer, tile);
     };
 
-    S3MLayerCache.prototype.unloadTiles = function(tileset, unloadCallback) {
+    S3MLayerCache.prototype.unloadTiles = function(layer, unloadCallback) {
         let trimTiles = this._trimTiles;
         this._trimTiles = false;
         let list = this._list;
-        let maximumMemoryUsageInBytes = tileset.maximumMemoryUsage * 1024 * 1024;
+        let maximumMemoryUsageInBytes = layer.maximumMemoryUsage * 1024 * 1024;
         let sentinel = this._sentinel;
         let node = list.head;
-        while ((node !== sentinel) && ((tileset.totalMemoryUsageInBytes > maximumMemoryUsageInBytes) || trimTiles)) {
+        while ((node !== sentinel) && ((layer.totalMemoryUsageInBytes > maximumMemoryUsageInBytes) || trimTiles)) {
             let tile = node.item;
             node = node.next;
-            this.unloadTile(tileset, tile, unloadCallback);
+            this.unloadTile(layer, tile, unloadCallback);
         }
     };
 

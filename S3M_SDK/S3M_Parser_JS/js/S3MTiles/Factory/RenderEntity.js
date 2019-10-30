@@ -25,6 +25,9 @@ define([
         this.boundingVolume = options.boundingVolume;
         this.material = options.material;
         this.modelMatrix = options.modelMatrix;
+        this.shaderProgram = undefined;
+        this.vertexArray = undefined;
+        this.colorCommand = undefined;
         this.ready = false;
     }
 
@@ -68,6 +71,10 @@ define([
     RenderEntity.prototype.createCommand = Cesium.DeveloperError.throwInstantiationError;
 
     RenderEntity.prototype.update = Cesium.DeveloperError.throwInstantiationError;
+
+    RenderEntity.prototype.isDestroyed = Cesium.DeveloperError.throwInstantiationError;
+
+    RenderEntity.prototype.destroy = Cesium.DeveloperError.throwInstantiationError;
 
     return RenderEntity;
 });
