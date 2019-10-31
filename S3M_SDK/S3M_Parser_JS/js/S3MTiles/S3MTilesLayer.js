@@ -127,7 +127,7 @@ define([
     }
 
     function unloadTile(layer, tile) {
-        tile.destroy();
+        tile.free();
     }
 
     function freeResource(layer) {
@@ -152,7 +152,7 @@ define([
         this._schuduler.scheduler(this, frameState);
         requestTiles(this);
         updateTiles(this, frameState);
-        //freeResource(this);
+        freeResource(this);
     };
 
     return S3MTilesLayer;

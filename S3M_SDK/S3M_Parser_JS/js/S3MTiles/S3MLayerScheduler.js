@@ -76,15 +76,15 @@
                 continue;
             }
 
+            touchTile(layer, tile, frameState);
+
             if (tile.canTraverse()) {
-                touchTile(layer, tile, frameState);
                 updateChildren(layer, tile, stack, frameState);
                 continue ;
             }
 
             selectTile(layer, tile, frameState);
             loadTile(layer, tile, frameState);
-            touchTile(layer, tile, frameState);
         }
     }
 

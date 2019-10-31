@@ -27,8 +27,8 @@ define([
         this.contentResource = baseResource.getDerivedResource({
             url : fileName
         });
+
         this.serverKey = Cesium.RequestScheduler.getServerKey(this.contentResource.getUrlComponent());
-        this.contextReadyPromise = undefined;
         this.request = undefined;
         this.cacheNode = undefined;
         this.distanceToCamera = 0;
@@ -40,7 +40,6 @@ define([
         this.renderEntityMap = renderEntityMap;
         this.contentState = ContentState.UNLOADED;
         this.readerable = false;
-        this.contentReady = false;
         this.touchedFrame = 0;
         this.requestedFrame = 0;
         this.selectedFrame = 0;
@@ -230,6 +229,16 @@ define([
                 renderEntityMap[key].update(frameState);
             }
         }
+    };
+
+    S3MTile.prototype.free = function() {
+        for(let i = 0,j = this.children.length;i < j;i++) {
+            let child = this.children[i];
+            child.destroy();
+        }
+
+        this.children.length = 0;
+        this.contentState = ContentState.UNLOADED;
     };
 
     S3MTile.prototype.isDestroyed = function() {
