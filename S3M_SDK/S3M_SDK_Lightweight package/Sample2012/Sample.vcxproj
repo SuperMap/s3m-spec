@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Src\ImageOperator.cpp" />
+    <ClCompile Include="Src\JsonParser.cpp" />
+    <ClCompile Include="Src\main.cpp" />
+    <ClCompile Include="Src\Material.cpp" />
+    <ClCompile Include="Src\Palette.cpp" />
+    <ClCompile Include="Src\Point3D.cpp" />
+    <ClCompile Include="Src\ROGroupLite.cpp" />
+    <ClCompile Include="Src\S3MBLayerInfos.cpp" />
+    <ClCompile Include="Src\S3MBReader.cpp" />
+    <ClCompile Include="Src\S3MBTools.cpp" />
+    <ClCompile Include="Src\S3MBVariant.cpp" />
+    <ClCompile Include="Src\S3MBWriter.cpp" />
+    <ClCompile Include="Src\Shell.cpp" />
+    <ClCompile Include="Src\Skeleton.cpp" />
+    <ClCompile Include="Src\StringHelper.cpp" />
+    <ClCompile Include="Src\Texture.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Include\ImageOperator.h" />
+    <ClInclude Include="Include\JsonParser.h" />
+    <ClInclude Include="Include\Material.h" />
+    <ClInclude Include="Include\MemoryStream.h" />
+    <ClInclude Include="Include\Palette.h" />
+    <ClInclude Include="Include\Point3D.h" />
+    <ClInclude Include="Include\PrjCoordSys.h" />
+    <ClInclude Include="Include\ROGroupLite.h" />
+    <ClInclude Include="Include\S3MBLayerInfos.h" />
+    <ClInclude Include="Include\S3MBReader.h" />
+    <ClInclude Include="Include\S3MBTools.h" />
+    <ClInclude Include="Include\S3mbVariant.h" />
+    <ClInclude Include="Include\S3MBWriter.h" />
+    <ClInclude Include="Include\Shell.h" />
+    <ClInclude Include="Include\Skeleton.h" />
+    <ClInclude Include="Include\stdafx.h" />
+    <ClInclude Include="Include\StringHelper.h" />
+    <ClInclude Include="Include\Texture.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{82F6529C-1D4B-44D9-BA73-91F7B16B104E}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Sample</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <LibraryWPath>$(WindowsSDK_MetadataPath)</LibraryWPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;_AMD64_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.\LibShared\;.\LibShared\icu\include\;.\Include;.\LibShared\OpenSceneGraph-3.63\Include;.\LibShared\jpeg\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>.\LibShared\zlib\lib64\;.\LibShared\JSON\lib_win64\;.\LibShared\ImageOperator\;.\LibShared\pvrLib\lib-x64\;.\Src;.\LibShared\jpeg\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>zlib.lib;json_vc71_libmtd.lib;libImageOperator.lib;PVRTexLib.lib;jpegd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>
+      </IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>MSVCRT</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_AMD64_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.\LibShared\;.\LibShared\icu\include\;.\Include;.\LibShared\OpenSceneGraph-3.63\Include;.\LibShared\zlib\include;.\LibShared\gdal-2.1.3\gdal-2.1.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>zlib.lib;json_vc71_libmt.lib;libImageOperator.lib;jpeg.lib;libpng.lib;gdal_i.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\LibShared\zlib\lib64\;.\LibShared\JSON\lib_win64\;.\LibShared\ImageOperator\;.\LibShared\jpeg\lib\;.\LibShared\png\lib\;.\LibShared\gdal-2.1.3\64_x64_win_vc11\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <OutputFile>.\Bin\$(TargetName)$(TargetExt)</OutputFile>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
