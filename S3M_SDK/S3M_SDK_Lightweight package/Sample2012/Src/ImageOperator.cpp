@@ -805,7 +805,7 @@ bool ImgToolkit::PngToBuffer(string filePath, TextureData*& pTextureData, uInt &
 		int m_nCurrentRowIndex = -1;
 		//! \breif 最新一行数据，用于取数据是判断是否取的是当前数据
 		int m_nLastLineRead = -1;
-		unsigned char* m_pBufferTmp;
+		unsigned char* m_pBufferTmp = NULL;
 		pBits = new unsigned char[nWidthBytes*pTextureData->m_nHeight];
 		BufferSize = nWidthBytes * pTextureData->m_nHeight;
 		for (int iLine = 0; iLine < pTextureData->m_nHeight; iLine++)
