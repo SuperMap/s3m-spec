@@ -697,6 +697,11 @@ bool ImgToolkit::JpgToBuffer(string filePath, TextureData*& pTextureData, unsign
 		//EndRead
 		jpeg_destroy_decompress(&m_dinfo);
 		format = JpgBit2Format(nBitCount, m_dinfo);
+		if (NULL != m_File)
+		{
+			fclose(m_File);
+			m_File = NULL;
+		}
 		return true;
 	}
 }
