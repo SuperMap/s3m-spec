@@ -43,6 +43,23 @@ Pass::Pass(): m_strName("")
 		m_pPRBMaterial = NULL;
 	}
 
+Pass::~Pass()
+{
+	TextureUnitStates::const_iterator i, iend;
+	iend = m_pTextureUnitStates.end();
+	for (i = m_pTextureUnitStates.begin(); i != iend; ++i)
+	{
+		delete* i;
+	}
+	m_pTextureUnitStates.clear();
+
+	if (m_pPRBMaterial != NULL)
+	{
+		delete m_pPRBMaterial;
+		m_pPRBMaterial = NULL;
+	}
+}
+
 int Pass::GetPFFMode()
 {
 	PolygonFrontFace mode;
@@ -114,6 +131,11 @@ TextureUnitState* Pass::GetTextureUnitState(unsigned short index)
 
 Technique::Technique(){}
 
+Technique::~Technique()
+{
+	removeAllPasses();
+}
+
 Pass* Technique::CreatePass()
 {
 	Pass* newPass = new Pass();
@@ -151,9 +173,25 @@ Pass* Technique::getPass(const string& name)
 	return foundPass;
 }
 
+void Technique::removeAllPasses(void)
+{
+	Passes::iterator i, iend;
+	iend = mPasses.end();
+	for (i = mPasses.begin(); i != iend; ++i)
+	{
+		delete (*i);
+	}
+	mPasses.clear();
+}
+
 Material::Material()
 {
 	m_strName = "matdefault";
+}
+
+Material::~Material()
+{
+	removeAllTechniques();
 }
 
 Technique* Material::CreateTechnique()
@@ -171,5 +209,16 @@ int Material::getNumTechniques(void) const
 Technique* Material::getTechnique(unsigned short index)
 {
 	return mTechniques[index];
+}
+
+void Material::removeAllTechniques(void)
+{
+	Techniques::iterator i, iend;
+	iend = mTechniques.end();
+	for (i = mTechniques.begin(); i != iend; ++i)
+	{
+		delete (*i);
+	}
+	mTechniques.clear();
 }
 
