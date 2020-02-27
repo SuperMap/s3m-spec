@@ -92,7 +92,10 @@ public://重载操作符
 		}
 		else if (m_bManaged)
 		{
-			ResizeSpace();
+			do
+			{
+				ResizeSpace();
+			} while (m_WtPos + size > m_nSize);
 			memcpy(m_pBuffer + m_WtPos, pBuffer, size);
 			m_WtPos += size;
 		}
@@ -161,7 +164,10 @@ public://重载操作符
 		}
 		else if (m_bManaged)
 		{
-			ResizeSpace();
+			do
+			{
+				ResizeSpace();
+			} while (m_WtPos + size > m_nSize);
 			memcpy(m_pBuffer + m_WtPos, pBuffer, size);
 			m_RdPos += size;
 		}

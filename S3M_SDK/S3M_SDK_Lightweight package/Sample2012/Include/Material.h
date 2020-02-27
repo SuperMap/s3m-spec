@@ -187,6 +187,7 @@ class Pass
 {
 public:
 	Pass();
+	~Pass();
 public:
 	// 通道名
 	string m_strName;
@@ -218,6 +219,12 @@ public:
 //! \brief最终偏移量 = maxSlope * m_fSlopeScalePolygonOffset + m_fConstantPolygonOffset
 	float m_fSlopeScalePolygonOffset;
 
+	//! \brief  是否多重纹理
+	bool m_bMutiTexture;
+	/// Storage of texture unit states
+	typedef std::vector<TextureUnitState*> TextureUnitStates;
+	TextureUnitStates m_pTextureUnitStates;
+
 	//! \brief 获得正面环绕模式
 	//! \return 环绕模式
 	int GetPFFMode();
@@ -225,12 +232,6 @@ public:
 	//! \brief 设置正面环绕模式
 	//! \param mode 环绕模式
 	void SetPFFMode(PolygonFrontFace mode);
-
-	//! \brief  是否多重纹理
-	bool m_bMutiTexture;
-	/// Storage of texture unit states
-	typedef std::vector<TextureUnitState*> TextureUnitStates;
-	TextureUnitStates m_pTextureUnitStates;
 
 	TextureUnitState* CreateTextureUnitState();
 	//获取TextureUnitState的数量
@@ -244,6 +245,7 @@ class Technique
 {
 public:
 	Technique();
+	~Technique();
 	Pass* CreatePass();
 	typedef vector<Pass*> Passes;
 	/// List of primary passes
@@ -254,12 +256,15 @@ public:
 	Pass* getPass(unsigned short index);
 	/** Retrieves the Pass matching name.*/
 	Pass* getPass(const string& name);
+	/** Removes all Passes from this Technique. */
+	void removeAllPasses(void);
 };
 
 class Material
 {
 public:
 	Material();
+	~Material();
 	Technique* CreateTechnique();
 	string m_strName;
 	typedef vector<Technique*> Techniques;
@@ -268,6 +273,8 @@ public:
 	int getNumTechniques(void) const;
 	/** Gets the indexed technique. */
 	Technique* getTechnique(unsigned short index);
+	/** Removes all the techniques in this Material. */
+	void removeAllTechniques(void);
 };
 
 #endif
