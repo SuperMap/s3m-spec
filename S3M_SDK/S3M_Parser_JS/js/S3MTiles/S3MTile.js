@@ -1,7 +1,7 @@
 define([
     './Enum/ContentState',
     './S3ModelParser',
-    './S3MContentParser'
+    './S3MContentParser',
     ], function(
     ContentState,
     S3ModelParser,

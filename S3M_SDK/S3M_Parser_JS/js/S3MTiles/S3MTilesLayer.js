@@ -127,7 +127,7 @@ define([
     }
 
     function unloadTile(layer, tile) {
-        tile.free();
+        // tile.free();
     }
 
     function freeResource(layer) {

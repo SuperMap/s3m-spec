@@ -47,6 +47,9 @@ define([
         while ((node !== sentinel) && ((layer.totalMemoryUsageInBytes > maximumMemoryUsageInBytes) || trimTiles)) {
             let tile = node.item;
             node = node.next;
+            if (tile.isDestroyed()) {
+                console.log(tile)
+            }
             this.unloadTile(layer, tile, unloadCallback);
         }
     };
