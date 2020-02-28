@@ -40,7 +40,7 @@ define([
                 let wrapT = textureState.addressmode.v === 0 ? Cesium.TextureWrap.REPEAT : Cesium.TextureWrap.CLAMP_TO_EDGE;
                 materialPass.texMatrix = Cesium.Matrix4.unpack(textureState.texmodmatrix);
                 let textureInfo = content.texturePackage[textureCode];
-                if(Cesium.defined(textureInfo) && textureInfo.imageBuffer.byteLength > 0){
+                if(Cesium.defined(textureInfo) && textureInfo.imageBuffer.byteLength > 0) {
                     textureInfo.wrapS = wrapS;
                     textureInfo.wrapT = wrapT;
                     let texture = new DDSTexture(context, textureCode, textureInfo);

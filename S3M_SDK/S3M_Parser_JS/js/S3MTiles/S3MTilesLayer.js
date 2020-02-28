@@ -114,7 +114,8 @@ define([
         let length = requestTiles.length;
         requestTiles.sort(sortRequestByPriority);
         for (let i = 0; i < length; ++i) {
-            requestTiles[i].requestContent();
+            let tile = requestTiles[i];
+            tile.requestContent();
         }
     }
 
@@ -127,7 +128,7 @@ define([
     }
 
     function unloadTile(layer, tile) {
-        // tile.free();
+        //tile.free();
     }
 
     function freeResource(layer) {

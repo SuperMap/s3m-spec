@@ -196,6 +196,7 @@ define([
         this.contentState = ContentState.LOADING;
         this.contentReadyPromise = Cesium.when.defer();
         let contentFailedFunction = getContentFailedFunction(this);
+
         promise.then(function(arrayBuffer) {
             if (that.isDestroyed()) {
                 contentFailedFunction();
@@ -207,10 +208,10 @@ define([
             createChildren(that, data);
             that.selectedFrame = 0;
             that.contentState = ContentState.READY;
-            that.renderable = true;
+            //that.renderable = true;
             that.contentReadyPromise.resolve(content);
         }).otherwise(function(error) {
-            if (request.state === RequestState.CANCELLED) {
+            if (request.state === Cesium.RequestState.CANCELLED) {
                 that.contentState = ContentState.UNLOADED;
                 return;
             }

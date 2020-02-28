@@ -22,7 +22,7 @@ define([
         let offset = 0;
         let i = 0;
         let bMipMap = validateMipmap(source.imageBuffer, this._internalFormat, this._width, this._height);
-        let texWidth = this._height;
+        let texWidth = this._width;
         let texHeight = this._height;
         do{
             let levelSize = Cesium.PixelFormat.compressedTextureSizeInBytes(this._internalFormat, texWidth, texHeight);
