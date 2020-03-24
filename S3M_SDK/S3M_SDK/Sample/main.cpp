@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 	
 	S3MBReader m_S3MBReaderRo;
 
-	UGString strS3MBFileSrc = _U("..\\SampleData\\CBD_part\\Tile_-40948_119476_0000\\Tile_-40948_119476_0000.s3mb");	
+	UGString strS3MBFileSrc = _U("..\\SampleData\\CBD_part\\Tile_-14620_42663_0000\\Tile_-14620_42663_0000.s3mb");	
 	m_S3MBReaderRo.SetFilePath(strS3MBFileSrc);
 	m_S3MBReaderRo.ReadS3MBAsROGroup();
 	
