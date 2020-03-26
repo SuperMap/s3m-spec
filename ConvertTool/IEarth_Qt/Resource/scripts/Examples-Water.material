@@ -1,0 +1,106 @@
+vertex_program Examples/FresnelRefractReflectVP glsl
+{
+	source Fresnel_VP.glsl
+	//entry_point main_vp
+	//profiles vs_1_1 arbvp1
+
+	default_params
+	{
+		param_named_auto worldViewProjMatrix worldviewproj_matrix
+		param_named_auto eyePosition camera_position_object_space
+		param_named_auto timeVal time 0.05
+		param_named scroll float 1  
+		param_named scale float 80
+		param_named noise float 1 
+		param_named bumpSpeed float2 3.0 -3.0
+	}
+
+}
+
+fragment_program Examples/FresnelRefractReflectFP glsl
+{
+	source Fresnel_FP.glsl
+	//entry_point main_fp
+	// sorry, ps_1_1 and fp20 can't do this
+	//profiles ps_2_0 arbfp1
+
+	default_params
+	{
+		param_named noiseMap int 0
+		param_named reflectMap int 1
+		param_named refractMap int 2
+
+		param_named fresnelPower float 1.8
+		param_named minFresnel float 0.3
+		param_named maxFresnel float 0.7   		
+		param_named tintColour float4 0 0.05 0.05 1
+		param_named noiseScale float 0.05
+		param_named waterColour float4 0.1804 0.2706 0.3294 1
+		param_named waterBrightness float 0.95
+	}
+
+}
+
+material Examples/FresnelReflectionRefraction
+{
+	// ps_2_0 / arbfp1
+	technique
+	{
+		pass Reflection
+		{
+			depth_bias 1.0 1.0
+			cull_hardware clockwise
+			scene_blend src_alpha one_minus_src_alpha
+
+			vertex_program_ref Examples/FresnelRefractReflectVP
+			{
+				param_named_auto worldViewProjMatrix worldviewproj_matrix
+				param_named_auto eyePosition camera_position
+				param_named_auto timeVal time 0.05
+				param_named scroll float 1  
+				param_named scale float 80 
+				param_named noise float 1 
+				param_named bumpSpeed float2 3.0 -3.0
+				// scroll and noisePos will need updating per frame
+			}
+			fragment_program_ref Examples/FresnelRefractReflectFP
+			{
+				param_named fresnelPower float 1.8
+				param_named minFresnel float 0.3
+				param_named maxFresnel float 0.7
+				param_named tintColour float4 0 0.05 0.05 1
+				param_named noiseScale float 0.05
+				param_named waterColour float4 0.1804 0.2706 0.3294 1
+				param_named waterBrightness float 0.95
+			}
+			// Noise
+			texture_unit
+			{
+				// Perlin noise volume
+				texture waves2.png
+				// min / mag filtering, no mip
+				filtering linear linear none
+			}
+			// Reflection
+			texture_unit
+			{
+				texture reflection
+				tex_address_mode clamp
+			}
+			// Refraction
+			texture_unit
+			{
+				// Will be filled in at runtime
+				texture reflection
+				tex_address_mode clamp
+			}
+		}
+
+		pass NoReflection
+		{
+			diffuse 0.1804 0.2706 0.3294 1
+			cull_hardware anticlockwise
+			scene_blend src_alpha one_minus_src_alpha
+		}
+	}	
+}

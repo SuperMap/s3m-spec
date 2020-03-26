@@ -1,0 +1,3 @@
+2019-12-05 14:56:46 [error] Failed to load the dynamic library C:\Users\Administrator\Desktop\iearth历代版本\V1\SuFileParserGDAL.fps, ThreadID: 10992, Timespan(ms): 0, ResourceID: IMd011, SourceCode: ..\..\..\Src\FileParser\UGFileParseManager.cpp(344)
+2019-12-05 14:57:03 [error] Can not to connect the serverHTTP Status Code 0E:/data/倾斜数据/带投影/Config.scp/spatiallicense.xml, ThreadID: 10992, Timespan(ms): 17082, ResourceID: EJc005, SourceCode: ..\..\..\Src\NetToolkit\UGHttpHelper.cpp(1708)
+2019-12-05 14:57:03 [error] Failed to get file from web, ThreadID: 10992, Timespan(ms): 0, ResourceID: EAg034, SourceCode: ..\..\..\Src\NetToolkit\UGHttpHelper.cpp(864)

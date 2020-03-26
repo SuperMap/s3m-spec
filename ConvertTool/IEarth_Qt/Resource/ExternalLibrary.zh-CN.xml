@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ExternalLibrary>
+  <Marker>
+    <LibInfo>
+      <Caption>基础符号</Caption>
+      <ImageIndex>0</ImageIndex>
+      <ExternalPath>..\..\Templates\SymbolLibrary\MarkerLibrary.sym</ExternalPath>
+    </LibInfo>
+    <LibInfo>
+      <Caption>三维符号</Caption>
+      <ImageIndex>1</ImageIndex>
+      <ExternalPath>..\..\Templates\SymbolLibrary\MarkerLibrary3D.sym</ExternalPath>
+    </LibInfo>
+  </Marker>
+  <Line>
+    <LibInfo>
+      <Caption>基础线型</Caption>
+      <ImageIndex>0</ImageIndex>
+      <ExternalPath>..\..\Templates\SymbolLibrary\LineLibrary.lsl</ExternalPath>
+    </LibInfo>
+	<LibInfo>
+      <Caption>三维线型</Caption>
+      <ImageIndex>1</ImageIndex>
+      <ExternalPath>..\..\Templates\SymbolLibrary\LineLibrary3D.lsl</ExternalPath>
+    </LibInfo>
+  </Line>
+  <Fill>
+    <LibInfo>
+      <Caption>基础填充</Caption>
+      <ImageIndex>0</ImageIndex>
+      <ExternalPath>..\..\Templates\SymbolLibrary\FillLibrary.bru</ExternalPath>
+    </LibInfo>
+	<LibInfo>
+      <Caption>三维填充</Caption>
+      <ImageIndex>1</ImageIndex>
+      <ExternalPath>..\..\Templates\SymbolLibrary\FillLibrary3D.bru</ExternalPath>
+    </LibInfo>
+  </Fill>
+</ExternalLibrary>

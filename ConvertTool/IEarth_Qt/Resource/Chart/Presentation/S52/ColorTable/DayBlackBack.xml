@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Colors>
+	<Color token="NODTA">
+		<RGB>136,152,139</RGB>
+		<CIE>0.2800,0.3100,25.000</CIE>
+	</Color>
+	<Color token="CURSR">
+		<RGB>230,121,56</RGB>
+		<CIE>0.5200,0.3900,28.000</CIE>
+	</Color>
+	<Color token="CHBLK">
+		<RGB>171,192,177</RGB>
+		<CIE>0.2800,0.3100,45.000</CIE>
+	</Color>
+	<Color token="CHGRD">
+		<RGB>171,192,177</RGB>
+		<CIE>0.2800,0.3100,45.000</CIE>
+	</Color>
+	<Color token="CHGRF">
+		<RGB>136,152,139</RGB>
+		<CIE>0.2800,0.3100,25.000</CIE>
+	</Color>
+	<Color token="CHRED">
+		<RGB>238,90,108</RGB>
+		<CIE>0.4800,0.3000,25.000</CIE>
+	</Color>
+	<Color token="CHGRN">
+		<RGB>124,240,91</RGB>
+		<CIE>0.3000,0.5200,60.000</CIE>
+	</Color>
+	<Color token="CHYLW">
+		<RGB>243,229,77</RGB>
+		<CIE>0.4100,0.4700,70.000</CIE>
+	</Color>
+	<Color token="CHMGD">
+		<RGB>221,185,230</RGB>
+		<CIE>0.2800,0.2400,53.000</CIE>
+	</Color>
+	<Color token="CHMGF">
+		<RGB>198,77,187</RGB>
+		<CIE>0.3000,0.1700,20.000</CIE>
+	</Color>
+	<Color token="CHBRN">
+		<RGB>169,146,59</RGB>
+		<CIE>0.4200,0.4500,25.000</CIE>
+	</Color>
+	<Color token="CHWHT">
+		<RGB>216,244,225</RGB>
+		<CIE>0.2800,0.3100,80.000</CIE>
+	</Color>
+	<Color token="SCLBR">
+		<RGB>230,121,56</RGB>
+		<CIE>0.5200,0.3900,28.000</CIE>
+	</Color>
+	<Color token="CHCOR">
+		<RGB>230,121,56</RGB>
+		<CIE>0.5200,0.3900,28.000</CIE>
+	</Color>
+	<Color token="LITRD">
+		<RGB>238,90,108</RGB>
+		<CIE>0.4800,0.3000,25.000</CIE>
+	</Color>
+	<Color token="LITGN">
+		<RGB>124,240,91</RGB>
+		<CIE>0.3000,0.5200,60.000</CIE>
+	</Color>
+	<Color token="LITYW">
+		<RGB>243,229,77</RGB>
+		<CIE>0.4100,0.4700,70.000</CIE>
+	</Color>
+	<Color token="ISDNG">
+		<RGB>221,185,230</RGB>
+		<CIE>0.2800,0.2400,53.000</CIE>
+	</Color>
+	<Color token="DNGHL">
+		<RGB>238,90,108</RGB>
+		<CIE>0.4800,0.3000,25.000</CIE>
+	</Color>
+	<Color token="TRFCD">
+		<RGB>221,185,230</RGB>
+		<CIE>0.2800,0.2400,53.000</CIE>
+	</Color>
+	<Color token="TRFCF">
+		<RGB>198,77,187</RGB>
+		<CIE>0.3000,0.1700,20.000</CIE>
+	</Color>
+	<Color token="LANDA">
+		<RGB>143,137,87</RGB>
+		<CIE>0.3600,0.4000,20.000</CIE>
+	</Color>
+	<Color token="LANDF">
+		<RGB>228,180,58</RGB>
+		<CIE>0.4500,0.4500,45.000</CIE>
+	</Color>
+	<Color token="CSTLN">
+		<RGB>171,192,177</RGB>
+		<CIE>0.2800,0.3100,45.000</CIE>
+	</Color>
+	<Color token="SNDG1">
+		<RGB>146,163,149</RGB>
+		<CIE>0.2800,0.3100,30.000</CIE>
+	</Color>
+	<Color token="SNDG2">
+		<RGB>216,244,225</RGB>
+		<CIE>0.2800,0.3100,80.000</CIE>
+	</Color>
+	<Color token="DEPSC">
+		<RGB>171,192,177</RGB>
+		<CIE>0.2800,0.3100,45.000</CIE>
+	</Color>
+	<Color token="DEPCN">
+		<RGB>136,152,139</RGB>
+		<CIE>0.2800,0.3100,25.000</CIE>
+	</Color>
+	<Color token="DEPDW">
+		<RGB>7,7,7</RGB>
+		<CIE>0.2800,0.3100,0.000</CIE>
+	</Color>
+	<Color token="DEPMD">
+		<RGB>52,59,54</RGB>
+		<CIE>0.2700,0.3000,2.000</CIE>
+	</Color>
+	<Color token="DEPMS">
+		<RGB>77,97,104</RGB>
+		<CIE>0.2400,0.2600,8.000</CIE>
+	</Color>
+	<Color token="DEPVS">
+		<RGB>83,122,139</RGB>
+		<CIE>0.2200,0.2400,14.000</CIE>
+	</Color>
+	<Color token="DEPIT">
+		<RGB>81,128,99</RGB>
+		<CIE>0.2600,0.3600,14.000</CIE>
+	</Color>
+	<Color token="RADHI">
+		<RGB>124,240,91</RGB>
+		<CIE>0.3000,0.5200,60.000</CIE>
+	</Color>
+	<Color token="RADLO">
+		<RGB>82,153,60</RGB>
+		<CIE>0.3000,0.5200,20.000</CIE>
+	</Color>
+	<Color token="ARPAT">
+		<RGB>50,129,123</RGB>
+		<CIE>0.2600,0.4200,50.000</CIE>
+	</Color>
+	<Color token="NINFO">
+		<RGB>230,121,56</RGB>
+		<CIE>0.5200,0.3900,28.000</CIE>
+	</Color>
+	<Color token="RESBL">
+		<RGB>46,129,252</RGB>
+		<CIE>0.1800,0.1500,22.000</CIE>
+	</Color>
+	<Color token="ADINF">
+		<RGB>184,172,60</RGB>
+		<CIE>0.4100,0.4700,35.000</CIE>
+	</Color>
+	<Color token="RESGR">
+		<RGB>136,152,139</RGB>
+		<CIE>0.2800,0.3100,25.000</CIE>
+	</Color>
+	<Color token="SHIPS">
+		<RGB>216,244,225</RGB>
+		<CIE>0.2800,0.3100,80.000</CIE>
+	</Color>
+	<Color token="PSTRK">
+		<RGB>216,244,225</RGB>
+		<CIE>0.2800,0.3100,80.000</CIE>
+	</Color>
+	<Color token="SYTRK">
+		<RGB>146,163,149</RGB>
+		<CIE>0.2800,0.3100,30.000</CIE>
+	</Color>
+	<Color token="PLRTE">
+		<RGB>218,70,45</RGB>
+		<CIE>0.5800,0.3500,18.000</CIE>
+	</Color>
+	<Color token="APLRT">
+		<RGB>230,121,56</RGB>
+		<CIE>0.5200,0.3900,28.000</CIE>
+	</Color>
+	<Color token="UIBCK">
+		<RGB>200,200,200</RGB>
+		<CIE>0.2800,0.3100,0.00</CIE>
+	</Color>
+	<Color token="UIBDR">
+		<RGB>80,80,80</RGB>
+		<CIE>0.2800,0.3100,45.00</CIE>
+	</Color>
+	<Color token="UIAFD">
+		<RGB>160,160,160</RGB>
+		<CIE>0.2200,0.2400,14.00</CIE>
+	</Color>
+	<Color token="UIAFF">
+		<RGB>120,120,120</RGB>
+		<CIE>0.3600,0.4000,20.00</CIE>
+	</Color>
+	<Color token="UINFD">
+		<RGB>240,240,240</RGB>
+		<CIE>0.2800,0.3100,80.00</CIE>
+	</Color>
+	<Color token="UINFF">
+		<RGB>190,190,190</RGB>
+		<CIE>0.2800,0.3100,30.00</CIE>
+	</Color>
+	<Color token="UINFR">
+		<RGB>182,69,72</RGB>
+		<CIE>0.4800,0.3000,25.00</CIE>
+	</Color>
+	<Color token="UINFG">
+		<RGB>60,163,69</RGB>
+		<CIE>0.3000,0.5200,60.00</CIE>
+	</Color>
+	<Color token="UINFO">
+		<RGB>205,194,55</RGB>
+		<CIE>0.5200,0.3900,28.00</CIE>
+	</Color>
+	<Color token="UINFB">
+		<RGB>39,95,177</RGB>
+		<CIE>0.1800,0.1500,22.00</CIE>
+	</Color>
+	<Color token="UINFM">
+		<RGB>145,52,146</RGB>
+		<CIE>0.3000,0.1700,20.00</CIE>
+	</Color>
+	<Color token="OUTLW">
+		<RGB>7,7,7</RGB>
+		<CIE>0.2800,0.3100,0.000</CIE>
+	</Color>
+	<Color token="OUTLL">
+		<RGB>143,137,87</RGB>
+		<CIE>0.3600,0.4000,20.000</CIE>
+	</Color>
+	<Color token="RES01">
+		<RGB>136,152,139</RGB>
+		<CIE>0.2800,0.3100,25.000</CIE>
+	</Color>
+	<Color token="RES02">
+		<RGB>136,152,139</RGB>
+		<CIE>0.2800,0.3100,25.000</CIE>
+	</Color>
+	<Color token="RES03">
+		<RGB>136,152,139</RGB>
+		<CIE>0.2800,0.3100,25.000</CIE>
+	</Color>
+	<Color token="BKAJ1">
+		<RGB>7,7,7</RGB>
+		<CIE>0.2800,0.3100,0.000</CIE>
+	</Color>
+	<Color token="BKAJ2">
+		<RGB>70,70,70</RGB>
+		<CIE>0.2800,0.3100,1.600</CIE>
+	</Color>
+</Colors>

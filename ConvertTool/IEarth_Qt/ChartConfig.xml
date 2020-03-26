@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SuperMapChart>
+	<ElectronicChart>
+		<Display>
+			<Style type="ENC" value="S52">
+				<LookupTables>
+					<PointLookupTable>
+						<SymbolType value="simplified">./Resource/Chart/Presentation/S52/LookupTable/psymref_simplified.dic</SymbolType>
+						<SymbolType value="paperchart">./Resource/Chart/Presentation/S52/LookupTable/psymref_paperchart.dic</SymbolType>
+					</PointLookupTable>
+					<LineLookupTable>./Resource/Chart/Presentation/S52/LookupTable/lsymref.dic</LineLookupTable>
+					<AreaLookupTable>
+						<EdgeType value="plain">./Resource/Chart/Presentation/S52/LookupTable/asymref_plain.dic</EdgeType>
+						<EdgeType value="symbolized">./Resource/Chart/Presentation/S52/LookupTable/asymref_symbolized.dic</EdgeType>
+					</AreaLookupTable>
+				</LookupTables>
+				<ColorTables>
+					<ColorTable type="DayBright">./Resource/Chart/Presentation/S52/ColorTable/DayBright.xml</ColorTable>
+					<ColorTable type="Dusk">./Resource/Chart/Presentation/S52/ColorTable/Dusk.xml</ColorTable>
+					<ColorTable type="Night">./Resource/Chart/Presentation/S52/ColorTable/Night.xml</ColorTable>
+				</ColorTables>
+			</Style>
+			<!---
+			<Style type="PaperChart" value="INT">
+				<LookupTables>
+					<PointLookupTable>./Resource/Chart/Presentation/INT/LookupTable/psymref.dic</PointLookupTable>
+					<LineLookupTable>./Resource/Chart/Presentation/INT/LookupTable/lsymref.dic</LineLookupTable>
+					<AreaLookupTable>./Resource/Chart/Presentation/INT/LookupTable/asymref.dic</AreaLookupTable>
+				</LookupTables>
+				<ColorTables>
+					<ColorTable type="DayBright">./Resource/Chart/Presentation/INT/ColorTable/INT_DayBright.xml</ColorTable>
+				</ColorTables>
+			</Style>
+			-->
+		</Display>
+		<Dictionary>
+			<S57Object>./Resource/Chart/S57/S57Objects.xml</S57Object>
+			<S57Attribute>./Resource/Chart/S57/S57Attributes.xml</S57Attribute>
+			<Agency>./Resource/Chart/S57/Agencies.xml</Agency>
+			<S57ObjectSpecs>./Resource/Chart/S57/S57ObjectsEnc31.xml</S57ObjectSpecs>
+			<S57InfoSpecs>./Resource/Chart/S57/S57InfosEnc31.xml</S57InfoSpecs>
+			<S58CheckInfo>./Resource/Chart/S58/S58Document.xml</S58CheckInfo>
+			<S58CheckFeatures>./Resource/Chart/S58/S58CheckFeatures.xml</S58CheckFeatures>
+			<S58CheckAllFeatures>./Resource/Chart/S58/S58CheckAllFeatures.fl</S58CheckAllFeatures>
+			<S58CheckMandatoryAttributes>./Resource/Chart/S58/S58MandatoryAttributes.fl</S58CheckMandatoryAttributes>
+			<S58CheckAttributes>./Resource/Chart/S58/S58Attributes.fl</S58CheckAttributes>
+			<S58CheckEnumeListAttributes>./Resource/Chart/S58/S58CheckEnumeListAttributes.xml</S58CheckEnumeListAttributes>
+			<S58CheckFeatureRelationships>./Resource/Chart/S58/S58CheckFeatureRelationships.fl</S58CheckFeatureRelationships>
+			<S58CheckMasterSlaves>./Resource/Chart/S58/S58CheckMasterSlaves.xml</S58CheckMasterSlaves>
+			<S58CheckCollections>./Resource/Chart/S58/S58CheckCollections.xml</S58CheckCollections>
+			<S58CheckSoundings>./Resource/Chart/S58/S58CheckSoundings.fl</S58CheckSoundings>
+		</Dictionary>
+	</ElectronicChart>
+</SuperMapChart>

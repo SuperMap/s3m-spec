@@ -1,0 +1,1098 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ObjectClasses>
+	<ObjectClass Acronym="ADMARE" Code="1" Type="Geo">
+		<Name>Administration Area (Named)</Name>
+		<Definition>A defined (and possibly named) administrative area.</Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>Distinction: land region; contiguous zone; continental shelf area; exclusive economic zone; fishery zone; territorial sea area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="AIRARE" Code="2" Type="Geo">
+		<Name>Airport/airfield</Name>
+		<Definition>An area containing at least one runway, used for landing, take-off, andmovement of aircraft.</Definition>
+		<References>INT 1: ID 17; M-4: 366;</References>
+		<Remarks>Distinction: runway; sea-plane landing area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="ACHBRT" Code="3" Type="Geo">
+		<Name>Anchor berth</Name>
+		<Definition>A designated area of water where a single vessel, sea plane, etc... may anchor.</Definition>
+		<References>INT 1: IN 11.1-2; M-4: 431.2;</References>
+		<Remarks>In general the anchor berth is defined by the centre point and a swinging circle. Distinction: anchorage area; berth; mooring/warping facility;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="ACHARE" Code="4" Type="Geo">
+		<Name>Anchorage area</Name>
+		<Definition>An area in which vessels or seaplanes anchor or may anchor. (Adapted from the IHO Dictionary, S-32, 5th Edition, 130).</Definition>
+		<References>INT 1: IN 12.1-9; M-4: 431.3;</References>
+		<Remarks>Distinction: anchor berth; mooring/warping facility;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="BCNCAR" Code="5" Type="Geo">
+		<Name>Beacon, cardinal</Name>
+		<Definition>A beacon is a prominent, specially constructed object forming conspicuous mark as a fixed aid to navigation or for use in hydrographic survey. (IHO Dictionary, S-32, 5th Edition, 420). A cardinal beacon is used in conjuction with thw compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East,South and West), bounded by inter-cardinal bearings from the point marked.  (UKHO NP 735, 5th Edition) </Definition>
+		<References>INT 1: IQ 130.3; M-4: 461;</References>
+		<Remarks>Top mark, light, fog signal, radar reflector and retro-reflector are separate objects. Distinction: daymark; beacon lateral; beacon safe water; beacon isolated danger; beacon special purpose/general;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="BCNISD" Code="6" Type="Geo">
+		<Name>Beacon, isolated danger</Name>
+		<Definition>A beacon is a prominent, specially constructed object forming conspicuous mark as a fixed aid to navigation or for use in hydrographic survey. (IHO Dictionary, S-32, 5th Edition, 420). An isolated danger beacon is erected on an isolated danger of limited extent, which has navigable water all around it.  (UKHO NP 735, 5th Edition) </Definition>
+		<References>INT 1: IQ 130.4; M-4: 463.1;</References>
+		<Remarks>Top mark, light, fog signal, radar reflector and retro-reflector are separate objects. Distinction: daymark; beacon lateral; beacon safe water; beacon cardinal; beacon special purpose/general;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="BCNLAT" Code="7" Type="Geo">
+		<Name>Beacon, lateral</Name>
+		<Definition> A beacon is a prominent, specially constructed object forming conspicuous mark as a fixed aid to navigation or for use in hydrographic survey. (IHO Dictionary, S-32, 5th Edition, 420). A lateral beacon is used to indicate the port or starboard hand side of the route to be followed. They are generaly used for well defined channels and are used in conjunction with a conventional direction of buoyage.  (UKHO NP 735, 5th Edition)</Definition>
+		<References>INT 1: IQ 91-92, 130.1; M-4: not specified;</References>
+		<Remarks>Top mark, light, fog signal, radar reflector and retro-reflector are separate objects. Distinction: daymark; beacon cardinal; beacon safe water; beacon isolated danger; beacon special purpose/general;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="BCNSAW" Code="8" Type="Geo">
+		<Name>Beacon, safe water</Name>
+		<Definition>A beacon is a prominent, specially constructed object forming conspicuous mark as a fixed aid to navigation or for use in hydrographic survey. (IHO Dictionary, S-32, 5th Edition, 420). A safe water beacon may be used to indicate that there is navigable water around the mark.  (UKHO NP 735, 5th Edition)</Definition>
+		<References>INT 1: IQ 130.5; M-4: 456.4;</References>
+		<Remarks>Top mark, light, fog signal, radar reflector and retro-reflector are separate objects.  Distinction: daymark; beacon cardinal; beacon lateral; beacon isolated danger; beacon special purpose/general;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="BCNSPP" Code="9" Type="Geo">
+		<Name>Beacon, special purpose/general</Name>
+		<Definition>A beacon is a prominent, specially constructed object forming conspicuous mark as a fixed aid to navigation or for use in hydrographic survey. (IHO Dictionary, S-32, 5th Edition, 420). A special purpose beacon is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or notice to Mariners.  (UKHO NP 735, 5th Edition) Beacon in general: A beacon whose appearance or purpose is not adequately known.</Definition>
+		<References>INT 1: IQ 130.6; M-4: 456.4</References>
+		<Remarks>Top mark, light, fog signal, radar reflector and retro-reflector are separate objects. Distinction: daymark; beacon lateral; beacon safe water; beacon isolated danger; beacon cardinal; distance mark;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="BERTHS" Code="10" Type="Geo">
+		<Name>Berth</Name>
+		<Definition>A named or numbered place where a vessel is moored at a wharf. (IHO Dictionary, S-32, 5th Edition, 470)</Definition>
+		<References>INT 1: IF 19; M-4: 321.1;</References>
+		<Remarks>Distinction: anchor berth; dock area; mooring/warping facility; shoreline construction;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="BRIDGE" Code="11" Type="Geo">
+		<Name>Bridge</Name>
+		<Definition>A structure erected over a depression or an obstacle such as a body of water, railroad, etc... to provide a roadway for vehicles or pedestrians or to carry utility services. (IHO Dictionary, S-32, 5th Edition, 544)</Definition>
+		<References>INT 1: ID 20,21,22,23.1-6, 24; M-4: 381.1-3;</References>
+		<Remarks>A bridge may consist of the portions which cover the land and the water. The bridge supports are encoded as pylon/bridge supports (PYLONS). Distinction: pylon/bridge support;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="BUISGL" Code="12" Type="Geo">
+		<Name>Building, single</Name>
+		<Definition>A relatively permanent structure, roofed and usually walled. It is designed for some particular use which it may be important to indicate.  (Digital Geographic Information Working Group Oct.87)</Definition>
+		<References>INT 1: ID 5-6, 13; IE 10.1, 10.3, 11, 13-18, 28-30.1; IF 51, 60-63; M-4: 325.1-3; 328.1; 362.2; 370.3,5; 372.1; 373.1-4; 375.1,2; 487.3;</References>
+		<Remarks>This object class is used to encode single buildings, including those with a particular function or service of major interest. Distinction: built-up area; coastguard station; landmark; rescue station;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="BUAARE" Code="13" Type="Geo">
+		<Name>Built-up area</Name>
+		<Definition>An area containing a concentration of buildings and the supporting road or rail infrastructure.</Definition>
+		<References>INT 1: ID 1-4; M-4: 370.3-4; 370.6-7;</References>
+		<Remarks>Distinction: building, single; road; square;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="BOYCAR" Code="14" Type="Geo">
+		<Name>Buoy, cardinal</Name>
+		<Definition> A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary S-32 5th Edition, 565). A cardinal buoy is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked. (UKHO NP 735, 5th Edition)</Definition>
+		<References>INT 1: IQ 130.3; M-4 461; 462.5, 462.6;</References>
+		<Remarks>Top mark, light, fog signal, radar reflector and retro-reflector are separate objects. Distinction: buoy lateral; buoy safe water; buoy isolated danger; buoy special purpose/general; mooring/warping facility;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="BOYINB" Code="15" Type="Geo">
+		<Name>Buoy, installation</Name>
+		<Definition> A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). An installation buoy is a buoy used for loading tankers with gas or oil. (IHO Chart Specifications, M-4) </Definition>
+		<References>INT 1: IL 16; M-4: 445.4;</References>
+		<Remarks>Distinction: buoy special purpose/general; mooring/warping facility; offshore platform;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="BOYISD" Code="16" Type="Geo">
+		<Name>Buoy, isolated danger</Name>
+		<Definition>A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). A isolated danger buoy is a buoy moored on or above an isolated danger of limited extent, which has navigable water all around it. (UKHO NP735, 5th Edition)</Definition>
+		<References>INT 1: IQ 130.4; M-4: 461;</References>
+		<Remarks>Top mark, light, fog signal, radar reflector are separate objects. Distinction: buoy lateral; buoy safe water; buoy cardinal; buoy special purpose/general; mooring/warping facility;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="BOYLAT" Code="17" Type="Geo">
+		<Name>Buoy, lateral</Name>
+		<Definition>A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). A lateral buoy is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage. (UKHO NP 735, 5th Edition) </Definition>
+		<References>INT 1: IQ 130.1; M-4: 461;</References>
+		<Remarks>Top mark, light, fog signal, radar reflector are separate objects.Distinction: buoy cardinal; buoy safe water; buoy isolated danger; buoy, special purpose/general; mooring/warping facility;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="BOYSAW" Code="18" Type="Geo">
+		<Name>Buoy, safe water</Name>
+		<Definition> A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). A safe water buoy is used to indicate that there is navigable water around the mark. (UKHO NP735, 5th Edition) </Definition>
+		<References>INT 1: IQ 130.5; M-4: 461;</References>
+		<Remarks>A safe water mark may be used as a centerline, mid-channel or landfall buoy, or to indicate the best point of passage under a fixed bridge. Top mark, light, fog signal, radar reflector are separate objects. Distinction: buoy cardinal; buoy lateral; buoy isolated danger; buoy special purpose/general; mooring/warping facility;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="BOYSPP" Code="19" Type="Geo">
+		<Name>Buoy, special purpose/general</Name>
+		<Definition>A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). A special purpose buoy is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners. (UKHO NP 735, 5th Edition). Buoy in general: A buoy whose appearance or purpose is not adequately known. </Definition>
+		<References>INT 1: IQ 130.6; M-4 461;</References>
+		<Remarks>Top mark, light, fog signal, radar reflector are separate objects. Distinction: buoy lateral; buoy safe water; buoy isolated danger; buoy cardinal; buoy installation; mooring/warping facility;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="CBLARE" Code="20" Type="Geo">
+		<Name>Cable area</Name>
+		<Definition>An area which contains one or more cables.</Definition>
+		<References>INT 1: IL 30.2, 31.2; M-4 439.3; 443.2;</References>
+		<Remarks>Distinction: cable, overhead; cable, submarine;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="CBLOHD" Code="21" Type="Geo">
+		<Name>Cable, overhead</Name>
+		<Definition>An overhead cable is an assembly of wires or fibres, or a wire rope or chain, which is supported by structures such as poles or pylons and passing over or nearby navigable waters. (Hydrographic Service, Royal Australian Navy).</Definition>
+		<References>INT 1: ID 26, 27; M-4: 382; 382.1-2;</References>
+		<Remarks>The cable supports are encoded as pylon/bridge supports (PYLONS). Distinction: cable area; cable, submarine; conveyor; pylon/bridge support; </Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="CBLSUB" Code="22" Type="Geo">
+		<Name>Cable, submarine</Name>
+		<Definition>An assembly of wires or fibres, or a wire rope or chain which has been laid underwater or buried beneath the seabed (Hydrographic Service, Royal Australian Navy).</Definition>
+		<References>INT 1: IL 30.1, 31.1, 32; M-4: 443.1; 443.3; 443.7;</References>
+		<Remarks>Distinction: cable, overhead; cable area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="CANALS" Code="23" Type="Geo">
+		<Name>Canal</Name>
+		<Definition> An artificial waterway with no flow, or a controlled flow, used for navigation, or for draining or irrigating land (ditch). (United States Geological Survey, Jan.89) </Definition>
+		<References>INT 1: IF 40; M-4: 361.6;</References>
+		<Remarks>The object 'canal' describes the area of the canal, the object 'canal bank' the banks. Distinction: canal bank; river; lake; tideway;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="CANBNK" Code="24" Type="Geo">
+		<Name>Canal bank</Name>
+		<Definition>The limit line between the water area of a canal and the area of land.</Definition>
+		<References>INT 1: IF 40; M-4: 361.6;</References>
+		<Remarks>Distinction: canal; coastline; lake shore; river bank; shoreline construction;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="CTSARE" Code="25" Type="Geo">
+		<Name>Cargo transhipment area</Name>
+		<Definition>An area designated for the transfer of cargo from one vessel to another (adapted from IHO Dictionary, S-32, 5th Edition, 5593). </Definition>
+		<References>INT 1: IN 64; M-4: 449.4;</References>
+		<Remarks>This transhipment of cargo is often known as 'lightening' and the area may be known as 'lightening area' or 'cargo transfer area'. (IHO Chart Specs M-4); Distinction: dock area; harbour area (administrative); harbour facility;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="CAUSWY" Code="26" Type="Geo">
+		<Name>Causeway</Name>
+		<Definition>  A raised way across low or wet ground or water. (IHO Dictionary, S-32, 5th Edition, 662) </Definition>
+		<References>INT 1: IF 3; M-4: 313.3;</References>
+		<Remarks>Distinction: dam; road;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="CTNARE" Code="27" Type="Geo">
+		<Name>Caution area</Name>
+		<Definition>Generally, an area where the mariner has to be made aware of circumstances influencing the safety of navigation. </Definition>
+		<References>INT 1: IM 29.2; M-4: not specified;</References>
+		<Remarks>This object class may be required to identify: - a danger, - a risk, - a rule, - advice which is not directly related to a specific object. Distinction: wrecks; underwater rocks; obstructions; unsurveyed area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="CHKPNT" Code="28" Type="Geo">
+		<Name>Checkpoint</Name>
+		<Definition>An official place to register, declare or check goods and people.</Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>The object checkpoint does not include facilities such as buildings, gates or other installations. Distinction: custom zone;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="CGUSTA" Code="29" Type="Geo">
+		<Name>Coastguard station</Name>
+		<Definition>Watch keeping stations at which a watch is kept either continuously, or at certain times only. (IHO Chart Specifications, M-4) </Definition>
+		<References>INT 1: IT 10; M-4: 492;</References>
+		<Remarks>The object class is used to describe the function of the coastguard rather than the building in which the coastguard is sited. Distinction: building, single; rescue station;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="COALNE" Code="30" Type="Geo">
+		<Name>Coastline</Name>
+		<Definition>The line where shore and water meet. Although the terminology of coasts and shores is rather confused, shoreline and coastline are generally used as synonyms. (IHO Dictionary, S-32, 5th Edition, 858, 4695)</Definition>
+		<References>INT 1: IC 1-8, 32-33; M-4: 310; 312.1-4;</References>
+		<Remarks>Distinction: canal bank; lake shore; river bank; shoreline construction;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="CONZNE" Code="31" Type="Geo">
+		<Name>Contiguous zone</Name>
+		<Definition>A zone contiguous to a coastal State s territorial sea, which may not extend beyond 24 nautical miles from the baselines from which the breadth of the territorial sea is measured. The coastal state may exercise certain control in this zone subject to the provisions of International Law. (IHO Dictionary, S-32, 5th Edition, 993) </Definition>
+		<References>INT 1: IN 44; M-4: 440.6;</References>
+		<Remarks>Distinction: administrative area; continental area; exclusive economic zone; fishing zone; territorial sea area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="COSARE" Code="32" Type="Geo">
+		<Name>Continental shelf area</Name>
+		<Definition>The continental shelf of a coastal State comprises the sea bed and subsoil of the submarine areas that extend beyond its territorial sea throughout the natural prolongation of its land territory to the outer edge of the continental margin, or to a distance of 200 nautical miles from the baselines from which the breadth of the territorial sea is measured where the outer edge of the continental margin does not extend out to that distance. (IHO Publication S-51) </Definition>
+		<References>INT 1: IN 46; M-4: 440.8;</References>
+		<Remarks>Distinction: administrative area; contiguous zone; exclusive economic zone; fishery zone; territorial sea area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="CTRPNT" Code="33" Type="Geo">
+		<Name>Control point</Name>
+		<Definition> A point on the ground where position (horizontal and vertical) is used as a base for a dependent survey. Also referred to as a control station. (IHO Dictionary, S-32, 5th Edition, 1026)</Definition>
+		<References>INT 1: IB 20-24; M-4: 304.1-3; 305.1; 306;</References>
+		<Remarks>No remarks.</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="CONVYR" Code="34" Type="Geo">
+		<Name>Conveyor</Name>
+		<Definition>A mechanical apparatus for moving bulk material or people from place to place (as by a moving belt or chain of receptacles). </Definition>
+		<References>INT 1: ID25; M-4: 382.3;</References>
+		<Remarks>The conveyor supports are encod3ed as pylon/bridge supports (PYLONS). Distinction: cable, overhead; pylon/bridge support;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="CRANES" Code="35" Type="Geo">
+		<Name>Crane</Name>
+		<Definition>A machine for lifting, shifting and lowering objects or materials by means of a swinging boom or with a lifting apparatus supported on an overhead track. (Digital Geographic Information Working Group, Oct.87)</Definition>
+		<References>INT 1: IF 53.1-3; M-4: 328.3;</References>
+		<Remarks>The position of a sheerleg or a travelling crane is defined as its resting position.  </Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="CURENT" Code="36" Type="Geo">
+		<Name>Current - non-gravitational</Name>
+		<Definition>Currents (non-gravitational) include either singly or in combination: ocean currents (wind and/or density driven), inter-oceanic equalising currents, currents of navigable rivers, river outflow effects offshore and other non-tidal flows.</Definition>
+		<References>INT 1: IH 42-43; M-4: 408.2-3;</References>
+		<Remarks>Distinction: tidal stream - harmonic prediction; tidal stream - non-harmonic prediction; tidal stream panel data; tidal stream - time series;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="CUSZNE" Code="37" Type="Geo">
+		<Name>Custom zone</Name>
+		<Definition>The area within which national custom regulations are in force. </Definition>
+		<References>INT 1: IN 48; M-4: 440.2;</References>
+		<Remarks>Distinction: check point; free port area; </Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="DAMCON" Code="38" Type="Geo">
+		<Name>Dam</Name>
+		<Definition> A barrier to check or confine anything in motion; particularly one constructed to hold back water and raise its level to form a reservoir, or to prevent flooding. (IHO Dictionary, S-32, 5th Edition, 1196) </Definition>
+		<References>INT 1: IF 44; M-4: 364.2;</References>
+		<Remarks>Distinction: causeway; dyke; road;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="DAYMAR" Code="39" Type="Geo">
+		<Name>Daymark</Name>
+		<Definition>The identifying characteristics of an aid to navigation which serve to facilitate its recognition against a daylight viewing background. On those structures that do not by themselves present an adequate viewing area to be seen at the required distance, the aid is made more visible by affixing a daymark to the structure. A daymark so affixed has a distinctive colour and shape depending on the purpose of the aid. (IHO Dictionary, S-32, 5th Edition, 1248)</Definition>
+		<References>INT 1: IQ 101; M-4: 456.2;</References>
+		<Remarks>Distinction: beacon, lateral; beacon, safe water; beacon, isolated danger; beacon, cardinal; beacon special purpose/general; topmark;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="DWRTCL" Code="40" Type="Geo">
+		<Name>Deep water route centerline</Name>
+		<Definition> A deep water route is a route in a designated area, within defined limits, which has been accurately surveyed for clearance of sea bottom and submerged obstacles to a minimum indicated depth of water (IHO Dictionary, S-32, 5th Edition, 1280). The deep water route centerline indicates the centerline of a route, the width of which is not explicitly defined. </Definition>
+		<References>INT 1: IM 27.3; M-4: 435.3;</References>
+		<Remarks>Additional information can be found in IHO Technical Resolution A1.17. Distinction: deep water route part;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="DWRTPT" Code="41" Type="Geo">
+		<Name>Deep water route part</Name>
+		<Definition> A deep water route is a route in a designated area, within defined limits, which has been accurately surveyed for clearance of sea bottom and submerged obstacles to a minimum indicated depth of water. (IHO Dictionary, S-32, 5th Edition, 1280) </Definition>
+		<References>INT 1: IM 27.1-2; M-4: 435; 435.3; 436.3;</References>
+		<Remarks>The complete deep water route consists of one or more parts depending on the shape of the deep water route. The orientation of the part is defined by the 'middle line' of the part relating to the general direction of the deep water route. The orientation of the deep water route part replaces the 'arrows' under Chart Specification 435. Additional information can be found in IHO Technical Resolution A1.17. Distinction: deep water route centerline; two way route part;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="DEPARE" Code="42" Type="Geo">
+		<Name>Depth area</Name>
+		<Definition> A depth area is a water area whose depth is within a defined range of values. </Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>Intertidal areas are encoded as depth areas. These do not have to include soundings. The depth range within a depth area is defined by the attributes >DRVAL1’ and >DRVAL2’. Distinction: depth contour; dredged area; sounding; obstruction; sea area/named water area; unsurveyed area; wreck;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="DEPCNT" Code="43" Type="Geo">
+		<Name>Depth contour</Name>
+		<Definition>A line connecting points of equal water depth which is sometimes significantly displaced outside of soundings, symbols and other chart detail for clarity as well as generalization. Depth contours, therefore, often represent an approximate location of the line of equal   dept as related to the surveyed line delineated on the source. Also referred to as depth curve. (IHO Dictionary, S-32, 5th Edition, 1314, 1315) </Definition>
+		<References>INT 1: II 15, 30, 31; M-4: 404.2; 410; 411; 411.2; 413-413.2;</References>
+		<Remarks>Drying contours are encoded with negative values. Distinction: sounding; depth area; coastline;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="DISMAR" Code="44" Type="Geo">
+		<Name>Distance mark</Name>
+		<Definition>A distance mark indicates the distance measured from an origin and consists of either a solid visible structure or a distinct location without special installation. Usually found on canals. </Definition>
+		<References>INT 1: IF 40; M-4: 361.3; 307;</References>
+		<Remarks>Distinction: beacon, special purpose;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="DOCARE" Code="45" Type="Geo">
+		<Name>Dock area</Name>
+		<Definition>A dock is an artificially enclosed area within which ships may moor and which may have gates to regulate water level (adapted from IHO Chart Specifications, M-4).</Definition>
+		<Remarks>Distinction: harbour area (administrative); cargo transhipment area; berth; harbour facility; gate; floating dock; dry dock;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="DRGARE" Code="46" Type="Geo">
+		<Name>Dredged area</Name>
+		<Definition>An area of the bottom of a body of water which has been deepened by dredging. (IHO Dictionary, S-32, 5th Edition, 1462)</Definition>
+		<References>INT 1: II 20-23; M-4: 414.1-2; 414.4;</References>
+		<Remarks>Distinction: depth area; dumping ground; swept area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="DRYDOC" Code="47" Type="Geo">
+		<Name>Dry dock</Name>
+		<Definition>An artificial basin fitted with a gate or caisson, into which vessels can be floated and the water pumped out to expose the vessel s bottom. Also called graving dock. (IHO Dictionary, S-32, 5th Edition, 1426)</Definition>
+		<References>INT 1: IF 25; M-4: 326.1;</References>
+		<Remarks>Distinction: floating dock; gate; dock area; shoreline construction;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="DMPGRD" Code="48" Type="Geo">
+		<Name>Dumping ground</Name>
+		<Definition>A sea area where dredged material or other potentially more harmful material, e.g. explosives, chemical waste, is deliberately deposited. (Derived from IHO Chart Specifications, M-4).</Definition>
+		<References>INT 1: IN 23-24; 62.1-2; M-4: 442.1-4; 446a;</References>
+		<Remarks>Distinction: dredged area; incineration area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="DYKCON" Code="49" Type="Geo">
+		<Name>Dyke</Name>
+		<Definition>A dyke (or dike) is an artificial embankment to contain or hold back water.(IHO Dictionary, S-32, 5th Edition, 1361)</Definition>
+		<References>INT 1: IF 1; M-4: 313.1;</References>
+		<Remarks>Distinction: dam; sloping ground; slope top line;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="EXEZNE" Code="50" Type="Geo">
+		<Name>Exclusive economic zone</Name>
+		<Definition>An area, not exceeding 200 nautical miles from the baselines from which the breadth of the territorial sea is measured, subject to a specific legal regime established in the United Nations Convention on the Law of the Sea under which the coastal state has certain rights and jurisdiction. (IHO Dictionary, S-32, 5th Edition, 1723) </Definition>
+		<References>INT 1: IN 47; M-4: 440.9;</References>
+		<Remarks>Distinction: administrative area; contiguous zone; continental shelf area; fishery zone; territorial sea area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="FAIRWY" Code="51" Type="Geo">
+		<Name>Fairway</Name>
+		<Definition>That part of a river, harbour and so on, where the main navigable channel for vessels of larger size lies. It is also the usual course followed by vessels entering or leaving harbours, called  ship channel. (International Maritime Dictionary, 2nd Ed.)</Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>Distinction: deep water route centerline; deep water route part; traffic separation scheme lane part;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="FNCLNE" Code="52" Type="Geo">
+		<Name>Fence</Name>
+		<Definition>A natural or man-made barrier used as an enclosure or boundary or for protection. (adapted from Digital Geographic Information Working Group, Oct.1987) </Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>No remarks.</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="FERYRT" Code="53" Type="Geo">
+		<Name>Ferry route</Name>
+		<Definition>A route in a body of water where a ferry crosses from one shoreline to another. (Digital Geographic Information Working Group, Oct.87) </Definition>
+		<References>INT 1: IM 50, 51; M-4: 438.1; 438.2;</References>
+		<Remarks>No remarks.</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="FSHZNE" Code="54" Type="Geo">
+		<Name>Fishery zone</Name>
+		<Definition>The offshore zone in which exclusive fishing rights and management are held by the coastal nation. (IHO Dictionary, S-32, 5th Edition, 1816)</Definition>
+		<References>INT 1: IN 45; M-4: 440.7;</References>
+		<Remarks>The fishery zone commonly coincides with other zones such as: - Continental Shelf, - Exclusive Economic Zone. Distinction: administrative area; contiguous zone; continental shelf area; exclusive economic zone; fishing ground; restricted area; territorial sea area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="FSHFAC" Code="55" Type="Geo">
+		<Name>Fishing facility</Name>
+		<Definition> A structure for fishing purposes which can be an obstruction to ships in general. The position of these structures may vary frequently over time. </Definition>
+		<References>INT 1: IK 44.1-2; 45; M-4: 447.1-3;</References>
+		<Remarks>Distinction: marine farm/culture; obstruction;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="FSHGRD" Code="56" Type="Geo">
+		<Name>Fishing ground</Name>
+		<Definition> A water area in which fishing is frequently carried on. (IHO Dictionary, S-32, 5th Edition, 1814)</Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>Distinction: fishery zone;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="FLODOC" Code="57" Type="Geo">
+		<Name>Floating dock</Name>
+		<Definition> A form of dry dock consisting of a floating structure of one or more sections which can be partly submerged by controlled flooding to receive a vessel, then raised by pumping out the water so that the vessel s bottom can be exposed. (IHO Dictionary, S-32, 5th Edition, 1427) </Definition>
+		<References>INT 1: IF 26; M-4: 326.2;</References>
+		<Remarks>Distinction: dry dock; dock area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="FOGSIG" Code="58" Type="Geo">
+		<Name>Fog signal</Name>
+		<Definition>A  warning signal transmitted by a vessel, or aid to navigation, during periods of low visibility. Also, the device producing such a signal. (IHO Dictionary, S-32, 5th Edition, 1890) </Definition>
+		<References>INT 1: IR 1, 10-16, 20-22; M-4: 452-452.8;</References>
+		<Remarks>Distinction: signal station, warning;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="FORSTC" Code="59" Type="Geo">
+		<Name>Fortified structure</Name>
+		<Definition> A structure for the military defence of a site. </Definition>
+		<References>INT 1: IE 34.1-3; M-4: 379.1-2;</References>
+		<Remarks>A fortified structure is often disused, decayed or used for non-defense purpose. Such structures range from major castles and forts to minor look-out posts.(IHO Chart Specs M-4). Distinction: building single;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="FRPARE" Code="60" Type="Geo">
+		<Name>Free port area</Name>
+		<Definition>  A port where certain import and export duties are waived (unless goods pass into the country) to facilitate reshipment to other countries. (IHO Dictionary, S-32, 5th Edition, 1927)</Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>Distinction: custom zone; production/storage area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="GATCON" Code="61" Type="Geo">
+		<Name>Gate</Name>
+		<Definition>A structure that may be swung, drawn, or lowered to block an entrance or passageway. (United States Geological Survey, Jan.89) </Definition>
+		<References>INT 1: IF 27, 41.1-2, 42-43; M-4: 326.3; 326.5; 326.6; 326.7;</References>
+		<Remarks>This object class is used to encode gates that control the flow of water. Distinction: dry dock; floating dock;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="GRIDRN" Code="62" Type="Geo">
+		<Name>Gridiron</Name>
+		<Definition>A timber structure in the intertidal zone serving as a support for vessels at low stages of the tide to permit work on the exposed portion of  the  vessel s  hull. Also  called  careening grid. (adapted from IHO Dictionary, S-32, 5th Edition, 649)</Definition>
+		<References>INT 1: IF 24; M-4: 326.8;</References>
+		<Remarks>No remarks.</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="HRBARE" Code="63" Type="Geo">
+		<Name>Harbour area (administrative)</Name>
+		<Definition>The area over which a harbour authority has jurisdiction.</Definition>
+		<References>INt 1: IN 49; M-4: 430.1;</References>
+		<Remarks>Distinction: dock area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="HRBFAC" Code="64" Type="Geo">
+		<Name>Harbour facility</Name>
+		<Definition>A harbour installation with a service or commercial operation of public interest.</Definition>
+		<References>INT 1: IF 10, 50; IU 1.1; M-4: 320.1-2; 321.5; 328.2;</References>
+		<Remarks>Distinction: small craft facility;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="HULKES" Code="65" Type="Geo">
+		<Name>Hulk</Name>
+		<Definition>A permanently moored ship.</Definition>
+		<References>INT 1: IF 34; M-4: not specified;</References>
+		<Remarks>Distinction: wreck;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="ICEARE" Code="66" Type="Geo">
+		<Name>Ice area</Name>
+		<Definition>An area of ice over land or water.</Definition>
+		<References>INT 1: IC 25; IN 60.1-2; M-4: 353.8; 449.1;</References>
+		<Remarks>Distinction: depth area; land area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="ICNARE" Code="67" Type="Geo">
+		<Name>Incineration area</Name>
+		<Definition>An offshore area officially designated as suitable for the burning of chemical waste by specially equipped ships. (IHO Dictionary, S-32, 5th Edition, 2408) </Definition>
+		<References>INT 1: IN 65; M-4: 449.3;</References>
+		<Remarks>Distinction: dumping ground;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="ISTZNE" Code="68" Type="Geo">
+		<Name>Inshore traffic zone</Name>
+		<Definition>A routing measure comprising a designated area between the landward boundary of a traffic separation scheme and the adjacent coast, to be used in accordance with the provisions of the International Regulations for Preventing Collisions at Sea. (IHO Dictionary, S-32, 5th Edition, 2457)</Definition>
+		<References>INT 1: IM 25.1; M-4: 435.1;</References>
+		<Remarks>Distinction: traffic separation scheme crossing; traffic separation scheme lane part; traffic separation scheme roundabout; traffic separation zone; precautionary area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="LAKARE" Code="69" Type="Geo">
+		<Name>Lake</Name>
+		<Definition>A large body of water entirely surrounded by land. (IHO Dictionary, S-32, 5th Edition 2629)</Definition>
+		<References>INT 1: IC 23; M-4: 353, 353.6;</References>
+		<Remarks>Distinction: canal; depth area; lake shore; river;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="LAKSHR" Code="70" Type="Geo">
+		<Name>Lake shore</Name>
+		<Definition>The limit line between the water area of a lake and the area of land. </Definition>
+		<References>INT 1: IC 23; M-4: 353, 353.6;</References>
+		<Remarks>Distinction: canal bank; coastline; lake area; river bank; shoreline construction; </Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="LNDARE" Code="71" Type="Geo">
+		<Name>Land area</Name>
+		<Definition> The solid portion of the Earth s surface, as opposed to sea, water. (IHO Dictionary, S-32, 5th Edition, 2635)</Definition>
+		<References>INT 1: IK 10; M-4: 421.1;</References>
+		<Remarks>Distinction: canal; coastline; depth area; lake; land region; river; sea bed area; shoreline construction; vegetation;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="LNDELV" Code="72" Type="Geo">
+		<Name>Land elevation</Name>
+		<Definition>An elevation is the vertical distance of a point or a level, on, or affixed to, the surface of the earth, measured from a specified vertical datum. (IHO Dictionary, S-32, 5th Edition, 1590) </Definition>
+		<References>INT 1: IC 10-13; M-4: 351; 352.1-2;</References>
+		<Remarks>This object class is used to encode both spot heights and land (height) contours. Distinction: slope top line;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="LNDRGN" Code="73" Type="Geo">
+		<Name>Land region</Name>
+		<Definition>An area of natural scenery on land. It is defined by its geographical characteristics and may be known by its proper name.</Definition>
+		<References>INT 1: IC 24,26,33; M-4: 312.1-4; 355;</References>
+		<Remarks>Distinction: sea area; land area; vegetation;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="LNDMRK" Code="74" Type="Geo">
+		<Name>Landmark</Name>
+		<Definition>A prominent object at a fixed location which can be used in determining a location or a direction. (adapted from IHO Dictionary, S-32, 5th Edition, 2643).</Definition>
+		<References>INT 1: ID 5-6, 13; IE 10.1-20, 22-30.1, 30.3-4, 31; IL 11; IQ 100; M-4: 373.6; 374.1; 374.4; 374.5; 374.6; 374.7; 375.1-2; 375.4; 445.6; 456.2; 487.3;</References>
+		<Remarks>Distinction: beacon, special purpose/general; building single; control point; daymark; pylon/bridge support; silo/tank; topmark</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="LIGHTS" Code="75" Type="Geo">
+		<Name>Light</Name>
+		<Definition>A luminous or lighted aid to navigation. (adapted from IHO Dictionary, S-32, 5th Edition, 2766) </Definition>
+		<References>INT 1: IP 1-30.3, 40-65; M-4: 470-473.5; 475-475.7; 476-478.5;</References>
+		<Remarks>A light may be fixed on a buoy, beacon, tower etc. These are separate objects. Distinction: beacon, cardinal; beacon, isolated danger; beacon, lateral; beacon, safe water; beacon special purpose/general; buoy, cardinal; buoy, installation; buoy, isolated danger; buoy, lateral; buoy, safe water; buoy, special purpose/general; light vessel; light float;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="LITFLT" Code="76" Type="Geo">
+		<Name>Light float</Name>
+		<Definition>A boat-like structure used instead of a light buoy in waters where strong streams or currents are experienced, or when a greater elevation than that of a light buoy is necessary (IHO Dictionary, S-32, 5th Edition, 2821).</Definition>
+		<References>IQ 30-31; M-4: 462.8;</References>
+		<Remarks>The light of a light float is a separate object, handled as with buoys, beacons, etc. Distinction: buoy, cardinal; buoy, installation; buoy, isolated danger; buoy, lateral; buoy, safe water; buoy, special purpose/general; light vessel;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="LITVES" Code="77" Type="Geo">
+		<Name>Light vessel</Name>
+		<Definition>A distinctively marked vessel anchored or moored at a charted point, to serve as an aid to navigation. By night, it displays a characteristic light(s) and is usually equipped with other devices, such as fog signal, submarine sound signal, and radio-beacon, to assist navigation. Also called light ship.(IHO Dictionary, S-32, 5th Edition, 2828,2829).</Definition>
+		<References>INT 1: IP 6; M-4: 474.1-3; 474.5-6;</References>
+		<Remarks>The light(s) of a light vessel is a separate object, handled as with buoys, beacons etc. Distinction: beacon, cardinal; beacon, isolated danger; beacon, lateral; beacon, safe water; beacon special purpose/general; buoy, cardinal; buoy, installation; buoy, isolated danger; buoy, lateral; buoy, safe water; buoy, special purpose/general; light float;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="LOCMAG" Code="78" Type="Geo">
+		<Name>Local magnetic anomaly</Name>
+		<Definition>An anomaly of the magnetic field of the Earth, extending over a relatively small area, due to local magnetic influences. (IHO Dictionary, S-32, 5th Edition, 2874, 2984)</Definition>
+		<References>INT 1: IB 82.1-2; M-4: 274;</References>
+		<Remarks>The value of the deviation from the normal magnetic variation is stored in the VALLMA attribute. Distinction: magnetic variation;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="LOKBSN" Code="79" Type="Geo">
+		<Name>Lock basin</Name>
+		<Definition>A lock basin is a wet dock in a waterway, permitting a ship to pass from one level to another. (adapted from IHO Dictionary, S-32, 5th Edition, 2881) </Definition>
+		<References>INT 1: IF 41.1; M-4: 326.6;</References>
+		<Remarks>The lock gates are encoded as separate gate objects (GATCON). Distinction: gate;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="LOGPON" Code="80" Type="Geo">
+		<Name>Log pond</Name>
+		<Definition> A maritime area enclosed with connected floating timbers used as a staging area for sawn logs.</Definition>
+		<References>INT 1: IN 61; M-4: 449.2;</References>
+		<Remarks>Also known as booming ground.</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="MAGVAR" Code="81" Type="Geo">
+		<Name>Magnetic variation</Name>
+		<Definition>The angle between the magnetic and geographic (true) north at a location, expressed in degrees east or west from the direction of true north.</Definition>
+		<References>INT 1: IB 64-66, 71; M-4: 261; 272.1,3;</References>
+		<Remarks>No remarks. Distinction: local magnetic anomaly;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="MARCUL" Code="82" Type="Geo">
+		<Name>Marine farm/culture</Name>
+		<Definition>An assemblage of cages, nets, rafts and floats or posts where fish, including shellfish, are artificially cultivated. Also called fish farm. (IHO Dictionary, S-32, 5th Edition, 1811) </Definition>
+		<References>INT 1: IK 47, 48.1-2; M-4: 447.4,6;</References>
+		<Remarks>Distinction: fishing facility; obstruction;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="MIPARE" Code="83" Type="Geo">
+		<Name>Military practice area</Name>
+		<Definition>An area within which naval, military or aerial exercises are carried out. Also called an exercise area. (adapted from IHO Dictionary, S-32, 5th Edition, 1722)</Definition>
+		<References>INT 1: IN 30-33; M-4: 441.1-6;</References>
+		<Remarks>Distinction: caution area; restricted area; submarine transit lane;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="MORFAC" Code="84" Type="Geo">
+		<Name>Mooring/warping facility</Name>
+		<Definition>The equipment or structure used to secure a vessel (adapted from IHO Dictionary, S-32, 5th Edition, 3322) </Definition>
+		<References>INT 1: IF 20,21,22; IG 181; IQ 40-43; M-4: 327.1-2,3; 431.5-6;</References>
+		<Remarks>Distinction: buoy, special purpose/general;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="NAVLNE" Code="85" Type="Geo">
+		<Name>Navigation line</Name>
+		<Definition>A navigation line is a straight line extending towards an area of navigational interest and generally generated by two navigational aids or one navigational aid and a bearing. (Service Hydrographique et Océanographique de la Marine, France) </Definition>
+		<References>INT 1: IM 1-3; M-4: 433-433.5;</References>
+		<Remarks>The portion of a navigation line that a ship should use for navigation is known as a recommended track. The extent of the navigation line depends on the visibility of the navigational aid(s).  The attribute 'orientation' (ORIENT) specifies the orientation of the navigation line measured from the water towards the navigational aid(s).  The recommended track is that portion of a 'navigation line' that a ship should use for navigation.Distinction: recommended route; recommended track;  </Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="OBSTRN" Code="86" Type="Geo">
+		<Name>Obstruction</Name>
+		<Definition>In marine navigation, anything that hinders or prevents movement, particularly anything that endangers or prevents passage of a vessel. The term is usually used to refer to an isolated danger to navigation... (IHO Dictionary, S-32, 5th Edition, 3503)</Definition>
+		<References>INT 1: IK 1,31, 40-43, 46.1-2; IL 21,23; IQ 42; M-4: 422.8-9; 431.6;445.1; 447.5;</References>
+		<Remarks>Distinction: wreck; fishing facility; marine farm/culture; depth area; underwater/awash rock; water turbulence;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="OFSPLF" Code="87" Type="Geo">
+		<Name>Offshore platform</Name>
+		<Definition>used in the production of oil or natural gas.(IHO Dictionary, S-32, 5th Edition, 3895) </Definition>
+		<References>INT 1: IL 2, 10, 11-15, 17; M-4: 445.2; 445.3; 445.4; 445.6;</References>
+		<Remarks>Distinction: buoy, installation; offshore production area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="OSPARE" Code="88" Type="Geo">
+		<Name>Offshore production area</Name>
+		<Definition>An area at sea within which there are production facilities.</Definition>
+		<References>INT 1: IL 4; M-4: not specified;</References>
+		<Remarks>Distinction: offshore platform; exclusive economic zone;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="OILBAR" Code="89" Type="Geo">
+		<Name>Oil barrier</Name>
+		<Definition> A construction to dam oil flow on water.</Definition>
+		<References>INT 1: IF 29.1-2; M-4: not specified;</References>
+		<Remarks>No remarks.</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="PILPNT" Code="90" Type="Geo">
+		<Name>Pile</Name>
+		<Definition>A long heavy timber or section of steel, wood, concrete, etc.. forced into the earth which may serve as a support, as for a pier, or a free standing pole within a marine environment. (Adapted from IHO Dictionary, S-32, 5th Edition, 3840)</Definition>
+		<References>INT 1: IF 22; M-4: 327.3;</References>
+		<Remarks>Distinction: beacon, cardinal; beacon, isolated danger; beacon, lateral; beacon, safe water; beacon special purpose/general; mooring/warping facility;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="PILBOP" Code="91" Type="Geo">
+		<Name>Pilot boarding place</Name>
+		<Definition>The meeting place to which the pilot comes out. (IHO Chart Specifications, M-4)</Definition>
+		<References>INT 1: IT 1.1-4; M-4: 491.1-2;</References>
+		<Remarks>No remarks.</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="PIPARE" Code="92" Type="Geo">
+		<Name>Pipeline area</Name>
+		<Definition>An area containing one or more pipelines.</Definition>
+		<References>INT 1: IL 40.2, 41.2; M-4: 439.3; 444.2;</References>
+		<Remarks>Distinction: pipeline, overhead; pipeline, submarine/on land;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="PIPOHD" Code="93" Type="Geo">
+		<Name>Pipeline, overhead</Name>
+		<Definition>A pipeline is a string of interconnected pipes used for the transport of matter, nowadays mainly oil or gas. (IHO Dictionary, S-32, 5th Edition, 3857) An overhead pipeline is a pipeline supported by pylons and passing over or nearby navigable waters.</Definition>
+		<References>INT 1: ID 28; M-4: 383;</References>
+		<Remarks>Distinction: pipeline area; pipeline, submarine/on land;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="PIPSOL" Code="94" Type="Geo">
+		<Name>Pipeline, submarine/on land</Name>
+		<Definition>A pipeline is a string of interconnected pipes used for the transport of matter, nowadays mainly oil or gas. (IHO Dictionary, S-32, 5th Edition, 3857). A submarine or land pipeline is a pipeline lying on or buried under the seabed or the land. </Definition>
+		<References>INT 1: ID 29; IL 40.1, 41.1, 42, 44; M-4: 377; 444.1; 444.4-5; 444.7;</References>
+		<Remarks>It must be assumed that the pipes are vulnerable to damage from anchoring or trawling... They may be a potential danger to navigation. (IHO Chart Specifications, M-4). Distinction: pipeline area; pipeline, overhead;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="PONTON" Code="95" Type="Geo">
+		<Name>Pontoon</Name>
+		<Definition>floating structure, usually rectangular in shape, which serves as a landing, pier head, bridge support, etc.</Definition>
+		<References>INT 1: IF 16; M-4: 326.9;</References>
+		<Remarks>Distinction: bridge; mooring/warping facility; shoreline construction;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="PRCARE" Code="96" Type="Geo">
+		<Name>Precautionary area</Name>
+		<Definition>A routing measure comprising an area within defined limits where ships must navigate with particular caution and within which the direction of traffic flow may be recommended. (IHO Dictionary, S-32, 5th Edition, 3982)</Definition>
+		<References>INT 1: IM 16, 24; M-4: 435.2;</References>
+		<Remarks>Distinction: caution area; inshore traffic zone; restricted area; all traffic separation scheme elements;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="PRDARE" Code="97" Type="Geo">
+		<Name>Production/storage area</Name>
+		<Definition>An area on land for the exploitation or storage of natural resources.</Definition>
+		<References>INT 1: IE 35.1-2, 36; IF 52; M-4: 367.1-2;</References>
+		<Remarks>Distinction: free port area; offshore production area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="PYLONS" Code="98" Type="Geo">
+		<Name>Pylon/bridge support</Name>
+		<Definition>A vertical construction consisting, for example, of a steel framework or pre-stressed concrete to carry cables, a bridge, etc. </Definition>
+		<References>INT 1: ID 26; M-4: 382.1;</References>
+		<Remarks>No remarks. </Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="RADLNE" Code="99" Type="Geo">
+		<Name>Radar line</Name>
+		<Definition>A track along which ships may be guided by coastal radar stations in the event of bad visibility. Also known as a radar guided track. (IHO Dictionary, S-32, 5th Edition, 4146).</Definition>
+		<References>INT 1: IM 32.1-2; M-4: 487.2;</References>
+		<Remarks>Distinction: radar range; recommended track;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="RADRNG" Code="100" Type="Geo">
+		<Name>Radar range</Name>
+		<Definition>Indicates the coverage of a sea area by a radar surveillance station. Inside this area a vessel may request shore-based radar assistance, particularly in poor visibility. </Definition>
+		<References>INT 1: IM 31; M-4: 487.1;</References>
+		<Remarks>Many large ports have a radar surveillance system covering their approaches to provide guidance for vessels, particularly in poor visibility...The maximum range of the system forms an arc or series of overlapping arcs...(IHO Chart Specifications, M-4). Distinction: radar line;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="RADRFL" Code="101" Type="Geo">
+		<Name>Radar reflector</Name>
+		<Definition>A device capable of, or intended for, reflecting radar signals (IHO Dictionary, S-32, 5th Edition). A radar reflector is usually a tetrahedron or pentagonal corner reflector (...) to facilitate reflection towards the sender. (International Maritime Dictionary, 2nd Ed.)</Definition>
+		<References>INT 1: IS 4; M-4: 465.1-2;</References>
+		<Remarks>The object 'radar reflector' is the construction itself. If any other object, e.g. topmark, buoy, beacon, is radar conspicuous because of its construction, the attribute class 'CONRAD' must be used. Distinction: retro-reflector;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="RADSTA" Code="102" Type="Geo">
+		<Name>Radar station</Name>
+		<Definition>A station with a transmitter emitting pulses of ultra-high frequency radio waves which are reflected by solid objects and are detected upon their return to the sending station. (International Maritime Dictionary 2nd Ed.)</Definition>
+		<References>INT 1: IM 30; IS 1; M-4: 485.1; 487.3;</References>
+		<Remarks>The object 'radar station' is the technical equipment itself independent of the building or structure where it is installed. This building or structure, e.g. mast, tower, single building, radar dome is a different object. Distinction: radar line; radar range; radar transponder beacon;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="RTPBCN" Code="103" Type="Geo">
+		<Name>Radar transponder beacon</Name>
+		<Definition> A transponder beacon transmitting a coded signal on radar frequency, permitting an interrogating craft to determine the bearing and range of the transponder. Also called racon. (IHO Dictionary, S-32, 5th Edition, 4137) </Definition>
+		<References>INT 1: IS 2-3; M-4: 486.1-3;</References>
+		<Remarks>The object class radar transponder beacon is only used to encode the technical equipment independent of the structure on which it is located (e.g. a beacon, light-vessel or tower). Distinction: radar line; radar range; radar station; </Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="RDOCAL" Code="104" Type="Geo">
+		<Name>Radio calling-in point</Name>
+		<Definition>Also called radio reporting points, they have been established in certain busy waterways and port approaches to assist traffic control. On passing these points or crossing a defined line vessels are required to report on VHF to a Traffic Control Centre. (adapted from IHO Chart Specifications, M-4) </Definition>
+		<References>INT 1: IM 40; M-4: 488;</References>
+		<Remarks>The attribute 'orientation' (ORIENT) encodes the orientation of the traffic flow at that point. Distinction: radio station; pilot boarding place;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="RDOSTA" Code="105" Type="Geo">
+		<Name>Radio station</Name>
+		<Definition>A place equipped to transmit radio waves. Such a station may be either stationary or mobile, and may also be provided with a radio receiver. In British terminology, also called w/t station. (IHO Dictionary, S-32, 5th Edition, 4191) </Definition>
+		<References>INT 1: IS 10-16; M-4: 480.1; 481.1-3; 482; 483; 484;</References>
+		<Remarks>The transmission of a radio station may serve to provide mariners with a line of postion. (IHO Chart Specifications, M-4)  The object class 'radio station' is used to encode the point of transmission of the signal. Distinction: radio calling in point; radar station;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="RAILWY" Code="106" Type="Geo">
+		<Name>Railway</Name>
+		<Definition>A rail or set of parallel rails on which a train or tram runs. (Digital Geographic Information Working Group Oct.87)</Definition>
+		<References>INT 1: ID 13; M-4: 328.4; 362.1-2;</References>
+		<Remarks>Distinction: road; tunnel;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="RAPIDS" Code="107" Type="Geo">
+		<Name>Rapids</Name>
+		<Definition>Portions of a stream with accelerated current where it descends rapidly but without a break in the slope of the bed sufficient to form a waterfall. Usually used in the plural. (IHO Dictionary, S-32, 5th Edition, 4228)</Definition>
+		<References>INT 1: IC 22; M-4: 353.5;</References>
+		<Remarks>Distinction: current - non-gravitational; tidal stream - harmonic prediction; tidal stream - non-harmonic prediction; tidal stream panel data; tidal stream - time series; water turbulence; waterfall;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="RCRTCL" Code="108" Type="Geo">
+		<Name>Recommended route centerline</Name>
+		<Definition> A recommended route is a route of undefined width, for the convenience of ships in transit, which is often marked by centerline buoys (IHO Dictionary, S-32, 5th Edition, 4448). The recommended route centerline indicates the  centerline  of a recommended route. </Definition>
+		<References>INT 1: IM 28.1; M-4: 435.4;</References>
+		<Remarks>A recommended route describes the regulation of navigation for non-hydrographic reasons such as the prevention of collision to the avoidance of pollution risk. It is generally laid down by a national or international authority other than the hydrographic authority. (IHO Chart Specifications, M-4). Distinction: recommended traffic lane part; recommended track;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="RECTRC" Code="109" Type="Geo">
+		<Name>Recommended track</Name>
+		<Definition>A track recommended to all or only certain vessels (IHO Dictionary, S-32, 5th Edition, 5576).</Definition>
+		<References>INT 1: IM 3-4, 5.1, 5.2, 6; M-4: 432.1; 434;</References>
+		<Remarks>Recommended tracks include all channels recommended for hydrographic reasons to lead safely between shoal depths. The use of such tracks is generally left to the discretion of the mariner and will depend on the vessel's draught, the state of the tide, adequacy of navigational aids and so on. (IHO Chart Specifications, M-4).  The recommended track is that portion of a 'navigation line' that a ship should use for navigation. In the case of a two-way recommended track, only one value of orientation is encoded (in the attribute ORIENT); the other value can be deduced (i.e. the value in ORIENT + 180 degrees). Distinction: navigation line; recommended route centerline; recommended traffic lane part;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="RCTLPT" Code="110" Type="Geo">
+		<Name>Recommended traffic lane part</Name>
+		<Definition>An optional part of an IMO-adopted routing measure.... Several Hydrographic Offices, in consultation with their Ministries of Transport, have added recommended directions in areas such as the outer approaches to major ports in order to show the best routes for crossing traffic or to minimize head-on encounters.(...) (IHO Chart Specifications, M-4)</Definition>
+		<References>INT 1: IM 26.1-2; M-4: 435.5;</References>
+		<Remarks>The object 'Recommended Traffic Lane Part' must be compiled by the editing personnel. It indicates the recommended traffic flow e.g.  - between two TSS - in the entrance areas of a TSS - beside a deep water route. The complete recommended traffic lane may consist of one or more parts depending on the shape of the recommended traffic lane. The orientation of the recommended traffic lane part is defined by the middle-line of the recommended traffic lane part relating to the general direction of the recommended traffic lane part. The orientation of the recommended traffic lane part replaces the 'arrows' of the INT1-feature IM 11, 26.1, 26,2.</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="RSCSTA" Code="111" Type="Geo">
+		<Name>Rescue station</Name>
+		<Definition>A place at which life saving equipment is held. (IHO Chart Specifications, M-4).</Definition>
+		<References>INT 1: IT 12-14; IQ 124; M-4: 493; 493.1-2;</References>
+		<Remarks>This object encodes the service available at this location. The structure housing the service should be coded separately. Distinction: beacon special purpose/general; building single; coastguard station;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="RESARE" Code="112" Type="Geo">
+		<Name>Restricted area</Name>
+		<Definition>A specified area on land or water designated by an appropriate authority within which access or navigation is restricted in accordance with certain specified conditions</Definition>
+		<References>INT 1: IL 3; IN 2.1-2; 20-22, 25-26, 31, 34; M-4: 431.4; 439.2-4; 441.8; 445.2; 448.1-2; 449.5;</References>
+		<Remarks>Distinction: anchorage area; cable area; caution area; dumping ground; depth area; fairway; dredged area; deep water route; military practice area; pipeline area; swept area; </Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="RETRFL" Code="113" Type="Geo">
+		<Name>Retro-reflector</Name>
+		<Definition>A means of distinguishing unlighted marks at night. Retro-reflective material is secured to the mark in a particular pattern to reflect back light. (Adapted from the UKHO NP735, 5th Edition). </Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>The body carrying the retro-reflector is a separate object. Distinction: beacon, cardinal; beacon, isolated danger; beacon, lateral; beacon, safe water; beacon special purpose/general; buoy, cardinal; buoy, installation; buoy, isolated danger; buoy, lateral; buoy, safe water; buoy, special purpose/general; radar reflector;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="RIVERS" Code="114" Type="Geo">
+		<Name>River</Name>
+		<Definition>A relatively large natural stream of water. (IHO Dictionary, S-32, 5th Edition, 4405).</Definition>
+		<References>INT 1: IC 20, 21; M-4: 353.1-4;</References>
+		<Remarks>The object 'river' describes the area of the river, the object 'river bank' its banks. Distinction: canal; lake; river bank; sea area/named water area; tideway;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="RIVBNK" Code="115" Type="Geo">
+		<Name>River bank</Name>
+		<Definition>The limit line between the water area of a river and the area of land.</Definition>
+		<References>INT 1: IC 20, 21; M-4: 353.1-4;</References>
+		<Remarks>Distinction: canal bank; coastline; lake shore; river; shoreline construction;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="ROADWY" Code="116" Type="Geo">
+		<Name>Road</Name>
+		<Definition>A road is an open way for the passage of vehicles. (United States Geological Survey, Jan.89)</Definition>
+		<References>INT 1: ID 10-12; M-4: 365.1-3;</References>
+		<Remarks>Distinction: causeway; railway; square;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="RUNWAY" Code="117" Type="Geo">
+		<Name>Runway</Name>
+		<Definition>A defined rectangular area, on a land aerodrome, prepared for the landing and take-off run of aircraft along its length. (IHO Dictionary, S-32, 5th Edition, 4465). A site on which helicopters may land and take off. (IHO Dictionary, S-32, 5th Edition, 2232) </Definition>
+		<References>INT 1: ID 17; M-4: 366;</References>
+		<Remarks>Distinction: airport area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="SNDWAV" Code="118" Type="Geo">
+		<Name>Sand waves</Name>
+		<Definition>A large mobile wave-like sediment feature in shallow water and composed of sand. The wavelength may reach 100 metres, the amplitude may be up to 20 metres. </Definition>
+		<References>INT 1: IJ 14; M-4: 428.1;</References>
+		<Remarks>Distinction: seabed area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="SEAARE" Code="119" Type="Geo">
+		<Name>Sea area/named water area</Name>
+		<Definition> A geographically defined part of the sea or other navigable waters. It may be specified within its limits by its proper name. </Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>Each sea area is defined independent of other smaller sea areas located within it and of any larger sea areas which contain it. Distinction: depth area; seabed area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="SPLARE" Code="120" Type="Geo">
+		<Name>Sea-plane landing area</Name>
+		<Definition>A designated portion of water for landing and take-off of sea-planes.</Definition>
+		<References>INT 1: IN 13; M-4: 449.6;</References>
+		<Remarks>Distinction: airport area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="SBDARE" Code="121" Type="Geo">
+		<Name>Seabed area</Name>
+		<Definition>An area of the sea where the nature of bottom is homogeneous. The nature of bottom is the feature of the bottom including the material of which it is composed and its physical characteristics. Also called character (or characteristics) of the bottom, or quality of the bottom. (IHO Dictionary, S-32, 5th Edition, 515).</Definition>
+		<References>INT 1: IJ 1-11, 30-39; M-4: 425.5-6; 426; 427;</References>
+		<Remarks>Generally it is not possible to define the 'seabed area' by its real extent. For that reason the characteristics of the 'seabed area' may be represented at one single position. Distinction: sand wave; sea area/named water area; weed/kelp;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="SLCONS" Code="122" Type="Geo">
+		<Name>Shoreline Construction</Name>
+		<Definition>A fixed artificial structure in the water and/or adjoining the land. It may also refer to training walls, which are not necessarily connected to, nor form part of the shoreline.</Definition>
+		<References>INT 1: IF 2, 4, 5, 6, 12-15, 18, 23, 33; M-4: 313.2,4; 321.1-4; 322.1-2; 324.1;</References>
+		<Remarks>Distinction: canal bank; coastline; lake shore; land area; pontoon; river bank;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="SISTAT" Code="123" Type="Geo">
+		<Name>Signal station, traffic</Name>
+		<Definition>A signal station is a place on shore from which signals are made to ships at sea (IHO Dictionary, S-32, 5th Edition, 4742). Traffic signal stations regulate the traffic movement. (IHO Chart Specifications, M-4).</Definition>
+		<References>INT 1: IT 21-25.2; M-4: 495.1-5;</References>
+		<Remarks>This object class is used to describe the function of the signal station rather than the structure on which the station is sited. Distinction: signal station, warning;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="SISTAW" Code="124" Type="Geo">
+		<Name>Signal station, warning</Name>
+		<Definition>A signal station is a place on shore from which signals are made to ships at sea (IHO Dictionary, S-32, 5th Edition). Warning signal stations are not concerned with the regulation of traffic movement.</Definition>
+		<References>INT 1: IT 20, 26, 28-36; M-4: 490.3; 494.1-2; 496.1-3; 497</References>
+		<Remarks>This object class is used to describe the function of the signal station rather than the structure on which the station is sited. Distinction: signal station, traffic;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="SILTNK" Code="125" Type="Geo">
+		<Name>Silo/tank</Name>
+		<Definition>An enclosed container, used for storage. (Digital Geographic Information Working Group Oct.87).</Definition>
+		<References>INT 1: IE 2, 32-33; M-4: 340.2; 376.2-3;</References>
+		<Remarks>Distinction: landmark; production/storage area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="SLOTOP" Code="126" Type="Geo">
+		<Name>Slope topline</Name>
+		<Definition>The upper marking of a slope, e.g. the ridge line or the separation line between two different gradients.</Definition>
+		<References>INT 1: IC 3; ID 14, 15; M-4: 312.1; 363.2; 364.1;</References>
+		<Remarks>No remark. Distinction: land elevation; sloping ground;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="SLOGRD" Code="127" Type="Geo">
+		<Name>Sloping ground</Name>
+		<Definition>An inclined surface (adapted from IHO Dictionary, S-32, 5th Edition, 4776).</Definition>
+		<References>INT 1: IC 3, 4, 8; ID 14, 15; IF 1; M-4: 312.1; 312.3; 313.1; 313.2;</References>
+		<Remarks>Distinction: slope topline;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="SMCFAC" Code="128" Type="Geo">
+		<Name>Small craft facility</Name>
+		<Definition> A place at which a service generally of interest to small craft or pleasure boats is available. </Definition>
+		<References>INT 1: IU 2, 3-4, 6-13, 15-31; M-4: not specified;</References>
+		<Remarks>This object class encoded the service available at this location. The structure housing the service should be encoded separately. Distinction: building, single; harbour facility; shoreline construction;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="SOUNDG" Code="129" Type="Geo">
+		<Name>Sounding</Name>
+		<Definition>A measured water depth or spot which has been reduced to a vertical datum (may be a drying height). </Definition>
+		<References>INT 1: II 10-15; M-4: 403.1; 410; 412-412.4; 413.1; 417.3;</References>
+		<Remarks>The value of the sounding is encoded in the 3-D Coordinate field of the Spatial Record Structure (see S-57 Part 3).Drying heights (drying soundings) are indicated by a negative value. Distinction: depth area; wreck; underwater/awash rock; obstruction;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="SPRING" Code="130" Type="Geo">
+		<Name>Spring</Name>
+		<Definition>A natural issue of water or other substances from the earth. One af the bottom of the sea is called a submarine spring. (IHO Dictionary, S-32, 5th Edition 4939).</Definition>
+		<References>INT 1: IJ 15; M-4: 428.3;</References>
+		<Remarks>No remarks.</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="SQUARE" Code="131" Type="Geo">
+		<Name>Square</Name>
+		<Definition>An open area within a built-up area surrounded by roads.</Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>Distinction: road; built-up area; building, single;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="STSLNE" Code="132" Type="Geo">
+		<Name>Straight territorial sea baseline</Name>
+		<Definition>A baseline is the line from which the outer limits of the territorial sea and certain other outer limits are measured. (IHO Dictionary, S-32, 5th Edition, 390).  Straight baselines are a system of straight lines joining specified or discrete points on the low-water line, usually known as straight baseline turning points. (IHO Dictionary, S-32, 5th Edition, 393). </Definition>
+		<References>INT 1: IN 42; M-4: 440.4;</References>
+		<Remarks>No remarks. </Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="SUBTLN" Code="133" Type="Geo">
+		<Name>Submarine transit lane</Name>
+		<Definition>An area where submarines may navigate under water or at the surface.</Definition>
+		<References>INT 1: IN 33; M-4: 441.5;</References>
+		<Remarks>Distinction: military practice area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="SWPARE" Code="134" Type="Geo">
+		<Name>Swept area</Name>
+		<Definition>An area that has been determined to be clear of navigational dangers to a specified depth (adapted from IHO Dictionary, S-32, 5th Edition, 5248). </Definition>
+		<References>INT 1: II 24; M-4: 415.1; 415.2;</References>
+		<Remarks>Distinction: depth area; dredged area; unsurveyed area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="TESARE" Code="135" Type="Geo">
+		<Name>Territorial sea area</Name>
+		<Definition>The territorial sea is a belt of water of a defined breadth but not exceeding 12 nautical miles measured seaward from the territorial sea baseline.  (IHO Dictionary, S-32, 5th Edition, 5360).</Definition>
+		<References>INT 1: IN 43; M-4: 440.5;</References>
+		<Remarks>Distinction: administrative area; contiguous zone; continental shelf area; exclusive economic zone; fishery zone; restricted area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="TS_PRH" Code="136" Type="Geo">
+		<Name>Tidal stream - harmonic prediction</Name>
+		<Definition> A tidal stream (or tidal current) is an alternating horizontal movement of water associated with the rise and fall of the tide caused by tide-producing forces. (IHO Dictionary, S-32, 5th Edition, 1169) Predicted tidal stream rates may be calculated using parameters (harmonic constituents) and an appropriate harmonic calculation algorithm. </Definition>
+		<References>INT 1: IH 40-41; M-4: 407.4; 408.2;</References>
+		<Remarks>The object 'tidal stream - harmonic prediction' encodes parameters for use when prediction tidal streams by harmonic methods. The supplier of any parameters must be consulted on how to use data provided using this object class, and which calculation algorithms to use with the data. Distinction: current - non-gravitational; tidal stream - non-harmonic prediction; tidal stream panel data; tidal stream - time series; </Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="TS_PNH" Code="137" Type="Geo">
+		<Name>Tidal stream - non harmonic prediction</Name>
+		<Definition>A tidal stream (or tidal current) is an alternating horizontal movement of water associated with the rise and fall of the tide caused by tide-producing forces. (IHO Dictionary, S-32, 5th Edition, 1169) Predicted tidal stream rates may be calculated using time and rate differences with respect to a reference station (and associated tidal stream predictions).</Definition>
+		<References>INT 1: IH 40-41; M-4: 407.4; 408.2;</References>
+		<Remarks>The object 'tidal stream - non-harmonic prediction' encodes information for use when predicting times and rates for tidal streams by non-harmonic methods.The supplier of any parameters must be consulted on how to use data provided using this object class, and which calculation algorithms to use with the data. Distinction: current - non-gravitational; tidal stream - harmonic prediction; tidal stream - panel data; tidal stream - time series;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="TS_PAD" Code="138" Type="Geo">
+		<Name>Tidal stream panel data</Name>
+		<Definition> A tidal stream (or tidal current) is an alternating horizontal movement of water associated with the rise and fall of the tide caused by tide-producing forces. (IHO Dictionary, S-32, 5th Edition, 1169) Approximate tidal stream rates may be given as discrete rate values at a specified interval before or after a high water.</Definition>
+		<References>INT 1: IH 40-41; M-4: 407.4; 408.2;</References>
+		<Remarks>The object 'tidal stream panel data' encodes data for use in a tidal panel. Distinction: current - non-gravitational; tidal stream - harmonic prediction; tidal stream - non-harmonic prediction; tidal stream - time series;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="TS_TIS" Code="139" Type="Geo">
+		<Name>Tidal stream time series</Name>
+		<Definition>  A tidal stream (or tidal current) is an alternating horizontal movement of water associated with the rise and fall of the tide caused by tide-producing forces. (IHO Dictionary, S-32, 5th Edition, 1169) Tidal stream rates over time may be approximated by a series of rate values given at regular time intervals, starting from a specified moment in time. </Definition>
+		<References>INT 1: IH 40-41; M-4: 407.4; 408.2;</References>
+		<Remarks>The object 'tidal stream - time series' encodes rates of tidal stream at equal time intervals. Distinction: current - non-gravitational; tidal stream - harmonic prediction; tidal stream - non-harmonic prediction; tidal stream panel data;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="T_HMON" Code="140" Type="Geo">
+		<Name>Tide - harmonic prediction</Name>
+		<Definition>Tide - the periodic rise and fall of the surface of the sea, due principally to the gravitational interaction between moon, sun and earth (adopted from IHO Dictionary, S-32, 5th Edition, 5429). Predicted tidal heights may be calculated using parameters (harmonic  constituents and an appropriate harmonic calculation algorithm.</Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>The object 'tide - harmonic predictions' encodeds parameters for use when predicting tidal heights by harmonic methods.The supplier of any parameters must be consulted on how to use this data, and which calculation algorithms to use with the data.Distinction: tide - non-harmonic prediction; tide - time series;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="T_NHMN" Code="141" Type="Geo">
+		<Name>Tide - non-harmonic prediction</Name>
+		<Definition>Tide - the periodic rise and fall of the surface of the sea, due principally to the gravitational interaction between moon, sun and earth. (adopted from IHO Dictionary, S-32, 5th Edition, 5429) Predicted tidal heights may be calculated using time and heigh differences with respect to a reference port (and associated tidal predictions).</Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>The object 'tide - non-harmonic predictions' encodeds information for use when predicting times and heights for high and low waters by non-harmonic methods.The supplier of any parameters must be consulted on how to use this data, and which calculation algorithms to use with the data. Distinction: tide - harmonic prediction; tide - time series;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="T_TIMS" Code="142" Type="Geo">
+		<Name>Tide - time series</Name>
+		<Definition> Tide - the periodic rise and fall of the surface of the sea, due principally to the gravitational interaction between moon, sun and earth (adopted from IHO Dictionary, S-32, 5th Edition, 5429). Tidal heights over time may be approximated by a series of height values given at regular time intervals, starting from a specified moment in time. </Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>The object 'tide - time series' encodeds tidal heights at equal time intervals and times and heights of high waters and low waters.Distinction: tide - harmonic prediction; tide - non-harmonic prediction;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="TIDEWY" Code="143" Type="Geo">
+		<Name>Tideway</Name>
+		<Definition>A natural water course in intertidal areas where water flows during the ebb or flow.  A channel through which a tidal current runs. (Dictionary, S-32, 5th Edition. 5502)</Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>Distinction: canal; river; sea area/named water area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="TOPMAR" Code="144" Type="Geo">
+		<Name>Topmark</Name>
+		<Definition>A characteristic shape secured at the top of a buoy or beacon to aid in its identification.  (IHO Dictionary, S-32, 5th Edition, 5548)</Definition>
+		<References>INT 1: IQ 9; M-4: 463.1;</References>
+		<Remarks>The body carrying the top mark is a separate object. Distinction: beacon, cardinal; beacon, isolated danger; beacon, lateral; beacon, safe water; beacon, special purpose/general; buoy, cardinal; buoy, installation; buoy, isolated danger; buoy, lateral; buoy, safe water; buoy, special purpose/general; daymark;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="TSELNE" Code="145" Type="Geo">
+		<Name>Traffic separation line</Name>
+		<Definition>A traffic separation scheme is a scheme which aims at reducing the risk of collision in congested and/or converging areas by separating traffic moving in opposite, or nearly opposite, directions.  (IHO Dictionary, S-32, 5th Edition, 5585).A traffic separation line is a line separating traffic lanes in which ships are travelling in opposite or nearly opposite directions; or separating traffic lanes designated for particular classes of ships proceeding in the same direction (IMO Ships Routeing, 6th Edition). </Definition>
+		<References>INT 1: IM 12; M-4: 435.1;</References>
+		<Remarks>Distinction: traffic separation scheme boundary; traffic separation scheme crossing; traffic separation scheme lane part; traffic separation scheme roundabout; traffic separation zone;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="TSSBND" Code="146" Type="Geo">
+		<Name>Traffic separation scheme boundary</Name>
+		<Definition>A traffic separation scheme is a scheme which aims at reducing the risk of collision in congested and/or converging areas by separating traffic moving in opposite, or nearly opposite, directions (IHO Dictionary, S-32, 5th Edition, 5585). The boundary of a traffic  separation scheme is the outer limit of a traffic lane part or a traffic separation scheme roundabout.</Definition>
+		<References>INT 1: not specified; M-4: 436;</References>
+		<Remarks>Distinction: traffic separation line; traffic separation scheme crossing; traffic separation scheme lane part; traffic separation scheme roundabout; traffic separation zone;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="TSSCRS" Code="147" Type="Geo">
+		<Name>Traffic separation scheme crossing</Name>
+		<Definition>A traffic separation scheme is a scheme which aims at reducing the risk of collision in congested and/or converging areas by separating traffic moving in opposite, or nearly opposite, directions (IHO Dictionary, S-32, 5th Edition, 5585). A traffic separation scheme crossing is defined area where traffic lanes cross.</Definition>
+		<References>INT 1: IM 23; M-4: 435.1;</References>
+		<Remarks>Distinction: traffic separation line; traffic separation boundary; traffic separation scheme lane part; traffic separation scheme roundabout; traffic separation zone;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="TSSLPT" Code="148" Type="Geo">
+		<Name>Traffic separation scheme lane part</Name>
+		<Definition>A traffic separation scheme is a scheme which aims at reducing the risk of collision in congested and/or converging areas by separating traffic moving in opposite, or nearly opposite, directions.  (IHO Dictionary, S-32, 5th Edition, 5585). A traffic lane is an area within defined limits in which one-way traffic flow is established (IMO Ships Routeing, 6th Edition). A traffic separation scheme lane part is an area of a traffic lane in which the direction of flow of traffic is uniform.</Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>The complete traffic lane may consist of one or more lane parts depending  on the shape of the lane.Distinction: recommended traffic lane part; traffic separation line; traffic separation boundary; traffic separation scheme crossing; traffic separation scheme roundabout; traffic separation zone;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="TSSRON" Code="149" Type="Geo">
+		<Name>Traffic separation scheme roundabout</Name>
+		<Definition>A traffic separation scheme is a scheme which aims to reduce the risk of collision in congested and/or converging areas by separating traffic moving in opposite, or nearly opposite, directions (IHO Dictionary, S-32, 5th Edition, 5585). A roundabout is a traffic separation scheme in which traffic moves in a counter-clockwise direction around a specified point or zone. (IHO Dictionary, S-32, 5th Edition, 4448)</Definition>
+		<References>INT 1: IM 21; M-4: 435.1;</References>
+		<Remarks>Distinction: traffic separation line; traffic separation boundary; traffic separation scheme crossing; traffic separation scheme lane part; traffic separation zone;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="TSEZNE" Code="150" Type="Geo">
+		<Name>Traffic separation zone</Name>
+		<Definition>A traffic separation scheme is a scheme which aims to reduce the risk of collision in congested and/or converging areas by separating traffic moving in opposite, or nearly opposite, directions (IHO Dictionary, S-32, 5th Edition, 5585).  A traffic separation zone is a zone separating the lanes in which ships are proceeding in opposite or nearly opposite directions; or separating traffic lanes designated for particular classes of ships proceeding in the same direction (IMO Ships Routeing, 6th Edition). </Definition>
+		<References>INT 1: IM 13, 20.1; M-4: 435.1;</References>
+		<Remarks>Distinction: traffic separation line; traffic separation scheme boundary; traffic separation scheme crossing; traffic separation scheme lane part; traffic separation scheme roundabout;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="TUNNEL" Code="151" Type="Geo">
+		<Name>Tunnel</Name>
+		<Definition>A passage that is open to the atmosphere at both ends, buried under the sea bed or laid over the sea floor or bored under the ground or through mountains.</Definition>
+		<References>INT 1: ID 16; M-4: 363.1;</References>
+		<Remarks>Distinction: railway; road;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="TWRTPT" Code="152" Type="Geo">
+		<Name>Two-way route part</Name>
+		<Definition>A two-way route is a route within defined limits inside which two-way traffic is established, aimed at providing safe passage of ships through waters where navigation is difficult or dangerous.  (IHO Dictionary, S-32, 5th, Edition 5712). A two-way route part is an area of a two-way route within which traffic flow is generally along one bearing (and possibly its reciprocal). </Definition>
+		<References>INT 1: IM 28.2; M-4: 435.6;</References>
+		<Remarks>The complete two-way route consists of one or more parts depending on the shape of the two-way route. The orientation of the two-way route part is defined by the centre line of the two-way route part relating to the general direction of the two-way route. Distinction: deep water route part; recommended traffic lane part; traffic separation scheme lane part;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="UWTROC" Code="153" Type="Geo">
+		<Name>Underwater/awash rock</Name>
+		<Definition>A concreted mass of stony material or of coral, awash or below water surface.</Definition>
+		<References>INT 1: IK 12, 13, 14-16; M-4: 421.3-5;</References>
+		<Remarks>Distinction: obstruction; sounding; wreck;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="UNSARE" Code="154" Type="Geo">
+		<Name>Unsurveyed area</Name>
+		<Definition>An area for which no bathymetric survey information is available.</Definition>
+		<References>INT 1: not specified; M-4: 417.8;</References>
+		<Remarks>No remarks. </Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="VEGATN" Code="155" Type="Geo">
+		<Name>Vegetation</Name>
+		<Definition>Collections of, or individual plants.</Definition>
+		<References>INT 1: IC 14, 30, 31.1-8, 32; M-4: 312.4; 354.1-2,4;</References>
+		<Remarks>Distinction: seabed area; weed/kelp;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="WATTUR" Code="156" Type="Geo">
+		<Name>Water turbulence</Name>
+		<Definition>The disturbance of water caused by the interaction of any combination of waves, currents, tidal streams, wind, shoal patches and obstructions.</Definition>
+		<References>INT 1: IH 44, 45; IK 17; M-4: 423.1; 423.2; 423.3;</References>
+		<Remarks>No remarks. </Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="WATFAL" Code="157" Type="Geo">
+		<Name>Waterfall</Name>
+		<Definition>A sudden descent of water over a step in the bed of a river. In place names commonly shortened to fall or falls, e.g. Niagara Falls.  (IHO Dictionary, S-32, 5th Edition).</Definition>
+		<References>INT 1: IC 22; M-4: 353.5;</References>
+		<Remarks>Distinction: rapids;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="WEDKLP" Code="158" Type="Geo">
+		<Name>Weed/Kelp</Name>
+		<Definition>Seaweed is the general name for marine plants of the Algae class which grow in long narrow ribbons. Also called 'sea grass'. (International Maritime Dictionary, 2nd Ed.)  Kelp is one of an order (laminariales) of usually large blade-shaped or vine-like brown algae.  (IHO Dictionary, S-32, 5th Edition, 2611).</Definition>
+		<References>INT 1: IJ 13.1, 13.2; M-4: 428.2;</References>
+		<Remarks>Kelp is an indication of the presence of submerged rocks (IHO Chart Specifications M-4). Distinction: seabed area; vegetation;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="WRECKS" Code="159" Type="Geo">
+		<Name>Wreck</Name>
+		<Definition>The ruined remains of a stranded or sunken vessel which has been rendered useless.  (IHO Dictionary, S-32, 5th Edition, 6027).</Definition>
+		<References>INT 1: IK 20-30; M-4: 422-422.8;</References>
+		<Remarks>Distinction: depth area; hulk; obstruction; sounding; underwater/awash rock;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="TS_FEB" Code="160" Type="Geo">
+		<Name>Tidal streams - Flood/Ebb</Name>
+		<Definition>A tidal stream (or tidal current) is a horizontal movement of water associated with the rise and fall of the tide caused by tide-producing forces (Adapted from IHO Dictionary, S-32, 5th Edition). Approximate tidal stream rates may be given as discrete rate values for flood and ebb flow during springs. </Definition>
+		<References>INT 1: IH 40-41; M-4: 407.4;</References>
+		<Remarks>Distinction: tidal stream - harmonic prediction; tidal stream - non harmonic prediction; tidal stream panel data; tidal stream - time series;</Remarks>
+	</ObjectClass>
+		<ObjectClass Acronym="ARCSLN" Code="161" Type="Geo">
+		<Name>Archipelagic Sea Lane</Name>
+		<Definition>Article 53 of the United Nations Convention on the Law of the Sea (UNCLOS) states that: 'an archipelagic State may designate sea lanes ..., suitable for the continuous and expeditious passage of foreign ships ... through ... its archipelagic waters and the adjacent territorial sea. ... All ships ... enjoy the right of archipelagic sea lanes passage in such sea lanes ... [which] include all normal passage routes used as routes for international navigation .. through archipelagic waters'. (Note: references to aircraft and air routes in UNCLOS have been omitted in these extracts from Article 53). (IHO M-4 B435.10, S-51 Appendix 2 Part II)</Definition>
+		<References>INT 1: M17; M-4: B-435.10;</References>
+		<Remarks>The object class Archipelagic Sea Lane encodes the area of an Archipelagic Sea Lane. Distinctions: administrative area; archipelagic sea lane axis; caution area; fairway; inshore traffic zone; recommended traffic lane part; restricted area; submarine transit lane; traffic separation scheme lane part; traffic separation zone; two-way route part.</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="ASLXIS" Code="162" Type="Geo">
+		<Name>Archipelagic Sea Lane Axis</Name>
+		<Definition>The reference line used to determine the maximum extents of an Archipelagic Sea Lane. It may not indicate the deepest water nor any recommended route of track. Article 53 of the United Nations Convetion on the Law of the Sea (UNCLOS) states that: 'an archipelagic State may designate sea lanes ..., suitable for the continuous and expeditious passage of foreign ships ... through ... its archipelagic waters and the adjacent territorial sea. ... All ships ... enjoy the right of archipelagic sea lanes passage in such sea lanes ... [which] include all normal passage routes used as routes for international navigation ... throuhg archipelagic waters'. </Definition>
+		<References>INT 1: M 17; M-4: B-435.10;</References>
+		<Remarks>In the definition, references to aircraft and air routes in UNCLOS have been omitted in these extracts from Article 53. (IHO M-4 B435.10, S-51 Appendix 2 Part II). Distinctions: administrative area; archipelagic sea lane; caution area; deep water route centreline; fairway; inshore traffic zone; navigation line; recommended route centreline; recommended track; recommended traffic lane part; restricted area; submarine transit lane; traffic separation scheme lane part; traffic separation line; traffic separation zone; two-way route part.</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="NEWOBJ" Code="163" Type="Geo">
+		<Name>New Object</Name>
+		<Definition>A new feature specified by the IMO and that affects safety of navigation which cannot adequately be encoded by any existing object class for use in an S-57 data set.</Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>The 'New Object' feature object class has been included in order to cater for possible future requirements of the IMO that affects safety of navigation which cannot adequately be encoded by any existing object class. It must not be used unless approved by the Transfer Standard Maintenance and Application Development Working Group (TSMAD) and the Colours and Symbols Maintenance Working Group (CSMWG) and issued as an ENC Encoding Bulletin. Distinction: caution area;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="M_ACCY" Code="300" Type="Meta">
+		<Name>Accuracy of data</Name>
+		<Definition> An area within which the best estimate of the overall accuracy of the data is uniform. The overall accuracy takes into account for example the source accuracy, chart scale, digitising accuracy etc.</Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>Distinction: quality of data; survey reliability;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="M_CSCL" Code="301" Type="Meta">
+		<Name>Compilation scale of data</Name>
+		<Definition>An area within which the data was originally compiled at a uniform scale. For example, it may define the scale of the paper chart from which the data was digitised. </Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>No remarks. </Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="M_COVR" Code="302" Type="Meta">
+		<Name>Coverage</Name>
+		<Definition> A geographical area that describes the coverage and extent of spatial objects. </Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>This object class is intended to support an indication of coverage.</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="M_HDAT" Code="303" Type="Meta">
+		<Name>Horizontal datum of data</Name>
+		<Definition> An area of uniform horizontal datum. </Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>Distinction: horizontal datum shift parameters;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="M_HOPA" Code="304" Type="Meta">
+		<Name>Horizontal datum shift parameters</Name>
+		<Definition>An area within which a uniform shift exists between a specific geodetic datum and the datum of the data within this area. </Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>Distinction: horizontal datum of data;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="M_NPUB" Code="305" Type="Meta">
+		<Name>Nautical publication information</Name>
+		<Definition>Used to relate additional nautical information or publications to the data.</Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>For example, geographic areas may be defined that relate to sections in Sailing Directions (Coast Pilots).  </Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="M_NSYS" Code="306" Type="Meta">
+		<Name>Navigational system of marks</Name>
+		<Definition>An area within which a specific system of navigational marks applies and/or a common direction of buoyage. </Definition>
+		<References>INT 1: IQ 130-130.6; M-4: 461.1-4;</References>
+		<Remarks>No remarks. </Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="M_PROD" Code="307" Type="Meta">
+		<Name>Production information</Name>
+		<Definition> An area within which uniform data production parameters apply. </Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>No remarks. </Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="M_QUAL" Code="308" Type="Meta">
+		<Name>Quality of data</Name>
+		<Definition>An area within which a uniform assessment of the quality of the data exists.</Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>Distinction: accuracy of data; survey reliability;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="M_SDAT" Code="309" Type="Meta">
+		<Name>Sounding datum</Name>
+		<Definition>An area of uniform sounding datum.</Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>Distinction: vertical datum;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="M_SREL" Code="310" Type="Meta">
+		<Name>Survey reliability</Name>
+		<Definition>An area within which a uniform assessment of the reliability of source survey information exists. </Definition>
+		<References>INT 1: not specified; M-4: 170.2; 178;</References>
+		<Remarks>Distinction: accuracy of data; quality of data;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="M_UNIT" Code="311" Type="Meta">
+		<Name>Units of measurement of data</Name>
+		<Definition>An area of uniform units of depth and/or height measurement. </Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>No remarks. </Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="M_VDAT" Code="312" Type="Meta">
+		<Name>Vertical datum of data</Name>
+		<Definition> An area of uniform vertical datum. </Definition>
+		<References>INT 1: not specified; M-4: not specified;</References>
+		<Remarks>Distinction: sounding datum;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="C_AGGR" Code="400" Type="Collection">
+		<Name>Aggregation</Name>
+		<Definition>Used to identify an aggregation of two or more objects. This aggregation may be named.</Definition>
+		<Remarks>An aggregation could be used to combine objects that are related in some way (is-a-part-of, is-a-component-of) into a higher level object.For example: an aggregation relationship may be used to form a traffic separation scheme from traffic separation lane parts, boundaries, etc.Distinction: association; stacked on/stacked under;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="C_ASSO" Code="401" Type="Collection">
+		<Name>Association</Name>
+		<Definition> Used to identify an association between two or more objects.  The association may be named. </Definition>
+		<Remarks>For example: an association relationship may be used to indicate that a buoy marks a wreck. Distinction: aggregation; stacked on/stacked under;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="C_STAC" Code="402" Type="Collection">
+		<Name>Stacked on/stacked under</Name>
+		<Definition> Used to identify the order of stacking of objects (eg. bridge on top of road). </Definition>
+		<Remarks>The order in which objects are stacked is indicated in the Feature Record to Feature Object Pointer field (FFPT, refer to S-57 Part 3). Distinction: aggregation; association;</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="AREAS_" Code="500" Type="Cartographic">
+		<Name>Cartographic area</Name>
+		<Definition>An area in which a certain cartographic symbolization is required.</Definition>
+		<Remarks>This cartographic object is required for paper chart and ECDIS applications.  To be used only when the required area symbolization cannot be derived automatically from the corresponding real world object and its attributes.  </Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="LINES_" Code="501" Type="Cartographic">
+		<Name>Cartographic line</Name>
+		<Definition>A line with a certain cartographic symbolization. </Definition>
+		<Remarks>This cartographic object is required for paper chart and ECDIS applications.  To be used only when the required area symbolization cannot be derived automatically from the corresponding real world object and its attributes.  </Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="CSYMB_" Code="502" Type="Cartographic">
+		<Name>Cartographic symbol</Name>
+		<Definition>A point with a certain cartographic symbolization.</Definition>
+		<Remarks>This cartographic object is required for ECDIS and paper chart applications.  To be used only when either the symbol itself, or full details of the required symbol's location/orientation/scaling, cannot be derived from the corresponding real word object(s) and attributes.  </Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="COMPS_" Code="503" Type="Cartographic">
+		<Name>Compass</Name>
+		<Definition>A circle graduated in degrees clockwise form 0 (north) to 360 used to facilitate measurements of direction. May be oriented to true or magnetic north. (adapted from IHO Dictionary, S-32, 5th Edition, 942)</Definition>
+		<Remarks>This object is used to transfer the parameters required to represent the magnetic and/or true compass cartographically.</Remarks>
+	</ObjectClass>
+	<ObjectClass Acronym="TEXTS_" Code="504" Type="Cartographic">
+		<Name>Text</Name>
+		<Definition>A text string that is to be represented using a certain cartographic symbolization. </Definition>
+		<Remarks>May be used for all text strings which are required to be represented in graphical form with particular positioning and display characteristics.  Rotation and curving of text can be handled by the use of 2 or more x,y coordinate pairs in the associated spatial object. </Remarks>
+	</ObjectClass>
+</ObjectClasses>

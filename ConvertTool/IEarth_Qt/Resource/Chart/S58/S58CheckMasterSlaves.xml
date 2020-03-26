@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<S58>
+	<Features>
+		<Feature acronym="BUISGL">
+			<Test id="1781" />
+		</Feature>
+		<Feature acronym="DAYMAR">
+			<Test id="1724" />
+			<Test id="1775" />
+		</Feature>
+		<Feature acronym="FOGSIG">
+			<Test id="1724" />
+			<Test id="1775" />
+		</Feature>
+		<Feature acronym="LIGHTS">
+			<Test id="1724" />
+			<Test id="1750" />
+			<Test id="1775" />
+			<Test id="1794" />
+		</Feature>
+		<Feature acronym="LNDMRK">
+			<Test id="1781" />
+		</Feature>
+		<Feature acronym="SISTAT">
+			<Test id="1724" />
+			<Test id="1775" />
+		</Feature>
+		<Feature acronym="SISTAW">
+			<Test id="1724" />
+			<Test id="1775" />
+		</Feature>
+		<Feature acronym="RADSTA">
+			<Test id="1724" />
+			<Test id="1775" />
+		</Feature>
+		<Feature acronym="RADRFL">
+			<Test id="1721" />
+		</Feature>
+		<Feature acronym="RDOSTA">
+			<Test id="1724" />
+			<Test id="1775" />
+		</Feature>
+		<Feature acronym="RETRFL">
+			<Test id="1724" />
+			<Test id="1775" />
+		</Feature>
+		<Feature acronym="RTPBCN">
+			<Test id="1724" />
+			<Test id="1775" />
+		</Feature>
+		<Feature acronym="TOPMAR">
+			<Test id="1724" />
+			<Test id="1775" />
+		</Feature>
+	</Features>
+</S58>

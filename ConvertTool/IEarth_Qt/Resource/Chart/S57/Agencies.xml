@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Agencies>
+	<Agency Token="AE" Code="530">
+		<AgencyName>Ministry of Communications</AgencyName>
+	</Agency>
+	<Agency Token="AR" Code="1">
+		<AgencyName>Servicio de Hidrografia Naval</AgencyName>
+	</Agency>
+	<Agency Token="AU" Code="10">
+		<AgencyName>Hydrographic Service</AgencyName>
+	</Agency>
+	<Agency Token="BH" Code="20">
+		<AgencyName>Hydrographic Section</AgencyName>
+	</Agency>
+	<Agency Token="BE" Code="30">
+		<AgencyName>Antwerpse Zeediensten Hydrografie</AgencyName>
+	</Agency>
+	<Agency Token="B1" Code="31">
+		<AgencyName>Dienst der Kust Hydrografie</AgencyName>
+	</Agency>
+	<Agency Token="BR" Code="40">
+		<AgencyName>Diretoria de Hidrografia e Navegacao</AgencyName>
+	</Agency>
+	<Agency Token="CA" Code="50">
+		<AgencyName>Canadian Hydrographic Service</AgencyName>
+	</Agency>
+	<Agency Token="CL" Code="60">
+		<AgencyName>Servicio Hidrogr fico y Oceanogr fico de la Armada</AgencyName>
+	</Agency>
+	<Agency Token="CN" Code="70">
+		<AgencyName>Maritime Safety Administration</AgencyName>
+	</Agency>
+	<Agency Token="C1" Code="71">
+		<AgencyName>Navigation Guarantee Department</AgencyName>
+	</Agency>
+	<Agency Token="C2" Code="72">
+		<AgencyName>Hong Kong Hydrographic Service</AgencyName>
+	</Agency>
+	<Agency Token="HR" Code="80">
+		<AgencyName>Drzavni Hidrografski Institut</AgencyName>
+	</Agency>
+	<Agency Token="CU" Code="90">
+		<AgencyName>Instituto Cubano de Hidrografia</AgencyName>
+	</Agency>
+	<Agency Token="CY" Code="100">
+		<AgencyName>Department of Lands &amp; Surveys</AgencyName>
+	</Agency>
+	<Agency Token="DK" Code="110">
+		<AgencyName>Kort-Og Matrikelstyrelsen</AgencyName>
+	</Agency>
+	<Agency Token="D1" Code="111">
+		<AgencyName>Farvandsvaesenet</AgencyName>
+	</Agency>
+	<Agency Token="DO" Code="120">
+		<AgencyName>Departamento Hidrografico</AgencyName>
+	</Agency>
+	<Agency Token="DZ" Code="610">
+		<AgencyName>Service Hydrographique des forces navales</AgencyName>
+	</Agency>
+	<Agency Token="EC" Code="130">
+		<AgencyName>Instituto Oceanografico de la Armada</AgencyName>
+	</Agency>
+	<Agency Token="EG" Code="140">
+		<AgencyName>Shobat al Misaha al Baharia</AgencyName>
+	</Agency>
+	<Agency Token="FJ" Code="150">
+		<AgencyName>Fiji Hydrographic Service</AgencyName>
+	</Agency>
+	<Agency Token="FI" Code="160">
+		<AgencyName>Merenkulkuhallitus</AgencyName>
+	</Agency>
+	<Agency Token="FR" Code="170">
+		<AgencyName>Service Hydrographique et Oceanographique de la Marine</AgencyName>
+	</Agency>
+	<Agency Token="DE" Code="180">
+		<AgencyName>Bundesamt fuer Seeschiffahrt und Hydrographie</AgencyName>
+	</Agency>
+	<Agency Token="GR" Code="190">
+		<AgencyName>Hellenic Navy Hydrographic Service</AgencyName>
+	</Agency>
+	<Agency Token="GT" Code="200">
+		<AgencyName>Departamento de Sistemas Hidraulicos</AgencyName>
+	</Agency>
+	<Agency Token="G1" Code="201">
+		<AgencyName>Instituto Geogr fico Militar</AgencyName>
+	</Agency>
+	<Agency Token="IS" Code="210">
+		<AgencyName>Sjomaelingar Islands</AgencyName>
+	</Agency>
+	<Agency Token="IN" Code="220">
+		<AgencyName>Naval Hydrographic Office</AgencyName>
+	</Agency>
+	<Agency Token="ID" Code="230">
+		<AgencyName>Dinas Hidro-Oseanografi (Dishidros)</AgencyName>
+	</Agency>
+	<Agency Token="IR" Code="240">
+		<AgencyName>Ports and Shipping Organization</AgencyName>
+	</Agency>
+	<Agency Token="IT" Code="250">
+		<AgencyName>Istituto Idrografico della Marina</AgencyName>
+	</Agency>
+	<Agency Token="JP" Code="260">
+		<AgencyName>Japan Hydrographic Department</AgencyName>
+	</Agency>
+	<Agency Token="KR" Code="270">
+		<AgencyName>Hydrographic Department of the DPRK</AgencyName>
+	</Agency>
+	<Agency Token="KP" Code="280">
+		<AgencyName>Office of Hydrographic Affairs</AgencyName>
+	</Agency>
+  <Agency Token="MY" Code="290">
+		<AgencyName>Royal Malaysian Navy Hydrographic Department</AgencyName>
+	</Agency>
+	<Agency Token="MC" Code="300">
+		<AgencyName>Departement des Travaux Publics et des Affaires Sociales</AgencyName>
+	</Agency>
+	<Agency Token="NL" Code="310">
+		<AgencyName>Dienst der Hydrografie Koninklijke Marine</AgencyName>
+	</Agency>
+	<Agency Token="NZ" Code="320">
+		<AgencyName>Royal New Zealand Navy Hydrographic Office</AgencyName>
+	</Agency>
+	<Agency Token="NG" Code="330">
+		<AgencyName>Nigerian Navy Hydrographic Office</AgencyName>
+	</Agency>
+	<Agency Token="NO" Code="340">
+		<AgencyName>Norwegian Hydrographic Service</AgencyName>
+	</Agency>
+	<Agency Token="N1" Code="341">
+		<AgencyName>Electronic Chart Centre</AgencyName>
+	</Agency>
+	<Agency Token="OM" Code="350">
+		<AgencyName>National Hydrographic Organization</AgencyName>
+	</Agency>
+	<Agency Token="PQ" Code="360">
+		<AgencyName>Pakistan Hydrographic Department</AgencyName>
+	</Agency>
+	<Agency Token="PG" Code="370">
+		<AgencyName>Department of Transport</AgencyName>
+	</Agency>
+	<Agency Token="PE" Code="380">
+		<AgencyName>Direccion de Hidrografia y Navegacion de la Marina</AgencyName>
+	</Agency>
+	<Agency Token="PH" Code="390">
+		<AgencyName>Coast &amp; Geodetic Survey Dept.</AgencyName>
+	</Agency>
+	<Agency Token="PL" Code="400">
+		<AgencyName>Biuro Hydrograficzne Marynarki Wojennej</AgencyName>
+	</Agency>
+	<Agency Token="PT" Code="410">
+		<AgencyName>Instituto Hidrografico</AgencyName>
+	</Agency>
+	<Agency Token="RU" Code="420">
+		<AgencyName>Head Department of Navigation &amp; Oceanography</AgencyName>
+	</Agency>
+	<Agency Token="SG" Code="430">
+		<AgencyName>Hydrographic Department</AgencyName>
+	</Agency>
+	<Agency Token="ZA" Code="440">
+		<AgencyName>South African Navy Hydrographic Office</AgencyName>
+	</Agency>
+	<Agency Token="ES" Code="450">
+		<AgencyName>Instituto Hidrogr fico de la Marina</AgencyName>
+	</Agency>
+	<Agency Token="LK" Code="460">
+		<AgencyName>National Aquatic Resources Agency</AgencyName>
+	</Agency>
+	<Agency Token="SR" Code="470">
+		<AgencyName>Ministry of Transports</AgencyName>
+	</Agency>
+	<Agency Token="SE" Code="480">
+		<AgencyName>Sjoekarteavdelningen</AgencyName>
+	</Agency>
+	<Agency Token="SY" Code="490">
+		<AgencyName>General Directorate of Ports</AgencyName>
+	</Agency>
+	<Agency Token="TH" Code="500">
+		<AgencyName>Krom Utoksastr</AgencyName>
+	</Agency>
+	<Agency Token="TT" Code="510">
+		<AgencyName>Trinidad &amp; Tobago Hydrographic Unit</AgencyName>
+	</Agency>
+	<Agency Token="TR" Code="520">
+		<AgencyName>Seyir</AgencyName>
+	</Agency>
+	<Agency Token="GB" Code="540">
+		<AgencyName>Hydrographic Office</AgencyName>
+	</Agency>
+	<Agency Token="US" Code="550">
+		<AgencyName>Office of Coast Survey</AgencyName>
+	</Agency>
+	<Agency Token="U1" Code="551">
+		<AgencyName>National Imagery and Mapping Agency</AgencyName>
+	</Agency>
+	<Agency Token="U2" Code="552">
+		<AgencyName>Naval Oceanography Command</AgencyName>
+	</Agency>
+	<Agency Token="U3" Code="553">
+		<AgencyName>US Army Corps of Engineers</AgencyName>
+	</Agency>
+	<Agency Token="UY" Code="560">
+		<AgencyName>Servicio de Oceanografia</AgencyName>
+	</Agency>
+	<Agency Token="VE" Code="570">
+		<AgencyName>Direccion de Hidrografia y Navegacion</AgencyName>
+	</Agency>
+	<Agency Token="YU" Code="580">
+		<AgencyName>Hydrographic Institute of the Navy</AgencyName>
+	</Agency>
+	<Agency Token="ZR" Code="590">
+		<AgencyName>Direction de la Marine et des Voies Navigables</AgencyName>
+	</Agency>
+	<Agency Token="AL" Code="600">
+		<AgencyName>Sherbimi Hidrografik Shqiptar</AgencyName>
+	</Agency>
+	<Agency Token="AO" Code="620">
+		<AgencyName>Not known</AgencyName>
+	</Agency>
+	<Agency Token="AG" Code="630">
+		<AgencyName>Department of Marine Services and Merchant Shipping</AgencyName>
+	</Agency>
+	<Agency Token="AW" Code="640">
+		<AgencyName>Not known</AgencyName>
+	</Agency>
+	<Agency Token="BS" Code="650">
+		<AgencyName>Department of Lands and Surveys</AgencyName>
+	</Agency>
+	<Agency Token="BD" Code="660">
+		<AgencyName>Department of Hydrography</AgencyName>
+	</Agency>
+	<Agency Token="BB" Code="670">
+		<AgencyName>Barbados Port Authority</AgencyName>
+	</Agency>
+	<Agency Token="BZ" Code="680">
+		<AgencyName>Not known</AgencyName>
+	</Agency>
+	<Agency Token="BJ" Code="690">
+		<AgencyName>Direction Generale du Port Autonome de Cotonou</AgencyName>
+	</Agency>
+	<Agency Token="BO" Code="700">
+		<AgencyName>Servicio de Hidrografia Naval</AgencyName>
+	</Agency>
+	<Agency Token="BN" Code="710">
+		<AgencyName>Department of Marine</AgencyName>
+	</Agency>
+	<Agency Token="BG" Code="720">
+		<AgencyName>Hidrografska Sluzhba Pri Ministerstvo Na Otbranata</AgencyName>
+	</Agency>
+	<Agency Token="KH" Code="730">
+		<AgencyName>Service de l&apos;Hydraulique et des Voies Navigables</AgencyName>
+	</Agency>
+	<Agency Token="CM" Code="740">
+		<AgencyName>Office National des Ports du Cameroun</AgencyName>
+	</Agency>
+	<Agency Token="CV" Code="750">
+		<AgencyName>Direccao Geral da Marinha Mercante</AgencyName>
+	</Agency>
+	<Agency Token="CO" Code="760">
+		<AgencyName>Ministerio de Defensa Nacional</AgencyName>
+	</Agency>
+	<Agency Token="KM" Code="770">
+		<AgencyName>Not known</AgencyName>
+	</Agency>
+	<Agency Token="CG" Code="780">
+		<AgencyName>Direction du Port de Pointe-Noire</AgencyName>
+	</Agency>
+	<Agency Token="CK" Code="790">
+		<AgencyName>Department of Trade Labour and Transport</AgencyName>
+	</Agency>
+	<Agency Token="CR" Code="800">
+		<AgencyName>Ministerio de Obras Publicas y Transportes</AgencyName>
+	</Agency>
+	<Agency Token="CI" Code="810">
+		<AgencyName>Direction G_n_rale du Port Autonome d&apos;Abidjan</AgencyName>
+	</Agency>
+	<Agency Token="DJ" Code="820">
+		<AgencyName>Ministere du Port et des Affaires Maritimes</AgencyName>
+	</Agency>
+	<Agency Token="DM" Code="830">
+		<AgencyName>Not known</AgencyName>
+	</Agency>
+	<Agency Token="SV" Code="840">
+		<AgencyName>Instituto Geografico Nacional</AgencyName>
+	</Agency>
+	<Agency Token="GQ" Code="850">
+		<AgencyName>Not known</AgencyName>
+	</Agency>
+	<Agency Token="ER" Code="860">
+		<AgencyName>Port and Maritime Transport Authority</AgencyName>
+	</Agency>
+	<Agency Token="EE" Code="870">
+		<AgencyName>Tuletorni - Huedrograafiatalitus</AgencyName>
+	</Agency>
+	<Agency Token="ET" Code="880">
+		<AgencyName>Ministry of Transport and Communications</AgencyName>
+	</Agency>
+	<Agency Token="GA" Code="890">
+		<AgencyName>Service de la Signalisation Maritime</AgencyName>
+	</Agency>
+	<Agency Token="GM" Code="900">
+		<AgencyName>Gambia Ports Authority</AgencyName>
+	</Agency>
+	<Agency Token="GH" Code="910">
+		<AgencyName>Ghana Ports and Harbours Authority</AgencyName>
+	</Agency>
+	<Agency Token="GD" Code="920">
+		<AgencyName>Grenada Ports Authority</AgencyName>
+	</Agency>
+	<Agency Token="GN" Code="930">
+		<AgencyName>Minist_re des Transports et Travaux Publics</AgencyName>
+	</Agency>
+	<Agency Token="GW" Code="940">
+		<AgencyName>Servicos da Marinha</AgencyName>
+	</Agency>
+	<Agency Token="GY" Code="950">
+		<AgencyName>Transport and Harbours Department</AgencyName>
+	</Agency>
+	<Agency Token="HT" Code="960">
+		<AgencyName>Service Maritime et de Navigation d&apos;Haiti</AgencyName>
+	</Agency>
+	<Agency Token="HN" Code="970">
+		<AgencyName>Departamento de Geologia e Hidrografia</AgencyName>
+	</Agency>
+	<Agency Token="IQ" Code="980">
+		<AgencyName>Marine Department</AgencyName>
+	</Agency>
+	<Agency Token="IE" Code="990">
+		<AgencyName>Department of the Marine</AgencyName>
+	</Agency>
+	<Agency Token="IL" Code="1000">
+		<AgencyName>Administration of Shipping and Ports</AgencyName>
+	</Agency>
+	<Agency Token="JM" Code="1010">
+		<AgencyName>Harbour Master&apos;s Department</AgencyName>
+	</Agency>
+	<Agency Token="JO" Code="1020">
+		<AgencyName>The Ports Corporation</AgencyName>
+	</Agency>
+	<Agency Token="KE" Code="1030">
+		<AgencyName>Survey of Kenya</AgencyName>
+	</Agency>
+	<Agency Token="KI" Code="1040">
+		<AgencyName>Ministry of Transport and Communications</AgencyName>
+	</Agency>
+	<Agency Token="KW" Code="1050">
+		<AgencyName>Ministry of Communications</AgencyName>
+	</Agency>
+	<Agency Token="LV" Code="1060">
+		<AgencyName>Latvijas Hidrografijas Dienests</AgencyName>
+	</Agency>
+	<Agency Token="LB" Code="1070">
+		<AgencyName>Service du Transport Maritime</AgencyName>
+	</Agency>
+	<Agency Token="LR" Code="1080">
+		<AgencyName>Ministry of Lands</AgencyName>
+	</Agency>
+	<Agency Token="LY" Code="1090">
+		<AgencyName>Not known</AgencyName>
+	</Agency>
+	<Agency Token="LT" Code="1100">
+		<AgencyName>Klaipeda State Seaport Authority</AgencyName>
+	</Agency>
+	<Agency Token="MG" Code="1110">
+		<AgencyName>Foiben-Taosarintanin&apos;i Madagasikara</AgencyName>
+	</Agency>
+	<Agency Token="MW" Code="1120">
+		<AgencyName>Hydrographic Survey Unit</AgencyName>
+	</Agency>
+	<Agency Token="MV" Code="1130">
+		<AgencyName>Department of Information and Broadcasting</AgencyName>
+	</Agency>
+	<Agency Token="MT" Code="1140">
+		<AgencyName>Malta Maritime Authority Ports Directorate</AgencyName>
+	</Agency>
+	<Agency Token="MH" Code="1150">
+		<AgencyName>Ministry of Resources and Development</AgencyName>
+	</Agency>
+	<Agency Token="MR" Code="1160">
+		<AgencyName>Ministere de la Defense Nationale</AgencyName>
+	</Agency>
+	<Agency Token="MU" Code="1170">
+		<AgencyName>Ministry of Housing</AgencyName>
+	</Agency>
+	<Agency Token="MX" Code="1180">
+		<AgencyName>Direccion General de Oceanografia Naval</AgencyName>
+	</Agency>
+	<Agency Token="FM" Code="1190">
+		<AgencyName>Not known</AgencyName>
+	</Agency>
+	<Agency Token="MA" Code="1200">
+		<AgencyName>Service Hydrographique et Oceanographique de la Marine Royale</AgencyName>
+	</Agency>
+	<Agency Token="MZ" Code="1210">
+		<AgencyName>Instituto Nacional de Hidrografia e Navegacao</AgencyName>
+	</Agency>
+	<Agency Token="MM" Code="1220">
+		<AgencyName>Naval Hydrographic Office</AgencyName>
+	</Agency>
+	<Agency Token="NA" Code="1230">
+		<AgencyName>Not known</AgencyName>
+	</Agency>
+	<Agency Token="NR" Code="1240">
+		<AgencyName>Nauru Phosphate Corporation</AgencyName>
+	</Agency>
+	<Agency Token="NI" Code="1250">
+		<AgencyName>Secretaria de Planificacion y Presupuesto de la Presidencia de la Republica</AgencyName>
+	</Agency>
+	<Agency Token="PW" Code="1260">
+		<AgencyName>Bureau of Domestic Affairs</AgencyName>
+	</Agency>
+	<Agency Token="PA" Code="1270">
+		<AgencyName>Instituto Geografico Nacional</AgencyName>
+	</Agency>
+	<Agency Token="PY" Code="1280">
+		<AgencyName>Direccion de Hidrografia y Navegacion</AgencyName>
+	</Agency>
+	<Agency Token="QA" Code="1290">
+		<AgencyName>Ministry of Municipal Affairs and Agriculture</AgencyName>
+	</Agency>
+	<Agency Token="RO" Code="1300">
+		<AgencyName>Directia Hidrografica Maritima</AgencyName>
+	</Agency>
+	<Agency Token="KN" Code="1310">
+		<AgencyName>St. Christopher Air and Sea Ports Authorit</AgencyName>
+	</Agency>
+	<Agency Token="LC" Code="1320">
+		<AgencyName>Ministry of Planning</AgencyName>
+	</Agency>
+	<Agency Token="VC" Code="1330">
+		<AgencyName>Ministry of Communications and Works</AgencyName>
+	</Agency>
+	<Agency Token="WS" Code="1340">
+		<AgencyName>Ministry of Transport</AgencyName>
+	</Agency>
+	<Agency Token="ST" Code="1350">
+		<AgencyName>Not known</AgencyName>
+	</Agency>
+	<Agency Token="SA" Code="1360">
+		<AgencyName>Military Survey Department</AgencyName>
+	</Agency>
+	<Agency Token="SN" Code="1370">
+		<AgencyName>Ministere de l&apos;Equipement</AgencyName>
+	</Agency>
+	<Agency Token="SC" Code="1380">
+		<AgencyName>Hydrographic and Topographic Brigade</AgencyName>
+	</Agency>
+	<Agency Token="SL" Code="1390">
+		<AgencyName>Department of Transport and Communications</AgencyName>
+	</Agency>
+	<Agency Token="SI" Code="1400">
+		<AgencyName>Not known</AgencyName>
+	</Agency>
+	<Agency Token="SB" Code="1410">
+		<AgencyName>Solomon Islands Hydrographic Unit</AgencyName>
+	</Agency>
+	<Agency Token="SO" Code="1420">
+		<AgencyName>Somali Hydrographic Office</AgencyName>
+	</Agency>
+	<Agency Token="SD" Code="1430">
+		<AgencyName>Survey Department</AgencyName>
+	</Agency>
+	<Agency Token="TZ" Code="1440">
+		<AgencyName>Tanzania Harbours Authority</AgencyName>
+	</Agency>
+	<Agency Token="TG" Code="1450">
+		<AgencyName>University of Benin</AgencyName>
+	</Agency>
+	<Agency Token="TK" Code="1460">
+		<AgencyName>Not known</AgencyName>
+	</Agency>
+	<Agency Token="TN" Code="1470">
+		<AgencyName>Service Hydrographique et Oceanographique</AgencyName>
+	</Agency>
+	<Agency Token="TV" Code="1480">
+		<AgencyName>Ministry of Labour</AgencyName>
+	</Agency>
+	<Agency Token="UA" Code="1490">
+		<AgencyName>National Agency of Marine Research and Technology</AgencyName>
+	</Agency>
+	<Agency Token="VU" Code="1500">
+		<AgencyName>Vanuatu Hydrographic Unit</AgencyName>
+	</Agency>
+	<Agency Token="VN" Code="1510">
+		<AgencyName>Not known</AgencyName>
+	</Agency>
+	<Agency Token="YE" Code="1520">
+		<AgencyName>Ministry of Communications</AgencyName>
+	</Agency>
+	<Agency Token="QM" Code="1600">
+		<AgencyName>Antarctic Treaty Consultative Committee</AgencyName>
+	</Agency>
+	<Agency Token="QN" Code="1610">
+		<AgencyName>International Radio Consultative Committee</AgencyName>
+	</Agency>
+	<Agency Token="QO" Code="1620">
+		<AgencyName>Comite International Radio-Maritime</AgencyName>
+	</Agency>
+	<Agency Token="QP" Code="1630">
+		<AgencyName>IHO Data Centre for Digital Bathymetry</AgencyName>
+	</Agency>
+	<Agency Token="QQ" Code="1640">
+		<AgencyName>Digital Geographic Information Working Group</AgencyName>
+	</Agency>
+	<Agency Token="QR" Code="1650">
+		<AgencyName>European Communities Commission</AgencyName>
+	</Agency>
+	<Agency Token="QS" Code="1660">
+		<AgencyName>European Harbour Masters Association</AgencyName>
+	</Agency>
+	<Agency Token="QT" Code="1670">
+		<AgencyName>Food and Agriculture Organization</AgencyName>
+	</Agency>
+	<Agency Token="QU" Code="1680">
+		<AgencyName>Federation Internationale des Geometres</AgencyName>
+	</Agency>
+	<Agency Token="QV" Code="1690">
+		<AgencyName>International Atomic Energy Agency</AgencyName>
+	</Agency>
+	<Agency Token="QW" Code="1700">
+		<AgencyName>International Association of Geodesy</AgencyName>
+	</Agency>
+	<Agency Token="QX" Code="1710">
+		<AgencyName>International Association of Institutes of Navigation</AgencyName>
+	</Agency>
+	<Agency Token="QY" Code="1720">
+		<AgencyName>International Association of Lighthouse Authorities</AgencyName>
+	</Agency>
+	<Agency Token="QZ" Code="1730">
+		<AgencyName>International Association of Ports and Harbours</AgencyName>
+	</Agency>
+	<Agency Token="XA" Code="1740">
+		<AgencyName>International Cartographic Association</AgencyName>
+	</Agency>
+	<Agency Token="XB" Code="1750">
+		<AgencyName>International Cable Protection Committee</AgencyName>
+	</Agency>
+	<Agency Token="XC" Code="1760">
+		<AgencyName>International Chamber of Shipping</AgencyName>
+	</Agency>
+	<Agency Token="XD" Code="1770">
+		<AgencyName>International Commission for the Scientific Exploration of the Mediterranean</AgencyName>
+	</Agency>
+	<Agency Token="XE" Code="1780">
+		<AgencyName>International Council of Scientific Unions</AgencyName>
+	</Agency>
+	<Agency Token="XF" Code="1790">
+		<AgencyName>International Electrotechnical Commission</AgencyName>
+	</Agency>
+	<Agency Token="XG" Code="1800">
+		<AgencyName>International Geographical Union</AgencyName>
+	</Agency>
+	<Agency Token="AA" Code="1810">
+		<AgencyName>International Hydrographic Organization</AgencyName>
+	</Agency>
+	<Agency Token="XH" Code="1820">
+		<AgencyName>International Maritime Academy</AgencyName>
+	</Agency>
+	<Agency Token="XI" Code="1830">
+		<AgencyName>International Maritime Organization</AgencyName>
+	</Agency>
+	<Agency Token="XJ" Code="1840">
+		<AgencyName>International Maritime Satellite Organization</AgencyName>
+	</Agency>
+	<Agency Token="XK" Code="1850">
+		<AgencyName>Intergovernmental Oceanographic Commission</AgencyName>
+	</Agency>
+	<Agency Token="XL" Code="1860">
+		<AgencyName>International Organization for Standardization</AgencyName>
+	</Agency>
+	<Agency Token="XM" Code="1970">
+		<AgencyName>International Society for Photogrammetry and Remote Sensing</AgencyName>
+	</Agency>
+	<Agency Token="XN" Code="1880">
+		<AgencyName>International Telecommunication Union</AgencyName>
+	</Agency>
+	<Agency Token="XO" Code="1890">
+		<AgencyName>International Union of Geodesy and Geophysics</AgencyName>
+	</Agency>
+	<Agency Token="XP" Code="1900">
+		<AgencyName>International Union of Surveying and Mapping</AgencyName>
+	</Agency>
+	<Agency Token="XQ" Code="1910">
+		<AgencyName>Oil Companies International Marine Forum</AgencyName>
+	</Agency>
+	<Agency Token="XR" Code="1920">
+		<AgencyName>Pan American Institute of Geography and History</AgencyName>
+	</Agency>
+	<Agency Token="XS" Code="1930">
+		<AgencyName>Radio Technical Commission for Maritime Services</AgencyName>
+	</Agency>
+	<Agency Token="XT" Code="1940">
+		<AgencyName>Scientific Commission on Antarctic Research</AgencyName>
+	</Agency>
+	<Agency Token="XU" Code="1950">
+		<AgencyName>The Hydrographic Society</AgencyName>
+	</Agency>
+	<Agency Token="XV" Code="1960">
+		<AgencyName>World Meteorological Organization</AgencyName>
+	</Agency>
+	<Agency Token="XW" Code="1970">
+		<AgencyName>United Nations</AgencyName>
+	</Agency>
+	<Agency Token="MS" Code="2010">
+		<AgencyName> Cooperating Hydrographic Offices in the Malacca and Singapore Straits (Indonesia, Japan, Malaysia and Singapore)</AgencyName>
+	</Agency>
+	<Agency Token="PM" Code="2020">
+		<AgencyName>PRIMAR - European ENC Coordinating Centre</AgencyName>
+	</Agency>
+	<Agency Token="IC" Code="2030">
+		<AgencyName>International Centre for ENC (IC-ENC)</AgencyName>
+	</Agency>
+		<Agency Token="EA" Code="2040">
+		<AgencyName>East Asia Hydrographic Commission (EAHC)</AgencyName>
+	</Agency>
+	<Agency Token="1A" Code="6682">
+		<AgencyName>ARAMCO</AgencyName>
+	</Agency>
+	<Agency Token="1B" Code="0">
+		<AgencyName>UKHO test and sample datasets</AgencyName>
+	</Agency>
+	<Agency Token="1C" Code="7196">
+		<AgencyName>CARIS</AgencyName>
+	</Agency>
+	<Agency Token="1D" Code="7453">
+		<AgencyName>Amt fuer Geoinformationswesen der Bundeswehr</AgencyName>
+	</Agency>
+	<Agency Token="1E" Code="7710">
+		<AgencyName>TerraNautical Data</AgencyName>
+	</Agency>
+	<Agency Token="1F" Code="7967">
+		<AgencyName>Force Technology</AgencyName>
+	</Agency>
+	<Agency Token="1G" Code="7968">
+		<AgencyName>_sterreichische Donau-Technik-GmbH</AgencyName>
+	</Agency>
+	<Agency Token="1H" Code="7969">
+		<AgencyName>Vituki Water Resources Research Centre Hungary</AgencyName>
+	</Agency>
+	<Agency Token="1I" Code="7970">
+		<AgencyName>Navionics S.p.A.</AgencyName>
+	</Agency>
+	<Agency Token="1K" Code="7972">
+		<AgencyName>Kingway Technology Co</AgencyName>
+	</Agency>
+	<Agency Token="1L" Code="7973">
+		<AgencyName>Laser-Scan Ltd</AgencyName>
+	</Agency>
+	<Agency Token="1M" Code="7974">
+		<AgencyName>Channel of Moscow</AgencyName>
+	</Agency>
+	<Agency Token="1N" Code="7975">
+		<AgencyName>Nautical Data International</AgencyName>
+	</Agency>
+	<Agency Token="1O" Code="7976">
+		<AgencyName>Offshore Charts Ltd.</AgencyName>
+	</Agency>
+	<Agency Token="1P" Code="7977">
+		<AgencyName>Port Of London</AgencyName>
+	</Agency>
+	<Agency Token="1Q" Code="7978">
+		<AgencyName>Quality Positioning Services</AgencyName>
+	</Agency>
+	<Agency Token="1R" Code="7979">
+		<AgencyName>Rijkswaterstaat</AgencyName>
+	</Agency>
+	<Agency Token="1S" Code="7980">
+		<AgencyName>Austrian Supreme Shippig Authority</AgencyName>
+	</Agency>
+	<Agency Token="1T" Code="7981">
+		<AgencyName>UKHO - private production</AgencyName>
+	</Agency>
+	<Agency Token="1U" Code="7982">
+		<AgencyName>ENC Center</AgencyName>
+	</Agency>
+	<Agency Token="1V" Code="7983">
+		<AgencyName>The Volga-Baltic State Territorial Department for Waterways Management and Navigation</AgencyName>
+	</Agency>
+	<Agency Token="1W" Code="7984">
+		<AgencyName>Wasser- und Schiffahrtsverwaltung des Bundes - Wasser- und Schiffahrtsdirektion S_d-West</AgencyName>
+	</Agency>
+	<Agency Token="1X" Code="7985">
+		<AgencyName>Noorderzon Software</AgencyName>
+	</Agency>
+	<Agency Token="2A" Code="10794">
+		<AgencyName>Azienda Regionale Navigazione Interna (ARNI)</AgencyName>
+	</Agency>
+	<Agency Token="2C" Code="11308">
+		<AgencyName>IIC Technologies</AgencyName>
+	</Agency>
+	<Agency Token="2I" Code="12056">
+		<AgencyName>Innovative Navigation GmbH</AgencyName>
+	</Agency>
+	<Agency Token="2M" Code="12060">
+		<AgencyName>MARIN (Maritime Research Institute Netherlands)</AgencyName>
+	</Agency>
+	<Agency Token="2P" Code="12063">
+		<AgencyName>PLOVPUT Beograd</AgencyName>
+	</Agency>
+	<Agency Token="2R" Code="12065">
+		<AgencyName>Port of Rotterdam</AgencyName>
+	</Agency>
+	<Agency Token="2S" Code="12079">
+		<AgencyName>Ssangyong Information &amp; Communications Corp.</AgencyName>
+	</Agency>
+	<Agency Token="2T" Code="12093">
+		<AgencyName>Transas Marine</AgencyName>
+	</Agency>
+	<Agency Token="2W" Code="12096">
+		<AgencyName>Austrian Waterways Authority</AgencyName>
+	</Agency>
+	<Agency Token="3R" Code="16203">
+		<AgencyName>A.F.D.J. R.A. Galati</AgencyName>
+	</Agency>
+	<Agency Token="3S" Code="16204">
+		<AgencyName>Science Applications International Corp.</AgencyName>
+	</Agency>
+	<Agency Token="4R" Code="20315">
+		<AgencyName>MD Atlantic Technologies</AgencyName>
+	</Agency>
+	<Agency Token="3T" Code="16205">
+		<AgencyName>Tresco Navigation Systems</AgencyName>
+	</Agency>
+	<Agency Token="5M" Code="24422">
+		<AgencyName>Hydrographic Office of Sarawak Marine Department</AgencyName>
+	</Agency>
+	<Agency Token="5T" Code="24456">
+		<AgencyName>TEC Asociados</AgencyName>
+	</Agency>
+	<Agency Token="6C" Code="27755">
+		<AgencyName>Guoy Consultancy Sdn Bhd</AgencyName>
+	</Agency>
+	<Agency Token="7C" Code="31868">
+		<AgencyName>SevenCs AG &amp; Co KG</AgencyName>
+	</Agency>
+	<Agency Token="7R" Code="32651">
+		<AgencyName>The Federal Service of Geodesy and Cartography of Russia</AgencyName>
+	</Agency>
+	<Agency Token="7S" Code="32652">
+		<AgencyName>Centre Sevzapgeoinform (SZGI)</AgencyName>
+	</Agency>
+	<Agency Token="7T" Code="32653">
+		<AgencyName>Terra Corp</AgencyName>
+	</Agency>
+	<Agency Token="8A" Code="35466">
+		<AgencyName>HSA Systems Pty Ltd</AgencyName>
+	</Agency>
+	<Agency Token="9A" Code="39578">
+		<AgencyName>CherSoft Ltd</AgencyName>
+	</Agency>
+	<Agency Token="9T" Code="40877">
+		<AgencyName>Tresco Engineering bvba</AgencyName>
+	</Agency>
+	<Agency Token="0_" Code="65534">
+		<AgencyName>unknown producer</AgencyName>
+	</Agency>
+</Agencies>

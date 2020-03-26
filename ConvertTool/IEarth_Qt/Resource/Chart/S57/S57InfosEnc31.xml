@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<EncInfos>
+	<GroupOneObjectClasses>
+		<ObjectClass Code="42" Acronym="DEPARE"/>
+		<ObjectClass Code="46" Acronym="DRGARE"/>
+		<ObjectClass Code="57" Acronym="FLODOC"/>
+		<ObjectClass Code="65" Acronym="HULKES"/>
+		<ObjectClass Code="71" Acronym="LNDARE"/>
+		<ObjectClass Code="95" Acronym="PONTON"/>
+		<ObjectClass Code="154" Acronym="UNSARE"/>
+	</GroupOneObjectClasses>
+
+	<NationalAttributes>
+		<Attribute Code="300" Acronym="NINFOM"/>
+		<Attribute Code="301" Acronym="NOBJNM"/>
+		<Attribute Code="302" Acronym="NPLDST"/>
+		<Attribute Code="303" Acronym="NTXST_"/>
+		<Attribute Code="304" Acronym="NTXTDS"/>
+	</NationalAttributes>
+
+	<SpatialMetaAttributes>
+		<Attribute Code="400" Acronym="HORDAT"/>
+		<Attribute Code="401" Acronym="POSACC"/>
+		<Attribute Code="402" Acronym="QUAPOS"/>
+	</SpatialMetaAttributes>
+
+	<Units>
+		<UnitType value="depth">
+			<Unit ID="1" Meaning="metres"/>
+			<Unit ID="2" Meaning="fathoms and feet"/>
+			<Unit ID="3" Meaning="feet"/>
+			<Unit ID="4" Meaning="fathoms and fractions"/>
+		</UnitType>
+		<UnitType value="height">
+			<Unit ID="1" Meaning="metres"/>
+			<Unit ID="2" Meaning="feet"/>
+		</UnitType>
+		<UnitType value="positional accuracy">
+			<Unit ID="1" Meaning="metres"/>
+			<Unit ID="4" Meaning="feet"/>
+		</UnitType>
+	</Units>
+
+	<Datums>
+		<DatumType value="horizontal">
+			<Datum ID="2" Meaning="WGS 1984"/>
+		</DatumType>
+		<DatumType value="vertical">
+			<Datum ID="1" Meaning="Mean low water springs"/>
+			<Datum ID="2" Meaning="Mean lower low water springs"/>
+			<Datum ID="3" Meaning="Mean sea level"/>
+			<Datum ID="4" Meaning="Lowest Low Water"/>
+			<Datum ID="5" Meaning="Mean Low Water"/>
+			<Datum ID="6" Meaning="Lowest Low Water Springs"/>
+			<Datum ID="7" Meaning="Approximate Mean Low Water Springs"/>
+			<Datum ID="8" Meaning="Indian Spring Low Water"/>
+			<Datum ID="9" Meaning="Low Water Springs"/>
+			<Datum ID="10" Meaning="Approximate Lowest Astronomical Tide"/>
+			<Datum ID="11" Meaning="Nearly Lowest Low Water"/>
+			<Datum ID="12" Meaning="Mean Lower Low Water"/>
+			<Datum ID="13" Meaning="Low Water"/>
+			<Datum ID="14" Meaning="Approximate Mean Low Water"/>
+			<Datum ID="15" Meaning="Approximate Mean Lower Low Water"/>
+			<Datum ID="16" Meaning="Mean High Water"/>
+			<Datum ID="17" Meaning="Mean High Water Springs"/>
+			<Datum ID="18" Meaning="High Water"/>
+			<Datum ID="19" Meaning="Approximate Mean Sea Level"/>
+			<Datum ID="20" Meaning="High Water Springs"/>
+			<Datum ID="21" Meaning="Mean Higher High Water"/>
+			<Datum ID="22" Meaning="Equinoctial Spring Low Water"/>
+			<Datum ID="23" Meaning="Lowest Astronomical Tide"/>
+			<Datum ID="24" Meaning="Local Datum"/>
+			<Datum ID="25" Meaning="International Great Lakes Datum 1985"/>
+			<Datum ID="26" Meaning="Mean Water Level"/>
+			<Datum ID="27" Meaning="Lower Low Water Large Tide"/>
+			<Datum ID="28" Meaning="Higher High Water Large Tide"/>
+			<Datum ID="29" Meaning="Nearly Highest High Water"/>
+			<Datum ID="30" Meaning="Highest Astronomical Tide (HAT)"/>
+		</DatumType>
+		<DatumType value="sounding">
+			<Datum ID="1" Meaning="Mean low water springs"/>
+			<Datum ID="2" Meaning="Mean lower low water springs"/>
+			<Datum ID="3" Meaning="Mean sea level"/>
+			<Datum ID="4" Meaning="Lowest Low Water"/>
+			<Datum ID="5" Meaning="Mean Low Water"/>
+			<Datum ID="6" Meaning="Lowest Low Water Springs"/>
+			<Datum ID="7" Meaning="Approximate Mean Low Water Springs"/>
+			<Datum ID="8" Meaning="Indian Spring Low Water"/>
+			<Datum ID="9" Meaning="Low Water Springs"/>
+			<Datum ID="10" Meaning="Approximate Lowest Astronomical Tide"/>
+			<Datum ID="11" Meaning="Nearly Lowest Low Water"/>
+			<Datum ID="12" Meaning="Mean Lower Low Water"/>
+			<Datum ID="13" Meaning="Low Water"/>
+			<Datum ID="14" Meaning="Approximate Mean Low Water"/>
+			<Datum ID="15" Meaning="Approximate Mean Lower Low Water"/>
+			<Datum ID="16" Meaning="Mean High Water"/>
+			<Datum ID="17" Meaning="Mean High Water Springs"/>
+			<Datum ID="18" Meaning="High Water"/>
+			<Datum ID="19" Meaning="Approximate Mean Sea Level"/>
+			<Datum ID="20" Meaning="High Water Springs"/>
+			<Datum ID="21" Meaning="Mean Higher High Water"/>
+			<Datum ID="22" Meaning="Equinoctial Spring Low Water"/>
+			<Datum ID="23" Meaning="Lowest Astronomical Tide"/>
+			<Datum ID="24" Meaning="Local Datum"/>
+			<Datum ID="25" Meaning="International Great Lakes Datum 1985"/>
+			<Datum ID="26" Meaning="Mean Water Level"/>
+			<Datum ID="27" Meaning="Lower Low Water Large Tide"/>
+			<Datum ID="28" Meaning="Higher High Water Large Tide"/>
+			<Datum ID="29" Meaning="Nearly Highest High Water"/>
+			<Datum ID="30" Meaning="Highest Astronomical Tide (HAT)"/>
+		</DatumType>
+	</Datums>
+	
+	<MasterObjectClasses>
+		<ObjectClass Code="5"  Acronym="BCNCAR" />
+		<ObjectClass Code="6"  Acronym="BCNISD" />
+		<ObjectClass Code="7"  Acronym="BCNLAT" />
+		<ObjectClass Code="8"  Acronym="BCNSAW" />
+		<ObjectClass Code="9"  Acronym="BCNSPP" />
+		<ObjectClass Code="11" Acronym="BRIDGE" />
+		<ObjectClass Code="12" Acronym="BUISGL" />
+		<ObjectClass Code="14" Acronym="BOYCAR" />
+		<ObjectClass Code="15" Acronym="BOYINB" />
+		<ObjectClass Code="16" Acronym="BOYISD" />
+		<ObjectClass Code="17" Acronym="BOYLAT" />
+		<ObjectClass Code="18" Acronym="BOYSAW" />
+		<ObjectClass Code="19" Acronym="BOYSPP" />
+		<ObjectClass Code="35" Acronym="CRANES" />
+		<ObjectClass Code="39" Acronym="DAYMAR" />
+		<ObjectClass Code="55" Acronym="FSHFAC" />
+		<ObjectClass Code="57" Acronym="FLODOC" />
+		<ObjectClass Code="59" Acronym="FORSTC" />
+		<ObjectClass Code="65" Acronym="HULKES" />
+		<ObjectClass Code="74" Acronym="LNDMRK" />
+		<ObjectClass Code="76" Acronym="LITFLT" />
+		<ObjectClass Code="77" Acronym="LITVES" />
+		<ObjectClass Code="84" Acronym="MORFAC" />
+		<ObjectClass Code="86" Acronym="OBSTRN" />
+		<ObjectClass Code="87" Acronym="OFSPLF" />
+		<ObjectClass Code="90" Acronym="PILPNT" />
+		<ObjectClass Code="95" Acronym="PONTON" />
+		<ObjectClass Code="98" Acronym="PYLONS" />
+		<ObjectClass Code="122" Acronym="SLCONS" />
+		<ObjectClass Code="125" Acronym="SILTNK" />
+		<ObjectClass Code="159" Acronym="WRECKS" />
+	</MasterObjectClasses>	
+	
+	<SlaveObjectClasses>
+		<ObjectClass Code="39" Acronym="DAYMAR" />
+		<ObjectClass Code="58" Acronym="FOGSIG" />
+		<ObjectClass Code="75" Acronym="LIGHTS" />
+		<ObjectClass Code="102" Acronym="RADSTA" />
+		<ObjectClass Code="103" Acronym="RTPBCN" />
+		<ObjectClass Code="105" Acronym="RDOSTA" />
+		<ObjectClass Code="113" Acronym="RETRFL" />
+		<ObjectClass Code="123" Acronym="SISTAT" />
+		<ObjectClass Code="124" Acronym="SISTAW" />
+		<ObjectClass Code="144" Acronym="TOPMAR" />
+	</SlaveObjectClasses>
+		
+	<StructObjectClasses>
+		<ObjectClass Code="5"  Acronym="BCNCAR" />
+		<ObjectClass Code="6"  Acronym="BCNISD" />
+		<ObjectClass Code="7"  Acronym="BCNLAT" />
+		<ObjectClass Code="8"  Acronym="BCNSAW" />
+		<ObjectClass Code="9"  Acronym="BCNSPP" />
+		<ObjectClass Code="11" Acronym="BRIDGE" />
+		<ObjectClass Code="12" Acronym="BUISGL" />
+		<ObjectClass Code="14" Acronym="BOYCAR" />
+		<ObjectClass Code="15" Acronym="BOYINB" />
+		<ObjectClass Code="16" Acronym="BOYISD" />
+		<ObjectClass Code="17" Acronym="BOYLAT" />
+		<ObjectClass Code="18" Acronym="BOYSAW" />
+		<ObjectClass Code="19" Acronym="BOYSPP" />
+		<ObjectClass Code="35" Acronym="CRANES" />
+		<ObjectClass Code="39" Acronym="DAYMAR" />
+		<ObjectClass Code="55" Acronym="FSHFAC" />
+		<ObjectClass Code="57" Acronym="FLODOC" />
+		<ObjectClass Code="59" Acronym="FORSTC" />
+		<ObjectClass Code="65" Acronym="HULKES" />
+		<ObjectClass Code="74" Acronym="LNDMRK" />
+		<ObjectClass Code="76" Acronym="LITFLT" />
+		<ObjectClass Code="77" Acronym="LITVES" />
+		<ObjectClass Code="84" Acronym="MORFAC" />
+		<ObjectClass Code="86" Acronym="OBSTRN" />
+		<ObjectClass Code="87" Acronym="OFSPLF" />
+		<ObjectClass Code="90" Acronym="PILPNT" />
+		<ObjectClass Code="95" Acronym="PONTON" />
+		<ObjectClass Code="98" Acronym="PYLONS" />
+		<ObjectClass Code="122" Acronym="SLCONS" />
+		<ObjectClass Code="125" Acronym="SILTNK" />
+		<ObjectClass Code="159" Acronym="WRECKS" />
+	</StructObjectClasses>	
+	
+	<EquipmentObjectClasses>
+		<ObjectClass Code="39" Acronym="DAYMAR" />
+		<ObjectClass Code="58" Acronym="FOGSIG" />
+		<ObjectClass Code="75" Acronym="LIGHTS" />
+		<ObjectClass Code="102" Acronym="RADSTA" />
+		<ObjectClass Code="103" Acronym="RTPBCN" />
+		<ObjectClass Code="105" Acronym="RDOSTA" />
+		<ObjectClass Code="113" Acronym="RETRFL" />
+		<ObjectClass Code="123" Acronym="SISTAT" />
+		<ObjectClass Code="124" Acronym="SISTAW" />
+		<ObjectClass Code="144" Acronym="TOPMAR" />
+	</EquipmentObjectClasses>
+</EncInfos>

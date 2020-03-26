@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<S58>
+	<Features>
+		<Feature acronym="AIRARE">
+			<Test id="1625" />
+		</Feature>
+		<Feature acronym="DWRTCL">
+			<Test id="1693" />
+		</Feature>
+		<Feature acronym="DWRTPT">
+			<Test id="1693" />
+		</Feature>
+		<Feature acronym="LIGHTS">
+			<Test id="1790" />
+		</Feature>
+		<Feature acronym="M_NHMN">
+			<Test id="1559" />
+		</Feature>
+		<Feature acronym="NAVLNE">
+			<Test id="1682" />
+		</Feature>
+		<Feature acronym="RECTRC">
+			<Test id="1682" />
+		</Feature>
+		<Feature acronym="RUNWAY">
+			<Test id="1625" />
+		</Feature>
+		<Feature acronym="TS_PNH">
+			<Test id="1562" />
+		</Feature>
+	</Features>
+</S58>

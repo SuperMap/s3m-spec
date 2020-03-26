@@ -1,0 +1,233 @@
+material PE/Droplet
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+			scene_blend alpha_blend
+
+			texture_unit
+			{
+				texture basic_droplet.png
+			}
+		}
+	}
+}
+
+material PE/Snow
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+			scene_blend alpha_blend
+
+			texture_unit
+			{
+				texture snow.png
+			}
+		}
+	}
+}
+
+material PE/bigFlame
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+			scene_blend add
+
+			texture_unit
+			{
+				texture bigflame.png
+			}
+		}
+	}
+}
+
+material PE/smoke
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+			scene_blend alpha_blend
+
+			texture_unit
+			{
+				texture smoke.png
+			}
+		}
+	}
+}
+
+material PE/explosion
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+			scene_blend add
+
+			texture_unit
+			{
+				texture explosion.png
+			}
+		}
+	}
+}
+
+material PE/tailflame
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+			scene_blend add
+
+			texture_unit
+			{
+				texture tailflame.png
+			}
+		}
+	}
+}
+
+material PE/ringflare
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+			scene_blend add
+
+			texture_unit
+			{
+				texture ring_flare.png
+			}
+		}
+	}
+}
+
+material PE/ringflare2
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+			scene_blend add
+
+			texture_unit
+			{
+				texture ring_flare2.png
+			}
+		}
+	}
+}
+
+material PE/Flare
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			scene_blend add
+			depth_write off
+
+			texture_unit
+			{
+				texture flaretrail.png
+			}
+		}
+	}
+}
+
+material PE/Streak
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+			scene_blend add
+
+			texture_unit
+			{
+				texture streak.png
+			}
+		}
+	}
+}
+
+material PE/Fire
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+			scene_blend add
+
+			texture_unit
+			{
+				texture fire.png
+			}
+		}
+	}
+}
+
+material PE/Fountain
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+			scene_blend alpha_blend
+
+			texture_unit
+			{
+				texture fountain.png
+			}
+		}
+	}
+}
+
+material PE/default
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+			scene_blend add
+
+			texture_unit
+			{
+				texture flare.png
+			}
+		}
+	}
+}

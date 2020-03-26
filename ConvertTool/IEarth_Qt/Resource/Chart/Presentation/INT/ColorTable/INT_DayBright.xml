@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Colors>
+	<Color token="No_Data">
+		<RGB>201,208,184</RGB>
+		<CMYK>3,0,12,18</CMYK>
+	</Color>
+	<Color token="White">
+		<RGB>255,255,255</RGB>
+		<CMYK>0,0,0,0</CMYK>
+	</Color>
+	<Color token="Black">
+		<RGB>0,0,0</RGB>
+		<CMYK>0,0,0,100</CMYK>
+	</Color>
+	<Color token="Nautical_Purple">
+		<RGB>226,66,204</RGB>
+		<CMYK>0,71,10,11</CMYK>
+	</Color>
+	<Color token="Built_Up_Area">
+		<RGB>204,204,204</RGB>
+		<CMYK>0,0,0,20</CMYK>
+	</Color>
+	<Color token="Lights_Sectors">
+		<RGB>226,66,204</RGB>
+		<CMYK>0,71,10,11</CMYK>
+	</Color>
+	<Color token="Lights_Sectors_Red">
+		<RGB>255,81,119</RGB>
+		<CMYK>0,68,53,0</CMYK>
+	</Color>
+	<Color token="Lights_Sectors_Green">
+		<RGB>139,255,98</RGB>
+		<CMYK>46,0,62,0</CMYK>
+	</Color>
+	<Color token="Lights_Sectors_Yellow">
+		<RGB>255,240,82</RGB>
+		<CMYK>0,6,68,0</CMYK>
+	</Color>
+	<Color token="Traffic_Separation_Magenta">
+		<RGB>255,179,255</RGB>
+		<CMYK>0,30,0,0,70</CMYK>
+	</Color>
+	<Color token="Land_Area">
+		<RGB>247,248,157</RGB>
+		<CMYK>0,0,37,3</CMYK>
+	</Color>
+	<Color token="Land_Elevation">
+		<RGB>165,122,43</RGB>
+		<CMYK>0,26,74,35</CMYK>
+	</Color>
+	<Color token="Depth_Area_Deep">
+		<RGB>255,255,255</RGB>
+		<CMYK>0,0,0,0</CMYK>
+	</Color>
+	<Color token="Depth_Area_Med_Shallow">
+		<RGB>215,241,255</RGB>
+		<CMYK>16,6,0,0</CMYK>
+	</Color>
+	<Color token="Depth_Area_Shallow">
+		<RGB>176,246,254</RGB>
+		<CMYK>30,3,0,0</CMYK>
+	</Color>
+	<Color token="Intertidal_Area">
+		<RGB>184,242,166</RGB>
+		<CMYK>24,0,31,5</CMYK>
+	</Color>
+	<Color token="Grey">
+		<RGB>197,203,192</RGB>
+		<CMYK>3,0,5,20</CMYK>
+	</Color>
+	<Color token="Red">
+		<RGB>255,0,0</RGB>
+		<CMYK>0,100,100,0</CMYK>
+	</Color>
+	<Color token="Yellow">
+		<RGB>255,255,0</RGB>
+		<CMYK>0,0,100,0</CMYK>
+	</Color>
+	<Color token="Green">
+		<RGB>0,255,0</RGB>
+		<CMYK>100,0,100,0</CMYK>
+	</Color>
+	<Color token="Blue">
+		<RGB>0,0,255</RGB>
+		<CMYK>100,100,0,0</CMYK>
+	</Color>
+	<Color token="Light_Blue">
+		<RGB>193,234,255</RGB>
+		<CMYK>24,8,0,0</CMYK>
+	</Color>
+	<Color token="Orange">
+		<RGB>255,170,0</RGB>
+		<CMYK>0,33,100,0</CMYK>
+	</Color>
+	<Color token="Black_20p">
+		<RGB>0,0,0</RGB>
+		<CMYK>0,0,0,100,20</CMYK>
+	</Color>
+	<Color token="Grey_20p">
+		<RGB>197,203,192</RGB>
+		<CMYK>3,0,5,20,20</CMYK>
+	</Color>
+</Colors>
