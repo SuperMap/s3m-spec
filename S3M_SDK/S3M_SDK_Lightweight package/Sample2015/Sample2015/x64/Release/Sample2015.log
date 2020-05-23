@@ -1,0 +1,11 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(1189,5): warning MSB8012: TargetPath(D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2015_Dll\x64\Release\Sample2015.exe) does not match the Linker's OutputFile property value (D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2015_Dll\Sample2015\Bin\Sample2015.exe). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+    正在创建库 D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2015_Dll\x64\Release\Sample2015.lib 和对象 D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2015_Dll\x64\Release\Sample2015.exp
+MSVCRT.lib(initializers.obj) : warning LNK4098: 默认库“libcmt.lib”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+  正在生成代码
+  0 of 2336 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  已完成代码的生成
+jpeg.lib(Jerror.obj) : warning LNK4049: 已导入本地定义的符号 sprintf
+jpeg.lib(Jmemmgr.obj) : warning LNK4049: 已导入本地定义的符号 sscanf
+  Sample2015.vcxproj -> D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2015_Dll\x64\Release\Sample2015.exe

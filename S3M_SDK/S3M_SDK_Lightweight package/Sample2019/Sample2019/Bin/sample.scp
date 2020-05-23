@@ -1,0 +1,53 @@
+{
+   "asset" : "SuperMap",
+   "crs" : "epsg:4326",
+   "dataType" : "ObliquePhotogrammetry",
+   "extensions" : {
+      "s3m:FileType" : "OSGBFile",
+      "s3m:RenderMode" : "Normal",
+      "s3m:TileSplitType" : "LOCAL"
+   },
+   "geoBounds" : {
+      "bottom" : 0.0,
+      "left" : 0.0,
+      "right" : 0.0,
+      "top" : 0.0
+   },
+   "heightRange" : {
+      "max" : 0.50,
+      "min" : -0.50
+   },
+   "lodType" : "Replace",
+   "position" : {
+      "units" : "Degree",
+      "x" : 118.0,
+      "y" : 39.0,
+      "z" : 0.0
+   },
+   "pyramidSplitType" : "Unknown",
+   "tiles" : [
+      {
+         "boundingbox" : {
+            "max" : {
+               "x" : 0.50,
+               "y" : 0.50,
+               "z" : 0.50
+            },
+            "min" : {
+               "x" : -0.50,
+               "y" : -0.50,
+               "z" : -0.50
+            }
+         },
+         "url" : "立方体0.s3mb"
+      }
+   ],
+   "version" : 1.0,
+   "wDescript" : {
+      "category" : "",
+      "range" : {
+         "max" : 0.0,
+         "min" : 0.0
+      }
+   }
+}

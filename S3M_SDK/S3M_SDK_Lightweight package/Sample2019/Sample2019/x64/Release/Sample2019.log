@@ -1,0 +1,150 @@
+﻿  main.cpp
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\Include\Skeleton.h(15,1): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\Include\Shell.h(224,22): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\Include\Shell.h(310,22): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\Include\Point3D.h(3,1): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\Include\Point3D.h(10,1): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+  ROGroupLite.cpp
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\Include\Skeleton.h(15,1): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\Include\Shell.h(224,22): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\Include\Shell.h(310,22): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\LibShared\gdal-2.1.3\gdal-2.1.3\include\cpl_string.h(284,1): warning C4251: “std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Mypair”: class“std::_Compressed_pair<std::allocator<char>,std::_String_val<std::_Simple_types<_Elem>>,true>”需要有 dll 接口由 class“std::basic_string<char,std::char_traits<char>,std::allocator<char>>”的客户端使用
+          with
+          [
+              _Elem=char
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.24.28314\include\xstring(4223): message : 参见“std::_Compressed_pair<std::allocator<char>,std::_String_val<std::_Simple_types<_Elem>>,true>”的声明
+          with
+          [
+              _Elem=char
+          ]
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\LibShared\gdal-2.1.3\gdal-2.1.3\include\gdal_priv.h(664,42): warning C4251: “GDALColorTable::aoEntries”: class“std::vector<GDALColorEntry,std::allocator<GDALColorEntry>>”需要有 dll 接口由 class“GDALColorTable”的客户端使用
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\LibShared\gdal-2.1.3\gdal-2.1.3\include\gdal_priv.h(664): message : 参见“std::vector<GDALColorEntry,std::allocator<GDALColorEntry>>”的声明
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\LibShared\gdal-2.1.3\gdal-2.1.3\include\gdal_priv.h(1144,55): warning C4251: “GDALDriverManager::oMapNameToDrivers”: class“std::map<CPLString,GDALDriver *,std::less<CPLString>,std::allocator<std::pair<const CPLString,GDALDriver *>>>”需要有 dll 接口由 class“GDALDriverManager”的客户端使用
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\LibShared\gdal-2.1.3\gdal-2.1.3\include\gdal_priv.h(1144): message : 参见“std::map<CPLString,GDALDriver *,std::less<CPLString>,std::allocator<std::pair<const CPLString,GDALDriver *>>>”的声明
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\Src\ROGroupLite.cpp(144,70): warning C4267: “参数”: 从“size_t”转换到“unsigned int”，可能丢失数据
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\Src\ROGroupLite.cpp(158,86): warning C4267: “=”: 从“size_t”转换到“unsigned int”，可能丢失数据
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\Src\ROGroupLite.cpp(182,57): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\Src\ROGroupLite.cpp(187,53): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\Src\ROGroupLite.cpp(200,52): warning C4267: “=”: 从“size_t”转换到“unsigned short”，可能丢失数据
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\Src\ROGroupLite.cpp(210,57): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\Src\ROGroupLite.cpp(215,53): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\Src\ROGroupLite.cpp(229,52): warning C4267: “=”: 从“size_t”转换到“unsigned int”，可能丢失数据
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\Src\ROGroupLite.cpp(254,21): warning C4018: “<”: 有符号/无符号不匹配
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.24.28314\include\utility(149,16): warning C4244: “初始化”: 从“_Ty”转换到“_Ty1”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+          and
+          [
+              _Ty1=float
+          ]
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\Src\ROGroupLite.cpp(47): message : 查看对正在编译的函数 模板 实例化“std::pair<float,float>::pair<int,double&,0>(_Other1 &&,_Other2) noexcept”的引用
+          with
+          [
+              _Other1=int,
+              _Other2=double &
+          ]
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\Src\ROGroupLite.cpp(47): message : 查看对正在编译的函数 模板 实例化“std::pair<float,float>::pair<int,double&,0>(_Other1 &&,_Other2) noexcept”的引用
+          with
+          [
+              _Other1=int,
+              _Other2=double &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.24.28314\include\utility(149,1): warning C4244: “初始化”: 从“double”转换到“_Ty2”，可能丢失数据
+          with
+          [
+              _Ty2=float
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(1274,5): warning MSB8012: TargetPath(D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\x64\Release\Sample2019.exe) does not match the Linker's OutputFile property value (D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Sample2019\Bin\Sample2019.exe). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+    正在创建库 D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\x64\Release\Sample2019.lib 和对象 D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\x64\Release\Sample2019.exp
+MSVCRT.lib(initializers.obj) : warning LNK4098: 默认库“libcmt.lib”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+  正在生成代码
+  Previous IPDB not found, fall back to full compilation.
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Src\StringHelper.cpp(226): warning C4715: “StringHelper::Format”: 不是所有的控件路径都返回值
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Src\ImageOperator.cpp(1045): warning C4715: “ImgToolkit::PngToBuffer”: 不是所有的控件路径都返回值
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\Src\ImageOperator.cpp(1222): warning C4715: “ImgToolkit::GDALToBuffer”: 不是所有的控件路径都返回值
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  无法打开 D:\Code\LibShared\jsoncpp-src-0.5.0\src\lib_json\json_writer.cpp，将在没有源注释的情况下继续
+  All 3135 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+LINK : warning LNK4286: 符号“sprintf”(在“S3MB_LIB.lib(S3MBVariant.obj)”中定义)已由“jpeg.lib(Jerror.obj)”导入
+LINK : warning LNK4286: 符号“sscanf”(在“json_vc71_libmt.lib(json_reader.obj)”中定义)已由“jpeg.lib(Jmemmgr.obj)”导入
+json_vc71_libmt.lib(json_writer.obj) : warning LNK4099: 未找到 PDB“lib_json.pdb”(使用“json_vc71_libmt.lib(json_writer.obj)”或在“D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\x64\Release\lib_json.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+json_vc71_libmt.lib(json_value.obj) : warning LNK4099: 未找到 PDB“lib_json.pdb”(使用“json_vc71_libmt.lib(json_value.obj)”或在“D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\x64\Release\lib_json.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+json_vc71_libmt.lib(json_reader.obj) : warning LNK4099: 未找到 PDB“lib_json.pdb”(使用“json_vc71_libmt.lib(json_reader.obj)”或在“D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\x64\Release\lib_json.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+  Sample2019.vcxproj -> D:\SourceCode\S3MB_sdk\S3MB_SDK各版本包\Sample2019_Dll\x64\Release\Sample2019.exe
