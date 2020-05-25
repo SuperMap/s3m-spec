@@ -14,26 +14,30 @@
 
 
 using namespace std;
-class S3MBReader
+namespace S3MB
 {
-public:
-	S3MBReader() {}
-	~S3MBReader() { Clear(); }
 
-public:
-	void ReadS3MBAsROGroup();
-	void ReadS3MBAttribute();
+	class S3MBReader
+	{
+	public:
+		S3MBReader() {}
+		~S3MBReader() { Clear(); }
 
-	void GetFiles(const std::string& path,std::vector<std::string>& files);
-	void SetFilePath(const string & strFilePath);
-	bool OpenFileS3MB();
-	bool LoadFileS3MB(ifstream &stream);
-	//获取读取到的RenderOperationGroup
-	RenderOperationGroup* GetRenderOperationGroup() { return m_pROGroup; };
-	void Clear();
-private:
-	// 配置源文件
-	std::string m_strFilePath;
+	public:
+		void ReadS3MBAsROGroup();
+		void ReadS3MBAttribute();
 
-	RenderOperationGroup* m_pROGroup;
-};
+		void GetFiles(const std::string& path, std::vector<std::string>& files);
+		void SetFilePath(const string& strFilePath);
+		bool OpenFileS3MB();
+		bool LoadFileS3MB(ifstream& stream);
+		//获取读取到的RenderOperationGroup
+		RenderOperationGroup* GetRenderOperationGroup() { return m_pROGroup; };
+		void Clear();
+	private:
+		// 配置源文件
+		std::string m_strFilePath;
+
+		RenderOperationGroup* m_pROGroup;
+	};
+}

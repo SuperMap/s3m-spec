@@ -1,6 +1,7 @@
 #pragma once
 #include "Shell.h"
 using namespace std;
+using namespace S3MB;
 class ROGroupLite
 {
 public:

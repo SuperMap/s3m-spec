@@ -11,6 +11,8 @@
 
 #include "S3MBSCP.h"
 using namespace std;
+using namespace S3MB;
+
 int main(int argc, char* argv[])
 {
 
@@ -103,7 +105,7 @@ int main(int argc, char* argv[])
 	pS3MBSCP->m_bIsDegree = isDegree;
 	pS3MBSCP->m_dbHeightMax = m_Box.GetMax().z + m_Position.z;
 	pS3MBSCP->m_dbHeightMin = m_Box.GetMin().z + m_Position.z;
-	pS3MBSCP->m_enDataType = SDT_ObliquePhoto;
+	//pS3MBSCP->m_enDataType = SDT_ObliquePhoto;
 
 	pS3MBSCP->m_mapExtensions["s3m:FileType"] = "OSGBFile";
 	pS3MBSCP->m_mapExtensions["s3m:RenderMode"] = "Normal";

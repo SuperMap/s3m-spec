@@ -1,74 +1,78 @@
 #pragma once
 #include "StringHelper.h"
 #include "Shell.h"
-class S3MBWriter
+namespace S3MB
 {
-public:
-	S3MBWriter()
+
+	class S3MBWriter
 	{
-		m_bChangeTexture = true;
-		m_CompressType = 14;
-	}
-	~S3MBWriter() {}
-public:
-	void ProcessSaveInfo(int vertexCompressOptions = 19);
-	//! \brief 取出PagedLOD的实体
-	void FillEntityPack(RenderOperationPagedLOD* pROPagedLOD);
-	//! \brief 取出Geode的实体
-	void FillEntityPack(RenderOperationGeode* pROGeode);
-	//! \brief 取出Geometry的材质和纹理
-	void FillEntityPack(Geometry* pGeometry);
-	//! \brief 取出Material的纹理
-	void FillEntityPack(Material*  pMaterial3D);
-
-	bool Save(int vertexCompressOptions = 19);
-	//设置需要写入文件的RenderOperationGroup
-	void SetROGroup(RenderOperationGroup* pGroup) { this->m_pROGroup = pGroup; }
-	//设置导出文件路径
-	void SetFilePath(string filePath) {
-		if (filePath.find(':') == string::npos)
+	public:
+		S3MBWriter()
 		{
-			this->m_strFilePath = StringHelper::GetAbsolutePath(filePath);
+			m_bChangeTexture = true;
+			m_CompressType = 14;
 		}
-		else
-			this->m_strFilePath = filePath;
-	}
-	//设置是否改变图片格式
-	void SetIsChangeTexture(bool bChange) { this->m_bChangeTexture = bChange; }
+		~S3MBWriter() {}
+	public:
+		void ProcessSaveInfo(int vertexCompressOptions = 19);
+		//! \brief 取出PagedLOD的实体
+		void FillEntityPack(RenderOperationPagedLOD* pROPagedLOD);
+		//! \brief 取出Geode的实体
+		void FillEntityPack(RenderOperationGeode* pROGeode);
+		//! \brief 取出Geometry的材质和纹理
+		void FillEntityPack(Geometry* pGeometry);
+		//! \brief 取出Material的纹理
+		void FillEntityPack(Material* pMaterial3D);
 
-	void Clear();
-private:
-	// 配置源文件
-	std::string m_strFilePath;
+		bool Save(int vertexCompressOptions = 19);
+		//设置需要写入文件的RenderOperationGroup
+		void SetROGroup(RenderOperationGroup* pGroup) { this->m_pROGroup = pGroup; }
+		//设置导出文件路径
+		void SetFilePath(string filePath) {
+			if (filePath.find(':') == string::npos)
+			{
+				this->m_strFilePath = StringHelper::GetAbsolutePath(filePath);
+			}
+			else
+				this->m_strFilePath = filePath;
+		}
+		//设置是否改变图片格式
+		void SetIsChangeTexture(bool bChange) { this->m_bChangeTexture = bChange; }
 
-	RenderOperationGroup* m_pROGroup;
+		void Clear();
+	private:
+		// 配置源文件
+		std::string m_strFilePath;
 
-	//! \brief 壳儿放置到内存数据流
-	MemoryStream m_streamShell;
+		RenderOperationGroup* m_pROGroup;
 
-	//! \brief 骨架放置到内存数据流
-	MemoryStream m_streamGeometry;
+		//! \brief 壳儿放置到内存数据流
+		MemoryStream m_streamShell;
 
-	//! \brief SelectionInfo放置到内存数据流
-	MemoryStream m_streamSelectionInfo;
+		//! \brief 骨架放置到内存数据流
+		MemoryStream m_streamGeometry;
 
-	//! \brief 是否有SelectionInfo
-	unsigned char m_bHasSelectionInfo;
+		//! \brief SelectionInfo放置到内存数据流
+		MemoryStream m_streamSelectionInfo;
 
-	//! \brief 纹理放置到内存数据流
-	MemoryStream m_streamTexture;
+		//! \brief 是否有SelectionInfo
+		unsigned char m_bHasSelectionInfo;
 
-	//! \brief 所有材质放入 Json
-	string m_strJsonMaterials;
+		//! \brief 纹理放置到内存数据流
+		MemoryStream m_streamTexture;
 
-	//! \brief 目标压缩方式与原有压缩方式不一致时，是否进行转换
-	bool m_bChangeTexture;
+		//! \brief 所有材质放入 Json
+		string m_strJsonMaterials;
 
-	// 压缩纹理类型
-	unsigned int m_CompressType;
+		//! \brief 目标压缩方式与原有压缩方式不一致时，是否进行转换
+		bool m_bChangeTexture;
 
-	//! \brief 处理为 HashCode 作为对象名称
-	std::map<string, Geometry*> m_mapGeometry;
-	std::map<string, Material*> m_mapMaterial;
-	std::map<string, TextureDataInfo*> m_mapTexture;
-};
+		// 压缩纹理类型
+		unsigned int m_CompressType;
+
+		//! \brief 处理为 HashCode 作为对象名称
+		std::map<string, Geometry*> m_mapGeometry;
+		std::map<string, Material*> m_mapMaterial;
+		std::map<string, TextureDataInfo*> m_mapTexture;
+	};
+}

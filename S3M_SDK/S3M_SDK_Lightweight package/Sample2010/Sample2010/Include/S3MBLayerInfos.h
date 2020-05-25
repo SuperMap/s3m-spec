@@ -7,6 +7,9 @@
 #include <assert.h>
 #include "S3mbVariant.h"
 using namespace std;
+namespace S3MB
+{
+
 #define SCPS_EXT_PROFILE							".scp"
 #define SCPS_EXT_PAGEDLODTREE						".json"				//Tile_xxx.json
 #define SCPS_ATTINFO_FILENAME						"attribute.json" //属性信息，固定名字
@@ -15,7 +18,7 @@ using namespace std;
 
 #define SCPS_XMLHEADER								"Spatial3DModel"
 
-//SCP 标签名称定义
+	//SCP 标签名称定义
 #define SCPS_ASSET									"s3m:Asset"
 #define SCPS_VERSION								"s3m:Version"
 #define SCPS_DATATYPE								"s3m:DataType"				//倾斜、精模、点云、管线、矢量
@@ -207,166 +210,168 @@ using namespace std;
 #define S3MB_JSON_Y							    	"y"
 #define S3MB_JSON_Z								    "z"
 
-class S3mbFieldInfo
-{
-public:
-	//! \brief 字段类型
-	enum FieldType
+	class S3mbFieldInfo
 	{
-		//! \brief 无效的字段类型。
-		UnKnown = 0,
-		//! \brief 布尔值，单字节，true,false。
-		Boolean = 1,
-		//! \brief 无符号单字李，0-255。 
-		Byte = 2,
-		//! \brief 短整型，2字节。
-		INT16 = 3,
-		//! \brief 长整型，4字节。
-		INT32 = 4,
-		//! \brief 长整型，8字节。
-		INT64 = 16,
-		//! \brief 单精度浮点型，4字节。
-		Float = 6,
-		//! \brief 双精度浮点型，8字节。
-		Double = 7,
-		//! \brief 日期型，年、月、日，不带时间。
-		Date = 8,
-		//! \brief 固定长度二进制型，需指定长度。
-		Binary = 9,
-		//! \brief 不定长字符串型。
-		Text = 10,
-		//! \brief 不定长二进制类型。
-		LongBinary = 11,
-		//! \brief 定长字符串型，需指定长度。
-		Char = 18,
-		//! \brief 时间型，小时、分、秒，不带日期。
-		Time = 22,
-		//! \brief 时间戳型，年、月、日、小时、分、秒。
-		TimeStamp = 23,
-		//! \brief 宽字节不定长字符串类型。
-		NText = 127,
-		//! \brief 几何数据类型。
-		Geometry = 128,
-		//用作Pg中的Jsonb字段类型
-		JsonB = 129
-	};
-	S3mbFieldInfo() {}
-	~S3mbFieldInfo() {}
-public:
-	//! \brief 字段类型。
-	FieldType m_nType;
-	//! \brief 字段名称。
-	string m_strName;
-	//! \brief 字段的外键名。
-	string m_strForeignName;
-	//! \brief 字段长度。
-	int m_nSize;
-	//! \brief 是否是必填字段。
-	bool m_bRequired;
-	//! \brief 字段默认值
-	string m_strDefaultValue;
-};
-
-class S3mbFieldInfos
-{
-public:
-	//! \brief 默认构造函数
-	S3mbFieldInfos() {}
-	//! \brief 默认析构函数
-	~S3mbFieldInfos() {
-		m_array.clear();
-		if (m_array.capacity() > m_array.size()) {
-			std::vector<S3mbFieldInfo*> vctTemp(m_array.begin(), m_array.end());
-			m_array.swap(vctTemp);
-		}
-	};
-	void add(S3mbFieldInfo* newFieldInfo);
-	size_t GetSize() { return m_array.size(); }
-	S3mbFieldInfo* GetAt(int nIndex) { assert(nIndex >= 0 && m_array.size() > nIndex); return m_array.at(nIndex); }
-private:
-	std::vector<S3mbFieldInfo*> m_array;
-};
-
-class LayerCacheInfo
-{
-public:
-	//! \brief 数据集信息
-	string m_strDatasetName;
-	//! \brief 字段信息
-	S3mbFieldInfos m_fieldInfos;
-	//! \brief ID范围
-	std::pair<int, int> m_pairIDRange;
-};
-
-class Feature
-{
-public:
-	struct FieldDefine
-	{
+	public:
+		//! \brief 字段类型
+		enum FieldType
+		{
+			//! \brief 无效的字段类型。
+			UnKnown = 0,
+			//! \brief 布尔值，单字节，true,false。
+			Boolean = 1,
+			//! \brief 无符号单字李，0-255。 
+			Byte = 2,
+			//! \brief 短整型，2字节。
+			INT16 = 3,
+			//! \brief 长整型，4字节。
+			INT32 = 4,
+			//! \brief 长整型，8字节。
+			INT64 = 16,
+			//! \brief 单精度浮点型，4字节。
+			Float = 6,
+			//! \brief 双精度浮点型，8字节。
+			Double = 7,
+			//! \brief 日期型，年、月、日，不带时间。
+			Date = 8,
+			//! \brief 固定长度二进制型，需指定长度。
+			Binary = 9,
+			//! \brief 不定长字符串型。
+			Text = 10,
+			//! \brief 不定长二进制类型。
+			LongBinary = 11,
+			//! \brief 定长字符串型，需指定长度。
+			Char = 18,
+			//! \brief 时间型，小时、分、秒，不带日期。
+			Time = 22,
+			//! \brief 时间戳型，年、月、日、小时、分、秒。
+			TimeStamp = 23,
+			//! \brief 宽字节不定长字符串类型。
+			NText = 127,
+			//! \brief 几何数据类型。
+			Geometry = 128,
+			//用作Pg中的Jsonb字段类型
+			JsonB = 129
+		};
+		S3mbFieldInfo() {}
+		~S3mbFieldInfo() {}
+	public:
+		//! \brief 字段类型。
+		FieldType m_nType;
 		//! \brief 字段名称。
 		string m_strName;
-
-		//! \brief 字段类型。
-		S3mbFieldInfo::FieldType m_nType;
-
+		//! \brief 字段的外键名。
+		string m_strForeignName;
 		//! \brief 字段长度。
 		int m_nSize;
-
 		//! \brief 是否是必填字段。
 		bool m_bRequired;
-
-		//! \brief 默认构造函数
-		FieldDefine()
-		{
-			m_nType = S3mbFieldInfo::UnKnown;
-			m_nSize = 0;
-			m_bRequired = false;
-		}
-		//! \brief 重载=
-		const FieldDefine& operator =(const FieldDefine& fieldDefine)
-		{
-			m_strName = fieldDefine.m_strName;
-			m_nType = fieldDefine.m_nType;
-			m_nSize = fieldDefine.m_nSize;
-			m_bRequired = fieldDefine.m_bRequired;
-			return *this;
-		}
+		//! \brief 字段默认值
+		string m_strDefaultValue;
 	};
-	void SetFieldInfos(S3mbFieldInfos& fieldInfos);
 
-	//! \brief 根据字段序号获取字段值。
-	//! \param nIndex 字段序号[in]。
-	//##ModelId=4820305003C8
-	virtual bool GetValue(int nIndex, S3mbVariant& varValue) const;
-	//! \brief 根据字段名获取字段值。
-	//! \param strFieldName 字段名[in]。
-	//##ModelId=4820305003CC
-	virtual bool GetValue(const string& strFieldName, S3mbVariant& varValue) const;
+	class S3mbFieldInfos
+	{
+	public:
+		//! \brief 默认构造函数
+		S3mbFieldInfos() {}
+		//! \brief 默认析构函数
+		~S3mbFieldInfos() {
+			m_array.clear();
+			if (m_array.capacity() > m_array.size()) {
+				std::vector<S3mbFieldInfo*> vctTemp(m_array.begin(), m_array.end());
+				m_array.swap(vctTemp);
+			}
+		};
+		void add(S3mbFieldInfo* newFieldInfo);
+		size_t GetSize() { return m_array.size(); }
+		S3mbFieldInfo* GetAt(int nIndex) { assert(nIndex >= 0 && m_array.size() > nIndex); return m_array.at(nIndex); }
+	private:
+		std::vector<S3mbFieldInfo*> m_array;
+	};
 
-public:
-	//! \brief 特征要素所在矢量数据集表中的ID。
-	int m_nID;
-	vector<FieldDefine> m_fieldDefines;
-	vector<unsigned char*> m_fieldValues;
-};
+	class LayerCacheInfo
+	{
+	public:
+		//! \brief 数据集信息
+		string m_strDatasetName;
+		//! \brief 字段信息
+		S3mbFieldInfos m_fieldInfos;
+		//! \brief ID范围
+		std::pair<int, int> m_pairIDRange;
+	};
 
-class S3MBLayerInfos
-{
-public:
-	//! \brief 从s3md文件中加载属性值
-	static bool LoadAttributeDataFromFile(const string& strAttFilePath, std::map<unsigned int, Feature*>& mapFeature);
-	//从Json文件中加载属性值
-	static bool AttributeDataFromJson(std::map<unsigned int, Feature*>& mapFeature, JsonValue & jsonValue);
-	//从Json字符串中加载FeatureValue
-	static bool GetFeatureValuesFromJson(Feature *pFeature, JsonValue & jsonValue);
-	//读取Json文件
-	static bool LoadLayerInfoFromJson(string strJson, vector<LayerCacheInfo>& vecLayerInfos);
-	//读取IDRange
-	static void GetIDRangeFromJson(JsonValue & jsonValue, int &nMin, int &nMax);
-	//! \brief mapFeature 里的ID是否在范围内
-	static bool IsIDExisted(std::map<unsigned int, Feature*>& mapFeature, int nBeginID, int nEndID);
-	//读取FieldInfos
-	static void GetFieldInfosFromJson(S3mbFieldInfos& fieldInfos, JsonValue & jsonValue);
-	//获取FieldInfoType
-	static S3mbFieldInfo::FieldType GetFieldInfoType(string strType);
-};
+	class Feature
+	{
+	public:
+		struct FieldDefine
+		{
+			//! \brief 字段名称。
+			string m_strName;
+
+			//! \brief 字段类型。
+			S3mbFieldInfo::FieldType m_nType;
+
+			//! \brief 字段长度。
+			int m_nSize;
+
+			//! \brief 是否是必填字段。
+			bool m_bRequired;
+
+			//! \brief 默认构造函数
+			FieldDefine()
+			{
+				m_nType = S3mbFieldInfo::UnKnown;
+				m_nSize = 0;
+				m_bRequired = false;
+			}
+			//! \brief 重载=
+			const FieldDefine& operator =(const FieldDefine& fieldDefine)
+			{
+				m_strName = fieldDefine.m_strName;
+				m_nType = fieldDefine.m_nType;
+				m_nSize = fieldDefine.m_nSize;
+				m_bRequired = fieldDefine.m_bRequired;
+				return *this;
+			}
+		};
+		void SetFieldInfos(S3mbFieldInfos& fieldInfos);
+
+		//! \brief 根据字段序号获取字段值。
+		//! \param nIndex 字段序号[in]。
+		//##ModelId=4820305003C8
+		virtual bool GetValue(int nIndex, S3mbVariant& varValue) const;
+		//! \brief 根据字段名获取字段值。
+		//! \param strFieldName 字段名[in]。
+		//##ModelId=4820305003CC
+		virtual bool GetValue(const string& strFieldName, S3mbVariant& varValue) const;
+
+	public:
+		//! \brief 特征要素所在矢量数据集表中的ID。
+		int m_nID;
+		vector<FieldDefine> m_fieldDefines;
+		vector<unsigned char*> m_fieldValues;
+	};
+
+	class S3MBLayerInfos
+	{
+	public:
+		//! \brief 从s3md文件中加载属性值
+		static bool LoadAttributeDataFromFile(const string& strAttFilePath, std::map<unsigned int, Feature*>& mapFeature);
+		//从Json文件中加载属性值
+		static bool AttributeDataFromJson(std::map<unsigned int, Feature*>& mapFeature, JsonValue& jsonValue);
+		//从Json字符串中加载FeatureValue
+		static bool GetFeatureValuesFromJson(Feature* pFeature, JsonValue& jsonValue);
+		//读取Json文件
+		static bool LoadLayerInfoFromJson(string strJson, vector<LayerCacheInfo>& vecLayerInfos);
+		//读取IDRange
+		static void GetIDRangeFromJson(JsonValue& jsonValue, int& nMin, int& nMax);
+		//! \brief mapFeature 里的ID是否在范围内
+		static bool IsIDExisted(std::map<unsigned int, Feature*>& mapFeature, int nBeginID, int nEndID);
+		//读取FieldInfos
+		static void GetFieldInfosFromJson(S3mbFieldInfos& fieldInfos, JsonValue& jsonValue);
+		//获取FieldInfoType
+		static S3mbFieldInfo::FieldType GetFieldInfoType(string strType);
+	};
+
+}

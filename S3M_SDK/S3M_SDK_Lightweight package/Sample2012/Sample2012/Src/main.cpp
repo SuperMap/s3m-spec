@@ -11,6 +11,7 @@
 
 #include "S3MBSCP.h"
 using namespace std;
+using namespace S3MB;
 int main(int argc, char* argv[])
 {
 

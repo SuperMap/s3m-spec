@@ -14,24 +14,28 @@
 
 
 using namespace std;
-class S3MBReader
+namespace S3MB
 {
-public:
-	S3MBReader() {}
-	~S3MBReader() {}
 
-public:
-	void ReadS3MBAsROGroup();
-	void ReadS3MBAttribute();
+	class S3MBReader
+	{
+	public:
+		S3MBReader() {}
+		~S3MBReader() {}
 
-	void GetFiles(const std::string& path,std::vector<std::string>& files);
-	void SetFilePath(const string & strFilePath);
-	bool OpenFileS3MB();
-	bool LoadFileS3MB(ifstream &stream);
+	public:
+		void ReadS3MBAsROGroup();
+		void ReadS3MBAttribute();
 
-private:
-	// 配置源文件
-	std::string m_strFilePath;
+		void GetFiles(const std::string& path, std::vector<std::string>& files);
+		void SetFilePath(const string& strFilePath);
+		bool OpenFileS3MB();
+		bool LoadFileS3MB(ifstream& stream);
 
-	RenderOperationGroup* m_pROGroup;
-};
+	private:
+		// 配置源文件
+		std::string m_strFilePath;
+
+		RenderOperationGroup* m_pROGroup;
+	};
+}
