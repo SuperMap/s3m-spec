@@ -16,9 +16,9 @@ namespace S3MB
 			m_RdPos = 0;
 			m_bManaged = false;
 			m_type = UTF8;
-			m_SizeAdd = 1024;
+			m_SizeAdd = 4096;
 		}
-		explicit MemoryStream(std::size_t size, std::size_t sizeAdd = 1024, stringType typeName = UTF8)
+		explicit MemoryStream(std::size_t size, std::size_t sizeAdd = 4096, stringType typeName = UTF8)
 		{
 			m_pBuffer = new unsigned char[size];
 			memset(m_pBuffer, 0, size);
@@ -31,7 +31,7 @@ namespace S3MB
 			m_type = typeName;
 			m_SizeAdd = sizeAdd;
 		}
-		MemoryStream(void* buffer, std::size_t size, std::size_t sizeAdd = 1024, stringType typeName = UTF8)
+		MemoryStream(void* buffer, std::size_t size, std::size_t sizeAdd = 4096, stringType typeName = UTF8)
 		{
 			m_pBuffer = (unsigned char*)buffer;
 			m_nSize = size;
@@ -223,7 +223,7 @@ namespace S3MB
 			m_type = typeName;
 		}
 		//用于写入流
-		void Init(std::size_t size = 1024, std::size_t sizeAdd = 1024, stringType typeName = UTF8)
+		void Init(std::size_t size = 4096, std::size_t sizeAdd = 4096, stringType typeName = UTF8)
 		{
 			m_pBuffer = new unsigned char[size];
 			memset(m_pBuffer, 0, size);
@@ -267,7 +267,7 @@ namespace S3MB
 			{
 				do
 				{
-					ResizeSpace();
+					ResizeSpace(size * sizeof(T));
 				} while (m_WtPos + size * sizeof(T) > m_nSize);
 
 				for (int i = 0; i < size; i++)
@@ -311,12 +311,22 @@ namespace S3MB
 			return;
 		}
 		//重新分配内存大小
-		bool ResizeSpace()
+		bool ResizeSpace(std::size_t sizeAdd = 4096)
 		{
-			void* p = realloc(m_pBuffer, m_nSize + m_SizeAdd);
-			if (p == NULL)return false;
-			m_pBuffer = (unsigned char*)p;
-			m_nSize += m_SizeAdd;
+			if (sizeAdd < m_SizeAdd)
+			{
+				void* p = realloc(m_pBuffer, m_nSize + m_SizeAdd);
+				if (p == NULL)return false;
+				m_pBuffer = (unsigned char*)p;
+				m_nSize += m_SizeAdd;
+			}
+			else
+			{
+				void* p = realloc(m_pBuffer, m_nSize + sizeAdd + m_SizeAdd);
+				if (p == NULL)return false;
+				m_pBuffer = (unsigned char*)p;
+				m_nSize += m_SizeAdd + sizeAdd;
+			}
 			return true;
 		}
 	private:
