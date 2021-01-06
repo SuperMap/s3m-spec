@@ -264,7 +264,7 @@ namespace S3MB
 		template<typename T>
 		void Load(T* buffer, std::size_t size)
 		{
-			if (m_pBuffer && m_RdPos + size * sizeof(T) < m_nSize)
+			if (m_pBuffer && m_RdPos + size * sizeof(T) <= m_nSize)
 			{
 				for (int i = 0; i < size; i++)
 				{
