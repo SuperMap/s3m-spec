@@ -95,7 +95,19 @@ define([
             },
             uAmbientColor : function() {
                 return material.ambientColor;
-            }
+            },
+            uTexture0Width : function(){
+                if(!Cesium.defined(material.textures[0])){
+                    return 1.0;
+                }
+                return material.textures[0]._width;
+            },
+            uTexture1Width : function(){
+                if(!Cesium.defined(material.textures[1])){
+                    return 1.0;
+                }
+                return material.textures[1]._width;
+            },
         };
     }
 
