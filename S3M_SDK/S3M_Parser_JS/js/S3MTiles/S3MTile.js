@@ -12,6 +12,7 @@ define([
     function S3MTile(layer, parent, boundingVolume, fileName, rangeData, renderEntityMap, isLeafTile) {
         this.layer = layer;
         this.parent = parent;
+        this.relativePath = getUrl(fileName,layer);
         this.fileName = fileName;
         this.isLeafTile = Cesium.defaultValue(isLeafTile, false);
         this.boundingVolume = this.createBoundingVolume(boundingVolume, layer.modelMatrix);
@@ -25,7 +26,7 @@ define([
         }
 
         this.contentResource = baseResource.getDerivedResource({
-            url : fileName
+            url : this.relativePath
         });
 
         this.serverKey = Cesium.RequestScheduler.getServerKey(this.contentResource.getUrlComponent());
@@ -64,6 +65,18 @@ define([
         let maxScale = Cesium.Cartesian3.maximumComponent(scale);
         radius *= maxScale;
         return new Cesium.TileBoundingSphere(center, radius);
+    }
+
+    function getUrl(fileName,layer){
+        var url = layer._basePath;
+        var isRealspace = layer._basePath.indexOf("realspace") > -1;
+        if (!isRealspace) {
+            return fileName;
+        }
+
+        var afterRealspace  = url.replace(/(.*realspace)/, "");
+        var lastUrl = url.replace(/\/rest\/realspace/g,"").replace(afterRealspace,"");
+        return lastUrl +'/rest/realspace'+afterRealspace+'data/path/'+ fileName.replace(/^\.*/, "").replace(/^\//, "").replace(/\/$/, "");
     }
 
     function createBoundingBox(box, transform) {
