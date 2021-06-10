@@ -9,7 +9,8 @@ namespace S3MB
 		S3MBWriter()
 		{
 			m_bChangeTexture = true;
-			m_CompressType = 14;
+			m_CompressType = 14;//dxt压缩
+			m_bGenerateMipMap = true;
 		}
 		~S3MBWriter() {}
 	public:
@@ -29,14 +30,15 @@ namespace S3MB
 		//设置导出文件路径
 		void SetFilePath(wstring filePath) {
 			if (filePath.find(L':') == wstring::npos)
-			{
 				this->m_strFilePath = StringHelper::GetAbsolutePath(filePath);
-			}
 			else
 				this->m_strFilePath = filePath;
 		}
-		//设置是否改变图片格式
-		void SetIsChangeTexture(bool bChange) { this->m_bChangeTexture = bChange; }
+		//设置是否改变图片格式,以及目标图片格式是否建mipmap
+		void SetIsChangeTexture(bool bChange, bool bGenerateMipMap = true) {
+			this->m_bChangeTexture = bChange; 
+			this->m_bGenerateMipMap = bGenerateMipMap;
+		}
 
 		void Clear();
 	private:
@@ -66,7 +68,10 @@ namespace S3MB
 		//! \brief 目标压缩方式与原有压缩方式不一致时，是否进行转换
 		bool m_bChangeTexture;
 
-		// 压缩纹理类型
+		//! \brief 压缩纹理时是否创建mipmap
+		bool m_bGenerateMipMap;
+
+		// 目标压缩纹理类型
 		unsigned int m_CompressType;
 
 		//! \brief 处理为 HashCode 作为对象名称

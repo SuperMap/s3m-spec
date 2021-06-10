@@ -233,6 +233,9 @@ namespace S3MB
 		//! \brief 移除所有节点
 		void RemoveAllChildren();
 
+		//! \brief 重新计算所有child包围盒
+		//! \param bReCalGeometryBBOX 是否重新计算geometry的包围盒
+		virtual void ReComputeBoundingBox(bool bReCalGeometryBBOX = true);
 	private:
 		//! \brief 父节点
 		RenderOperationNode* m_pParentNode;
@@ -271,6 +274,10 @@ namespace S3MB
 
 		//! \brief 获得切换范围模式
 		RangeMode GetRangeMode() { return m_nRangeMode; };
+
+		//! \brief 重新计算所有child包围盒，并计算自身包围球
+		//! \param bReCalGeometryBBOX 是否重新计算geometry的包围盒
+		void ReComputeBoundingBox(bool bReCalGeometryBBOX = true) override;
 
 	private:
 		//! \brief 切换范围

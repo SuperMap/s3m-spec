@@ -596,6 +596,9 @@ namespace S3MB
 		//计算包围盒
 		void ComputerBoundingBox();
 
+		//构建InstanceInfo
+		bool CreateInstanceInfo(std::vector<Matrix4d>& vecMats, std::vector<unsigned int>& vecIDs);
+
 	};
 }
 #endif

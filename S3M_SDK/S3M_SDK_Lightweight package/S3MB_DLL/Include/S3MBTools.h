@@ -130,9 +130,9 @@ namespace S3MB
 		//加载顶点第二颜色
 		static bool LoadSecondVertexColor(MemoryStream& streamSkeleton, VertexDataPackage*& pVertexDataPackage);
 		//加载纹理坐标信息
-		static bool LoadTextureCoords(MemoryStream& streamSkeleton, VertexDataPackage*& pVertexDataPackage, unsigned short nTextureCoord);
+		static bool LoadTextureCoords(MemoryStream& streamSkeleton, VertexDataPackage*& pVertexDataPackage, unsigned short& nTextureCoord);
 		//加载实例化信息
-		static bool LoadInstanceInfo(MemoryStream& streamSkeleton, VertexDataPackage*& pVertexDataPackage, unsigned short nTextureCoord);
+		static bool LoadInstanceInfo(MemoryStream& streamSkeleton, VertexDataPackage*& pVertexDataPackage, unsigned short& nTextureCoord);
 		//判断是否是实例化几何对象
 		static bool IsInstanceBatch(VertexDataPackage* pVertexDataPackage);
 		//加载压缩顶点信息
@@ -165,7 +165,7 @@ namespace S3MB
 		//加载纹理信息
 		static void LoadTexture(MemoryStream& streamTexture, std::map<wstring, TextureDataInfo*>& mapTexture);
 		static void LoadTextureData(MemoryStream& streamTexture, TextureData* pTextureData);
-		static void ProcessTextureData(TextureData* pTextureData, CodecType nCompressType);
+		static void ProcessTextureData(TextureData* pTextureData, CodecType nCompressType, bool bGenerateMipmap = true);
 
 		//加载shell信息
 		static void LoadShell(MemoryStream& streamShell, RenderOperationGroup* pROGroup);
@@ -244,13 +244,14 @@ namespace S3MB
 		static void ToJson(TextureUnitState* pTextureUnitState, JsonValue& jsonMaterial);
 		static void AddressModeToJson(TextureUnitState* pTextureUnitState, JsonValue& jsonAddMode);
 
-		static void SaveTextures(std::map<wstring, TextureDataInfo*>& mapTexture, \
-			MemoryStream& streamTexture, unsigned int nCompressType, bool bTextureTransform);
+		static void SaveTextures(std::map<wstring, TextureDataInfo*>& mapTexture,MemoryStream& streamTexture,
+			unsigned int nCompressType, bool bTextureTransform,bool bGenerateMipmap = true);
 		//! \brief 纹理数据保存
 		static void SaveTextureData(TextureData* pTextureData, \
-			MemoryStream& streamTexture, unsigned int nCompressType, bool bIsChangeTexture = true);
+			MemoryStream& streamTexture, unsigned int nCompressType, bool bIsChangeTexture = true, bool bGenerateMipmap = true);
 		//! \brief 纹理压缩处理
-		static void ProcessTextureData(TextureData* pTextureData, unsigned int nCompressType) { return ProcessTextureData(pTextureData, (CodecType)nCompressType); }
+		static void ProcessTextureData(TextureData* pTextureData, unsigned int nCompressType, bool bGenerateMipmap = true) 
+		{ return ProcessTextureData(pTextureData, (CodecType)nCompressType,bGenerateMipmap); }
 
 		//! \brief 是否有外挂信息
 		static bool HasSelectionInfo(VertexDataPackage* pVertexDataPack);

@@ -29,33 +29,6 @@ using namespace std;
 namespace S3MB
 {
 	class S3MBSCP;
-	class S3MB_API ColorValue
-	{
-	public:
-		ColorValue() :
-			r(0), g(0), b(0), a(0) {}
-		ColorValue(double red, double green, double blue, double alpha) :
-			r(red), g(green), b(blue), a(alpha) {}
-		double r;
-		double g;
-		double b;
-		double a;
-		//! \brief 传入R、G、B、A分量构建三维颜色 。
-		//! \param nRed 红色分量，范围0-255[in]。
-		//! \param nGreen 绿色分量，范围0-255[in]。
-		//! \param nBlue 蓝色分量，范围0-255[in]。
-		//! \param nAlpha 不透明度分量，范围0-255[in]。
-		void SetValue(int nRed, int nGreen, int nBlue, int nAlpha);
-		//! \brief 传入R、G、B、A分量构建三维颜色。
-		//! \param dRed 红色分量，范围0-1.0[in]。
-		//! \param dGreen 绿色分量，范围0-1[in]。
-		//! \param dBlue 蓝色分量，范围0-1[in]。
-		//! \param dAlpha 不透明度分量，范围0-1[in]。
-		void SetValue(double nRed, double nGreen, double nBlue, double nAlpha);
-		//! \brief  将ColorValue转换为UGColor
-		UGColor GetValue() const;
-	};
-
 	enum JsonValueType
 	{
 		nullValue = 0, ///< 'null' value
