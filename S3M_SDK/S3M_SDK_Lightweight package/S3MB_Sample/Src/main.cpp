@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
 	RenderOperationGroup* pGroup = ROGroupLite::CreateROGroupLite(0, L"./1.png");
 	S3MBWriter m_S3MBWriter;
 	m_S3MBWriter.SetROGroup(pGroup);
-	m_S3MBWriter.SetIsChangeTexture(true);//DXT压缩
+	m_S3MBWriter.SetIsChangeTexture(true,true);//DXT压缩
 	wstring strS3mbFile = L"./立方体0.s3mb";
 	m_S3MBWriter.SetFilePath(strS3mbFile);
 	m_S3MBWriter.Save(0);
@@ -31,8 +31,9 @@ int main(int argc, char* argv[])
 	m_S3MBWriter.Clear();
 
 	pGroup = ROGroupLite::CreateROGroupLite(1, L"./2.jpg");
+	pGroup->ReComputeBoundingBox();//当包围盒/球不对或无包围盒/球时可调用
 	m_S3MBWriter.SetROGroup(pGroup);
-	m_S3MBWriter.SetIsChangeTexture(true);//DXT压缩
+	m_S3MBWriter.SetIsChangeTexture(true,true);//DXT压缩
 	strS3mbFile = L"./立方体1.s3mb";
 	m_S3MBWriter.SetFilePath(strS3mbFile);
 	m_S3MBWriter.Save(0);
@@ -40,8 +41,9 @@ int main(int argc, char* argv[])
 	m_S3MBWriter.Clear();
 
 	pGroup = ROGroupLite::CreateROGroupLite(2, L"./3.jpg");
+	pGroup->ReComputeBoundingBox();
 	m_S3MBWriter.SetROGroup(pGroup);
-	m_S3MBWriter.SetIsChangeTexture(true);//DXT压缩
+	m_S3MBWriter.SetIsChangeTexture(true, true);//DXT压缩
 	strS3mbFile = L"./立方体2.s3mb";
 	m_S3MBWriter.SetFilePath(strS3mbFile);
 	m_S3MBWriter.Save(0);
@@ -49,8 +51,9 @@ int main(int argc, char* argv[])
 	m_S3MBWriter.Clear();
 
 	pGroup = ROGroupLite::CreateROGroupLite(3, L"./5.jpg");
+	pGroup->ReComputeBoundingBox();
 	m_S3MBWriter.SetROGroup(pGroup);
-	m_S3MBWriter.SetIsChangeTexture(true);//DXT压缩
+	m_S3MBWriter.SetIsChangeTexture(true, true);//DXT压缩
 	strS3mbFile = L"./立方体3.s3mb";
 	m_S3MBWriter.SetFilePath(strS3mbFile);
 	m_S3MBWriter.Save(0);
@@ -107,7 +110,7 @@ int main(int argc, char* argv[])
 	pS3MBSCP->m_dbHeightMin = m_Box.GetMin().z + m_Position.z;
 	//pS3MBSCP->m_enDataType = SDT_ObliquePhoto;
 
-	pS3MBSCP->m_mapExtensions[L"s3m:FileType"] = L"OSGBFile";
+	pS3MBSCP->m_mapExtensions[L"s3m:FileType"] = L"OSGBCacheFile";
 	pS3MBSCP->m_mapExtensions[L"s3m:RenderMode"] = L"Normal";
 	pS3MBSCP->m_mapExtensions[L"s3m:TileSplitType"] = L"LOCAL";
 

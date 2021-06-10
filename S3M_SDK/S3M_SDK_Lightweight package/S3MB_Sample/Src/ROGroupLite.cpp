@@ -82,7 +82,7 @@ ROGroupLite::MeshParamInfo ROGroupLite::CreateMeshData(int lodId)
 		1, 4, 5
 	};
 	std::vector<unsigned int> m_Indexes(VertsIndex, VertsIndex + sizeof(VertsIndex) / sizeof(VertsIndex[0]));
-	//法线信息
+	// 法线信息
 	float normals[108] =
 	{
 		0, -1, 0, 0, -1, 0, 0, -1, 0,
@@ -99,7 +99,7 @@ ROGroupLite::MeshParamInfo ROGroupLite::CreateMeshData(int lodId)
 			0, 0, -1, 0, 0, -1, 0, 0, -1//底部
 	};
 	std::vector<float> m_Normals(normals, normals + sizeof(normals) / sizeof(normals[0]));
-	//UV信息
+	// UV信息
 	float uvs[72] =
 	{
 		0, 0, 2, 0, 2, 2,
@@ -191,8 +191,7 @@ Geometry* ROGroupLite::CreateGeometry(MeshParamInfo& meshInfo)
 		pIndexPackage->m_enIndexType = IT_32BIT;
 		pIndexPackage->SetIndexNum(meshInfo.indexs.size());
 		
-		unsigned int* pIndexes = new unsigned int[meshInfo.indexs.size()];
-		pIndexPackage->m_pIndexes = (unsigned short*)pIndexes;
+		unsigned int* pIndexes = (unsigned int*)pIndexPackage->m_pIndexes;
 		int indexPoint = 0;
 		for (; indexPoint < meshInfo.indexs.size(); indexPoint++, pIndexes++)
 		{
@@ -228,6 +227,21 @@ Geometry* ROGroupLite::CreateGeometry(MeshParamInfo& meshInfo)
 			pNormals[3 * i + 2] = meshInfo.normals[3 * i + 2];
 		}
 	}
+
+#pragma region 创建instanceInfo示例
+	std::vector<Matrix4d> vecMats;
+	std::vector<unsigned int> vecIds;
+	for (int i = 0; i < 5; i++)
+	{
+		Matrix4d mat = Matrix4d::IDENTITY;
+		mat.m[3][0] = 20 * i;
+		mat.m[3][1] = 20 * i;
+		vecMats.push_back(mat);
+		vecIds.push_back(i + 1);
+	}
+	pGeometry->CreateInstanceInfo(vecMats, vecIds);
+#pragma endregion
+
 	pGeometry->ComputerBoundingBox();
 	return pGeometry;
 }
