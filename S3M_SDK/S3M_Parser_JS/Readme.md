@@ -7,7 +7,7 @@ S3M_Parser_JS是用于S3MB数据在Web端的解析及加载的库
 2、html： 范例程序
 
 # 使用方法  
-1. 在Cesium官网下载release包，将包里的Build文件夹放在根目录(ReadMe文件上一级)  
+1. 在Cesium官网下载[release包](https://github.com/CesiumGS/cesium)，将包里的Build文件夹放在根目录(ReadMe文件上一级)  
    
 2. 准备数据，并在服务端（比如tomcat）发布
 
