@@ -24,7 +24,7 @@ define([
             throw new Cesium.DeveloperError('attribute is null');
         }
 
-        if(vertexPackage.instanceIndex !== -1 && !Cesium.defined(this.model._instanceBuffer)){
+        if(vertexPackage.instanceIndex !== -1 && !Cesium.defined(this.model.instanceBuffer)){
             if(!Cesium.defined(vertexPackage.instanceBuffer)){
                 throw new Cesium.DeveloperError('instance buffer is null');
             }
@@ -34,19 +34,22 @@ define([
                 typedArray : vertexPackage.instanceBuffer,
                 usage : Cesium.BufferUsage.STATIC_DRAW
             });
+
         }
 
-        if(attr.instanceDivisor === 1){
+        if(attr.instanceDivisor === 1 && !Cesium.defined(attr.typedArray)){
             attr.vertexBuffer = this.model.instanceBuffer;
             return ;
         }
 
         if(!Cesium.defined(attr.vertexBuffer)){
-            attr.vertexBuffer = Cesium.Buffer.createVertexBuffer({
-                context : context,
-                typedArray : attr.typedArray,
-                usage : Cesium.BufferUsage.STATIC_DRAW
-            });
+            if(!Cesium.defined(attr.vertexBuffer)){
+                attr.vertexBuffer = Cesium.Buffer.createVertexBuffer({
+                    context : context,
+                    typedArray : attr.typedArray,
+                    usage : Cesium.BufferUsage.STATIC_DRAW
+                });
+            }
 
             attr.typedArray = null;
             delete attr.typedArray;

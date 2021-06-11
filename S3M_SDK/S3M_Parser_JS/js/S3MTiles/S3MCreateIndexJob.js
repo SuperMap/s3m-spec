@@ -36,12 +36,14 @@ define([
             indexDataType = Cesium.IndexDatatype.UNSIGNED_INT;
         }
 
-        indexPackage.indexBuffer = Cesium.Buffer.createIndexBuffer({
-            context : context,
-            typedArray : indexPackage.indicesTypedArray,
-            usage : Cesium.BufferUsage.STATIC_DRAW,
-            indexDatatype : indexDataType
-        });
+        if(!Cesium.defined(indexPackage.indexBuffer)){
+            indexPackage.indexBuffer = Cesium.Buffer.createIndexBuffer({
+                context : context,
+                typedArray : indexPackage.indicesTypedArray,
+                usage : Cesium.BufferUsage.STATIC_DRAW,
+                indexDatatype : indexDataType
+            });
+        }
 
         indexPackage.indicesTypedArray = null;
         delete indexPackage.indicesTypedArray;

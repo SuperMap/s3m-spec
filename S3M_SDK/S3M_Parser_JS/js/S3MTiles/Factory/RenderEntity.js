@@ -29,6 +29,11 @@ define([
         this.vertexArray = undefined;
         this.colorCommand = undefined;
         this.ready = false;
+        this._pickInfo = options.pickInfo;
+        this._selectionInfoMap = undefined;
+        this._batchTable = undefined;
+        this._attributeLocations = undefined;
+        this._instanceCount = 0;
     }
 
 

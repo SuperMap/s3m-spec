@@ -7,10 +7,25 @@ define(function() {
         uniform float uTexture0Width;
         varying vec4 vTexMatrix;
         varying vec4 vTexCoordTransform;
+        varying vec4 vSecondColor;
+    #ifdef BatchTable
+      #ifdef Instance
+        attribute float instanceId;
+      #else
+        attribute float batchId;
+      #endif 
+    #endif    
     #ifdef TexCoord2
         attribute vec4 aTexCoord1;
         uniform float uTexture1Width;
         varying vec4 vTexMatrix2;
+    #endif
+    #ifdef Instance
+        attribute vec4 uv2;
+        attribute vec4 uv3;
+        attribute vec4 uv4;
+        attribute vec4 secondary_colour;
+        attribute vec4 uv6;   
     #endif
         varying vec4 vTexCoord;
         varying vec4 vColor;
@@ -53,8 +68,27 @@ define(function() {
             getTextureMatrixFromZValue(floor(vTexCoordTransform.y), vTexMatrix2.x, vTexMatrix2.y, vTexMatrix2.z);
             vTexMatrix2.w = log2(uTexture1Width * vTexMatrix.z);
         #endif
-            vColor = aColor;
-            gl_Position = czm_modelViewProjection * vec4(aPosition.xyz, 1.0);
+        vec4 vertexPos = aPosition;
+        vec4 vertexColor = aColor;
+        #ifdef Instance
+            mat4 worldMatrix;
+            worldMatrix[0] = uv2;
+            worldMatrix[1] = uv3;
+            worldMatrix[2] = uv4;
+            worldMatrix[3] = vec4(0, 0, 0, 1);
+            vertexPos = vec4(vertexPos.xyz,1.0)*worldMatrix;
+            vertexColor *= secondary_colour; 
+        #endif
+        #ifdef BatchTable
+        #ifdef Instance  
+           float index = instanceId;
+        #else
+           float index = batchId;
+        #endif  
+          vSecondColor = batchTable_pickColor(index);
+        #endif    
+            vColor = vertexColor;
+            gl_Position = czm_modelViewProjection * vec4(vertexPos.xyz, 1.0);
         }
     `;
 });

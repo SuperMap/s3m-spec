@@ -1,3 +1,4 @@
+
 define(function() {
     'use strict';
     return `
@@ -5,6 +6,7 @@ define(function() {
         uniform vec4 uDiffuseColor;
         uniform vec4 uAmbientColor;
         varying vec4 vColor;
+        varying vec4 vSecondColor;
         uniform sampler2D uTexture;
         varying vec4 vTexCoord;
         varying vec4 vTexCoordTransform;
@@ -14,8 +16,7 @@ define(function() {
         uniform sampler2D uTexture2;
         uniform float uTexture1Width;
         varying vec4 vTexMatrix2;
-    #endif
-        
+    #endif 
         void calculateMipLevel(in vec2 inTexCoord, in float vecTile, in float fMaxMip, inout float mipLevel)
         {
             vec2 dx = dFdx(inTexCoord * vecTile);
@@ -109,7 +110,7 @@ define(function() {
         }
         void main()
         {
-            vec4 color = getTextureColor();
+            vec4 color = getTextureColor() * vColor;
             gl_FragColor = czm_gammaCorrect(color);
         }
     `;

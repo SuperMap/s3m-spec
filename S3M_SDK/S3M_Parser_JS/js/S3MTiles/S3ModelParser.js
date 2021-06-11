@@ -353,18 +353,16 @@ define([
                         strideInBytes: byteStride,
                         instanceDivisor: 1
                     });
-
-                    attrLocation['uv5'] = attributes.length;
+                    attrLocation['secondary_colour'] = attributes.length;
                     attributes.push({
-                        index: attrLocation['uv5'],
-                        componentsPerAttribute: 4,
-                        componentDatatype: Cesium.ComponentDatatype.FLOAT,
-                        normalize: false,
-                        offsetInBytes: 12 * Float32Array.BYTES_PER_ELEMENT,
-                        strideInBytes: byteStride,
-                        instanceDivisor: 1
+                        index:attrLocation['secondary_colour'],
+                        componentsPerAttribute:4,
+                        componentDatatype:Cesium.ComponentDatatype.FLOAT,
+                        normalize:false,
+                        offsetInBytes:12*Float32Array.BYTES_PER_ELEMENT,
+                        strideInBytes:byteStride,
+                        instanceDivisor:1
                     });
-
                     attrLocation['uv6'] = attributes.length;
                     attributes.push({
                         index: attrLocation['uv6'],
@@ -455,9 +453,9 @@ define([
                         strideInBytes: byteStride,
                         instanceDivisor: 1
                     });
-                    attrLocation['uv8'] = attributes.length;
+                    attrLocation['secondary_colour'] = attributes.length;
                     attributes.push({
-                        index: attrLocation['uv8'],
+                        index: attrLocation['secondary_colour'],
                         componentsPerAttribute: 4,
                         componentDatatype: Cesium.ComponentDatatype.UNSIGNED_BYTE,
                         normalize: true,
@@ -481,7 +479,7 @@ define([
                 let len = texCoordCount * texDimensions;
                 vertexPackage.instanceBounds = new Float32Array(len);
                 for(let k = 0; k < len; k++){
-                    vertexPackage.instanceBounds[k] = view.getFloat32(bytesOffset, true);
+                    vertexPackage.instanceBounds[k] = view.getFloat32(bytesOffset + k * Float32Array.BYTES_PER_ELEMENT, true);
                 }
             }
 
@@ -862,7 +860,9 @@ define([
         return bytesOffset;
     }
 
-    function parsePickInfo(buffer, view, bytesOffset, nOptions, geoPackage) {
+    let colorScratch = new Cesium.Color();
+    let LEFT_16 = 65536;
+    function parsePickInfo(buffer, view, bytesOffset, nOptions, geoPackage, version) {
         if((nOptions & 1) === 1){
             let size = view.getUint32(bytesOffset, true);
             bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
@@ -877,33 +877,95 @@ define([
                 let pickInfo = {};
                 geoPackage[geometryName].pickInfo = pickInfo;
                 let bInstanced = geoPackage[geometryName].vertexPackage.instanceIndex;
-                for(let j = 0; j < selectInfoCount; j++){
-                    let nDictID = view.getUint32(bytesOffset, true);
-                    bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
-                    let nSize = view.getUint32(bytesOffset, true);
-                    bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
-                    let infos = [];
-                    for(let k = 0; k < nSize; k++){
-                        let vertexColorOffset = view.getUint32(bytesOffset, true);
+                if(bInstanced == -1){      //非实例化信息
+                    let batchIds = new Float32Array(geoPackage[geometryName].vertexPackage.verticesCount);
+                    for(let j = 0; j < selectInfoCount; j++){
+                        let nDictID = view.getUint32(bytesOffset, true);
                         bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
-                        let vertexCount = 1;
-                        if(bInstanced === -1){
-                            vertexCount = view.getUint32(bytesOffset, true);
+                        let nSize = view.getUint32(bytesOffset, true);
+                        bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
+                        let infos = [];
+                        for(let k = 0; k < nSize; k++){
+                            let vertexColorOffset = view.getUint32(bytesOffset, true);
                             bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
+                            let vertexCount = 1;
+                            if(bInstanced === -1){
+                                vertexCount = view.getUint32(bytesOffset, true);
+                                bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
+                            }
+
+                            infos.push({
+                                vertexColorOffset: vertexColorOffset,
+                                vertexColorCount: vertexCount,
+                                batchId:j
+                            });
                         }
 
-                        infos.push({
-                            vertexColorOffset: vertexColorOffset,
-                            vertexColorCount: vertexCount
-                        });
+                        pickInfo[nDictID] = infos;
+                    }
+                    createBatchIdAttribute(geoPackage[geometryName].vertexPackage,batchIds,undefined);
+                }else{
+                    let instanceCount = geoPackage[geometryName].vertexPackage.instanceCount;
+                    let instanceArray = geoPackage[geometryName].vertexPackage.instanceBuffer;
+                    let instanceMode = geoPackage[geometryName].vertexPackage.instanceMode;
+                    let instanceIds = new Float32Array(instanceCount);
+                    let selectionId = [];
+                    for(let j=0;j<selectInfoCount;j++){
+                        let nDictID = view.getUint32(bytesOffset, true);
+                        selectionId.push(nDictID);
+                        bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
+                        let nSize = view.getUint32(bytesOffset, true);
+                        bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
+                        for(let k=0;k<nSize;k++){
+                            let instanceId = view.getUint32(bytesOffset, true);
+                            bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
+                            if(version== 2){
+                                let vertexCount = view.getUint32(bytesOffset, true);
+                                bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
+                            }
+                        }
                     }
 
-                    pickInfo[nDictID] = infos;
+                    let beginOffset = instanceMode === 17 ? 16 : 28;
+                    beginOffset *= Float32Array.BYTES_PER_ELEMENT;
+                    for(let j=0;j<instanceCount;j++){
+                        instanceIds[j] = j;
+                        let offset = j * instanceMode * Float32Array.BYTES_PER_ELEMENT + beginOffset;
+                        Cesium.Color.unpack(instanceArray, offset, colorScratch);
+                        let pickId = version === 2 ? selectionId[j] : colorScratch.red + colorScratch.green * 256 + colorScratch.blue * LEFT_16;
+                        if(pickInfo[pickId] === undefined){
+                            pickInfo[pickId] = {
+                                vertexColorCount:1,
+                                instanceIds:[],
+                                vertexColorOffset:j
+                            }
+                        }
+                        pickInfo[pickId].instanceIds.push(j);
+                    }
+                    createBatchIdAttribute(geoPackage[geometryName].vertexPackage,instanceIds,1);
                 }
+
             }
         }
 
         return bytesOffset;
+    }
+
+    function createBatchIdAttribute(vertexPackage, typedArray, instanceDivisor){
+        let vertexAttributes = vertexPackage.vertexAttributes;
+        let attrLocation = vertexPackage.attrLocation;
+        let len = vertexAttributes.length;
+        let attrName = instanceDivisor === 1 ? 'instanceId' : 'batchId';
+        attrLocation[attrName] = len;
+        vertexAttributes.push({
+            index: len,
+            typedArray: typedArray,
+            componentsPerAttribute: 1,
+            componentDatatype: Cesium.ComponentDatatype.FLOAT,
+            offsetInBytes: 0,
+            strideInBytes: 0,
+            instanceDivisor: instanceDivisor
+        });
     }
 
     S3ModelParser.parseBuffer = function(buffer) {
@@ -935,10 +997,11 @@ define([
 
         bytesOffset = parseMaterial(unzipBuffer, view, bytesOffset, result);
 
-        parsePickInfo(unzipBuffer, view, bytesOffset, nOptions, result.geoPackage);
+        parsePickInfo(unzipBuffer, view, bytesOffset, nOptions, result.geoPackage, result.version);
 
         return result;
     };
+
 
     return S3ModelParser;
 });

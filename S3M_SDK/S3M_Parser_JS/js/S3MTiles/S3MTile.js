@@ -235,12 +235,12 @@ define([
         return true;
     };
 
-    S3MTile.prototype.update = function(frameState) {
+    S3MTile.prototype.update = function(frameState, layer) {
         let renderEntityMap = this.renderEntityMap;
 
         for(let key in  renderEntityMap) {
             if(renderEntityMap.hasOwnProperty(key)) {
-                renderEntityMap[key].update(frameState);
+                renderEntityMap[key].update(frameState, layer);
             }
         }
     };

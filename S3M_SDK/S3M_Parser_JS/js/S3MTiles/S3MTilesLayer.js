@@ -123,7 +123,7 @@ define([
         let selectedTiles = layer._selectedTiles;
         let length = selectedTiles.length;
         for(let i = 0;i < length;i++){
-            selectedTiles[i].update(frameState);
+            selectedTiles[i].update(frameState, layer);
         }
     }
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-  <title>Hello World!</title>
+  <title>CBD</title>
   <link href="../Build/Cesium/Widgets/widgets.css" rel="stylesheet">
   <script src="../Build/Cesium/Cesium.js"></script>
   <script src="./js/require.min.js"></script>
@@ -31,18 +31,16 @@
 
         layer.readyPromise.then(function() {
             scene.camera.setView({
-                destination : new Cesium.Cartesian3(-2182469.166141913, 4386579.0994979935, 4069925.783807108),
+                destination : new Cesium.Cartesian3(-2181968.890329965, 4385313.17843029, 4072712.8241634783),
                 orientation : {
-                    heading : 5.213460518239332,
-                    pitch : -0.5150671720144846
+                    heading : 3.1756648661534443,
+                    pitch : -0.3715184468182904
                 }
             });
         }).otherwise(function(error) {
             console.log(error);
         });
     })
-
-
 </script>
 </body>
 </html>

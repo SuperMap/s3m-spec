@@ -52,7 +52,7 @@ define([
         return materialTable;
     }
 
-    function calcBoundingVolume(vertexPackage, transform) {
+    function calcBoundingVolumeForNormal(vertexPackage){
         let boundingSphere = new Cesium.BoundingSphere();
         let v1 = new Cesium.Cartesian3();
         let positionAttr = vertexPackage.vertexAttributes[0];
@@ -81,9 +81,32 @@ define([
         }
 
         Cesium.BoundingSphere.fromPoints(vertexArray, boundingSphere);
-        Cesium.BoundingSphere.transform(boundingSphere, transform, boundingSphere);
         vertexArray.length = 0;
         return boundingSphere;
+    }
+
+    let scratchCenter = new Cesium.Cartesian3();
+    function calcBoundingVolumeForInstance(vertexPackage){
+        let boundingSphere = new Cesium.BoundingSphere();
+        let boundingsValues = vertexPackage.instanceBounds;
+        if(!Cesium.defined(boundingsValues)){
+            return boundingSphere;
+        }
+        let pntLU = new Cesium.Cartesian3(boundingsValues[0], boundingsValues[1], boundingsValues[2]);
+        let pntRD = new Cesium.Carteisan3(boundingsValues[3], boundingsValues[4], boundingsValues[5]);
+        let center = new Cesium.Cartesian3.lerp(pntLU, pntRD, 0.5, scratchCenter);
+        let radius = new Cesium.Cartesian3.distance(center, pntLU);
+        boundingSphere.center = center;
+        boundingSphere.radius = radius;
+        return boundingSphere;
+    }
+
+    function calcBoundingVolume(vertexPackage) {
+        if(vertexPackage.instanceIndex > -1){
+            calcBoundingVolumeForInstance(vertexPackage);
+        }else{
+            calcBoundingVolumeForNormal(vertexPackage);
+        }
     }
 
     function parseGeodes(layer, content, materialTable, pagelodNode, pagelod) {
@@ -111,7 +134,7 @@ define([
                     material = materialTable[arrIndexPackage[0].materialCode];
                 }
 
-                let geodeBoundingVolume = Cesium.defined(boundingSphere) ? boundingSphere : calcBoundingVolume(vertexPackage, modelMatrix);
+                let geodeBoundingVolume = Cesium.defined(boundingSphere) ? boundingSphere : calcBoundingVolume(vertexPackage);
 
                 geoMap[geoName] = S3MContentFactory[layer.fileType]({
                     layer : layer,
