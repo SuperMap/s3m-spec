@@ -7,7 +7,13 @@
 using namespace std;
 
 namespace S3MB
-{
+{	
+#define TEXTUREMOTION_OFFSETSPEEDU			L"OffsetSpeedU"
+#define TEXTUREMOTION_OFFSETSPEEDV			L"OffsetSpeedV"
+#define TEXTUREMOTION_OFFSETPERIOD			L"OffsetPeriod"
+#define TEXTUREMOTION_TILINGSPEEDU			L"TilingSpeedU"
+#define TEXTUREMOTION_TILINGSPEEDV			L"TilingSpeedV"
+#define TEXTUREMOTION_TILINGPERIOD			L"TilingPeriod"
 	// 渲染引擎用的的裁剪模式
 	enum CullingMode
 	{
@@ -63,7 +69,102 @@ namespace S3MB
 		// Similar to FO_LINEAR, but compensates for the angle of the texture plane
 		FO_ANISOTROPIC
 	};
+	//! \brief UV两个方向运动的参数
+	struct UVMotionParameter
+	{
+		//! \brief U方向的速度
+		float m_fSpeedU;
+		//! \brief V方向的速度
+		float m_fSpeedV;
+		//! \brief 周期
+		float m_fPeriod;
 
+		UVMotionParameter()
+		{
+			m_fSpeedU = 0.0;
+			m_fSpeedV = 0.0;
+			m_fPeriod = 0.0;
+		}
+
+		UVMotionParameter(float fSpeedU, float fSpeedV, float fPeriod)
+		{
+			m_fSpeedU = fSpeedU;
+			m_fSpeedV = fSpeedV;
+			m_fPeriod = fPeriod;
+		}
+
+		UVMotionParameter(const UVMotionParameter& other)
+			:m_fSpeedU(other.m_fSpeedU),
+			m_fSpeedV(other.m_fSpeedV),
+			m_fPeriod(other.m_fPeriod)
+		{
+		}
+
+		UVMotionParameter & operator=(const UVMotionParameter& other)
+		{
+			m_fSpeedU = other.m_fSpeedU;
+			m_fSpeedV = other.m_fSpeedV;
+			m_fPeriod = other.m_fPeriod;
+			return *this;
+		}
+
+		~UVMotionParameter()
+		{
+		}
+	};
+	//! \brief PBR纹理运动参数
+	struct TextureMotionParameter
+	{
+	public:
+		//! \brief 纹理平移运动的参数
+		UVMotionParameter m_OffsetMotion;
+		//! \brief 纹理缩放的参数
+		UVMotionParameter m_TilingMotion;
+
+		TextureMotionParameter()
+			:m_OffsetMotion(0.0, 0.0, 0.0),
+			m_TilingMotion(1.0, 1.0, 0.0)
+		{
+		}
+
+		TextureMotionParameter(const TextureMotionParameter& other)
+			:m_OffsetMotion(other.m_OffsetMotion),
+			m_TilingMotion(other.m_TilingMotion)
+		{
+		}
+
+		TextureMotionParameter & operator=(const TextureMotionParameter& other)
+		{
+			m_TilingMotion = other.m_TilingMotion;
+			m_OffsetMotion = other.m_OffsetMotion;
+			return *this;
+		}
+
+		~TextureMotionParameter()
+		{
+		}
+		bool ToJson(JsonValue & json)
+		{
+			json.Add(TEXTUREMOTION_OFFSETSPEEDU, m_OffsetMotion.m_fSpeedU);
+			json.Add(TEXTUREMOTION_OFFSETSPEEDV, m_OffsetMotion.m_fSpeedV);
+			json.Add(TEXTUREMOTION_OFFSETPERIOD, m_OffsetMotion.m_fPeriod);
+			json.Add(TEXTUREMOTION_TILINGSPEEDU, m_TilingMotion.m_fSpeedU);
+			json.Add(TEXTUREMOTION_TILINGSPEEDV, m_TilingMotion.m_fSpeedV);
+			json.Add(TEXTUREMOTION_TILINGPERIOD, m_TilingMotion.m_fPeriod);
+			return true;
+		}
+
+		bool FromJson(JsonValue & json)
+		{
+			json.GetValue(TEXTUREMOTION_OFFSETSPEEDU, m_OffsetMotion.m_fSpeedU);
+			json.GetValue(TEXTUREMOTION_OFFSETSPEEDV, m_OffsetMotion.m_fSpeedV);
+			json.GetValue(TEXTUREMOTION_OFFSETPERIOD, m_OffsetMotion.m_fPeriod);
+			json.GetValue(TEXTUREMOTION_TILINGSPEEDU, m_TilingMotion.m_fSpeedU);
+			json.GetValue(TEXTUREMOTION_TILINGSPEEDV, m_TilingMotion.m_fSpeedV);
+			json.GetValue(TEXTUREMOTION_TILINGPERIOD, m_TilingMotion.m_fPeriod);
+			return true;
+		}
+	};
 	class S3MB_API PBRParams
 	{
 	public:
@@ -85,20 +186,31 @@ namespace S3MB
 	public:
 		// 控制自发光强度的因子
 		Vector3d m_vec3EmissiveFactor;
-		// 自发光纹理 RGB纹理
-		wstring m_strEmissiveTexture;
-		// 法线纹理，物体表面的凹凸细节 float格式RGB纹理
-		wstring m_strNormalTexture;
-		// 遮挡图，用于物体表面凹凸性对光照的影响，比如缝隙处就暗 float灰度纹理
-		wstring m_strOcclusionTexture;
-		// 物体的基本颜色
-		Vector4d m_vec4BaseColor;
-		// 物体基本颜色的纹理
-		wstring	m_strBaseColorTexture;
-		// AlphaMode
-		AlphaMode m_AlphaMode;
-		// 当alphaMode为Mask时，着色器根据这个值和baseColor的Alpha值进行比较决定是否丢弃
-		float m_fAlphaCutoff;
+		//! \brief 自发光纹理在纹理数组中的序号 RGB纹理
+		int m_nEmissiveTextureIndex;
+		//! \brief 自发光纹理的纹理坐标在纹理坐标数组中的序号
+		int m_nEmissiveTextureCoordIndex;
+		//! \brief 自发光纹理运动的参数对象
+		TextureMotionParameter m_EmissiveTextureMotion;
+
+		//! \brief 法线纹理在纹理数组中的序号，物体表面的凹凸细节 float格式RGB纹理
+		int m_nNormalTextureIndex;
+		//! \brief 法线纹理的纹理坐标在纹理坐标数组中的序号
+		int m_nNormalTextureCoordIndex;
+		//! \brief 法线纹理的缩放因子
+		float m_fNormalTextureScale;
+		
+
+		//! \brief 遮挡图在纹理数组中的序号，用于物体表面凹凸性对光照的影响，比如缝隙处就暗 float灰度纹理
+		int m_nOcclusionTextureIndex;
+		//! \brief 遮挡图的纹理坐标在纹理坐标数组中的序号
+		int m_nOcclusionTextureCoordIndex;
+		//! \brief 遮挡图的缩放因子
+		float m_fOcclusionTextureStrength;
+		
+
+		
+
 	};
 
 	// 金属粗糙度模型
@@ -109,8 +221,18 @@ namespace S3MB
 
 		virtual MaterialParamType GetType() { return MAT_PBRMetallicRough; }
 	public:
-		// 金属度和粗糙性纹理,R通道存储金属度，G通道存储粗糙度
-		wstring m_strMetallicRoughnessTexture;
+		// 物体的基本颜色
+		Vector4d m_vec4BaseColor;
+		//! \brief 物体基本颜色的纹理在纹理数组中的序号
+		int m_nBaseColorTextureIndex;
+		//! \brief 物体基本颜色的纹理坐标在纹理坐标数组中的序号
+		int m_nBaseColorTextureCoordIndex;
+		//! \brief 基色纹理运动的参数对象
+		TextureMotionParameter m_BaseColorTextureMotion;
+		//! \brief 金属度和粗糙性纹理在纹理数组中的序号(R通道存储金属度，G通道存储粗糙度)
+		int m_nMetallicRoughnessTextureIndex;
+		//! \brief 金属度和粗糙性纹理的纹理坐标在数组中的序号
+		int m_nMetallicRoughnessTextureCoordIndex;
 		// 控制金属性强弱的因子
 		float m_fMetallicFactor;
 		// 控制粗糙性强弱的因子
@@ -241,6 +363,15 @@ namespace S3MB
 
 		//获取TextureUnitState
 		TextureUnitState* GetTextureUnitState(unsigned short index);
+		// 当alphaMode为Mask时，着色器根据这个值和baseColor的Alpha值进行比较决定是否丢弃
+		float m_fAlphaCutoff;
+		//使用的顶点着色器的名字
+		wstring strVertexProgram;
+		//使用的片元着色器的名字
+		wstring strFragmentProgram;
+		// AlphaMode
+		PBRParams::AlphaMode m_AlphaMode;
+		
 	};
 
 	class S3MB_API Technique

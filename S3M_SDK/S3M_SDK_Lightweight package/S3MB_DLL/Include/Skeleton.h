@@ -26,6 +26,7 @@ namespace S3MB
 
 #define SIZE_PER_INSTANCE 17
 #define SIZE_PER_DM_INSTANCE  29
+#define SIZE_PER_INSTANCEINFO 16
 
 // 数据绘制的属性
 	enum VertexOptions

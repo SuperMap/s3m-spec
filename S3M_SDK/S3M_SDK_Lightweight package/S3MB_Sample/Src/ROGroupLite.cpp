@@ -2,11 +2,200 @@
 #include "ImageOperator.h"
 #include <processenv.h>
 #include <S3MBTools.h>
+#include "S3MBReader.h"
+#include "S3MBWriter.h"
+#include "S3MBSCP.h"
 
-RenderOperationGroup* ROGroupLite::CreateROGroupLite(int lodId, wstring texturePath)
+void ROGroupLite::sampleV1(float fVersion)
+{
+	///************************************************************************/
+	//*          1.创建一个立方体数据并写入S3MB文件
+	///************************************************************************/
+	RenderOperationGroup* pGroup;
+	//输入多个数据来构成PBR材质的多个纹理
+
+	pGroup = ROGroupLite::CreateROGroupLiteV1(1, L"./0.jpg");
+
+	S3MBWriter m_S3MBWriter;
+	pGroup->ReComputeBoundingBox();//当包围盒/球不对或无包围盒/球时可调用
+	m_S3MBWriter.SetROGroup(pGroup);
+	m_S3MBWriter.SetIsChangeTexture(true, true);//DXT压缩
+	wstring strS3mbFile = L"./cube1.s3mb";
+	m_S3MBWriter.SetFilePath(strS3mbFile);
+	m_S3MBWriter.SetVersion(fVersion);
+	m_S3MBWriter.Save(0);
+	m_S3MBWriter.Clear();
+	delete pGroup;
+
+	pGroup = ROGroupLite::CreateROGroupLiteV1(2, L"./3.jpg");
+	pGroup->ReComputeBoundingBox();
+	m_S3MBWriter.SetROGroup(pGroup);
+	m_S3MBWriter.SetIsChangeTexture(true, true);//DXT压缩
+	strS3mbFile = L"./cube2.s3mb";
+	m_S3MBWriter.SetFilePath(strS3mbFile);
+	m_S3MBWriter.Save(0);
+	delete pGroup;
+	m_S3MBWriter.Clear();
+
+	pGroup = ROGroupLite::CreateROGroupLiteV1(3, L"./5.jpg");
+	pGroup->ReComputeBoundingBox();
+	m_S3MBWriter.SetROGroup(pGroup);
+	m_S3MBWriter.SetIsChangeTexture(true, true);//DXT压缩
+	strS3mbFile = L"./cube3.s3mb";
+	m_S3MBWriter.SetFilePath(strS3mbFile);
+	//m_S3MBWriter.Save(0);
+	m_S3MBWriter.Save(0);
+	m_S3MBWriter.Clear();
+	///************************************************************************/
+	//*        2:通过指定的s3mb文件，读取出来Ro信息，并进行输出                                                                     */
+	///************************************************************************/
+
+
+	S3MBReader m_S3MBReaderRo;
+	wstring strS3MBFileSrc = L"./cube1.s3mb";
+	m_S3MBReaderRo.SetFilePath(strS3MBFileSrc);
+	m_S3MBReaderRo.ReadS3MBAsROGroup();
+	pGroup = m_S3MBReaderRo.GetRenderOperationGroup();
+
+	///************************************************************************/
+	//*       3:通过指定的s3mb缓存文件夹，遍历读取s3md并输出                                                                */
+	///************************************************************************/
+
+
+	//S3MBReader m_S3MBReaderAtt;
+
+	//string strS3MBFolderSrc = "..\\SampleData\\CBD_part";
+	//m_S3MBReaderAtt.SetFilePath(strS3MBFolderSrc);
+	//m_S3MBReaderAtt.ReadS3MBAttribute();
+
+
+
+	//////////////////////生成SCP文件//////////////////
+	//插入点
+	Point3D m_Position(118, 39, 0);
+	Rect2D geoBounds(0, 0, 0, 0);
+	int epsgCode = 4326;
+	bool isDegree = true;
+
+	BoundingBox m_Box;
+	m_Box.SetNULL();
+	for (int i = 0; i < pGroup->GetNumChildren(); i++)
+	{
+		if (NULL != pGroup->GetChild(i)->AsGeode())
+		{
+			m_Box.Merge(((RenderOperationGeode*)(pGroup->GetChild(i)))->GetBoundingBox());
+		}
+	}
+	///生成SCP文件//////////////////
+	S3MBSCP* pS3MBSCP = new S3MBSCP();
+	pS3MBSCP->m_fVersion = fVersion;
+	pS3MBSCP->m_strAsset = L"SuperMap";
+
+	pS3MBSCP->m_pntPosition = m_Position;
+	pS3MBSCP->m_rcGeoBounds = geoBounds;
+	pS3MBSCP->m_prjCoordEPSG = epsgCode;
+	pS3MBSCP->m_bIsDegree = isDegree;
+	pS3MBSCP->m_dbHeightMax = m_Box.GetMax().z + m_Position.z;
+	pS3MBSCP->m_dbHeightMin = m_Box.GetMin().z + m_Position.z;
+	//pS3MBSCP->m_enDataType = SDT_ObliquePhoto;
+
+	pS3MBSCP->m_mapExtensions[L"s3m:FileType"] = L"OSGBCacheFile";
+	pS3MBSCP->m_mapExtensions[L"s3m:RenderMode"] = L"Normal";
+	pS3MBSCP->m_mapExtensions[L"s3m:TileSplitType"] = L"LOCAL";
+
+	std::vector<wstring> vecRootFiles;//根结点
+	std::vector<BoundingBox> vecRootBoundboxs;//根结点对应BoundingBox
+	vecRootFiles.push_back(L"cube1.s3mb");
+	vecRootBoundboxs.push_back(m_Box);
+
+	pS3MBSCP->SetTiles(vecRootFiles, vecRootBoundboxs);
+	wstring strOutputFilePath = StringHelper::GetAbsolutePath(strS3MBFileSrc);
+	wstring strFilePatch = StringHelper::GetAbsolutePath(strOutputFilePath, L"../sampleV1.scp");
+	pS3MBSCP->SaveToJsonFile(strFilePatch);
+	delete pS3MBSCP;
+	pS3MBSCP = NULL;
+}
+
+void ROGroupLite::sampleV2(float fVersion)
+{	
+	///************************************************************************/
+	//*          1.创建一个立方体数据并写入S3MB文件
+	///************************************************************************/
+	
+	RenderOperationGroup* pGroup;
+	pGroup = ROGroupLite::CreateROGroupLiteV2(1,true);
+	S3MBWriter m_S3MBWriter;
+	pGroup->ReComputeBoundingBox();//当包围盒/球不对或无包围盒/球时可调用
+	m_S3MBWriter.SetROGroup(pGroup);
+	m_S3MBWriter.SetIsChangeTexture(true, true);//DXT压缩
+	wstring strS3mbFileWrite = L"./sampleV2.s3mb";
+	m_S3MBWriter.SetFilePath(strS3mbFileWrite);
+	m_S3MBWriter.SetVersion(fVersion);//设置版本信息
+	m_S3MBWriter.Save(0);
+	m_S3MBWriter.Clear();
+
+
+	
+	///************************************************************************/
+	//*        2:通过指定的s3mb文件，读取出来Ro信息，并进行输出                                                                     */
+	///************************************************************************/
+	S3MBReader m_S3MBReaderRo;
+	wstring strS3MBFileRead = L"./sampleV2.s3mb";
+	m_S3MBReaderRo.SetFilePath(strS3MBFileRead);
+	m_S3MBReaderRo.ReadS3MBAsROGroup();
+	pGroup = m_S3MBReaderRo.GetRenderOperationGroup();
+	m_S3MBReaderRo.Clear();
+
+
+	Point3D m_Position(118, 39, 0);
+	Rect2D geoBounds(0, 0, 0, 0);
+	int epsgCode = 4326;
+	bool isDegree = true;
+
+	BoundingBox m_Box;
+	m_Box.SetNULL();
+	for (int i = 0; i < pGroup->GetNumChildren(); i++)
+	{
+		if (NULL != pGroup->GetChild(i)->AsGeode())
+		{
+			m_Box.Merge(((RenderOperationGeode*)(pGroup->GetChild(i)))->GetBoundingBox());
+		}
+	}
+	///生成SCP文件//////////////////
+	S3MBSCP* pS3MBSCP = new S3MBSCP();
+	pS3MBSCP->m_fVersion = fVersion;
+	pS3MBSCP->m_strAsset = L"SuperMap";
+
+	pS3MBSCP->m_pntPosition = m_Position;
+	pS3MBSCP->m_rcGeoBounds = geoBounds;
+	pS3MBSCP->m_prjCoordEPSG = epsgCode;
+	pS3MBSCP->m_bIsDegree = isDegree;
+	pS3MBSCP->m_dbHeightMax = m_Box.GetMax().z + m_Position.z;
+	pS3MBSCP->m_dbHeightMin = m_Box.GetMin().z + m_Position.z;
+	//pS3MBSCP->m_enDataType = SDT_ObliquePhoto;
+
+	pS3MBSCP->m_mapExtensions[L"s3m:FileType"] = L"OSGBCacheFile";
+	pS3MBSCP->m_mapExtensions[L"s3m:RenderMode"] = L"Normal";
+	pS3MBSCP->m_mapExtensions[L"s3m:TileSplitType"] = L"LOCAL";
+
+	std::vector<wstring> vecRootFiles;//根结点
+	std::vector<BoundingBox> vecRootBoundboxs;//根结点对应BoundingBox
+	vecRootFiles.push_back(L"sampleV2.s3mb");
+	vecRootBoundboxs.push_back(m_Box);
+
+	pS3MBSCP->SetTiles(vecRootFiles, vecRootBoundboxs);
+	wstring strOutputFilePath = StringHelper::GetAbsolutePath(strS3mbFileWrite);
+	wstring strFilePatch = StringHelper::GetAbsolutePath(strOutputFilePath, L"../sampleV2.scp");
+	pS3MBSCP->SaveToJsonFile(strFilePatch);
+	delete pS3MBSCP;
+	pS3MBSCP = NULL;
+}
+
+RenderOperationGroup* ROGroupLite::CreateROGroupLiteV1(int lodId, wstring texturePath)
 {
 	MeshParamInfo info = CreateMeshData(lodId);
 	Geometry* pGeometry = CreateGeometry(info);
+
 	//创建纹理
 	TextureData* pTextureData = CreateTextureData(texturePath);
 	TextureDataInfo* pTextureDataInfo = new TextureDataInfo;
@@ -37,7 +226,7 @@ RenderOperationGroup* ROGroupLite::CreateROGroupLite(int lodId, wstring textureP
 	if (lodId < 3)
 	{
 		wstring strLod = to_wstring(lodId + 1);
-		wstring strLodFile = L"立方体" + strLod + L".s3mb";
+		wstring strLodFile = L"cube" + strLod + L".s3mb";
 		pPagedLOD->GetFileNames().push_back(strLodFile);
 	}
 	//Lod切换模式及切换距离可以自己控制。
@@ -48,6 +237,175 @@ RenderOperationGroup* ROGroupLite::CreateROGroupLite(int lodId, wstring textureP
 	pPagedLOD->SetBoudingSphere(bSphere.m_center, bSphere.m_radius);
 
 	return pGroup;
+}
+void ROGroupLite::createTextureDataInfo(const wstring&  mtldataPath, RenderOperationGroup* pGroup)
+{
+	wstring texturePath = L"";
+	// 创建纹理
+	TextureData* pTextureData;
+	TextureDataInfo* pTextureDataInfo = new TextureDataInfo;
+	texturePath = mtldataPath;
+	pTextureData = CreateTextureData(texturePath);
+	pTextureDataInfo->m_pTextureData = pTextureData;
+	pGroup->AddTextureData(texturePath, pTextureDataInfo);
+}
+RenderOperationGroup* ROGroupLite::CreateROGroupLiteV2(int lodId, bool isV2)
+{
+	// 创建骨架
+	MeshParamInfo info = CreateMeshData(lodId);
+	Geometry* pGeometry = CreateGeometry(info,isV2);
+
+	// 创建材质
+	MtlData* mtldata = CreateMtlData();
+	Material* pMaterial = CreateMaterial(mtldata);
+
+	RenderOperationGroup* pGroup = new RenderOperationGroup;
+	RenderOperationPagedLOD* pPagedLOD = new RenderOperationPagedLOD;
+	RenderOperationGeode* pGeode = new RenderOperationGeode;
+
+	
+	wstring texturePath = L"";
+	if (mtldata->baseTexMap.texPath != nullptr)
+	{	
+		// 创建纹理
+		createTextureDataInfo(mtldata->baseTexMap.texPath, pGroup);
+	}
+	if (mtldata->EmissionMap.texPath != nullptr)
+	{	
+		// 创建纹理
+		createTextureDataInfo(mtldata->EmissionMap.texPath, pGroup);
+	}
+	if (mtldata->MetallicRoughMap.texPath != nullptr)
+	{	
+		// 创建纹理
+		createTextureDataInfo(mtldata->MetallicRoughMap.texPath, pGroup);
+	}
+	if (mtldata->NormalMap.texPath != nullptr)
+	{	
+		// 创建纹理
+		createTextureDataInfo(mtldata->NormalMap.texPath, pGroup);
+	}
+	if (mtldata->OcclusionMap.texPath != nullptr)
+	{	
+		// 创建纹理
+		createTextureDataInfo(mtldata->OcclusionMap.texPath, pGroup);
+	}
+	// 建立纹理，材质，骨架，RenderOperationGeoemtry, UGRenderOperationGeode,UGRenderOperationGroup之间的关系
+	
+	//pGroup->AddTextureData(texturePath, pTextureDataInfo);
+	pGroup->AddMaterial(pMaterial->m_strName, pMaterial);
+	pGeometry->m_strMaterialName = pMaterial->m_strName;
+	pGeometry->m_arrIndexPackage[0]->m_strPassName.push_back(pMaterial->m_strName);
+	pGroup->AddGeometry(pGeometry->m_strGeoName, pGeometry);
+	pGeode->AddGeometry(pGeometry);
+	pGroup->AddChild(pPagedLOD);
+	pPagedLOD->AddChild(pGeode);
+
+	pGeode->ComputerBoundingBox();
+	BoundingBox bboxObj = pGeode->GetBoundingBox();
+	BoundingSphere bSphere(bboxObj);
+	pGeode->SetBoudingSphere(bSphere.GetCenter(), bSphere.GetRadius());
+
+	//// 对应的切换文件,目前支持一个pagedLod只挂一个模型，如果下挂多个文件，则创建多个pagedLod,每个挂一个文件并设置切换距离。
+	//if (lodId < 3)
+	//{
+	//	wstring strLod = to_wstring(lodId + 1);
+	//	wstring strLodFile = L"立方体" + strLod + L".s3mb";
+	//	pPagedLOD->GetFileNames().push_back(strLodFile);
+	//}
+	// Lod切换模式及切换距离可以自己控制。
+	pPagedLOD->SetRangeMode(RangeMode::DISTANCE_FROM_EYE_POINT);
+	// 计算LOD变换的距离
+	//double nLodDis = MIN(1024, bSphere.m_radius * pow(2.0, 3 - lodId));
+	//pPagedLOD->GetRanges().push_back(std::vector<std::pair<float, float> >::value_type(0, nLodDis));
+	pPagedLOD->SetBoudingSphere(bSphere.m_center, bSphere.m_radius);
+
+	return pGroup;
+}
+
+ROGroupLite::MtlData* ROGroupLite::CreateMtlData()
+{
+	MtlData* mtlData = new MtlData;
+	mtlData->baseTexMap.coordIndex = 0;
+	mtlData->baseTexMap.texPath = (wchar_t*)L"./0.jpg";
+	mtlData->NormalMap.texPath = (wchar_t*)L"./NormalMap.jpg";
+	mtlData->NormalMap.coordIndex = 0;
+	return mtlData;
+}
+
+void ROGroupLite::CreateTextureUnitState(int& iPathFlag, const int& nCoordIdx, int& TextureIndex, int& TextureCoordIndex, Pass* pPass, const wstring& textureDataName, const Matrix4d& texMatrix )
+{
+	TextureIndex = iPathFlag++;
+	TextureCoordIndex = nCoordIdx;
+	TextureUnitState* pTexUnit = pPass->CreateTextureUnitState();
+	// 材质对象通过贴图对象的名称关联贴图对象
+	pTexUnit->m_strTextureName = textureDataName;
+	pTexUnit->m_TexModMatrix = texMatrix;
+}
+
+Material* ROGroupLite::CreateMaterial(MtlData* mtldata)
+{
+	Material* pMaterial3D = new Material;
+	wstring strMtlName = L"材质";
+	Technique* pTech = pMaterial3D->CreateTechnique();
+	Pass* pPass = pTech->CreatePass();
+
+	pPass->SetPFFMode((PolygonFrontFace)PFF_NONE);
+
+	pPass->m_pPRBMaterial = new PBRMetallicRough;
+	PBRMetallicRough* pPbr = (PBRMetallicRough*)pPass->m_pPRBMaterial;
+	wstring textureDataName = L"";
+
+	int nPathFlag = 0;
+	if (mtldata->baseTexMap.texPath != nullptr)
+	{	
+		textureDataName = mtldata->baseTexMap.texPath;
+		CreateTextureUnitState(nPathFlag, mtldata->baseTexMap.coordIndex, pPbr->m_nBaseColorTextureIndex, pPbr->m_nBaseColorTextureCoordIndex, 
+			pPass, textureDataName, mtldata->baseTexMap.texMatrix);
+	}
+	if (mtldata->EmissionMap.texPath != nullptr)
+	{	
+		textureDataName = mtldata->EmissionMap.texPath;
+		CreateTextureUnitState(nPathFlag, mtldata->EmissionMap.coordIndex, pPbr->m_nEmissiveTextureIndex, pPbr->m_nEmissiveTextureCoordIndex,
+			pPass,textureDataName, mtldata->EmissionMap.texMatrix);
+	}
+	if (mtldata->MetallicRoughMap.texPath != nullptr)
+	{	
+		textureDataName = mtldata->MetallicRoughMap.texPath;
+		CreateTextureUnitState(nPathFlag, mtldata->MetallicRoughMap.coordIndex, pPbr->m_nMetallicRoughnessTextureIndex, pPbr->m_nMetallicRoughnessTextureCoordIndex,
+			pPass,textureDataName, mtldata->MetallicRoughMap.texMatrix);
+	}
+	if (mtldata->NormalMap.texPath != nullptr)
+	{	
+		textureDataName = mtldata->NormalMap.texPath;
+		CreateTextureUnitState(nPathFlag, mtldata->NormalMap.coordIndex, pPbr->m_nNormalTextureIndex, pPbr->m_nNormalTextureCoordIndex,
+			pPass, textureDataName, mtldata->NormalMap.texMatrix);
+	}
+	if (mtldata->OcclusionMap.texPath != nullptr)
+	{	
+		textureDataName = mtldata->OcclusionMap.texPath;
+		CreateTextureUnitState(nPathFlag, mtldata->OcclusionMap.coordIndex, pPbr->m_nOcclusionTextureIndex, pPbr->m_nOcclusionTextureCoordIndex,
+			pPass, textureDataName, mtldata->OcclusionMap.texMatrix);
+	}
+	strMtlName += textureDataName;
+	// 材质对象名称
+	pMaterial3D->m_strName = strMtlName;
+	// 设置通道名称
+	pPass->m_strName = strMtlName;
+
+	pPass->m_fAlphaCutoff = mtldata->alphaCutOff;
+	pPass->m_AlphaMode = mtldata->alphaMode;
+	pPbr->m_vec4BaseColor =  mtldata->baseColorFactor;
+	pPbr->m_vec3EmissiveFactor = mtldata->EmissionFactor;
+	pPbr->m_fMetallicFactor =  mtldata->metallicFactor;
+	pPbr->m_fRoughnessFactor = mtldata->RoughnessFactor;
+	// 材质颜色
+	//{
+	//	UGfloat fParency;
+	//	Color diffuseColor;
+	//	pPass->m_Diffuse.SetValue(diffuseColor.r, diffuseColor.g, diffuseColor.b, 1.0 - fParency);
+
+	return pMaterial3D;
 }
 
 ROGroupLite::MeshParamInfo ROGroupLite::CreateMeshData(int lodId)
@@ -82,7 +440,7 @@ ROGroupLite::MeshParamInfo ROGroupLite::CreateMeshData(int lodId)
 		1, 4, 5
 	};
 	std::vector<unsigned int> m_Indexes(VertsIndex, VertsIndex + sizeof(VertsIndex) / sizeof(VertsIndex[0]));
-	// 法线信息
+	//法线信息
 	float normals[108] =
 	{
 		0, -1, 0, 0, -1, 0, 0, -1, 0,
@@ -99,7 +457,7 @@ ROGroupLite::MeshParamInfo ROGroupLite::CreateMeshData(int lodId)
 			0, 0, -1, 0, 0, -1, 0, 0, -1//底部
 	};
 	std::vector<float> m_Normals(normals, normals + sizeof(normals) / sizeof(normals[0]));
-	// UV信息
+	//UV信息
 	float uvs[72] =
 	{
 		0, 0, 2, 0, 2, 2,
@@ -122,7 +480,7 @@ ROGroupLite::MeshParamInfo ROGroupLite::CreateMeshData(int lodId)
 	return info;
 }
 
-Geometry* ROGroupLite::CreateGeometry(MeshParamInfo& meshInfo)
+Geometry* ROGroupLite::CreateGeometry(MeshParamInfo& meshInfo, bool isV2)
 {
 	Geometry* pGeometry = new Geometry;
 	wstring strName = to_wstring((size_t)meshInfo.LodID);
@@ -229,17 +587,20 @@ Geometry* ROGroupLite::CreateGeometry(MeshParamInfo& meshInfo)
 	}
 
 #pragma region 创建instanceInfo示例
-	std::vector<Matrix4d> vecMats;
-	std::vector<unsigned int> vecIds;
-	for (int i = 0; i < 5; i++)
+	if (!isV2)//s3m2.0 pbr材质暂不支持实例化信息
 	{
-		Matrix4d mat = Matrix4d::IDENTITY;
-		mat.m[3][0] = 20 * i;
-		mat.m[3][1] = 20 * i;
-		vecMats.push_back(mat);
-		vecIds.push_back(i + 1);
+		std::vector<Matrix4d> vecMats;
+		std::vector<unsigned int> vecIds;
+		for (int i = 0; i < 5; i++)
+		{
+			Matrix4d mat = Matrix4d::IDENTITY;
+			mat.m[3][0] = 20 * i;
+			mat.m[3][1] = 20 * i;
+			vecMats.push_back(mat);
+			vecIds.push_back(i + 1);
+		}
+		pGeometry->CreateInstanceInfo(vecMats, vecIds);
 	}
-	pGeometry->CreateInstanceInfo(vecMats, vecIds);
 #pragma endregion
 
 	pGeometry->ComputerBoundingBox();
@@ -247,7 +608,7 @@ Geometry* ROGroupLite::CreateGeometry(MeshParamInfo& meshInfo)
 }
 
 TextureData* ROGroupLite::CreateTextureData(wstring texturePath)
-{
+{	
 	if (texturePath.find(L':') == wstring::npos)
 	{
 		wchar_t buffer[200];
@@ -272,11 +633,14 @@ Material* ROGroupLite::CreateMaterial(wstring textureDataName)
 	TextureUnitState* pTexUnit = pPass->CreateTextureUnitState();
 	//材质对象通过贴图对象的名称关联贴图对象
 	pTexUnit->m_strTextureName = textureDataName;
-	//材质对象名称
-	pMaterial3D->m_strName = strMtlName;
-	//设置通道名称
-	pPass->m_strName = strMtlName;
 
+	// 材质对象名称
+	pMaterial3D->m_strName = strMtlName;
+	// 设置通道名称
+	pPass->m_strName = strMtlName;
+	pPass->m_pPRBMaterial = new PBRMetallicRough;
+	PBRMetallicRough* pPbr = (PBRMetallicRough*)pPass->m_pPRBMaterial;
+	pPbr->m_nBaseColorTextureIndex = 0;
 	// 材质颜色
 	//{
 	//	UGfloat fParency;

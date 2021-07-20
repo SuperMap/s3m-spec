@@ -66,6 +66,7 @@ namespace S3MB
 #define S3MB_MATERIAL_PBR_OCCLUSIONTEXTUREINDEX						L"occlusionTextureIndex"//UGint
 #define S3MB_MATERIAL_PBR_OCCLUSIONTEXTURECOORDINDEX				L"occlusionTextureCoordIndex"//UGint
 #define S3MB_MATERIAL_PBR_OCCLUSIONTEXTURESTRENGTH					L"occlusionTextureStrength"//UGfloat
+//PBRMetallicRoh
 //UGPBRMetallicRough
 #define S3MB_MATERIAL_PBRM_BASECOLOR								L"baseColor"//Vector4d
 #define S3MB_MATERIAL_PBRM_BASECOLORTEXTUREINDEX					L"baseColorTextureIndex"//int
@@ -177,9 +178,9 @@ namespace S3MB
 
 
 		//加载材质信息
-		static void LoadMaterial(wstring strJsonMaterials, std::map<wstring, Material*>& mapMaterial,float fVersion);
+		static void LoadMaterial(wstring strJsonMaterials, std::map<wstring, Material*>& mapMaterial,float verionN);
 		//通过Json加载材质信息
-		static void LoadMatFromJson(JsonValue& jsonMaterial, wstring& strMaterialName, Technique* pTechnique,float fVersion);
+		static void LoadMatFromJson(JsonValue& jsonMaterial, wstring& strMaterialName, Technique* pTechnique,float versionN);
 		static void LoadMatFromJsonV1(JsonValue& jsonMaterial, wstring& strMaterialName, Technique* pTechnique);
 		static void LoadMatFromJsonV2(JsonValue& jsonMaterial, wstring& strMaterialName, Technique* pTechnique);
 		//通过Json加载PBR材质信息
@@ -263,11 +264,11 @@ namespace S3MB
 		static bool SaveOneCompressTextureCoords(VertexDataPackage* pVertexDataPack, MemoryStream& stream, unsigned int nTexIdx);
 
 		//保存材质信息
-		static void SaveMaterial(std::map<wstring, Material*>& mapMaterial, JsonValue& jsonMaterials, float fVersion);
-		static void ToJson(Material* pMaterial, JsonValue& jsonMaterial, float fVersion);
+		static void SaveMaterial(std::map<wstring, Material*>& mapMaterial, JsonValue& jsonMaterials, float versionN);
+		static void ToJson(Material* pMaterial, JsonValue& jsonMaterial, float versionN);
 		//! \brief pMaterial转json信息
 		static void ToJson(const wstring strMaterialName, Technique* pTechnique, JsonValue& jsonContent);
-		static void ToJson(const wstring strMaterialName, Technique* pTechnique, JsonValue& jsonContent,float fVersion);
+		static void ToJson(const wstring strMaterialName, Technique* pTechnique, JsonValue& jsonContent,float versionN);
 		static wstring MaterialParamTypeToString(MaterialParamType emType);
 		static wstring CullModeToString(CullingMode emType);
 		//! \brief PRB转json信息
@@ -300,7 +301,7 @@ namespace S3MB
 			MemoryStream& streamShell, MemoryStream& streamSkeleton, \
 			MemoryStream& streamSecondColor, wstring& strJsonMaterials, \
 			MemoryStream& streamTexture, \
-			bool bHasSelectionInfo, MemoryStream& streamSelInfo, float fVersion);
+			bool bHasSelectionInfo, MemoryStream& streamSelInfo, float versionN);
 
 		static bool ZipData(unsigned char* pvDestBuffer, unsigned int& dwDestLen,
 			const unsigned char* pvSrcBuffer, unsigned int dwSrcLen, int nLevel = 8);

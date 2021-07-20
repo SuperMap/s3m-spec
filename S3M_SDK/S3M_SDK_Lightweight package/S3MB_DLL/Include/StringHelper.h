@@ -45,10 +45,8 @@ namespace S3MB
 
 		//获取字符串长度
 		static int GetStrLength(const wchar_t* pStr);
-
 		// 格式化字符串
 		static std::wstring Format(const wchar_t* pStr, ...);
-
 		//! \brief 取出字符串对象最右边的指定长度的子字符串
 		//! \param nCount 字节个数
 		//! \return 返回右边指定长度的子字符串

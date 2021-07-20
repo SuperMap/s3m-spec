@@ -25,6 +25,7 @@ namespace S3MB
 		//! \brief 取出Material的纹理
 		void FillEntityPack(Material* pMaterial3D);
 		void SetVersion(float fVersion);
+		// sdk2.0  save 
 		bool Save(int vertexCompressOptions = 0);
 		//设置需要写入文件的RenderOperationGroup
 		void SetROGroup(RenderOperationGroup* pGroup) { this->m_pROGroup = pGroup; }

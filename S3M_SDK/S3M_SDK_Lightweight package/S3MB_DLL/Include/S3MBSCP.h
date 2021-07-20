@@ -5,6 +5,9 @@
 #include "S3MBLayerInfos.h"
 #include <string>
 #include <fstream>
+
+#define S3M_S3MB_VERSIONV1		1.0
+#define S3M_S3MB_VERSIONV2		2.0
 using namespace std;
 namespace S3MB
 {
