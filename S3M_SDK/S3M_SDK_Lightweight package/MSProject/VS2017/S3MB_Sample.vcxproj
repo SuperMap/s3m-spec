@@ -55,10 +55,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\S3MB_Sample\Include\ROGroupLite.h" />
+    <ClInclude Include="..\..\S3MB_Sample\Include\S3MBAttributeReader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\S3MB_Sample\Src\main.cpp" />
     <ClCompile Include="..\..\S3MB_Sample\Src\ROGroupLite.cpp" />
+    <ClCompile Include="..\..\S3MB_Sample\Src\S3MBAttributeReader.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

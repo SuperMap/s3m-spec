@@ -139,11 +139,13 @@ namespace S3MB
 #define S3MB_JSON_FIELD_ATT_TYPE_FLOAT			    L"float"
 #define S3MB_JSON_FIELD_ATT_TYPE_DOUBLE		        L"double"
 #define S3MB_JSON_FIELD_ATT_TYPE_WCHAR		    	L"wchar"
-#define S3MB_JSON_FIELD_ATT_TYPE_STRING			    L"String"
+#define S3MB_JSON_FIELD_ATT_TYPE_STRING			    L"text"
 #define S3MB_JSON_FIELD_ATT_TYPE_NTEXT			    L"ntext"
 #define S3MB_JSON_FIELD_ATT_TYPE_DATE				L"date"
 #define S3MB_JSON_FIELD_ATT_TYPE_TIME				L"time"
 #define S3MB_JSON_FIELD_ATT_TYPE_TIMESTAMP		    L"timestamp"
+#define UGS3MB_JSON_FIELD_ATT_TYPE_GEOMETRY			L"geometry"  	// 几何数据类型
+#define UGS3MB_JSON_FIELD_ATT_TYPE_JSONB			L"jsonb"			// 用作Pg中的Jsonb字段类型
 // 点云
 #define S3MB_JSON_CLASSIFICATIONINFOS				L"classificationInfos"
 #define S3MB_JSON_CLASSIFICATION_ATT_NAME			L"name"

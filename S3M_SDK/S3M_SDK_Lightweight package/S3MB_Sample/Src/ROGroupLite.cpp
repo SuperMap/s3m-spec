@@ -5,6 +5,7 @@
 #include "S3MBReader.h"
 #include "S3MBWriter.h"
 #include "S3MBSCP.h"
+#include "S3MBAttributeReader.h"
 
 void ROGroupLite::sampleV1(float fVersion)
 {
@@ -14,7 +15,7 @@ void ROGroupLite::sampleV1(float fVersion)
 	RenderOperationGroup* pGroup;
 	//输入多个数据来构成PBR材质的多个纹理
 
-	pGroup = ROGroupLite::CreateROGroupLiteV1(1, L"./0.jpg");
+	pGroup = ROGroupLite::CreateROGroupLiteV1(1, L"./1.png");
 
 	S3MBWriter m_S3MBWriter;
 	pGroup->ReComputeBoundingBox();//当包围盒/球不对或无包围盒/球时可调用
@@ -58,16 +59,12 @@ void ROGroupLite::sampleV1(float fVersion)
 	pGroup = m_S3MBReaderRo.GetRenderOperationGroup();
 
 	///************************************************************************/
-	//*       3:通过指定的s3mb缓存文件夹，遍历读取s3md并输出                                                                */
+	//*       3:通过指定的s3mb缓存文件夹中json文件，遍历读取s3md属性文件并输出属性字段及其对应值                                                                */
 	///************************************************************************/
 
+	wstring strS3MBFolderSrc = L"../../../SampleData/attribute/attribute.json";
 
-	//S3MBReader m_S3MBReaderAtt;
-
-	//string strS3MBFolderSrc = "..\\SampleData\\CBD_part";
-	//m_S3MBReaderAtt.SetFilePath(strS3MBFolderSrc);
-	//m_S3MBReaderAtt.ReadS3MBAttribute();
-
+	S3MBAttributeReader::ReadAttribute(strS3MBFolderSrc);
 
 
 	//////////////////////生成SCP文件//////////////////

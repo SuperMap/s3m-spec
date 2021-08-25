@@ -15,7 +15,7 @@ public:
 		std::vector<unsigned int> indexs;
 		// 法线信息
 		std::vector<float> normals;
-		// uv?
+		// uv
 		std::vector<float> texCoords;
 		// 
 		std::vector<float> colors;

@@ -42,7 +42,6 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_AMD64_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\..\S3MB_DLL\Include;..\..\S3MB_Sample\Include</AdditionalIncludeDirectories>
-      <Optimization>MaxSpeed</Optimization>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -56,10 +55,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\S3MB_Sample\Include\ROGroupLite.h" />
+    <ClInclude Include="..\..\S3MB_Sample\Include\S3MBAttributeReader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\S3MB_Sample\Src\main.cpp" />
     <ClCompile Include="..\..\S3MB_Sample\Src\ROGroupLite.cpp" />
+    <ClCompile Include="..\..\S3MB_Sample\Src\S3MBAttributeReader.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

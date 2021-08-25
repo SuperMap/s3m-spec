@@ -18,12 +18,18 @@
     <ClInclude Include="..\..\S3MB_Sample\Include\ROGroupLite.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\S3MB_Sample\Include\S3MBAttributeReader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\S3MB_Sample\Src\main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\..\S3MB_Sample\Src\ROGroupLite.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\S3MB_Sample\Src\S3MBAttributeReader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
