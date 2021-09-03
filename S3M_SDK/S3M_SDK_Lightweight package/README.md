@@ -2,11 +2,11 @@
 S3M_SDK_Lightweight package是S3MB数据读写的开发工具包（Win64位 C++)。
 
 # 目录
-1、MSProject：包括各Visual Studio版本对应的工程文件、dll以及所需要的第三方库，用于实现S3MB读写；
+1、MSProject：包括各Visual Studio版本对应的工程文件、dll以及所需要的第三方库，用于实现S3MB数据的读写；
 
-2、S3MB_DLL/Include：使用MSProject/VS201X/Bin/S3MB_DLL.dll文件需要的头文件；
+2、S3MB_DLL/Include：使用MSProject/VS201X/Bin路径下的S3MB_DLL.dll文件需要的头文件；
 
-3、S3MB_Sample：范例程序代码，用于实现使用MSProject/VS201X/Bin路径下的S3MB_DLL.dll文件读取s3mb文件；
+3、S3MB_Sample：范例程序代码，用于实现使用MSProject/VS201X/Bin路径下的S3MB_DLL.dll文件读取S3MB文件；
 
 4、SampleData/attribute：范例数据，用于读取属性数据文件（s3md文件）和属性描述文件（attribute.json)；
 
