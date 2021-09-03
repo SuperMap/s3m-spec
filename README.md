@@ -61,6 +61,15 @@ S3M的主要技术特点和优势可以概括为：
 SDK：S3M_SDK
 
 
+# 内容说明
+1、ConvertTool：转换工具，用于实现该标准格式与3D Tiles相互转换，以及OSGB、OBJ与该标准格式转换；
+
+2、S3M_SDK：读写及解析工具，包括该标准格式的C++读写开发包及相关范例（S3M_SDK_Lightweight package)、该标准格式的JavaScript解析源码及范例(S3M_Parser_JS)；
+
+3、Specification：以中文、英文两种语言表述的标准文本；
+
+4、images：项目中使用到的图片。
+
 
 
 
