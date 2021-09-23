@@ -18,7 +18,23 @@ define([
 
     S3MCacheFileRenderEntity.prototype.constructor = RenderEntity;
 
+    function getExtension(gl, names) {
+        let length = names.length;
+        for (let i = 0; i < length; ++i) {
+            let extension = gl.getExtension(names[i]);
+            if (extension) {
+                return extension;
+            }
+        }
+
+        return undefined;
+    }
+
     function createShaderProgram(context, attributeLocations, material, vertexPackage) {
+        if(context.texturelod === undefined){
+            context.texturelod = Cesium.defaultValue(getExtension(context._gl, ['EXT_shader_texture_lod']), false);
+        }
+
         let vp = new Cesium.ShaderSource({
             sources : [S3MTilesVS]
         });
