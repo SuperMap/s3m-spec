@@ -2,7 +2,12 @@
 define(function() {
     'use strict';
     return `
+    #ifdef GL_OES_standard_derivatives
         #extension GL_OES_standard_derivatives : enable
+    #endif
+    #ifdef GL_EXT_shader_texture_lod
+        #extension GL_EXT_shader_texture_lod : enable
+    #endif
         uniform vec4 uDiffuseColor;
         uniform vec4 uAmbientColor;
         varying vec4 vColor;
