@@ -15,7 +15,7 @@ S3MCacheFileRenderEntity.prototype.constructor = RenderEntity;
 function getOpaqueRenderState() {
     return Cesium.RenderState.fromCache({
         cull : {
-            enabled : true
+            enabled : false
         },
         depthTest : {
             enabled : true,
