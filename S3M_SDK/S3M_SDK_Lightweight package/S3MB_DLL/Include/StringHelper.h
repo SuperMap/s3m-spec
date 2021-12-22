@@ -9,6 +9,8 @@
 #include <string>
 using namespace std;
 
+#define U(x)  L ## x
+
 namespace S3MB
 {
 	class S3MB_API StringHelper

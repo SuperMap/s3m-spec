@@ -44,7 +44,7 @@ public:
 		TexInfo EmissionMap;
 		Vector3d EmissionFactor;
 		TexInfo NormalMap;
-		MtlPbrData():name((wchar_t*)L"default"),alphaMode(PBRParams::AlphaMode::PBRAM_OPAQUE),alphaCutOff(0.0f),baseColorFactor(1,1,1,1),
+		MtlPbrData():name((wchar_t*)U("default")),alphaMode(PBRParams::AlphaMode::PBRAM_OPAQUE),alphaCutOff(0.0f),baseColorFactor(1,1,1,1),
 			metallicFactor(0),RoughnessFactor(0),EmissionFactor(0,0,0){}
 	} MtlData;
 	static void sampleV1(float fVersion);

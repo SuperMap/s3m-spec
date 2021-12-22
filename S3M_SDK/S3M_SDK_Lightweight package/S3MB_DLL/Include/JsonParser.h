@@ -4,21 +4,21 @@
 namespace S3MB
 {
 	//通用名称定义
-#define JSON_POS_X					L"x"
-#define JSON_POS_Y					L"y"
-#define JSON_POS_Z					L"z"
-#define JSON_POS_W					L"w"
-#define JSON_POS_RADIUS			    L"r"
-#define JSON_BBOX_MAX			    L"max"
-#define JSON_RECT_LEFT				L"left"
-#define JSON_RECT_TOP				L"top"
-#define JSON_RECT_RIGHT			    L"right"
-#define JSON_RECT_BOTTOM		    L"bottom"
-#define JSON_BBOX_MIN				L"min"
-#define JSON_COLOR_R			    L"r"
-#define JSON_COLOR_G				L"g"
-#define JSON_COLOR_B				L"b"
-#define JSON_COLOR_A			    L"a" 
+#define JSON_POS_X					U("x")
+#define JSON_POS_Y					U("y")
+#define JSON_POS_Z					U("z")
+#define JSON_POS_W					U("w")
+#define JSON_POS_RADIUS			    U("r")
+#define JSON_BBOX_MAX			    U("max")
+#define JSON_RECT_LEFT				U("left")
+#define JSON_RECT_TOP				U("top")
+#define JSON_RECT_RIGHT			    U("right")
+#define JSON_RECT_BOTTOM		    U("bottom")
+#define JSON_BBOX_MIN				U("min")
+#define JSON_COLOR_R			    U("r")
+#define JSON_COLOR_G				U("g")
+#define JSON_COLOR_B				U("b")
+#define JSON_COLOR_A			    U("a")
 }
 
 #include "stdafx.h"
@@ -44,8 +44,8 @@ namespace S3MB
 	class S3MB_API JsonValue
 	{
 	public:
-		JsonValue() { m_isManaged = false;  m_value = nullptr; }
-		JsonValue(JsonValueType type, bool isManaged = false);
+		JsonValue() { m_isManaged = true;  m_value = nullptr; }
+		JsonValue(JsonValueType type, bool isManaged = true);
 		//通过Json字符串初始化自身
 		JsonValue(wstring& strJsonContent);
 		~JsonValue(void);

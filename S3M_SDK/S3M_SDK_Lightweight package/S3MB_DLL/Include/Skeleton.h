@@ -561,6 +561,19 @@ namespace S3MB
 		void SetIndexNum(int nIndexNum);
 	};
 
+	class IDInfo
+	{
+	public:
+		IDInfo() :m_nID(0) {};
+		IDInfo(const IDInfo& other);
+		IDInfo& operator = (const IDInfo& other);
+		~IDInfo(){}
+
+		unsigned int m_nID;
+		std::vector<int> m_arrInstanceIndex;
+		std::vector<std::pair<int, int> > m_arrVertexColorOffsetAndCount;
+	};
+
 	//骨架类
 	class S3MB_API Geometry
 	{
@@ -600,6 +613,16 @@ namespace S3MB
 		//构建InstanceInfo
 		bool CreateInstanceInfo(std::vector<Matrix4d>& vecMats, std::vector<unsigned int>& vecIDs);
 
+		//获取InstanceInfo
+		bool GetInstanceInfo(std::vector<Matrix4d>& vecMats, std::vector<unsigned int>& vecIDs, BoundingBox& box);
+
+		//Fill IDInfo
+		void AddIDInfo(const IDInfo& iDInfo);
+
+		//通过IDInfo拆分索引包
+		void SplitIndexPackageByIDInfo();
+	private:
+		std::vector<IDInfo> m_arrIDInfo;
 	};
 }
 #endif

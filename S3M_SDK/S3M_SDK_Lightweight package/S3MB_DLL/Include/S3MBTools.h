@@ -14,78 +14,78 @@ using namespace std;
 
 namespace S3MB
 {
-#define S3MB_ID												        L"id"
-#define S3MB_TEXTURE_URL							                L"url"//外挂文件
-#define S3MB_TEXTURE_U								                L"u"
-#define S3MB_TEXTURE_V								                L"v"
-#define S3MB_TEXTURE_W								                L"w"
+#define S3MB_ID												        U("id")
+#define S3MB_TEXTURE_URL							                U("url")//外挂文件
+#define S3MB_TEXTURE_U								                U("u")
+#define S3MB_TEXTURE_V								                U("v")
+#define S3MB_TEXTURE_W								                U("w")
 
-#define S3MB_MATERIALS												L"materials"
-#define S3MB_MATERIAL												L"material"
-#define S3MB_MATERIAL_AMBIENT									    L"ambient"
-#define S3MB_MATERIAL_DIFFUSE									    L"diffuse"
-#define S3MB_MATERIAL_SPECULAR								        L"specular"
-#define S3MB_MATERIAL_SHINESS									    L"shininess"
+#define S3MB_MATERIALS												U("materials")
+#define S3MB_MATERIAL												U("material")
+#define S3MB_MATERIAL_AMBIENT									    U("ambient")
+#define S3MB_MATERIAL_DIFFUSE									    U("diffuse")
+#define S3MB_MATERIAL_SPECULAR								        U("specular")
+#define S3MB_MATERIAL_SHINESS									    U("shininess")
 
-#define S3MB_MATPASS_CULLMODE								        L"cullMode"
-#define S3MB_MATPASS_CULLMODE_NONE					                L"none"
-#define S3MB_MATPASS_CULLMODE_C							            L"clockwise"
-#define S3MB_MATPASS_CULLMODE_CC							        L"counterClockwise"
+#define S3MB_MATPASS_CULLMODE								        U("cullMode")
+#define S3MB_MATPASS_CULLMODE_NONE					                U("none")
+#define S3MB_MATPASS_CULLMODE_C							            U("clockwise")
+#define S3MB_MATPASS_CULLMODE_CC							        U("counterClockwise")
 
-#define S3MB_MATERIAL_TRANSPARENTSORT					            L"transparentsorting"
-#define S3MB_MATERIAL_TEXTUNITS								        L"textureunitstates"
-#define S3MB_MATERIAL_TEXTUNIT									    L"textureunitstate"
-#define S3MB_MATERIAL_TEXTUNIT_ADDMODE				                L"addressmode"
-#define S3MB_MATERIAL_TEXTUNIT_FILTEROPTION			                L"filteringoption"
-#define S3MB_MATERIAL_TEXTUNIT_FILTERMIN			                L"filtermin"
-#define S3MB_MATERIAL_TEXTUNIT_FILTERMAX				            L"filtermax"
-#define S3MB_MATERIAL_TEXTUNIT_TEXMODMATRIX		                    L"texmodmatrix"
+#define S3MB_MATERIAL_TRANSPARENTSORT					            U("transparentsorting")
+#define S3MB_MATERIAL_TEXTUNITS								        U("textureunitstates")
+#define S3MB_MATERIAL_TEXTUNIT									    U("textureunitstate")
+#define S3MB_MATERIAL_TEXTUNIT_ADDMODE				                U("addressmode")
+#define S3MB_MATERIAL_TEXTUNIT_FILTEROPTION			                U("filteringoption")
+#define S3MB_MATERIAL_TEXTUNIT_FILTERMIN			                U("filtermin")
+#define S3MB_MATERIAL_TEXTUNIT_FILTERMAX				            U("filtermax")
+#define S3MB_MATERIAL_TEXTUNIT_TEXMODMATRIX		                    U("texmodmatrix")
 
-#define S3MB_MATERIAL_PBRTYPE_MR							        L"pbrMetallicRoughness"
-#define S3MB_MATERIAL_PBRTYPE_SG								    L"pbrSpecularGlossiness"
-#define S3MB_MATERIAL_PBR_EMISSIVEFACTOR				            L"emissiveFactor" //Vector3d
-#define S3MB_MATERIAL_PBR_EMISSIVETEXTURE			                L"emissiveTexture"//wstring
-#define S3MB_MATERIAL_PBR_NORMALTEXTURE				                L"normalTexture"//wstring
-#define S3MB_MATERIAL_PBR_OCCLUSIONTEXTURE		                    L"occlusionTexture"//wstring
-#define S3MB_MATERIAL_PBR_BASECOLOR					                L"baseColor"//Vector4d
-#define S3MB_MATERIAL_PBR_BASECOLORTEXTURE		                    L"baseColorTexture"//wstring
-#define S3MB_MATERIAL_PBR_ALPHAMODE					                L"alphaMode"//enum AlphaMode
-#define S3MB_MATERIAL_PBR_ALPHAMODE_OPAQUE		                    L"opaque"
-#define S3MB_MATERIAL_PBR_ALPHAMODE_MASK		                    L"mask" 
-#define S3MB_MATERIAL_PBR_ALPHAMODE_BLEND		                    L"blend"
-#define S3MB_MATERIAL_PBR_ALPHACUTOFF				                L"alphaCutoff"//float
+#define S3MB_MATERIAL_PBRTYPE_MR							        U("pbrMetallicRoughness")
+#define S3MB_MATERIAL_PBRTYPE_SG								    U("pbrSpecularGlossiness")
+#define S3MB_MATERIAL_PBR_EMISSIVEFACTOR				            U("emissiveFactor") //Vector3d
+#define S3MB_MATERIAL_PBR_EMISSIVETEXTURE			                U("emissiveTexture")//wstring
+#define S3MB_MATERIAL_PBR_NORMALTEXTURE				                U("normalTexture")//wstring
+#define S3MB_MATERIAL_PBR_OCCLUSIONTEXTURE		                    U("occlusionTexture")//wstring
+#define S3MB_MATERIAL_PBR_BASECOLOR					                U("baseColor")//Vector4d
+#define S3MB_MATERIAL_PBR_BASECOLORTEXTURE		                    U("baseColorTexture")//wstring
+#define S3MB_MATERIAL_PBR_ALPHAMODE					                U("alphaMode")//enum AlphaMode
+#define S3MB_MATERIAL_PBR_ALPHAMODE_OPAQUE		                    U("opaque")
+#define S3MB_MATERIAL_PBR_ALPHAMODE_MASK		                    U("mask" )
+#define S3MB_MATERIAL_PBR_ALPHAMODE_BLEND		                    U("blend")
+#define S3MB_MATERIAL_PBR_ALPHACUTOFF				                U("alphaCutoff")//float
 
 
 //UGPBRParameter
-#define S3MB_MATERIAL_PBR_EMISSIVETEXTUREINDEX						L"emissiveTextureIndex"//UGint
-#define S3MB_MATERIAL_PBR_EMISSIVETEXTURECOORDINDEX					L"emissiveTextureCoordIndex"//UGint
-#define S3MB_MATERIAL_PBR_EMISSIVETEXTUREMOTION						L"emissiveTextureMotion"
-#define S3MB_MATERIAL_PBR_NORMALTEXTUREINDEX						L"normalTextureIndex"//UGint
-#define S3MB_MATERIAL_PBR_NORMALTEXTURECOORDINDEX					L"normalTextureCoordIndex"//UGint
-#define S3MB_MATERIAL_PBR_NORMALTEXTURESCALE						L"normalTextureScale"//UGfloat
-#define S3MB_MATERIAL_PBR_OCCLUSIONTEXTUREINDEX						L"occlusionTextureIndex"//UGint
-#define S3MB_MATERIAL_PBR_OCCLUSIONTEXTURECOORDINDEX				L"occlusionTextureCoordIndex"//UGint
-#define S3MB_MATERIAL_PBR_OCCLUSIONTEXTURESTRENGTH					L"occlusionTextureStrength"//UGfloat
+#define S3MB_MATERIAL_PBR_EMISSIVETEXTUREINDEX						U("emissiveTextureIndex")//UGint
+#define S3MB_MATERIAL_PBR_EMISSIVETEXTURECOORDINDEX					U("emissiveTextureCoordIndex")//UGint
+#define S3MB_MATERIAL_PBR_EMISSIVETEXTUREMOTION						U("emissiveTextureMotion")
+#define S3MB_MATERIAL_PBR_NORMALTEXTUREINDEX						U("normalTextureIndex")//UGint
+#define S3MB_MATERIAL_PBR_NORMALTEXTURECOORDINDEX					U("normalTextureCoordIndex")//UGint
+#define S3MB_MATERIAL_PBR_NORMALTEXTURESCALE						U("normalTextureScale")//UGfloat
+#define S3MB_MATERIAL_PBR_OCCLUSIONTEXTUREINDEX						U("occlusionTextureIndex")//UGint
+#define S3MB_MATERIAL_PBR_OCCLUSIONTEXTURECOORDINDEX				U("occlusionTextureCoordIndex")//UGint
+#define S3MB_MATERIAL_PBR_OCCLUSIONTEXTURESTRENGTH					U("occlusionTextureStrength")//UGfloat
 //UGPBRMetallicRough
-#define S3MB_MATERIAL_PBRM_BASECOLOR								L"baseColor"//Vector4d
-#define S3MB_MATERIAL_PBRM_BASECOLORTEXTUREINDEX					L"baseColorTextureIndex"//int
-#define S3MB_MATERIAL_PBRM_BASECOLORTEXTURECOORDINDEX				L"baseColorTextureCoordIndex"//int
-#define S3MB_MATERIAL_PBRM_BASECOLORTEXTUREMOTION					L"baseColorTextureMotion"
-#define S3MB_MATERIAL_PBRM_METALLICROUGHNESSTEXTUREINDEX			L"metallicRoughnessTextureIndex"//int
-#define S3MB_MATERIAL_PBRM_METALLICROUGHNESSTEXTURECOORDINDEX		L"metallicRoughnessTextureCoordIndex"//int
+#define S3MB_MATERIAL_PBRM_BASECOLOR								U("baseColor")//Vector4d
+#define S3MB_MATERIAL_PBRM_BASECOLORTEXTUREINDEX					U("baseColorTextureIndex")//int
+#define S3MB_MATERIAL_PBRM_BASECOLORTEXTURECOORDINDEX				U("baseColorTextureCoordIndex")//int
+#define S3MB_MATERIAL_PBRM_BASECOLORTEXTUREMOTION					U("baseColorTextureMotion")
+#define S3MB_MATERIAL_PBRM_METALLICROUGHNESSTEXTUREINDEX			U("metallicRoughnessTextureIndex")//int
+#define S3MB_MATERIAL_PBRM_METALLICROUGHNESSTEXTURECOORDINDEX		U("metallicRoughnessTextureCoordIndex")//int
 
-#define S3MB_MATERIAL_PBRM_ROUGHNESSTEXTURE			                L"metallicRohnessTexture"//wstring
-#define S3MB_MATERIAL_PBRM_METALLICFACTOR					        L"metallicFactor"//float
-#define S3MB_MATERIAL_PBRM_ROUGHNESSFACTOR				            L"roughnessFactor"//float
+#define S3MB_MATERIAL_PBRM_ROUGHNESSTEXTURE			                U("metallicRohnessTexture")//wstring
+#define S3MB_MATERIAL_PBRM_METALLICFACTOR					        U("metallicFactor")//float
+#define S3MB_MATERIAL_PBRM_ROUGHNESSFACTOR				            U("roughnessFactor")//float
 //PBRSpecularGlossy
-#define S3MB_MATERIAL_PBRS_DIFFUSEFACTOR						    L"diffuseFactor"//Vector4d
-#define S3MB_MATERIAL_PBRS_SPECULARFACTOR					        L"specularFactor"//Vector3d
-#define S3MB_MATERIAL_PBRS_GLOSSINESSFACTOR				            L"glossinessFactor"//float
-#define S3MB_MATERIAL_PBRS_DIFFUSETEXTURE					        L"diffuseTexture"//wstring
-#define S3MB_MATERIAL_PBRS_SPECULARGLOSSINESSTEXTURE	            L"specularGlossinessTexture"//wstring
+#define S3MB_MATERIAL_PBRS_DIFFUSEFACTOR						    U("diffuseFactor")//Vector4d
+#define S3MB_MATERIAL_PBRS_SPECULARFACTOR					        U("specularFactor")//Vector3d
+#define S3MB_MATERIAL_PBRS_GLOSSINESSFACTOR				            U("glossinessFactor")//float
+#define S3MB_MATERIAL_PBRS_DIFFUSETEXTURE					        U("diffuseTexture")//wstring
+#define S3MB_MATERIAL_PBRS_SPECULARGLOSSINESSTEXTURE	            U("specularGlossinessTexture")//wstring
 //
-#define S3MB_MATERIAL_SHADERNAME_VERTEX								L"vertexShaderName"
-#define S3MB_MATERIAL_SHADERNAME_FRAGMENT							L"fragmentShaderName"
+#define S3MB_MATERIAL_SHADERNAME_VERTEX								U("vertexShaderName")
+#define S3MB_MATERIAL_SHADERNAME_FRAGMENT							U("fragmentShaderName")
 
 #define S3M_S3MB_VERSIONV1		1.0
 #define S3M_S3MB_VERSIONV2		2.0
@@ -132,10 +132,15 @@ namespace S3MB
 		//将一个数值限制到一定范围内. 
 		template <typename T>
 		static T Clamp(T val, T minval, T maxval);
-		//加载S3MB文件
+		//加载S3MB文件流
 		static bool LoadStreamDataFromFile(ifstream& fileStream, MemoryStream& streamUnZipped, MemoryStream& streamShell, MemoryStream& streamSkeleton, \
 			MemoryStream& streamSecondColor, MemoryStream& streamTexture, MemoryStream& streamSelInfo, wstring& strJsonMaterials);
 		static bool LoadStreamDataFromFileV2(ifstream& fileStream, MemoryStream& streamUnZipped, MemoryStream& streamShell, MemoryStream& streamSkeleton, \
+			MemoryStream& streamSecondColor, MemoryStream& streamTexture, MemoryStream& streamSelInfo, wstring& strJsonMaterials);
+		//加载S3MB数据流
+		static bool LoadStreamDataFromStream(MemoryStream& dataStream, MemoryStream& streamUnZipped, MemoryStream& streamShell, MemoryStream& streamSkeleton, 
+			MemoryStream& streamSecondColor, MemoryStream& streamTexture, MemoryStream& streamSelInfo, wstring& strJsonMaterials);
+		static bool LoadStreamDataFromStreamV2(MemoryStream& dataStream, MemoryStream& streamUnZipped, MemoryStream& streamShell, MemoryStream& streamSkeleton, 
 			MemoryStream& streamSecondColor, MemoryStream& streamTexture, MemoryStream& streamSelInfo, wstring& strJsonMaterials);
 		//解压S3MB文件流并释放压缩流内存
 		static bool UnZipData(MemoryStream& streamUnZipped, unsigned char*& pZippedData, unsigned int nZippedSize);
@@ -166,6 +171,8 @@ namespace S3MB
 		static bool IsInstanceBatch(VertexDataPackage* pVertexDataPackage);
 		//加载压缩顶点信息
 		static bool LoadCompressVertex(MemoryStream& streamSkeleton, VertexDataPackage*& pVertexDataPackage);
+		//解压被压缩的顶点信息
+		static bool DecompressVertex(VertexDataPackage*& pVertexDataPackage);
 		//加载压缩法线信息
 		static bool LoadCompressNormal(MemoryStream& streamSkeleton, VertexDataPackage*& pVertexDataPackage);
 		//解压被压缩的法线信息
@@ -205,6 +212,9 @@ namespace S3MB
 		static void LoadROGeodeWithoutChild(RenderOperationGroup* pROGroup, RenderOperationGeode* pGeode, MemoryStream& stream);
 		static void LoadShellPagedLOD(RenderOperationGroup* pROGroup, RenderOperationPagedLOD* pROPagedLOD, MemoryStream& stream);
 		static void LoadShellROGeode(RenderOperationGroup* pROGroup, RenderOperationGeode* pGeode, MemoryStream& stream);
+
+		//加载IDInfo
+		static void LoadIDInfo(std::map<wstring, Geometry*>& mapGeometry, MemoryStream& streamIDInfo,float fVersion);
 
 		//保存shell信息
 		static void SaveShell(RenderOperationGroup* pROGroup, MemoryStream& stream);

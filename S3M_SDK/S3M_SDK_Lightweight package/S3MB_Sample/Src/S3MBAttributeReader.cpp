@@ -1,5 +1,6 @@
 #include "S3MBAttributeReader.h"
 #include <io.h>
+#include <fstream>
 
 using namespace S3MB;
 using namespace std;
@@ -9,10 +10,19 @@ void S3MBAttributeReader::ReadAttribute(wstring strAttPath)
 	{
 		strAttPath = StringHelper::GetAbsolutePath(strAttPath);
 	}
-	setlocale(LC_ALL, "zh-CN.UTF-8");
+
 	std::vector<LayerCacheInfo> vecLayerInfos;
 	// Read attribute.json file
-	S3MBLayerInfos::LoadLayerInfoFromJson(strAttPath, vecLayerInfos);
+	{
+		std::ifstream ifs(strAttPath, ios::in | ios::binary);
+		ifs.seekg(0, ios::end);
+		int size = ifs.tellg();
+		ifs.seekg(0, ios::beg);
+		char* buffer = new char[size];
+		ifs.read(buffer, size);
+		ifs.close();
+		S3MBLayerInfos::LoadLayerInfoFromStream(buffer,size, vecLayerInfos);
+	}
 	std::vector<LayerCacheInfo>::const_iterator itorLayerCaheInfo;
 	int nMapFeatureMax = -1;
 	int nMapFeatureMin = 9999;
@@ -42,15 +52,24 @@ void S3MBAttributeReader::ReadAttribute(wstring strAttPath)
 	// Traverse and read all attribute files
 	for (iter = fifileNames.begin(); iter != fifileNames.end(); iter++)
 	{
-		bool bflag = S3MBLayerInfos::LoadAttributeDataFromFile(*iter, mapFeature);
+		std::ifstream ifs(*iter, ios::in | ios::binary);
+		ifs.seekg(0,ios::end);
+		int len = ifs.tellg();
+		ifs.seekg(0,ios::beg);
+		char* buffer = new char[len];
+		ifs.read(buffer, len);
+		ifs.close();
+		bool bflag = S3MBLayerInfos::LoadAttributeDataFromStream(buffer,len, mapFeature);
+		delete buffer;
+		buffer = nullptr;
 	}
 
 	// Get specific fieldNames and fieldValues
 	for (std::map<unsigned int, Feature*>::iterator iter = mapFeature.begin(); iter != mapFeature.end(); iter++)
 	{
-		std::wcout << L"=============================" << std::endl;
+		std::wcout << U("=============================") << std::endl;
 		Feature* pFeature = iter->second;
-		std::wcout << L"FeatureID£º" << pFeature->m_nID << std::endl;
+		std::wcout << U("FeatureID£º") << pFeature->m_nID << std::endl;
 		vector<Feature::FieldDefine>* arrayFieldDefines = &(pFeature->m_fieldDefines);
 
 		int nSize = arrayFieldDefines->size();
@@ -62,9 +81,9 @@ void S3MBAttributeReader::ReadAttribute(wstring strAttPath)
 			pFeature->GetValue(strFieldName, vtValule);
 			wstring strFieldValue = vtValule.ToString();
 
-			std::wcout << strFieldName << L":" << strFieldValue << std::endl;
+			std::wcout << strFieldName << U(":") << strFieldValue << std::endl;
 		}
-		std::wcout << L"=============================" << std::endl;
+		std::wcout << U("=============================" )<< std::endl;
 	}
 	// Release all feature
 	for (std::map<unsigned int, Feature*>::iterator iter = mapFeature.begin(); iter != mapFeature.end(); iter++)
@@ -86,23 +105,23 @@ void S3MBAttributeReader::GetFiles(const std::wstring& path, std::vector<std::ws
 
 	struct _wfinddata_t fileinfo;
 	std::wstring p;
-	if ((hFile = _wfindfirst(p.assign(path).append(L"\\*").c_str(), &fileinfo)) != -1)
+	if ((hFile = _wfindfirst(p.assign(path).append(U("\\*")).c_str(), &fileinfo)) != -1)
 	{
 		do
 		{
 			if (fileinfo.attrib & _A_SUBDIR)
 			{
-				if (wcscmp(fileinfo.name, L".") != 0 && wcscmp(fileinfo.name, L"..") != 0)
+				if (wcscmp(fileinfo.name, U(".")) != 0 && wcscmp(fileinfo.name, U("..")) != 0)
 				{
-					GetFiles(p.assign(path).append(L"\\").append(fileinfo.name), files);
+					GetFiles(p.assign(path).append(U("\\")).append(fileinfo.name), files);
 				}
 			}
 			else
 			{
-				wstring s3mattribute = L"s3md";
+				wstring s3mattribute = U("s3md");
 				if (wcsstr(fileinfo.name, s3mattribute.c_str()))
 				{
-					files.push_back(p.assign(path).append(L"\\").append(fileinfo.name));
+					files.push_back(p.assign(path).append(U("\\")).append(fileinfo.name));
 				}
 			}
 		} while (_wfindnext(hFile, &fileinfo) == 0);

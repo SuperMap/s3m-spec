@@ -153,7 +153,7 @@ namespace S3MB
 		const TextureInfo& operator=(const TextureInfo& Info);
 		TextureInfo(const TextureInfo& Info);
 		// 接管了外边给的内存
-		TextureInfo(PixelFormat enFormat, unsigned int Width, unsigned int Height, void* data, unsigned int nSize, const wstring& path = L"");
+		TextureInfo(PixelFormat enFormat, unsigned int Width, unsigned int Height, void* data, unsigned int nSize, const wstring& path = U(""));
 
 		//! \brief 从流文件中加载
 		//! \param fStream 文件流[in]。

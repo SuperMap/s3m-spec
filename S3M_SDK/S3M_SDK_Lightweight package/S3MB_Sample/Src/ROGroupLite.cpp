@@ -15,34 +15,34 @@ void ROGroupLite::sampleV1(float fVersion)
 	RenderOperationGroup* pGroup;
 	//输入多个数据来构成PBR材质的多个纹理
 
-	pGroup = ROGroupLite::CreateROGroupLiteV1(1, L"./1.png");
+	pGroup = ROGroupLite::CreateROGroupLiteV1(1, U("./1.png"));
 
 	S3MBWriter m_S3MBWriter;
 	pGroup->ReComputeBoundingBox();//当包围盒/球不对或无包围盒/球时可调用
 	m_S3MBWriter.SetROGroup(pGroup);
 	m_S3MBWriter.SetIsChangeTexture(true, true);//DXT压缩
-	wstring strS3mbFile = L"./cube1.s3mb";
+	wstring strS3mbFile = U("./cube1.s3mb");
 	m_S3MBWriter.SetFilePath(strS3mbFile);
 	m_S3MBWriter.SetVersion(fVersion);
 	m_S3MBWriter.Save(0);
 	m_S3MBWriter.Clear();
 	delete pGroup;
 
-	pGroup = ROGroupLite::CreateROGroupLiteV1(2, L"./3.jpg");
+	pGroup = ROGroupLite::CreateROGroupLiteV1(2, U("./3.jpg"));
 	pGroup->ReComputeBoundingBox();
 	m_S3MBWriter.SetROGroup(pGroup);
 	m_S3MBWriter.SetIsChangeTexture(true, true);//DXT压缩
-	strS3mbFile = L"./cube2.s3mb";
+	strS3mbFile = U("./cube2.s3mb");
 	m_S3MBWriter.SetFilePath(strS3mbFile);
 	m_S3MBWriter.Save(0);
 	delete pGroup;
 	m_S3MBWriter.Clear();
 
-	pGroup = ROGroupLite::CreateROGroupLiteV1(3, L"./5.jpg");
+	pGroup = ROGroupLite::CreateROGroupLiteV1(3, U("./5.jpg"));
 	pGroup->ReComputeBoundingBox();
 	m_S3MBWriter.SetROGroup(pGroup);
 	m_S3MBWriter.SetIsChangeTexture(true, true);//DXT压缩
-	strS3mbFile = L"./cube3.s3mb";
+	strS3mbFile = U("./cube3.s3mb");
 	m_S3MBWriter.SetFilePath(strS3mbFile);
 	//m_S3MBWriter.Save(0);
 	m_S3MBWriter.Save(0);
@@ -53,17 +53,17 @@ void ROGroupLite::sampleV1(float fVersion)
 
 
 	S3MBReader m_S3MBReaderRo;
-	wstring strS3MBFileSrc = L"./cube1.s3mb";
+	wstring strS3MBFileSrc = U("./cube1.s3mb");
 	m_S3MBReaderRo.SetFilePath(strS3MBFileSrc);
 	m_S3MBReaderRo.ReadS3MBAsROGroup();
+	m_S3MBReaderRo.OutputGeometryInfoToConsole();
 	pGroup = m_S3MBReaderRo.GetRenderOperationGroup();
 
 	///************************************************************************/
 	//*       3:通过指定的s3mb缓存文件夹中json文件，遍历读取s3md属性文件并输出属性字段及其对应值                                                                */
 	///************************************************************************/
 
-	wstring strS3MBFolderSrc = L"../../../SampleData/attribute/attribute.json";
-
+	wstring strS3MBFolderSrc = U("../../../SampleData/attribute/attribute.json");
 	S3MBAttributeReader::ReadAttribute(strS3MBFolderSrc);
 
 
@@ -86,7 +86,7 @@ void ROGroupLite::sampleV1(float fVersion)
 	///生成SCP文件//////////////////
 	S3MBSCP* pS3MBSCP = new S3MBSCP();
 	pS3MBSCP->m_fVersion = fVersion;
-	pS3MBSCP->m_strAsset = L"SuperMap";
+	pS3MBSCP->m_strAsset = U("SuperMap");
 
 	pS3MBSCP->m_pntPosition = m_Position;
 	pS3MBSCP->m_rcGeoBounds = geoBounds;
@@ -96,18 +96,18 @@ void ROGroupLite::sampleV1(float fVersion)
 	pS3MBSCP->m_dbHeightMin = m_Box.GetMin().z + m_Position.z;
 	//pS3MBSCP->m_enDataType = SDT_ObliquePhoto;
 
-	pS3MBSCP->m_mapExtensions[L"s3m:FileType"] = L"OSGBCacheFile";
-	pS3MBSCP->m_mapExtensions[L"s3m:RenderMode"] = L"Normal";
-	pS3MBSCP->m_mapExtensions[L"s3m:TileSplitType"] = L"LOCAL";
+	pS3MBSCP->m_mapExtensions[U("s3m:FileType")] = U("OSGBCacheFile");
+	pS3MBSCP->m_mapExtensions[U("s3m:RenderMode")] = U("Normal");
+	pS3MBSCP->m_mapExtensions[U("s3m:TileSplitType")] = U("LOCAL");
 
 	std::vector<wstring> vecRootFiles;//根结点
 	std::vector<BoundingBox> vecRootBoundboxs;//根结点对应BoundingBox
-	vecRootFiles.push_back(L"cube1.s3mb");
+	vecRootFiles.push_back(U("cube1.s3mb"));
 	vecRootBoundboxs.push_back(m_Box);
 
 	pS3MBSCP->SetTiles(vecRootFiles, vecRootBoundboxs);
 	wstring strOutputFilePath = StringHelper::GetAbsolutePath(strS3MBFileSrc);
-	wstring strFilePatch = StringHelper::GetAbsolutePath(strOutputFilePath, L"../sampleV1.scp");
+	wstring strFilePatch = StringHelper::GetAbsolutePath(strOutputFilePath, U("../sampleV1.scp"));
 	pS3MBSCP->SaveToJsonFile(strFilePatch);
 	delete pS3MBSCP;
 	pS3MBSCP = NULL;
@@ -125,7 +125,7 @@ void ROGroupLite::sampleV2(float fVersion)
 	pGroup->ReComputeBoundingBox();//当包围盒/球不对或无包围盒/球时可调用
 	m_S3MBWriter.SetROGroup(pGroup);
 	m_S3MBWriter.SetIsChangeTexture(true, true);//DXT压缩
-	wstring strS3mbFileWrite = L"./sampleV2.s3mb";
+	wstring strS3mbFileWrite = U("./sampleV2.s3mb");
 	m_S3MBWriter.SetFilePath(strS3mbFileWrite);
 	m_S3MBWriter.SetVersion(fVersion);//设置版本信息
 	m_S3MBWriter.Save(0);
@@ -137,13 +137,16 @@ void ROGroupLite::sampleV2(float fVersion)
 	//*        2:通过指定的s3mb文件，读取出来Ro信息，并进行输出                                                                     */
 	///************************************************************************/
 	S3MBReader m_S3MBReaderRo;
-	wstring strS3MBFileRead = L"./sampleV2.s3mb";
+	wstring strS3MBFileRead = U("./sampleV2.s3mb");
 	m_S3MBReaderRo.SetFilePath(strS3MBFileRead);
 	m_S3MBReaderRo.ReadS3MBAsROGroup();
+	m_S3MBReaderRo.OutputGeometryInfoToConsole();
 	pGroup = m_S3MBReaderRo.GetRenderOperationGroup();
 	m_S3MBReaderRo.Clear();
 
 
+	//////////////////////生成SCP文件//////////////////
+	//插入点
 	Point3D m_Position(118, 39, 0);
 	Rect2D geoBounds(0, 0, 0, 0);
 	int epsgCode = 4326;
@@ -161,7 +164,7 @@ void ROGroupLite::sampleV2(float fVersion)
 	///生成SCP文件//////////////////
 	S3MBSCP* pS3MBSCP = new S3MBSCP();
 	pS3MBSCP->m_fVersion = fVersion;
-	pS3MBSCP->m_strAsset = L"SuperMap";
+	pS3MBSCP->m_strAsset = U("SuperMap");
 
 	pS3MBSCP->m_pntPosition = m_Position;
 	pS3MBSCP->m_rcGeoBounds = geoBounds;
@@ -171,18 +174,18 @@ void ROGroupLite::sampleV2(float fVersion)
 	pS3MBSCP->m_dbHeightMin = m_Box.GetMin().z + m_Position.z;
 	//pS3MBSCP->m_enDataType = SDT_ObliquePhoto;
 
-	pS3MBSCP->m_mapExtensions[L"s3m:FileType"] = L"OSGBCacheFile";
-	pS3MBSCP->m_mapExtensions[L"s3m:RenderMode"] = L"Normal";
-	pS3MBSCP->m_mapExtensions[L"s3m:TileSplitType"] = L"LOCAL";
+	pS3MBSCP->m_mapExtensions[U("s3m:FileType")] = U("OSGBCacheFile");
+	pS3MBSCP->m_mapExtensions[U("s3m:RenderMode")] = U("Normal");
+	pS3MBSCP->m_mapExtensions[U("s3m:TileSplitType")] = U("LOCAL");
 
 	std::vector<wstring> vecRootFiles;//根结点
 	std::vector<BoundingBox> vecRootBoundboxs;//根结点对应BoundingBox
-	vecRootFiles.push_back(L"sampleV2.s3mb");
+	vecRootFiles.push_back(U("sampleV2.s3mb"));
 	vecRootBoundboxs.push_back(m_Box);
 
 	pS3MBSCP->SetTiles(vecRootFiles, vecRootBoundboxs);
 	wstring strOutputFilePath = StringHelper::GetAbsolutePath(strS3mbFileWrite);
-	wstring strFilePatch = StringHelper::GetAbsolutePath(strOutputFilePath, L"../sampleV2.scp");
+	wstring strFilePatch = StringHelper::GetAbsolutePath(strOutputFilePath, U("../sampleV2.scp"));
 	pS3MBSCP->SaveToJsonFile(strFilePatch);
 	delete pS3MBSCP;
 	pS3MBSCP = NULL;
@@ -223,7 +226,7 @@ RenderOperationGroup* ROGroupLite::CreateROGroupLiteV1(int lodId, wstring textur
 	if (lodId < 3)
 	{
 		wstring strLod = to_wstring(lodId + 1);
-		wstring strLodFile = L"cube" + strLod + L".s3mb";
+		wstring strLodFile = U("cube") + strLod + U(".s3mb");
 		pPagedLOD->GetFileNames().push_back(strLodFile);
 	}
 	//Lod切换模式及切换距离可以自己控制。
@@ -237,7 +240,7 @@ RenderOperationGroup* ROGroupLite::CreateROGroupLiteV1(int lodId, wstring textur
 }
 void ROGroupLite::createTextureDataInfo(const wstring&  mtldataPath, RenderOperationGroup* pGroup)
 {
-	wstring texturePath = L"";
+	wstring texturePath = U("");
 	// 创建纹理
 	TextureData* pTextureData;
 	TextureDataInfo* pTextureDataInfo = new TextureDataInfo;
@@ -261,7 +264,7 @@ RenderOperationGroup* ROGroupLite::CreateROGroupLiteV2(int lodId, bool isV2)
 	RenderOperationGeode* pGeode = new RenderOperationGeode;
 
 	
-	wstring texturePath = L"";
+	wstring texturePath = U("");
 	if (mtldata->baseTexMap.texPath != nullptr)
 	{	
 		// 创建纹理
@@ -307,7 +310,7 @@ RenderOperationGroup* ROGroupLite::CreateROGroupLiteV2(int lodId, bool isV2)
 	//if (lodId < 3)
 	//{
 	//	wstring strLod = to_wstring(lodId + 1);
-	//	wstring strLodFile = L"立方体" + strLod + L".s3mb";
+	//	wstring strLodFile = U("立方体" + strLod + U(".s3mb";
 	//	pPagedLOD->GetFileNames().push_back(strLodFile);
 	//}
 	// Lod切换模式及切换距离可以自己控制。
@@ -324,8 +327,8 @@ ROGroupLite::MtlData* ROGroupLite::CreateMtlData()
 {
 	MtlData* mtlData = new MtlData;
 	mtlData->baseTexMap.coordIndex = 0;
-	mtlData->baseTexMap.texPath = (wchar_t*)L"./0.jpg";
-	mtlData->NormalMap.texPath = (wchar_t*)L"./NormalMap.jpg";
+	mtlData->baseTexMap.texPath = (wchar_t*)U("./0.jpg");
+	mtlData->NormalMap.texPath = (wchar_t*)U("./NormalMap.jpg");
 	mtlData->NormalMap.coordIndex = 0;
 	return mtlData;
 }
@@ -343,7 +346,7 @@ void ROGroupLite::CreateTextureUnitState(int& iPathFlag, const int& nCoordIdx, i
 Material* ROGroupLite::CreateMaterial(MtlData* mtldata)
 {
 	Material* pMaterial3D = new Material;
-	wstring strMtlName = L"材质";
+	wstring strMtlName = U("材质");
 	Technique* pTech = pMaterial3D->CreateTechnique();
 	Pass* pPass = pTech->CreatePass();
 
@@ -351,7 +354,7 @@ Material* ROGroupLite::CreateMaterial(MtlData* mtldata)
 
 	pPass->m_pPRBMaterial = new PBRMetallicRough;
 	PBRMetallicRough* pPbr = (PBRMetallicRough*)pPass->m_pPRBMaterial;
-	wstring textureDataName = L"";
+	wstring textureDataName = U("");
 
 	int nPathFlag = 0;
 	if (mtldata->baseTexMap.texPath != nullptr)
@@ -471,7 +474,7 @@ ROGroupLite::MeshParamInfo ROGroupLite::CreateMeshData(int lodId)
 		0, 0, 1, 1, 0, 1
 	};
 	std::vector<float> m_UVs(uvs, uvs + sizeof(uvs) / sizeof(uvs[0]));
-	wstring strID = L"骨架1";
+	wstring strID = U("骨架1");
 	//初始化骨架信息
 	struct MeshParamInfo info = { strID,lodId,m_Vers,m_Indexes,m_Normals,m_UVs };
 	return info;
@@ -606,7 +609,7 @@ Geometry* ROGroupLite::CreateGeometry(MeshParamInfo& meshInfo, bool isV2)
 
 TextureData* ROGroupLite::CreateTextureData(wstring texturePath)
 {	
-	if (texturePath.find(L':') == wstring::npos)
+	if (texturePath.find(U(':')) == wstring::npos)
 	{
 		wchar_t buffer[200];
 		GetCurrentDirectoryW(200, buffer);
@@ -620,7 +623,7 @@ TextureData* ROGroupLite::CreateTextureData(wstring texturePath)
 Material* ROGroupLite::CreateMaterial(wstring textureDataName)
 {
 	Material* pMaterial3D = new Material;
-	wstring strMtlName = L"材质";
+	wstring strMtlName = U("材质");
 	Technique* pTech = pMaterial3D->CreateTechnique();
 	Pass* pPass = pTech->CreatePass();
 

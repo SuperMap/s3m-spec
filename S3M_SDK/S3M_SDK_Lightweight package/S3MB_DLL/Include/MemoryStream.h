@@ -9,7 +9,8 @@ namespace S3MB
 	class MemoryStream
 	{
 		enum stringType { UTF8, Ansi, Unicode };
-	public://构造函数
+	public:
+		//构造函数
 		MemoryStream()
 		{
 			m_WtPos = 0;
@@ -50,6 +51,7 @@ namespace S3MB
 				delete[] m_pBuffer;
 			}
 			m_pBuffer = NULL;
+			m_WtPos = 0;
 		}
 		//释放内存
 		void Clear()
@@ -212,7 +214,7 @@ namespace S3MB
 			*this >> size;
 			if (size == 0)
 			{
-				str = L"";
+				str = U("");
 			}
 			else if (m_pBuffer && m_RdPos < m_nSize)
 			{
@@ -278,6 +280,10 @@ namespace S3MB
 		template<typename T>
 		void Save(T* buffer, std::size_t size)
 		{
+			if (size == 0)
+			{
+				return;
+			}
 			if (m_pBuffer && m_WtPos + size * sizeof(T) < m_nSize)
 			{
 				for (int i = 0; i < size; i++)

@@ -90,7 +90,7 @@ namespace S3MB
 		virtual RenderOperationGeode* AsGeode() { return NULL; };
 
 		//! \brief 类名
-		virtual wstring ClassName() { return L"Node"; }
+		virtual wstring ClassName() { return U("Node"); }
 
 		//! \brief 名字
 		void SetName(wstring strName) { m_strName = strName; };
@@ -211,7 +211,7 @@ namespace S3MB
 		virtual RenderOperationGroup* AsGroup() { return this; };
 
 		//! \brief 类名
-		virtual wstring ClassName() { return L"Group"; }
+		virtual wstring ClassName() { return U("Group"); }
 
 		//! \brief 设置父节点
 		void SetParentNode(RenderOperationNode* pNode) { m_pParentNode = pNode; }
@@ -256,7 +256,7 @@ namespace S3MB
 		virtual RenderOperationGroup* AsGroup() { return this; };
 
 		//! \brief 类名
-		virtual wstring ClassName() { return L"PagedLOD"; }
+		virtual wstring ClassName() { return U("PagedLOD"); }
 
 		//! \brief 获得范围
 		std::vector<std::pair<float, float> >& GetRanges() { return m_vecRangeList; }
@@ -310,7 +310,7 @@ namespace S3MB
 		virtual RenderOperationGeode* AsGeode() { return this; };
 
 		//! \brief 类名
-		virtual wstring ClassName() { return L"Geode"; }
+		virtual wstring ClassName() { return U("Geode"); }
 
 		//! \brief 添加Geometry
 		//! \param pROGeoemtry Geometry[in]

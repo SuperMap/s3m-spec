@@ -8,207 +8,207 @@
 using namespace std;
 namespace S3MB
 {
-#define SCPS_EXT_PROFILE							L".scp"
-#define SCPS_EXT_PAGEDLODTREE						L".json"				//Tile_xxx.json
-#define SCPS_ATTINFO_FILENAME						L"attribute.json" //属性信息，固定名字
-#define SCPS_EXT_ATTDATA							L".s3md"			//Tile_xxx.s3md
-#define SCPS_EXT_S3MB								L".s3mb"			//Tile_xxx.s3mb
+#define SCPS_EXT_PROFILE							U(".scp")
+#define SCPS_EXT_PAGEDLODTREE						U(".json")				//Tile_xxx.json
+#define SCPS_ATTINFO_FILENAME						U("attribute.json") //属性信息，固定名字
+#define SCPS_EXT_ATTDATA							U(".s3md")			//Tile_xxx.s3md
+#define SCPS_EXT_S3MB								U(".s3mb")			//Tile_xxx.s3mb
 
-#define SCPS_XMLHEADER								L"Spatial3DModel"
+#define SCPS_XMLHEADER								U("Spatial3DModel")
 
 	//SCP 标签名称定义
-#define SCPS_ASSET									L"s3m:Asset"
-#define SCPS_VERSION								L"s3m:Version"
-#define SCPS_DATATYPE								L"s3m:DataType"				//倾斜、精模、点云、管线、矢量
-#define SCPS_PYRAMIDSPLITTYPE						L"s3m:PyramidSplitType"	//Octree		QuadTree
-#define SCPS_LODTYPE								L"s3m:LodType"				//LOD类型：添加 or 替换
-#define SCPS_POSITION								L"s3m:Position"				//位置点
-#define SCPS_GEOBOUNDS								L"s3m:GeoBounds"			//地理范围
-#define SCPS_HEIGHTRANGE							L"s3m:HeightRange"			//高度范围
-#define SCPS_WDESCRIPT								L"s3m:WDescript"				//w位的描述
-#define SCPS_WCATEGORY								L"s3m:Category"				//w位的含义
-#define SCPS_WRANGE									L"s3m:Range"					//w位取值范围
-#define SCPS_PRJCOORD								L"s3m:CRS"						//坐标系
+#define SCPS_ASSET									U("s3m:Asset")
+#define SCPS_VERSION								U("s3m:Version")
+#define SCPS_DATATYPE								U("s3m:DataType")				//倾斜、精模、点云、管线、矢量
+#define SCPS_PYRAMIDSPLITTYPE						U("s3m:PyramidSplitType")	//Octree		QuadTree
+#define SCPS_LODTYPE								U("s3m:LodType")			//LOD类型：添加 or 替换
+#define SCPS_POSITION								U("s3m:Position")				//位置点
+#define SCPS_GEOBOUNDS								U("s3m:GeoBounds")			//地理范围
+#define SCPS_HEIGHTRANGE							U("s3m:HeightRange")		//高度范围
+#define SCPS_WDESCRIPT								U("s3m:WDescript")				//w位的描述
+#define SCPS_WCATEGORY								U("s3m:Category")				//w位的含义
+#define SCPS_WRANGE									U("s3m:Range")					//w位取值范围
+#define SCPS_PRJCOORD								U("s3m:CRS")						//坐标系
 
-#define SCPS_TILES									L"s3m:Tiles"
-#define SCPS_TILE									L"s3m:Tile"
-#define SCPS_TILE_URL								L"s3m:Url"
-#define SCPS_TILE_BBOX								L"s3m:Boundingbox"
+#define SCPS_TILES									U("s3m:Tiles")
+#define SCPS_TILE									U("s3m:Tile")
+#define SCPS_TILE_URL								U("s3m:Url")
+#define SCPS_TILE_BBOX								U("s3m:Boundingbox")
 
 //SCP的扩展标签
-#define SCPS_EXTENSIONS								L"s3m:Extensions"
-#define SCPS_ATTACH_FILES							L"s3m:AttachFiles"
-#define SCPS_ATTACH_FILE							L"s3m:AttachFile"
+#define SCPS_EXTENSIONS								U("s3m:Extensions")
+#define SCPS_ATTACH_FILES							U("s3m:AttachFiles")
+#define SCPS_ATTACH_FILE							U("s3m:AttachFile")
 //动态拉伸 高度存纹理坐标里了
 
 //SCP标签枚举值
-#define SCPS_ASSET_VALUE							L"SuperMap"
-#define SCPS_UNKNOWN								L"Unknown"
-#define SCPS_DATATYPE_OBLIPHOTO						L"ObliquePhotogrammetry"		//倾斜摄影数据
-#define SCPS_DATATYPE_PNTCLOUD						L"PointCloud"	//点云
-#define SCPS_DATATYPE_BIM							L"BIM"				//BIM
-#define SCPS_DATATYPE_VECTOR						L"Vector"			//矢量
-#define SCPS_DATATYPE_PIPELINE						L"PipeLine"		// 管线
-#define SCPS_DATATYPE_INSTANCEMODEL					L"InstanceModel" // 点外挂实例化
+#define SCPS_ASSET_VALUE							U("SuperMap")
+#define SCPS_UNKNOWN								U("Unknown")
+#define SCPS_DATATYPE_OBLIPHOTO						U("ObliquePhotogrammetry")		//倾斜摄影数据
+#define SCPS_DATATYPE_PNTCLOUD						U("PointCloud")	//点云
+#define SCPS_DATATYPE_BIM							U("BIM")				//BIM
+#define SCPS_DATATYPE_VECTOR						U("Vector")			//矢量
+#define SCPS_DATATYPE_PIPELINE						U("PipeLine")		// 管线
+#define SCPS_DATATYPE_INSTANCEMODEL					U("InstanceModel") // 点外挂实例化
 
-#define SCPS_PYRAMIDSPLITTYPE_OCTREE				L"Octree"			//八叉树
-#define SCPS_PYRAMIDSPLITTYPE_QUADTREE				L"QuadTree"	//四叉树
+#define SCPS_PYRAMIDSPLITTYPE_OCTREE				U("Octree")			//八叉树
+#define SCPS_PYRAMIDSPLITTYPE_QUADTREE				U("QuadTree")	//四叉树
 
-#define SCPS_LODTYPE_ADD							L"Add"
-#define SCPS_LODTYPE_REPLACE						L"Replace"
+#define SCPS_LODTYPE_ADD							U("Add")
+#define SCPS_LODTYPE_REPLACE						U("Replace")
 
-#define S3MB_LODINFO_TREEEXPORT						L"lodTreeExport"
-#define S3MB_LODINFO_ROOTTILE						L"rootTile"
-#define S3MB_LODINFO_TILE							L"tile"
-#define S3MB_LODINFO_TILEINFO						L"tileInfo"
-#define S3MB_LODINFO_NAME							L"name"
-#define S3MB_LODINFO_STATUS							L"status"
-#define S3MB_LODINFO_LODCOUNT						L"lodCount"
-#define S3MB_LODINFO_TILESCOUNT						L"tilesCount"
-#define S3MB_LODINFO_LODNUM							L"lodNum"
-#define S3MB_LODINFO_MODELPATH						L"modelPath"
-#define S3MB_LODINFO_RANGEMODE						L"rangeMode"
-#define S3MB_LODINFO_RANGEMODE_PIXELSIZE			L"pixelSizeOnScreen"
-#define S3MB_LODINFO_RANGEMODE_DISTANCE				L"distanceFromEvePoint"
-#define S3MB_LODINFO_RANGEVALUE						L"rangeValue"
-#define S3MB_LODINFO_BBOX							L"boundingBox"
-#define S3MB_LODINFO_CHILDREN						L"children"
+#define S3MB_LODINFO_TREEEXPORT						U("lodTreeExport")
+#define S3MB_LODINFO_ROOTTILE						U("rootTile")
+#define S3MB_LODINFO_TILE							U("tile")
+#define S3MB_LODINFO_TILEINFO						U("tileInfo")
+#define S3MB_LODINFO_NAME							U("name")
+#define S3MB_LODINFO_STATUS							U("status")
+#define S3MB_LODINFO_LODCOUNT						U("lodCount")
+#define S3MB_LODINFO_TILESCOUNT						U("tilesCount")
+#define S3MB_LODINFO_LODNUM							U("lodNum")
+#define S3MB_LODINFO_MODELPATH						U("modelPath")
+#define S3MB_LODINFO_RANGEMODE						U("rangeMode")
+#define S3MB_LODINFO_RANGEMODE_PIXELSIZE			U("pixelSizeOnScreen")
+#define S3MB_LODINFO_RANGEMODE_DISTANCE				U("distanceFromEvePoint")
+#define S3MB_LODINFO_RANGEVALUE						U("rangeValue")
+#define S3MB_LODINFO_BBOX							U("boundingBox")
+#define S3MB_LODINFO_CHILDREN						U("children")
 
-#define S3MB_LAYERINFOS								L"s3m:LayerInfos"
-#define S3MB_LAYERINFO								L"s3m:LayerInfo"
-#define S3MB_LAYERINFO_NAME							L"s3m:LayerName"
-#define S3MB_LAYERINFO_IDRANGE						L"s3m:IDRange"
-#define S3MB_LAYERINFO_FIELDINFOS					L"s3m:Fieldinfos"
-#define S3MB_LAYERINFO_FIELDINFO					L"s3m:Fieldinfo"
-#define S3MB_FIELD_ATT_NAME							L"Name"
-#define S3MB_FIELD_ATT_ALIAS						L"Alias"
-#define S3MB_FIELD_ATT_TYPE							L"Type"
-#define S3MB_FIELD_ATT_SIZE							L"Size"
-#define S3MB_FIELD_ATT_ISREQUIRED					L"IsRequired"
+#define S3MB_LAYERINFOS								U("s3m:LayerInfos")
+#define S3MB_LAYERINFO								U("s3m:LayerInfo")
+#define S3MB_LAYERINFO_NAME							U("s3m:LayerName")
+#define S3MB_LAYERINFO_IDRANGE						U("s3m:IDRange")
+#define S3MB_LAYERINFO_FIELDINFOS					U("s3m:Fieldinfos")
+#define S3MB_LAYERINFO_FIELDINFO					U("s3m:Fieldinfo")
+#define S3MB_FIELD_ATT_NAME							U("Name")
+#define S3MB_FIELD_ATT_ALIAS						U("Alias")
+#define S3MB_FIELD_ATT_TYPE							U("Type")
+#define S3MB_FIELD_ATT_SIZE							U("Size")
+#define S3MB_FIELD_ATT_ISREQUIRED					U("IsRequired")
 
-#define S3MB_ATTRIBUTE_DATA							L"s3m:AttributeData"
-#define S3MB_ATT_LAYER								L"s3m:Layer"
-#define S3MB_ATT_RECORDS							L"s3m:Records"
-#define S3MB_ATT_RECORD								L"s3m:Record"
-#define S3MB_ATT_Values								L"s3m:Values"
-#define S3MB_ATT_Field								L"s3m:Field"
-#define S3MB_ATT_ATT_ID								L"ID"
-#define S3MB_ATT_ATT_Name							L"Name"
+#define S3MB_ATTRIBUTE_DATA							U("s3m:AttributeData")
+#define S3MB_ATT_LAYER								U("s3m:Layer")
+#define S3MB_ATT_RECORDS							U("s3m:Records")
+#define S3MB_ATT_RECORD								U("s3m:Record")
+#define S3MB_ATT_Values								U("s3m:Values")
+#define S3MB_ATT_Field								U("s3m:Field")
+#define S3MB_ATT_ATT_ID								U("ID")
+#define S3MB_ATT_ATT_Name							U("Name")
 
-#define S3MB_X										L"s3m:X"
-#define S3MB_Y										L"s3m:Y"
-#define S3MB_Z										L"s3m:Z"
-#define S3MB_TRUE									L"true"
-#define S3MB_FALSE									L"false"
+#define S3MB_X										U("s3m:X")
+#define S3MB_Y										U("s3m:Y")
+#define S3MB_Z										U("s3m:Z")
+#define S3MB_TRUE									U("true")
+#define S3MB_FALSE									U("false")
 
-#define S3MB_ATT_X									L"X"
-#define S3MB_ATT_Y									L"Y"
-#define S3MB_ATT_Z									L"Z"
+#define S3MB_ATT_X									U("X")
+#define S3MB_ATT_Y									U("Y")
+#define S3MB_ATT_Z									U("Z")
 
-#define S3MB_LEFT									L"s3m:Left"
-#define S3MB_TOP									L"s3m:Top"
-#define S3MB_RIGHT									L"s3m:Right"
-#define S3MB_BOTTOM									L"s3m:Bottom"
-#define S3MB_MAX									L"s3m:Max"
-#define S3MB_MIN									L"s3m:Min"
+#define S3MB_LEFT									U("s3m:Left")
+#define S3MB_TOP									U("s3m:Top")
+#define S3MB_RIGHT									U("s3m:Right")
+#define S3MB_BOTTOM									U("s3m:Bottom")
+#define S3MB_MAX									U("s3m:Max")
+#define S3MB_MIN									U("s3m:Min")
 
-#define S3MB_BSHPERE_CENTER			             	L"s3m:Center"
-#define S3MB_BSHPERE_RADIUS				            L"s3m:Radius"
+#define S3MB_BSHPERE_CENTER			             	U("s3m:Center")
+#define S3MB_BSHPERE_RADIUS				            U("s3m:Radius")
 
 // 升级后S3MB属性标签
-#define S3MB_JSON_LAYERINFOS						L"layerInfos"
-#define S3MB_JSON_LAYERINFO					    	L"LayerInfo"
-#define S3MB_JSON_LAYERINFO_NAME					L"layerName"
-#define S3MB_JSON_LAYERINFO_IDRANGE				    L"idRange"
-#define S3MB_JSON_LAYERINFO_IDRANGE_MIN				L"minID"
-#define S3MB_JSON_LAYERINFO_IDRANGE_MAX				L"maxID"
-#define S3MB_JSON_LAYERINFO_FIELDINFOS			    L"fieldInfos"
-#define S3MB_JSON_LAYERINFO_FIELDINFO				L"fieldInfo"
-#define S3MB_JSON_FIELD_ATT_NAME					L"name"
-#define S3MB_JSON_FIELD_ATT_ALIAS					L"alias"
-#define S3MB_JSON_FIELD_ATT_TYPE					L"type"
-#define S3MB_JSON_FIELD_ATT_SIZE					L"size"
-#define S3MB_JSON_FIELD_ATT_ISREQUIRED			    L"isRequired"
+#define S3MB_JSON_LAYERINFOS						U("layerInfos")
+#define S3MB_JSON_LAYERINFO					    	U("LayerInfo")
+#define S3MB_JSON_LAYERINFO_NAME					U("layerName")
+#define S3MB_JSON_LAYERINFO_IDRANGE				    U("idRange")
+#define S3MB_JSON_LAYERINFO_IDRANGE_MIN				U("minID")
+#define S3MB_JSON_LAYERINFO_IDRANGE_MAX				U("maxID")
+#define S3MB_JSON_LAYERINFO_FIELDINFOS			    U("fieldInfos")
+#define S3MB_JSON_LAYERINFO_FIELDINFO				U("fieldInfo")
+#define S3MB_JSON_FIELD_ATT_NAME					U("name")
+#define S3MB_JSON_FIELD_ATT_ALIAS					U("alias")
+#define S3MB_JSON_FIELD_ATT_TYPE					U("type")
+#define S3MB_JSON_FIELD_ATT_SIZE					U("size")
+#define S3MB_JSON_FIELD_ATT_ISREQUIRED			    U("isRequired")
 
-#define S3MB_JSON_FIELD_ATT_TYPE_BOOL			    L"bool"
-#define S3MB_JSON_FIELD_ATT_TYPE_INT16			    L"int16"
-#define S3MB_JSON_FIELD_ATT_TYPE_UINT16			    L"uint16"
-#define S3MB_JSON_FIELD_ATT_TYPE_INT32			    L"int32"
-#define S3MB_JSON_FIELD_ATT_TYPE_UINT32			    L"uint32"
-#define S3MB_JSON_FIELD_ATT_TYPE_INT64			    L"int64"
-#define S3MB_JSON_FIELD_ATT_TYPE_FLOAT			    L"float"
-#define S3MB_JSON_FIELD_ATT_TYPE_DOUBLE		        L"double"
-#define S3MB_JSON_FIELD_ATT_TYPE_WCHAR		    	L"wchar"
-#define S3MB_JSON_FIELD_ATT_TYPE_STRING			    L"text"
-#define S3MB_JSON_FIELD_ATT_TYPE_NTEXT			    L"ntext"
-#define S3MB_JSON_FIELD_ATT_TYPE_DATE				L"date"
-#define S3MB_JSON_FIELD_ATT_TYPE_TIME				L"time"
-#define S3MB_JSON_FIELD_ATT_TYPE_TIMESTAMP		    L"timestamp"
-#define UGS3MB_JSON_FIELD_ATT_TYPE_GEOMETRY			L"geometry"  	// 几何数据类型
-#define UGS3MB_JSON_FIELD_ATT_TYPE_JSONB			L"jsonb"			// 用作Pg中的Jsonb字段类型
+#define S3MB_JSON_FIELD_ATT_TYPE_BOOL			    U("bool")
+#define S3MB_JSON_FIELD_ATT_TYPE_INT16			    U("int16")
+#define S3MB_JSON_FIELD_ATT_TYPE_UINT16			    U("uint16")
+#define S3MB_JSON_FIELD_ATT_TYPE_INT32			    U("int32")
+#define S3MB_JSON_FIELD_ATT_TYPE_UINT32			    U("uint32")
+#define S3MB_JSON_FIELD_ATT_TYPE_INT64			    U("int64")
+#define S3MB_JSON_FIELD_ATT_TYPE_FLOAT			    U("float")
+#define S3MB_JSON_FIELD_ATT_TYPE_DOUBLE		        U("double")
+#define S3MB_JSON_FIELD_ATT_TYPE_WCHAR		    	U("wchar")
+#define S3MB_JSON_FIELD_ATT_TYPE_STRING			    U("text")
+#define S3MB_JSON_FIELD_ATT_TYPE_NTEXT			    U("ntext")
+#define S3MB_JSON_FIELD_ATT_TYPE_DATE				U("date")
+#define S3MB_JSON_FIELD_ATT_TYPE_TIME				U("time")
+#define S3MB_JSON_FIELD_ATT_TYPE_TIMESTAMP		    U("timestamp")
+#define UGS3MB_JSON_FIELD_ATT_TYPE_GEOMETRY			U("geometry")  	// 几何数据类型
+#define UGS3MB_JSON_FIELD_ATT_TYPE_JSONB			U("jsonb")			// 用作Pg中的Jsonb字段类型
 // 点云
-#define S3MB_JSON_CLASSIFICATIONINFOS				L"classificationInfos"
-#define S3MB_JSON_CLASSIFICATION_ATT_NAME			L"name"
-#define S3MB_JSON_CLASSIFICATION_ATT_ID			    L"id"
-#define S3MB_JSON_CLASSIFICATION_ATT_POINTNUM		L"pointCount"
+#define S3MB_JSON_CLASSIFICATIONINFOS				U("classificationInfos")
+#define S3MB_JSON_CLASSIFICATION_ATT_NAME			U("name")
+#define S3MB_JSON_CLASSIFICATION_ATT_ID			    U("id")
+#define S3MB_JSON_CLASSIFICATION_ATT_POINTNUM		U("pointCount")
 
-#define S3MB_JSON_ATT_RECORDS						L"records"
-#define S3MB_JSON_ATT_RECORD						L"record"
-#define S3MB_JSON_ATT_VALUES						L"values"
-#define S3MB_JSON_ATT_FIELD					    	L"field"
-#define S3MB_JSON_ATT_ATT_ID						L"id"
-#define S3MB_JSON_ATT_ATT_NAME					    L"name"
+#define S3MB_JSON_ATT_RECORDS						U("records")
+#define S3MB_JSON_ATT_RECORD						U("record")
+#define S3MB_JSON_ATT_VALUES						U("values")
+#define S3MB_JSON_ATT_FIELD					    	U("field")
+#define S3MB_JSON_ATT_ATT_ID						U("id")
+#define S3MB_JSON_ATT_ATT_NAME					    U("name")
 
-#define SCPS_JSON_ASSET								L"asset"
-#define SCPS_JSON_VERSION							L"version"
-#define SCPS_JSON_DATATYPE							L"dataType"				//倾斜、精模、点云、管线、矢量
-#define SCPS_JSON_PYRAMIDSPLITTYPE					L"pyramidSplitType"		//Octree		QuadTree
-#define SCPS_JSON_LODTYPE							L"lodType"			//LOD类型：添加 or 替换
-#define SCPS_JSON_POSITION							L"position"			//位置点
-#define SCPS_JSON_GEOBOUNDS							L"geoBounds"				//地理范围
-#define SCPS_JSON_HEIGHTRANGE						L"heightRange"		//高度范围
-#define SCPS_JSON_HEIGHTRANGE_MIN					L"min"
-#define SCPS_JSON_HEIGHTRANGE_MAX					L"max"
-#define SCPS_JSON_WDESCRIPT							L"wDescript"				//w位的描述
-#define SCPS_JSON_WCATEGORY							L"category"			//w位的含义
-#define SCPS_JSON_WRANGE							L"range"				//w值的范围
-#define SCPS_JSON_WRANGE_MIN						L"min"
-#define SCPS_JSON_WRANGE_MAX						L"max"
-#define SCPS_JSON_PRJCOORD							L"crs"				//坐标系
-#define SCPS_JSON_PRJCOORD_EPSG				    	L"epsg:"				//前缀
+#define SCPS_JSON_ASSET								U("asset")
+#define SCPS_JSON_VERSION							U("version")
+#define SCPS_JSON_DATATYPE							U("dataType")			//倾斜、精模、点云、管线、矢量
+#define SCPS_JSON_PYRAMIDSPLITTYPE					U("pyramidSplitType")		//Octree		QuadTree
+#define SCPS_JSON_LODTYPE							U("lodType")			//LOD类型：添加 or 替换
+#define SCPS_JSON_POSITION							U("position")			//位置点
+#define SCPS_JSON_GEOBOUNDS							U("geoBounds")				//地理范围
+#define SCPS_JSON_HEIGHTRANGE						U("heightRange")		//高度范围
+#define SCPS_JSON_HEIGHTRANGE_MIN					U("min")
+#define SCPS_JSON_HEIGHTRANGE_MAX					U("max")
+#define SCPS_JSON_WDESCRIPT							U("wDescript")				//w位的描述
+#define SCPS_JSON_WCATEGORY							U("category")			//w位的含义
+#define SCPS_JSON_WRANGE							U("range")				//w值的范围
+#define SCPS_JSON_WRANGE_MIN						U("min")
+#define SCPS_JSON_WRANGE_MAX						U("max")
+#define SCPS_JSON_PRJCOORD							U("crs")				//坐标系
+#define SCPS_JSON_PRJCOORD_EPSG				    	U("epsg:")				//前缀
 
-#define SCPS_JSON_UNITS								L"units"
-#define SCPS_JSON_UNITS_METER						L"Meter"
-#define SCPS_JSON_UNITS_DEGREE						L"Degree"
-#define SCPS_JSON_TILES								L"tiles"
-#define SCPS_JSON_TILE								L"tile"
-#define SCPS_JSON_TILE_URL							L"url"
-#define SCPS_JSON_TILE_BBOX							L"boundingbox"
+#define SCPS_JSON_UNITS								U("units")
+#define SCPS_JSON_UNITS_METER						U("Meter")
+#define SCPS_JSON_UNITS_DEGREE						U("Degree")
+#define SCPS_JSON_TILES								U("tiles")
+#define SCPS_JSON_TILE								U("tile")
+#define SCPS_JSON_TILE_URL							U("url")
+#define SCPS_JSON_TILE_BBOX							U("boundingbox")
 
-#define SCPS_JSON_EXTENSIONS						L"extensions"
-#define SCPS_JSON_EXTENSIONS_TYPE					L"type"
-#define SCPS_JSON_EXTENSIONS_NAME					L"name"
-#define SCPS_JSON_EXTENSIONS_NEU				    L"neu"
+#define SCPS_JSON_EXTENSIONS						U("extensions")
+#define SCPS_JSON_EXTENSIONS_TYPE					U("type")
+#define SCPS_JSON_EXTENSIONS_NAME					U("name")
+#define SCPS_JSON_EXTENSIONS_NEU				    U("neu")
 
-#define SCPS_JSON_ATTACH_FILES						L"attachFiles"
-#define SCPS_JSON_ATTACH_FILE						L"attachFile"
-#define SCPS_JSON_POINTCLOUD_LAYERS			        L"pointCloudLayers"
-#define SCPS_JSON_POINTCLOUD_LAYER		            L"layer"
-#define SCPS_JSON_POINTCLOUD_LAYERNAME		        L"layerName"
-#define SCPS_JSON_POINTCLOUD_LAYERBOUNDS	        L"layerBounds"
+#define SCPS_JSON_ATTACH_FILES						U("attachFiles")
+#define SCPS_JSON_ATTACH_FILE						U("attachFile")
+#define SCPS_JSON_POINTCLOUD_LAYERS			        U("pointCloudLayers")
+#define SCPS_JSON_POINTCLOUD_LAYER		            U("layer")
+#define SCPS_JSON_POINTCLOUD_LAYERNAME		        U("layerName")
+#define SCPS_JSON_POINTCLOUD_LAYERBOUNDS	        U("layerBounds")
 
-#define  SCPS_JSON_GLOBAL_LEVELS					L"levels"
-#define  SCPS_JSON_GLOBAL_LEVEL						L"level"
+#define  SCPS_JSON_GLOBAL_LEVELS					U("levels")
+#define  SCPS_JSON_GLOBAL_LEVEL						U("level")
 
-#define SCPS_JSON_VOLS								L"vol"
-#define SCPS_JSON_VOLS_NAME							L"volName"
-#define SCPS_JSON_VOLS_TYPE							L"volType"
-#define SCPS_JSON_VOLS_RANGE_MAX					L"volRangeMax"
-#define SCPS_JSON_VOLS_RANGE_MIN					L"volRangeMin"
+#define SCPS_JSON_VOLS								U("vol")
+#define SCPS_JSON_VOLS_NAME							U("volName")
+#define SCPS_JSON_VOLS_TYPE							U("volType")
+#define SCPS_JSON_VOLS_RANGE_MAX					U("volRangeMax")
+#define SCPS_JSON_VOLS_RANGE_MIN					U("volRangeMin")
 
-#define S3MB_JSON_X								    L"x"
-#define S3MB_JSON_Y							    	L"y"
-#define S3MB_JSON_Z								    L"z"
+#define S3MB_JSON_X								    U("x")
+#define S3MB_JSON_Y							    	U("y")
+#define S3MB_JSON_Z								    U("z")
 
 	class S3MB_API S3mbFieldInfo
 	{
@@ -358,12 +358,16 @@ namespace S3MB
 	public:
 		//! \brief 从s3md文件中加载属性值
 		static bool LoadAttributeDataFromFile(const wstring& strAttFilePath, std::map<unsigned int, Feature*>& mapFeature);
+		//! \brief 从s3md数据流中加载属性值
+		static bool LoadAttributeDataFromStream(void* buffer,int bufferSize, std::map<unsigned int, Feature*>& mapFeature);
 		//从Json文件中加载属性值
 		static bool AttributeDataFromJson(std::map<unsigned int, Feature*>& mapFeature, JsonValue& jsonValue);
 		//从Json字符串中加载FeatureValue
 		static bool GetFeatureValuesFromJson(Feature* pFeature, JsonValue& jsonValue);
-		//读取Json文件
+		//读取Json文件,获取图层信息
 		static bool LoadLayerInfoFromJson(wstring strJson, vector<LayerCacheInfo>& vecLayerInfos);
+		//读取Json数据流，获取图层信息
+		static bool LoadLayerInfoFromStream(void* buffer, int bufferSize, vector<LayerCacheInfo>& vecLayerInfos);
 		//读取IDRange
 		static void GetIDRangeFromJson(JsonValue& jsonValue, int& nMin, int& nMax);
 		//! \brief mapFeature 里的ID是否在范围内

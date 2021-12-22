@@ -8,12 +8,12 @@ using namespace std;
 
 namespace S3MB
 {	
-#define TEXTUREMOTION_OFFSETSPEEDU			L"OffsetSpeedU"
-#define TEXTUREMOTION_OFFSETSPEEDV			L"OffsetSpeedV"
-#define TEXTUREMOTION_OFFSETPERIOD			L"OffsetPeriod"
-#define TEXTUREMOTION_TILINGSPEEDU			L"TilingSpeedU"
-#define TEXTUREMOTION_TILINGSPEEDV			L"TilingSpeedV"
-#define TEXTUREMOTION_TILINGPERIOD			L"TilingPeriod"
+#define TEXTUREMOTION_OFFSETSPEEDU			U("OffsetSpeedU")
+#define TEXTUREMOTION_OFFSETSPEEDV			U("OffsetSpeedV")
+#define TEXTUREMOTION_OFFSETPERIOD			U("OffsetPeriod")
+#define TEXTUREMOTION_TILINGSPEEDU			U("TilingSpeedU")
+#define TEXTUREMOTION_TILINGSPEEDV			U("TilingSpeedV")
+#define TEXTUREMOTION_TILINGPERIOD			U("TilingPeriod")
 	// 渲染引擎用的的裁剪模式
 	enum CullingMode
 	{

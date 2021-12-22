@@ -22,13 +22,14 @@ namespace S3MB
 		~S3MBReader();
 
 	public:
+		//将读取的s3mb文件转化为RenderOperationGroup
 		void ReadS3MBAsROGroup();
-		void ReadS3MBAttribute();
-
-		void GetFiles(const std::wstring& path, std::vector<std::wstring>& files);
+		//设置s3mb路径
 		void SetFilePath(const wstring& strFilePath);
-		bool OpenFileS3MB();
-		bool LoadFileS3MB(ifstream& stream);
+		//从数据流中读取s3mb
+		bool LoadS3MBFromStream(void* buffer,unsigned int bufferSize);
+		//输出模型信息到控制台
+		void OutputGeometryInfoToConsole();
 		//获取读取到的RenderOperationGroup
 		RenderOperationGroup* GetRenderOperationGroup() { return m_pROGroup; };
 		void Clear();
