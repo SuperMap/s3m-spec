@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <title>CBD</title>
+  <link href="../Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <script src="../Build/Cesium/Cesium.js"></script>
+  <style>
+    html, body, #cesiumContainer {
+      width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+<div id="cesiumContainer">
+</div>
+<script  type="module">
+    import S3MTilesLayer from './S3M_module/S3MLayer/S3MTilesLayer.js';
+    let viewer = new Cesium.Viewer('cesiumContainer',{
+    });
+    let scene = viewer.scene;
+    let layer = new S3MTilesLayer({
+        context : scene._context,
+        url: './data/CBD/cbd.scp'
+    });
+
+    scene.primitives.add(layer);
+
+    layer.readyPromise.then(function() {
+        scene.camera.setView({
+            destination : new Cesium.Cartesian3(-2181968.890329965, 4385313.17843029, 4072712.8241634783),
+            orientation : {
+                heading : 3.1756648661534443,
+                pitch : -0.3715184468182904
+            }
+        });
+    }).otherwise(function(error) {
+        console.log(error);
+    });
+</script>
+</body>
+</html>
