@@ -1,8 +1,13 @@
 import pako from './pako_inflate.js';
+import DXTTextureDecode from './DXTTextureDecode.js';
 
 function S3ModelParser() {
 
 }
+
+S3ModelParser.s3tc = true;
+S3ModelParser.pvrtc = false;
+S3ModelParser.etc1 = false;
 
 let S3MBVertexTag = {
     SV_Unkown : 0,
@@ -34,7 +39,7 @@ const S3MPixelFormat = {
     STANDARD_CRN : 27
 };
 
-const VertexCompressOptions = {
+const VertexCompressOption = {
     SVC_Vertex : 1,
     SVC_Normal : 2,
     SVC_VertexColor : 4,
@@ -874,6 +879,18 @@ function parseTexturePackage(buffer, view, bytesOffset, texturePackage) {
         let textureData = new Uint8Array(buffer, bytesOffset, size);
         bytesOffset += size;
         let internalFormat = (pixelFormat === S3MPixelFormat.RGB ||  pixelFormat === S3MPixelFormat.BGR) ? 33776 :  33779;
+        if(compressType === 22){
+            internalFormat = 36196;//rgb_etc1
+        }
+
+        if(!S3ModelParser.s3tc && (internalFormat === 33776 || internalFormat === 33779)) {
+            let out = new Uint8Array(width * height * 4);
+            DXTTextureDecode.decode(out, width, height, textureData, pixelFormat);
+            textureData = out;
+            compressType = 0;
+            internalFormat = (pixelFormat === S3MPixelFormat.RGB || pixelFormat === S3MPixelFormat.RGB) ? 273 : 4369;
+        }
+
 
         texturePackage[textureCode] = {
             id: textureCode,
@@ -961,16 +978,16 @@ function parsePickInfo(buffer, view, bytesOffset, nOptions, geoPackage, version)
                 let instanceMode = geoPackage[geometryName].vertexPackage.instanceMode;
                 let instanceIds = new Float32Array(instanceCount);
                 let selectionId = [];
-                for(let j=0;j<selectInfoCount;j++){
+                for(let j = 0;j < selectInfoCount;j++){
                     let nDictID = view.getUint32(bytesOffset, true);
                     selectionId.push(nDictID);
                     bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
                     let nSize = view.getUint32(bytesOffset, true);
                     bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
-                    for(let k=0;k<nSize;k++){
+                    for(let k = 0;k < nSize; k++){
                         let instanceId = view.getUint32(bytesOffset, true);
                         bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
-                        if(version== 2){
+                        if(version === 3){
                             let vertexCount = view.getUint32(bytesOffset, true);
                             bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
                         }
@@ -979,10 +996,10 @@ function parsePickInfo(buffer, view, bytesOffset, nOptions, geoPackage, version)
 
                 let beginOffset = instanceMode === 17 ? 16 : 28;
                 beginOffset *= Float32Array.BYTES_PER_ELEMENT;
-                for(let j=0;j<instanceCount;j++){
+                for(let j = 0;j < instanceCount; j++){
                     instanceIds[j] = j;
                     let offset = j * instanceMode * Float32Array.BYTES_PER_ELEMENT + beginOffset;
-                    unpackColor(instanceArray, offset, colorScratch);
+                    Cesium.Color.unpack(instanceArray, offset, colorScratch);
                     let pickId = version === 2 ? selectionId[j] : colorScratch.red + colorScratch.green * 256 + colorScratch.blue * LEFT_16;
                     if(pickInfo[pickId] === undefined){
                         pickInfo[pickId] = {
