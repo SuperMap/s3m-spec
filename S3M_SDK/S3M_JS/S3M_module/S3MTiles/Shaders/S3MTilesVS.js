@@ -137,27 +137,8 @@ export default `
         vertexPos = vec4(vertexPos.xyz,1.0) * worldMatrix;
         vertexColor *= secondary_colour; 
     #endif
+    
 
-    #ifdef TexCoord
-        if(aTexCoord0.y > 0.5)
-        {
-            vec4 tex4Vec = uTexMatrix * vec4(uv7.y, aTexCoord0.x, 0.0, 1.0);
-            vTexCoord.xy = tex4Vec.xy;
-            vertexPos = worldPos1;
-            worldMatrix = worldMatrix1;
-        }
-        else
-        {
-            vec4 tex4Vec = uTexMatrix * vec4(uv7.x, aTexCoord0.x, 0.0, 1.0);
-            vTexCoord.xy = tex4Vec.xy;
-            vertexPos = worldPos0;
-            worldMatrix = worldMatrix0;
-        }
-    #endif
-    #ifdef VertexNormal
-        normal.x = normal.x * uv7.z;
-    #endif
-    #endif
     #ifdef Instance  
         float index = instanceId;
     #else
