@@ -347,7 +347,7 @@ function parseInstanceInfo(buffer, view, bytesOffset, vertexPackage) {
         let texCoordStride = view.getUint16(bytesOffset, true);
         bytesOffset += Uint16Array.BYTES_PER_ELEMENT;
         let byteLength = texCoordCount * texDimensions * Float32Array.BYTES_PER_ELEMENT;
-        if(texDimensions === 17 || texDimensions === 29){
+        if(texDimensions === 17 ){
             let instanceBuffer = new Uint8Array(buffer, bytesOffset, byteLength);
             vertexPackage.instanceCount = texCoordCount;
             vertexPackage.instanceMode = texDimensions;

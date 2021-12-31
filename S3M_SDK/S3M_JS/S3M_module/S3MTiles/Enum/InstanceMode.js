@@ -1,6 +1,5 @@
 const InstanceMode = {
-    BIM : 17,
-    PIPELINE : 29
+    BIM : 17
 };
 
 export default Object.freeze(InstanceMode);

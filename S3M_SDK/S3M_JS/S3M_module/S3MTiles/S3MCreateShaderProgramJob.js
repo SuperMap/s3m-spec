@@ -79,10 +79,6 @@ S3MCreateShaderProgramJob.prototype.execute = function(){
         vp.defines.push(ProgramDefines.InstanceBim);
     }
 
-    if(vertexPackage.instanceMode === InstanceMode.PIPELINE){
-        vp.defines.push(ProgramDefines.InstancePipe);
-    }
-
     if(Cesium.defined(vertexPackage.compressOptions)){
         let compressOptions = vertexPackage.compressOptions;
         if((compressOptions & VertexCompressOption.SVC_Vertex) === VertexCompressOption.SVC_Vertex){

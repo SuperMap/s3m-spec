@@ -10,7 +10,6 @@ const ProgramDefines = {
     COMPRESS_TEXCOORD : 'COMPRESS_TEXCOORD',
     UseLineColor : 'USE_LINECOLOR',
     InstanceBim : 'InstanceBim',
-    InstancePipe : 'InstancePipe',
     COMPUTE_TEXCOORD : 'COMPUTE_TEXCOORD'
 };
 

@@ -37,17 +37,6 @@ export default `
     attribute vec4 uv6;   
 #endif
 
-#ifdef InstancePipe
-    attribute vec4 uv1;
-    attribute vec4 uv2;
-    attribute vec4 uv3;
-    attribute vec4 uv4;
-    attribute vec4 uv5;
-    attribute vec4 uv6;
-    attribute vec4 uv7;
-    attribute vec4 secondary_colour;
-    attribute vec4 uv9;
-#endif
     uniform vec4 uFillForeColor;
     uniform vec4 uSelectedColor;
     varying vec4 vSecondColor;
@@ -148,25 +137,7 @@ export default `
         vertexPos = vec4(vertexPos.xyz,1.0) * worldMatrix;
         vertexColor *= secondary_colour; 
     #endif
-    #ifdef InstancePipe
-        mat4 worldMatrix;
-        mat4 worldMatrix0;
-        mat4 worldMatrix1;
-        vec4 worldPos0;
-        vec4 worldPos1;
-        worldMatrix0[0] = uv1;
-        worldMatrix0[1] = uv2;
-        worldMatrix0[2] = uv3;
-        worldMatrix0[3] = vec4( 0.0, 0.0, 0.0, 1.0 );
-        worldMatrix1[0] = uv4;
-        worldMatrix1[1] = uv5;
-        worldMatrix1[2] = uv6;
-        worldMatrix1[3] = vec4( 0.0, 0.0, 0.0, 1.0 );
-        vec4 realVertex = vec4(vertexPos.xyz, 1.0);
-        realVertex.x = realVertex.x * uv7.z;
-        worldPos0 = realVertex * worldMatrix0;
-        worldPos1 = realVertex * worldMatrix1;
-        vertexColor *= secondary_colour; 
+
     #ifdef TexCoord
         if(aTexCoord0.y > 0.5)
         {
