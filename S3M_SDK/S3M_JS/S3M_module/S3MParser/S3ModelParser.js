@@ -860,7 +860,7 @@ function parseTexturePackage(buffer, view, bytesOffset, texturePackage) {
         let res = parseString(buffer, view, bytesOffset);
         let textureCode = res.string;
         bytesOffset = res.bytesOffset;
-        let align = bytesOffset % 4;
+        let align = res.length % 4;
         if(align !== 0){
             bytesOffset += (4 - align);
         }
