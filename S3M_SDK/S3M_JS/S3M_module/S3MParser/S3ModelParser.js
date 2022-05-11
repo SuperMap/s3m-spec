@@ -73,7 +73,8 @@ function parseString(buffer, view, bytesOffset) {
 
     return {
         string : string,
-        bytesOffset : bytesOffset
+        bytesOffset : bytesOffset,
+        length : length
     }
 }
 
@@ -805,7 +806,7 @@ function parseSkeleton(buffer, view, bytesOffset, geoPackage) {
         let res = parseString(buffer, view, bytesOffset);
         let geometryName = res.string;
         bytesOffset = res.bytesOffset;
-        let align = bytesOffset % 4;
+        let align = res.length % 4;
         if(align !== 0){
             bytesOffset += (4 - align);
         }
