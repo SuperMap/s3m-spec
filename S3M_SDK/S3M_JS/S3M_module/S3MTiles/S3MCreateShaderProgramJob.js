@@ -79,6 +79,10 @@ S3MCreateShaderProgramJob.prototype.execute = function(){
         vp.defines.push(ProgramDefines.InstanceBim);
     }
 
+    if(vertexPackage.instanceMode === InstanceMode.PIPELINE){
+        vp.defines.push(ProgramDefines.InstancePipe);
+    }
+
     if(Cesium.defined(vertexPackage.compressOptions)){
         let compressOptions = vertexPackage.compressOptions;
         if((compressOptions & VertexCompressOption.SVC_Vertex) === VertexCompressOption.SVC_Vertex){
@@ -100,6 +104,18 @@ S3MCreateShaderProgramJob.prototype.execute = function(){
 
     if(Cesium.defined(model.arrIndexPackage) && model.arrIndexPackage.length > 0 && model.arrIndexPackage[0].primitiveType === 2){
         fp.defines.push(ProgramDefines.UseLineColor);
+    }
+
+    if(Cesium.defined(vertexPackage.customVertexAttribute) && Cesium.defined(vertexPackage.customVertexAttribute['TextureCoordMatrix'])){
+        vp.defines.push('USE_TextureCoordMatrix');
+    }
+
+    if(Cesium.defined(vertexPackage.customVertexAttribute) && Cesium.defined(vertexPackage.customVertexAttribute['VertexWeight'])){
+        vp.defines.push('USE_VertexWeight');
+    }
+
+    if(layer._vertexCompressionType === 'MESHOPT') {
+        vp.defines.push('MeshOPT_Compress');
     }
 
     model.shaderProgram = Cesium.ShaderProgram.fromCache({

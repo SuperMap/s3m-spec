@@ -33,6 +33,7 @@ function S3MTilesLayer(options) {
     this._cache = new S3MLayerCache();
     this._maximumMemoryUsage = -1;
     this._totalMemoryUsageInBytes = 0;
+    this._vertexCompressionType = undefined;
     this._style3D = new Style3D();
     this._maximumPriority = { foveatedFactor: -Number.MAX_VALUE, depth: -Number.MAX_VALUE, distance: -Number.MAX_VALUE, pixel : -Number.MAX_VALUE};
     this._minimumPriority = { foveatedFactor: Number.MAX_VALUE, depth: Number.MAX_VALUE, distance: Number.MAX_VALUE, pixel : Number.MAX_VALUE};
@@ -145,6 +146,7 @@ S3MTilesLayer.prototype.loadConfig = function(url) {
         .then(function(config) {
             let extensions = config.extensions;
             that.fileType = extensions["s3m:FileType"];
+            that._vertexCompressionType = extensions['s3m:VertexCompressionType'];
             let lon = config.position.x;
             let lat = config.position.y;
             let height = config.position.z;
@@ -163,10 +165,12 @@ S3MTilesLayer.prototype.loadConfig = function(url) {
                 that._maxWValue = wDescript.max;
             }
 
-            for (let i = 0, len = config.tiles.length; i < len; i++) {
-                let fileName = config.tiles[i].url;
+            let tiles = config.tiles || config.rootTiles;
+            for (let i = 0, len = tiles.length; i < len; i++) {
+                let tileObj = tiles[i];
+                let fileName = tileObj.url;
                 let boundingVolume = {
-                    box : config.tiles[i].boundingbox
+                    box : tileObj.boundingbox
                 };
 
                 let tile = new S3MTile(that, undefined, boundingVolume, fileName);

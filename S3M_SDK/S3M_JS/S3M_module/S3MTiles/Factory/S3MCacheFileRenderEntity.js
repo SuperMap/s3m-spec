@@ -1,6 +1,7 @@
 import S3MTilesVS from '../Shaders/S3MTilesVS.js';
 import S3MTilesFS from '../Shaders/S3MTilesFS.js';
 import RenderEntity from './RenderEntity.js';
+import VertexCompressOption from '../Enum/VertexCompressOption.js';
 
 function S3MCacheFileRenderEntity(options) {
     RenderEntity.call(this, options);
@@ -40,7 +41,7 @@ function getTransparentRenderState() {
 }
 
 function getUniformMap(material, layer, ro) {
-    return {
+    const uniformMap = {
         uGeoMatrix : function() {
             return ro.geoMatrix;
         },
@@ -76,6 +77,100 @@ function getUniformMap(material, layer, ro) {
             return layer._selectedColor;
         }
     };
+
+    const vertexPackage = ro.vertexPackage;
+    const nCompressOptions = vertexPackage.compressOptions;
+    if((nCompressOptions & VertexCompressOption.SVC_Vertex) === VertexCompressOption.SVC_Vertex){
+        uniformMap['decode_position_min'] = function() {
+            return vertexPackage.minVerticesValue;
+        };
+        uniformMap['decode_position_normConstant'] = function() {
+            return vertexPackage.vertCompressConstant;
+        };
+    }
+
+    if((nCompressOptions & VertexCompressOption.SVC_Normal) === VertexCompressOption.SVC_Normal){
+        uniformMap['normal_rangeConstant'] = function() {
+            return vertexPackage.normalRangeConstant;
+        };
+    }
+
+    if((nCompressOptions & VertexCompressOption.SVC_TexutreCoord) === VertexCompressOption.SVC_TexutreCoord){
+        if(vertexPackage.texCoordCompressConstant.length > 0){
+            uniformMap['decode_texCoord0_min'] = function() {
+                return vertexPackage.minTexCoordValue[0];
+            };
+            uniformMap['decode_texCoord0_normConstant'] = function() {
+                return vertexPackage.texCoordCompressConstant[0];
+            };
+            uniformMap['decode_texCoord0_vNormConstant'] = function() {
+                return vertexPackage.texCoordCompressConstant[0];
+            };
+
+        }
+        if(vertexPackage.texCoordCompressConstant.length > 1){
+            uniformMap['decode_texCoord1_min'] = function() {
+                return vertexPackage.minTexCoordValue[1];
+            };
+            uniformMap['decode_texCoord1_normConstant'] = function() {
+                return vertexPackage.texCoordCompressConstant[1];
+            };
+            uniformMap['decode_texCoord1_vNormConstant'] = function() {
+                return vertexPackage.texCoordCompressConstant[1];
+            };
+
+        }
+        if(vertexPackage.texCoordCompressConstant.length > 2){
+            uniformMap['decode_texCoord2_min'] = function() {
+                return vertexPackage.minTexCoordValue[2];
+            };
+            uniformMap['decode_texCoord2_normConstant'] = function() {
+                return vertexPackage.texCoordCompressConstant[2];
+            };
+        }
+        if(vertexPackage.texCoordCompressConstant.length > 3){
+            uniformMap['decode_texCoord3_min'] = function() {
+                return vertexPackage.minTexCoordValue[3];
+            };
+            uniformMap['decode_texCoord3_normConstant'] = function() {
+                return vertexPackage.texCoordCompressConstant[3];
+            };
+        }
+        if(vertexPackage.texCoordCompressConstant.length > 4){
+            uniformMap['decode_texCoord4_min'] = function() {
+                return vertexPackage.minTexCoordValue[4];
+            };
+            uniformMap['decode_texCoord4_normConstant'] = function() {
+                return vertexPackage.texCoordCompressConstant[4];
+            };
+        }
+        if(vertexPackage.texCoordCompressConstant.length > 5){
+            uniformMap['decode_texCoord5_min'] = function() {
+                return vertexPackage.minTexCoordValue[5];
+            };
+            uniformMap['decode_texCoord5_normConstant'] = function() {
+                return vertexPackage.texCoordCompressConstant[5];
+            };
+        }
+        if(vertexPackage.texCoordCompressConstant.length > 6){
+            uniformMap['decode_texCoord6_min'] = function() {
+                return vertexPackage.minTexCoordValue[6];
+            };
+            uniformMap['decode_texCoord6_normConstant'] = function() {
+                return vertexPackage.texCoordCompressConstant[6];
+            };
+        }
+        if(vertexPackage.texCoordCompressConstant.length > 7){
+            uniformMap['decode_texCoord7_min'] = function() {
+                return vertexPackage.minTexCoordValue[7];
+            };
+            uniformMap['decode_texCoord7_normConstant'] = function() {
+                return vertexPackage.texCoordCompressConstant[7];
+            };
+        }
+    }
+
+    return uniformMap;
 }
 
 S3MCacheFileRenderEntity.prototype.createCommand = function() {

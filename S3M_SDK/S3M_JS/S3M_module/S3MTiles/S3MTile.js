@@ -99,7 +99,26 @@ function getUrl(fileName, layer){
     return lastUrl +'/rest/realspace'+afterRealspace+'data/path/'+ fileName.replace(/^\.*/, "").replace(/^\//, "").replace(/\/$/, "");
 }
 
+const scratchMatrix = new Cesium.Matrix3();
 function createBoundingBox(box, transform) {
+    if(Cesium.defined(box.center)){
+        let center = new Cesium.Cartesian3(box.center.x, box.center.y, box.center.z);
+        let vx = new Cesium.Cartesian4(box.xExtent.x, box.xExtent.y, box.xExtent.z, 0);
+        let vy = new Cesium.Cartesian4(box.yExtent.x, box.yExtent.y, box.yExtent.z, 0);
+        let vz = new Cesium.Cartesian4(box.zExtent.x, box.zExtent.y, box.zExtent.z, 0);
+
+        let halfAxes = new Cesium.Matrix3();
+        Cesium.Matrix3.setColumn(halfAxes, 0, vx, halfAxes);
+        Cesium.Matrix3.setColumn(halfAxes, 1, vy, halfAxes);
+        Cesium.Matrix3.setColumn(halfAxes, 2, vz, halfAxes);
+
+        center = Cesium.Matrix4.multiplyByPoint(transform, center, center);
+        const rotationScale = Cesium.Matrix4.getMatrix3(transform, scratchMatrix);
+        halfAxes = Cesium.Matrix3.multiply(rotationScale, halfAxes, halfAxes);
+
+        return new Cesium.TileOrientedBoundingBox(center, halfAxes);
+    }
+
     let min = new Cesium.Cartesian3(box.min.x, box.min.y, box.min.z);
     Cesium.Matrix4.multiplyByPoint(transform, min, min);
     let max = new Cesium.Cartesian3(box.max.x, box.max.y, box.max.z);
@@ -141,7 +160,8 @@ function getBoundingVolume (tile, frameState) {
 }
 
 S3MTile.prototype.getPixel = function(frameState) {
-    let boundingVolume = this.boundingVolume;
+    const tileBoundingVolume = this.boundingVolume;
+    let boundingVolume = tileBoundingVolume.boundingSphere;
     let radius = boundingVolume.radius;
     let center = boundingVolume.center;
     let distance = Cesium.Cartesian3.distance(frameState.camera.positionWC, center);
@@ -152,6 +172,14 @@ S3MTile.prototype.getPixel = function(frameState) {
     return lamat * radius / distance;
 };
 
+S3MTile.prototype.getGeometryError = function(frameState) {
+    const camera = frameState.camera;
+    const height = this.layer.context.drawingBufferHeight;
+    const geometricError = this.lodRangeData;
+    const distance = this.boundingVolume.distanceToCamera(frameState);
+    return (geometricError * height) / (distance * camera.frustum.sseDenominator);
+};
+
 S3MTile.prototype.distanceToTile = function(frameState) {
     let boundingVolume = getBoundingVolume(this, frameState);
     return boundingVolume.distanceToCamera(frameState);
@@ -160,7 +188,8 @@ S3MTile.prototype.distanceToTile = function(frameState) {
 let scratchToTileCenter = new Cesium.Cartesian3();
 
 S3MTile.prototype.distanceToTileCenter = function (frameState) {
-    const boundingVolume = getBoundingVolume(this, frameState);
+    const tileBoundingVolume = getBoundingVolume(this, frameState);
+    const boundingVolume = tileBoundingVolume.boundingVolume;
     const toCenter = Cesium.Cartesian3.subtract(boundingVolume.center, frameState.camera.positionWC, scratchToTileCenter);
     return Cesium.Cartesian3.dot(frameState.camera.directionWC, toCenter);
 };
@@ -173,7 +202,8 @@ S3MTile.prototype.visibility = function(frameState, parentVisibilityPlaneMask) {
 let scratchCartesian = new Cesium.Cartesian3();
 function priorityDeferred(tile, frameState) {
     let camera = frameState.camera;
-    let boundingVolume = tile.boundingVolume;
+    const tileBoundingVolume = tile.boundingVolume;
+    let boundingVolume = tileBoundingVolume.boundingSphere;
     let radius = boundingVolume.radius;
     let scaledCameraDirection = Cesium.Cartesian3.multiplyByScalar(camera.directionWC, tile.centerZDepth, scratchCartesian);
     let closestPointOnLine = Cesium.Cartesian3.add(camera.positionWC, scaledCameraDirection, scratchCartesian);
@@ -199,6 +229,7 @@ S3MTile.prototype.updateVisibility = function(frameState, layer) {
     this.distanceToCamera = this.distanceToTile(frameState);
     this.centerZDepth = this.distanceToTileCenter(frameState);
     this.pixel = this.getPixel(frameState);
+    this.geometryError = this.getGeometryError(frameState);
     this.visibilityPlaneMask = this.visibility(frameState, parentVisibilityPlaneMask);
     this.visible = this.visibilityPlaneMask !== Cesium.CullingVolume.MASK_OUTSIDE && this.distanceToCamera >= layer.visibleDistanceMin && this.distanceToCamera <=  layer.visibleDistanceMax;
     this.priorityDeferred = priorityDeferred(this, frameState);

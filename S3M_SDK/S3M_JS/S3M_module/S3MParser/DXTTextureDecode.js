@@ -36,43 +36,43 @@ function Unpack565(packed0, packed1, colour, offset) {
     return value;
 }
 
-var codesScratch = new Uint8Array(16);
-var indicesScratch = new Uint8Array(16);
 function DecompressColour(rgba, block, nOffset, isDxt1) {
+    var codes = new Uint8Array(16);
 
-    var a = Unpack565(block[nOffset + 0], block[nOffset + 1], codesScratch, 0);
-    var b = Unpack565(block[nOffset + 2], block[nOffset + 3], codesScratch, 4);
+    var a = Unpack565(block[nOffset + 0], block[nOffset + 1], codes, 0);
+    var b = Unpack565(block[nOffset + 2], block[nOffset + 3], codes, 4);
 
     for (var i = 0; i < 3; i++) {
-        var c = codesScratch[i];
-        var d = codesScratch[4 + i];
+        var c = codes[i];
+        var d = codes[4 + i];
 
         if (isDxt1 && a <= b) {
-            codesScratch[8 + i] = ( c + d ) / 2;
-            codesScratch[12 + i] = 0;
+            codes[8 + i] = ( c + d ) / 2;
+            codes[12 + i] = 0;
         }
         else {
-            codesScratch[8 + i] = ( 2 * c + d ) / 3;
-            codesScratch[12 + i] = ( c + 2 * d ) / 3;
+            codes[8 + i] = ( 2 * c + d ) / 3;
+            codes[12 + i] = ( c + 2 * d ) / 3;
         }
     }
 
-    codesScratch[8 + 3] = 255;
-    codesScratch[12 + 3] = ( isDxt1 && a <= b ) ? 0 : 255;
+    codes[8 + 3] = 255;
+    codes[12 + 3] = ( isDxt1 && a <= b ) ? 0 : 255;
 
+    var indices = new Uint8Array(16);
     for (var i = 0; i < 4; ++i) {
         var packed = block[nOffset + 4 + i];
 
-        indicesScratch[4 * i + 0] = packed & 0x3;
-        indicesScratch[4 * i + 1] = ( packed >> 2 ) & 0x3;
-        indicesScratch[4 * i + 2] = ( packed >> 4 ) & 0x3;
-        indicesScratch[4 * i + 3] = ( packed >> 6 ) & 0x3;
+        indices[4 * i + 0] = packed & 0x3;
+        indices[4 * i + 1] = ( packed >> 2 ) & 0x3;
+        indices[4 * i + 2] = ( packed >> 4 ) & 0x3;
+        indices[4 * i + 3] = ( packed >> 6 ) & 0x3;
     }
 
     for (var i = 0; i < 16; ++i) {
-        var offset = 4 * indicesScratch[i];
+        var offset = 4 * indices[i];
         for (var j = 0; j < 4; ++j)
-            rgba[4 * i + j] = codesScratch[offset + j];
+            rgba[4 * i + j] = codes[offset + j];
     }
 
 }
@@ -97,21 +97,24 @@ function DecompressAlphaDxt5(rgba, block, nOffset) {
     var alpha0 = block[nOffset + 0];
     var alpha1 = block[nOffset + 1];
 
-    codesScratch[0] = alpha0;
-    codesScratch[1] = alpha1;
+    var codes = new Uint8Array(8);
+
+    codes[0] = alpha0;
+    codes[1] = alpha1;
     if (alpha0 <= alpha1) {
         // use 5-alpha codebook
         for (var i = 1; i < 5; ++i)
-            codesScratch[1 + i] = ( ( 5 - i ) * alpha0 + i * alpha1 ) / 5;
-        codesScratch[6] = 0;
-        codesScratch[7] = 255;
+            codes[1 + i] = ( ( 5 - i ) * alpha0 + i * alpha1 ) / 5;
+        codes[6] = 0;
+        codes[7] = 255;
     }
     else {
         // use 7-alpha codebook
         for (var i = 1; i < 7; ++i)
-            codesScratch[1 + i] = ( ( 7 - i ) * alpha0 + i * alpha1 ) / 7;
+            codes[1 + i] = ( ( 7 - i ) * alpha0 + i * alpha1 ) / 7;
     }
 
+    var indices = new Uint8Array(16);
     var nOffset = nOffset + 2;
     var nBegin = 0;
     for (var i = 0; i < 2; ++i) {
@@ -125,12 +128,12 @@ function DecompressAlphaDxt5(rgba, block, nOffset) {
         // unpack 8 3-bit values from it
         for (var j = 0; j < 8; ++j) {
             var index = ( value >> 3 * j ) & 0x7;
-            indicesScratch[nBegin++] = index;
+            indices[nBegin++] = index;
         }
     }
 
     for (var i = 0; i < 16; ++i)
-        rgba[4 * i + 3] = codesScratch[indicesScratch[i]];
+        rgba[4 * i + 3] = codes[indices[i]];
 }
 
 function Decompress(rgba, block, nOffset, flags) {
@@ -148,9 +151,8 @@ function Decompress(rgba, block, nOffset, flags) {
     }
 }
 
-var c = new Uint16Array(4);
 function DecompressImage565(rgb565, width, height, blocks) {
-    
+    var c = new Uint16Array(4);
     var dst = rgb565;
     var m = 0;
     var dstI = 0;
@@ -226,13 +228,13 @@ function DecompressImage565(rgb565, width, height, blocks) {
 
  Internally this function calls squish::Decompress for each block.
  */
- var targetRgba = new Uint8Array(4 * 16);
 function DecompressImage(rgba, width, height, blocks, flags) {
     var bytesPerBlock = ( ( flags & kDxt1 ) != 0 ) ? 8 : 16;
 
     var nOffset = 0;
     for (var y = 0; y < height; y += 4) {
         for (var x = 0; x < width; x += 4) {
+            var targetRgba = new Uint8Array(4 * 16);
             Decompress(targetRgba, blocks, nOffset, flags);
 
             var nOffsetTarget = 0;

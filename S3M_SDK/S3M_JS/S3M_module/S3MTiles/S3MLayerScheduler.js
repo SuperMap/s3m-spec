@@ -150,6 +150,9 @@ function canTraverse(layer, tile) {
     if(tile.lodRangeMode === RangeMode.Pixel){
         return tile.pixel / layer.lodRangeScale > tile.lodRangeData;
     }
+    else if(tile.lodRangeMode === RangeMode.GeometryError) {
+        return tile.geometryError > 16;
+    }
 
 
     return tile.distanceToCamera * layer.lodRangeScale < tile.lodRangeData;

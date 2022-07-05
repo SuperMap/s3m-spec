@@ -131,6 +131,7 @@ function calcBoundingVolume(vertexPackage, modelMatrix) {
     return calcBoundingVolumeForNormal(vertexPackage, modelMatrix);
 }
 
+const scratchMatrix = new Cesium.Matrix3();
 function parseGeodes(layer, content, materialTable, pagelodNode, pagelod) {
     let geoMap = {};
     let geodeList = pagelodNode.geodes;
@@ -138,10 +139,29 @@ function parseGeodes(layer, content, materialTable, pagelodNode, pagelod) {
         let geodeNode = geodeList[i];
         let geoMatrix = geodeNode.matrix;
         let modelMatrix = Cesium.Matrix4.multiply(layer.modelMatrix, geoMatrix, new Cesium.Matrix4());
-        let boundingSphere;
+        let boundingVolume;
         if(Cesium.defined(pagelod.boundingVolume)) {
-            boundingSphere = new Cesium.BoundingSphere(pagelod.boundingVolume.sphere.center, pagelod.boundingVolume.sphere.radius);
-            Cesium.BoundingSphere.transform(boundingSphere, layer.modelMatrix, boundingSphere);
+            if(pagelod.boundingVolume.sphere){
+                boundingVolume = new Cesium.BoundingSphere(pagelod.boundingVolume.sphere.center, pagelod.boundingVolume.sphere.radius);
+                Cesium.BoundingSphere.transform(boundingVolume, layer.modelMatrix, boundingVolume);
+            }
+            else if(pagelod.boundingVolume.box){
+                const box = pagelod.boundingVolume.box;
+                let center = new Cesium.Cartesian3(box.center.x, box.center.y, box.center.z);
+                let vx = new Cesium.Cartesian4(box.xExtent.x, box.xExtent.y, box.xExtent.z, 0);
+                let vy = new Cesium.Cartesian4(box.yExtent.x, box.yExtent.y, box.yExtent.z, 0);
+                let vz = new Cesium.Cartesian4(box.zExtent.x, box.zExtent.y, box.zExtent.z, 0);
+
+                let halfAxes = new Cesium.Matrix3();
+                Cesium.Matrix3.setColumn(halfAxes, 0, vx, halfAxes);
+                Cesium.Matrix3.setColumn(halfAxes, 1, vy, halfAxes);
+                Cesium.Matrix3.setColumn(halfAxes, 2, vz, halfAxes);
+
+                center = Cesium.Matrix4.multiplyByPoint(layer.modelMatrix, center, center);
+                const rotationScale = Cesium.Matrix4.getMatrix3(layer.modelMatrix, scratchMatrix);
+                halfAxes = Cesium.Matrix3.multiply(rotationScale, halfAxes, halfAxes);
+                boundingVolume = new Cesium.OrientedBoundingBox(center, halfAxes);
+            }
         }
 
         let skeletonNames = geodeNode.skeletonNames;
@@ -156,7 +176,7 @@ function parseGeodes(layer, content, materialTable, pagelodNode, pagelod) {
                 material = materialTable[arrIndexPackage[0].materialCode];
             }
 
-            let geodeBoundingVolume = Cesium.defined(boundingSphere) ? boundingSphere : calcBoundingVolume(vertexPackage, modelMatrix);
+            let geodeBoundingVolume = calcBoundingVolume(vertexPackage, modelMatrix);
 
             geoMap[geoName] = S3MContentFactory[layer.fileType]({
                 layer : layer,
@@ -202,19 +222,32 @@ function parsePagelods(layer, content, materialTable) {
         pagelod.rangeMode = pagelodNode.rangeMode;
         pagelod.rangeDataList = pagelodNode.childTile;
         pagelod.rangeList = pagelodNode.rangeList;
-        let center = pagelodNode.boundingSphere.center;
-        let radius = pagelodNode.boundingSphere.radius;
-        if(pagelod.rangeDataList !== ''){
+        if(pagelodNode.obb){
             pagelod.boundingVolume = {
-                sphere : {
-                    center : new Cesium.Cartesian3(center.x, center.y, center.z),
-                    radius : radius
+                box : {
+                    center : pagelodNode.obb.obbCenter,
+                    xExtent : pagelodNode.obb.xExtent,
+                    yExtent : pagelodNode.obb.yExtent,
+                    zExtent : pagelodNode.obb.zExtent
                 }
             };
         }
         else{
-            pagelod.isLeafTile = true;
+            let center = pagelodNode.boundingSphere.center;
+            let radius = pagelodNode.boundingSphere.radius;
+            if(pagelod.rangeDataList !== ''){
+                pagelod.boundingVolume = {
+                    sphere : {
+                        center : new Cesium.Cartesian3(center.x, center.y, center.z),
+                        radius : radius
+                    }
+                };
+            }
+            else{
+                pagelod.isLeafTile = true;
+            }
         }
+
 
         parseGeodes(layer, content, materialTable, pagelodNode, pagelod);
         if(Cesium.defined(pagelod.geoMap)){
