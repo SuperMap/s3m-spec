@@ -26,7 +26,7 @@
       });
 
       scene.primitives.add(layer);
-      layer.readyPromise.then(function() {
+      layer.readyPromise.promise.then(function() {
           scene.camera.setView({
               destination : new Cesium.Cartesian3(  -2337027.2622438604,  4216224.319252785,4162425.3317484227),
               orientation : {
@@ -34,7 +34,7 @@
                   pitch : -0.38229046502560604
               }
           });
-      }).otherwise(function(error) {
+      }).catch(function(error) {
           console.log(error);
       });
 

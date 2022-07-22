@@ -115,7 +115,7 @@ function calcBoundingVolumeForInstance(vertexPackage){
         return boundingSphere;
     }
     let pntLU = new Cesium.Cartesian3(boundingsValues[0], boundingsValues[1], boundingsValues[2]);
-    let pntRD = new Cesium.Carteisan3(boundingsValues[3], boundingsValues[4], boundingsValues[5]);
+    let pntRD = new Cesium.Cartesian3(boundingsValues[3], boundingsValues[4], boundingsValues[5]);
     let center = new Cesium.Cartesian3.lerp(pntLU, pntRD, 0.5, scratchCenter);
     let radius = new Cesium.Cartesian3.distance(center, pntLU);
     boundingSphere.center = center;

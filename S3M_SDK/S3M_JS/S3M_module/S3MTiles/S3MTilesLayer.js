@@ -37,7 +37,7 @@ function S3MTilesLayer(options) {
     this._style3D = new Style3D();
     this._maximumPriority = { foveatedFactor: -Number.MAX_VALUE, depth: -Number.MAX_VALUE, distance: -Number.MAX_VALUE, pixel : -Number.MAX_VALUE};
     this._minimumPriority = { foveatedFactor: Number.MAX_VALUE, depth: Number.MAX_VALUE, distance: Number.MAX_VALUE, pixel : Number.MAX_VALUE};
-    this._readyPromise = Cesium.when.defer();
+    this._readyPromise = Cesium.defer();
 
     this.loadConfig(options.url);
 }
@@ -133,7 +133,7 @@ Cesium.Scene.prototype.pick = function(windowPosition, width, height) {
 
 S3MTilesLayer.prototype.loadConfig = function(url) {
     let that = this;
-    Cesium.when(url)
+    Promise.resolve(url)
         .then(function(url) {
             let basePath;
             let resource = Cesium.Resource.createIfNeeded(url);
@@ -180,7 +180,7 @@ S3MTilesLayer.prototype.loadConfig = function(url) {
             }
 
             that._readyPromise.resolve(that);
-        }).otherwise(function(error) {
+        }).catch(function(error) {
         that._readyPromise.reject(error);
     });
 };
