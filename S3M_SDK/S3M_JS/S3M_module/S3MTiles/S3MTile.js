@@ -1,16 +1,19 @@
 import ContentState from './Enum/ContentState.js';
 import S3ModelParser from '../S3MParser/S3ModelParser.js';
 import S3MContentParser from './S3MContentParser.js';
-import RangeMode from './Enum/RangeMode.js';
+import defer from './defer.js';
+import S3MPageLod from "./S3MPageLod.js";
 
-function S3MTile(layer, parent, boundingVolume, fileName, rangeData, rangeMode) {
+const defined = Cesium.defined; 
+
+function S3MTile(layer, parent, boundingVolume, fileName) {
     this.layer = layer;
     this.parent = parent;
     let path = fileName.replace(/\\/g,'/');
     this.fileExtension = Cesium.getExtensionFromUri(fileName);
     this.relativePath = getUrl(path, layer);
     this.fileName = fileName;
-    this.isLeafTile = rangeData === 0;
+    this.isLeafTile = false;
     this.isRootTile = false;
     this.boundingVolume = this.createBoundingVolume(boundingVolume, layer.modelMatrix);
     let baseResource = Cesium.Resource.createIfNeeded(layer._baseResource);
@@ -31,48 +34,19 @@ function S3MTile(layer, parent, boundingVolume, fileName, rangeData, rangeMode) 
     this.cacheNode = undefined;
     this.distanceToCamera = 0;
     this.centerZDepth = 0;
-    this.pixel = 0;
     this.depth = parent ? parent.depth + 1 : 0;
     this.visibilityPlaneMask = 0;
     this.visible = false;
-    this.children = [];
+    this.pageLods = [];
     this.renderEntities = [];
-    this.lodRangeData = Cesium.defaultValue(rangeData, 16);
-    this.lodRangeMode = Cesium.defaultValue(rangeMode, RangeMode.Pixel);
-    this.contentState = this.isLeafTile ? ContentState.READY : ContentState.UNLOADED;
+    this.contentState = ContentState.UNLOADED;
     this.touchedFrame = 0;
     this.requestedFrame = 0;
     this.processFrame = 0;
-    this.selectedFrame = 0;
     this.updatedVisibilityFrame = 0;
     this.foveatedFactor = 0;
     this.priority = 0;
-    this.priorityHolder = this;
-    this.wasMinPriorityChild = false;
-    this.shouldSelect = false;
-    this.selected = false;
-    this.finalResolution = true;
-    this.refines = false;
 }
-
-Object.defineProperties(S3MTile.prototype, {
-    renderable : {
-        get : function() {
-            let renderEntities = this.renderEntities;
-            let len = renderEntities.length;
-            if(len === 0){
-                return false;
-            }
-            for(let i = 0;i < len;i++){
-                if(!renderEntities[i].ready){
-                    return false;
-                }
-            }
-
-            return true;
-        }
-    }
-});
 
 let scratchScale = new Cesium.Cartesian3();
 
@@ -96,126 +70,100 @@ function getUrl(fileName, layer){
 
     let afterRealspace  = url.replace(/(.*realspace)/, "");
     let lastUrl = url.replace(/\/rest\/realspace/g,"").replace(afterRealspace,"");
-    return lastUrl +'/rest/realspace'+afterRealspace+'data/path/'+ fileName.replace(/^\.*/, "").replace(/^\//, "").replace(/\/$/, "");
+    lastUrl += '/rest/realspace'+afterRealspace+'data/path/'+ fileName.replace(/^\.*/, "").replace(/^\//, "").replace(/\/$/, "");
+    return lastUrl;
 }
 
-const scratchMatrix = new Cesium.Matrix3();
 function createBoundingBox(box, transform) {
-    if(Cesium.defined(box.center)){
-        let center = new Cesium.Cartesian3(box.center.x, box.center.y, box.center.z);
-        let vx = new Cesium.Cartesian4(box.xExtent.x, box.xExtent.y, box.xExtent.z, 0);
-        let vy = new Cesium.Cartesian4(box.yExtent.x, box.yExtent.y, box.yExtent.z, 0);
-        let vz = new Cesium.Cartesian4(box.zExtent.x, box.zExtent.y, box.zExtent.z, 0);
+    if(box.center){
+        const halfAxes = new Cesium.Matrix3();
+        const center = new Cesium.Cartesian3(box.center.x, box.center.y, box.center.z);
+        Cesium.Matrix4.multiplyByPoint(transform, center, center);
 
-        let halfAxes = new Cesium.Matrix3();
+        const vx = new Cesium.Cartesian4(box.xExtent.x, box.xExtent.y, box.xExtent.z, 0);
+        const vy = new Cesium.Cartesian4(box.yExtent.x, box.yExtent.y, box.yExtent.z, 0);
+        const vz = new Cesium.Cartesian4(box.zExtent.x, box.zExtent.y, box.zExtent.z, 0);
+
+        Cesium.Matrix4.multiplyByVector(transform, vx, vx);
+        Cesium.Matrix4.multiplyByVector(transform, vy, vy);
+        Cesium.Matrix4.multiplyByVector(transform, vz, vz);
+
         Cesium.Matrix3.setColumn(halfAxes, 0, vx, halfAxes);
         Cesium.Matrix3.setColumn(halfAxes, 1, vy, halfAxes);
         Cesium.Matrix3.setColumn(halfAxes, 2, vz, halfAxes);
-
-        center = Cesium.Matrix4.multiplyByPoint(transform, center, center);
-        const rotationScale = Cesium.Matrix4.getMatrix3(transform, scratchMatrix);
-        halfAxes = Cesium.Matrix3.multiply(rotationScale, halfAxes, halfAxes);
-
         return new Cesium.TileOrientedBoundingBox(center, halfAxes);
     }
 
-    let min = new Cesium.Cartesian3(box.min.x, box.min.y, box.min.z);
-    Cesium.Matrix4.multiplyByPoint(transform, min, min);
-    let max = new Cesium.Cartesian3(box.max.x, box.max.y, box.max.z);
-    Cesium.Matrix4.multiplyByPoint(transform, max, max);
-    let sphere = Cesium.BoundingSphere.fromCornerPoints(min, max, new Cesium.BoundingSphere());
-    let center = sphere.center;
-    let radius = sphere.radius;
-    let scale = Cesium.Matrix4.getScale(transform, scratchScale);
-    let maxScale = Cesium.Cartesian3.maximumComponent(scale);
-    radius *= maxScale;
-    return new Cesium.TileBoundingSphere(center, radius);
+    const points = [];
+    points.push(new Cesium.Cartesian3(box.min.x, box.min.y, box.min.z));
+    points.push(new Cesium.Cartesian3(box.min.x, box.min.y, box.max.z));
+    points.push(new Cesium.Cartesian3(box.min.x, box.max.y, box.min.z));
+    points.push(new Cesium.Cartesian3(box.min.x, box.max.y, box.max.z));
+    points.push(new Cesium.Cartesian3(box.max.x, box.min.y, box.min.z));
+    points.push(new Cesium.Cartesian3(box.max.x, box.min.y, box.max.z));
+    points.push(new Cesium.Cartesian3(box.max.x, box.max.y, box.min.z));
+    points.push(new Cesium.Cartesian3(box.max.x, box.max.y, box.max.z));
+
+    for(let i = 0; i < 8; i++){
+        points[i] = Cesium.Matrix4.multiplyByPoint(transform, points[i], points[i]);
+    }
+
+    const orientedBoundingBox = Cesium.OrientedBoundingBox.fromPoints(points);
+    return new Cesium.TileOrientedBoundingBox(orientedBoundingBox.center, orientedBoundingBox.halfAxes);
 }
 
 S3MTile.prototype.createBoundingVolume = function(parameter, transform) {
     if (Cesium.defined(parameter.sphere)) {
         return createSphere(parameter.sphere, transform);
     }
-    else if(Cesium.defined(parameter.box)) {
+
+    if(Cesium.defined(parameter.box)) {
         return createBoundingBox(parameter.box, transform);
+    }
+
+    if(parameter.boundingVolume) {
+        return parameter;
     }
 
     return undefined;
 };
 
-S3MTile.prototype.canTraverse = function() {
-    if (this.children.length === 0 || this.isLeafTile) {
-        return false;
-    }
-
-    if(!Cesium.defined(this.lodRangeData)) {
-        return true;
-    }
-
-    return this.pixel > this.lodRangeData;
-};
-
-function getBoundingVolume (tile, frameState) {
-    return tile.boundingVolume;
-}
-
-S3MTile.prototype.getPixel = function(frameState) {
-    const tileBoundingVolume = this.boundingVolume;
-    let boundingVolume = tileBoundingVolume.boundingSphere;
-    let radius = boundingVolume.radius;
-    let center = boundingVolume.center;
-    let distance = Cesium.Cartesian3.distance(frameState.camera.positionWC, center);
-    let height = frameState.context.drawingBufferHeight;
-    let theta = frameState.camera.frustum._fovy * 0.5;
-    let screenYPix = height * 0.5;
-    let lamat = screenYPix / Math.tan(theta);
-    return lamat * radius / distance;
-};
-
-S3MTile.prototype.getGeometryError = function(frameState) {
-    const camera = frameState.camera;
-    const height = this.layer.context.drawingBufferHeight;
-    const geometricError = this.lodRangeData;
-    const distance = this.boundingVolume.distanceToCamera(frameState);
-    return (geometricError * height) / (distance * camera.frustum.sseDenominator);
-};
-
 S3MTile.prototype.distanceToTile = function(frameState) {
-    let boundingVolume = getBoundingVolume(this, frameState);
+    let boundingVolume = this.boundingVolume;
     return boundingVolume.distanceToCamera(frameState);
 };
 
 let scratchToTileCenter = new Cesium.Cartesian3();
 
 S3MTile.prototype.distanceToTileCenter = function (frameState) {
-    const tileBoundingVolume = getBoundingVolume(this, frameState);
+    const tileBoundingVolume = this.boundingVolume;
     const boundingVolume = tileBoundingVolume.boundingVolume;
     const toCenter = Cesium.Cartesian3.subtract(boundingVolume.center, frameState.camera.positionWC, scratchToTileCenter);
     return Cesium.Cartesian3.dot(frameState.camera.directionWC, toCenter);
 };
 
 S3MTile.prototype.visibility = function(frameState, parentVisibilityPlaneMask) {
-    let boundingVolume = getBoundingVolume(this, frameState);
+    let boundingVolume = this.boundingVolume;
     return frameState.cullingVolume.computeVisibilityWithPlaneMask(boundingVolume, parentVisibilityPlaneMask);
 };
 
 let scratchCartesian = new Cesium.Cartesian3();
 function priorityDeferred(tile, frameState) {
-    let camera = frameState.camera;
+    const camera = frameState.camera;
     const tileBoundingVolume = tile.boundingVolume;
-    let boundingVolume = tileBoundingVolume.boundingSphere;
-    let radius = boundingVolume.radius;
-    let scaledCameraDirection = Cesium.Cartesian3.multiplyByScalar(camera.directionWC, tile.centerZDepth, scratchCartesian);
-    let closestPointOnLine = Cesium.Cartesian3.add(camera.positionWC, scaledCameraDirection, scratchCartesian);
-    let toLine = Cesium.Cartesian3.subtract(closestPointOnLine, boundingVolume.center, scratchCartesian);
-    let distanceToCenterLine = Cesium.Cartesian3.magnitude(toLine);
-    let notTouchingSphere = distanceToCenterLine > radius;
+    const boundingVolume = tileBoundingVolume.boundingVolume;
+    const radius = boundingVolume.radius;
+    const scaledCameraDirection = Cesium.Cartesian3.multiplyByScalar(camera.directionWC, tile.centerZDepth, scratchCartesian);
+    const closestPointOnLine = Cesium.Cartesian3.add(camera.positionWC, scaledCameraDirection, scratchCartesian);
+    const toLine = Cesium.Cartesian3.subtract(closestPointOnLine, boundingVolume.center, scratchCartesian);
+    const distanceToCenterLine = Cesium.Cartesian3.magnitude(toLine);
+    const notTouchingSphere = distanceToCenterLine > radius;
     if (notTouchingSphere) {
-        let toLineNormalized = Cesium.Cartesian3.normalize(toLine, scratchCartesian);
-        let scaledToLine = Cesium.Cartesian3.multiplyByScalar(toLineNormalized, radius, scratchCartesian);
-        let closestOnSphere = Cesium.Cartesian3.add(boundingVolume.center, scaledToLine, scratchCartesian);
-        let toClosestOnSphere = Cesium.Cartesian3.subtract(closestOnSphere, camera.positionWC, scratchCartesian);
-        let toClosestOnSphereNormalize = Cesium.Cartesian3.normalize(toClosestOnSphere, scratchCartesian);
+        const toLineNormalized = Cesium.Cartesian3.normalize(toLine, scratchCartesian);
+        const scaledToLine = Cesium.Cartesian3.multiplyByScalar(toLineNormalized, radius, scratchCartesian);
+        const closestOnSphere = Cesium.Cartesian3.add(boundingVolume.center, scaledToLine, scratchCartesian);
+        const toClosestOnSphere = Cesium.Cartesian3.subtract(closestOnSphere, camera.positionWC, scratchCartesian);
+        const toClosestOnSphereNormalize = Cesium.Cartesian3.normalize(toClosestOnSphere, scratchCartesian);
         tile.foveatedFactor = 1.0 - Math.abs(Cesium.Cartesian3.dot(camera.directionWC, toClosestOnSphereNormalize));
     } else {
         tile.foveatedFactor = 0.0;
@@ -228,11 +176,9 @@ S3MTile.prototype.updateVisibility = function(frameState, layer) {
     let parentVisibilityPlaneMask = Cesium.defined(parent) ? parent.visibilityPlaneMask : Cesium.CullingVolume.MASK_INDETERMINATE;
     this.distanceToCamera = this.distanceToTile(frameState);
     this.centerZDepth = this.distanceToTileCenter(frameState);
-    this.pixel = this.getPixel(frameState);
-    this.geometryError = this.getGeometryError(frameState);
     this.visibilityPlaneMask = this.visibility(frameState, parentVisibilityPlaneMask);
     this.visible = this.visibilityPlaneMask !== Cesium.CullingVolume.MASK_OUTSIDE && this.distanceToCamera >= layer.visibleDistanceMin && this.distanceToCamera <=  layer.visibleDistanceMax;
-    this.priorityDeferred = priorityDeferred(this, frameState);
+    priorityDeferred(this, frameState);
 };
 
 function createPriorityFunction(tile) {
@@ -251,47 +197,44 @@ function getContentFailedFunction(tile) {
 function createChildren(parent, datas) {
     let layer = parent.layer;
     let length = datas.length;
-    let minRangeData = Number.MAX_VALUE;
-    let maxRangeData = 0;
-    let mode = RangeMode.Pixel;
     for(let i = 0;i < length;i++){
+        const pageLod = new S3MPageLod();
         let data = datas[i];
         let boundingVolume = data.boundingVolume;
-        let fileName = data.rangeDataList;
-        fileName = parent.baseUri + fileName;
-        let rangeData = data.rangeList;
-        let rangeMode = data.rangeMode;
-        let renderEntitieMap = data.geoMap;
-        if(rangeData !== 0){
-            let tile = new S3MTile(layer, parent, boundingVolume, fileName, rangeData, rangeMode);
-            parent.children.push(tile);
-            layer._cache.add(tile);
+        let fileName = data.childTile;
+        pageLod.fileName = parent.baseUri + fileName;
+        pageLod.rangeData = data.rangeList;
+        pageLod.rangeMode = data.rangeMode;
+        if(boundingVolume.obb){
+            pageLod.boundingVolume = createBoundingBox(boundingVolume.obb, layer.modelMatrix);
         }
-
-        for(let geoName in renderEntitieMap){
-            if(renderEntitieMap.hasOwnProperty(geoName)){
-                parent.renderEntities.push(renderEntitieMap[geoName]);
+        else if(boundingVolume.box) {
+            pageLod.boundingVolume = createBoundingBox(boundingVolume.box, layer.modelMatrix);
+        }
+        else if(boundingVolume.sphere) {
+            if(boundingVolume.isCalc){
+                pageLod.boundingVolume = new Cesium.TileBoundingSphere(boundingVolume.sphere.center, boundingVolume.sphere.radius);
+            }
+            else{
+                pageLod.boundingVolume = createSphere(boundingVolume.sphere, layer.modelMatrix);
             }
         }
 
-        minRangeData = Math.min(minRangeData, rangeData);
-        maxRangeData = Math.max(maxRangeData, rangeData);
-        mode = rangeMode;
-    }
-
-    if(parent.isRootTile){
-        parent.lodRangeData = mode === RangeMode.Pixel ? minRangeData / 2 : maxRangeData * 2;
-        parent.lodRangeMode = mode;
+        pageLod.renderEntities = data.renderEntities;
+        pageLod.isLeafTile = data.isLeafTile;
+        parent.pageLods.push(pageLod);
     }
 }
+
+
 
 function contentReadyFunction(layer, tile, arrayBuffer) {
     layer._cache.add(tile);
 
-    S3ModelParser.s3tc = layer.context.s3tc;
-    S3ModelParser.pvrtc = layer.context.pvrtc;
-    S3ModelParser.etc1 = layer.context.etc1;
-    let content = S3ModelParser.parseBuffer(arrayBuffer);
+    let content;
+    if(tile.fileExtension === 's3mb'){
+        content = S3ModelParser.parseBuffer(arrayBuffer);
+    }
 
     if(!content){
         tile.contentState = ContentState.FAILED;
@@ -302,17 +245,14 @@ function contentReadyFunction(layer, tile, arrayBuffer) {
     let data = S3MContentParser.parse(layer, content, tile);
 
     createChildren(tile, data);
-    tile.selectedFrame = 0;
-    tile.contentState = ContentState.READY;
-    tile.contentReadyPromise.resolve(content);
+    tile.contentState = ContentState.LOADED;
+    tile.contentReadyPromise && tile.contentReadyPromise.resolve(content);
 }
 
 S3MTile.prototype.requestContent = function() {
     let that = this;
     let layer = this.layer;
-
     let resource = this.contentResource.clone();
-
     let request = new Cesium.Request({
         throttle : true,
         throttleByServer : true,
@@ -331,7 +271,7 @@ S3MTile.prototype.requestContent = function() {
     }
 
     this.contentState = ContentState.LOADING;
-    this.contentReadyPromise = Cesium.when.defer();
+    this.contentReadyPromise = defer();
     let contentFailedFunction = getContentFailedFunction(this);
 
     promise.then(function(arrayBuffer) {
@@ -341,7 +281,7 @@ S3MTile.prototype.requestContent = function() {
         }
 
         contentReadyFunction(layer, that, arrayBuffer);
-    }).otherwise(function(error) {
+    },(error)=>{
         if (request.state === Cesium.RequestState.CANCELLED) {
             that.contentState = ContentState.UNLOADED;
             return;
@@ -382,25 +322,47 @@ S3MTile.prototype.updatePriority = function(layer, frameState) {
     this.priority = foveatedDigits + pixelDigits + distanceDigit;
 };
 
-S3MTile.prototype.update = function(frameState, layer) {
-    for(let i = 0,j = this.renderEntities.length;i < j;i++){
-        this.renderEntities[i].update(frameState, layer);
+S3MTile.prototype.transformResource = function(frameState, layer) {
+    const context = frameState.context;
+    let allRenderable = true;
+    for(let i = 0,j = this.pageLods.length;i < j;i++){
+        const pagelod = this.pageLods[i];
+        var isReady = true;
+        for(let m = 0,n = pagelod.renderEntities.length;m < n;m++){
+            const ro = pagelod.renderEntities[m];
+            if(!ro.ready){
+                allRenderable = false;
+                isReady = false;
+                try{
+                    ro.transformResource(frameState, layer);
+                }
+                catch (e) {
+                    console.log(e);
+                }
+            }
+        }
+        pagelod.ready = isReady;
     }
+
+    if(allRenderable){
+        this.contentState = ContentState.READY;
+    }
+};
+
+S3MTile.prototype.update = function(frameState, layer) {
 };
 
 S3MTile.prototype.free = function() {
     this.contentState = ContentState.UNLOADED;
     this.request = undefined;
     this.cacheNode = undefined;
-    this.priorityHolder = undefined;
     this.contentReadyPromise = undefined;
-    this.priorityHolder = undefined;
-    for(let i = 0,j = this.renderEntities.length;i < j;i++){
-        this.renderEntities[i].destroy();
+    for(let i = 0,j = this.pageLods.length;i < j;i++){
+        const pageLod = this.pageLods[i];
+        pageLod.destroy();
     }
 
-    this.renderEntities.length = 0;
-    this.children.length = 0;
+    this.pageLods.length = 0;
 };
 
 S3MTile.prototype.isDestroyed = function() {

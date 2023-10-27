@@ -1,6 +1,8 @@
 import S3MCreateVertexJob from '../S3MCreateVertexJob.js';
 import S3MCreateIndexJob from '../S3MCreateIndexJob.js';
 import S3MCreateShaderProgramJob from '../S3MCreateShaderProgramJob.js';
+import OperationType from '../Enum/OperationType.js';
+import ProgramDefines from '../Enum/ProgramDefines.js';
 import MaterialPass from '../MaterialPass.js';
 
 function RenderEntity(options) {
@@ -32,12 +34,19 @@ function RenderEntity(options) {
     this.shaderProgram = undefined;
     this.vertexArray = undefined;
     this.colorCommand = undefined;
-    this.pickInfo = Cesium.defaultValue(options.pickInfo, {});
+    this.pickInfo = options.pickInfo;
     this.selectionInfoMap = new Cesium.AssociativeArray();
     this.batchTable = undefined;
     this.batchTableDirty = false;
-    this.idsOperationMap = new Cesium.AssociativeArray();
     this.pickColorIdentifier = 'vSecondColor';
+
+    this.idsOperationMap = new Cesium.AssociativeArray();
+    this.idsColorMap = new Cesium.AssociativeArray();
+
+    this.useWValue = options.vertexPackage.vertexAttributes[0].componentsPerAttribute === 4;
+
+    this.edgeGeometry = options.edgeGeometry;
+
     this.createBoundingBoxForInstance();
     this.ready = false;
 }
@@ -97,11 +106,16 @@ function createBatchTable(renderEntity, frameState) {
     const context = renderEntity.layer.context;
     let attributes = [];
     attributes.push({
-        functionName : 'batchTable_operation',
+        functionName : 's3m_batchTable_color',
+        componentDatatype : Cesium.ComponentDatatype.UNSIGNED_BYTE,
+        componentsPerAttribute : 4,
+        normalize : true
+    },{
+        functionName : 's3m_batchTable_operation',
         componentDatatype : Cesium.ComponentDatatype.UNSIGNED_BYTE,
         componentsPerAttribute : 4
     },{
-        functionName : 'batchTable_pickColor',
+        functionName : 's3m_batchTable_pickColor',
         componentDatatype : Cesium.ComponentDatatype.UNSIGNED_BYTE,
         componentsPerAttribute : 4,
         normalize : true
@@ -145,65 +159,34 @@ RenderEntity.prototype.createBoundingBoxForInstance = function() {
     vertexPackage.instanceBounds = undefined;
 };
 
-RenderEntity.prototype.initLayerSetting = function(layer){
-    if(Object.keys(layer._objsOperationList).length > 0){
-        this.updateObjsOperation(layer._objsOperationList);
-    }
-};
-
 let cartesian4Scratch = new Cesium.Cartesian4();
-RenderEntity.prototype.createPickIds = function() {
-    const layer = this.layer;
-    const context = layer.context;
-    const pickInfo = this.pickInfo;
-    if(!Cesium.defined(pickInfo) ){
-        return;
-    }
-
-    for(let id in pickInfo){
-        if(!pickInfo.hasOwnProperty(id)){
-            continue;
-        }
-
-        this.selectionInfoMap.set(id, pickInfo[id]);
-    }
-
-    let batchTable = this.batchTable;
-    let selectionInfoMap = this.selectionInfoMap;
-    let hash = selectionInfoMap._hash;
-    for(let id in hash){
-        if(hash.hasOwnProperty(id)){
-            let selInfo = selectionInfoMap.get(id);
-            let pickId;
-            if(!Cesium.defined(pickId)){
-                pickId = context.createPickId({
-                    primitive : layer,
-                    id : id
-                })
-            }
-            let pickColor = pickId.color;
-            cartesian4Scratch.x = Cesium.Color.floatToByte(pickColor.red);
-            cartesian4Scratch.y = Cesium.Color.floatToByte(pickColor.green);
-            cartesian4Scratch.z = Cesium.Color.floatToByte(pickColor.blue);
-            cartesian4Scratch.w = Cesium.Color.floatToByte(pickColor.alpha);
-            let instanceIds = selInfo.instanceIds;
-            if(this.instanceCount > 0){
-                instanceIds.map(function(instanceId){
-                    batchTable.setBatchedAttribute(instanceId, 1, cartesian4Scratch);
-                });
-            }else{
-                let batchId = selInfo[0].batchId;
-                batchTable.setBatchedAttribute(batchId, 1, cartesian4Scratch);
-            }
-        }
-    }
-
-    this.pickInfo = undefined;
-
-};
 
 RenderEntity.prototype.updateBatchTableAttributes = function(){
     let ro = this;
+    let idsColorMap = this.idsColorMap;
+    let byte = [];
+    for(let i = 0,j = idsColorMap.length;i < j;i++){
+        let obj = idsColorMap.values[i];
+        if(!obj.dirty){
+            continue ;
+        }
+
+        obj.dirty = false;
+        byte = obj.color.toBytes();
+        cartesian4Scratch.x = byte[0];
+        cartesian4Scratch.y = byte[1];
+        cartesian4Scratch.z = byte[2];
+        cartesian4Scratch.w = byte[3];
+        if(Cesium.defined(obj.batchId)){
+            this.batchTable.setBatchedAttribute(obj.batchId, 0, cartesian4Scratch);
+        }
+        else if(Array.isArray(obj.instanceIds)){
+            obj.instanceIds.map(function(instanceId){
+                ro.batchTable.setBatchedAttribute(instanceId, 0, cartesian4Scratch);
+            });
+        }
+
+    }
 
     let idsOperationMap = this.idsOperationMap;
     for(let i = 0,j = idsOperationMap.length;i < j;i++){
@@ -216,54 +199,20 @@ RenderEntity.prototype.updateBatchTableAttributes = function(){
         if(this.instanceCount > 0){
             if(Array.isArray(obj.instanceIds)){
                 obj.instanceIds.map(function(instanceId){
-                    ro.batchTable.setBatchedAttribute(instanceId, 0, obj.operationValue);
+                    ro.batchTable.setBatchedAttribute(instanceId, 1, obj.operationValue);
                 });
             }
         }
         else{
             if(Cesium.defined(obj.batchId)){
-                this.batchTable.setBatchedAttribute(obj.batchId, 0, obj.operationValue);
+                this.batchTable.setBatchedAttribute(obj.batchId, 1, obj.operationValue);
             }
         }
     }
 };
 
-RenderEntity.prototype.updateObjsOperation = function(ids){
-    if(!this.ready || this.selectionInfoMap.length < 1){
-        return ;
-    }
 
-    let selectValues = this.selectionInfoMap._hash;
-    for(let id in selectValues){
-        if(!selectValues.hasOwnProperty(id)){
-            continue ;
-        }
-
-        let operationType = ids[id];
-        if(!Cesium.defined(operationType)){
-            continue;
-        }
-
-        let selectInfo = selectValues[id][0];
-        let batchId = selectInfo.batchId;
-        let instanceIds = selectInfo.instanceIds;
-        let obj = this.idsOperationMap.get(id);
-        if(!Cesium.defined(obj)){
-            obj = {
-                batchId : batchId,
-                instanceIds : instanceIds,
-                operationValue : new Cesium.Cartesian4(),
-                dirty : true
-            };
-        }
-
-        obj.dirty = true;
-        obj.operationValue.x = (obj.operationValue.x & 0x01) | operationType;
-        this.idsOperationMap.set(id, obj);
-
-        this.batchTableDirty = true;
-    }
-};
+RenderEntity.prototype.transformResource = Cesium.DeveloperError.throwInstantiationError;
 
 RenderEntity.prototype.createCommand = Cesium.DeveloperError.throwInstantiationError;
 

@@ -21,12 +21,35 @@ function getOpaqueRenderState() {
             enabled : true,
             func : Cesium.DepthFunction.LESS_OR_EQUAL
         },
-        blending : Cesium.BlendingState.ALPHA_BLEND
+        blending : Cesium.BlendingState.ALPHA_BLEND,
+        stencilTest: {  // 采用3d tiles模板测试值
+            backFunction: Cesium.StencilFunction.ALWAYS,
+            backOperation: {
+                fail: Cesium.StencilOperation.KEEP, 
+                zFail: Cesium.StencilOperation.KEEP, 
+                zPass: Cesium.StencilOperation.REPLACE
+            },
+            enabled: true,
+            frontFunction: Cesium.StencilFunction.ALWAYS,
+            frontOperation: {
+                fail: Cesium.StencilOperation.KEEP, 
+                zFail: Cesium.StencilOperation.KEEP, 
+                zPass: Cesium.StencilOperation.REPLACE
+            },
+            mask: Cesium.StencilConstants.CESIUM_3D_TILE_MASK,
+            reference: Cesium.StencilConstants.CESIUM_3D_TILE_MASK
+        }
     });
 }
 
+let hypMinMaxValueScratch = new Cesium.Cartesian4();
+let hypOpacityIntervalFillModeScratch = new Cesium.Cartesian4();
+let swipRegionScratch = new Cesium.Cartesian4();
 function getUniformMap(material, layer, ro) {
-    return {
+    let uniformMapObj = {
+        uDiffuseColor : function() {
+            return  material.diffuseColor;
+        },
         uGeoMatrix : function() {
             return ro.geoMatrix;
         },
@@ -38,8 +61,29 @@ function getUniformMap(material, layer, ro) {
         },
         uTexture0Width : function(){
             return material.textures[0].width;
+        },
+        decodePositionMin : function() {
+            const minVerticesValue = ro.vertexPackage.minVerticesValue
+           return  minVerticesValue;
+        },
+        decodePositionNormConstant : function() {
+            return  ro.vertexPackage.vertCompressConstant;
         }
-    };
+    }
+    if(layer._vertexCompressionType == "MESHOPT") {
+        uniformMapObj.decodeTexCoord0vNormConstant = function() {
+            return  ro.vertexPackage.texCoordCompressConstant[0];
+        }
+
+        uniformMapObj.decodeTexCoord1vNormConstant = function() {
+            return  ro.vertexPackage.texCoordCompressConstant[1];
+        }
+    
+        uniformMapObj.decodeTexCoord0Min = function() {
+            return  ro.vertexPackage.minTexCoordValue[0];
+        }
+    }
+    return uniformMapObj;
 }
 
 S3MObliqueRenderEntity.prototype.createCommand = function() {
@@ -64,36 +108,35 @@ S3MObliqueRenderEntity.prototype.createCommand = function() {
         attributes : attributes,
         indexBuffer : indexPackage.indexBuffer
     });
-
+    
     this.colorCommand = new Cesium.DrawCommand({
         primitiveType : indexPackage.primitiveType,
         modelMatrix : this.modelMatrix,
         boundingVolume : Cesium.BoundingSphere.clone(this.boundingVolume),
         vertexArray : this.vertexArray,
         shaderProgram : this.shaderProgram,
-        pass : material.bTransparentSorting ? Cesium.Pass.TRANSLUCENT : Cesium.Pass.OPAQUE,
+        pass : material.bTransparentSorting ? Cesium.Pass.TRANSLUCENT : Cesium.Pass.CESIUM_3D_TILE,
         renderState : getOpaqueRenderState(),
         instanceCount : vertexPackage.instanceCount
     });
 
     this.colorCommand.uniformMap = getUniformMap(material, layer, this);
-    this.vertexPackage = undefined;
-    this.arrIndexPackage = undefined;
+
     this.vs = undefined;
     this.fs = undefined;
     this.ready = true;
 };
-
-
-S3MObliqueRenderEntity.prototype.update = function(frameState, layer) {
-    if(!this.ready) {
-        this.createBuffers(frameState);
-        this.createShaderProgram(frameState);
-        this.createCommand(frameState);
-        this.initLayerSetting(layer);
+S3MObliqueRenderEntity.prototype.transformResource = function(frameState, layer) {
+    if(this.ready){
         return ;
     }
 
+    this.createBuffers(frameState);
+    this.createShaderProgram(frameState);
+    this.createCommand(frameState);
+};
+
+S3MObliqueRenderEntity.prototype.update = function(frameState, layer) {
     frameState.commandList.push(this.colorCommand);
 };
 

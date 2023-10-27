@@ -1,11 +1,57 @@
 import pako from './pako_inflate.js';
 import DXTTextureDecode from './DXTTextureDecode.js';
 import { parseMeshOptSkeleton, parseMeshOpIndexPackage } from './ParseMeshOpt.js'
+import dracoDecoderModule from './draco_decode.module.js';
+import { parseDracoSkeleton } from './ParseDraco.js'
 
 function S3ModelParser() {
 
 }
 
+function defer() {
+    let resolve;
+    let reject;
+    const promise = new Promise(function (res, rej) {
+      resolve = res;
+      reject = rej;
+    });
+  
+    return {
+      resolve: resolve,
+      reject: reject,
+      promise: promise,
+    };
+  }
+
+function loadArrayBuffer(url) {
+    let readyPromise = defer();
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'arraybuffer';
+    xhr.onload = function() {
+        if (xhr.status < 200 || xhr.status >= 300) {
+            readyPromise.reject(xhr.response)
+            throw new Error(xhr.response)
+        }
+        readyPromise.resolve(xhr.response)
+    };
+    xhr.onerror = function(e) {
+        readyPromise.reject(new Error(e));
+    };
+    xhr.send();
+    return readyPromise.promise;
+}
+
+let dracoLib;
+function initDracoLib() {
+    if(dracoLib) return;
+    loadArrayBuffer('S3M_module/S3MParser/draco_decoder_new.wasm').then(function (arrayBuffer) {
+        dracoDecoderModule({wasmBinary: arrayBuffer}).then(function (compiledModule) {
+            dracoLib = compiledModule;
+        })
+    })
+}
+initDracoLib();
 
 S3ModelParser.s3tc = true;
 S3ModelParser.pvrtc = false;
@@ -31,6 +77,7 @@ const AttrTypeMap = {
 };
 
 const S3MPixelFormat = {
+    NONE: 0,
     LUMINANCE_8 : 1,
     LUMINANCE_16 : 2,
     ALPHA : 3,
@@ -51,7 +98,8 @@ const S3MPixelFormat = {
     DXT4 : 20,
     DXT5 : 21,
     CRN_DXT5 : 26,
-    STANDARD_CRN : 27
+    STANDARD_CRN : 27,
+    KTX2 :31
 };
 
 const VertexCompressOption = {
@@ -151,7 +199,7 @@ function parsePageLOD(buffer, view, bytesOffset, pageLods, version) {
         radius : radius
     };
 
-    if(version === 3){
+    if(version >= 3){
         const obbCenter = {};
         obbCenter.x = view.getFloat64(bytesOffset, true);
         bytesOffset += Float64Array.BYTES_PER_ELEMENT;
@@ -188,7 +236,7 @@ function parsePageLOD(buffer, view, bytesOffset, pageLods, version) {
             xExtent: xExtent,
             yExtent: yExtent,
             zExtent: zExtent,
-            obbCenter: obbCenter
+            center: obbCenter
         };
     }
 
@@ -212,7 +260,7 @@ function parsePageLOD(buffer, view, bytesOffset, pageLods, version) {
     pageLods.push(pageLOD);
 
     //animations
-    if(version === 3){
+    if(version >= 3){
         let resAnimations = parseString(buffer, view, bytesOffset);
         bytesOffset = resAnimations.bytesOffset;
     }
@@ -809,7 +857,7 @@ function parseTangent(buffer, view, bytesOffset, vertexPackage) {
 }
 
 function parseStandardSkeleton(buffer, view, bytesOffset, vertexPackage, version) {
-    if(version === 3){
+    if(version >= 3){
         let streamSize = view.getUint32(bytesOffset, true);
         bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
     }
@@ -820,7 +868,7 @@ function parseStandardSkeleton(buffer, view, bytesOffset, vertexPackage, version
 
     bytesOffset = parseVertexColor(buffer, view, bytesOffset, vertexPackage);
 
-    if(version !== 3){
+    if(version < 3){
         bytesOffset = parseSecondColor(buffer, view, bytesOffset, vertexPackage);
     }
 
@@ -828,7 +876,7 @@ function parseStandardSkeleton(buffer, view, bytesOffset, vertexPackage, version
 
     bytesOffset = parseInstanceInfo(buffer, view, bytesOffset, vertexPackage);
 
-    if(version === 3){
+    if(version >= 3){
         bytesOffset = parseVertexAttrExtension(buffer, view, bytesOffset, vertexPackage);
 
         const describeResult = parseString(buffer, view, bytesOffset);
@@ -901,7 +949,7 @@ function parseIndexPackage(buffer, view, bytesOffset, arrIndexPackage, version) 
     bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
     for (let i = 0; i < count; i++){
         let indexPackage = {};
-        if(version === 3){
+        if(version >= 3){
             const streamSize = view.getUint32(bytesOffset, true);
             bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
         }
@@ -967,7 +1015,7 @@ function parseSkeleton(buffer, view, bytesOffset, geoPackage, version) {
     let count = view.getUint32(bytesOffset, true);
     bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
     for(let i = 0; i < count; i++){
-        if(version === 3){
+        if(version >= 3.0){
             let streamSize =  view.getUint32(bytesOffset, true);
             bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
         }
@@ -983,7 +1031,7 @@ function parseSkeleton(buffer, view, bytesOffset, geoPackage, version) {
         let tag = view.getUint32(bytesOffset, true);
         bytesOffset += Int32Array.BYTES_PER_ELEMENT;
 
-        if(version === 3){
+        if(version >= 3){
             switch (tag){
                 case S3MBVertexTagV3.Standard : tag = S3MBVertexTag.SV_Standard;break;
                 case S3MBVertexTagV3.Draco : tag = S3MBVertexTag.SV_DracoCompressed;break;
@@ -1000,20 +1048,25 @@ function parseSkeleton(buffer, view, bytesOffset, geoPackage, version) {
             instanceIndex : -1
         };
 
+        let arrIndexPackage = [];
+
         if(tag === S3MBVertexTag.SV_Standard){
             bytesOffset = parseStandardSkeleton(buffer, view, bytesOffset, vertexPackage, version);
         }
-        else if(tag === S3MBVertexTag.SV_Compressed && version === 3){
+        else if(tag === S3MBVertexTag.SV_Compressed && version >= 3){
             bytesOffset = parseMeshOptSkeleton(buffer, view, bytesOffset, vertexPackage, version);
         }
         else if(tag === S3MBVertexTag.SV_Compressed){
             bytesOffset = parseCompressSkeleton(buffer, view, bytesOffset, vertexPackage);
         }
+        else if(tag === S3MBVertexTag.SV_DracoCompressed){
+            bytesOffset = parseDracoSkeleton(buffer, view, bytesOffset, vertexPackage, version, arrIndexPackage, dracoLib);
+        }
 
-        let arrIndexPackage = [];
-        if(tag === S3MBVertexTag.SV_Compressed && version === 3){
+        if(tag === S3MBVertexTag.SV_Compressed && version >= 3){
             bytesOffset = parseMeshOpIndexPackage(buffer, view, bytesOffset, arrIndexPackage, version);
         }
+        else if(tag === S3MBVertexTag.SV_DracoCompressed){ }
         else{
             bytesOffset = parseIndexPackage(buffer, view, bytesOffset, arrIndexPackage, version);
         }
@@ -1030,7 +1083,7 @@ function parseSkeleton(buffer, view, bytesOffset, geoPackage, version) {
             edgeGeometry: edgeGeometry
         };
 
-        if(version === 3){
+        if(version >= 3){
             const obbCenter = {};
             obbCenter.x = view.getFloat64(bytesOffset, true);
             bytesOffset += Float64Array.BYTES_PER_ELEMENT;
@@ -1064,7 +1117,7 @@ function parseSkeleton(buffer, view, bytesOffset, geoPackage, version) {
         }
     }
 
-    if(version !== 3){
+    if(version < 3){
         let secColorSize =  view.getUint32(bytesOffset, true);
         bytesOffset += secColorSize;
         bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
@@ -1073,7 +1126,7 @@ function parseSkeleton(buffer, view, bytesOffset, geoPackage, version) {
     return bytesOffset;
 }
 
-function parseTexturePackage(buffer, view, bytesOffset, texturePackage) {
+function parseTexturePackage(buffer, view, bytesOffset, texturePackage, version) {
     let size = view.getUint32(bytesOffset, true);
     bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
     let count = view.getUint32(bytesOffset, true);
@@ -1101,6 +1154,9 @@ function parseTexturePackage(buffer, view, bytesOffset, texturePackage) {
         bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
         let textureData = new Uint8Array(buffer, bytesOffset, size);
         bytesOffset += size;
+        if(version === 3.01){
+            compressType = fromStandardTextureCompressType(compressType);
+        }
         let internalFormat = (pixelFormat === S3MPixelFormat.RGB ||  pixelFormat === S3MPixelFormat.BGR) ? 33776 :  33779;
         if(compressType === 22){
             internalFormat = 36196;//rgb_etc1
@@ -1157,7 +1213,7 @@ function unpackColor(array, startingIndex, result) {
 
 let LEFT_16 = 65536;
 function parsePickInfo(buffer, view, bytesOffset, nOptions, geoPackage, version) {
-    if(version === 3){
+    if(version >= 3){
         nOptions = view.getUint32(bytesOffset, true);
         bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
     }
@@ -1215,7 +1271,7 @@ function parsePickInfo(buffer, view, bytesOffset, nOptions, geoPackage, version)
                     for(let k = 0;k < nSize; k++){
                         let instanceId = view.getUint32(bytesOffset, true);
                         bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
-                        if(version === 3){
+                        if(version >= 3){
                             let vertexCount = view.getUint32(bytesOffset, true);
                             bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
                         }
@@ -1227,7 +1283,7 @@ function parsePickInfo(buffer, view, bytesOffset, nOptions, geoPackage, version)
                 for(let j = 0;j < instanceCount; j++){
                     instanceIds[j] = j;
                     let offset = j * instanceMode * Float32Array.BYTES_PER_ELEMENT + beginOffset;
-                    Cesium.Color.unpack(instanceArray, offset, colorScratch);
+                    unpackColor(instanceArray, offset, colorScratch);
                     let pickId = version === 2 ? selectionId[j] : colorScratch.red + colorScratch.green * 256 + colorScratch.blue * LEFT_16;
                     if(pickInfo[pickId] === undefined){
                         pickInfo[pickId] = {
@@ -1263,6 +1319,47 @@ function createBatchIdAttribute(vertexPackage, typedArray, instanceDivisor){
         instanceDivisor: instanceDivisor
     });
 }
+const S3MBTextureCompressType = 
+{
+	TC_NONE : 0,
+	TC_DXT1_RGB : 33776,
+	TC_DXT1_RGBA : 33777,
+	TC_DXT3 : 33778,
+	TC_DXT5 : 33779,
+	TC_WEBP : 38000,
+	TC_CRN : 38001,
+	TC_KTX2 : 38002,
+	//自定义扩展类型
+	TC_CRN_DXT5 : 50000
+};
+
+
+function fromStandardTextureCompressType(nType){
+    let nResType = S3MPixelFormat.NONE
+    switch (nType)
+    {
+    case S3MBTextureCompressType.TC_DXT1_RGB:
+    case S3MBTextureCompressType.TC_DXT5:
+        nResType = S3MPixelFormat.BGRA;
+        break;
+    case S3MBTextureCompressType.TC_WEBP:
+        nResType = S3MPixelFormat.WEBP;
+        break;
+    case S3MBTextureCompressType.TC_CRN:
+        nResType = S3MPixelFormat.STANDARD_CRN;
+        break;
+    case S3MBTextureCompressType.TC_KTX2:
+        nResType = S3MPixelFormat.KTX2;
+        break;
+    case S3MBTextureCompressType.TC_CRN_DXT5:
+        nResType = S3MPixelFormat.CRN_DXT5;
+        break;
+    default:
+        nResType = S3MPixelFormat.NONE;
+        break;
+    }
+    return nResType;
+}
 
 S3ModelParser.parseBuffer = function(buffer) {
         let bytesOffset = 0;
@@ -1276,6 +1373,7 @@ S3ModelParser.parseBuffer = function(buffer) {
 
         let view = new DataView(buffer);
         result.version = view.getFloat32(bytesOffset, true);
+        result.version  = Number(result.version.toFixed(2));
         bytesOffset += Float32Array.BYTES_PER_ELEMENT;
         if (result.version >= 2.0) {
             let unzipSize = view.getUint32(bytesOffset, true);
@@ -1300,7 +1398,7 @@ S3ModelParser.parseBuffer = function(buffer) {
 
         bytesOffset = parseSkeleton(unzipBuffer, view, bytesOffset, result.geoPackage, result.version);
 
-        bytesOffset = parseTexturePackage(unzipBuffer, view, bytesOffset, result.texturePackage);
+        bytesOffset = parseTexturePackage(unzipBuffer, view, bytesOffset, result.texturePackage, result.version);
 
         bytesOffset = parseMaterial(unzipBuffer, view, bytesOffset, result);
 
