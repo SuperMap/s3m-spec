@@ -457,196 +457,265 @@ function parseTexCoord(buffer, view, bytesOffset, vertexPackage) {
     return bytesOffset;
 }
 
-function parseInstanceInfo(buffer, view, bytesOffset, vertexPackage) {
+function parseInstanceInfo(buffer, view, bytesOffset, vertexPackage, version) {
     let count = view.getUint16(bytesOffset, true);
     bytesOffset += Uint16Array.BYTES_PER_ELEMENT;
     bytesOffset += Uint16Array.BYTES_PER_ELEMENT;
     let attributes = vertexPackage.vertexAttributes;
     let attrLocation = vertexPackage.attrLocation;
+    const typedArray = new Uint8Array(buffer);
 
     for (let i=0; i < count; i++){
         let texCoordCount = view.getUint32(bytesOffset, true);
         bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
         let texDimensions = view.getUint16(bytesOffset, true);
         bytesOffset += Uint16Array.BYTES_PER_ELEMENT;
-        let texCoordStride = view.getUint16(bytesOffset, true);
-        bytesOffset += Uint16Array.BYTES_PER_ELEMENT;
-        let byteLength = texCoordCount * texDimensions * Float32Array.BYTES_PER_ELEMENT;
-        if(texDimensions === 17 || texDimensions === 29){
-            let instanceBuffer = new Uint8Array(buffer, bytesOffset, byteLength);
+        if(texDimensions === 16){
+            bytesOffset -= Uint16Array.BYTES_PER_ELEMENT;
+            const perInstanceOffset = version === 3 ? Uint16Array.BYTES_PER_ELEMENT : Uint32Array.BYTES_PER_ELEMENT;
+            let byteLength = texCoordCount * (texDimensions * Float32Array.BYTES_PER_ELEMENT + perInstanceOffset);
+            let rowArray = typedArray.subarray(bytesOffset, bytesOffset + byteLength);
+            bytesOffset += byteLength;
+
+            let instanceBuffer = new Uint8Array(Float32Array.BYTES_PER_ELEMENT * texDimensions * texCoordCount);
             vertexPackage.instanceCount = texCoordCount;
             vertexPackage.instanceMode = texDimensions;
             vertexPackage.instanceBuffer = instanceBuffer;
             vertexPackage.instanceIndex = 1;
-            let len = texDimensions * texCoordCount * 4;
-            let vertexColorInstance = instanceBuffer.slice(0, len);
-            vertexPackage.vertexColorInstance = vertexColorInstance;
-            let byteStride;
-            if(texDimensions === 17){
-                byteStride = Float32Array.BYTES_PER_ELEMENT * 17;
-                attrLocation['uv2'] = attributes.length;
-                attributes.push({
-                    index: attrLocation['uv2'],
-                    componentsPerAttribute: 4,
-                    componentDatatype: 5126,
-                    normalize: false,
-                    offsetInBytes: 0,
-                    strideInBytes: byteStride,
-                    instanceDivisor: 1
-                });
 
-                attrLocation['uv3'] = attributes.length;
-                attributes.push({
-                    index: attrLocation['uv3'],
-                    componentsPerAttribute: 4,
-                    componentDatatype: 5126,
-                    normalize: false,
-                    offsetInBytes: 4 * Float32Array.BYTES_PER_ELEMENT,
-                    strideInBytes: byteStride,
-                    instanceDivisor: 1
-                });
+            let perLength = Float32Array.BYTES_PER_ELEMENT * texDimensions + perInstanceOffset;
 
-                attrLocation['uv4'] = attributes.length;
-                attributes.push({
-                    index: attrLocation['uv4'],
-                    componentsPerAttribute: 4,
-                    componentDatatype: 5126,
-                    normalize: false,
-                    offsetInBytes: 8 * Float32Array.BYTES_PER_ELEMENT,
-                    strideInBytes: byteStride,
-                    instanceDivisor: 1
-                });
-                attrLocation['secondary_colour'] = attributes.length;
-                attributes.push({
-                    index:attrLocation['secondary_colour'],
-                    componentsPerAttribute:4,
-                    componentDatatype:5126,
-                    normalize:false,
-                    offsetInBytes:12*Float32Array.BYTES_PER_ELEMENT,
-                    strideInBytes:byteStride,
-                    instanceDivisor:1
-                });
-                attrLocation['uv6'] = attributes.length;
-                attributes.push({
-                    index: attrLocation['uv6'],
-                    componentsPerAttribute: 4,
-                    componentDatatype: 5121,
-                    normalize: true,
-                    offsetInBytes: 16 * Float32Array.BYTES_PER_ELEMENT,
-                    strideInBytes: byteStride,
-                    instanceDivisor: 1
-                });
+            for (let i = 0; i < texCoordCount; i++) {
+                let start = i * perLength + perInstanceOffset;
+                let t = rowArray.subarray(start, start + perLength);
+                instanceBuffer.set(t, i * (perLength - perInstanceOffset));
             }
-            else if (texDimensions === 29) {
-                byteStride = Float32Array.BYTES_PER_ELEMENT * 29;
-                attrLocation['uv1'] = attributes.length;
-                attributes.push({
-                    index: attrLocation['uv1'],
-                    componentsPerAttribute: 4,
-                    componentDatatype: 5126,
-                    normalize: false,
-                    offsetInBytes: 0,
-                    strideInBytes: byteStride,
-                    instanceDivisor: 1,
-                    byteLength: byteLength
-                });
 
-                attrLocation['uv2'] = attributes.length;
-                attributes.push({
-                    index: attrLocation['uv2'],
-                    componentsPerAttribute: 4,
-                    componentDatatype: 5126,
-                    normalize: false,
-                    offsetInBytes: 4 * Float32Array.BYTES_PER_ELEMENT,
-                    strideInBytes: byteStride,
-                    instanceDivisor: 1
-                });
+            let byteStride = Float32Array.BYTES_PER_ELEMENT * 16;
+            attrLocation['uv2'] = attributes.length;
+            attributes.push({
+                index: attrLocation['uv2'],
+                componentsPerAttribute: 4,
+                componentDatatype: 5126,
+                normalize: false,
+                offsetInBytes: 0,
+                strideInBytes: byteStride,
+                instanceDivisor: 1
+            });
 
-                attrLocation['uv3'] = attributes.length;
-                attributes.push({
-                    index: attrLocation['uv3'],
-                    componentsPerAttribute: 4,
-                    componentDatatype: 5126,
-                    normalize: false,
-                    offsetInBytes: 8 * Float32Array.BYTES_PER_ELEMENT,
-                    strideInBytes: byteStride,
-                    instanceDivisor: 1
-                });
+            attrLocation['uv3'] = attributes.length;
+            attributes.push({
+                index: attrLocation['uv3'],
+                componentsPerAttribute: 4,
+                componentDatatype: 5126,
+                normalize: false,
+                offsetInBytes: 4 * Float32Array.BYTES_PER_ELEMENT,
+                strideInBytes: byteStride,
+                instanceDivisor: 1
+            });
 
-                attrLocation['uv4'] = attributes.length;
-                attributes.push({
-                    index: attrLocation['uv4'],
-                    componentsPerAttribute: 4,
-                    componentDatatype: 5126,
-                    normalize: false,
-                    offsetInBytes: 12 * Float32Array.BYTES_PER_ELEMENT,
-                    strideInBytes: byteStride,
-                    instanceDivisor: 1
-                });
+            attrLocation['uv4'] = attributes.length;
+            attributes.push({
+                index: attrLocation['uv4'],
+                componentsPerAttribute: 4,
+                componentDatatype: 5126,
+                normalize: false,
+                offsetInBytes: 8 * Float32Array.BYTES_PER_ELEMENT,
+                strideInBytes: byteStride,
+                instanceDivisor: 1
+            });
 
-                attrLocation['uv5'] = attributes.length;
-                attributes.push({
-                    index: attrLocation['uv5'],
-                    componentsPerAttribute: 4,
-                    componentDatatype: 5126,
-                    normalize: false,
-                    offsetInBytes: 16 * Float32Array.BYTES_PER_ELEMENT,
-                    strideInBytes: byteStride,
-                    instanceDivisor: 1
-                });
-
-                attrLocation['uv6'] = attributes.length;
-                attributes.push({
-                    index: attrLocation['uv6'],
-                    componentsPerAttribute: 4,
-                    componentDatatype: 5126,
-                    normalize: false,
-                    offsetInBytes: 20 * Float32Array.BYTES_PER_ELEMENT,
-                    strideInBytes: byteStride,
-                    instanceDivisor: 1
-                });
-
-                attrLocation['uv7'] = attributes.length;
-                attributes.push({
-                    index: attrLocation['uv7'],
-                    componentsPerAttribute: 3,
-                    componentDatatype: 5126,
-                    normalize: false,
-                    offsetInBytes: 24 * Float32Array.BYTES_PER_ELEMENT,
-                    strideInBytes: byteStride,
-                    instanceDivisor: 1
-                });
-                attrLocation['secondary_colour'] = attributes.length;
-                attributes.push({
-                    index: attrLocation['secondary_colour'],
-                    componentsPerAttribute: 4,
-                    componentDatatype: 5121,
-                    normalize: true,
-                    offsetInBytes: 27 * Float32Array.BYTES_PER_ELEMENT,
-                    strideInBytes: byteStride,
-                    instanceDivisor: 1
-                });
-                attrLocation['uv9'] = attributes.length;
-                attributes.push({
-                    index: attrLocation['uv9'],
-                    componentsPerAttribute: 4,
-                    componentDatatype: 5121,
-                    normalize: true,
-                    offsetInBytes: 28 * Float32Array.BYTES_PER_ELEMENT,
-                    strideInBytes: byteStride,
-                    instanceDivisor: 1
-                });
-            }
+            attrLocation['secondary_colour'] = attributes.length;
+            attributes.push({
+                index: attrLocation['secondary_colour'],
+                componentsPerAttribute: 4,
+                componentDatatype: 5126,
+                normalize: false,
+                offsetInBytes: 12 * Float32Array.BYTES_PER_ELEMENT,
+                strideInBytes: byteStride,
+                instanceDivisor: 1
+            });
         }
-        else{
-            let len = texCoordCount * texDimensions;
-            vertexPackage.instanceBounds = new Float32Array(len);
-            for(let k = 0; k < len; k++){
-                vertexPackage.instanceBounds[k] = view.getFloat32(bytesOffset + k * Float32Array.BYTES_PER_ELEMENT, true);
+        else {
+            view.getUint16(bytesOffset, true);
+            bytesOffset += Uint16Array.BYTES_PER_ELEMENT;
+            let byteLength = texCoordCount * texDimensions * Float32Array.BYTES_PER_ELEMENT;
+            if (texDimensions === 17 || texDimensions === 29) {
+                let instanceBuffer = new Uint8Array(buffer, bytesOffset, byteLength);
+                vertexPackage.instanceCount = texCoordCount;
+                vertexPackage.instanceMode = texDimensions;
+                vertexPackage.instanceBuffer = instanceBuffer;
+                vertexPackage.instanceIndex = 1;
+                let len = texDimensions * texCoordCount * 4;
+                let vertexColorInstance = instanceBuffer.slice(0, len);
+                vertexPackage.vertexColorInstance = vertexColorInstance;
+                let byteStride;
+                if (texDimensions === 17) {
+                    byteStride = Float32Array.BYTES_PER_ELEMENT * 17;
+                    attrLocation['uv2'] = attributes.length;
+                    attributes.push({
+                        index: attrLocation['uv2'],
+                        componentsPerAttribute: 4,
+                        componentDatatype: 5126,
+                        normalize: false,
+                        offsetInBytes: 0,
+                        strideInBytes: byteStride,
+                        instanceDivisor: 1
+                    });
+
+                    attrLocation['uv3'] = attributes.length;
+                    attributes.push({
+                        index: attrLocation['uv3'],
+                        componentsPerAttribute: 4,
+                        componentDatatype: 5126,
+                        normalize: false,
+                        offsetInBytes: 4 * Float32Array.BYTES_PER_ELEMENT,
+                        strideInBytes: byteStride,
+                        instanceDivisor: 1
+                    });
+
+                    attrLocation['uv4'] = attributes.length;
+                    attributes.push({
+                        index: attrLocation['uv4'],
+                        componentsPerAttribute: 4,
+                        componentDatatype: 5126,
+                        normalize: false,
+                        offsetInBytes: 8 * Float32Array.BYTES_PER_ELEMENT,
+                        strideInBytes: byteStride,
+                        instanceDivisor: 1
+                    });
+                    attrLocation['secondary_colour'] = attributes.length;
+                    attributes.push({
+                        index: attrLocation['secondary_colour'],
+                        componentsPerAttribute: 4,
+                        componentDatatype: 5126,
+                        normalize: false,
+                        offsetInBytes: 12 * Float32Array.BYTES_PER_ELEMENT,
+                        strideInBytes: byteStride,
+                        instanceDivisor: 1
+                    });
+                    attrLocation['uv6'] = attributes.length;
+                    attributes.push({
+                        index: attrLocation['uv6'],
+                        componentsPerAttribute: 4,
+                        componentDatatype: 5121,
+                        normalize: true,
+                        offsetInBytes: 16 * Float32Array.BYTES_PER_ELEMENT,
+                        strideInBytes: byteStride,
+                        instanceDivisor: 1
+                    });
+                } else if (texDimensions === 29) {
+                    byteStride = Float32Array.BYTES_PER_ELEMENT * 29;
+                    attrLocation['uv1'] = attributes.length;
+                    attributes.push({
+                        index: attrLocation['uv1'],
+                        componentsPerAttribute: 4,
+                        componentDatatype: 5126,
+                        normalize: false,
+                        offsetInBytes: 0,
+                        strideInBytes: byteStride,
+                        instanceDivisor: 1,
+                    });
+
+                    attrLocation['uv2'] = attributes.length;
+                    attributes.push({
+                        index: attrLocation['uv2'],
+                        componentsPerAttribute: 4,
+                        componentDatatype: 5126,
+                        normalize: false,
+                        offsetInBytes: 4 * Float32Array.BYTES_PER_ELEMENT,
+                        strideInBytes: byteStride,
+                        instanceDivisor: 1
+                    });
+
+                    attrLocation['uv3'] = attributes.length;
+                    attributes.push({
+                        index: attrLocation['uv3'],
+                        componentsPerAttribute: 4,
+                        componentDatatype: 5126,
+                        normalize: false,
+                        offsetInBytes: 8 * Float32Array.BYTES_PER_ELEMENT,
+                        strideInBytes: byteStride,
+                        instanceDivisor: 1
+                    });
+
+                    attrLocation['uv4'] = attributes.length;
+                    attributes.push({
+                        index: attrLocation['uv4'],
+                        componentsPerAttribute: 4,
+                        componentDatatype: 5126,
+                        normalize: false,
+                        offsetInBytes: 12 * Float32Array.BYTES_PER_ELEMENT,
+                        strideInBytes: byteStride,
+                        instanceDivisor: 1
+                    });
+
+                    attrLocation['uv5'] = attributes.length;
+                    attributes.push({
+                        index: attrLocation['uv5'],
+                        componentsPerAttribute: 4,
+                        componentDatatype: 5126,
+                        normalize: false,
+                        offsetInBytes: 16 * Float32Array.BYTES_PER_ELEMENT,
+                        strideInBytes: byteStride,
+                        instanceDivisor: 1
+                    });
+
+                    attrLocation['uv6'] = attributes.length;
+                    attributes.push({
+                        index: attrLocation['uv6'],
+                        componentsPerAttribute: 4,
+                        componentDatatype: 5126,
+                        normalize: false,
+                        offsetInBytes: 20 * Float32Array.BYTES_PER_ELEMENT,
+                        strideInBytes: byteStride,
+                        instanceDivisor: 1
+                    });
+
+                    attrLocation['uv7'] = attributes.length;
+                    attributes.push({
+                        index: attrLocation['uv7'],
+                        componentsPerAttribute: 3,
+                        componentDatatype: 5126,
+                        normalize: false,
+                        offsetInBytes: 24 * Float32Array.BYTES_PER_ELEMENT,
+                        strideInBytes: byteStride,
+                        instanceDivisor: 1
+                    });
+                    attrLocation['secondary_colour'] = attributes.length;
+                    attributes.push({
+                        index: attrLocation['secondary_colour'],
+                        componentsPerAttribute: 4,
+                        componentDatatype: 5121,
+                        normalize: true,
+                        offsetInBytes: 27 * Float32Array.BYTES_PER_ELEMENT,
+                        strideInBytes: byteStride,
+                        instanceDivisor: 1
+                    });
+                    attrLocation['uv9'] = attributes.length;
+                    attributes.push({
+                        index: attrLocation['uv9'],
+                        componentsPerAttribute: 4,
+                        componentDatatype: 5121,
+                        normalize: true,
+                        offsetInBytes: 28 * Float32Array.BYTES_PER_ELEMENT,
+                        strideInBytes: byteStride,
+                        instanceDivisor: 1
+                    });
+                }
             }
+            else{
+                let len = texCoordCount * texDimensions;
+                vertexPackage.instanceBounds = new Float32Array(len);
+                for(let k = 0; k < len; k++){
+                    vertexPackage.instanceBounds[k] = view.getFloat32(bytesOffset + k * Float32Array.BYTES_PER_ELEMENT, true);
+                }
+            }
+            bytesOffset += byteLength;
         }
 
-        bytesOffset += byteLength;
+
+
     }
 
     return bytesOffset;
@@ -874,7 +943,7 @@ function parseStandardSkeleton(buffer, view, bytesOffset, vertexPackage, version
 
     bytesOffset = parseTexCoord(buffer, view, bytesOffset, vertexPackage);
 
-    bytesOffset = parseInstanceInfo(buffer, view, bytesOffset, vertexPackage);
+    bytesOffset = parseInstanceInfo(buffer, view, bytesOffset, vertexPackage, version);
 
     if(version >= 3){
         bytesOffset = parseVertexAttrExtension(buffer, view, bytesOffset, vertexPackage);
@@ -906,7 +975,7 @@ function parseStandardSkeleton(buffer, view, bytesOffset, vertexPackage, version
     return bytesOffset;
 }
 
-function parseCompressSkeleton(buffer, view, bytesOffset, vertexPackage) {
+function parseCompressSkeleton(buffer, view, bytesOffset, vertexPackage, version) {
     let compressOptions = view.getUint32(bytesOffset, true);
     vertexPackage.compressOptions = compressOptions;
     bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
@@ -939,7 +1008,7 @@ function parseCompressSkeleton(buffer, view, bytesOffset, vertexPackage) {
         vertexPackage.textureCoordIsW = true;
     }
 
-    bytesOffset = parseInstanceInfo(buffer, view, bytesOffset, vertexPackage);
+    bytesOffset = parseInstanceInfo(buffer, view, bytesOffset, vertexPackage, version);
 
     return bytesOffset;
 }
@@ -1057,7 +1126,7 @@ function parseSkeleton(buffer, view, bytesOffset, geoPackage, version) {
             bytesOffset = parseMeshOptSkeleton(buffer, view, bytesOffset, vertexPackage, version);
         }
         else if(tag === S3MBVertexTag.SV_Compressed){
-            bytesOffset = parseCompressSkeleton(buffer, view, bytesOffset, vertexPackage);
+            bytesOffset = parseCompressSkeleton(buffer, view, bytesOffset, vertexPackage, version);
         }
         else if(tag === S3MBVertexTag.SV_DracoCompressed){
             bytesOffset = parseDracoSkeleton(buffer, view, bytesOffset, vertexPackage, version, arrIndexPackage, dracoLib);

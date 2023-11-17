@@ -89,7 +89,7 @@ export default `
     {
         vec4 color = vec4(1.0);
         float mipLevel = 0.0;
-    #ifdef GL_OES_standard_derivatives
+    #if defined(GL_OES_standard_derivatives) || defined(WEBGL2)
         calculateMipLevel(oriTexCoord.xy, texTileWidth, fMaxMipLev, mipLevel);
     #endif
         vec2 realTexCoord;
@@ -103,7 +103,11 @@ export default `
             #ifdef GL_EXT_shader_texture_lod
                 color = texture2DLodEXT(curTexture, realTexCoord.xy, mipLevel);
             #else
-                color = texture2D(curTexture, realTexCoord.xy, mipLevel);
+                #ifdef WEBGL2
+                    color = textureLod(curTexture, realTexCoord.xy, mipLevel);
+                #else
+                    color = texture2D(curTexture, realTexCoord.xy, mipLevel);
+                #endif
             #endif
         }
         return color;
@@ -118,7 +122,7 @@ export default `
         }
         vec4 colorCeil = vec4(1.0);
         float mipLevel = 0.0;
-    #ifdef GL_OES_standard_derivatives
+    #if defined(GL_OES_standard_derivatives) || defined(WEBGL2)
         calculateMipLevel(uv, texDim, maxMipLevel, mipLevel);
     #endif
         float ceilMipLevel = ceil(mipLevel);

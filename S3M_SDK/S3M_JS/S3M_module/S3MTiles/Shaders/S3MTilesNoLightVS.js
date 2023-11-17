@@ -14,10 +14,10 @@ export default `
 #ifdef USE_TextureCoordMatrix
     attribute vec2 aTextureCoordMatrix;
 #endif
+#endif
 #ifdef COMPRESS_VERTEX
     uniform vec4 decodePositionMin;
     uniform float decodePositionNormConstant;
-#endif
 #endif
 
 // meshopt判断
@@ -113,15 +113,14 @@ export default `
         }
         getTextureMatrixFromZValue(floor(vTexCoordTransform.x), vTexMatrix.x, vTexMatrix.y, vTexMatrix.z);
         vTexMatrix.w = log2(uTexture0Width * vTexMatrix.z);
+        // meshopt压缩 这里对照主版本的  主版本命名的都是通过下划线，但是插件获取uniform是通过函数，所以需要大写
+        #ifdef MeshOPT_Compress
+            vec2 texCoord0;
+            texCoord0.x = aTexCoord0.x * decodeTexCoord0vNormConstant.x;
+            texCoord0.y = aTexCoord0.y * decodeTexCoord0vNormConstant.y;
+            vTexCoord.xy = decodeTexCoord0Min + texCoord0.xy;
+        #endif
     #endif    
-    #endif
-
-    // meshopt压缩 这里对照主版本的  主版本命名的都是通过下划线，但是插件获取uniform是通过函数，所以需要大写
-    #ifdef MeshOPT_Compress
-        vec2 texCoord0;
-        texCoord0.x = aTexCoord0.x * decodeTexCoord0vNormConstant.x;
-        texCoord0.y = aTexCoord0.y * decodeTexCoord0vNormConstant.y;
-        vTexCoord.xy = decodeTexCoord0Min + texCoord0.xy;
     #endif
 
     #ifdef COMPRESS_VERTEX

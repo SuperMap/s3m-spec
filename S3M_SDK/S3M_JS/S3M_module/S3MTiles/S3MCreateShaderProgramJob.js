@@ -33,11 +33,36 @@ S3MCreateShaderProgramJob.prototype.execute = function(){
     const context = this.context;
     const model = this.model;
     const layer = model.layer;
-    const vs = model.vs;
-    const fs = model.fs;
+    let vs = model.vs;
+    let fs = model.fs;
     const attributeLocations = model.attributeLocations;
     const material = model.material;
     const vertexPackage = model.vertexPackage;
+    if(context.webgl2 && Cesium.VERSION.length > 4){
+        const prefixVertex = [
+            'precision mediump sampler2DArray;',
+            '#define attribute in',
+            '#define varying out',
+            '#define texture2D texture'
+        ].join( '\n' ) + '\n';
+        const prefixFragment = [
+            '#define varying in',
+            //'layout(location = 0) out highp vec4 out_fragColor;',
+            '#define gl_FragColor out_FragColor',
+            '#define gl_FragDepthEXT gl_FragDepth',
+            '#define texture2D texture',
+            '#define textureCube texture',
+            '#define texture2DProj textureProj',
+            '#define texture2DLodEXT textureLod',
+            '#define texture2DProjLodEXT textureProjLod',
+            '#define textureCubeLodEXT textureLod',
+            '#define texture2DGradEXT textureGrad',
+            '#define texture2DProjGradEXT textureProjGrad',
+            '#define textureCubeGradEXT textureGrad'
+        ].join( '\n' ) + '\n';
+        vs = prefixVertex + vs;
+        fs = prefixFragment + fs;
+    }
     let vsNew = model.batchTable ? model.batchTable.getVertexShaderCallback()(vs) : vs;
 
     if(context.texturelod === undefined){
@@ -142,6 +167,10 @@ S3MCreateShaderProgramJob.prototype.execute = function(){
         fp.defines.push(ProgramDefines.ADJUST_COLOR);
     }
 
+    if(context.webgl2){
+        vp.defines.push('WEBGL2');
+        fp.defines.push('WEBGL2');
+    }
   
 
     model.shaderProgram = Cesium.ShaderProgram.fromCache({
