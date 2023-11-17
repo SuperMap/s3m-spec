@@ -1,0 +1,24 @@
+SuperMap Style Mapping Table	
+Version 6.0			
+LineStyleBegin
+(id:Continuous),(id:963867;c:0xff0000;w:1)
+LineStyleEnd
+SymbolBegin
+(id:GROUND),(id:1110;g:ธ๙ื้;c:0x0000ff;a:0;s:1)
+SymbolEnd
+FillStyleBegin
+(id:ANGLE),(id:015;a:60;fc:0xff0000;bc:0x000000)
+FillStyleEnd
+FontBegin
+(id:arial),(id:System;a:0;fc:0x00ff00;bc:0x000000;xs:1;ys:1)
+FontEnd
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,4 @@
+2019-12-09 19:29:38 [error] Failed to load the dynamic library C:\Users\Administrator\Desktop\iearthÀú´ú°æ±¾\V1\SuFileParserGDAL.fps, ThreadID: 5228, Timespan(ms): 0, ResourceID: IMd011, SourceCode: ..\..\..\Src\FileParser\UGFileParseManager.cpp(344)
+2019-12-09 19:30:48 [error] Can not to connect the serverHTTP Status Code 0C:/Users/Administrator/Desktop/1209/3/ConfigS3M.scp/spatiallicense.xml, ThreadID: 5228, Timespan(ms): 70762, ResourceID: EJc005, SourceCode: ..\..\..\Src\NetToolkit\UGHttpHelper.cpp(1708)
+2019-12-09 19:30:48 [error] Failed to get file from web, ThreadID: 5228, Timespan(ms): 0, ResourceID: EAg034, SourceCode: ..\..\..\Src\NetToolkit\UGHttpHelper.cpp(864)
+2019-12-09 19:30:49 [error] No enough disk space for caches, ThreadID: 8712, Timespan(ms): 312, ResourceID: EAa001, SourceCode: ..\..\..\Src\Toolkit\UGCompress.cpp(144)

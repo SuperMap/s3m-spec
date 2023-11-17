@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<colorLibrary>
+	<colorSwatch name="Default Swatches">
+		<colorCell argb="FFFFFFFF" tags="White;" />
+		<colorCell argb="FF000000" tags="Black;" />
+		<colorCell argb="FFEEECE1" tags="Brown;" />
+		<colorCell argb="FF1F497D" tags="Dark Blue;" />
+		<colorCell argb="FF4F81BD" tags="Blue;" />
+		<colorCell argb="FF00A0E9" tags="" />
+		<colorCell argb="FF7F2E00" tags="" />
+		<colorCell argb="FFC0504D" tags="Red;" />
+		<colorCell argb="FF36E107" tags="" />
+		<colorCell argb="FF9BBB59" tags="Olive;" />
+		<colorCell argb="FF8064A2" tags="Purple;" />
+		<colorCell argb="FF4BACC6" tags="Water Green;" />
+		<colorCell argb="FFF79646" tags="Orange;" />
+		<colorCell argb="FFE6A600" tags="" />
+		<colorCell argb="FFE6E200" tags="" />
+		<colorCell argb="FFD33249" tags="" />
+		<colorCell argb="FFF2F2F2" tags="Gray;Dark5%;" />
+		<colorCell argb="FF7F7F7F" tags="Black;Pale50%;" />
+		<colorCell argb="FFDDD9C3" tags="Brown;Dark10%;" />
+		<colorCell argb="FFC6D9F0" tags="Dark Blue;Pale80%;" />
+		<colorCell argb="FFDBE5F1" tags="Blue;Pale80%;" />
+		<colorCell argb="FFB9E6FD" tags="" />
+		<colorCell argb="FFE3C395" tags="Light Brown;" />
+		<colorCell argb="FFF2DCDB" tags="Red;Pale80%;" />
+		<colorCell argb="FFD6E7CE" tags="" />
+		<colorCell argb="FFEBF1DD" tags="Olive;Pale80%;" />
+		<colorCell argb="FFE5E0EC" tags="Purple;Pale80%;" />
+		<colorCell argb="FFDBEEF3" tags="Water Green;Pale80%;" />
+		<colorCell argb="FFFDEADA" tags="Orange;Pale80%;" />
+		<colorCell argb="FFFFE6C3" tags="" />
+		<colorCell argb="FFFDF8CA" tags="Crayon Yellow;" />
+		<colorCell argb="FFF19C9F" tags="Crayon Red;" />
+		<colorCell argb="FFD8D8D8" tags="Gray;Dark15%;" />
+		<colorCell argb="FF595959" tags="Black;Pale35%;" />
+		<colorCell argb="FFC4BD97" tags="Brown;Dark25%;" />
+		<colorCell argb="FF8DB3E2" tags="Dark Blue;Pale60%;" />
+		<colorCell argb="FFB8CCE4" tags="Blue;Pale60%;" />
+		<colorCell argb="FF7ECEF5" tags="Crayon Green;" />
+		<colorCell argb="FFB28950" tags="Light Brown;" />
+		<colorCell argb="FFE5B9B7" tags="Red;Pale60%;" />
+		<colorCell argb="FFACD698" tags="Crayon Yellow Green;" />
+		<colorCell argb="FFD7E3BC" tags="Olive;Pale60%;" />
+		<colorCell argb="FFCCC1D9" tags="Purple;Pale60%;" />
+		<colorCell argb="FFB7DDE8" tags="Water Green;Pale60%;" />
+		<colorCell argb="FFFBD5B5" tags="Orange;Pale60%;" />
+		<colorCell argb="FFFACC89" tags="Crayon Orange;" />
+		<colorCell argb="FFFFF45B" tags="Light Yellow;" />
+		<colorCell argb="FFEB6877" tags="Light Red;" />
+		<colorCell argb="FFBFBFBF" tags="Gray;Dark25%;" />
+		<colorCell argb="FF3F3F3F" tags="Black;Pale25%;" />
+		<colorCell argb="FF938953" tags="Brown;Dark50%;" />
+		<colorCell argb="FF548DD4" tags="Dark Blue;Pale40%;" />
+		<colorCell argb="FF95B3D7" tags="Blue;Pale40%;" />
+		<colorCell argb="FF00B7EF" tags="Light Cyan;" />
+		<colorCell argb="FF996C34" tags="Medium Brown;" />
+		<colorCell argb="FFD99694" tags="Red;Pale40%;" />
+		<colorCell argb="FF7FC269" tags="Light Yellow Green;" />
+		<colorCell argb="FFC3D69B" tags="Olive;Pale40%;" />
+		<colorCell argb="FFB2A2C7" tags="Purple;Pale40%;" />
+		<colorCell argb="FF92CDDC" tags="Water Green;Pale40%;" />
+		<colorCell argb="FFFAC08F" tags="Orange;Pale40%;" />
+		<colorCell argb="FFF7B551" tags="Light Orange;" />
+		<colorCell argb="FFFFF100" tags="Pure Yellow;" />
+		<colorCell argb="FFE60050" tags="Pure Red;" />
+		<colorCell argb="FFA5A5A5" tags="Gray;Dark35%;" />
+		<colorCell argb="FF262626" tags="Black;Pale15%;" />
+		<colorCell argb="FF494429" tags="Brown;Dark75%;" />
+		<colorCell argb="FF17365D" tags="Dark Blue;Dark25%;" />
+		<colorCell argb="FF366092" tags="Blue;Dark25%;" />
+		<colorCell argb="FF00A0E9" tags="Pure Cyan;" />
+		<colorCell argb="FF81511D" tags="Dark Brown;" />
+		<colorCell argb="FF953734" tags="Red;Dark25%;" />
+		<colorCell argb="FF23AD39" tags="Pure Yellow Green;" />
+		<colorCell argb="FF76923C" tags="Olive;Dark25%;" />
+		<colorCell argb="FF5F497A" tags="Purple;Dark25%;" />
+		<colorCell argb="FF31859B" tags="Water Green;Dark25%;" />
+		<colorCell argb="FFE36C09" tags="Orange;Dark25%;" />
+		<colorCell argb="FFF39800" tags="Pure Orange;" />
+		<colorCell argb="FFB6AA00" tags="Dark Yellow;" />
+		<colorCell argb="FFA50036" tags="Dark Red;" />
+		<colorCell argb="FF9B9B9B" tags="Gray;Dark50%;" />
+		<colorCell argb="FF0C0C0C" tags="Black;Pale5%;" />
+		<colorCell argb="FF1D1B10" tags="Brown;Dark90%;" />
+		<colorCell argb="FF0F243E" tags="Dark Blue;Dark50%;" />
+		<colorCell argb="FF244061" tags="Blue;Dark50%;" />
+		<colorCell argb="FF005982" tags="Dark Cyan;" />
+		<colorCell argb="FF6B3A07" tags="Dark Brown;" />
+		<colorCell argb="FF632423" tags="Red;Dark50%;" />
+		<colorCell argb="FF005E14" tags="Dark Yellow Green;" />
+		<colorCell argb="FF4F6128" tags="Olive;Dark50%;" />
+		<colorCell argb="FF3F3151" tags="Purple;Dark50%;" />
+		<colorCell argb="FF205867" tags="Water Green;Dark50%;" />
+		<colorCell argb="FF974806" tags="Orange;Dark50%;" />
+		<colorCell argb="FFAD6B00" tags="Dark Orange;" />
+		<colorCell argb="FF8A8100" tags="Dark Yellow;" />
+		<colorCell argb="FF7D0023" tags="Dark Red;" />
+		<colorCell argb="FFEFDCBE" tags="" />
+		<colorCell argb="FFF0B0CF" tags="" />
+		<colorCell argb="FFD3FFBE" tags="" />
+		<colorCell argb="FF002060" tags="Dark Blue;" />
+		<colorCell argb="FF6677CE" tags="" />
+		<colorCell argb="FF0070C0" tags="Blue;" />
+		<colorCell argb="FF89CE66" tags="Light Green;" />
+		<colorCell argb="FF70A800" tags="" />
+		<colorCell argb="FF00B250" tags="Green;" />
+		<colorCell argb="FF92D050" tags="" />
+		<colorCell argb="FF7030A0" tags="Purple;" />
+		<colorCell argb="FF00B0F0" tags="Light Blue;" />
+		<colorCell argb="FFCE8966" tags="" />
+		<colorCell argb="FFFFBF00" tags="Orange;" />
+		<colorCell argb="FFFFFF00" tags="Yellow;" />
+		<colorCell argb="FFC00000" tags="Dark Red;" />
+		<colorCell argb="FFEEF1A0" tags="" />
+		<colorCell argb="FFFF0000" tags="Red;" />
+		<colorCell argb="FFFFFFFF" tags="" />
+	</colorSwatch>
+	<colorSwatch name="Standard Swatch">
+		<colorCell argb="FFFF0000" tags="RGB Red;" />
+		<colorCell argb="FFFFFF00" tags="RGB Yellow;" />
+		<colorCell argb="FF00FF00" tags="RGB Green;" />
+		<colorCell argb="FF00FFFF" tags="RGB Cyan;" />
+		<colorCell argb="FF0000FF" tags="RGB Blue;" />
+		<colorCell argb="FFFF00FF" tags="RGB Magenta;" />
+		<colorCell argb="FFFFFFFF" tags="White;" />
+		<colorCell argb="FFEDEDED" tags="10% Gray;" />
+		<colorCell argb="FFE5E5E5" tags="15% Gray;" />
+		<colorCell argb="FFDBDBDB" tags="20% Gray;" />
+		<colorCell argb="FFD2D2D2" tags="25% Gray;" />
+		<colorCell argb="FFC9C9C9" tags="30% Gray;" />
+		<colorCell argb="FFBFBFBF" tags="35% Gray;" />
+		<colorCell argb="FFB5B5B5" tags="40% Gray;" />
+		<colorCell argb="FFAAAAAA" tags="45% Gray;" />
+		<colorCell argb="FFA0A0A0" tags="50% Gray;" />
+		<colorCell argb="FFE60013" tags="CMYK Red;" />
+		<colorCell argb="FFFFF100" tags="CMYK Yellow;" />
+		<colorCell argb="FF009944" tags="CMYK Green;" />
+		<colorCell argb="FF00A0E9" tags="CMYK Cyan;" />
+		<colorCell argb="FF1D2088" tags="CMYK Blue;" />
+		<colorCell argb="FFE4007F" tags="CMYK Magenta;" />
+		<colorCell argb="FF959595" tags="55% Gray;" />
+		<colorCell argb="FF898989" tags="60% Gray;" />
+		<colorCell argb="FF7C7C7C" tags="65% Gray;" />
+		<colorCell argb="FF6F6F6F" tags="70% Gray;" />
+		<colorCell argb="FF626262" tags="75% Gray;" />
+		<colorCell argb="FF535353" tags="80% Gray;" />
+		<colorCell argb="FF434343" tags="85% Gray;" />
+		<colorCell argb="FF313131" tags="90% Gray;" />
+		<colorCell argb="FF1B1B1B" tags="95% Gray;" />
+		<colorCell argb="FF000000" tags="Black;" />
+		<colorCell argb="FFF29B76" tags="Crayon Red;" />
+		<colorCell argb="FFF6B37F" tags="Crayon Red Orange;" />
+		<colorCell argb="FFFACC89" tags="Crayon Orange;" />
+		<colorCell argb="FFFFF799" tags="Crayon Yellow;" />
+		<colorCell argb="FFCCE198" tags="Crayon Bean Green;" />
+		<colorCell argb="FFACD598" tags="Crayon Yellow Green;" />
+		<colorCell argb="FF89C998" tags="Crayon Green;" />
+		<colorCell argb="FF85CCC8" tags="Crayon Green Cyan;" />
+		<colorCell argb="FF7ECEF4" tags="Crayon Cyan;" />
+		<colorCell argb="FF89ABDA" tags="Crayon Cyan Blue;" />
+		<colorCell argb="FF8D97CB" tags="Crayon Blue;" />
+		<colorCell argb="FF8F82BC" tags="Crayon Blue Purple;" />
+		<colorCell argb="FFAA89BD" tags="Crayon Purple;" />
+		<colorCell argb="FFC490BF" tags="Crayon Purple Magenta;" />
+		<colorCell argb="FFF19EC2" tags="Crayon Magenta;" />
+		<colorCell argb="FFF19C9F" tags="Crayon Magenta;" />
+		<colorCell argb="FFEC6841" tags="Light Red;" />
+		<colorCell argb="FFF19149" tags="Light Red Orange;" />
+		<colorCell argb="FFF7B551" tags="Light Yellow Orange;" />
+		<colorCell argb="FFFFF45B" tags="Light Yellow;" />
+		<colorCell argb="FFB3D465" tags="Light Cyan Been Green;" />
+		<colorCell argb="FF7FC269" tags="Light Yellow Green;" />
+		<colorCell argb="FF31B06C" tags="Light Green;" />
+		<colorCell argb="FF12B4B1" tags="Light Green Cyan;" />
+		<colorCell argb="FF00B7EE" tags="Light Cyan;" />
+		<colorCell argb="FF4489C9" tags="Light Cyan Blue;" />
+		<colorCell argb="FF556FB5" tags="Light Blue;" />
+		<colorCell argb="FF5F52A0" tags="Light Blue Purple;" />
+		<colorCell argb="FF8957A0" tags="Light Purple;" />
+		<colorCell argb="FFAD5DA1" tags="Light Purple Magenta;" />
+		<colorCell argb="FFEA68A2" tags="Light Magenta;" />
+		<colorCell argb="FFEB6877" tags="Light Red;" />
+		<colorCell argb="FFE70013" tags="Pure Red;" />
+		<colorCell argb="FFEB6101" tags="Pure Red Orange;" />
+		<colorCell argb="FFF39800" tags="Pure Orange;" />
+		<colorCell argb="FFFFF100" tags="Pure Yellow;" />
+		<colorCell argb="FF8FC31F" tags="Pure Cyan Bean Green;" />
+		<colorCell argb="FF23AC39" tags="Pure Yellow Green;" />
+		<colorCell argb="FF009943" tags="Pure Green;" />
+		<colorCell argb="FF009E97" tags="Pure Green Cyan;" />
+		<colorCell argb="FF00A0E9" tags="Pure Cyan;" />
+		<colorCell argb="FF0069B7" tags="Pure CyanBlue;" />
+		<colorCell argb="FF00479D" tags="Pure Blue;" />
+		<colorCell argb="FF1D2088" tags="Pure Blue Purple;" />
+		<colorCell argb="FF601986" tags="Pure Purple;" />
+		<colorCell argb="FF930883" tags="Pure Purple Magenta;" />
+		<colorCell argb="FFE50050" tags="Pure Magenta;" />
+		<colorCell argb="FFE60050" tags="Pure Red;" />
+		<colorCell argb="FFA40001" tags="Dark Red;" />
+		<colorCell argb="FFA84200" tags="Dark Red Orange;" />
+		<colorCell argb="FFAC6B00" tags="Dark Yellow Orange;" />
+		<colorCell argb="FFB6AA00" tags="Dark Yellow;" />
+		<colorCell argb="FF648C0C" tags="Dark Cyan Green;" />
+		<colorCell argb="FF0D7C25" tags="Dark Yellow Green;" />
+		<colorCell argb="FF007130" tags="Dark Green;" />
+		<colorCell argb="FF00736D" tags="Dark Green Cyan;" />
+		<colorCell argb="FF0075A9" tags="Dark Cyan;" />
+		<colorCell argb="FF004A86" tags="Dark Cyan Blue;" />
+		<colorCell argb="FF002F73" tags="Dark Blue;" />
+		<colorCell argb="FF110B64" tags="Dark Blue Purple;" />
+		<colorCell argb="FF450162" tags="Dark Purple;" />
+		<colorCell argb="FF6A005F" tags="Dark Purple Magenta;" />
+		<colorCell argb="FFA4005B" tags="Dark Magenta;" />
+		<colorCell argb="FFA40036" tags="Dark Red;" />
+		<colorCell argb="FF7D0000" tags="Dark BlackRed;" />
+		<colorCell argb="FF7F2E00" tags="Dark BlackRedOrange;" />
+		<colorCell argb="FF834F00" tags="Dark Orange;" />
+		<colorCell argb="FF8A8100" tags="Dark Yellow;" />
+		<colorCell argb="FF496A00" tags="Dark Cyan Green;" />
+		<colorCell argb="FF005E15" tags="Dark Yellow Green;" />
+		<colorCell argb="FF005620" tags="Dark Black Green;" />
+		<colorCell argb="FF005753" tags="Dark Black Green Cyan;" />
+		<colorCell argb="FF005982" tags="Dark Cyan;" />
+		<colorCell argb="FF003567" tags="Dark Cyan Blue;" />
+		<colorCell argb="FF001D58" tags="Dark Black Blue;" />
+		<colorCell argb="FF05004C" tags="Dark Black BluePurple;" />
+		<colorCell argb="FF32004A" tags="Dark Black Purple;" />
+		<colorCell argb="FF500047" tags="Dark Black PurpleMagenta;" />
+		<colorCell argb="FF7E0043" tags="Dark Black Magenta;" />
+		<colorCell argb="FF7D0023" tags="Dark Black MagentaRed;" />
+		<colorCell argb="FFD1BFA5" tags="Light Brown;" />
+		<colorCell argb="FFA6937C" tags="Light Brown;" />
+		<colorCell argb="FF7F6B5A" tags="Medium Brown;" />
+		<colorCell argb="FF5A493F" tags="Dark Brown;" />
+		<colorCell argb="FF372F2C" tags="Black Brown;" />
+		<colorCell argb="FFCEA972" tags="Light Brown;" />
+		<colorCell argb="FFB28950" tags="Light Brown;" />
+		<colorCell argb="FF996C34" tags="Medium Brown;" />
+		<colorCell argb="FF81511D" tags="Dark Brown;" />
+		<colorCell argb="FF6A3A07" tags="Black Brown;" />
+	</colorSwatch>
+	<colorSwatch name="Theme Swatch">
+		<colorCell argb="FFFFFFFF" tags="" />
+		<colorCell argb="FFFFF5EC" tags="" />
+		<colorCell argb="FFFFF5F1" tags="" />
+		<colorCell argb="FFFFFFCD" tags="" />
+		<colorCell argb="FFFFFFE5" tags="" />
+		<colorCell argb="FFFFF7F3" tags="" />
+		<colorCell argb="FFF7F5F9" tags="" />
+		<colorCell argb="FFF7FDFD" tags="" />
+		<colorCell argb="FFF7FCFF" tags="" />
+		<colorCell argb="FFFDFCFD" tags="" />
+		<colorCell argb="FFFFF7FC" tags="" />
+		<colorCell argb="FFF7FDF5" tags="" />
+		<colorCell argb="FFF7FDFD" tags="" />
+		<colorCell argb="FFF7FDF1" tags="" />
+		<colorCell argb="FFF1F1F1" tags="" />
+		<colorCell argb="FFFEE6CE" tags="" />
+		<colorCell argb="FFFEE1D2" tags="" />
+		<colorCell argb="FFFFEEA0" tags="" />
+		<colorCell argb="FFFFF7BC" tags="" />
+		<colorCell argb="FFFDE1DE" tags="" />
+		<colorCell argb="FFE7E1F0" tags="" />
+		<colorCell argb="FFE1EDF5" tags="" />
+		<colorCell argb="FFDFECF7" tags="" />
+		<colorCell argb="FFF0EEF5" tags="" />
+		<colorCell argb="FFEDE7F2" tags="" />
+		<colorCell argb="FFE5F5E1" tags="" />
+		<colorCell argb="FFE5F5F9" tags="" />
+		<colorCell argb="FFE1F3DC" tags="" />
+		<colorCell argb="FFD9D9D9" tags="" />
+		<colorCell argb="FFFDD0A3" tags="" />
+		<colorCell argb="FFFDBBA1" tags="" />
+		<colorCell argb="FFFED976" tags="" />
+		<colorCell argb="FFFEE390" tags="" />
+		<colorCell argb="FFFDC5C0" tags="" />
+		<colorCell argb="FFD4BADA" tags="" />
+		<colorCell argb="FFBFD3E6" tags="" />
+		<colorCell argb="FFC6DCF0" tags="" />
+		<colorCell argb="FFDADAEC" tags="" />
+		<colorCell argb="FFD0D1E6" tags="" />
+		<colorCell argb="FFC8E9C0" tags="" />
+		<colorCell argb="FFCDEDE6" tags="" />
+		<colorCell argb="FFCDECC5" tags="" />
+		<colorCell argb="FFBDBDBD" tags="" />
+		<colorCell argb="FFFDAE6A" tags="" />
+		<colorCell argb="FFFD9172" tags="" />
+		<colorCell argb="FFFEB34D" tags="" />
+		<colorCell argb="FFFEC44F" tags="" />
+		<colorCell argb="FFFAA0B5" tags="" />
+		<colorCell argb="FFCA94C8" tags="" />
+		<colorCell argb="FF9FBCDA" tags="" />
+		<colorCell argb="FF9FCAE1" tags="" />
+		<colorCell argb="FFBCBDDD" tags="" />
+		<colorCell argb="FFA6BDDC" tags="" />
+		<colorCell argb="FFA1D99C" tags="" />
+		<colorCell argb="FF9AD8CA" tags="" />
+		<colorCell argb="FFA8DEB5" tags="" />
+		<colorCell argb="FF969696" tags="" />
+		<colorCell argb="FFFD8C3D" tags="" />
+		<colorCell argb="FFFC694B" tags="" />
+		<colorCell argb="FFFD8C3D" tags="" />
+		<colorCell argb="FFFE9A24" tags="" />
+		<colorCell argb="FFF767A1" tags="" />
+		<colorCell argb="FFE064B0" tags="" />
+		<colorCell argb="FF8B96C6" tags="" />
+		<colorCell argb="FF6AAED6" tags="" />
+		<colorCell argb="FF9F9AC9" tags="" />
+		<colorCell argb="FF74A9CF" tags="" />
+		<colorCell argb="FF74C476" tags="" />
+		<colorCell argb="FF66C2A4" tags="" />
+		<colorCell argb="FF7CCDC4" tags="" />
+		<colorCell argb="FF747474" tags="" />
+		<colorCell argb="FFF16912" tags="" />
+		<colorCell argb="FFF03A27" tags="" />
+		<colorCell argb="FFFD4F27" tags="" />
+		<colorCell argb="FFED6F12" tags="" />
+		<colorCell argb="FFDE3397" tags="" />
+		<colorCell argb="FFE72489" tags="" />
+		<colorCell argb="FF8B75B5" tags="" />
+		<colorCell argb="FF4291C6" tags="" />
+		<colorCell argb="FF807DBA" tags="" />
+		<colorCell argb="FF378FC0" tags="" />
+		<colorCell argb="FF42AB5D" tags="" />
+		<colorCell argb="FF42AE76" tags="" />
+		<colorCell argb="FF4FB4D3" tags="" />
+		<colorCell argb="FF535353" tags="" />
+		<colorCell argb="FFD94900" tags="" />
+		<colorCell argb="FFCB1219" tags="" />
+		<colorCell argb="FFE31919" tags="" />
+		<colorCell argb="FFCD4D00" tags="" />
+		<colorCell argb="FFAE007E" tags="" />
+		<colorCell argb="FFCE1256" tags="" />
+		<colorCell argb="FF87429D" tags="" />
+		<colorCell argb="FF4291C6" tags="" />
+		<colorCell argb="FF6951A3" tags="" />
+		<colorCell argb="FF006FB0" tags="" />
+		<colorCell argb="FF1F8A47" tags="" />
+		<colorCell argb="FF1F8A47" tags="" />
+		<colorCell argb="FF278BBE" tags="" />
+		<colorCell argb="FF242424" tags="" />
+		<colorCell argb="FFA63700" tags="" />
+		<colorCell argb="FFA50712" tags="" />
+		<colorCell argb="FFBD0024" tags="" />
+		<colorCell argb="FF9A3300" tags="" />
+		<colorCell argb="FF7B0078" tags="" />
+		<colorCell argb="FF990045" tags="" />
+		<colorCell argb="FF81077C" tags="" />
+		<colorCell argb="FF07519D" tags="" />
+		<colorCell argb="FF55248E" tags="" />
+		<colorCell argb="FF005A8C" tags="" />
+		<colorCell argb="FF006B27" tags="" />
+		<colorCell argb="FF006B27" tags="" />
+		<colorCell argb="FF0767AC" tags="" />
+		<colorCell argb="FF000000" tags="" />
+		<colorCell argb="FF7F2400" tags="" />
+		<colorCell argb="FF660007" tags="" />
+		<colorCell argb="FF800024" tags="" />
+		<colorCell argb="FF662407" tags="" />
+		<colorCell argb="FF490069" tags="" />
+		<colorCell argb="FF66001F" tags="" />
+		<colorCell argb="FF4D004B" tags="" />
+		<colorCell argb="FF07306A" tags="" />
+		<colorCell argb="FF40007D" tags="" />
+		<colorCell argb="FF003758" tags="" />
+		<colorCell argb="FF004519" tags="" />
+		<colorCell argb="FF005019" tags="" />
+		<colorCell argb="FF074081" tags="" />
+	</colorSwatch>
+		<colorSwatch name="Google Color Swatch">
+		<colorCell argb="FF010101" tags="Country Border; Provincial Boundary;" />
+		<colorCell argb="FF6C6C6C" tags="Village Boundary;" />
+		<colorCell argb="FFB2B2B2" tags="Municipal Administrative Boundary;" />
+		<colorCell argb="FFC8C8C8" tags="Village Administrative Boundary;" />
+		<colorCell argb="FFCCCCCC" tags="County Administrative Boundary;" />
+		<colorCell argb="FFECECE5" tags="Streen Outer Contour;" />
+		<colorCell argb="FFF0ECE8" tags="Streen Single Line;" />
+		<colorCell argb="FFFFFFFF" tags="Street Fill; County Road Centerline" />
+		<colorCell argb="FFE0D8C8" tags="County Road Outer Contour;" />
+		<colorCell argb="FFB8DDA5" tags="Greenland; Flower Graden;" />
+		<colorCell argb="FF73B273" tags="Natural, culture protected area; Farmland, forest, pasture;" />
+		<colorCell argb="FF61BA90" tags="Special Road;" />
+		<colorCell argb="FFA5BFDD" tags="Lakes and Rivers;" />
+		<colorCell argb="FFB5CFFF" tags="Ocean; Water system;" />
+		<colorCell argb="FF00A0E9" tags="Coastline;" />
+		<colorCell argb="FFD7D282" tags="Rapid Road Contour;" />
+		<colorCell argb="FFE5D5B8" tags="Provincial Highway Contour;" />
+		<colorCell argb="FFE0D0AD" tags="Provincial Outer Contour;" />
+		<colorCell argb="FFD7C155" tags="State Road Contour;" />
+		<colorCell argb="FFFFFEA9" tags="Provincial Road Fill;" />
+		<colorCell argb="FFFFE068" tags="Street Contour;" />
+		<colorCell argb="FFFFDF46" tags="Rapid Road Fill;" />
+		<colorCell argb="FFFFD37F" tags="Village Road;" />
+		<colorCell argb="FFFFC345" tags="Highway Fill;" />
+		<colorCell argb="FFFFC245" tags="State Road Fill; Provincial Road Fill;" />
+		<colorCell argb="FFE4A945" tags="Street Contour;" />
+		<colorCell argb="FFDFA111" tags="Highway Contour;" />
+	</colorSwatch>
+	<colorSwatch name="Tianditu Color Swatch">
+		<colorCell argb="FF010101" tags="Country Border; Provincial Administrative Boundary;" />
+		<colorCell argb="FF6C6C6C" tags="Village Boundary;" />
+		<colorCell argb="FFB2B2B2" tags="Municipal Administrative Boundary;" />
+		<colorCell argb="FFC8C8C8" tags="Village Administrative Boundary;" />
+		<colorCell argb="FFCCCCCC" tags="County Administrative Boundary;" />
+		<colorCell argb="FFF3F0ED" tags="Provincial Road Fill;" />
+		<colorCell argb="FFF2F5F0" tags="Mount Land;" />
+		<colorCell argb="FFFFDCE9" tags="Resident; Block;" />
+		<colorCell argb="FF80CFE8" tags="Paddy Field;" />
+		<colorCell argb="FF0093DD" tags="Glacier;" />
+		<colorCell argb="FFB366CD" tags="Highway;" />
+		<colorCell argb="FFC88544" tags="Farmland, Forest, Pasture ;" />
+		<colorCell argb="FFB4B400" tags="County Road Contour;" />
+		<colorCell argb="FFFDFD3D" tags="County Road Fill;" />
+		<colorCell argb="FF00923F" tags="Ridge;" />
+		<colorCell argb="FF61BA90" tags="Special Road;" />
+		<colorCell argb="FF73B273" tags="Natural, cultural protected area;" />
+		<colorCell argb="FFB5CF9B" tags="River, canal, pond, sea, lake, well;" />
+		<colorCell argb="FFB8DDA5" tags="Artificial greenland, flower garden, greenland, grassland;" />
+		<colorCell argb="FFBDFCBB" tags="Firebreaks;" />
+		<colorCell argb="FFF0E399" tags="Saline-alkali soil;" />
+		<colorCell argb="FFFFD37F" tags="Village Road;" />
+		<colorCell argb="FFF5CA7A" tags="Tractor Road;" />
+		<colorCell argb="FFFFA538" tags="Provincial Road Contour;" />
+		<colorCell argb="FFFA9748" tags="Country Road Fill; Rapid Road;" />
+		<colorCell argb="FFFF641D" tags="Country Road Fill;" />
+	</colorSwatch>
+	<colorSwatch name="Digital Map Color Swatch">
+		<colorCell argb="FFFFD37F" tags="Village Road; Unrated Road;" />
+		<colorCell argb="FFF5CA7A" tags="Tractor Road; Road;" />
+		<colorCell argb="FFF0C848" tags="Provincial Road;" />
+		<colorCell argb="FFFFC345" tags="Highway;" />
+		<colorCell argb="FFDCC084" tags="Contour Line (First curve, line width 0.1);" />
+		<colorCell argb="FFDCBE84" tags="Contour Line (Meter curve, line width 0.2);" />
+		<colorCell argb="FFE5B961" tags="Saline-alkali soi;" />
+		<colorCell argb="FFE6B06A" tags="Provincial Road Centerline;" />
+		<colorCell argb="FFDFA111" tags="Highway Contour;" />
+		<colorCell argb="FFFFA538" tags="Provincial Road Edge;" />
+		<colorCell argb="FFFF9A1D" tags="State Road;" />
+		<colorCell argb="FFFA9748" tags="State Road Centerline;" />
+		<colorCell argb="FFFF7800" tags="Highway;" />
+		<colorCell argb="FFFF641D" tags="State Road Sideline;" />
+		<colorCell argb="FFFFDCE9" tags="Residential area; Block;" />
+		<colorCell argb="FFEBEBEB" tags="Buildings;" />
+		<colorCell argb="FFCCCCCC" tags="County Administrative Boundary;" />
+		<colorCell argb="FFC8C8C8" tags="Village Administrative Boundary;" />
+		<colorCell argb="FFB4B4B4" tags="County Road Edge;" />
+		<colorCell argb="FFB2B2B2" tags="Municipal Administrative Boundary;" />
+		<colorCell argb="FFB5CFFF" tags="River; coastline; lake; river; canals; reservoir; pond; waters;" />
+		<colorCell argb="FF0093DD" tags="Isobath (Linewidth 0.1);" />
+		<colorCell argb="FFB8DDA5" tags="Vegetation; grass; artificial turf; flower garden flower beds;" />
+		<colorCell argb="FF61BA90" tags="Special road;" />
+		<colorCell argb="FF00923F" tags="Ridge;" />
+		<colorCell argb="FFB4B400" tags="County Road contour;" />
+		<colorCell argb="FFFDFD3D" tags="County road centerline;" />
+		<colorCell argb="FFC0504D" tags="Firebreaks;" />
+		<colorCell argb="FF343434" tags="Border (scale is less than 1 million);" />
+		<colorCell argb="FF201A21" tags="Village Road; Dotted line;" />
+		<colorCell argb="FF010101" tags="State Border (scale is 1 million and above); Provincial administrative boundary;" />
+	</colorSwatch>
+	<colorSwatch name="Basic Terrain Color Palette">
+		<colorCell argb="FF00A2E9" tags="C100; Water system line;" />
+		<colorCell argb="FFD3EDFB" tags="C20; Water system complexion;" />
+		<colorCell argb="FFEAF6FD" tags="C10; Water system complexion;" />
+		<colorCell argb="FFBBE3F8" tags="C30; Water system complexion;" />
+		<colorCell argb="FFE62129" tags="M100Y100; State Road; Dangerous area;" />
+		<colorCell argb="FF009B4C" tags="C100Y100; Vegetation sideline; Accommodation highway;" />
+		<colorCell argb="FFE40082" tags="M100; Subway; Light rail;" />
+		<colorCell argb="FFE9589A" tags="M80; Provincial highway;" />
+		<colorCell argb="FFF9BF00" tags="M30Y100; County Road; Township Road; other roads;" />
+		<colorCell argb="FFF4B5D0" tags="M40; National boundary background;" />
+		<colorCell argb="FFF7C9DD" tags="M30; Provincial boundary background;" />
+		<colorCell argb="FFBEDFC3" tags="C30Y30; Vegetation complexion;" />
+		<colorCell argb="FF757475" tags="K70; Facility point;" />
+		<colorCell argb="FF332C2B" tags="K100; Facilities color;" />
+		<colorCell argb="FFC38A0D" tags="M40Y100K30; Contour line color; Dry ditch; Shore Beach;" />
+	</colorSwatch>
+</colorLibrary>

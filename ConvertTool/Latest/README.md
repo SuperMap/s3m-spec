@@ -1,0 +1,20 @@
+# 关于
+用于实现S3MB数据与3D Tiles数据的相互转换，以及OSGB、OBJ等数据转换为S3MB数据，支持跨平台。
+- S3MB数据符合CH/T 9040-2023《空间三维模型瓦片数据格式》行业标准的规定，但目前仅支持普通材质。
+- 3D Tiles数据是符合OGC 3D Tiles标准规定的\*.b3dm、\*.i3dm、\*.cmpt数据。
+
+# 目录
+1. 3rdParty：包含生成所需第三方库的CMake脚本
+
+2. S3MBToolkit：包含实现数据转换所需的头文件和源文件
+
+3. CMakeLists.txt：生成S3MBToolkit工具的CMake脚本
+
+# 使用方法
+1. 准备用于转换的数据。
+
+2. 进入./S3MBToolkit/3rdParty文件夹，运行CMake脚本，编译生成需要的第三方库。
+
+3. 进入./S3MBToolkit文件夹，运行CMake脚本，其中，需要指定QT的安装目录(QT版本应大于5.11)，从而编译生成S3MBToolkit工具。
+
+4. 根据转换需求，使用S3MBToolkit工具将源数据转换为目标格式数据。 

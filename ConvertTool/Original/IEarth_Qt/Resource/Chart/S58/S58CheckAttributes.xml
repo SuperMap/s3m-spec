@@ -1,0 +1,776 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<S58CheckAttributes>
+  <Attribute code="2" acronym="BCNSHP">
+    <Feature code="5" acronym="BCNCAR" allowableValues="* #" />
+    <Feature code="6" acronym="BCNISD" allowableValues="* #" />
+    <Feature code="7" acronym="BCNLAT" allowableValues="* #" />
+    <Feature code="8" acronym="BCNSAW" allowableValues="* #" />
+    <Feature code="9" acronym="BCNSPP" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="3" acronym="BUISHP">
+    <Feature code="12" acronym="BUISGL" allowableValues="*" />
+    <Feature code="125" acronym="SILTNK" allowableValues="*" />
+  </Attribute>
+  <Attribute code="4" acronym="BOYSHP">
+    <Feature code="14" acronym="BOYCAR" allowableValues="* #" />
+    <Feature code="15" acronym="BOYINB" allowableValues="* #" />
+    <Feature code="16" acronym="BOYISD" allowableValues="* #" />
+    <Feature code="17" acronym="BOYLAT" allowableValues="* #" />
+    <Feature code="18" acronym="BOYSAW" allowableValues="* #" />
+    <Feature code="19" acronym="BOYSPP" allowableValues="* #" />
+    <Feature code="84" acronym="MORFAC" allowableValues="*" />
+  </Attribute>
+  <Attribute code="7" acronym="CATAIR">
+    <Feature code="2" acronym="AIRARE" allowableValues="*" />
+  </Attribute>
+  <Attribute code="8" acronym="CATACH">
+    <Feature code="3" acronym="ACHBRT" allowableValues="*" />
+    <Feature code="4" acronym="ACHARE" allowableValues="*" />
+  </Attribute>
+  <Attribute code="9" acronym="CATBRG">
+    <Feature code="11" acronym="BRIDGE" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="10" acronym="CATBUA">
+    <Feature code="13" acronym="BUAARE" allowableValues="*" />
+  </Attribute>
+  <Attribute code="11" acronym="CATCBL">
+    <Feature code="20" acronym="CBLARE" allowableValues="1,4,5" />
+    <Feature code="21" acronym="CBLOHD" allowableValues="1,3,4,5" />
+    <Feature code="22" acronym="CBLSUB" allowableValues="1,4,5,6" />
+  </Attribute>
+  <Attribute code="12" acronym="CATCAN">
+    <Feature code="23" acronym="CANALS" allowableValues="*" />
+  </Attribute>
+  <Attribute code="13" acronym="CATCAM">
+    <Feature code="5" acronym="BCNCAR" allowableValues="* #" />
+    <Feature code="14" acronym="BOYCAR" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="14" acronym="CATCHP">
+    <Feature code="28" acronym="CHKPNT" allowableValues="*" />
+  </Attribute>
+  <Attribute code="15" acronym="CATCOA">
+    <Feature code="30" acronym="COALNE" allowableValues="*" />
+  </Attribute>
+  <Attribute code="16" acronym="CATCTR">
+    <Feature code="33" acronym="CTRPNT" allowableValues="*" />
+  </Attribute>
+  <Attribute code="17" acronym="CATCON">
+    <Feature code="34" acronym="CONVYR" allowableValues="*" />
+  </Attribute>
+  <Attribute code="18" acronym="CATCOV">
+    <Feature code="302" acronym="M_COVR" allowableValues="* $" />
+  </Attribute>
+  <Attribute code="19" acronym="CATCRN">
+    <Feature code="35" acronym="CRANES" allowableValues="*" />
+  </Attribute>
+  <Attribute code="20" acronym="CATDAM">
+    <Feature code="38" acronym="DAMCON" allowableValues="*" />
+  </Attribute>
+  <Attribute code="21" acronym="CATDIS">
+    <Feature code="44" acronym="DISMAR" allowableValues="*" />
+  </Attribute>
+  <Attribute code="22" acronym="CATDOC">
+    <Feature code="45" acronym="DOCARE" allowableValues="*" />
+  </Attribute>
+  <Attribute code="23" acronym="CATDPG">
+    <Feature code="48" acronym="DMPGRD" allowableValues="*" />
+  </Attribute>
+  <Attribute code="24" acronym="CATFNC">
+    <Feature code="52" acronym="FNCLNE" allowableValues="*" />
+  </Attribute>
+  <Attribute code="25" acronym="CATFRY">
+    <Feature code="53" acronym="FERYRT" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="26" acronym="CATFIF">
+    <Feature code="55" acronym="FSHFAC" allowableValues="*" />
+  </Attribute>
+  <Attribute code="27" acronym="CATFOG">
+    <Feature code="58" acronym="FOGSIG" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="28" acronym="CATFOR">
+    <Feature code="59" acronym="FORSTC" allowableValues="*" />
+  </Attribute>
+  <Attribute code="29" acronym="CATGAT">
+    <Feature code="61" acronym="GATCON" allowableValues="*" />
+  </Attribute>
+  <Attribute code="30" acronym="CATHAF">
+    <Feature code="64" acronym="HRBFAC" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="31" acronym="CATHLK">
+    <Feature code="65" acronym="HULKES" allowableValues="*" />
+  </Attribute>
+  <Attribute code="32" acronym="CATICE">
+    <Feature code="66" acronym="ICEARE" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="33" acronym="CATINB">
+    <Feature code="15" acronym="BOYINB" allowableValues="*" />
+  </Attribute>
+  <Attribute code="34" acronym="CATLND">
+    <Feature code="73" acronym="LNDRGN" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="35" acronym="CATLMK">
+    <Feature code="74" acronym="LNDMRK" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="36" acronym="CATLAM">
+    <Feature code="7" acronym="BCNLAT" allowableValues="* #" />
+    <Feature code="17" acronym="BOYLAT" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="37" acronym="CATLIT">
+    <Feature code="75" acronym="LIGHTS" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="38" acronym="CATMFA">
+    <Feature code="82" acronym="MARCUL" allowableValues="*" />
+  </Attribute>
+  <Attribute code="39" acronym="CATMPA">
+    <Feature code="83" acronym="MIPARE" allowableValues="*" />
+  </Attribute>
+  <Attribute code="40" acronym="CATMOR">
+    <Feature code="84" acronym="MORFAC" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="41" acronym="CATNAV">
+    <Feature code="85" acronym="NAVLNE" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="42" acronym="CATOBS">
+    <Feature code="86" acronym="OBSTRN" allowableValues="*" />
+  </Attribute>
+  <Attribute code="43" acronym="CATOFP">
+    <Feature code="87" acronym="OFSPLF" allowableValues="*" />
+  </Attribute>
+  <Attribute code="44" acronym="CATOLB">
+    <Feature code="89" acronym="OILBAR" allowableValues="*" />
+  </Attribute>
+  <Attribute code="45" acronym="CATPLE">
+    <Feature code="90" acronym="PILPNT" allowableValues="*" />
+  </Attribute>
+  <Attribute code="46" acronym="CATPIL">
+    <Feature code="91" acronym="PILBOP" allowableValues="*" />
+  </Attribute>
+  <Attribute code="47" acronym="CATPIP">
+    <Feature code="92" acronym="PIPARE" allowableValues="*" />
+    <Feature code="93" acronym="PIPOHD" allowableValues="2,3,4,6" />
+    <Feature code="94" acronym="PIPSOL" allowableValues="*" />
+  </Attribute>
+  <Attribute code="48" acronym="CATPRA">
+    <Feature code="88" acronym="OSPARE" allowableValues="1,2,5,8,9" />
+    <Feature code="97" acronym="PRDARE" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="49" acronym="CATPYL">
+    <Feature code="98" acronym="PYLONS" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="51" acronym="CATRAS">
+    <Feature code="102" acronym="RADSTA" allowableValues="*" />
+  </Attribute>
+  <Attribute code="52" acronym="CATRTB">
+    <Feature code="103" acronym="RTPBCN" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="53" acronym="CATROS">
+    <Feature code="105" acronym="RDOSTA" allowableValues="*" />
+  </Attribute>
+  <Attribute code="54" acronym="CATTRK">
+    <Feature code="40" acronym="DWRTCL" allowableValues="* #" />
+    <Feature code="108" acronym="RCRTCL" allowableValues="* #" />
+    <Feature code="109" acronym="RECTRC" allowableValues="* #" />
+    <Feature code="152" acronym="TWRTPT" allowableValues="*" />
+  </Attribute>
+  <Attribute code="55" acronym="CATRSC">
+    <Feature code="111" acronym="RSCSTA" allowableValues="*" />
+  </Attribute>
+  <Attribute code="56" acronym="CATREA">
+    <Feature code="112" acronym="RESARE" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="57" acronym="CATROD">
+    <Feature code="116" acronym="ROADWY" allowableValues="1,2,3,4,5,6" />
+  </Attribute>
+  <Attribute code="58" acronym="CATRUN">
+    <Feature code="117" acronym="RUNWAY" allowableValues="*" />
+  </Attribute>
+  <Attribute code="59" acronym="CATSEA">
+    <Feature code="119" acronym="SEAARE" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="60" acronym="CATSLC">
+    <Feature code="122" acronym="SLCONS" allowableValues="*" />
+  </Attribute>
+  <Attribute code="61" acronym="CATSIT">
+    <Feature code="123" acronym="SISTAT" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="62" acronym="CATSIW">
+    <Feature code="124" acronym="SISTAW" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="63" acronym="CATSIL">
+    <Feature code="125" acronym="SILTNK" allowableValues="*" />
+  </Attribute>
+  <Attribute code="64" acronym="CATSLO">
+    <Feature code="126" acronym="SLOTOP" allowableValues="*" />
+    <Feature code="127" acronym="SLOGRD" allowableValues="*" />
+  </Attribute>
+  <Attribute code="65" acronym="CATSCF">
+    <Feature code="128" acronym="SMCFAC" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="66" acronym="CATSPM">
+    <Feature code="9" acronym="BCNSPP" allowableValues="* #" />
+    <Feature code="19" acronym="BOYSPP" allowableValues="* #" />
+    <Feature code="39" acronym="DAYMAR" allowableValues="*" />
+  </Attribute>
+  <Attribute code="188" acronym="CAT_TS">
+    <Feature code="160" acronym="TS_FEB" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="67" acronym="CATTSS">
+    <Feature code="68" acronym="ISTZNE" allowableValues="*" />
+    <Feature code="145" acronym="TSELNE" allowableValues="*" />
+    <Feature code="146" acronym="TSSBND" allowableValues="*" />
+    <Feature code="147" acronym="TSSCRS" allowableValues="*" />
+    <Feature code="148" acronym="TSSLPT" allowableValues="*" />
+    <Feature code="149" acronym="TSSRON" allowableValues="*" />
+    <Feature code="150" acronym="TSEZNE" allowableValues="*" />
+  </Attribute>
+  <Attribute code="68" acronym="CATVEG">
+    <Feature code="155" acronym="VEGATN" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="69" acronym="CATWAT">
+    <Feature code="156" acronym="WATTUR" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="70" acronym="CATWED">
+    <Feature code="158" acronym="WEDKLP" allowableValues="*" />
+  </Attribute>
+  <Attribute code="71" acronym="CATWRK">
+    <Feature code="159" acronym="WRECKS" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="72" acronym="CATZOC">
+    <Feature code="308" acronym="M_QUAL" allowableValues="* $" />
+  </Attribute>
+  <Attribute code="75" acronym="COLOUR">
+    <Feature code="5" acronym="BCNCAR" allowableValues="* #" />
+    <Feature code="6" acronym="BCNISD" allowableValues="* #" />
+    <Feature code="7" acronym="BCNLAT" allowableValues="* #" />
+    <Feature code="8" acronym="BCNSAW" allowableValues="* #" />
+    <Feature code="9" acronym="BCNSPP" allowableValues="* #" />
+    <Feature code="11" acronym="BRIDGE" allowableValues="*" />
+    <Feature code="12" acronym="BUISGL" allowableValues="*" />
+    <Feature code="14" acronym="BOYCAR" allowableValues="* #" />
+    <Feature code="15" acronym="BOYINB" allowableValues="* #" />
+    <Feature code="16" acronym="BOYISD" allowableValues="* #" />
+    <Feature code="17" acronym="BOYLAT" allowableValues="* #" />
+    <Feature code="18" acronym="BOYSAW" allowableValues="* #" />
+    <Feature code="19" acronym="BOYSPP" allowableValues="* #" />
+    <Feature code="30" acronym="COALNE" allowableValues="*" />
+    <Feature code="34" acronym="CONVYR" allowableValues="*" />
+    <Feature code="35" acronym="CRANES" allowableValues="*" />
+    <Feature code="38" acronym="DAMCON" allowableValues="*" />
+    <Feature code="39" acronym="DAYMAR" allowableValues="* #" />
+    <Feature code="52" acronym="FNCLNE" allowableValues="*" />
+    <Feature code="57" acronym="FLODOC" allowableValues="*" />
+    <Feature code="65" acronym="HULKES" allowableValues="*" />
+    <Feature code="74" acronym="LNDMRK" allowableValues="*" />
+    <Feature code="75" acronym="LIGHTS" allowableValues="1,3,4,5,6,8,9,10,11,12,13 #" />
+    <Feature code="76" acronym="LITFLT" allowableValues="* #" />
+    <Feature code="77" acronym="LITVES" allowableValues="* #" />
+    <Feature code="84" acronym="MORFAC" allowableValues="*" />
+    <Feature code="163" acronym="NEWOBJ" allowableValues="*" />
+    <Feature code="87" acronym="OFSPLF" allowableValues="*" />
+    <Feature code="90" acronym="PILPNT" allowableValues="*" />
+    <Feature code="98" acronym="PYLONS" allowableValues="*" />
+    <Feature code="113" acronym="RETRFL" allowableValues="1,3,4,5,6,7,8,9,10,11,12,13" />
+    <Feature code="121" acronym="SBDARE" allowableValues="*" />
+    <Feature code="122" acronym="SLCONS" allowableValues="*" />
+    <Feature code="125" acronym="SILTNK" allowableValues="*" />
+    <Feature code="126" acronym="SLOTOP" allowableValues="*" />
+    <Feature code="127" acronym="SLOGRD" allowableValues="*" />
+    <Feature code="144" acronym="TOPMAR" allowableValues="*" />
+  </Attribute>
+  <Attribute code="76" acronym="COLPAT">
+    <Feature code="5" acronym="BCNCAR" allowableValues="* #" />
+    <Feature code="6" acronym="BCNISD" allowableValues="* #" />
+    <Feature code="7" acronym="BCNLAT" allowableValues="* #" />
+    <Feature code="8" acronym="BCNSAW" allowableValues="* #" />
+    <Feature code="9" acronym="BCNSPP" allowableValues="* #" />
+    <Feature code="11" acronym="BRIDGE" allowableValues="* #" />
+    <Feature code="12" acronym="BUISGL" allowableValues="* #" />
+    <Feature code="14" acronym="BOYCAR" allowableValues="* #" />
+    <Feature code="15" acronym="BOYINB" allowableValues="* #" />
+    <Feature code="16" acronym="BOYISD" allowableValues="* #" />
+    <Feature code="17" acronym="BOYLAT" allowableValues="* #" />
+    <Feature code="18" acronym="BOYSAW" allowableValues="* #" />
+    <Feature code="19" acronym="BOYSPP" allowableValues="* #" />
+    <Feature code="34" acronym="CONVYR" allowableValues="* #" />
+    <Feature code="35" acronym="CRANES" allowableValues="* #" />
+    <Feature code="38" acronym="DAMCON" allowableValues="* #" />
+    <Feature code="39" acronym="DAYMAR" allowableValues="* #" />
+    <Feature code="52" acronym="FNCLNE" allowableValues="* #" />
+    <Feature code="57" acronym="FLODOC" allowableValues="* #" />
+    <Feature code="65" acronym="HULKES" allowableValues="* #" />
+    <Feature code="74" acronym="LNDMRK" allowableValues="* #" />
+    <Feature code="76" acronym="LITFLT" allowableValues="* #" />
+    <Feature code="77" acronym="LITVES" allowableValues="* #" />
+    <Feature code="84" acronym="MORFAC" allowableValues="* #" />
+    <Feature code="163" acronym="NEWOBJ" allowableValues="* #" />
+    <Feature code="87" acronym="OFSPLF" allowableValues="* #" />
+    <Feature code="90" acronym="PILPNT" allowableValues="* #" />
+    <Feature code="98" acronym="PYLONS" allowableValues="* #" />
+    <Feature code="113" acronym="RETRFL" allowableValues="* #" />
+    <Feature code="122" acronym="SLCONS" allowableValues="* #" />
+    <Feature code="125" acronym="SILTNK" allowableValues="* #" />
+    <Feature code="144" acronym="TOPMAR" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="81" acronym="CONDTN">
+    <Feature code="2" acronym="AIRARE" allowableValues="1,2,3,5" />
+    <Feature code="5" acronym="BCNCAR" allowableValues="1,2,5" />
+    <Feature code="6" acronym="BCNISD" allowableValues="1,2,5" />
+    <Feature code="7" acronym="BCNLAT" allowableValues="1,2,5" />
+    <Feature code="8" acronym="BCNSAW" allowableValues="1,2,5" />
+    <Feature code="9" acronym="BCNSPP" allowableValues="1,2,5" />
+    <Feature code="11" acronym="BRIDGE" allowableValues="1,2,5" />
+    <Feature code="12" acronym="BUISGL" allowableValues="1,2,5" />
+    <Feature code="13" acronym="BUAARE" allowableValues="1,2,5" />
+    <Feature code="21" acronym="CBLOHD" allowableValues="1,5" />
+    <Feature code="22" acronym="CBLSUB" allowableValues="1,5" />
+    <Feature code="23" acronym="CANALS" allowableValues="1,2,3,5" />
+    <Feature code="26" acronym="CAUSWY" allowableValues="1,2,3,5" />
+    <Feature code="34" acronym="CONVYR" allowableValues="1,2,5" />
+    <Feature code="35" acronym="CRANES" allowableValues="1,2,5" />
+    <Feature code="38" acronym="DAMCON" allowableValues="1,2,3,5" />
+    <Feature code="45" acronym="DOCARE" allowableValues="1,2,3,5" />
+    <Feature code="47" acronym="DRYDOC" allowableValues="1,2,3,5" />
+    <Feature code="49" acronym="DYKCON" allowableValues="1,2,3,5" />
+    <Feature code="52" acronym="FNCLNE" allowableValues="1,2,5" />
+    <Feature code="57" acronym="FLODOC" allowableValues="1,2,3,5" />
+    <Feature code="59" acronym="FORSTC" allowableValues="1,2,5" />
+    <Feature code="61" acronym="GATCON" allowableValues="1,2,5" />
+    <Feature code="64" acronym="HRBFAC" allowableValues="1,2,3,5" />
+    <Feature code="65" acronym="HULKES" allowableValues="1,2,5" />
+    <Feature code="71" acronym="LNDARE" allowableValues="1,3,5" />
+    <Feature code="74" acronym="LNDMRK" allowableValues="1,2,4,5" />
+    <Feature code="84" acronym="MORFAC" allowableValues="1,2,5" />
+    <Feature code="163" acronym="NEWOBJ" allowableValues="*" />
+    <Feature code="86" acronym="OBSTRN" allowableValues="1,2,5" />
+    <Feature code="87" acronym="OFSPLF" allowableValues="1,2,5" />
+    <Feature code="88" acronym="OSPARE" allowableValues="1,2,3,5" />
+    <Feature code="89" acronym="OILBAR" allowableValues="1,2,5" />
+    <Feature code="90" acronym="PILPNT" allowableValues="1,2,5" />
+    <Feature code="93" acronym="PIPOHD" allowableValues="1,5" />
+    <Feature code="94" acronym="PIPSOL" allowableValues="1,5" />
+    <Feature code="95" acronym="PONTON" allowableValues="1,2,5" />
+    <Feature code="97" acronym="PRDARE" allowableValues="1,2,3,5" />
+    <Feature code="98" acronym="PYLONS" allowableValues="1,2,5" />
+    <Feature code="106" acronym="RAILWY" allowableValues="1,3,5" />
+    <Feature code="116" acronym="ROADWY" allowableValues="1,2,3,5" />
+    <Feature code="117" acronym="RUNWAY" allowableValues="1,2,3,5" />
+    <Feature code="122" acronym="SLCONS" allowableValues="1,2,3,5" />
+    <Feature code="125" acronym="SILTNK" allowableValues="1,2,5" />
+    <Feature code="151" acronym="TUNNEL" allowableValues="1,2,3,5" />
+  </Attribute>
+  <Attribute code="82" acronym="CONRAD">
+    <Feature code="5" acronym="BCNCAR" allowableValues="*" />
+    <Feature code="6" acronym="BCNISD" allowableValues="*" />
+    <Feature code="7" acronym="BCNLAT" allowableValues="*" />
+    <Feature code="8" acronym="BCNSAW" allowableValues="*" />
+    <Feature code="9" acronym="BCNSPP" allowableValues="*" />
+    <Feature code="11" acronym="BRIDGE" allowableValues="*" />
+    <Feature code="12" acronym="BUISGL" allowableValues="*" />
+    <Feature code="13" acronym="BUAARE" allowableValues="*" />
+    <Feature code="14" acronym="BOYCAR" allowableValues="*" />
+    <Feature code="15" acronym="BOYINB" allowableValues="*" />
+    <Feature code="16" acronym="BOYISD" allowableValues="*" />
+    <Feature code="17" acronym="BOYLAT" allowableValues="*" />
+    <Feature code="18" acronym="BOYSAW" allowableValues="*" />
+    <Feature code="19" acronym="BOYSPP" allowableValues="*" />
+    <Feature code="21" acronym="CBLOHD" allowableValues="*" />
+    <Feature code="30" acronym="COALNE" allowableValues="*" />
+    <Feature code="34" acronym="CONVYR" allowableValues="*" />
+    <Feature code="35" acronym="CRANES" allowableValues="*" />
+    <Feature code="38" acronym="DAMCON" allowableValues="*" />
+    <Feature code="49" acronym="DYKCON" allowableValues="*" />
+    <Feature code="52" acronym="FNCLNE" allowableValues="*" />
+    <Feature code="57" acronym="FLODOC" allowableValues="*" />
+    <Feature code="59" acronym="FORSTC" allowableValues="*" />
+    <Feature code="65" acronym="HULKES" allowableValues="*" />
+    <Feature code="74" acronym="LNDMRK" allowableValues="*" />
+    <Feature code="76" acronym="LITFLT" allowableValues="*" />
+    <Feature code="77" acronym="LITVES" allowableValues="*" />
+    <Feature code="84" acronym="MORFAC" allowableValues="*" />
+    <Feature code="163" acronym="NEWOBJ" allowableValues="*" />
+    <Feature code="87" acronym="OFSPLF" allowableValues="*" />
+    <Feature code="88" acronym="OSPARE" allowableValues="*" />
+    <Feature code="93" acronym="PIPOHD" allowableValues="*" />
+    <Feature code="95" acronym="PONTON" allowableValues="*" />
+    <Feature code="97" acronym="PRDARE" allowableValues="*" />
+    <Feature code="98" acronym="PYLONS" allowableValues="*" />
+    <Feature code="122" acronym="SLCONS" allowableValues="*" />
+    <Feature code="125" acronym="SILTNK" allowableValues="*" />
+    <Feature code="126" acronym="SLOTOP" allowableValues="*" />
+    <Feature code="127" acronym="SLOGRD" allowableValues="*" />
+    <Feature code="159" acronym="WRECKS" allowableValues="*" />
+  </Attribute>
+  <Attribute code="83" acronym="CONVIS">
+    <Feature code="5" acronym="BCNCAR" allowableValues="*" />
+    <Feature code="6" acronym="BCNISD" allowableValues="*" />
+    <Feature code="7" acronym="BCNLAT" allowableValues="*" />
+    <Feature code="8" acronym="BCNSAW" allowableValues="*" />
+    <Feature code="9" acronym="BCNSPP" allowableValues="*" />
+    <Feature code="11" acronym="BRIDGE" allowableValues="*" />
+    <Feature code="12" acronym="BUISGL" allowableValues="*" />
+    <Feature code="13" acronym="BUAARE" allowableValues="*" />
+    <Feature code="21" acronym="CBLOHD" allowableValues="*" />
+    <Feature code="30" acronym="COALNE" allowableValues="*" />
+    <Feature code="34" acronym="CONVYR" allowableValues="*" />
+    <Feature code="35" acronym="CRANES" allowableValues="*" />
+    <Feature code="38" acronym="DAMCON" allowableValues="*" />
+    <Feature code="52" acronym="FNCLNE" allowableValues="*" />
+    <Feature code="57" acronym="FLODOC" allowableValues="*" />
+    <Feature code="59" acronym="FORSTC" allowableValues="*" />
+    <Feature code="65" acronym="HULKES" allowableValues="*" />
+    <Feature code="66" acronym="ICEARE" allowableValues="*" />
+    <Feature code="72" acronym="LNDELV" allowableValues="*" />
+    <Feature code="74" acronym="LNDMRK" allowableValues="* #" />
+    <Feature code="76" acronym="LITFLT" allowableValues="*" />
+    <Feature code="77" acronym="LITVES" allowableValues="*" />
+    <Feature code="84" acronym="MORFAC" allowableValues="*" />
+    <Feature code="163" acronym="NEWOBJ" allowableValues="*" />
+    <Feature code="87" acronym="OFSPLF" allowableValues="*" />
+    <Feature code="88" acronym="OSPARE" allowableValues="*" />
+    <Feature code="90" acronym="PILPNT" allowableValues="*" />
+    <Feature code="93" acronym="PIPOHD" allowableValues="*" />
+    <Feature code="95" acronym="PONTON" allowableValues="*" />
+    <Feature code="97" acronym="PRDARE" allowableValues="*" />
+    <Feature code="98" acronym="PYLONS" allowableValues="*" />
+    <Feature code="122" acronym="SLCONS" allowableValues="*" />
+    <Feature code="125" acronym="SILTNK" allowableValues="*" />
+    <Feature code="126" acronym="SLOTOP" allowableValues="*" />
+    <Feature code="127" acronym="SLOGRD" allowableValues="*" />
+    <Feature code="155" acronym="VEGATN" allowableValues="*" />
+    <Feature code="157" acronym="WATFAL" allowableValues="*" />
+    <Feature code="159" acronym="WRECKS" allowableValues="*" />
+  </Attribute>
+  <Attribute code="92" acronym="EXCLIT">
+    <Feature code="75" acronym="LIGHTS" allowableValues="*" />
+  </Attribute>
+  <Attribute code="93" acronym="EXPSOU">
+    <Feature code="82" acronym="MARCUL" allowableValues="*" />
+    <Feature code="86" acronym="OBSTRN" allowableValues="*" />
+    <Feature code="129" acronym="SOUNDG" allowableValues="*" />
+    <Feature code="153" acronym="UWTROC" allowableValues="*" />
+    <Feature code="159" acronym="WRECKS" allowableValues="*" />
+  </Attribute>
+  <Attribute code="94" acronym="FUNCTN">
+    <Feature code="12" acronym="BUISGL" allowableValues="*" />
+    <Feature code="74" acronym="LNDMRK" allowableValues="*" />
+  </Attribute>
+  <Attribute code="103" acronym="JRSDTN">
+    <Feature code="1" acronym="ADMARE" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="107" acronym="LITCHR">
+    <Feature code="75" acronym="LIGHTS" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="108" acronym="LITVIS">
+    <Feature code="75" acronym="LIGHTS" allowableValues="*" />
+  </Attribute>
+  <Attribute code="109" acronym="MARSYS">
+    <Feature code="5" acronym="BCNCAR" allowableValues="*" />
+    <Feature code="6" acronym="BCNISD" allowableValues="*" />
+    <Feature code="7" acronym="BCNLAT" allowableValues="*" />
+    <Feature code="8" acronym="BCNSAW" allowableValues="*" />
+    <Feature code="9" acronym="BCNSPP" allowableValues="*" />
+    <Feature code="14" acronym="BOYCAR" allowableValues="*" />
+    <Feature code="15" acronym="BOYINB" allowableValues="*" />
+    <Feature code="16" acronym="BOYISD" allowableValues="*" />
+    <Feature code="17" acronym="BOYLAT" allowableValues="*" />
+    <Feature code="18" acronym="BOYSAW" allowableValues="*" />
+    <Feature code="19" acronym="BOYSPP" allowableValues="*" />
+    <Feature code="75" acronym="LIGHTS" allowableValues="*" />
+    <Feature code="306" acronym="M_NSYS" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="112" acronym="NATCON">
+    <Feature code="5" acronym="BCNCAR" allowableValues="1,2,6,7,8,9" />
+    <Feature code="6" acronym="BCNISD" allowableValues="1,2,6,7,8,9" />
+    <Feature code="7" acronym="BCNLAT" allowableValues="1,2,6,7,8,9" />
+    <Feature code="8" acronym="BCNSAW" allowableValues="1,2,6,7,8,9" />
+    <Feature code="9" acronym="BCNSPP" allowableValues="1,2,6,7,8,9" />
+    <Feature code="11" acronym="BRIDGE" allowableValues="1,2,4,5,6,7,8,9" />
+    <Feature code="12" acronym="BUISGL" allowableValues="1,2,6,7,8,9" />
+    <Feature code="14" acronym="BOYCAR" allowableValues="6,7,8,9" />
+    <Feature code="15" acronym="BOYINB" allowableValues="6,7,8,9" />
+    <Feature code="16" acronym="BOYISD" allowableValues="6,7,8,9" />
+    <Feature code="17" acronym="BOYLAT" allowableValues="6,7,8,9" />
+    <Feature code="18" acronym="BOYSAW" allowableValues="6,7,8,9" />
+    <Feature code="19" acronym="BOYSPP" allowableValues="6,7,8,9" />
+    <Feature code="26" acronym="CAUSWY" allowableValues="1,2,3,4,5,6,7" />
+    <Feature code="38" acronym="DAMCON" allowableValues="1,2,3,4,5,6,7,9" />
+    <Feature code="39" acronym="DAYMAR" allowableValues="1,2,4,6,7,8,9" />
+    <Feature code="49" acronym="DYKCON" allowableValues="1,2,3,4,5,6,7,9" />
+    <Feature code="52" acronym="FNCLNE" allowableValues="1,2,3,6,7,9" />
+    <Feature code="59" acronym="FORSTC" allowableValues="1,2,3,6,7,9" />
+    <Feature code="61" acronym="GATCON" allowableValues="1,2,6,7,9" />
+    <Feature code="62" acronym="GRIDRN" allowableValues="1,2,6,7,9" />
+    <Feature code="64" acronym="HRBFAC" allowableValues="1,2,3,6,7,9" />
+    <Feature code="74" acronym="LNDMRK" allowableValues="1,2,3,6,7,8,9" />
+    <Feature code="76" acronym="LITFLT" allowableValues="6,7,9" />
+    <Feature code="77" acronym="LITVES" allowableValues="6,7,9" />
+    <Feature code="84" acronym="MORFAC" allowableValues="1,2,6,7,9" />
+    <Feature code="86" acronym="OBSTRN" allowableValues="1,2,3,6,7,9" />
+    <Feature code="87" acronym="OFSPLF" allowableValues="1,2,6,7,9" />
+    <Feature code="95" acronym="PONTON" allowableValues="1,2,6,7,9" />
+    <Feature code="98" acronym="PYLONS" allowableValues="1,2,6,7,9" />
+    <Feature code="116" acronym="ROADWY" allowableValues="1,2,4,5,6,9" />
+    <Feature code="117" acronym="RUNWAY" allowableValues="1,2,4,5,6,7,9" />
+    <Feature code="122" acronym="SLCONS" allowableValues="*" />
+    <Feature code="125" acronym="SILTNK" allowableValues="1,2,6,7,8,9" />
+  </Attribute>
+  <Attribute code="113" acronym="NATSUR">
+    <Feature code="73" acronym="LNDRGN" allowableValues="*" />
+    <Feature code="86" acronym="OBSTRN" allowableValues="*" />
+    <Feature code="121" acronym="SBDARE" allowableValues="* #" />
+    <Feature code="126" acronym="SLOTOP" allowableValues="*" />
+    <Feature code="127" acronym="SLOGRD" allowableValues="*" />
+    <Feature code="153" acronym="UWTROC" allowableValues="9,14,18" />
+  </Attribute>
+  <Attribute code="114" acronym="NATQUA">
+    <Feature code="73" acronym="LNDRGN" allowableValues="*" />
+    <Feature code="86" acronym="OBSTRN" allowableValues="*" />
+    <Feature code="121" acronym="SBDARE" allowableValues="* #" />
+    <Feature code="153" acronym="UWTROC" allowableValues="4,8,9,10" />
+  </Attribute>
+  <Attribute code="123" acronym="PRODCT">
+    <Feature code="15" acronym="BOYINB" allowableValues="1,2,18,19" />
+    <Feature code="34" acronym="CONVYR" allowableValues="4,5,6,7,10,11,12,13,14,15,16,17,21,22" />
+    <Feature code="86" acronym="OBSTRN" allowableValues="1,2,3,8" />
+    <Feature code="87" acronym="OFSPLF" allowableValues="1,2" />
+    <Feature code="88" acronym="OSPARE" allowableValues="1,2,4,6,10,14" />
+    <Feature code="92" acronym="PIPARE" allowableValues="1,2,3,7,8,18,19,20" />
+    <Feature code="93" acronym="PIPOHD" allowableValues="1,2,3,7,8,9,18,19,20,22" />
+    <Feature code="94" acronym="PIPSOL" allowableValues="1,2,3,7,8,9,18,19,20,22" />
+    <Feature code="97" acronym="PRDARE" allowableValues="*" />
+    <Feature code="125" acronym="SILTNK" allowableValues="1,2,3,7,8,9,14,18,19,20,21,22" />
+  </Attribute>
+  <Attribute code="125" acronym="QUASOU">
+    <Feature code="10" acronym="BERTHS" allowableValues="1,2,3,4" />
+    <Feature code="40" acronym="DWRTCL" allowableValues="1,2,3,4" />
+    <Feature code="41" acronym="DWRTPT" allowableValues="1,2,3,4" />
+    <Feature code="42" acronym="DEPARE" allowableValues="1,2,3,4" />
+    <Feature code="46" acronym="DRGARE" allowableValues="10,11" />
+    <Feature code="47" acronym="DRYDOC" allowableValues="2,3,4,6,7,8,9" />
+    <Feature code="51" acronym="FAIRWY" allowableValues="1,2,3,4" />
+    <Feature code="61" acronym="GATCON" allowableValues="2,3,4,6,7" />
+    <Feature code="82" acronym="MARCUL" allowableValues="1,2,3,4,6,7,8,9" />
+    <Feature code="86" acronym="OBSTRN" allowableValues="1,2,3,4,6,7,8,9" />
+    <Feature code="108" acronym="RCRTCL" allowableValues="1,2,3,4" />
+    <Feature code="109" acronym="RECTRC" allowableValues="1,2,3,4,6" />
+    <Feature code="129" acronym="SOUNDG" allowableValues="1,3,4,5,8,9,10,11" />
+    <Feature code="134" acronym="SWPARE" allowableValues="1,6" />
+    <Feature code="152" acronym="TWRTPT" allowableValues="1,2,3,4" />
+    <Feature code="153" acronym="UWTROC" allowableValues="1,2,3,4,6,7,8,9" />
+    <Feature code="159" acronym="WRECKS" allowableValues="1,2,3,4,6,7,8,9" />
+    <Feature code="310" acronym="M_SREL" allowableValues="1,2,3,4,5,6,7,8,9,10,11" />
+  </Attribute>
+  <Attribute code="131" acronym="RESTRN">
+    <Feature code="4" acronym="ACHARE" allowableValues="2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,23,24,27" />
+    <Feature code="20" acronym="CBLARE" allowableValues="1,2,3,4,5,6,7,8,9,10,11,12,13,14,16,17,18,19,20,21,22,23,24,25,27" />
+    <Feature code="41" acronym="DWRTPT" allowableValues="1,2,3,4,5,6,8,9,10,11,12,13,14,16,17,18,19,20,21,22,23,24,25,27" />
+    <Feature code="46" acronym="DRGARE" allowableValues="1,2,3,4,5,6,7,8,11,12,13,16,17,18,19,20,21,22,23,25,27" />
+    <Feature code="48" acronym="DMPGRD" allowableValues="1,2,3,4,5,6,7,8,9,10,11,12,13,14,16,17,18,19,20,21,22,23,24,25,27" />
+    <Feature code="51" acronym="FAIRWY" allowableValues="1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,27" />
+    <Feature code="67" acronym="ICNARE" allowableValues="1,2,3,4,5,6,7,8,9,10,11,12,13,14,16,17,18,19,20,21,22,23,24,25,27" />
+    <Feature code="68" acronym="ISTZNE" allowableValues="1,2,3,4,5,6,8,9,10,11,12,13,18,19,20,21,22,23,24,25,27" />
+    <Feature code="82" acronym="MARCUL" allowableValues="*" />
+    <Feature code="83" acronym="MIPARE" allowableValues="*" />
+    <Feature code="163" acronym="NEWOBJ" allowableValues="*" />
+    <Feature code="88" acronym="OSPARE" allowableValues="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,27" />
+    <Feature code="92" acronym="PIPARE" allowableValues="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,27" />
+    <Feature code="96" acronym="PRCARE" allowableValues="1,2,3,4,5,6,8,9,10,11,12,13,14,16,17,18,19,20,21,22,23,24,25,27" />
+    <Feature code="112" acronym="RESARE" allowableValues="*#" />
+    <Feature code="120" acronym="SPLARE" allowableValues="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,27" />
+    <Feature code="133" acronym="SUBTLN" allowableValues="1,2,3,4,5,6,7,8,9,10,11,12,13,14,16,17,18,19,20,21,22,23,24,25,27" />
+    <Feature code="135" acronym="TESARE" allowableValues="1,2,3,4,5,6,7,8,9,10,11,12,13,14,16,17,18,19,20,21,22,23,24,25,26,27" />
+    <Feature code="147" acronym="TSSCRS" allowableValues="1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27" />
+    <Feature code="148" acronym="TSSLPT" allowableValues="1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27" />
+    <Feature code="149" acronym="TSSRON" allowableValues="1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27" />
+  </Attribute>
+  <Attribute code="140" acronym="SIGGEN">
+    <Feature code="58" acronym="FOGSIG" allowableValues="*" />
+  </Attribute>
+  <Attribute code="149" acronym="STATUS">
+    <Feature code="2" acronym="AIRARE" allowableValues="1,2,4,5,6,7,8,12,14,16,17" />
+    <Feature code="3" acronym="ACHBRT" allowableValues="1,2,3,4,5,6,7,8,9,14" />
+    <Feature code="4" acronym="ACHARE" allowableValues="1,2,3,5,6,7,8,9,14" />
+    <Feature code="5" acronym="BCNCAR" allowableValues="1,2,4,5,7,8,12,18" />
+    <Feature code="6" acronym="BCNISD" allowableValues="1,2,4,5,7,8,12,18" />
+    <Feature code="7" acronym="BCNLAT" allowableValues="1,2,4,5,7,8,12,18" />
+    <Feature code="8" acronym="BCNSAW" allowableValues="1,2,4,5,7,8,12,18" />
+    <Feature code="9" acronym="BCNSPP" allowableValues="1,2,4,5,7,8,12,18" />
+    <Feature code="10" acronym="BERTHS" allowableValues="1,2,3,5,6,7,8,9,12,14" />
+    <Feature code="12" acronym="BUISGL" allowableValues="1,4,6,7,8,12,13,14,16,17" />
+    <Feature code="14" acronym="BOYCAR" allowableValues="1,2,5,7,8,18" />
+    <Feature code="15" acronym="BOYINB" allowableValues="1,2,4,5,7,8,18" />
+    <Feature code="16" acronym="BOYISD" allowableValues="1,2,5,7,8,18" />
+    <Feature code="17" acronym="BOYLAT" allowableValues="1,2,5,7,8,18" />
+    <Feature code="18" acronym="BOYSAW" allowableValues="1,2,5,7,8,18" />
+    <Feature code="19" acronym="BOYSPP" allowableValues="1,2,5,7,8,18" />
+    <Feature code="20" acronym="CBLARE" allowableValues="1,7,13" />
+    <Feature code="21" acronym="CBLOHD" allowableValues="1,4,5,7,12" />
+    <Feature code="22" acronym="CBLSUB" allowableValues="1,4,13" />
+    <Feature code="23" acronym="CANALS" allowableValues="1,3,4,5,6,8,14" />
+    <Feature code="25" acronym="CTSARE" allowableValues="1,2,3,5,6,7,9" />
+    <Feature code="26" acronym="CAUSWY" allowableValues="1,8,12,14" />
+    <Feature code="28" acronym="CHKPNT" allowableValues="1,2,5,7,9,12,16,17" />
+    <Feature code="29" acronym="CGUSTA" allowableValues="1,4,5,16,17" />
+    <Feature code="31" acronym="CONZNE" allowableValues="1" />
+    <Feature code="34" acronym="CONVYR" allowableValues="1,4,6,12" />
+    <Feature code="35" acronym="CRANES" allowableValues="1,4,6,12" />
+    <Feature code="39" acronym="DAYMAR" allowableValues="1,4,5,7,8,12" />
+    <Feature code="40" acronym="DWRTCL" allowableValues="1,3,6,9" />
+    <Feature code="41" acronym="DWRTPT" allowableValues="1,3,6,9" />
+    <Feature code="45" acronym="DOCARE" allowableValues="1,4,6,8,14" />
+    <Feature code="47" acronym="DRYDOC" allowableValues="1,4,6,8,12,14" />
+    <Feature code="48" acronym="DMPGRD" allowableValues="1,2,4,6,7" />
+    <Feature code="51" acronym="FAIRWY" allowableValues="1,3,6,7,9" />
+    <Feature code="52" acronym="FNCLNE" allowableValues="1,12" />
+    <Feature code="53" acronym="FERYRT" allowableValues="1,2,4,5,6,7,8,9" />
+    <Feature code="54" acronym="FSHZNE" allowableValues="1,5,6,7" />
+    <Feature code="55" acronym="FSHFAC" allowableValues="1,4,5,6,7,8,12,16,17" />
+    <Feature code="56" acronym="FSHGRD" allowableValues="1,5,6,7,8,14,16,17" />
+    <Feature code="57" acronym="FLODOC" allowableValues="1,4,6,7,8,12" />
+    <Feature code="58" acronym="FOGSIG" allowableValues="1,2,4,5,7,8,15" />
+    <Feature code="60" acronym="FRPARE" allowableValues="1,6,8,14" />
+    <Feature code="61" acronym="GATCON" allowableValues="1,4,6,16,17" />
+    <Feature code="62" acronym="GRIDRN" allowableValues="1,4,6,8,14,16,17" />
+    <Feature code="63" acronym="HRBARE" allowableValues="1,4,6,8,14,16,17" />
+    <Feature code="64" acronym="HRBFAC" allowableValues="1,4,5,6,7,8,9,12,13,14,16,17" />
+    <Feature code="66" acronym="ICEARE" allowableValues="1,2,5,16,17" />
+    <Feature code="67" acronym="ICNARE" allowableValues="1,2,5,6,7,16,17" />
+    <Feature code="68" acronym="ISTZNE" allowableValues="1,3,6,9,16,17" />
+    <Feature code="71" acronym="LNDARE" allowableValues="6,7,8,12,14,16,17,18" />
+    <Feature code="74" acronym="LNDMRK" allowableValues="1,2,4,5,7,8,12,13,14,16,17" />
+    <Feature code="75" acronym="LIGHTS" allowableValues="1,2,4,5,6,7,8,11,14,15,16,17" />
+    <Feature code="76" acronym="LITFLT" allowableValues="1,2,4,5,7,8,14,16,17" />
+    <Feature code="77" acronym="LITVES" allowableValues="1,2,4,5,7,8,14,16,17" />
+    <Feature code="79" acronym="LOKBSN" allowableValues="1,4,6,8,13,14,16,17" />
+    <Feature code="80" acronym="LOGPON" allowableValues="1,2,4,5,6,7,8" />
+    <Feature code="82" acronym="MARCUL" allowableValues="1,2,4,5,6,7,8,14,16,17" />
+    <Feature code="83" acronym="MIPARE" allowableValues="1,2,5,6,7,16,17" />
+    <Feature code="84" acronym="MORFAC" allowableValues="1,2,3,4,5,6,7,8,9,12,14,18" />
+    <Feature code="85" acronym="NAVLNE" allowableValues="1,2,5,7,8,14" />
+    <Feature code="163" acronym="NEWOBJ" allowableValues="*" />
+    <Feature code="86" acronym="OBSTRN" allowableValues="1,4,5,7,8,13,18" />
+    <Feature code="87" acronym="OFSPLF" allowableValues="1,2,4,7,8,12,16,17" />
+    <Feature code="88" acronym="OSPARE" allowableValues="1,4,7,8,12" />
+    <Feature code="89" acronym="OILBAR" allowableValues="1,2,4,7,8" />
+    <Feature code="91" acronym="PILBOP" allowableValues="1,2,3,5,6,9,16,17" />
+    <Feature code="92" acronym="PIPARE" allowableValues="1,4,7" />
+    <Feature code="93" acronym="PIPOHD" allowableValues="1,4,7,12" />
+    <Feature code="94" acronym="PIPSOL" allowableValues="1,4,7,12" />
+    <Feature code="95" acronym="PONTON" allowableValues="1,2,4,5,6,7,8,12,14" />
+    <Feature code="96" acronym="PRCARE" allowableValues="1,9" />
+    <Feature code="97" acronym="PRDARE" allowableValues="1,4,8" />
+    <Feature code="99" acronym="RADLNE" allowableValues="1,2,4,7" />
+    <Feature code="100" acronym="RADRNG" allowableValues="1,2,4,7" />
+    <Feature code="101" acronym="RADRFL" allowableValues="1,4,8" />
+    <Feature code="102" acronym="RADSTA" allowableValues="1,2,4,7,8" />
+    <Feature code="103" acronym="RTPBCN" allowableValues="1,2,4,5,7,8" />
+    <Feature code="104" acronym="RDOCAL" allowableValues="1,3,4,5,6,7,9" />
+    <Feature code="105" acronym="RDOSTA" allowableValues="1,2,4,5,7,8" />
+    <Feature code="106" acronym="RAILWY" allowableValues="1,4,6,12" />
+    <Feature code="108" acronym="RCRTCL" allowableValues="1,5,6,9" />
+    <Feature code="109" acronym="RECTRC" allowableValues="1,2,5,6,8,9,14" />
+    <Feature code="110" acronym="RCTLPT" allowableValues="1,6,9" />
+    <Feature code="111" acronym="RSCSTA" allowableValues="1,2,4,5,7,8,14,16,17" />
+    <Feature code="112" acronym="RESARE" allowableValues="1,2,3,4,5,6,7,9,18" />
+    <Feature code="113" acronym="RETRFL" allowableValues="1,4,8" />
+    <Feature code="114" acronym="RIVERS" allowableValues="1,2,5,8,14" />
+    <Feature code="116" acronym="ROADWY" allowableValues="1,2,4,6,8,12,14" />
+    <Feature code="117" acronym="RUNWAY" allowableValues="1,2,4,5,6,8,12,14" />
+    <Feature code="120" acronym="SPLARE" allowableValues="1,2,3,4,5,6,7,8,9,14" />
+    <Feature code="122" acronym="SLCONS" allowableValues="1,2,3,4,6,7,8,9,12,14,16,17" />
+    <Feature code="123" acronym="SISTAT" allowableValues="1,2,4,5,7,8,12,14,15,16,17" />
+    <Feature code="124" acronym="SISTAW" allowableValues="1,2,4,5,7,8,12,14,15,16,17" />
+    <Feature code="125" acronym="SILTNK" allowableValues="1,4,12" />
+    <Feature code="128" acronym="SMCFAC" allowableValues="1,2,3,4,5,6,7,8,9,12,14,16,17" />
+    <Feature code="129" acronym="SOUNDG" allowableValues="18" />
+    <Feature code="136" acronym="TS_PRH" allowableValues="1,2,5,7,18" />
+    <Feature code="137" acronym="TS_PNH" allowableValues="1,2,5,7,18" />
+    <Feature code="139" acronym="TS_TIS" allowableValues="1,2,5,7,18" />
+    <Feature code="140" acronym="T_HMON" allowableValues="5" />
+    <Feature code="141" acronym="T_NHMN" allowableValues="5" />
+    <Feature code="142" acronym="T_TIMS" allowableValues="5" />
+    <Feature code="144" acronym="TOPMAR" allowableValues="1,5,7,8,12,14" />
+    <Feature code="145" acronym="TSELNE" allowableValues="1,3,9" />
+    <Feature code="146" acronym="TSSBND" allowableValues="1,3,9" />
+    <Feature code="147" acronym="TSSCRS" allowableValues="1,3,6,9" />
+    <Feature code="148" acronym="TSSLPT" allowableValues="1,3,6,9" />
+    <Feature code="149" acronym="TSSRON" allowableValues="1,3,6,9" />
+    <Feature code="150" acronym="TSEZNE" allowableValues="1,3,9" />
+    <Feature code="151" acronym="TUNNEL" allowableValues="1,3,4,6,8,14,16,17" />
+    <Feature code="152" acronym="TWRTPT" allowableValues="1,3,6,9" />
+    <Feature code="153" acronym="UWTROC" allowableValues="13,18" />
+    <Feature code="159" acronym="WRECKS" allowableValues="7,13,18" />
+  </Attribute>
+  <Attribute code="153" acronym="SURTYP">
+    <Feature code="310" acronym="M_SREL" allowableValues="*" />
+  </Attribute>
+  <Attribute code="156" acronym="TECSOU">
+    <Feature code="40" acronym="DWRTCL" allowableValues="1,2,3,6,7,8,9,11,13" />
+    <Feature code="41" acronym="DWRTPT" allowableValues="1,2,3,6,7,8,9,11,13" />
+    <Feature code="46" acronym="DRGARE" allowableValues="1,2,3,6,7,8,9,11,13" />
+    <Feature code="86" acronym="OBSTRN" allowableValues="1,2,3,4,5,6,7,8,9,10,11,12,13" />
+    <Feature code="108" acronym="RCRTCL" allowableValues="1,2,3,6,7,8,9,11,13" />
+    <Feature code="109" acronym="RECTRC" allowableValues="1,2,3,6,7,8,9,11,13" />
+    <Feature code="129" acronym="SOUNDG" allowableValues="*" />
+    <Feature code="134" acronym="SWPARE" allowableValues="6,8,13" />
+    <Feature code="152" acronym="TWRTPT" allowableValues="1,2,3,6,7,8,9,10,11,13" />
+    <Feature code="153" acronym="UWTROC" allowableValues="1,2,3,4,5,6,7,8,9,10,11,12,13" />
+    <Feature code="159" acronym="WRECKS" allowableValues="1,2,3,4,5,6,7,8,9,10,11,12,13" />
+    <Feature code="308" acronym="M_QUAL" allowableValues="*" />
+  </Attribute>
+  <Attribute code="161" acronym="T_ACWL">
+    <Feature code="139" acronym="TS_TIS" allowableValues="*" />
+    <Feature code="140" acronym="T_HMON" allowableValues="*" />
+    <Feature code="141" acronym="T_NHMN" allowableValues="*" />
+  </Attribute>
+  <Attribute code="163" acronym="T_MTOD">
+    <Feature code="136" acronym="TS_PRH" allowableValues="1,2 #" />
+    <Feature code="137" acronym="TS_PNH" allowableValues="3 $" />
+    <Feature code="140" acronym="T_HMON" allowableValues="1,2 #" />
+    <Feature code="141" acronym="T_NHMN" allowableValues="3 $" />
+  </Attribute>
+  <Attribute code="171" acronym="TOPSHP">
+    <Feature code="39" acronym="DAYMAR" allowableValues="* #" />
+    <Feature code="144" acronym="TOPMAR" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="172" acronym="TRAFIC">
+    <Feature code="40" acronym="DWRTCL" allowableValues="* #" />
+    <Feature code="41" acronym="DWRTPT" allowableValues="* #" />
+    <Feature code="51" acronym="FAIRWY" allowableValues="*" />
+    <Feature code="104" acronym="RDOCAL" allowableValues="* #" />
+    <Feature code="108" acronym="RCRTCL" allowableValues="*" />
+    <Feature code="109" acronym="RECTRC" allowableValues="* #" />
+    <Feature code="152" acronym="TWRTPT" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="185" acronym="VERDAT">
+    <Feature code="11" acronym="BRIDGE" allowableValues="*" />
+    <Feature code="21" acronym="CBLOHD" allowableValues="*" />
+    <Feature code="34" acronym="CONVYR" allowableValues="*" />
+    <Feature code="35" acronym="CRANES" allowableValues="*" />
+    <Feature code="61" acronym="GATCON" allowableValues="*" />
+    <Feature code="75" acronym="LIGHTS" allowableValues="*" />
+    <Feature code="93" acronym="PIPOHD" allowableValues="*" />
+    <Feature code="309" acronym="M_SDAT" allowableValues="* $" />
+    <Feature code="312" acronym="M_VDAT" allowableValues="* $" />
+  </Attribute>
+  <Attribute code="187" acronym="WATLEV">
+    <Feature code="26" acronym="CAUSWY" allowableValues="1,2,3,4,5,6" />
+    <Feature code="62" acronym="GRIDRN" allowableValues="1,2,3,4,5" />
+    <Feature code="73" acronym="LNDRGN" allowableValues="1,2,4,6" />
+    <Feature code="82" acronym="MARCUL" allowableValues="1,2,3,4,5,7 #" />
+    <Feature code="84" acronym="MORFAC" allowableValues="*" />
+    <Feature code="163" acronym="NEWOBJ" allowableValues="*" />
+    <Feature code="86" acronym="OBSTRN" allowableValues="1,2,3,4,5,7 #" />
+    <Feature code="98" acronym="PYLONS" allowableValues="1,2,3,4,5,6" />
+    <Feature code="121" acronym="SBDARE" allowableValues="3,4,5" />
+    <Feature code="122" acronym="SLCONS" allowableValues="*" />
+    <Feature code="153" acronym="UWTROC" allowableValues="3,4,5 #" />
+    <Feature code="159" acronym="WRECKS" allowableValues="1,2,3,4,5 #" />
+  </Attribute>
+  <Attribute code="400" acronym="HORDAT">
+    <Feature code="304" acronym="M_HOPA" allowableValues="* #" />
+  </Attribute>
+  <Attribute code="402" acronym="QUAPOS">
+    <Feature code="310" acronym="M_SREL" allowableValues="*" />
+  </Attribute>
+</S58CheckAttributes>

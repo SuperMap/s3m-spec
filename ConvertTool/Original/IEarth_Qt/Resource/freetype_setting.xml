@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<freetype>			
+			<!--lcd_filter 用于优化生成的LCD位图
+			该属性仅在subpixel为true时生效
+			
+			FT_LCD_FILTER_NONE		=	0,图像不进行滤波，可能产生彩色条纹
+			FT_LCD_FILTER_DEFAULT	=	1,默认滤波器，能够减少图像条纹，产生轻微的模糊
+			FT_LCD_FILTER_LIGHT		=	2,一种变异的滤波器，产生轻微的颜色条纹和模糊
+			FT_LCD_FILTER_LEGACY	=	16,这个滤波器用于得到对比度图像，仅当TrueType字节码解释和高质量hinting打开时效果较好
+			-->
+			<lcd_filter>16</lcd_filter>
+			
+			<!--gamma  设置文本灰度值的校正值-->
+			<gamma>1</gamma>
+			
+			<!--
+			设置	hinting
+			FT_LOAD_NO_HINTING	=	0,
+			FT_LOAD_TARGET_LIGHT	=	1,
+			FT_LOAD_TARGET_MONO	=	3,
+
+			设置	auto_hinting
+			FT_LOAD_NO_AUTOHINT	=	0,
+			FT_LOAD_FORCE_AUTOHINT	=	2,
+			FT_LOAD_DEFAULT
+			-->
+			<gamma>1</gamma>
+			<hinting>1</hinting>
+			<auto_hinting>2</auto_hinting>
+			<!--选择freetype位图渲染模式 
+			优先级依次为subpixel,gray,mono
+			-->
+			<render_mode>
+				<subpixel>true</subpixel>   
+				<gray>true</gray>
+				<mono>true</mono>
+			</render_mode>	
+			<!--需要渲染的最大字体-->
+			<maxfont>20</maxfont>
+</freetype>
