@@ -3,7 +3,7 @@
 
 描述文件（Config对象）用于描述数据(TileTreeSet)的基本信息，包括版本号、数据类型、坐标系信息以及根节点信息等内容。Config对象的UML图见下图。
 
-![](../../images/Config.png)
+![](../images/Config.png)
 
 
 ### Config对象各标签含义
