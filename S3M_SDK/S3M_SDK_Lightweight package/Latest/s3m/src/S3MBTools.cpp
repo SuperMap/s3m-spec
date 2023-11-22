@@ -23,9 +23,16 @@ namespace S3MB
 		unsigned char* pZippedData = new(std::nothrow) unsigned char[nZippedSize];
 		dataStream.Load(pZippedData, nZippedSize);
 
-		if (!UnZipData(streamUnZipped, nTotalLength, pZippedData, nZippedSize))// 解压数据流
+		if (nCompressedType == 1)
 		{
-			return false;
+			if (!UnZipData(streamUnZipped, nTotalLength, pZippedData, nZippedSize))// 解压数据流
+			{
+				return false;
+			}
+		}
+		else
+		{
+			streamUnZipped.Init(pZippedData, nZippedSize, true);
 		}
 
 		unsigned int nOptions = 0;
