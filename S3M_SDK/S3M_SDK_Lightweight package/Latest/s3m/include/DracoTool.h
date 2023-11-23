@@ -169,7 +169,7 @@ namespace S3MB
 			int pTexCoordUniqueID[8], int* pVertexAttUniqueID, unsigned int nVertexAttCount,
 			float*& pVertices, unsigned int& nVerticesCount, unsigned short& nVertexDim, float*& pNormals, unsigned int& nNormalCount,
 			unsigned short& nNormalDim, unsigned int *& pVertexColor, unsigned int& nVertexColorCount, float**& pTexCoords,
-			unsigned int*& pTexCoordCount, unsigned short*& pTexCoordDim, float**& pVertexAttData, unsigned int*& pVertexAttCount, unsigned short*& pVertexAttDim,
+			unsigned int*& pTexCoordCount, unsigned short*& pTexCoordDim, void**& pVertexAttData, unsigned short*& pVertexAttDataType, unsigned int*& pVertexAttCount, unsigned short*& pVertexAttDim,
 			unsigned short*& pIndex, unsigned int& nIndexesCount, bool& bUseUint);
 
 		// 供外部调用的方法。对几何信息进行draco压缩
@@ -209,7 +209,7 @@ namespace S3MB
 			int nPosQuantizationBits, int nTexcoordsQuantizationBits, int nNormalsQuantizationBits, int nGenericQuantizationBits, int nEncodeSpeed, int nDecodeSpeed,
 			int texCoordAttributeType, float* pVertices, unsigned int nVerticesCount, unsigned short nVertexDim, float* pNormals, unsigned int nNormalCount, unsigned short nNormalDim,
 			unsigned int * pVertexColor, unsigned int nVertexColorCount, float** pTexCoords, unsigned int* nTexCoordCount,
-			unsigned short* pTexCoordDim, float** pVertexAttData, unsigned int* pVertexAttCount, unsigned short* pVertexAttDim, unsigned int nVertexAttCount, 
+			unsigned short* pTexCoordDim, void** pVertexAttData, unsigned short*& pVertexAttDataType, unsigned int* pVertexAttCount, unsigned short* pVertexAttDim, unsigned int nVertexAttCount,
 			unsigned short* pIndex, unsigned int nIndexesCount, bool bUseUint, char*& pOutputData, unsigned int& sizeInBytes, int& nPosUniqueID, int& nNormalUniqueID,
 			int& nVertexColorUniqueID, int*& pTexCoordUniqueID, int*& pVertexAttUniqueID);
 

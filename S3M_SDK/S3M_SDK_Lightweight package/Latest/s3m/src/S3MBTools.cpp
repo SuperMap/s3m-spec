@@ -185,6 +185,11 @@ namespace S3MB
 		stream >> nPosUniqueID;
 		stream >> nNormalUniqueID;
 		stream >> nColorUniqueID;
+		if (EQUAL(fVersion,S3MB_VERSIONV3))
+		{
+			int nSecColor = -1;
+			stream >> nSecColor;
+		}
 
 		compressInfo.m_posInfo.SetUniqueID(nPosUniqueID);
 		compressInfo.m_normalInfo.SetUniqueID(nNormalUniqueID);
@@ -1761,12 +1766,10 @@ namespace S3MB
 			stream << dracoCompressedInfo.m_texCoordInfo[i].GetUniqueID();
 		}
 
-		unsigned int nVertexAttCount = 0;
-		stream << nVertexAttCount;
-		for (int i = 0; i < nVertexAttCount; i++)
+		stream << dracoCompressedInfo.m_nVertexAttInfoCount;
+		for (int i = 0; i < dracoCompressedInfo.m_nVertexAttInfoCount; i++)
 		{
-			int nVertexAttInfoID = 0;
-			stream << nVertexAttInfoID;
+			stream << dracoCompressedInfo.m_pVertexAttInfo[i].GetUniqueID();
 		}
 		
 
