@@ -134,6 +134,44 @@ function calcBoundingVolume(vertexPackage, modelMatrix) {
     return calcBoundingVolumeForNormal(vertexPackage, modelMatrix);
 }
 
+function createBoundingBox(box, transform) {
+    if(box.center){
+        const halfAxes = new Cesium.Matrix3();
+        const center = new Cesium.Cartesian3(box.center.x, box.center.y, box.center.z);
+        Cesium.Matrix4.multiplyByPoint(transform, center, center);
+
+        const vx = new Cesium.Cartesian4(box.xExtent.x, box.xExtent.y, box.xExtent.z, 0);
+        const vy = new Cesium.Cartesian4(box.yExtent.x, box.yExtent.y, box.yExtent.z, 0);
+        const vz = new Cesium.Cartesian4(box.zExtent.x, box.zExtent.y, box.zExtent.z, 0);
+
+        Cesium.Matrix4.multiplyByVector(transform, vx, vx);
+        Cesium.Matrix4.multiplyByVector(transform, vy, vy);
+        Cesium.Matrix4.multiplyByVector(transform, vz, vz);
+
+        Cesium.Matrix3.setColumn(halfAxes, 0, vx, halfAxes);
+        Cesium.Matrix3.setColumn(halfAxes, 1, vy, halfAxes);
+        Cesium.Matrix3.setColumn(halfAxes, 2, vz, halfAxes);
+        return new Cesium.TileOrientedBoundingBox(center, halfAxes);
+    }
+
+    const points = [];
+    points.push(new Cesium.Cartesian3(box.min.x, box.min.y, box.min.z));
+    points.push(new Cesium.Cartesian3(box.min.x, box.min.y, box.max.z));
+    points.push(new Cesium.Cartesian3(box.min.x, box.max.y, box.min.z));
+    points.push(new Cesium.Cartesian3(box.min.x, box.max.y, box.max.z));
+    points.push(new Cesium.Cartesian3(box.max.x, box.min.y, box.min.z));
+    points.push(new Cesium.Cartesian3(box.max.x, box.min.y, box.max.z));
+    points.push(new Cesium.Cartesian3(box.max.x, box.max.y, box.min.z));
+    points.push(new Cesium.Cartesian3(box.max.x, box.max.y, box.max.z));
+
+    for(let i = 0; i < 8; i++){
+        points[i] = Cesium.Matrix4.multiplyByPoint(transform, points[i], points[i]);
+    }
+
+    const orientedBoundingBox = Cesium.OrientedBoundingBox.fromPoints(points);
+    return new Cesium.TileOrientedBoundingBox(orientedBoundingBox.center, orientedBoundingBox.halfAxes);
+}
+
 function parseGeodes(layer, content, materialTable, pagelodNode, pagelod) {
     let geodeList = pagelodNode.geodes;
     for(let i = 0,j = geodeList.length;i < j;i++){
@@ -142,8 +180,12 @@ function parseGeodes(layer, content, materialTable, pagelodNode, pagelod) {
         let modelMatrix = Cesium.Matrix4.multiply(layer.modelMatrix, geoMatrix, new Cesium.Matrix4());
         let boundingSphere;
         if(Cesium.defined(pagelod.boundingVolume)) {
-            boundingSphere = new Cesium.BoundingSphere(pagelod.boundingVolume.sphere.center, pagelod.boundingVolume.sphere.radius);
-            Cesium.BoundingSphere.transform(boundingSphere, layer.modelMatrix, boundingSphere);
+            if(Cesium.defined(pagelod.boundingVolume.obb)){
+                boundingSphere = createBoundingBox(pagelod.boundingVolume.obb, layer.modelMatrix)._boundingSphere;
+            }else{
+                boundingSphere = new Cesium.BoundingSphere(pagelod.boundingVolume.sphere.center, pagelod.boundingVolume.sphere.radius);
+                Cesium.BoundingSphere.transform(boundingSphere, layer.modelMatrix, boundingSphere);
+            }
         }
         
         let skeletonNames = geodeNode.skeletonNames;
