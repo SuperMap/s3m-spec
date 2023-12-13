@@ -77,9 +77,9 @@ namespace S3MB
 		// 加载顶点颜色
 		static bool LoadVertexColor(MemoryStream& streamSkeleton, VertexDataPackage*& pVertexDataPackage);
 		// 加载纹理坐标信息
-		static bool LoadTextureCoords(MemoryStream& streamSkeleton, VertexDataPackage*& pVertexDataPackage, unsigned short& nTextureCoord);
+		static bool LoadTextureCoords(MemoryStream& streamSkeleton, VertexDataPackage*& pVertexDataPackage);
 		// 加载实例化信息
-		static bool LoadInstanceInfo(MemoryStream& streamSkeleton, VertexDataPackage*& pVertexDataPackage, unsigned short& nTextureCoord, float fVersion = S3MB_VERSIONV3_0_1);
+		static bool LoadInstanceInfo(MemoryStream& streamSkeleton, VertexDataPackage*& pVertexDataPackage, float fVersion = S3MB_VERSIONV3_0_1);
 		// 判断是否是实例化几何对象
 		static bool IsInstanceBatch(VertexDataPackage* pVertexDataPackage);
 
@@ -150,7 +150,7 @@ namespace S3MB
 		// 保存纹理坐标
 		static bool SaveTextureCoords(VertexDataPackage* pVertexDataPack, MemoryStream& stream);
 		// 保存实例化信息
-		static bool SaveInstanceInfo(VertexDataPackage* pVertexDataPack, MemoryStream& stream, float fVersion = S3MB_VERSIONV3_0_1);
+		static bool SaveInstanceInfo(VertexDataPackage* pVertexDataPack, MemoryStream& stream);
 
 		// 保存材质信息
 		static void SaveMaterial(std::map<wstring, Material*>& mapMaterial, JsonValue& jsonMaterials, float fVersion);

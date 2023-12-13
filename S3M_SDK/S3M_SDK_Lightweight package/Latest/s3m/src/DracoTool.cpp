@@ -175,7 +175,7 @@ S3MB::DracoCompressedInfo::DracoCompressedInfo()
         m_texCoordInfo[i] = DracoAttributeInfo(-1, DracoAttributeType::DRACO_TEX_COORD, false);
 	}
     m_pVertexAttInfo = NULL;
-    m_nVertexAttInfoCount = -1;
+    m_nVertexAttInfoCount = 0;
 }
 
 

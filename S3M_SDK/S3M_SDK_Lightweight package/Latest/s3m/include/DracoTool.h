@@ -107,7 +107,7 @@ namespace S3MB
 		// 压缩后在dracoMesh中自定义属性的UniqueId
 		DracoAttributeInfo* m_pVertexAttInfo;
 		// 压缩后在dracoMesh中自定义属性的UniqueId个数
-		int m_nVertexAttInfoCount;
+		unsigned int m_nVertexAttInfoCount;
 	};
 
 
