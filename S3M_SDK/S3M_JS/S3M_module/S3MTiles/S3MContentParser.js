@@ -2,6 +2,8 @@ import DDSTexture from './DDSTexture.js';
 import MaterialPass from './MaterialPass.js';
 import S3MContentFactory from './Factory/S3MContentFactory.js';
 import VertexCompressOption from './Enum/VertexCompressOption.js';
+import CRNTranscoder from "./Core/CRNTranscoder.js";
+import S3MPixelFormat from './Enum/S3MPixelFormat.js';
 
 function S3MContentParser(){
 
@@ -40,33 +42,23 @@ function parseMaterial(context, content, tile) {
                 let keyword = tile.fileName + textureCode;
                 let texture = context.textureCache.getTexture(keyword);
                 if(!Cesium.defined(texture)){
-                    if(Cesium.PixelFormat.isCompressedFormat(textureInfo.internalFormat)){
-                        texture = new DDSTexture(context, textureCode, textureInfo);
+                    textureInfo.isTexBlock = false;
+                    switch (textureInfo.compressType) {
+                        case S3MPixelFormat.CRN_DXT5: 
+                            const compressedBuffer = CRNTranscoder.transcode({
+                                data: textureInfo.arrayBufferView,
+                                bMipMap : true
+                            });
+                            textureInfo.arrayBufferView = compressedBuffer.bufferView;
+                            texture = new DDSTexture(context, textureCode, textureInfo);
+                            context.textureCache.addTexture(keyword, texture);
+                            break;
+                        default: 
+                            texture = new DDSTexture(context, textureCode, textureInfo);
+                            context.textureCache.addTexture(keyword, texture);
+                            break;
                     }
-                    else{
-                        let isPowerOfTwo = Cesium.Math.isPowerOfTwo(textureInfo.width) && Cesium.Math.isPowerOfTwo(textureInfo.height);
-                        texture = new Cesium.Texture({
-                            context : context,
-                            source : {
-                                width : textureInfo.width,
-                                height : textureInfo.height,
-                                arrayBufferView : textureInfo.arrayBufferView
-                            },
-                            sampler : new Cesium.Sampler({
-                                minificationFilter : isPowerOfTwo ? context._gl.LINEAR_MIPMAP_LINEAR : context._gl.LINEAR,
-                                wrapS : wrapS,
-                                wrapT : wrapT
-                            })
-                        });
-
-                        if(isPowerOfTwo){
-                            texture.generateMipmap(Cesium.MipmapHint.NICEST);
-                        }
-                    }
-
-                    context.textureCache.addTexture(keyword, texture);
                 }
-
                 materialPass.textures.push(texture);
             }
         }

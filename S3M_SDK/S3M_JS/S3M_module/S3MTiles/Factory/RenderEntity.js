@@ -34,7 +34,7 @@ function RenderEntity(options) {
     this.shaderProgram = undefined;
     this.vertexArray = undefined;
     this.colorCommand = undefined;
-    this.pickInfo = options.pickInfo;
+    this.pickInfo = Cesium.defaultValue(options.pickInfo, {});
     this.selectionInfoMap = new Cesium.AssociativeArray();
     this.batchTable = undefined;
     this.batchTableDirty = false;

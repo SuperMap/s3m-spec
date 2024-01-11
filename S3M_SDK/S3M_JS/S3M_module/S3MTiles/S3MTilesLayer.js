@@ -6,6 +6,8 @@ import XmlParser from './XmlParser.js';
 import Style3D from './Style3D.js';
 import defer from './defer.js';
 import Uri from './Uri.js';
+import CRNTranscoder from "./Core/CRNTranscoder.js";
+import TextureCompressType from './Enum/TextureCompressType.js';
 
 var transform_2d = new Cesium.Matrix4(
     0.0, 0.0, 1.0, 0.0,
@@ -39,6 +41,7 @@ function S3MTilesLayer(options) {
   
     // 顶点压缩类型，例如MeshOPT
     this._vertexCompressionType = options.vertexCompressionType;
+    this._textureCompressType = TextureCompressType.None;
     this._maximumMemoryUsage = -1;
     this._totalMemoryUsageInBytes = 0;
     this._maximumPriority = { foveatedFactor: -Number.MAX_VALUE, depth: -Number.MAX_VALUE, distance: -Number.MAX_VALUE, pixel : -Number.MAX_VALUE};
@@ -450,6 +453,10 @@ S3MTilesLayer.prototype.loadConfig = function(url) {
                     that._vertexCompressionType = extensions["s3m:VertexCompressionType"];
                 }
 
+                if(extensions.hasOwnProperty("s3m:TextureCompressionType")){
+                    that._textureCompressType = extensions["s3m:TextureCompressionType"];
+                }
+
                 // 3.0 为rootTiles
                 const tiles = config.tiles ||  config.rootTiles;
 
@@ -814,6 +821,11 @@ function updateMatModel(layer) {
 
 S3MTilesLayer.prototype.update = function(frameState) {
     if(!this.ready || !isLayerVisible(this, frameState) || (frameState.passes.pick && !this._selectEnabled)) {
+        return ;
+    }
+
+    if(this._textureCompressType === TextureCompressType.CRN_DXT5 && !CRNTranscoder.wasmReady) {
+        CRNTranscoder.init();
         return ;
     }
 
