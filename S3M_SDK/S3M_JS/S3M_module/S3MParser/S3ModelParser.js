@@ -1092,7 +1092,7 @@ function parseSkeleton(buffer, view, bytesOffset, geoPackage, version) {
         let res = parseString(buffer, view, bytesOffset);
         let geometryName = res.string;
         bytesOffset = res.bytesOffset;
-        let align = res.length % 4;
+        let align = bytesOffset % 4;
         if(align !== 0){
             bytesOffset += (4 - align);
         }
@@ -1198,13 +1198,15 @@ function parseSkeleton(buffer, view, bytesOffset, geoPackage, version) {
 function parseTexturePackage(buffer, view, bytesOffset, texturePackage, version) {
     let size = view.getUint32(bytesOffset, true);
     bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
+    let startOffset = bytesOffset;
+    let endBytesOffset = startOffset + size;
     let count = view.getUint32(bytesOffset, true);
     bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
     for(let i = 0; i < count; i++){
         let res = parseString(buffer, view, bytesOffset);
         let textureCode = res.string;
         bytesOffset = res.bytesOffset;
-        let align = res.length % 4;
+        let align = (bytesOffset - startOffset) % 4;
         if(align !== 0){
             bytesOffset += (4 - align);
         }
@@ -1251,7 +1253,7 @@ function parseTexturePackage(buffer, view, bytesOffset, texturePackage, version)
         };
     }
 
-    return bytesOffset;
+    return endBytesOffset;
 }
 
 function parseMaterial(buffer, view, bytesOffset, result) {

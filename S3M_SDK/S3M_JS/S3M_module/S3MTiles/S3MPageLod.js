@@ -38,7 +38,8 @@ S3MPageLod.prototype.update = function(frameState, layer) {
       const height = context.drawingBufferHeight;
       const geometricError = rangeData;
       const pixelSize = (geometricError * height) / (distanceToCamera * frameState.camera.frustum.sseDenominator) / resolutionScale;
-      this.canRefine = (pixelSize > geometricError * lodRangeScale);
+      // this.canRefine = (pixelSize > geometricError * lodRangeScale);
+      this.canRefine = (pixelSize > 16 * lodRangeScale);
    }
 };
 
