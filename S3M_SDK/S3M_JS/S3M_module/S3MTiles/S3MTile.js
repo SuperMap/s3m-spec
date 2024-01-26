@@ -228,7 +228,7 @@ function createChildren(parent, datas) {
 
 
 
-function contentReadyFunction(layer, tile, arrayBuffer) {
+async function contentReadyFunction(layer, tile, arrayBuffer) {
     layer._cache.add(tile);
 
     let content;
@@ -242,7 +242,7 @@ function contentReadyFunction(layer, tile, arrayBuffer) {
         return ;
     }
 
-    let data = S3MContentParser.parse(layer, content, tile);
+    let data = await S3MContentParser.parse(layer, content, tile);
 
     createChildren(tile, data);
     tile.contentState = ContentState.LOADED;

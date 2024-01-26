@@ -110,6 +110,9 @@ export default `
                 #endif
             #endif
         }
+        #ifdef RGBTOBGR
+            color = color.bgra;
+        #endif
         return color;
     }
 #ifdef COMPUTE_TEXCOORD

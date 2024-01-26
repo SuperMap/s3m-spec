@@ -9,8 +9,9 @@ function S3MContentParser(){
 
 }
 
-function parseMaterial(context, content, tile) {
+async function parseMaterial(context, content, tile) {
     let materialTable = {};
+    let readyPromises = [];
     let materials = Cesium.defaultValue(content.materials.material, content.materials.materials);
     for(let i = 0,j = materials.length;i < j;i++){
         let material = materials[i].material;
@@ -41,6 +42,7 @@ function parseMaterial(context, content, tile) {
                 textureInfo.wrapT = wrapT;
                 let keyword = tile.fileName + textureCode;
                 let texture = context.textureCache.getTexture(keyword);
+                materialPass._RGBTOBGR = textureInfo.nFormat === S3MPixelFormat.ABGR;
                 if(!Cesium.defined(texture)){
                     textureInfo.isTexBlock = false;
                     switch (textureInfo.compressType) {
@@ -53,18 +55,23 @@ function parseMaterial(context, content, tile) {
                             texture = new DDSTexture(context, textureCode, textureInfo);
                             context.textureCache.addTexture(keyword, texture);
                             break;
+                        case S3MPixelFormat.WEBP:
+                            readyPromises.push(materialPass.createWebp(keyword, context, textureInfo));
+                            break;
                         default: 
                             texture = new DDSTexture(context, textureCode, textureInfo);
                             context.textureCache.addTexture(keyword, texture);
                             break;
                     }
                 }
-                materialPass.textures.push(texture);
+                texture && materialPass.textures.push(texture);
             }
         }
     }
 
-    return materialTable;
+    return Promise.all(readyPromises).then(()=>{
+        return materialTable
+    })
 }
 
 function calcBoundingVolumeForNormal(vertexPackage, modelMatrix){
@@ -256,13 +263,13 @@ function parsePagelods(layer, content, materialTable) {
     return pagelods;
 }
 
-S3MContentParser.parse = function(layer, content, tile) {
+S3MContentParser.parse = async function(layer, content, tile) { 
     if(!Cesium.defined(content)) {
         return ;
     }
 
     layer.dataVersion = content.version;
-    let materialTable =  parseMaterial(layer.context, content, tile);
+    let materialTable = await parseMaterial(layer.context, content, tile);
     let pagelods =  parsePagelods(layer, content, materialTable);
 
     return pagelods;

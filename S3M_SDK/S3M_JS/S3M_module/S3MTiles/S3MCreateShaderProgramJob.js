@@ -86,6 +86,10 @@ S3MCreateShaderProgramJob.prototype.execute = function(){
         vp.defines.push(ProgramDefines.VertexColor);
     }
 
+    if(material && material._RGBTOBGR){
+        fp.defines.push('RGBTOBGR');
+    }
+
     if(material && material.textures.length > 0) {
         vp.defines.push(ProgramDefines.COMPUTE_TEXCOORD);
         fp.defines.push(ProgramDefines.COMPUTE_TEXCOORD);

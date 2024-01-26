@@ -91,6 +91,9 @@ export default `
                 color = texture2D(curTexture, realTexCoord.xy, mipLevel);
             #endif
         }
+        #ifdef RGBTOBGR
+            color = color.bgra;
+        #endif
         return color;
     }
 #ifdef COMPUTE_TEXCOORD
