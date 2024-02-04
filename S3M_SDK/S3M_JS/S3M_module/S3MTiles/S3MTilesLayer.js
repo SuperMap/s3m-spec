@@ -51,6 +51,7 @@ function S3MTilesLayer(options) {
     this._multiChoose = false;
     this._sceneMode = Cesium.defaultValue(options.sceneMode, Cesium.SceneMode.SCENE3D);
     this._selections = [];
+    this._objsOperationList = {};
     this._selectedColor = new Cesium.Color(0.7, 0.7, 1.0, 1.0);
     this._minCategory = 0;
     this._maxCategory = 0;
@@ -642,6 +643,120 @@ function freeResource(layer) {
     layer._cache.unloadTiles(layer, unloadTile);
 }
 
+function updateObjsOperationCallback(renderEntity, options){
+    renderEntity.updateObjsOperation(options.ids, options);
+}
+
+S3MTilesLayer.prototype._tranverseRenderEntity = function(options, callback){
+    let stack = [];
+    for(let i = 0,j = this._rootTiles.length;i < j;i++){
+        let rootTile = this._rootTiles[i];
+        stack.push(rootTile);
+    }
+
+    while(stack.length) {
+        let tile = stack.pop();
+
+        for(let i = 0, j = tile.pageLods.length;i < j;i++){
+            const pageLod = tile.pageLods[i];
+            const renderEntities = pageLod.renderEntities;
+            for(let m = 0,n = renderEntities.length;m < n;m++){
+                const ro = renderEntities[m];
+                if(ro.ready){
+                    callback(ro, options);
+                }
+            }
+
+            if(pageLod.childTile){
+                stack.push(pageLod.childTile);
+            }
+        }
+
+    }
+};
+
+S3MTilesLayer.prototype._updateObjsOperation = function(ids){
+    this._tranverseRenderEntity({
+        ids : ids
+    }, updateObjsOperationCallback);
+};
+
+S3MTilesLayer.prototype._setObjsOperationType = function(ids, operationType){
+    Cesium.Check.defined('set Objs Operation ids', ids);
+    Cesium.Check.defined('set Objs Operation operationType', operationType);
+    if(!Array.isArray(ids)){
+        ids = [ids];
+    }
+
+    let tmpArr = new Cesium.AssociativeArray();
+
+    let id;
+    for(let i = 0,j = ids.length;i < j;i++){
+        id = ids[i];
+        if(!Cesium.defined(id)){
+            continue ;
+        }
+        let operation = Cesium.defaultValue(this._objsOperationList[id], 0);
+        if(operation === operationType) {
+            continue ;
+        }
+
+        operation = operation | operationType;
+        this._objsOperationList[id] = operation;
+        tmpArr.set(id, operation);
+    }
+
+    if(tmpArr.length > 0){
+        this._updateObjsOperation(tmpArr._hash);
+    }
+};
+
+S3MTilesLayer.prototype._removeObjsOperationType = function (ids, operationType) {
+    Cesium.Check.defined('set Objs Operation ids', ids);
+    if(!Array.isArray(ids)){
+        ids = [ids];
+    }
+
+    let nonOperationType = OperationType.ALL ^ operationType;
+    let tmpArr = new Cesium.AssociativeArray();
+
+    let id;
+    for(let i = 0,j = ids.length;i < j;i++){
+        id = ids[i];
+        let operation = this._objsOperationList[id];
+        if(!Cesium.defined(operation)){
+            continue ;
+        }
+
+        operation &= nonOperationType;
+        if(operation === OperationType.RESET){
+            delete this._objsOperationList[id];
+        }
+        else{
+            this._objsOperationList[id] = operation;
+        }
+
+        tmpArr.set(id, operation);
+    }
+
+    if(tmpArr.length > 0){
+        this._updateObjsOperation(tmpArr._hash);
+    }
+};
+
+S3MTilesLayer.prototype.setSelection = function(ids) {
+    Cesium.Check.defined('setSelection ids', ids);
+
+    if(!Array.isArray(ids)){
+        ids = [ids];
+    }
+
+    this.releaseSelection();
+
+    this._selections = this._selections.concat(ids);
+    this._setObjsOperationType(ids, OperationType.SELECTED);
+};
+
 S3MTilesLayer.prototype.releaseSelection = function(){
     if(this._selections.length < 1){
         return ;
@@ -854,6 +969,25 @@ S3MTilesLayer.prototype.destroy = function(){
     this._processTiles.length = 0;
     this._renderQueue.length = 0;
     return Cesium.destroyObject(this);
+};
+
+Cesium.Scene.prototype.hookPickFunc = Cesium.Scene.prototype.pick;
+Cesium.Scene.prototype.pick = function(windowPosition, width, height) {
+    let picked = this.hookPickFunc(windowPosition, width, height);
+    if (picked) {
+        let isS3MTilesLayer = picked.primitive && picked.primitive instanceof S3MTilesLayer;
+        if(isS3MTilesLayer){
+            picked.primitive.setSelection(picked.id);
+        }
+    }
+    else{
+        for(let i = 0,j = this.primitives.length;i < j;i++){
+            let primitive = this.primitives.get(i);
+            primitive instanceof S3MTilesLayer && primitive.releaseSelection();
+        }
+    }
+
+    return picked;
 };
 
 export default S3MTilesLayer;

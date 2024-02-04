@@ -211,6 +211,92 @@ RenderEntity.prototype.updateBatchTableAttributes = function(){
     }
 };
 
+RenderEntity.prototype.createPickIds = function() {
+    const layer = this.layer;
+    const context = layer.context;
+    const pickInfo = this.pickInfo;
+    if(!Cesium.defined(pickInfo) ){
+        return;
+    }
+
+    for(let id in pickInfo){
+        if(!pickInfo.hasOwnProperty(id)){
+            continue;
+        }
+
+        this.selectionInfoMap.set(id, pickInfo[id]);
+    }
+
+    let batchTable = this.batchTable;
+    let selectionInfoMap = this.selectionInfoMap;
+    let hash = selectionInfoMap._hash;
+    for(let id in hash){
+        if(hash.hasOwnProperty(id)){
+            let selInfo = selectionInfoMap.get(id);
+            let pickId;
+            if(!Cesium.defined(pickId)){
+                pickId = context.createPickId({
+                    primitive : layer,
+                    id : id
+                })
+            }
+            let pickColor = pickId.color;
+            cartesian4Scratch.x = Cesium.Color.floatToByte(pickColor.red);
+            cartesian4Scratch.y = Cesium.Color.floatToByte(pickColor.green);
+            cartesian4Scratch.z = Cesium.Color.floatToByte(pickColor.blue);
+            cartesian4Scratch.w = Cesium.Color.floatToByte(pickColor.alpha);
+            let instanceIds = selInfo.instanceIds;
+            if(this.instanceCount > 0){
+                instanceIds.map(function(instanceId){
+                    batchTable.setBatchedAttribute(instanceId, 2, cartesian4Scratch);
+                });
+            }else{
+                let batchId = selInfo.batchId;
+                batchTable.setBatchedAttribute(batchId, 2, cartesian4Scratch);
+            }
+        }
+    }
+
+    this.pickInfo = undefined;
+
+};
+
+RenderEntity.prototype.updateObjsOperation = function(ids){
+    if(!this.ready || this.selectionInfoMap.length < 1){
+        return ;
+    }
+
+    let selectValues = this.selectionInfoMap._hash;
+    for(let id in selectValues){
+        if(!selectValues.hasOwnProperty(id)){
+            continue ;
+        }
+        let operationType = ids[id];
+        if(!Cesium.defined(operationType)){
+            continue;
+        }
+
+        let selectInfo = selectValues[id];
+        let batchId = selectInfo.batchId;
+        let instanceIds = selectInfo.instanceIds;
+        let obj = this.idsOperationMap.get(id);
+        if(!Cesium.defined(obj)){
+            obj = {
+                batchId : batchId,
+                instanceIds : instanceIds,
+                operationValue : new Cesium.Cartesian4(),
+                dirty : true
+            };
+        }
+
+        obj.dirty = true;
+        obj.operationValue.x = (obj.operationValue.x & 0x01) | operationType;
+        this.idsOperationMap.set(id, obj);
+
+        this.batchTableDirty = true;
+    }
+};
+
 
 RenderEntity.prototype.transformResource = Cesium.DeveloperError.throwInstantiationError;
 

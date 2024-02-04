@@ -256,6 +256,11 @@ S3MCacheFileRenderEntity.prototype.transformResource = function(frameState, laye
     this.createCommand(frameState);
 };
 S3MCacheFileRenderEntity.prototype.update = function(frameState, layer) {
+    if(this.batchTableDirty){
+        this.updateBatchTableAttributes();
+        this.batchTableDirty = false;
+    }
+    
     if(this.batchTable){
         this.batchTable.update(frameState);
     }
@@ -275,57 +280,6 @@ S3MCacheFileRenderEntity.prototype.update = function(frameState, layer) {
             layer._addRenderedEdge(this.silhouetteEdgeCommand.edgeTotalLength, this.silhouetteEdgeCommand.edgeCount);
         }
     }
-
-};
-
-let cartesian4Scratch = new Cesium.Cartesian4();
-RenderEntity.prototype.createPickIds = function() {
-    const layer = this.layer;
-    const context = layer.context;
-    const pickInfo = this.pickInfo;
-    if(!Cesium.defined(pickInfo) ){
-        return;
-    }
-
-    for(let id in pickInfo){
-        if(!pickInfo.hasOwnProperty(id)){
-            continue;
-        }
-
-        this.selectionInfoMap.set(id, pickInfo[id]);
-    }
-
-    let batchTable = this.batchTable;
-    let selectionInfoMap = this.selectionInfoMap;
-    let hash = selectionInfoMap._hash;
-    for(let id in hash){
-        if(hash.hasOwnProperty(id)){
-            let selInfo = selectionInfoMap.get(id);
-            let pickId;
-            if(!Cesium.defined(pickId)){
-                pickId = context.createPickId({
-                    primitive : layer,
-                    id : id
-                })
-            }
-            let pickColor = pickId.color;
-            cartesian4Scratch.x = Cesium.Color.floatToByte(pickColor.red);
-            cartesian4Scratch.y = Cesium.Color.floatToByte(pickColor.green);
-            cartesian4Scratch.z = Cesium.Color.floatToByte(pickColor.blue);
-            cartesian4Scratch.w = Cesium.Color.floatToByte(pickColor.alpha);
-            let instanceIds = selInfo.instanceIds;
-            if(this.instanceCount > 0){
-                instanceIds.map(function(instanceId){
-                    batchTable.setBatchedAttribute(instanceId, 2, cartesian4Scratch);
-                });
-            }else{
-                let batchId = selInfo.batchId;
-                batchTable.setBatchedAttribute(batchId, 2, cartesian4Scratch);
-            }
-        }
-    }
-
-    this.pickInfo = undefined;
 
 };
 
