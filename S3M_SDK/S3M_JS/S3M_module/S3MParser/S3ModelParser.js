@@ -1310,21 +1310,19 @@ function parsePickInfo(buffer, view, bytesOffset, nOptions, geoPackage, version)
                     bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
                     let nSize = view.getUint32(bytesOffset, true);
                     bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
-                    let infos = [];
+                    let vertexCount = 0, vertexColorOffset = 0;
+                    pickInfo[nDictID] = {
+                        batchId: j
+                    };
                     for(let k = 0; k < nSize; k++){
-                        let vertexColorOffset = view.getUint32(bytesOffset, true);
+                        vertexColorOffset = view.getUint32(bytesOffset, true);
                         bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
-                        let vertexCount = view.getUint32(bytesOffset, true);
+                        vertexCount = view.getUint32(bytesOffset, true);
                         bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
                         batchIds.fill(j, vertexColorOffset, vertexColorOffset + vertexCount);
-                        infos.push({
-                            vertexColorOffset: vertexColorOffset,
-                            vertexColorCount: vertexCount,
-                            batchId:j
-                        });
                     }
-
-                    pickInfo[nDictID] = infos;
+                    pickInfo[nDictID].vertexColorOffset = vertexColorOffset;
+                    pickInfo[nDictID].vertexCount = vertexCount;
                 }
                 createBatchIdAttribute(geoPackage[geometryName].vertexPackage,batchIds,undefined);
             }else{
