@@ -261,6 +261,13 @@ RenderEntity.prototype.createPickIds = function() {
 
 };
 
+RenderEntity.prototype.initLayerSetting = function(layer){
+
+    if(Object.keys(layer._objsOperationList).length > 0){
+        this.updateObjsOperation(layer._objsOperationList);
+    }
+};
+
 RenderEntity.prototype.updateObjsOperation = function(ids){
     if(!this.ready || this.selectionInfoMap.length < 1){
         return ;

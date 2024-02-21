@@ -134,6 +134,7 @@ S3MObliqueRenderEntity.prototype.transformResource = function(frameState, layer)
     this.createBuffers(frameState);
     this.createShaderProgram(frameState);
     this.createCommand(frameState);
+    this.initLayerSetting(layer);
 };
 
 S3MObliqueRenderEntity.prototype.update = function(frameState, layer) {

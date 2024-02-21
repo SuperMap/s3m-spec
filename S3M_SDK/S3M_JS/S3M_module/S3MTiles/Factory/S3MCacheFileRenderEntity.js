@@ -254,6 +254,7 @@ S3MCacheFileRenderEntity.prototype.transformResource = function(frameState, laye
     this.createBuffers(frameState);
     this.createShaderProgram(frameState);
     this.createCommand(frameState);
+    this.initLayerSetting(layer);
 };
 S3MCacheFileRenderEntity.prototype.update = function(frameState, layer) {
     if(this.batchTableDirty){
