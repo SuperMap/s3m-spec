@@ -939,7 +939,7 @@ S3MTilesLayer.prototype.update = function(frameState) {
         return ;
     }
 
-    if(this._textureCompressType === TextureCompressType.CRN_DXT5 && !CRNTranscoder.wasmReady) {
+    if(!CRNTranscoder.wasmReady) {
         CRNTranscoder.init();
         return ;
     }
