@@ -111,7 +111,7 @@ PBR材质使用PBRPass对象来描述，不仅可通过相应的纹理对象定�
 |normalTextureIndex|int32|法线纹理在纹理数组（textureStates）中的序号。法线用于表达物体表面的凹凸细节|
 |normalTextureCoordIndex|int32|法线纹理的纹理坐标在[纹理坐标数组（textureCoords）](./Skeleton.md#vertexdatapackage对象各属性含义)中的序号|
 |normalTextureScale|float|法线纹理缩放因子|
-|occlusionTextureIndex|int32|遮挡纹理在纹理数组（textureStates）中的序号。遮挡用于表达物体表面凹凸性对光照的影响|
+|occlusionTextureIndex|int32|遮挡纹理在纹理数组（textureStates）中的序号。遮挡用于表达物体表面凹凸性对光照的影响（B通道存储遮挡度）|
 |occlusionTextureCoordIndex|int32|遮挡纹理的纹理坐标在[纹理坐标数组（textureCoords）](./Skeleton.md#vertexdatapackage对象各属性含义)）中的序号|
 |occlusionTextureStrength|float|遮挡纹理的强度因子|
 |emissiveFactor|Vector3|自发光强度因子,用[Vector3对象](#vector3对象各标签含义)表示|
