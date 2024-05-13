@@ -91,11 +91,11 @@ S3M的主要技术特点可以概括为：
 
 
 ## 开放资源
-* ConvertTool：转换工具，用于实现S3M数据与3D Tiles的相互转换，以及与OSGB、OBJ的转换
+* ConvertTool：转换工具，用于实现S3M数据与3D Tiles的相互转换，以及与OSGB、OBJ的转换。
 
-* S3M_SDK：读写及解析工具，包括S3M数据的C++读写开发包和JavaScript解析源码以及相关范例
+* S3M_SDK：读写及解析工具，包括S3M数据的C++读写开发包和JavaScript解析源码以及相关范例。
 
-* Specification：提供中文、英文两种语言表述的[T/CAGIS 1-2019标准文本](/Specification/T／CAGIS%201-2019/)，以及[S3M数据格式规范](/Specification/Specification.md)
+* Specification：提供中文、英文两种语言表述的[T/CAGIS 1-2019标准文本](/Specification/T／CAGIS%201-2019/)，以及[S3M数据格式规范](/Specification/Specification.md)。
 
 
 ## 许可
