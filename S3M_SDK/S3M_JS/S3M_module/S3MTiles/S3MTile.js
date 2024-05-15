@@ -287,7 +287,7 @@ S3MTile.prototype.requestContent = function() {
             return;
         }
 
-        contentFailedFunction(error);
+        // contentFailedFunction(error);
     });
 
     return true;
