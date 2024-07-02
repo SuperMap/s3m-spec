@@ -15,6 +15,6 @@
 
 2. 进入./S3MBToolkit/3rdParty文件夹，运行CMake脚本，编译生成需要的第三方库。
 
-3. 进入./S3MBToolkit文件夹，运行CMake脚本，其中，需要指定QT的安装目录(QT版本应大于5.11)，从而编译生成S3MBToolkit工具。
+3. 进入./S3MBToolkit文件夹，运行CMake脚本，其中，需要指定Qt的安装目录(Qt版本应大于5.11，需要在编译生成工具前提前安装好)，从而编译生成S3MBToolkit工具。
 
 4. 根据转换需求，使用S3MBToolkit工具将源数据转换为目标格式数据。 
