@@ -42,7 +42,6 @@ async function parseMaterial(context, content, tile) {
                 textureInfo.wrapT = wrapT;
                 let keyword = tile.fileName + textureCode;
                 let texture = context.textureCache.getTexture(keyword);
-                materialPass._RGBTOBGR = textureInfo.nFormat === S3MPixelFormat.ABGR;
                 if(!Cesium.defined(texture)){
                     textureInfo.isTexBlock = false;
                     switch (textureInfo.compressType) {
@@ -56,6 +55,7 @@ async function parseMaterial(context, content, tile) {
                             context.textureCache.addTexture(keyword, texture);
                             break;
                         case S3MPixelFormat.WEBP:
+                            materialPass._RGBTOBGR = textureInfo.nFormat === S3MPixelFormat.ABGR;
                             readyPromises.push(materialPass.createWebp(keyword, context, textureInfo));
                             break;
                         default: 

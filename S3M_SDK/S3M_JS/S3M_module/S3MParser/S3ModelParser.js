@@ -1444,10 +1444,6 @@ S3ModelParser.parseBuffer = function(buffer) {
         result.version = view.getFloat32(bytesOffset, true);
         result.version  = Number(result.version.toFixed(2));
         bytesOffset += Float32Array.BYTES_PER_ELEMENT;
-        if (result.version >= 2.0) {
-            let unzipSize = view.getUint32(bytesOffset, true);
-            bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
-        }
 
         let compressedType = 0;
         if(result.version >= 3) {
@@ -1455,11 +1451,22 @@ S3ModelParser.parseBuffer = function(buffer) {
             bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
         }
 
+        if (result.version >= 2.0) {
+            let unzipSize = view.getUint32(bytesOffset, true);
+            bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
+        }
+
         let byteSize = view.getUint32(bytesOffset, true);
         bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
-        let unzipBuffer = unZip(buffer, bytesOffset);
+        let datazip = new Uint8Array(buffer, bytesOffset, byteSize);
+        let unzipBuffer;
+        if (result.version >= 3 && compressedType === 0) {
+            unzipBuffer = datazip.buffer;
+        }else{
+            unzipBuffer = unZip(buffer, bytesOffset);
+            bytesOffset = 0;
+        }
         view = new DataView(unzipBuffer);
-        bytesOffset = 0;
         let nOptions = view.getUint32(bytesOffset, true);
         bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
 
