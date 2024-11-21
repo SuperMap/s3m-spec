@@ -237,11 +237,17 @@ export default `
     #endif
 
     // meshopt压缩 这里对照主版本的  主版本命名的都是通过下划线，但是插件获取uniform是通过函数，所以需要大写
-    #ifdef MeshOPT_Compress
-        vec2 texCoord0;
-        texCoord0.x = aTexCoord0.x * decodeTexCoord0vNormConstant.x;
-        texCoord0.y = aTexCoord0.y * decodeTexCoord0vNormConstant.y;
-        vTexCoord.xy = decodeTexCoord0Min + texCoord0.xy;
+    #ifdef TexCoord
+        #ifdef COMPRESS_TEXCOORD
+            #ifdef MeshOPT_Compress
+                vec2 texCoord0;
+                texCoord0.x = aTexCoord0.x * decodeTexCoord0vNormConstant.x;
+                texCoord0.y = aTexCoord0.y * decodeTexCoord0vNormConstant.y;
+                vTexCoord.xy = decodeTexCoord0Min + texCoord0.xy;
+            #endif
+        #else
+            vTexCoord = aTexCoord0;
+        #endif // COMPRESS_TEXCOORD
     #endif
 
 
@@ -251,6 +257,16 @@ export default `
 #endif
 #ifdef VertexNormal
     vec3 normal = aNormal;
+    #ifdef COMPRESS_NORMAL
+    #ifdef MeshOPT_Compress
+        normal.x = aNormal.x / 127.0;
+        normal.y = aNormal.y / 127.0;
+        normal.z = 1.0 - abs(normal.x) - abs(normal.y);
+        normal = normalize(normal);
+    #else
+        normal = czm_octDecode(aNormal.xy, normal_rangeConstant).zxy;
+    #endif
+	#endif
 #endif
 #ifdef InstanceBim
     mat4 worldMatrix;
