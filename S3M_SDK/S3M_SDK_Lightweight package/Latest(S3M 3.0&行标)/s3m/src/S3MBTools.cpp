@@ -1068,7 +1068,7 @@ namespace S3MB
 			break;
 		}
 
-		switch (eFormat)
+		switch (nFormat)
 		{
 		case 11:
 			eFormat = PixelFormat::PF_RGB8;
