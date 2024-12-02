@@ -26,6 +26,8 @@ namespace S3MB
 		void FillEntityPack(Material* pMaterial3D);
 		// 保存文件到本地
 		bool WriteFile(const wstring& filePath);
+		// 设置版本号
+		void SetVersion(const float& fVersion);
 		// 设置需要写入文件的RenderOperationGroup
 		void SetROGroup(RenderOperationGroup* pGroup);
 		// 设置是否改变图片格式,以及目标图片格式是否建mipmap

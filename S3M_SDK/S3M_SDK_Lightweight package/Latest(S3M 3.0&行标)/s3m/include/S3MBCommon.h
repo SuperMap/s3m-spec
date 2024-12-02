@@ -60,11 +60,17 @@ namespace S3MB
 
 
 	#define S3MB_NAME												    U("name")
+	#define S3MB_ID														U("id")
 	#define S3MB_TEXTURE_NAME							                U("textureName")
 	#define S3MB_TEXTURE_URL							                U("url")// 外挂文件
 	#define S3MB_TEXTURE_U								                U("uAddressMode")
 	#define S3MB_TEXTURE_V								                U("vAddressMode")
 	#define S3MB_TEXTURE_W								                U("wAddressMode")
+
+	#define S3MB_TEXTURE_ADDMODE										U("addressmode")
+	#define S3MB_TEXTURE_COORDINATE_U									U("u")
+	#define S3MB_TEXTURE_COORDINATE_V									U("v")
+	#define S3MB_TEXTURE_COORDINATE_W									U("w")
 
 	#define S3MB_MATERIALS												U("materials")
 	#define S3MB_MATERIAL												U("material")
@@ -76,10 +82,17 @@ namespace S3MB
 	#define S3MB_MATERIAL_SPECULAR								        U("specular")
 	#define S3MB_MATERIAL_SHININESS									    U("shininess")
 
+	#define S3MB_MATERIAL_PBRTYPE_MR									U("pbrMetallicRoughness")
+	#define S3MB_MATERIAL_PBRTYPE_SG									U("pbrSpecularGlossiness")
+
 	#define S3MB_MATPASS_CULLMODE								        U("cullMode")
 	#define S3MB_MATPASS_CULLMODE_NONE					                U("CULL_NONE")
 	#define S3MB_MATPASS_CULLMODE_C							            U("CULL_CLOCKWISE")
 	#define S3MB_MATPASS_CULLMODE_CC							        U("CULL_ANTICLOCKWISE")
+
+	#define S3MB_MATPASS_CULLMODE_NONE_V3								U("none")
+	#define S3MB_MATPASS_CULLMODE_C_V3									U("clockwise")
+	#define S3MB_MATPASS_CULLMODE_CC_V3									U("counterClockwise")
 
 	#define S3MB_MATERIAL_TEXTUNITS								        U("textureStates")
 	#define S3MB_MATERIAL_TEXTUNIT									    U("textureUnitState")
@@ -87,6 +100,13 @@ namespace S3MB
 	#define S3MB_MATERIAL_TEXTUNIT_FILTERMIN			                U("minFilter")
 	#define S3MB_MATERIAL_TEXTUNIT_FILTERMAX				            U("maxFilter")
 	#define S3MB_MATERIAL_TEXTUNIT_MATRIX								U("matrix")
+
+	#define S3MB_MATERIAL_TEXTUNITS_V3									U("textureunitstates")
+	#define S3MB_MATERIAL_TEXTUNIT_V3									U("textureunitstate")
+	#define S3MB_MATERIAL_TEXTUNIT_FILTEROPTION_V3						U("filteringoption")
+	#define S3MB_MATERIAL_TEXTUNIT_FILTERMIN_V3							U("filtermin")
+	#define S3MB_MATERIAL_TEXTUNIT_FILTERMAX_V3							U("filtermax")
+	#define S3MB_MATERIAL_TEXTUNIT_MATRIX_V3							U("texmodmatrix")
 
 	#define S3MB_MATERIAL_PBR_EMISSIVEFACTOR				            U("emissiveFactor") 
 	#define S3MB_MATERIAL_PBR_EMISSIVETEXTURE			                U("emissiveTexture")
@@ -100,6 +120,9 @@ namespace S3MB
 	#define S3MB_MATERIAL_PBR_ALPHAMODE_BLEND		                    U("AM_BLEND")
 	#define S3MB_MATERIAL_PBR_ALPHACUTOFF				                U("alphaCutoff")
 
+	#define S3MB_MATERIAL_PBR_ALPHAMODE_OPAQUE_V3						U("opaque")
+	#define S3MB_MATERIAL_PBR_ALPHAMODE_MASK_V3							U("mask")
+	#define S3MB_MATERIAL_PBR_ALPHAMODE_BLEND_V3						U("blend")
 
 	// PBRParameter
 	#define S3MB_MATERIAL_PBR_EMISSIVETEXTUREINDEX						U("emissiveTextureIndex")
@@ -212,6 +235,7 @@ namespace S3MB
 	#define SCPS_JSON_PYRAMIDSPLITTYPE					U("pyramidSplitType")			// Octree		QuadTree
 	#define SCPS_JSON_LODTYPE							U("lodType")					// LOD类型：添加 or 替换
 	#define SCPS_JSON_POSITION							U("position")					// 位置点
+	#define SCPS_JSON_POINT3D							U("point3D")					// 点
 	#define SCPS_JSON_GEOBOUNDS							U("geoBounds")					// 地理范围
 	#define SCPS_JSON_HEIGHTRANGE						U("heightRange")				// 高度范围
 	#define SCPS_JSON_HEIGHTRANGE_MIN					U("min")
@@ -230,6 +254,7 @@ namespace S3MB
 	#define SCPS_JSON_PRJCOORD							U("crs")						// 坐标系
 	#define SCPS_JSON_PRJCOORD_EPSG				    	U("epsg:")						// 前缀
 
+	#define SCPS_JSON_UNIT								U("unit")
 	#define SCPS_JSON_UNITS								U("units")
 	#define SCPS_JSON_UNITS_METER						U("Meter")
 	#define SCPS_JSON_UNITS_DEGREE						U("Degree")
@@ -238,6 +263,7 @@ namespace S3MB
 	#define SCPS_JSON_TILE								U("tile")
 	#define SCPS_JSON_TILE_URL							U("url")
 	#define SCPS_JSON_TILE_BBOX							U("boundingbox")
+	#define SCPS_JSON_TILE_BBOX2						U("boundingBox")
 	#define SCPS_JSON_TILE_BBOX_CENTER					U("center")
 	#define SCPS_JSON_TILE_BBOX_XEXTENT					U("xExtent")
 	#define SCPS_JSON_TILE_BBOX_YEXTENT					U("yExtent")

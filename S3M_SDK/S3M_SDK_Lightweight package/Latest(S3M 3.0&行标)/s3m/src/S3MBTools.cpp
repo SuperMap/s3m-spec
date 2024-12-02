@@ -127,8 +127,16 @@ namespace S3MB
 			}
 			pSkeleton->m_pVertexDataPackage = pVertexDataPackage;
 			pSkeleton->m_arrIndexPackage = arrIndexPackage;
-			LoadOBB(streamPerSkeleton, pSkeleton->m_OBB);
-			pSkeleton->m_OBB.ToBoundingBox(pSkeleton->m_BoundingBox);
+
+			if (GREATER_OR_EQUAL(fVersion, S3MB_VERSIONV3_0_1))
+			{
+				LoadOBB(streamPerSkeleton, pSkeleton->m_OBB);
+				pSkeleton->m_OBB.ToBoundingBox(pSkeleton->m_BoundingBox);
+			}
+			else
+			{
+				LoadBoundingBox(streamPerSkeleton, pSkeleton->m_BoundingBox);
+			}
 
 			pSkeleton->m_bInstanceBatch = IsInstanceBatch(pVertexDataPackage);
 			mapSkeleton[strGeoName] = pSkeleton;
@@ -588,7 +596,7 @@ namespace S3MB
 		JsonValue* pJsonContent = NULL;
 		jsonMaterial.GetValue(S3MB_MATERIAL, pJsonContent);
 
-		pJsonContent->GetValue(L"id", strMaterialName);
+		pJsonContent->GetValue(S3MB_ID, strMaterialName);
 		wstring strCullMode;
 		pJsonContent->GetValue(S3MB_MATPASS_CULLMODE, strCullMode);
 		pPass->m_CullMode = S3MBTools::CullModeFromStringV3(strCullMode);
@@ -599,7 +607,7 @@ namespace S3MB
 		pJsonContent->GetValue(S3MB_MATERIAL_SHADERNAME_VERTEX, pPass->strVertexProgram);
 		pJsonContent->GetValue(S3MB_MATERIAL_SHADERNAME_FRAGMENT, pPass->strFragmentProgram);
 
-		if (pJsonContent->Contains(L"pbrMetallicRoughness"))
+		if (pJsonContent->Contains(S3MB_MATERIAL_PBRTYPE_MR))
 		{
 			// PBR
 			PBRParams* pPBR = NULL;
@@ -617,7 +625,7 @@ namespace S3MB
 		// TextureUnitStates
 		JsonValue *pJsonArrayTextUnit = NULL;
 		JsonValue *pJsonTextUnit = new JsonValue(nullValue);
-		pJsonContent->GetValue(L"textureunitstates", pJsonArrayTextUnit);
+		pJsonContent->GetValue(S3MB_MATERIAL_TEXTUNITS_V3, pJsonArrayTextUnit);
 		int nTextureSize = pJsonArrayTextUnit->GetArraySize();
 		for (int i = 0; i < nTextureSize; i++)
 		{
@@ -678,7 +686,7 @@ namespace S3MB
 	void S3MBTools::LoadPBRFromJsonV3(JsonValue& jsonPBR, PBRParams*& pPBR)
 	{
 		JsonValue* pJsonSub = NULL;
-		if (jsonPBR.GetValue(L"pbrMetallicRoughness", pJsonSub)
+		if (jsonPBR.GetValue(S3MB_MATERIAL_PBRTYPE_MR, pJsonSub)
 			&& pJsonSub != NULL)
 		{
 			PBRMetallicRough* pPBRMR = new PBRMetallicRough();
@@ -745,29 +753,29 @@ namespace S3MB
 	void S3MBTools::LoadTUSFromJsonV3(JsonValue& jsonTexture, TextureUnitState* pTextureUnitState)
 	{
 		JsonValue* pJsonContent = NULL;
-		jsonTexture.GetValue(L"textureunitstate", pJsonContent);
+		jsonTexture.GetValue(S3MB_MATERIAL_TEXTUNIT_V3, pJsonContent);
 
-		pJsonContent->GetValue(L"id", pTextureUnitState->m_strTextureName);
+		pJsonContent->GetValue(S3MB_ID, pTextureUnitState->m_strTextureName);
 		pJsonContent->GetValue(S3MB_TEXTURE_URL, pTextureUnitState->m_strTexureURL);
 
 		// AddressMode
 		JsonValue *pJsonAddMode = NULL;
-		pJsonContent->GetValue(L"addressmode", pJsonAddMode);
-		AddressModeFromJson(*pJsonAddMode, pTextureUnitState);
+		pJsonContent->GetValue(S3MB_TEXTURE_ADDMODE, pJsonAddMode);
+		AddressModeFromJsonV3(*pJsonAddMode, pTextureUnitState);
 		delete pJsonAddMode;
 		pJsonAddMode = NULL;
 
 		// TextureFilteringOption
 		int nOptionVal = 0;
-		pJsonContent->GetValue(S3MB_MATERIAL_TEXTUNIT_FILTEROPTION, nOptionVal);
+		pJsonContent->GetValue(S3MB_MATERIAL_TEXTUNIT_FILTEROPTION_V3, nOptionVal);
 		pTextureUnitState->m_TextureFilteringOption = (FilterOptions)nOptionVal;
-		pJsonContent->GetValue(L"filtermin", nOptionVal);
+		pJsonContent->GetValue(S3MB_MATERIAL_TEXTUNIT_FILTERMIN_V3, nOptionVal);
 		pTextureUnitState->m_MinFilter = (FilterOptions)nOptionVal;
-		pJsonContent->GetValue(L"filtermax", nOptionVal);
+		pJsonContent->GetValue(S3MB_MATERIAL_TEXTUNIT_FILTERMAX_V3, nOptionVal);
 		pTextureUnitState->m_MaxFilter = (FilterOptions)nOptionVal;
 
 		// TexMatrix
-		pJsonContent->GetValue(L"texmodmatrix", pTextureUnitState->m_TexModMatrix);
+		pJsonContent->GetValue(S3MB_MATERIAL_TEXTUNIT_MATRIX_V3, pTextureUnitState->m_TexModMatrix);
 
 		delete pJsonContent;
 		pJsonContent = NULL;
@@ -867,6 +875,17 @@ namespace S3MB
 		jsonAddMode.GetValue(S3MB_TEXTURE_V, nValue);
 		pTextureUnitState->m_AddressMode.v = (TextureAddressingMode)nValue;
 		jsonAddMode.GetValue(S3MB_TEXTURE_W, nValue);
+		pTextureUnitState->m_AddressMode.w = (TextureAddressingMode)nValue;
+	}
+
+	void S3MBTools::AddressModeFromJsonV3(JsonValue& jsonAddMode, TextureUnitState* pTextureUnitState)
+	{
+		int nValue = 0;
+		jsonAddMode.GetValue(S3MB_TEXTURE_COORDINATE_U, nValue);
+		pTextureUnitState->m_AddressMode.u = (TextureAddressingMode)nValue;
+		jsonAddMode.GetValue(S3MB_TEXTURE_COORDINATE_V, nValue);
+		pTextureUnitState->m_AddressMode.v = (TextureAddressingMode)nValue;
+		jsonAddMode.GetValue(S3MB_TEXTURE_COORDINATE_W, nValue);
 		pTextureUnitState->m_AddressMode.w = (TextureAddressingMode)nValue;
 	}
 
@@ -1026,65 +1045,6 @@ namespace S3MB
 			pTextureData->m_enFormat = PixelFormat::PF_RGBA8;			
 		}
 		pTextureData->m_eCompressType = nCompressType;
-	}
-
-	void S3MBTools::ToStandardType(TextureCompressType& eCompressType, PixelFormat& eFormat, unsigned nCompressType, unsigned nFormat)
-	{
-		switch (nCompressType)
-		{
-		case 0:
-			eCompressType = TextureCompressType::TC_NONE;
-			break;
-		case 14:
-			if (nFormat == 10 || nFormat == 11 || nFormat == 17)
-			{
-				eCompressType = TextureCompressType::TC_DXT1_RGB;
-			}
-			else
-			{
-				eCompressType = TextureCompressType::TC_DXT5;
-			}
-			break;
-		case 22:
-			eCompressType = TextureCompressType::TC_ETC1;
-			break;
-		case 24:
-			eCompressType = TextureCompressType::TC_PVR;
-			break;
-		case 25:
-			eCompressType = TextureCompressType::TC_WEBP;
-			break;
-		case 27:
-			eCompressType = TextureCompressType::TC_CRN;
-			break;
-		case 30:
-			eCompressType = TextureCompressType::TC_ETC2;
-			break;
-		case 31:
-			eCompressType = TextureCompressType::TC_KTX2;
-			break;
-		default:
-			eCompressType = TextureCompressType::TC_NONE;
-			break;
-		}
-
-		switch (eFormat)
-		{
-		case 11:
-			eFormat = PixelFormat::PF_RGB8;
-			break;
-		case 13:
-			eFormat = PixelFormat::PF_RGBA8;
-			break;
-		case 24:
-			eFormat = PixelFormat::PF_RGB32F;
-			break;
-		case 25:
-			eFormat = PixelFormat::PF_RGBA32F;
-			break;
-		default:
-			break;
-		}
 	}
 
 	bool S3MBTools::SaveIDInfo(std::map<wstring, Skeleton*>& m_mapSkeleton, MemoryStream& m_streamIDInfo)
@@ -1662,7 +1622,7 @@ namespace S3MB
 		}
 	}
 
-	void S3MBTools::SaveSkeleton(std::map<wstring, Skeleton*>& mapSkeleton, MemoryStream& streamSkeleton, SkeletonCompressParam& SkeletonCompParam, float fVersion)
+	void S3MBTools::SaveSkeleton(std::map<wstring, Skeleton*>& mapSkeleton, MemoryStream& streamSkeleton, SkeletonCompressParam& skeletonCompParam, float fVersion)
 	{
 		streamSkeleton.Init();
 		int nCount = mapSkeleton.size();
@@ -1677,17 +1637,35 @@ namespace S3MB
 			S3MBTools::StreamAlign(streamPerSkeleton, false);
 
 			Skeleton* pSkeleton = itSkeleton->second;
+			// 3.0版本实例化对象不做顶点压缩
+			if (pSkeleton->m_bInstanceBatch &&
+				EQUAL(fVersion, S3MB_VERSIONV3))
+			{
+				skeletonCompParam.m_nCompressOption = 0;
+			}
 
 			VertexDataPackage* pVertexDataPackage = pSkeleton->m_pVertexDataPackage;
-			S3MBTools::SaveSkeletonData(pVertexDataPackage, pSkeleton->m_arrIndexPackage, streamPerSkeleton, SkeletonCompParam, fVersion);
+			S3MBTools::SaveSkeletonData(pVertexDataPackage, pSkeleton->m_arrIndexPackage, streamPerSkeleton, skeletonCompParam, fVersion);
 			// 存储方向包围盒
-			OrientedBoundingBox obb = pSkeleton->m_OBB;
-			if (obb.IsNULL())
+			if (GREATER_OR_EQUAL(fVersion, S3MB_VERSIONV3_0_1))
 			{
-				pSkeleton->ComputerBoundingBox();
-				obb = pSkeleton->m_OBB;
+				OrientedBoundingBox obb = pSkeleton->m_OBB;
+				if (obb.IsNULL())
+				{
+					pSkeleton->ComputerBoundingBox();
+					obb = pSkeleton->m_OBB;
+				}
+				S3MBTools::SaveOBB(obb, streamPerSkeleton);
 			}
-			S3MBTools::SaveOBB(obb, streamPerSkeleton);
+			else
+			{
+				if (pSkeleton->m_BoundingBox.IsNULL())
+				{
+					pSkeleton->ComputerBoundingBox();
+				}
+				S3MBTools::SaveBoundingBox(pSkeleton->m_BoundingBox, streamPerSkeleton);
+			}
+
 			S3MBTools::SaveStream(streamSkeleton, streamPerSkeleton);
 		}
 	}
@@ -1707,7 +1685,7 @@ namespace S3MB
 			SaveNormal(pVertexDataPackage, streamVertexPackage);
 			SaveVertexColor(pVertexDataPackage, streamVertexPackage);
 			SaveTextureCoords(pVertexDataPackage, streamVertexPackage);
-			SaveInstanceInfo(pVertexDataPackage, streamVertexPackage);
+			SaveInstanceInfo(pVertexDataPackage, streamVertexPackage, fVersion);
 			SaveVertexAttributeExtension(pVertexDataPackage, streamVertexPackage);
 			SaveTangent(pVertexDataPackage, streamVertexPackage);
 			SaveStream(streamSkeleton, streamVertexPackage);
@@ -1723,7 +1701,7 @@ namespace S3MB
 			MemoryStream streamDataPackage;
 			streamDataPackage.Init();
 			SaveDraco(pVertexDataPackage, arrIndexPackage, SkeletonCompParam.m_dracoParam, streamDataPackage, fVersion);
-			SaveInstanceInfo(pVertexDataPackage, streamDataPackage);
+			SaveInstanceInfo(pVertexDataPackage, streamDataPackage, fVersion);
 			SaveStream(streamSkeleton, streamDataPackage);
 		}	
 		return true;
@@ -1749,6 +1727,10 @@ namespace S3MB
 		stream << dracoCompressedInfo.m_posInfo.GetUniqueID();
 		stream << dracoCompressedInfo.m_normalInfo.GetUniqueID();
 		stream << dracoCompressedInfo.m_colorInfo.GetUniqueID();
+		if (EQUAL(fVersion, S3MB_VERSIONV3))
+		{
+			stream << dracoCompressedInfo.m_secondColorInfo.GetUniqueID();
+		}
 
 		unsigned short nTextureCoord = 0;
 		for (int i = 0; i < SMSCN_MAX_TEXTURE_COORD_SETS; i++)
@@ -1938,7 +1920,7 @@ namespace S3MB
 		return true;
 	}
 
-	bool S3MBTools::SaveInstanceInfo(VertexDataPackage* pVertexDataPack, MemoryStream& stream)
+	bool S3MBTools::SaveInstanceInfo(VertexDataPackage* pVertexDataPack, MemoryStream& stream, float fVersion)
 	{
 		unsigned char nByte = 0;
 		if (pVertexDataPack->m_vecInstanceInfo.size() == 0)
@@ -1960,8 +1942,11 @@ namespace S3MB
 		for (auto& iInfo : pVertexDataPack->m_vecInstanceInfo)
 		{
 			stream << iInfo->nCount;
-			stream << nByte;
-			stream << nByte;
+			if (GREATER_OR_EQUAL(fVersion, S3MB_VERSIONV3_0_1))
+			{
+				stream << nByte;
+				stream << nByte;
+			}
 			// 3*4变换矩阵，一个材质颜色
 			stream.Save(iInfo->pMatrixValues, iInfo->nCount);
 		}
@@ -1980,7 +1965,8 @@ namespace S3MB
 			jsonArray.Add(jsonMaterial);
 		}
 
-		jsonMaterials.Add(S3MB_MATERIALS, jsonArray);
+		std::wstring strMaterialsKey = (GREATER_OR_EQUAL(fVersion, S3MB_VERSIONV3_0_1)) ? S3MB_MATERIALS : S3MB_MATERIAL;
+		jsonMaterials.Add(strMaterialsKey, jsonArray);
 	}
 	void S3MBTools::MaterialToJson(Material* pMaterial, JsonValue& jsonMaterial, float fVersion)
 	{
@@ -1991,7 +1977,14 @@ namespace S3MB
 		}
 		JsonValue jsonContent(objectValue);
 		Technique* pTechnique = pMaterial->getTechnique(0);
-		S3MBTools::TechniqueToJson(pMaterial->m_strName, pTechnique, jsonContent, fVersion);
+		if (GREATER_OR_EQUAL(fVersion, S3MB_VERSIONV3_0_1))
+		{
+			S3MBTools::TechniqueToJson(pMaterial->m_strName, pTechnique, jsonContent, fVersion);
+		}
+		else
+		{
+			S3MBTools::TechniqueToJsonV3(pMaterial->m_strName, pTechnique, jsonContent);
+		}
 
 		jsonMaterial.Add(S3MB_MATERIAL, jsonContent);
 	}
@@ -2036,8 +2029,55 @@ namespace S3MB
 
 		// Extensions
 		jsonContent.Add(S3MB_MATERIAL_EXTENSIONS, pPass->m_strExtensions);
-		
 	}
+
+	void S3MBTools::TechniqueToJsonV3(const wstring strMaterialName, Technique* pTechnique, JsonValue& jsonContent)
+	{
+		jsonContent.Add(S3MB_ID, strMaterialName);
+		Pass* pPass = pTechnique->getPass(0);
+		if (pPass->m_pPRBMaterial == nullptr)
+		{
+			jsonContent.Add(S3MB_MATERIAL_AMBIENT, pPass->m_Ambient);
+			jsonContent.Add(S3MB_MATERIAL_DIFFUSE, pPass->m_Diffuse);
+			jsonContent.Add(S3MB_MATERIAL_SPECULAR, pPass->m_Specular);
+			jsonContent.Add(S3MB_MATERIAL_SHININESS, pPass->m_Shininess);
+		}
+
+		jsonContent.Add(S3MB_MATPASS_CULLMODE, S3MBTools::CullModeToStringV3(pPass->m_CullMode));
+		jsonContent.Add(S3MB_MATERIAL_PBR_ALPHAMODE, S3MBTools::AlphaModeToStringV3(pPass->m_AlphaMode));
+		jsonContent.Add(S3MB_MATERIAL_PBR_ALPHACUTOFF, pPass->m_fAlphaCutoff);
+		
+		if (pPass->m_pPRBMaterial != nullptr)
+		{
+			MaterialParamType emType = pPass->m_pPRBMaterial->GetType();
+			wstring strType = S3MBTools::MaterialParamTypeToString(emType);
+
+			JsonValue jsonPBR(JsonValueType::objectValue);
+			PBRToJson(pPass->m_pPRBMaterial, jsonPBR);
+			jsonContent.Add(strType, jsonPBR);
+		}
+
+		// shader name
+		jsonContent.Add(S3MB_MATERIAL_SHADERNAME_VERTEX, pPass->strVertexProgram);
+		jsonContent.Add(S3MB_MATERIAL_SHADERNAME_FRAGMENT, pPass->strFragmentProgram);
+
+		// TextureUnitStates
+		JsonValue jsonArrayTextUnit(JsonValueType::arrayValue);
+		int nTextureSize = pPass->GetTextureUnitStatesSize();
+		for (int i = 0; i < nTextureSize; i++)
+		{
+			TextureUnitState* pTexUnit = pPass->GetTextureUnitState(i);
+			JsonValue jsonTextUint(JsonValueType::objectValue);
+			TUSToJsonV3(pTexUnit, jsonTextUint);
+
+			jsonArrayTextUnit.Add(jsonTextUint);
+		}
+		jsonContent.Add(S3MB_MATERIAL_TEXTUNITS_V3, jsonArrayTextUnit);
+
+		// Extensions
+		jsonContent.Add(S3MB_MATERIAL_EXTENSIONS, pPass->m_strExtensions);
+	}
+
 	wstring S3MBTools::MaterialTypeToString(MaterialType emType)
 	{
 		wstring strType;
@@ -2048,6 +2088,20 @@ namespace S3MB
 		else if (emType == MaterialType::MAT_PBR)
 		{
 			strType = S3MB_MATERIAL_TYPE_PBR;
+		}
+		return strType;
+	}
+
+	wstring S3MBTools::MaterialParamTypeToString(MaterialParamType emType)
+	{
+		wstring strType;
+		if (emType == MaterialParamType::MAT_PBRMetallicRough)
+		{
+			strType = S3MB_MATERIAL_PBRTYPE_MR;
+		}
+		else if (emType == MaterialParamType::MAT_PBRSpecularGlossy)
+		{
+			strType = S3MB_MATERIAL_PBRTYPE_SG;
 		}
 		return strType;
 	}
@@ -2110,6 +2164,30 @@ namespace S3MB
 		jsonContent.Add(S3MB_MATERIAL_TEXTUNIT_MATRIX, pTextureUnitState->m_TexModMatrix);
 
 		jsonTexture.Add(S3MB_MATERIAL_TEXTUNIT, jsonContent);
+	}
+
+	void S3MBTools::TUSToJsonV3(TextureUnitState* pTextureUnitState, JsonValue& jsonTexture)
+	{
+		JsonValue jsonContent(objectValue);
+		jsonContent.Add(S3MB_ID, pTextureUnitState->m_strTextureName);
+		jsonContent.Add(S3MB_TEXTURE_URL, pTextureUnitState->m_strTexureURL);
+
+		// AddressMode
+		JsonValue jsonAddMode(JsonValueType::objectValue);
+		AddressModeToJsonV3(pTextureUnitState, jsonAddMode);
+		jsonContent.Add(S3MB_TEXTURE_ADDMODE, jsonAddMode);
+		// TextureFilteringOption
+		int nOptionVal = pTextureUnitState->m_TextureFilteringOption;
+		jsonContent.Add(S3MB_MATERIAL_TEXTUNIT_FILTEROPTION_V3, nOptionVal);
+		nOptionVal = pTextureUnitState->m_MinFilter;
+		jsonContent.Add(S3MB_MATERIAL_TEXTUNIT_FILTERMIN_V3, nOptionVal);
+		nOptionVal = pTextureUnitState->m_MaxFilter;
+		jsonContent.Add(S3MB_MATERIAL_TEXTUNIT_FILTERMAX_V3, nOptionVal);
+
+		// TexMatrix
+		jsonContent.Add(S3MB_MATERIAL_TEXTUNIT_MATRIX_V3, pTextureUnitState->m_TexModMatrix);
+
+		jsonTexture.Add(S3MB_MATERIAL_TEXTUNIT_V3, jsonContent);
 	}
 
 	void S3MBTools::AnimationsToJson(RenderOperationPagedLOD* pROPagedLOD, JsonValue& jsonAnimations)
@@ -2528,8 +2606,18 @@ namespace S3MB
 		jsonAddMode.Add(S3MB_TEXTURE_W, nValue);
 	}
 
+	void S3MBTools::AddressModeToJsonV3(TextureUnitState* pTextureUnitState, JsonValue& jsonAddMode)
+	{
+		int nValue = pTextureUnitState->m_AddressMode.u;
+		jsonAddMode.Add(S3MB_TEXTURE_COORDINATE_U, nValue);
+		nValue = pTextureUnitState->m_AddressMode.v;
+		jsonAddMode.Add(S3MB_TEXTURE_COORDINATE_V, nValue);
+		nValue = pTextureUnitState->m_AddressMode.w;
+		jsonAddMode.Add(S3MB_TEXTURE_COORDINATE_W, nValue);
+	}
+
 	void S3MBTools::SaveTextures(std::map<wstring, TextureDataInfo*>& mapTexture, MemoryStream& streamTexture,
-		unsigned int nCompressType, bool bTextureChange, bool bGenerateMipmap/* = true*/)
+		unsigned int nCompressType, float fVersion, bool bTextureChange, bool bGenerateMipmap/* = true*/)
 	{
 		int nImageCount = mapTexture.size();
 		streamTexture.Init(1024 * 1024 * nImageCount, 1024 * 1024);
@@ -2549,22 +2637,33 @@ namespace S3MB
 
 			streamTexture << pTexture->m_nLevel;
 
-			S3MBTools::SaveTextureData(pTexture->m_pTextureData, streamTexture, nCompressType, bTextureChange, bGenerateMipmap);
+			S3MBTools::SaveTextureData(pTexture->m_pTextureData, streamTexture, nCompressType, fVersion, bTextureChange, bGenerateMipmap);
 		}
 	}
 
-	void S3MBTools::SaveTextureData(TextureData* pTextureData, MemoryStream& streamTexture, unsigned int nCompressType, bool bIsChangeTexture /*= true*/, bool bGenerateMipmap/* = true*/)
+	void S3MBTools::SaveTextureData(TextureData* pTextureData, MemoryStream& streamTexture, unsigned int nCompressType, float fVersion, bool bIsChangeTexture /*= true*/, bool bGenerateMipmap/* = true*/)
 	{
 		if (bIsChangeTexture)
 		{
 			ProcessTextureData(pTextureData, nCompressType,bGenerateMipmap);
 		}
 
+		unsigned int nStoreType = 0, nStoreFormat = 0;
+		if (EQUAL(fVersion, S3MB_VERSIONV3))
+		{
+			FromStandardType(pTextureData->m_eCompressType, pTextureData->m_enFormat, nStoreType, nStoreFormat);
+		}
+		else
+		{
+			nStoreType = pTextureData->m_eCompressType;
+			nStoreFormat = pTextureData->m_enFormat;
+		}
+
 		streamTexture << pTextureData->m_nWidth;
 		streamTexture << pTextureData->m_nHeight;
-		streamTexture << pTextureData->m_eCompressType;
+		streamTexture << nStoreType;
 		streamTexture << pTextureData->m_nSize;
-		streamTexture << pTextureData->m_enFormat;
+		streamTexture << nStoreFormat;
 		streamTexture.Save(pTextureData->m_pBuffer, pTextureData->m_nSize);
 	}
 
@@ -2591,6 +2690,26 @@ namespace S3MB
 		return strValue;
 	}
 
+	wstring S3MBTools::AlphaModeToStringV3(AlphaMode emType)
+	{
+		wstring strValue;
+		switch (emType)
+		{
+		case S3MB::PBRAM_OPAQUE:
+			strValue = S3MB_MATERIAL_PBR_ALPHAMODE_OPAQUE_V3;
+			break;
+		case S3MB::PBRAM_MASK:
+			strValue = S3MB_MATERIAL_PBR_ALPHAMODE_MASK_V3;
+			break;
+		case S3MB::PBRAM_BLEND:
+			strValue = S3MB_MATERIAL_PBR_ALPHAMODE_BLEND_V3;
+			break;
+		default:
+			break;
+		}
+		return strValue;
+	}
+
 	std::wstring S3MBTools::CullModeToString(CullingMode emType)
 	{
 		wstring strValue;
@@ -2605,6 +2724,26 @@ namespace S3MB
 		else if (emType == CULL_ANTICLOCKWISE)
 		{
 			strValue = S3MB_MATPASS_CULLMODE_CC;
+		}
+		return strValue;
+	}
+
+	wstring S3MBTools::CullModeToStringV3(CullingMode emType)
+	{
+		wstring strValue;
+		switch (emType)
+		{
+		case S3MB::CULL_NONE:
+			strValue = S3MB_MATPASS_CULLMODE_NONE_V3;
+			break;
+		case S3MB::CULL_CLOCKWISE:
+			strValue = S3MB_MATPASS_CULLMODE_C_V3;
+			break;
+		case S3MB::CULL_ANTICLOCKWISE:
+			strValue = S3MB_MATPASS_CULLMODE_CC_V3;
+			break;
+		default:
+			break;
 		}
 		return strValue;
 	}
@@ -2822,6 +2961,118 @@ namespace S3MB
 			SaveStream(stream, streamIndexPackage);
 		}
 		return true;
+	}
+
+	void S3MBTools::ToStandardType(TextureCompressType& eStdCompressType, PixelFormat& eStdFormat, unsigned int nCompressType, unsigned int nFormat)
+	{
+		switch (nCompressType)
+		{
+		case 0:
+			eStdCompressType = TextureCompressType::TC_NONE;
+			break;
+		case 14:
+			if (nFormat == 10 || nFormat == 11 || nFormat == 17)
+			{
+				eStdCompressType = TextureCompressType::TC_DXT1_RGB;
+			}
+			else
+			{
+				eStdCompressType = TextureCompressType::TC_DXT5;
+			}
+			break;
+		case 22:
+			eStdCompressType = TextureCompressType::TC_ETC1;
+			break;
+		case 24:
+			eStdCompressType = TextureCompressType::TC_PVR;
+			break;
+		case 25:
+			eStdCompressType = TextureCompressType::TC_WEBP;
+			break;
+		case 27:
+			eStdCompressType = TextureCompressType::TC_CRN;
+			break;
+		case 30:
+			eStdCompressType = TextureCompressType::TC_ETC2;
+			break;
+		case 31:
+			eStdCompressType = TextureCompressType::TC_KTX2;
+			break;
+		default:
+			eStdCompressType = TextureCompressType::TC_NONE;
+			break;
+		}
+
+		switch (nFormat)
+		{
+		case 11:
+			eStdFormat = PixelFormat::PF_RGB8;
+			break;
+		case 13:
+			eStdFormat = PixelFormat::PF_RGBA8;
+			break;
+		case 24:
+			eStdFormat = PixelFormat::PF_RGB32F;
+			break;
+		case 25:
+			eStdFormat = PixelFormat::PF_RGBA32F;
+			break;
+		default:
+			break;
+		}
+	}
+
+	void S3MBTools::FromStandardType(TextureCompressType eStdCompressType, PixelFormat eStdFormat, unsigned int& nCompressType, unsigned int& nFormat)
+	{
+		switch (eStdCompressType)
+		{
+		case S3MB::TC_NONE:
+			nCompressType = 0;
+			break;
+		case S3MB::TC_DXT1_RGB:
+		case S3MB::TC_DXT5:
+			nCompressType = 14;
+			break;
+		case S3MB::TC_PVR:
+			nCompressType = 24;
+			break;
+		case S3MB::TC_ETC1:
+			nCompressType = 22;
+			break;
+		case S3MB::TC_ETC2:
+			nCompressType = 30;
+			break;
+		case S3MB::TC_WEBP:
+			nCompressType = 25;
+			break;
+		case S3MB::TC_CRN:
+			nCompressType = 27;
+			break;
+		case S3MB::TC_KTX2:
+			nCompressType = 31;
+			break;
+		default:
+			nCompressType = 0;
+			break;
+		}
+
+		switch (eStdFormat)
+		{
+		case S3MB::PF_RGB8:
+			nFormat = 11;
+			break;
+		case S3MB::PF_RGBA8:
+			nFormat = 13;
+			break;
+		case S3MB::PF_RGB32F:
+			nFormat = 24;
+			break;
+		case S3MB::PF_RGBA32F:
+			nFormat = 25;
+			break;
+		default:
+			break;
+		}
 	}
 }
 
