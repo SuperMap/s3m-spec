@@ -623,7 +623,7 @@ namespace S3MB
 		ofs.write((char*)&nZippedSize, sizeof(unsigned int));
 		ofs.write((char*)pZippedData, nZippedSize);
 		ofs.close();
-		delete pZippedData;
+		delete[] pZippedData;
 		pZippedData = nullptr;
 
 		return true;

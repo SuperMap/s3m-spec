@@ -61,7 +61,7 @@ namespace S3MB
 		unsigned char* pUnZipData = new (std::nothrow) unsigned char[nUnZipSize];
 		bool bResult = Utils::UnZip(pUnZipData, nUnZipSize, pZippedData, nZippedSize);
 
-		delete pZippedData;
+		delete[] pZippedData;
 		pZippedData = NULL;
 
 		if (nUnZipSize <= 0)
@@ -85,7 +85,7 @@ namespace S3MB
 
 		Utils::UnZip(pUnZipData, nUnZipSize, pZippedData, nZippedSize);
 
-		delete pZippedData;
+		delete[] pZippedData;
 		pZippedData = nullptr;
 
 		if (nUnZipSize <= 0)
@@ -1266,7 +1266,7 @@ namespace S3MB
 		ofs.write((char*)pZippedData, nZippedSize);
 		
 		ofs.close();
-		delete pZippedData;
+		delete[] pZippedData;
 		return true;
 	}
 
