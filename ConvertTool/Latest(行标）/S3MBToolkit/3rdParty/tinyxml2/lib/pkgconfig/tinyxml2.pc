@@ -1,0 +1,10 @@
+prefix=D:/works/workInfo/s3m-spec/ConvertTool/Latest(行标）/S3MBToolkit/3rdParty/tinyxml2
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: TinyXML2
+Description: simple, small, C++ XML parser
+Version: 10.0.0
+Libs: -L${libdir} -ltinyxml2
+Cflags: -I${includedir}

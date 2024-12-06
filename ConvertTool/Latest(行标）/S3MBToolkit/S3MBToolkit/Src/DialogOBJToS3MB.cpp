@@ -25,20 +25,20 @@ DialogOBJToS3MB::DialogOBJToS3MB(QWidget *parent)
     connect(m_srcEdit, SIGNAL(textEdited(QString)), this, SLOT(handleTextEditedEvent()));
     connect(m_desEdit, SIGNAL(textEdited(QString)), this, SLOT(handleTextEditedEvent()));
 
-    m_confirmButton = new QPushButton(codec->toUnicode("确定"));
+    m_confirmButton = new QPushButton(buttonOK);
 	m_confirmButton->setEnabled(false);
-    QPushButton* cancelButton = new QPushButton(codec->toUnicode("取消"));
+    QPushButton* cancelButton = new QPushButton(buttonCancle);
     connect(m_confirmButton, SIGNAL(clicked()), this, SLOT(handleConfirmButtonClickedEvent()));
     connect(cancelButton, SIGNAL(clicked()), this, SLOT(handleCancelButtonClickedEvent()));
 
-    QPushButton* srcFileButton = new QPushButton(codec->toUnicode("..."));
+    QPushButton* srcFileButton = new QPushButton(waitText);
     srcFileButton->setFixedSize(30, 20);
     connect(srcFileButton, SIGNAL(clicked()), this, SLOT(handleSrcFileButtonClickedEvent()));
     QGridLayout* gridSrcLayout = new QGridLayout();
     gridSrcLayout->addWidget(m_srcEdit, 0,0);
     gridSrcLayout->addWidget(srcFileButton, 0,2);
 
-    QPushButton* desFileButton = new QPushButton(codec->toUnicode("..."));
+    QPushButton* desFileButton = new QPushButton(waitText);
     desFileButton->setFixedSize(30, 20);
     connect(desFileButton, SIGNAL(clicked()), this, SLOT(handleDesFileButtonClickedEvent()));
     QGridLayout* gridDesLayout = new QGridLayout();
@@ -48,8 +48,8 @@ DialogOBJToS3MB::DialogOBJToS3MB(QWidget *parent)
     QFormLayout* formLayout = new QFormLayout();
     formLayout->setHorizontalSpacing(30);
     formLayout->setVerticalSpacing(10);
-    formLayout->addRow(codec->toUnicode("源配置文件:"), gridSrcLayout);
-    formLayout->addRow(codec->toUnicode("目标路径:"), gridDesLayout);
+    formLayout->addRow(sourceSCP, gridSrcLayout);
+    formLayout->addRow(outputDir, gridDesLayout);
 
 	QHBoxLayout* bottomLayout = new QHBoxLayout();
 	bottomLayout->addStretch();
@@ -91,7 +91,7 @@ void DialogOBJToS3MB::handleThreadFinishedEvent()
 		m_progressDialog = nullptr;
 	}
 	
-    QMessageBox::information(this, codec->toUnicode("执行结果"), codec->toUnicode("完成!"));
+    QMessageBox::information(this, exeResult, isDone);
 }
 
 void DialogOBJToS3MB::handleConfirmButtonClickedEvent()
@@ -103,7 +103,7 @@ void DialogOBJToS3MB::handleConfirmButtonClickedEvent()
 	m_progressDialog->setWindowModality(Qt::ApplicationModal);
 	m_progressDialog->setMinimum(0);
 	m_progressDialog->setMaximum(0);
-    m_progressDialog->setWindowTitle(codec->toUnicode("正在执行..."));
+    m_progressDialog->setWindowTitle(waiting);
 	m_progressDialog->setCancelButtonText(nullptr);
 	m_progressDialog->setWindowFlags(Qt::Window | Qt::WindowTitleHint);
 	m_progressDialog->show();
@@ -126,7 +126,7 @@ void DialogOBJToS3MB::handleCancelButtonClickedEvent()
 void DialogOBJToS3MB::handleSrcFileButtonClickedEvent()
 {
     QFileDialog* pFileSelectDialog = new QFileDialog(this);
-    pFileSelectDialog->setWindowTitle(codec->toUnicode("打开"));
+    pFileSelectDialog->setWindowTitle(openFile);
     pFileSelectDialog->setNameFilter(tr("File(*.json)"));
     m_srcEdit->setText(pFileSelectDialog->getOpenFileName());
     handleTextEditedEvent();
@@ -135,7 +135,7 @@ void DialogOBJToS3MB::handleSrcFileButtonClickedEvent()
 void DialogOBJToS3MB::handleDesFileButtonClickedEvent()
 {
     QFileDialog* pFileSelectDialog = new QFileDialog(this);
-    pFileSelectDialog->setWindowTitle(codec->toUnicode("打开"));
+    pFileSelectDialog->setWindowTitle(openFile);
     pFileSelectDialog->setFileMode(QFileDialog::Directory);
     m_desEdit->setText(pFileSelectDialog->getExistingDirectory());
     handleTextEditedEvent();
