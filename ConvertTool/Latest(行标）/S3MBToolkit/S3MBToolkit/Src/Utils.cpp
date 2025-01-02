@@ -702,9 +702,8 @@ namespace S3MB
             strPathName += PATHSEPSTRING;
         }
         strPathName += U("*");
-        auto lIsFindFile = -1;
         struct _wfinddata_t c_file;
-        lIsFindFile = _wfindfirst(strPathName.c_str(), &c_file);
+		auto lIsFindFile = _wfindfirst(strPathName.c_str(), &c_file);
         if (lIsFindFile != -1)
         {
             // Loop over directory entries
