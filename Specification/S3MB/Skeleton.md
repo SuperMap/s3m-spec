@@ -159,8 +159,6 @@
 |compressedSize|uint32|压缩后的字节大小|
 |compressedData|Array\<char>|压缩后的顶点数据和顶点索引数据|
 |descript|String|顶点扩展属性数组的语义描述信息，采用JSON格式表述|
-|instanceInfoCount|uint16|实例化信息的数量|
-|instanceInfos|Array\<InstanceInfo>|实例化信息集合，用[InstanceInfo对象](#instanceinfo对象各属性含义)构成的数组表示|
 
 ### 二进制流描述
 采用几何压缩技术的Skeleton对象存储在数据文件中，是[ModelElements](./S3MB.md#模型元素对象)的属性之一。除Skeleton对象外，ModelElements及其他相关对象的二进制流结构应符合[相关规定](./S3MBBinary.md#modelelements的二进制流描述)。
@@ -175,9 +173,6 @@ Skeleton{
     byte reserved[n];					 //补齐四字节，n取值为0～3
     uint32 options;				   //骨架对象是否压缩的标识信息，取值为0时，表示不压缩，取值为1时，表示压缩
     CompressedDataPackag compressedDataPackage;   //压缩数据包
-    uint16 instanceInfoCount;     //实例化信息的数量
-    byte reserved[2];
-    InstanceInfo instanceInfos[instanceInfoCount];
     BoundingBox boundingBox;         //包围盒
 }
 CompressedDataPackage{
@@ -198,15 +193,6 @@ CompressedDataPackage{
     byte reserved[n];					 //补齐四字节，n取值为0～3
     String descript;	                 //顶点属性数组的语义描述信息，采用JSON格式表述
     byte reserved[n];					 //补齐四字节，n取值为0～3
-};
-InstanceInfo{                    //实例化信息
-    uint32 instanceCount;          //实例化对象的数量
-    InstanceObiect instanceObjects[instanceCount];   
-};  
-InstanceObject{                  //实例化对象
-    uint16 count;                  //实例化对象变换矩阵值的数量，取值为16
-    byte reserved[2];
-    float matrixValues[count];     //4×4实例化对象变换矩阵，行主序，前12个值存储该矩阵内容的前三行（3×4），后4个值为预留位
 };
 BoundingBox{
     Point3D center;           //包围盒中心点

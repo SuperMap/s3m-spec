@@ -19,6 +19,40 @@ const char* TexCompDXT = "DXT";
 const char* TexCompNONE = "不压缩";
 const char* VerCompNONE = "不压缩";
 
+#ifdef WIN32
+QString buttonOK = "确定";
+QString buttonCancle = "取消";
+QString waitText = "...";
+QString sourceSCP = "源配置文件:";
+QString outputDir = "目标路径:";
+QString fileType = "文件类型:";
+QString texCompressType = "纹理压缩格式:";
+QString vertexCompressType = "顶点优化方式:";
+QString exeResult = "执行结果";
+QString isDone = "完成";
+QString waiting = "正在执行...";
+QString openFile = "打开";
+#else
+QTextCodec* codec = QTextCodec::codecForName("GBK");
+QString FileTypeModel = codec->toUnicode(FileTypeModel);
+QString FileTypeObliquePhotogrammetry = codec->toUnicode(FileTypeObliquePhotogrammetry);
+QString TexCompDXT = codec->toUnicode(TexCompDXT);
+QString TexCompNONE = codec->toUnicode(TexCompNONE);
+QString VerCompNONE = codec->toUnicode(VerCompNONE);
+QString buttonOK = codec->toUnicode("确定");
+QString buttonCancle = codec->toUnicode("取消");
+QString waitText = codec->toUnicode("...");
+QString sourceSCP = codec->toUnicode("源配置文件:");
+QString outputDir = codec->toUnicode("目标路径:");
+QString fileType = codec->toUnicode("文件类型:");
+QString texCompressType = codec->toUnicode("纹理压缩格式:");
+QString vertexCompressType = codec->toUnicode("顶点优化方式:");
+QString exeResult = codec->toUnicode("执行结果");
+QString isDone = codec->toUnicode("完成:");
+QString waiting = codec->toUnicode("正在执行...");
+QString openFile = codec->toUnicode("打开");
+#endif
+
 Dialog3DTilesToS3MB::Dialog3DTilesToS3MB(QWidget *parent)
 	: QDialog(parent)
 {
@@ -32,35 +66,35 @@ Dialog3DTilesToS3MB::Dialog3DTilesToS3MB(QWidget *parent)
     connect(m_desEdit, SIGNAL(textEdited(QString)), this, SLOT(handleTextEditedEvent()));
 
 	QStringListModel* fileTypeModel = new QStringListModel(this);
-    fileTypeModel->setStringList(QStringList()<< codec->toUnicode(FileTypeModel) << codec->toUnicode(FileTypeObliquePhotogrammetry));
+    fileTypeModel->setStringList(QStringList()<< FileTypeModel << FileTypeObliquePhotogrammetry);
 	m_fileTypeBox = new QComboBox();
 	m_fileTypeBox->setModel(fileTypeModel);
 
 	QStringListModel* texCompModel = new QStringListModel(this);
-    texCompModel->setStringList(QStringList()<< codec->toUnicode(TexCompDXT) << codec->toUnicode(TexCompNONE));
+    texCompModel->setStringList(QStringList()<< TexCompDXT << TexCompNONE);
 	m_texCompBox = new QComboBox();
 	m_texCompBox->setModel(texCompModel);
 
 	QStringListModel* verCompModel = new QStringListModel(this);
-    verCompModel->setStringList(QStringList()<< codec->toUnicode(VerCompNONE));
+    verCompModel->setStringList(QStringList()<< VerCompNONE);
 	m_verCompBox = new QComboBox();
 	m_verCompBox->setModel(verCompModel);
 
-    m_confirmButton = new QPushButton(codec->toUnicode("确定"));
+    m_confirmButton = new QPushButton(buttonOK);
 	m_confirmButton->setEnabled(false);
-    QPushButton* cancelButton = new QPushButton(codec->toUnicode("取消"));
+    QPushButton* cancelButton = new QPushButton(buttonCancle);
     connect(m_confirmButton, SIGNAL(clicked()), this, SLOT(handleConfirmButtonClickedEvent()));
     connect(cancelButton, SIGNAL(clicked()), this, SLOT(handleCancelButtonClickedEvent()));
 
 
-    QPushButton* srcFileButton = new QPushButton(codec->toUnicode("..."));
+    QPushButton* srcFileButton = new QPushButton(waitText);
     srcFileButton->setFixedSize(25, 20);
     connect(srcFileButton, SIGNAL(clicked()), this, SLOT(handleSrcFileButtonClickedEvent()));
     QGridLayout* gridSrcLayout = new QGridLayout();
     gridSrcLayout->addWidget(m_srcEdit, 0,0);
     gridSrcLayout->addWidget(srcFileButton, 0,2);
 
-    QPushButton* desFileButton = new QPushButton(codec->toUnicode("..."));
+    QPushButton* desFileButton = new QPushButton(waitText);
     desFileButton->setFixedSize(25, 20);
     connect(desFileButton, SIGNAL(clicked()), this, SLOT(handleDesFileButtonClickedEvent()));
     QGridLayout* gridDesLayout = new QGridLayout();
@@ -70,11 +104,11 @@ Dialog3DTilesToS3MB::Dialog3DTilesToS3MB(QWidget *parent)
 	QFormLayout* formLayout = new QFormLayout();
 	formLayout->setHorizontalSpacing(20);
 	formLayout->setVerticalSpacing(10);
-    formLayout->addRow(codec->toUnicode("源配置文件:"), gridSrcLayout);
-    formLayout->addRow(codec->toUnicode("目标路径:"), gridDesLayout);
-    formLayout->addRow(codec->toUnicode("文件类型:"), m_fileTypeBox);
-    formLayout->addRow(codec->toUnicode("纹理压缩格式:"), m_texCompBox);
-    formLayout->addRow(codec->toUnicode("顶点优化方式:"), m_verCompBox);
+    formLayout->addRow(sourceSCP, gridSrcLayout);
+    formLayout->addRow(outputDir, gridDesLayout);
+    formLayout->addRow(fileType, m_fileTypeBox);
+    formLayout->addRow(texCompressType, m_texCompBox);
+    formLayout->addRow(vertexCompressType, m_verCompBox);
 
 	QHBoxLayout* bottomLayout = new QHBoxLayout();
 	bottomLayout->addStretch();
@@ -116,7 +150,7 @@ void Dialog3DTilesToS3MB::handleThreadFinishedEvent()
 		m_progressDialog = nullptr;
 	}
 	
-    QMessageBox::information(this, codec->toUnicode("执行结果"), codec->toUnicode("完成!"));
+    QMessageBox::information(this, exeResult, isDone);
 }
 
 void Dialog3DTilesToS3MB::handleConfirmButtonClickedEvent()
@@ -126,7 +160,7 @@ void Dialog3DTilesToS3MB::handleConfirmButtonClickedEvent()
 
 	bool isModel = true;
 	QString fileType = m_fileTypeBox->currentText();
-    if (fileType == codec->toUnicode(FileTypeObliquePhotogrammetry))
+    if (fileType == FileTypeObliquePhotogrammetry)
 	{
 		isModel = false;
 	}
@@ -149,7 +183,7 @@ void Dialog3DTilesToS3MB::handleConfirmButtonClickedEvent()
 	m_progressDialog->setWindowModality(Qt::ApplicationModal);
 	m_progressDialog->setMinimum(0);
 	m_progressDialog->setMaximum(0);
-    m_progressDialog->setWindowTitle(codec->toUnicode("正在执行..."));
+    m_progressDialog->setWindowTitle(waiting);
 	m_progressDialog->setCancelButtonText(nullptr);
 	m_progressDialog->setWindowFlags(Qt::Window | Qt::WindowTitleHint);
 	m_progressDialog->show();
@@ -175,7 +209,7 @@ void Dialog3DTilesToS3MB::handleCancelButtonClickedEvent()
 void Dialog3DTilesToS3MB::handleSrcFileButtonClickedEvent()
 {
     QFileDialog* pFileSelectDialog = new QFileDialog(this);
-    pFileSelectDialog->setWindowTitle(codec->toUnicode("打开"));
+    pFileSelectDialog->setWindowTitle(openFile);
     pFileSelectDialog->setNameFilter(tr("File(*.json)"));
     m_srcEdit->setText(pFileSelectDialog->getOpenFileName());
     handleTextEditedEvent();
@@ -184,7 +218,7 @@ void Dialog3DTilesToS3MB::handleSrcFileButtonClickedEvent()
 void Dialog3DTilesToS3MB::handleDesFileButtonClickedEvent()
 {
     QFileDialog* pFileSelectDialog = new QFileDialog(this);
-    pFileSelectDialog->setWindowTitle(codec->toUnicode("打开"));
+    pFileSelectDialog->setWindowTitle(openFile);
     pFileSelectDialog->setFileMode(QFileDialog::Directory);
     m_desEdit->setText(pFileSelectDialog->getExistingDirectory());
     handleTextEditedEvent();

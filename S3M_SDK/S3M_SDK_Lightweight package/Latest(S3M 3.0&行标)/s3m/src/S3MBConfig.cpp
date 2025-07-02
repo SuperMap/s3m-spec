@@ -76,12 +76,30 @@ namespace S3MB
 		JsonValue* pJsonPosition = NULL;
 		if (jsonConfig.GetValue(SCPS_JSON_POSITION, pJsonPosition))
 		{
-			pJsonPosition->GetValue(S3MB_JSON_X, m_pntPosition.x);
-			pJsonPosition->GetValue(S3MB_JSON_Y, m_pntPosition.y);
-			pJsonPosition->GetValue(S3MB_JSON_Z, m_pntPosition.z);
-
 			wstring strUnits;
-			pJsonPosition->GetValue(SCPS_JSON_UNITS, strUnits);
+			if (pJsonPosition->Contains(SCPS_JSON_POINT3D))
+			{
+				pJsonPosition->GetValue(SCPS_JSON_UNIT, strUnits);
+
+				JsonValue* pJsonPoint = NULL;
+				pJsonPosition->GetValue(SCPS_JSON_POINT3D, pJsonPoint);
+				if (pJsonPoint != NULL)
+				{
+					pJsonPoint->GetValue(S3MB_JSON_X, m_pntPosition.x);
+					pJsonPoint->GetValue(S3MB_JSON_Y, m_pntPosition.y);
+					pJsonPoint->GetValue(S3MB_JSON_Z, m_pntPosition.z);
+
+					delete pJsonPoint;
+					pJsonPoint = NULL;
+				}
+			}
+			else
+			{
+				pJsonPosition->GetValue(SCPS_JSON_UNITS, strUnits);
+				pJsonPosition->GetValue(S3MB_JSON_X, m_pntPosition.x);
+				pJsonPosition->GetValue(S3MB_JSON_Y, m_pntPosition.y);
+				pJsonPosition->GetValue(S3MB_JSON_Z, m_pntPosition.z);
+			}
 			m_bIsDegree = StringUtil::CompareNoCase(strUnits, SCPS_JSON_UNITS_DEGREE) ? true : false;
 		}
 		// GeoBounds
@@ -174,7 +192,7 @@ namespace S3MB
 
 		// TileInfos
 		JsonValue* pJsonTileInfos = NULL;
-		wstring strTilesKey = (EQUAL(m_fVersion, S3MB_VERSIONV3_0_1) || m_fVersion > S3MB_VERSIONV3_0_1) ? SCPS_JSON_ROOTTILES : SCPS_JSON_TILES;
+		wstring strTilesKey = (GREATER_OR_EQUAL(m_fVersion, S3MB_VERSIONV3)) ? SCPS_JSON_ROOTTILES : SCPS_JSON_TILES;
 		if (jsonConfig.GetValue(strTilesKey, pJsonTileInfos))
 		{
 			JsonValue* pJsonTileInfo = new JsonValue();
@@ -189,10 +207,11 @@ namespace S3MB
 					}
 
 					// bbox
-					if (EQUAL(m_fVersion, S3MB_VERSIONV3_0_1) || m_fVersion > S3MB_VERSIONV3_0_1)
+					if (GREATER_OR_EQUAL(m_fVersion, S3MB_VERSIONV3))
 					{
 						JsonValue* pJsonBBox = NULL;
-						if (pJsonTileInfo->GetValue(SCPS_JSON_TILE_BBOX, pJsonBBox))
+						if (pJsonTileInfo->GetValue(SCPS_JSON_TILE_BBOX, pJsonBBox) ||
+							pJsonTileInfo->GetValue(SCPS_JSON_TILE_BBOX2, pJsonBBox))
 						{
 							Vector3d vec3Center, vec3Extent, vec3XExtent, vec3YExtent, vec3ZExtent;
 							pJsonBBox->GetValue(SCPS_JSON_TILE_BBOX_CENTER, vec3Center);
@@ -354,17 +373,33 @@ namespace S3MB
 		jsonHeader.Add(SCPS_JSON_LODTYPE, strElemValue);
 
 		// 插入点
-		JsonValue jsonPosition(objectValue);
+		if (EQUAL(m_fVersion, S3MB_VERSIONV3))
+		{
+			JsonValue jsonPosition(objectValue);
+			jsonPosition.Add(S3MB_JSON_X, m_pntPosition.x);
+			jsonPosition.Add(S3MB_JSON_Y, m_pntPosition.y);
+			jsonPosition.Add(S3MB_JSON_Z, m_pntPosition.z);
 
-		jsonPosition.Add(S3MB_JSON_X, m_pntPosition.x);
-		jsonPosition.Add(S3MB_JSON_Y, m_pntPosition.y);
-		jsonPosition.Add(S3MB_JSON_Z, m_pntPosition.z);
+			// 添加一个标签 ， 区别插入点是否是经纬度 ， IsDegree
+			wstring strUnits = m_bIsDegree ? U("Degree") : U("Meter");
+			jsonPosition.Add(SCPS_JSON_UNITS, strUnits);
+			jsonHeader.Add(SCPS_JSON_POSITION, jsonPosition);
+		}
+		else
+		{
+			JsonValue jsonPnt(objectValue);
+			jsonPnt.Add(S3MB_JSON_X, m_pntPosition.x);
+			jsonPnt.Add(S3MB_JSON_Y, m_pntPosition.y);
+			jsonPnt.Add(S3MB_JSON_Z, m_pntPosition.z);
 
-		// 添加一个标签 ， 区别插入点是否是经纬度 ， IsDegree
-		wstring strUnits = m_bIsDegree ? U("Degree") : U("Meter");
-		jsonPosition.Add(SCPS_JSON_UNITS, strUnits);
+			JsonValue jsonPosition(objectValue);
+			jsonPosition.Add(SCPS_JSON_POINT3D, jsonPnt);
+			// 区别插入点是否是经纬度，IsDegree
+			wstring strUnit = m_bIsDegree ? U("Degree") : U("Meter");
+			jsonPosition.Add(SCPS_JSON_UNIT, strUnit);
 
-		jsonHeader.Add(SCPS_JSON_POSITION, jsonPosition);
+			jsonHeader.Add(SCPS_JSON_POSITION, jsonPosition);
+		}
 
 		// GeoBounds
 		jsonHeader.Add(SCPS_JSON_GEOBOUNDS, m_rcGeoBounds);
@@ -377,7 +412,7 @@ namespace S3MB
 
 		jsonHeader.Add(SCPS_JSON_HEIGHTRANGE, jsonHeightRange);
 		
-		if (GREATER_OR_EQUAL(m_fVersion, S3MB_VERSIONV3_0_1))
+		if (GREATER_OR_EQUAL(m_fVersion, S3MB_VERSIONV3))
 		{
 			// VertexAttributeDescript
 			JsonValue jsonVertexAttDescripts(arrayValue);
@@ -452,7 +487,7 @@ namespace S3MB
 			strElemValue = m_vecRootNames[i];
 			jsonTileInfo.Add(SCPS_JSON_TILE_URL, strElemValue);
 			// bbox
-			if (GREATER_OR_EQUAL(m_fVersion, S3MB_VERSIONV3_0_1))
+			if (GREATER_OR_EQUAL(m_fVersion, S3MB_VERSIONV3))
 			{
 				JsonValue jsonBBox(objectValue);
 				Vector3d vecCenter, vecXExtent, vecYExtent, vecZExtent;
@@ -469,7 +504,10 @@ namespace S3MB
 				jsonBBox.Add(SCPS_JSON_TILE_BBOX_XEXTENT, vecXExtent);
 				jsonBBox.Add(SCPS_JSON_TILE_BBOX_YEXTENT, vecYExtent);
 				jsonBBox.Add(SCPS_JSON_TILE_BBOX_ZEXTENT, vecZExtent);
-				jsonTileInfo.Add(SCPS_JSON_TILE_BBOX, jsonBBox);
+
+				//版本升级，包围盒标签的大小写不同
+				wstring strBoxKey = (GREATER_OR_EQUAL(m_fVersion, S3MB_VERSIONV3_0_1)) ? SCPS_JSON_TILE_BBOX2 : SCPS_JSON_TILE_BBOX;
+				jsonTileInfo.Add(strBoxKey, jsonBBox);
 			}
 			else
 			{
@@ -479,7 +517,7 @@ namespace S3MB
 			jsonTileInfos.Add(jsonTileInfo);
 		}
 
-		wstring strTilesKey = (GREATER_OR_EQUAL(m_fVersion, S3MB_VERSIONV3_0_1)) ? SCPS_JSON_ROOTTILES : SCPS_JSON_TILES;
+		wstring strTilesKey = (GREATER_OR_EQUAL(m_fVersion, S3MB_VERSIONV3)) ? SCPS_JSON_ROOTTILES : SCPS_JSON_TILES;
 		jsonHeader.Add(strTilesKey, jsonTileInfos);
 
 		// Extensions

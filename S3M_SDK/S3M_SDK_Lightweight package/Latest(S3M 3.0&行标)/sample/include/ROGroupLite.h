@@ -94,6 +94,9 @@ public:
 
 	// 创建材质
 	static Material* CreateMaterial(wstring textureDataName);
+
+	// 填充纹理
+	static void FillUnuseTex(VertexDataPackage* pPackage);
 };
 
 #endif

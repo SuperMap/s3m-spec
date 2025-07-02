@@ -22,4 +22,4 @@
 
 4. 若使用精模数据，范例为CBD.html，若使用实例化数据，范例为instance.html。  
 
-另外，关于解析库的VUE使用方法见[VUE使用注意事项](.\VUECaution.md)。
+另外，关于解析库的VUE使用方法见[VUE使用注意事项](./VUECaution.md)。

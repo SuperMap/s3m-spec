@@ -1,0 +1,1 @@
+compiler=Visual Studio  compiler.runtime=MDd build_type=Debug arch=x86_64 compiler.version=15 package_time=Sat May 11 14:06:27 2024

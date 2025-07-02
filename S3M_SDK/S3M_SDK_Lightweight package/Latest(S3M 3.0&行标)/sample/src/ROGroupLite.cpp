@@ -17,13 +17,14 @@ void ROGroupLite::sampleV1()
 	///************************************************************************/
 	//*          1.创建一个立方体数据并写入S3MB文件
 	///************************************************************************/
-	RenderOperationGroup* pGroup;
+	RenderOperationGroup* pGroup = NULL;
 	S3MBWriter m_S3MBWriter;
 
 	// 第一层LOD
 	wstring texPath = U("/image/1.png");
 	pGroup = ROGroupLite::CreateROGroupLiteV1(1, SAMPLEDATA_DIR + texPath);
 	pGroup->ReComputeBoundingBox();// 当包围盒/球不对或无包围盒/球时可调用
+	//m_S3MBWriter.SetVersion(S3MB_VERSIONV3);// 设置版本号
 	m_S3MBWriter.SetROGroup(pGroup);
 	m_S3MBWriter.SetIsChangeTexture(true, true);// DXT压缩
 	wstring strS3mbFile = U("./cube1.s3mb");
@@ -57,6 +58,7 @@ void ROGroupLite::sampleV1()
 	m_S3MBWriter.SetIsChangeTexture(true, true);// DXT压缩
 	strS3mbFile = U("./cube3.s3mb");
 	m_S3MBWriter.WriteFile(strS3mbFile);
+	delete pGroup;
 	m_S3MBWriter.Clear();
 
 
@@ -91,7 +93,7 @@ void ROGroupLite::sampleV1()
 		m_Obb.Merge(pGroup->GetChild(i)->GetOrientedBoundingBox());
 	}
 	S3MBConfig* pS3MBConfig = new S3MBConfig();
-	pS3MBConfig->SetVersion(S3MB_VERSIONV3_0_1);
+	//pS3MBConfig->SetVersion(S3MB_VERSIONV3);// 设置版本号
 	pS3MBConfig->SetAsset(U("SuperMap"));
 
 	pS3MBConfig->SetPosition(m_Position);
@@ -133,14 +135,16 @@ void ROGroupLite::sampleV2()
 	//*          1.创建一个立方体数据并写入S3MB文件
 	///************************************************************************/
 	
-	RenderOperationGroup* pGroup;
+	RenderOperationGroup* pGroup = NULL;
 	pGroup = ROGroupLite::CreateROGroupLiteV2(1);
 	S3MBWriter m_S3MBWriter;
+	//m_S3MBWriter.SetVersion(S3MB_VERSIONV3);// 设置版本号
 	pGroup->ReComputeBoundingBox();// 当包围盒/球不对或无包围盒/球时可调用
 	m_S3MBWriter.SetROGroup(pGroup);
 	m_S3MBWriter.SetIsChangeTexture(true, true);// DXT压缩
 	wstring strS3mbFileWrite = U("./sampleV2.s3mb");
 	m_S3MBWriter.WriteFile(strS3mbFileWrite);
+	delete pGroup;
 	m_S3MBWriter.Clear();
 
 
@@ -153,7 +157,7 @@ void ROGroupLite::sampleV2()
 	m_S3MBReaderRo.ReadFile(strS3MBFileRead);
 	m_S3MBReaderRo.OutputSkeletonInfoToConsole();
 	pGroup = m_S3MBReaderRo.GetRenderOperationGroup();
-	m_S3MBReaderRo.Clear();
+	pGroup->ReComputeBoundingBox();
 
 
 	//////////////////////生成SCP文件//////////////////
@@ -170,7 +174,7 @@ void ROGroupLite::sampleV2()
 	}
 	///生成SCP文件//////////////////
 	S3MBConfig* pS3MBConfig = new S3MBConfig();
-	pS3MBConfig->SetVersion(S3MB_VERSIONV3_0_1);
+	//pS3MBConfig->SetVersion(S3MB_VERSIONV3);// 设置版本号
 	pS3MBConfig->SetAsset(U("SuperMap"));
 
 	pS3MBConfig->SetPosition(m_Position);
@@ -639,6 +643,9 @@ Skeleton* ROGroupLite::CreateSkeleton(MeshParamInfo& meshInfo, bool hasPBR/* = f
 	}
 #pragma endregion
 
+	// 如果生成的数据需要在超图平台加载，那么构建骨架的时候要调用此方法，如果在自己的平台加载则不需要调用此方法
+	FillUnuseTex(pSkeleton->m_pVertexDataPackage);
+
 	pSkeleton->ComputerBoundingBox();
 	return pSkeleton;
 }
@@ -707,5 +714,19 @@ Material* ROGroupLite::CreateMaterial(wstring textureDataName)
 	return pMaterial3D;
 }
 
+void ROGroupLite::FillUnuseTex(VertexDataPackage* pPackage)
+{
+	if (pPackage == NULL)
+	{
+		return;
+	}
 
+	for (int i = 0; i < 2; i++)
+	{
+		if (pPackage->m_pTexCoords[i] == NULL)
+		{
+			pPackage->SetTexCoordsNum(i, pPackage->m_nVerticesCount);
+		}
+	}
+}
 

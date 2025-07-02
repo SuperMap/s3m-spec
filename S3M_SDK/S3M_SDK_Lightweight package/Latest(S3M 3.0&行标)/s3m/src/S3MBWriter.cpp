@@ -50,7 +50,7 @@ namespace S3MB
 		m_strJsonMaterials = StringUtil::UTF8_to_UNICODE(strMaterials);
 
 		// Textures
-		S3MBTools::SaveTextures(m_mapTexture, m_streamTexture, m_CompressType, m_bChangeTexture, m_bGenerateMipMap);
+		S3MBTools::SaveTextures(m_mapTexture, m_streamTexture, m_CompressType, m_fVersion, m_bChangeTexture, m_bGenerateMipMap);
 
 		m_bHasIDInfo = S3MBTools::SaveIDInfo(m_mapSkeleton, m_streamIDInfo);
 	}
@@ -140,6 +140,12 @@ namespace S3MB
 
 	bool S3MBWriter::WriteFile(const wstring& filePath)
 	{	
+		if (!EQUAL(m_fVersion, S3MB_VERSIONV3) && !EQUAL(m_fVersion, S3MB_VERSIONV3_0_1))
+		{
+			assert(false);
+			return false;
+		}
+
 		if (filePath.find(L':') == wstring::npos)
 			m_strFilePath = StringUtil::GetAbsolutePath(filePath);
 		else
@@ -151,6 +157,11 @@ namespace S3MB
 			m_streamShell, m_streamSkeleton,m_strJsonMaterials, m_streamTexture, \
 			m_bHasIDInfo, m_streamIDInfo, m_strExtensions, m_fVersion);
 		
+	}
+
+	void S3MBWriter::SetVersion(const float& fVersion)
+	{
+		m_fVersion = fVersion;
 	}
 
 	void S3MBWriter::SetROGroup(RenderOperationGroup* pGroup)

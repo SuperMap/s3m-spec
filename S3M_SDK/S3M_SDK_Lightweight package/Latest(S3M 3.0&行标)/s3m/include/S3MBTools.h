@@ -105,12 +105,12 @@ namespace S3MB
 		static AlphaMode AlphaModeFromStringV3(wstring strType);
 
 		static void AddressModeFromJson(JsonValue& jsonAddMode, TextureUnitState* pTextureUnitState);
+		static void AddressModeFromJsonV3(JsonValue& jsonAddMode, TextureUnitState* pTextureUnitState);
 
 		// 加载纹理信息
 		static void LoadTexture(MemoryStream& streamTexture, std::map<wstring, TextureDataInfo*>& mapTexture, float fVersion);
 		static void LoadTextureData(MemoryStream& streamTexture, TextureData* pTextureData, float fVersion);
 		static void ProcessTextureData(TextureData* pTextureData, TextureCompressType nCompressType, bool bGenerateMipmap = true);
-		static void ToStandardType(TextureCompressType& eCompressType, PixelFormat& eFormat, unsigned nCompressType, unsigned nFormat);
 
 		// 加载shell信息
 		static void LoadShell(MemoryStream& streamShell, RenderOperationGroup* pROGroup, float fVersion = S3MB_VERSIONV3_0_1);
@@ -150,27 +150,33 @@ namespace S3MB
 		// 保存纹理坐标
 		static bool SaveTextureCoords(VertexDataPackage* pVertexDataPack, MemoryStream& stream);
 		// 保存实例化信息
-		static bool SaveInstanceInfo(VertexDataPackage* pVertexDataPack, MemoryStream& stream);
+		static bool SaveInstanceInfo(VertexDataPackage* pVertexDataPack, MemoryStream& stream, float fVersion);
 
 		// 保存材质信息
 		static void SaveMaterial(std::map<wstring, Material*>& mapMaterial, JsonValue& jsonMaterials, float fVersion);
 		static void MaterialToJson(Material* pMaterial, JsonValue& jsonMaterial, float fVersion);
 		// pMaterial转json信息
 		static void TechniqueToJson(const wstring strMaterialName, Technique* pTechnique, JsonValue& jsonContent,float fVersion);
+		static void TechniqueToJsonV3(const wstring strMaterialName, Technique* pTechnique, JsonValue& jsonContent);
 		static wstring MaterialTypeToString(MaterialType emType);
+		static wstring MaterialParamTypeToString(MaterialParamType emType);
 		static wstring CullModeToString(CullingMode emType);
+		static wstring CullModeToStringV3(CullingMode emType);
 		// PRB转json信息
 		static void PBRToJson(PBRParams* pPBR, JsonValue& jsonPBR);
 		static wstring AlphaModeToString(AlphaMode emType);
+		static wstring AlphaModeToStringV3(AlphaMode emType);
 		// pTextureUnitState转json信息
-		static void TUSToJson(TextureUnitState* pTextureUnitState, JsonValue& jsonMaterial);
+		static void TUSToJson(TextureUnitState* pTextureUnitState, JsonValue& jsonTexture);
+		static void TUSToJsonV3(TextureUnitState* pTextureUnitState, JsonValue& jsonTexture);
 		static void AddressModeToJson(TextureUnitState* pTextureUnitState, JsonValue& jsonAddMode);
+		static void AddressModeToJsonV3(TextureUnitState* pTextureUnitState, JsonValue& jsonAddMode);
 
 		static void SaveTextures(std::map<wstring, TextureDataInfo*>& mapTexture,MemoryStream& streamTexture,
-			unsigned int nCompressType, bool bTextureChange = true, bool bGenerateMipmap = true);
+			unsigned int nCompressType, float fVersion, bool bTextureChange = true, bool bGenerateMipmap = true);
 		// 纹理数据保存
 		static void SaveTextureData(TextureData* pTextureData, \
-			MemoryStream& streamTexture, unsigned int nCompressType, bool bIsChangeTexture = true, bool bGenerateMipmap = true);
+			MemoryStream& streamTexture, unsigned int nCompressType, float fVersion, bool bIsChangeTexture = true, bool bGenerateMipmap = true);
 		// 纹理压缩处理
 		static void ProcessTextureData(TextureData* pTextureData, unsigned int nCompressType, bool bGenerateMipmap = true);
 
@@ -221,6 +227,10 @@ namespace S3MB
 			// 顶点索引
 			static bool LoadIndexPackages(MemoryStream& stream, vector<IndexPackage*>& vecIndexPackage, float fVersion = S3MB_VERSIONV3_0_1);
 			static bool SaveIndexPackages(vector<IndexPackage*>& vecIndexPackage, MemoryStream& stream, float fVersion = S3MB_VERSIONV3_0_1);
+
+			// 纹理压缩类型兼容
+			static void ToStandardType(TextureCompressType& eStdCompressType, PixelFormat& eStdFormat, unsigned int nCompressType, unsigned int nFormat);
+			static void FromStandardType(TextureCompressType eStdCompressType, PixelFormat eStdFormat, unsigned int& nCompressType, unsigned int& nFormat);
 	};
 }
 

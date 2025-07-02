@@ -1,0 +1,14 @@
+prefix=${pcfiledir}/../..
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+modules=1
+
+Name: libXML
+Version: 2.14.0
+Description: libXML library version2.
+Requires.private: 
+Libs: -L${libdir} -lxml2 
+Libs.private:    -lws2_32 -lbcrypt  
+Cflags: -I${includedir}/libxml2 
+Cflags.private: -DLIBXML_STATIC

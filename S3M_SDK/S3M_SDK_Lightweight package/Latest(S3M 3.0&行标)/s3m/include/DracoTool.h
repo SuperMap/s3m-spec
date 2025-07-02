@@ -102,6 +102,8 @@ namespace S3MB
 		DracoAttributeInfo m_normalInfo;
 		// 压缩后在dracoMesh中顶点颜色属性的UniqueId
 		DracoAttributeInfo m_colorInfo;
+		// 压缩后在dracoMesh中顶点secondColor属性的UniqueId
+		DracoAttributeInfo m_secondColorInfo;
 		// 压缩后在dracoMesh中顶点纹理坐标属性的UniqueId
 		DracoAttributeInfo m_texCoordInfo[SMSCN_MAX_TEXTURE_COORD_SETS];
 		// 压缩后在dracoMesh中自定义属性的UniqueId

@@ -31,5 +31,4 @@ private:
 	QComboBox* m_verCompBox;
 	QPushButton* m_confirmButton;
 	QProgressDialog* m_progressDialog;
-    QTextCodec* codec = QTextCodec::codecForName("GBK");
 };

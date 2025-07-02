@@ -15,6 +15,17 @@
 
 using namespace S3MB;
 QTextCodec* codec1 = QTextCodec::codecForName("GBK");
+#ifdef WIN32
+QString t1 = "3DTiles转S3MB";
+QString t2 = "S3MB转3DTiles";
+QString t3 = "OSGB转S3MB";
+QString t4 = "OBJ转S3MB";
+#else
+QString t1 = codec1->toUnicode("3DTiles转S3MB");
+QString t2 = codec1->toUnicode("S3MB转3DTiles");
+QString t3 = codec1->toUnicode("OSGB转S3MB");
+QString t4 = codec1->toUnicode("OBJ转S3MB");
+#endif
 
 S3MBToolkit::S3MBToolkit(QWidget *parent)
 	: QMainWindow(parent)
@@ -29,26 +40,31 @@ S3MBToolkit::S3MBToolkit(QWidget *parent)
 	vctLayout->addSpacing(20);
 
 	QLabel* label = new QLabel(this);
-    label->setText(codec1->toUnicode("请选择工具:"));
+	QString title;
+#ifdef WIN32
+	title = "请选择工具:";
+#else
+	title = codec1->toUnicode("请选择工具:");
+#endif
+    label->setText(title);
 	horLayout->addWidget(label);
 
 	QPushButton* button3DTilesToS3MB = new QPushButton(this);
-    button3DTilesToS3MB->setText(codec1->toUnicode("3DTiles转S3MB"));
+    button3DTilesToS3MB->setText(t1);
     connect(button3DTilesToS3MB, SIGNAL(clicked()), this, SLOT(handle3DTilesToS3MBClickedEvent()));
 	vctLayout->addWidget(button3DTilesToS3MB);
-
 	QPushButton* buttonS3MBTo3DTiles = new QPushButton(this);
-    buttonS3MBTo3DTiles->setText(codec1->toUnicode("S3MB转3DTiles"));
+    buttonS3MBTo3DTiles->setText(t2);
     connect(buttonS3MBTo3DTiles, SIGNAL(clicked()), this, SLOT(handleS3MBTo3DTilesClickedEvent()));
 	vctLayout->addWidget(buttonS3MBTo3DTiles);
 
 	QPushButton* buttonOSGBToS3MB = new QPushButton(this);
-    buttonOSGBToS3MB->setText(codec1->toUnicode("OSGB转S3MB"));
+    buttonOSGBToS3MB->setText(t3);
     connect(buttonOSGBToS3MB, SIGNAL(clicked()), this, SLOT(handleOSGBToS3MBClickedEvent()));
 	vctLayout->addWidget(buttonOSGBToS3MB);
 
 	QPushButton* buttonOBJToS3MB = new QPushButton(this);
-    buttonOBJToS3MB->setText(codec1->toUnicode("OBJ转S3MB"));
+    buttonOBJToS3MB->setText(t4);
     connect(buttonOBJToS3MB, SIGNAL(clicked()), this, SLOT(handleOBJToS3MBClickedEvent()));
 	vctLayout->addWidget(buttonOBJToS3MB);
 
@@ -62,7 +78,7 @@ S3MBToolkit::S3MBToolkit(QWidget *parent)
 void S3MBToolkit::handle3DTilesToS3MBClickedEvent()
 {
 	Dialog3DTilesToS3MB dialog;
-    dialog.setWindowTitle(codec1->toUnicode("3DTiles转S3MB"));
+    dialog.setWindowTitle(t1);
 	dialog.setFixedSize(526, 400);
 	dialog.exec();
 }
@@ -70,7 +86,7 @@ void S3MBToolkit::handle3DTilesToS3MBClickedEvent()
 void S3MBToolkit::handleS3MBTo3DTilesClickedEvent()
 {
 	DialogS3MBTo3DTiles dialog;
-    dialog.setWindowTitle(codec1->toUnicode("S3MB转3DTiles"));
+    dialog.setWindowTitle(t2);
 	dialog.setFixedSize(526, 400);
 	dialog.exec();
 }
@@ -78,7 +94,7 @@ void S3MBToolkit::handleS3MBTo3DTilesClickedEvent()
 void S3MBToolkit::handleOSGBToS3MBClickedEvent()
 {
 	DialogOSGBToS3MB dialog;
-    dialog.setWindowTitle(codec1->toUnicode("OSGB转S3MB"));
+    dialog.setWindowTitle(t3);
 	dialog.setFixedSize(526, 400);
 	dialog.exec();
 }
@@ -86,7 +102,7 @@ void S3MBToolkit::handleOSGBToS3MBClickedEvent()
 void S3MBToolkit::handleOBJToS3MBClickedEvent()
 {
 	DialogOBJToS3MB dialog;
-    dialog.setWindowTitle(codec1->toUnicode("OBJ转S3MB"));
+    dialog.setWindowTitle(t4);
 	dialog.setFixedSize(526, 400);
 	dialog.exec();
 }
