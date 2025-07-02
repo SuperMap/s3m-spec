@@ -94,7 +94,7 @@ export default `
     const float SHIFT_RIGHT8 = 1.0 / 256.0;
     const float SHIFT_RIGHT4 = 1.0 / 16.0;
     const float SHIFT_LEFT4 = 16.0;
-    void getTextureMatrixFromZValue(in float nZ, inout float XTran, inout float YTran, inout float scale)
+    void getTextureMatrixFromZValue( float nZ, inout float XTran, inout float YTran, inout float scale)
     {
         if(nZ <= 0.0)
         {
@@ -155,7 +155,7 @@ export default `
         vec4 value = textureValue; 
         return value; 
     } 
-    void getTexAtlasParameter(in vec4 xywh, in vec2 textureDim, inout vec2 translate, inout vec2 scale, inout vec2 texSize, inout float maxMipLevel)
+    void getTexAtlasParameter( vec4 xywh,  vec2 textureDim, inout vec2 translate, inout vec2 scale, inout vec2 texSize, inout float maxMipLevel)
     {
         float width = xywh.z;
         float height  = xywh.w;

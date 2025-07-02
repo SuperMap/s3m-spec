@@ -38,6 +38,9 @@ S3MCreateShaderProgramJob.prototype.execute = function(){
     const attributeLocations = model.attributeLocations;
     const material = model.material;
     const vertexPackage = model.vertexPackage;
+    if(!context.webgl2 && Cesium.VERSION.length > 4 && Number(Cesium.VERSION.slice(2,5)) >= 102){  //兼容高版本webgl1.0
+        fs = fs.replace(/gl_FragColor/g, "out_FragColor");
+    }
     if(context.webgl2 && Cesium.VERSION.length > 4){
         const prefixVertex = [
             'precision mediump sampler2DArray;',

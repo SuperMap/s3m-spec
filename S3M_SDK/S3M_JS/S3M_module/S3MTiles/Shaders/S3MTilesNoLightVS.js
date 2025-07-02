@@ -52,7 +52,7 @@ export default `
     const float SHIFT_RIGHT8 = 1.0 / 256.0;
     const float SHIFT_RIGHT4 = 1.0 / 16.0;
     const float SHIFT_LEFT4 = 16.0;
-    void getTextureMatrixFromZValue(in float nZ, inout float XTran, inout float YTran, inout float scale)
+    void getTextureMatrixFromZValue( float nZ, inout float XTran, inout float YTran, inout float scale)
     {
         if(nZ <= 0.0)
         {

@@ -39,7 +39,7 @@ export default `
     uniform float uTexture1Width;
     varying vec4 vTexMatrix2;
 #endif 
-    void calculateMipLevel(in vec2 inTexCoord, in float vecTile, in float fMaxMip, inout float mipLevel)
+    void calculateMipLevel( vec2 inTexCoord,  float vecTile,  float fMaxMip, inout float mipLevel)
     {
         vec2 dx = dFdx(inTexCoord * vecTile);
         vec2 dy = dFdy(inTexCoord * vecTile);
@@ -54,7 +54,7 @@ export default `
         mipLevel = clamp(mipLevel, 0.0, fMaxMip - 1.62);
     }
 
-    void calculateMipLevel(in vec2 inTexCoord, in vec2 vecTile, in float fMaxMip, inout float mipLevel)
+    void calculateMipLevel( vec2 inTexCoord,  vec2 vecTile,  float fMaxMip, inout float mipLevel)
     {
         vec2 dx = dFdx(inTexCoord * vecTile.x);
         vec2 dy = dFdy(inTexCoord * vecTile.y);
@@ -69,7 +69,7 @@ export default `
         mipLevel = clamp(mipLevel, 0.0, fMaxMip - 1.62);
     }
     
-    void calculateTexCoord(in vec3 inTexCoord, in float scale, in float XTran, in float YTran, in float fTile, in float mipLevel, inout vec2 outTexCoord)
+    void calculateTexCoord( vec3 inTexCoord,  float scale,  float XTran,  float YTran,  float fTile,  float mipLevel, inout vec2 outTexCoord)
     {
         if(inTexCoord.z < -9000.0)
         {
@@ -245,7 +245,7 @@ export default `
         return roughnessSquared / (M_PI * f * f);
     }
 
-    vec3 computeNormal(in vec3 oriVertex)
+    vec3 computeNormal( vec3 oriVertex)
     {
         vec3 normal = cross(vec3(dFdx(oriVertex.x), dFdx(oriVertex.y), dFdx(oriVertex.z)), vec3(dFdy(oriVertex.x), dFdy(oriVertex.y), dFdy(oriVertex.z)));
         normal = normalize(normal);
