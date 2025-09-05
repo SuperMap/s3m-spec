@@ -25,12 +25,30 @@ namespace S3MB
 		//! %Y Year with century, as decimal number
 		string Format(const char* pFormat) const;
 
+		// 按照指定格式生成日期和时间
+		// strDateTime 日期和时间值
+		// strFormat 日期和时间的格式
+		// 例如: strDateTime为"1487-05-29 14:25:59", strFormat为"%Y-%m-%d %H:%M:%S",
+		// 最后获取的Time为: 1487年05月29日 14时25分59秒
+		bool Parse(const std::string& strDateTime, const std::string& strFormat);
+
 		// 把double数值转化为tm结构
 		void GetDateTime(struct tm& tmDest) const;
 
 	private:
 		// 获取标准的tm结构
 		void GetStandardTm(struct tm& tmDest) const;
+		// 从当前位置计算第一个不是Number的长度
+		int GetNumberPos(const std::string& strDateTime, int nCurrentPos);
+		// 把年月日时分秒转化为double数值
+		// nYear 年
+		// nMonth 月
+		// nDay 日
+		// nHour 小时
+		// nMin 分钟
+		// nSec 秒
+		void SetDateTime(int nYear, int nMonth, int nDay, int nHour, int nMin, int nSec);
+
 		double m_time;
 	};
 

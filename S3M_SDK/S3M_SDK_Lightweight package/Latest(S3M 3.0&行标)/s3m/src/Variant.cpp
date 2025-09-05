@@ -52,6 +52,260 @@ namespace S3MB
 		}
 		return strResult;
 	}
+
+	bool Time::Parse(const std::string& strDateTime, const std::string& strFormat)
+	{
+		if (strDateTime.empty() || strFormat.empty())
+		{
+			return false;
+		}
+
+		char* pCh = (char*)strFormat.c_str();
+		int nPos = 0, nPosDateTime = 0;
+		struct tm atime;
+		atime.tm_year = 1899;
+		atime.tm_mon = 12;
+		atime.tm_mday = 30;
+		atime.tm_hour = 0;
+		atime.tm_min = 0;
+		atime.tm_sec = 0;
+		int nLen = 0;
+		while (nPos < strFormat.size())
+		{
+			switch (*pCh)
+			{
+			case '%':
+				break;
+			case 'Y':
+			{
+				nLen = GetNumberPos(strDateTime, nPosDateTime);
+				if (nLen > 0)
+				{
+					atime.tm_year = std::atoi(strDateTime.substr(nPosDateTime, nLen).c_str());
+					nPosDateTime += nLen;
+				}
+				break;
+			}
+			case 'y':
+			{
+				nLen = GetNumberPos(strDateTime, nPosDateTime);
+				if (nLen > 0)
+				{
+					atime.tm_year = std::atoi(strDateTime.substr(nPosDateTime, nLen).c_str());
+					nPosDateTime += nLen;
+				}
+				break;
+			}
+			case 'm':
+			{
+				nLen = GetNumberPos(strDateTime, nPosDateTime);
+				if (nLen > 0)
+				{
+					atime.tm_mon = std::atoi(strDateTime.substr(nPosDateTime, nLen).c_str());
+					nPosDateTime += nLen;
+				}
+				break;
+			}
+			case 'd':
+			{
+				nLen = GetNumberPos(strDateTime, nPosDateTime);
+				if (nLen > 0)
+				{
+					atime.tm_mday = std::atoi(strDateTime.substr(nPosDateTime, nLen).c_str());
+					nPosDateTime += nLen;
+				}
+				break;
+			}
+			case 'X':
+			{
+				atime.tm_hour = std::atoi(strDateTime.substr(nPosDateTime, 2).c_str());
+				nPosDateTime += 3;
+				atime.tm_min = std::atoi(strDateTime.substr(nPosDateTime, 2).c_str());
+				nPosDateTime += 3;
+				atime.tm_sec = std::atoi(strDateTime.substr(nPosDateTime, 2).c_str());
+				nPosDateTime += 2;
+				break;
+			}
+			case 'B':
+			{
+				int nCount = 0;
+				char* p = (char*)(strDateTime.c_str());
+				if (nPosDateTime < strDateTime.size())
+				{
+					p += nPosDateTime;
+					while ((*p >= 'A' && *p <= 'Z') ||
+						(*p >= 'a' && *p <= 'z'))
+					{
+						nCount++;
+						p++;
+					}
+
+					std::string strTemp = strDateTime.substr(nPosDateTime, nCount);
+
+					if (strTemp == "January")
+					{
+						atime.tm_mon = 0;
+					}
+					else if (strTemp == "February")
+					{
+						atime.tm_mon = 1;
+					}
+					else if (strTemp == "March")
+					{
+						atime.tm_mon = 2;
+					}
+					else if (strTemp == "April")
+					{
+						atime.tm_mon = 3;
+					}
+					else if (strTemp == "May")
+					{
+						atime.tm_mon = 4;
+					}
+					else if (strTemp == "June")
+					{
+						atime.tm_mon = 5;
+					}
+					else if (strTemp == "July")
+					{
+						atime.tm_mon = 6;
+					}
+					else if (strTemp == "August")
+					{
+						atime.tm_mon = 7;
+					}
+					else if (strTemp == "September")
+					{
+						atime.tm_mon = 8;
+					}
+					else if (strTemp == "October")
+					{
+						atime.tm_mon = 9;
+					}
+					else if (strTemp == "November")
+					{
+						atime.tm_mon = 10;
+					}
+					else if (strTemp == "December")
+					{
+						atime.tm_mon = 11;
+					}
+					else
+					{
+						return false;
+					}
+
+					atime.tm_mon++;
+					nPosDateTime += nCount;
+				}
+				break;
+			}
+			case 'b':
+			{
+				std::string strTemp = strDateTime.substr(nPosDateTime, 3);
+
+				if (strTemp == "Jan")
+				{
+					atime.tm_mon = 0;
+				}
+				else if (strTemp == "Feb")
+				{
+					atime.tm_mon = 1;
+				}
+				else if (strTemp == "Mar")
+				{
+					atime.tm_mon = 2;
+				}
+				else if (strTemp == "Apr")
+				{
+					atime.tm_mon = 3;
+				}
+				else if (strTemp == "May")
+				{
+					atime.tm_mon = 4;
+				}
+				else if (strTemp == "Jun")
+				{
+					atime.tm_mon = 5;
+				}
+				else if (strTemp == "Jul")
+				{
+					atime.tm_mon = 6;
+				}
+				else if (strTemp == "Aug")
+				{
+					atime.tm_mon = 7;
+				}
+				else if (strTemp == "Sep")
+				{
+					atime.tm_mon = 8;
+				}
+				else if (strTemp == "Oct")
+				{
+					atime.tm_mon = 9;
+				}
+				else if (strTemp == "Nov")
+				{
+					atime.tm_mon = 10;
+				}
+				else if (strTemp == "Dec")
+				{
+					atime.tm_mon = 11;
+				}
+				else
+				{
+					return false;
+				}
+				nPosDateTime += 3;
+				break;
+			}
+			case 'H':
+			{
+				nLen = GetNumberPos(strDateTime, nPosDateTime);
+				if (nLen > 0)
+				{
+					atime.tm_hour = std::atoi(strDateTime.substr(nPosDateTime, nLen).c_str());
+					nPosDateTime += nLen;
+				}
+				break;
+			}
+			case 'M':
+			{
+				nLen = GetNumberPos(strDateTime, nPosDateTime);
+				if (nLen > 0)
+				{
+					atime.tm_min = std::atoi(strDateTime.substr(nPosDateTime, nLen).c_str());
+					nPosDateTime += nLen;
+				}
+				break;
+			}
+			case 'S':
+			{
+				nLen = GetNumberPos(strDateTime, nPosDateTime);
+				if (nLen > 0)
+				{
+					atime.tm_sec = std::atoi(strDateTime.substr(nPosDateTime, nLen).c_str());
+					nPosDateTime += nLen;
+				}
+				break;
+			}
+			case '-':
+			case ' ':
+			case ':':
+			case ',':
+				nPosDateTime++;
+				break;
+			default:
+				return false;
+			}
+			pCh++;
+			nPos++;
+		}
+
+		SetDateTime(atime.tm_year, atime.tm_mon, atime.tm_mday, atime.tm_hour, atime.tm_min, atime.tm_sec);
+		return true;
+	}
+
 	// 得到标准的tm结构
 	void Time::GetStandardTm(struct tm& tmDest) const
 	{
@@ -63,11 +317,59 @@ namespace S3MB
 		tmDest.tm_yday -= 1;     // day of year is 0-based
 	}
 
+	int Time::GetNumberPos(const std::string& strDateTime, int nCurrentPos)
+	{
+		int nPos = 0;
+		while (nCurrentPos < strDateTime.size() && '0' <= strDateTime.at(nCurrentPos) && strDateTime.at(nCurrentPos) <= '9')
+		{
+			nPos++;
+			nCurrentPos++;
+		}
+		return nPos;
+	}
+
 	int g_nMonthDays[13] =
 	{ 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365 };
 	#define DATA_MIN                (-657434L)  
 	#define DATA_MAX               2958465L    
 	#define SECOND_HALF             (1.0/172800.0)
+
+	void Time::SetDateTime(int nYear, int nMonth, int nDay,
+		int nHour, int nMin, int nSec)
+	{
+		if (nMonth < 1 || nYear > 9999 || nMonth > 12)
+		{
+			return;
+		}
+
+		bool bLeapYear = ((nYear & 3) == 0) && ((nYear % 100) != 0 || (nYear % 400) == 0);
+
+		int nDaysInMonth = g_nMonthDays[nMonth] - g_nMonthDays[nMonth - 1] +
+			((bLeapYear && nDay == 29 && nMonth == 2) ? 1 : 0);
+
+		if (nHour > 23 || nMin > 59 || nDay < 1 || nDay > nDaysInMonth || nSec > 59)
+		{
+			return;
+		}
+
+		long nDate = 0;
+		double dblTime = 0;
+
+		nDate = nYear * 365L + nYear / 4 - nYear / 100 + nYear / 400 +
+			g_nMonthDays[nMonth - 1] + nDay;
+
+		if (nMonth <= 2 && bLeapYear)
+			--nDate;
+
+		nDate -= 693959L;
+
+		dblTime = (((long)nHour * 3600L) +
+			((long)nMin * 60L) +
+			((long)nSec)) / 86400.0;
+
+		m_time = (double)nDate + ((nDate >= 0) ? dblTime : -dblTime);
+	}
+
 	void Time::GetDateTime(struct tm& destTime) const
 	{
 		if (m_time > DATA_MAX || m_time < DATA_MIN)

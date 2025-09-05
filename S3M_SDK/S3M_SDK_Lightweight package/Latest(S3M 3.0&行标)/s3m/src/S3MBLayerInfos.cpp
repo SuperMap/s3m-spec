@@ -370,21 +370,27 @@ namespace S3MB
 			break;
 			case FT_Date:
 			{
-				double temp = atof(strValue.c_str());
-				pByte = new unsigned char[sizeof(temp)];
-				memcpy(pByte, &temp, sizeof(temp));
+				Time time(0.0);
+				time.Parse(strValue, "%Y-%m-%d");
+				double dTime = time.GetTime();
+				pByte = new unsigned char[sizeof(dTime)];
+				memcpy(pByte, &dTime, sizeof(dTime));
 			}
 			break;
 			case FT_Time:
 			{
-				double temp = atof(strValue.c_str());
-				pByte = new unsigned char[sizeof(temp)];
-				memcpy(pByte, &temp, sizeof(temp));
+				Time time(0.0);
+				time.Parse(strValue, "%H:%M:%S");
+				double dTime = time.GetTime();
+				pByte = new unsigned char[sizeof(dTime)];
+				memcpy(pByte, &dTime, sizeof(dTime));
 			}
 			break;
 			case FT_TimeStamp:
 			{
-				double dTime = atof(strValue.c_str());
+				Time time(0.0);
+				time.Parse(strValue, "%Y-%m-%d %H:%M:%S");
+				double dTime = time.GetTime();
 				pByte = new unsigned char[sizeof(dTime)];
 				memcpy(pByte, &dTime, sizeof(dTime));
 			}
@@ -623,7 +629,7 @@ namespace S3MB
 		ofs.write((char*)&nZippedSize, sizeof(unsigned int));
 		ofs.write((char*)pZippedData, nZippedSize);
 		ofs.close();
-		delete[] pZippedData;
+		delete pZippedData;
 		pZippedData = nullptr;
 
 		return true;
