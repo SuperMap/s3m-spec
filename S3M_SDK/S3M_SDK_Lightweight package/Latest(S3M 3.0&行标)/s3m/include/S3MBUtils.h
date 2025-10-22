@@ -37,10 +37,18 @@ namespace S3MB
 
 		// 去除左边指定字符串
 		static wstring TrimLeft(wstring& str, wchar_t* pStr = NULL);
+		static std::wstring TrimLeftString(std::wstring& strOri, const std::wstring& strDelete);
 
 		// 去除右边指定字符串
 		static wstring TrimRight(wstring& str, wchar_t* pStr = NULL);
 		static wstring TrimRight(wstring& str, wchar_t ch);
+		static std::wstring TrimRightString(std::wstring& strOri, const std::wstring& strDelete);
+
+		// 替换字符串
+		// strOri 源字符串
+		// strOld 需要替换掉的字符串
+		// strNew 用来替换的字符串
+		static int Replace(std::wstring& strOri, const std::wstring& strOld, const std::wstring& strNew);
 
 		// unicode编码转化为utf8编码
 		static std::string UNICODE_to_UTF8(const wstring& str);
@@ -53,6 +61,11 @@ namespace S3MB
 
 		// utf8编码转化为ansi编码
 		static std::string UTF8_to_ANSI(const string& str);
+
+		// unicode编码转为ansi编码
+		static std::string UnicodeToANSI(const wstring& str);
+		// ansi编码转为unicode编码
+		static std::wstring ANSIToUnicode(const string& str);
 
 		// 获取字符串长度
 		static int GetStrLength(const wchar_t* pStr);
@@ -94,8 +107,6 @@ namespace S3MB
 		static bool IsFileExist(wstring path);
 #ifndef WIN32
         static std::string wchar_to_char(const wchar_t* str);
-        static std::wstring ANSIToUnicode(const string& str);
-        static std::string UnicodeToANSI(const wstring& str);
         static int GetModuleFileName(void* Fun, char* &sFilePath);
 #endif
 	};

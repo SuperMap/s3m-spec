@@ -151,6 +151,8 @@ namespace S3MB
 		// 获取变体值
 		const VarValue& GetValue() const;
 
+		// 转换为bool类型
+		bool ToBoolean() const;
 		// 转换为double类型
 		double ToDouble() const;
 		// 转换为int32 类型

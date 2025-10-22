@@ -226,6 +226,30 @@ namespace S3MB
 		return str;
 	}
 
+	std::wstring StringUtil::TrimLeftString(std::wstring& strOri, const std::wstring& strDelete)
+	{
+		int nLength = strOri.length();
+		int nLengthDelete = strDelete.length();
+		if (nLengthDelete > nLength || nLengthDelete == 0)
+		{
+			return strOri;
+		}
+
+		wchar_t* pBuffer = (wchar_t*)strOri.c_str();
+		wchar_t* pBufferDelete = (wchar_t*)strDelete.c_str();
+		wchar_t* pBufferTemp = pBuffer;
+		while (memcmp(pBufferTemp, pBufferDelete, sizeof(wchar_t)*nLengthDelete) == 0)
+		{
+			pBufferTemp = pBufferTemp + nLengthDelete;
+			if (pBufferTemp > pBuffer + nLength - nLengthDelete)
+			{
+				break;
+			}
+		}
+		strOri.erase(0, pBufferTemp - pBuffer);
+		return strOri;
+	}
+
 	std::wstring StringUtil::TrimRight(wstring& str, wchar_t* pStr /*= NULL*/)
 	{
 		if (pStr == NULL)
@@ -295,6 +319,43 @@ namespace S3MB
         str = str.erase(nLength - nCount, str.size());
 #endif
 		return str;
+	}
+
+	std::wstring StringUtil::TrimRightString(std::wstring& strOri, const std::wstring& strDelete)
+	{
+		int nLength = strOri.length();
+		int nLengthDelete = strDelete.length();
+		if (nLengthDelete > nLength || nLengthDelete == 0)
+		{
+			return strOri;
+		}
+
+		wchar_t* pBuffer = (wchar_t*)strOri.c_str();
+		wchar_t* pBufferDelete = (wchar_t*)strDelete.c_str();
+		wchar_t* pBufferTemp = pBuffer + nLength - nLengthDelete;
+		while (memcmp(pBufferTemp, pBufferDelete, sizeof(wchar_t)*nLengthDelete) == 0)
+		{
+			pBufferTemp = pBufferTemp - nLengthDelete;
+			if (pBufferTemp < pBuffer)
+			{
+				break;
+			}
+		}
+		strOri.erase(pBufferTemp + nLengthDelete - pBuffer, pBuffer + nLength - pBufferTemp + nLengthDelete);
+		return strOri;
+	}
+
+	int StringUtil::Replace(std::wstring& strOri, const std::wstring& strOld, const std::wstring& strNew)
+	{
+		int nCount = 0;
+		size_t nStartPos = 0;
+		while ((nStartPos = strOri.find(strOld, nStartPos)) != std::wstring::npos)
+		{
+			strOri.replace(nStartPos, strOld.length(), strNew);
+			nStartPos += strNew.length();
+			nCount++;
+		}
+		return nCount;
 	}
 
 	std::string StringUtil::UNICODE_to_UTF8(const wstring& str)
@@ -374,39 +435,51 @@ namespace S3MB
 #endif
 	}
 
+	std::string StringUtil::UnicodeToANSI(const wstring& str)
+	{
+#ifdef WIN32
+		std::string strUTF8 = UNICODE_to_UTF8(str);
+		std::string strANSI = UTF8_to_ANSI(strUTF8);
+		return strANSI;
+#else
+		std::string ret;
+		std::mbstate_t state = {};
+		const wchar_t* temp_str = str.c_str();
+		size_t len = std::wcsrtombs(nullptr, &temp_str, 0, &state);
+		if (static_cast<size_t>(-1) != len) {
+			std::unique_ptr<char[]> buff(new char[len + 1]);
+			len = std::wcsrtombs(buff.get(), &temp_str, len, &state);
+			if (static_cast<size_t>(-1) != len) {
+				ret.assign(buff.get(), len);
+			}
+		}
+		return ret;
+#endif
+	}
+
+	std::wstring StringUtil::ANSIToUnicode(const string& str)
+	{
+#ifdef WIN32
+		std::string strUTF8 = ANSI_to_UTF8(str);
+		std::wstring strUnicode = UTF8_to_UNICODE(strUTF8);
+		return strUnicode;
+#else
+		std::wstring ret;
+		std::mbstate_t state = {};
+		const char* temp_str = str.c_str();
+		size_t len = std::mbsrtowcs(nullptr, &temp_str, 0, &state);
+		if (static_cast<size_t>(-1) != len) {
+			std::unique_ptr<wchar_t[]> buff(new wchar_t[len + 1]);
+			len = std::mbsrtowcs(buff.get(), &temp_str, len, &state);
+			if (static_cast<size_t>(-1) != len) {
+				ret.assign(buff.get(), len);
+			}
+		}
+		return ret;
+#endif
+	}
+
 #ifndef WIN32
-    std::wstring StringUtil::ANSIToUnicode(const string& str)
-    {
-        std::wstring ret;
-        std::mbstate_t state = {};
-        const char* temp_str = str.c_str();
-        size_t len = std::mbsrtowcs(nullptr, &temp_str, 0, &state);
-        if(static_cast<size_t>(-1) != len){
-            std::unique_ptr<wchar_t[]> buff(new wchar_t[len+1]);
-            len = std::mbsrtowcs(buff.get(), &temp_str, len, &state);
-            if(static_cast<size_t>(-1) != len){
-                ret.assign(buff.get(), len);
-            }
-        }
-        return ret;
-    }
-
-    std::string StringUtil::UnicodeToANSI(const wstring &str)
-    {
-        std::string ret;
-        std::mbstate_t state = {};
-        const wchar_t* temp_str = str.c_str();
-        size_t len = std::wcsrtombs(nullptr, &temp_str, 0, &state);
-        if(static_cast<size_t>(-1) != len){
-            std::unique_ptr<char[]> buff(new char[len+1]);
-            len = std::wcsrtombs(buff.get(), &temp_str, len, &state);
-            if(static_cast<size_t>(-1) != len){
-                ret.assign(buff.get(), len);
-            }
-        }
-        return ret;
-    }
-
     std::string StringUtil::wchar_to_char(const wchar_t* str)
     {
         int len = 0;
@@ -614,7 +687,7 @@ namespace S3MB
             path = path.substr(3, path.size() - 3);
             strSrcPath = strSrcPath.substr(0, strSrcPath.find_last_of(U("/")));
 #else
-            path = path.erase(0, 2);
+            path = path.erase(0, 3);
             strSrcPath = strSrcPath.erase(strSrcPath.find_last_of(U("/"), strSrcPath.size()));
 #endif
 		}
@@ -835,9 +908,17 @@ namespace S3MB
 	{
 #ifdef WIN32
         int index = filePath.find_last_of(L'.');
+		if (index == -1)
+		{
+			return std::wstring();
+		}
         return filePath.substr(index, filePath.size() - index);
 #else
         int index = filePath.find_last_of(U("."));
+		if (index == -1)
+		{
+			return std::wstring();
+		}
         wstring tempPath = filePath.erase(0, index);
         return tempPath;
 #endif

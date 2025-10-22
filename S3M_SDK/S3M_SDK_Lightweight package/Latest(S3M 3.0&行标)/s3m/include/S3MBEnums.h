@@ -53,6 +53,7 @@ namespace S3MB
 		AT_FLOAT = 1,
 		AT_DOUBLE = 2,
 		AT_16BIT = 3,
+		AT_8BIT = 4,
 	};
 
 	// 数据绘制的方式

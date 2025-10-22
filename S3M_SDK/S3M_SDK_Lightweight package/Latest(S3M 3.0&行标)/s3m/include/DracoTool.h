@@ -136,6 +136,19 @@ namespace S3MB
 		// arrIndexPackage 用来存储解压后的索引数据 [out]
 		// return 成功返回true
 		static bool DracoDecompress(const DracoCompressedInfo& convertParam, const char *pInputData, unsigned int sizeInBytes, bool isPointCloud, unsigned int nVertexAttCount, VertexDataPackage*& pVertexDataPackage, std::vector<IndexPackage*>& arrIndexPackage);
+
+		// 供外部调用的方法。对draco压缩后的数据进行解压缩存储到UGC的顶点和索引结构中返回
+		// vecVertexAttDescript 自定义属性的语义数组
+		// pInputData 输入draco压缩过的数据的指针 [in]
+		// sizeInBytes 压缩数据的字节大小 [in]
+		// isPointCloud 压缩数据是否是点云（无索引） [in]
+		// pVertexDataPackge 用来存储解压后的顶点数据 [out]
+		// vecIndexPackage 用来存储解压后的索引数据 [out]
+		// pFeatureIds id数据 [out]
+		// nFeatureIdCount id数据的字节大小 [out]
+		// 成功返回true
+		static bool DracoDecompress(const std::vector<std::string>& vecVertexAttDescript, const char *pInputData, unsigned int sizeInBytes, bool isPointCloud, VertexDataPackage*& pVertexDataPackage, std::vector<IndexPackage*>& vecIndexPackage, unsigned int*& pFeatureIds, unsigned int& nFeatureIdCount);
+
 	protected:
 		// 供外部调用的方法。对draco压缩后的数据进行解压缩存储到UGC的顶点和索引结构中返回
 		// pInputData 输入draco压缩过的数据的指针 [in]
@@ -172,6 +185,41 @@ namespace S3MB
 			float*& pVertices, unsigned int& nVerticesCount, unsigned short& nVertexDim, float*& pNormals, unsigned int& nNormalCount,
 			unsigned short& nNormalDim, unsigned int *& pVertexColor, unsigned int& nVertexColorCount, float**& pTexCoords,
 			unsigned int*& pTexCoordCount, unsigned short*& pTexCoordDim, void**& pVertexAttData, unsigned short*& pVertexAttDataType, unsigned int*& pVertexAttCount, unsigned short*& pVertexAttDim,
+			unsigned short*& pIndex, unsigned int& nIndexesCount, bool& bUseUint);
+
+		// 供外部调用的方法。对draco压缩后的数据进行解压缩存储到UGC的顶点和索引结构中返回
+		// pInputData 输入draco压缩过的数据的指针 [in]
+		// sizeInBytes 压缩数据的字节大小 [in]
+		// isPointCloud 压缩数据是否是点云（无索引） [in]
+		// vecVertexAttDescript 自定义属性在dracoMesh中的语义数组 [in]
+		// pVertices 用来存储解压后的顶点位置数组 [out]
+		// nVerticesCount 用来存储解压后的顶点位置数量 [out]
+		// nVertexDim 用来存储解压后的顶点位置维度 [out]
+		// pNormals 用来存储解压后的顶点法线数组 [out]
+		// nNormalCount 用来存储解压后的顶点法线数量 [out]
+		// nNormalDim 用来存储解压后的顶点法线维度 [out]
+		// pVertexColor 用来存储解压后的顶点颜色数组 [out]
+		// nVertexColorCount 用来存储解压后的顶点颜色数量 [out]
+		// pSecondColor 用来存储解压后的顶点颜色数组 [out]
+		// nSecondColorCount 用来存储解压后的顶点颜色数量 [out]
+		// pTexCoords 用来存储解压后的顶点纹理坐标的指针数组 [out]
+		// pTexCoordCount 用来存储解压后的顶点纹理坐标数量数组 [out]
+		// pTexCoordDim 用来存储解压后的纹理坐标的维度数组 [out]
+		// pVertexAttData 用来存储解压后的自定义属性的指针数组 [out]
+		// pVertexAttDataType 用来存储解压后的自定义属性数据类型数组 [out]
+		// pVertexAttCount 用来存储解压后的自定义属性数量数组 [out]
+		// pVertexAttDim 用来存储解压后的自定义属性的维度数组 [out]
+		// pIndex 用来存储解压后的索引数组 [out]
+		// nIndexesCount 用来存储解压后的索引数量 [out]
+		// bUseUint 用来存储解压后的索引是否使用Uint类型 [out]
+		static bool DracoDecompressImpl_descript(const char *pInputData, unsigned int sizeInBytes, bool isPointCloud,
+			const std::vector<std::string>& vecVertexAttDescript,
+			float*& pVertices, unsigned int& nVerticesCount, unsigned short& nVertexDim,
+			float*& pNormals, unsigned int& nNormalCount, unsigned short& nNormalDim,
+			unsigned int *& pVertexColor, unsigned int& nVertexColorCount,
+			unsigned int *& pSecondColor, unsigned int& nSecondColorCount,
+			float**& pTexCoords, unsigned int*& pTexCoordCount, unsigned short*& pTexCoordDim,
+			void**& pVertexAttData, unsigned short*& pVertexAttDataType, unsigned int*& pVertexAttCount, unsigned short*& pVertexAttDim,
 			unsigned short*& pIndex, unsigned int& nIndexesCount, bool& bUseUint);
 
 		// 供外部调用的方法。对几何信息进行draco压缩

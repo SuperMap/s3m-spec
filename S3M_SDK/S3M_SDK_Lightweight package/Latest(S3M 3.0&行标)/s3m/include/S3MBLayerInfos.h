@@ -14,6 +14,9 @@ namespace S3MB
 		S3MBFieldInfo();
 		~S3MBFieldInfo();
 
+		// 赋值
+		S3MBFieldInfo& operator=(const S3MBFieldInfo& other);
+
 	public:
 		// 字段类型。
 		FieldType m_nType;
@@ -36,6 +39,9 @@ namespace S3MB
 		S3MBFieldInfos();
 		// 默认析构函数
 		~S3MBFieldInfos();
+
+		// 赋值
+		S3MBFieldInfos& operator=(const S3MBFieldInfos& other);
 
 		void add(S3MBFieldInfo newFieldInfo);
 		size_t GetSize();

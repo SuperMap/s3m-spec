@@ -949,6 +949,76 @@ namespace S3MB
 		return m_value;
 	}
 
+	//! 转换为bool 类型
+	bool Variant::ToBoolean() const
+	{
+		bool nValue = false;
+		switch (m_nType)
+		{
+		case VT_Null:
+			// Do Nothing 
+			break;
+		case VT_Byte:
+		case VT_Boolean:
+			nValue = m_value.bVal;
+			break;
+		case VT_Short:
+			if (m_value.sVal != 0)
+			{
+				nValue = true;
+			}
+			break;
+		case VT_Integer:
+			if (m_value.iVal != 0)
+			{
+				nValue = true;
+			}
+			break;
+		case VT_Long:
+			if (m_value.lVal != 0)
+			{
+				nValue = true;
+			}
+			break;
+		case VT_Float:
+			if (m_value.fVal != 0.0)
+			{
+				nValue = true;
+			}
+			break;
+		case VT_Double:
+			if (m_value.dVal != 0.0)
+			{
+				nValue = true;
+			}
+			break;
+		case VT_Date:
+		case VT_TimeStamp:
+		case VT_Time:
+			if (m_value.tmVal != 0.0)
+			{
+				nValue = true;
+			}
+			break;
+		case VT_Binary:
+			break;
+		case VT_String:
+			if (m_value.binVal.pVal)
+			{
+				std::string* pStr = (std::string*)m_value.binVal.pVal;
+				if (pStr->c_str() == "true")
+				{
+                    nValue = true;
+				}
+			}
+			break;
+		default:
+			assert(false);
+			break;
+		}
+		return nValue;
+	}
+
 	//! 转换为double类型
 	double Variant::ToDouble() const
 	{

@@ -499,6 +499,29 @@ namespace S3MB
 		return true;
 	}
 
+	bool JsonValue::GetAt(const int& i, std::wstring& strValue)
+	{
+		Value* pObject = (Value*)m_value;
+		if (!pObject || !pObject->isArray())
+		{
+			return false;
+		}
+
+		if (!pObject->isValidIndex(i))
+		{
+			return false;
+		}
+
+		Value& val = (*pObject)[i];
+		if (!val.isString())
+		{
+			return false;
+		}
+
+		strValue = StringUtil::UTF8_to_UNICODE(val.asString());
+		return true;
+	}
+
 	bool JsonValue::GetAt(const int& i, double& dbValue)
 	{
 		Value* pObject = (Value*)m_value;

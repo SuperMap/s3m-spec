@@ -367,6 +367,7 @@ namespace S3MB
 	#define S3MB_JSON_ATT_FIELD					    	U("field")
 	#define S3MB_JSON_ATT_ATT_ID						U("id")
 	#define S3MB_JSON_ATT_ATT_NAME					    U("name")
+	#define S3MB_JSON_ATT_SMID							U("SmID")
 	// ============================================================================
 
 	// ==================================ÎÄ¼þÃû³Æ==================================
@@ -377,6 +378,7 @@ namespace S3MB
 	#define FILE_EXT_S3MB								U(".s3mb")
 	#define FILE_EXT_S3MD								U(".s3md")
 	#define FILE_EXT_JSON								U(".json")
+	#define FILE_EXT_SCP								U(".scp")
 	// ============================================================================
 
 	// ==================================¿Ç==================================

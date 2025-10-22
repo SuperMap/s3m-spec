@@ -15,6 +15,19 @@ namespace S3MB
 	{
 	}
 
+	S3MBFieldInfo& S3MBFieldInfo::operator=(const S3MBFieldInfo& other)
+	{
+		if (this == &other)
+			return *this;
+		m_nType = other.m_nType;
+		m_strName = other.m_strName;
+		m_strForeignName = other.m_strForeignName;
+		m_nSize = other.m_nSize;
+		m_bRequired = other.m_bRequired;
+		m_strDefaultValue = other.m_strDefaultValue;
+		return *this;
+	}
+
 	S3MBFieldInfos::S3MBFieldInfos()
 	{
 	}
@@ -26,6 +39,14 @@ namespace S3MB
 			std::vector<S3MBFieldInfo> vctTemp(m_array.begin(), m_array.end());
 			m_array.swap(vctTemp);
 		}
+	}
+
+	S3MBFieldInfos& S3MBFieldInfos::operator=(const S3MBFieldInfos& other)
+	{
+		if (this == &other)
+			return *this;
+		m_array = other.m_array;
+		return *this;
 	}
 
 	void S3MBFieldInfos::add(S3MBFieldInfo newFieldInfo)
@@ -834,7 +855,7 @@ namespace S3MB
 					{
 						continue;
 					}
-					if (StringUtil::CompareNoCase(fieldDefine.m_strName, U("SmID")))
+					if (StringUtil::CompareNoCase(fieldDefine.m_strName, S3MB_JSON_ATT_SMID))
 					{
 						varValue = Variant(pFeature->m_nID);
 					}
@@ -1039,6 +1060,6 @@ namespace S3MB
 		}
 		break;
 		}
-		return false;
+		return true;
 	}
 }

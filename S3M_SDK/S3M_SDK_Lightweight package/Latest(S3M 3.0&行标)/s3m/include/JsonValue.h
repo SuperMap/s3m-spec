@@ -47,6 +47,7 @@ namespace S3MB
 		bool GetXYZValue(const wstring& strTagw, double& dbX, double& dbY, double& dbZ);
 		// 获取JsonValue数组的指定索引的JsonValue子对象
 		bool GetAt(const int& i, JsonValue* pObject);
+		bool GetAt(const int& i, std::wstring& strValue);
 		bool GetAt(const int& i, double& dbValue);
 		bool GetAt(const int& i, int& nValue);
 		bool GetAt(const int& i, Matrix4d& mat);

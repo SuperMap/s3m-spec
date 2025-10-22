@@ -6,6 +6,13 @@
 #include <algorithm>
 #include "S3MBCommon.h"
 
+static const char* c_key_scale_x = "i3s-scale_x";
+static const char* c_key_scale_y = "i3s-scale_y";
+static const char* c_key_attribute_type = "i3s-attribute-type";
+static const char* c_key_feature_ids = "i3s-feature-ids";
+static const char* c_value_attribute_uv_region = "uv-region";
+static const char* c_value_attribute_feature_index = "feature-index";
+
 // 添加draco的顶点属性
 template< class T >
 void AddAttributeData(draco::PointCloud* & pPointCloud, std::vector<T> &attributeData, draco::GeometryAttribute::Type attType, draco::DataType dataType, int nDimension, int& att_id)
@@ -474,6 +481,85 @@ bool S3MB::DracoTool::DracoDecompress(const DracoCompressedInfo& convertParam, c
 	return true;
 }
 
+bool S3MB::DracoTool::DracoDecompress(const std::vector<std::string>& vecVertexAttDescript, const char *pInputData, unsigned int sizeInBytes, bool isPointCloud, VertexDataPackage*& pVertexDataPackage, std::vector<IndexPackage*>& arrIndexPackage, unsigned int*& pFeatureIds, unsigned int& nFeatureIdCount)
+{
+	void** pVertexAttData = NULL;
+	unsigned short* pVertexAttDataType = NULL;
+	unsigned int* pVertexAttCount = NULL;
+	unsigned short* pVertexAttDim = NULL;
+	unsigned int nVertexAttCount = vecVertexAttDescript.size();
+	if (nVertexAttCount > 0)
+	{
+		pVertexAttData = new void*[nVertexAttCount];
+		pVertexAttDataType = new unsigned short[nVertexAttCount];
+		pVertexAttCount = new unsigned int[nVertexAttCount];
+		pVertexAttDim = new unsigned short[nVertexAttCount];
+	}
+
+	if (pVertexDataPackage != NULL)
+	{
+		delete pVertexDataPackage;
+		pVertexDataPackage = NULL;
+	}
+	pVertexDataPackage = new VertexDataPackage;
+	float** pTexCoords = pVertexDataPackage->m_pTexCoords;
+	unsigned int* pTexCoordCount = pVertexDataPackage->m_TexCoordCount;
+	unsigned short* pTexCoordDim = pVertexDataPackage->m_nTexDimensions;
+
+	IndexPackage* pIndexPackage = new IndexPackage;
+	bool bUseUint = false;
+	DracoDecompressImpl_descript(pInputData, sizeInBytes, isPointCloud ? true : false,
+		vecVertexAttDescript,
+		pVertexDataPackage->m_pVertices, pVertexDataPackage->m_nVerticesCount, pVertexDataPackage->m_nVertexDimension,
+		pVertexDataPackage->m_pNormals, pVertexDataPackage->m_nNormalCount, pVertexDataPackage->m_nNormalDimension,
+		pVertexDataPackage->m_pVertexColor, pVertexDataPackage->m_nVertexColorCount,
+		pFeatureIds, nFeatureIdCount,
+		pTexCoords, pTexCoordCount, pTexCoordDim,
+		pVertexAttData, pVertexAttDataType, pVertexAttCount, pVertexAttDim,
+		pIndexPackage->m_pIndexes, pIndexPackage->m_nIndexesCount, bUseUint);
+
+	if (nVertexAttCount > 0)
+	{
+		pVertexDataPackage->m_nVertexAttCount = nVertexAttCount;
+		for (unsigned int i = 0; i < nVertexAttCount; i++)
+		{
+			pVertexDataPackage->m_vecVertexAttDataCount.push_back(pVertexAttCount[i]);
+			pVertexDataPackage->m_vecVertexAttDataDimension.push_back(pVertexAttDim[i]);
+			pVertexDataPackage->m_vecVertexAttDataType.push_back((VertexAttributeType)pVertexAttDataType[i]);
+			pVertexDataPackage->m_vecVertexAttData.push_back(pVertexAttData[i]);
+			pVertexAttData[i] = NULL;
+		}
+
+		delete[] pVertexAttData;
+		pVertexAttData = NULL;
+
+		delete[] pVertexAttDataType;
+		pVertexAttDataType = NULL;
+
+		delete[] pVertexAttCount;
+		pVertexAttCount = NULL;
+
+		delete[] pVertexAttDim;
+		pVertexAttDim = NULL;
+	}
+
+	if (bUseUint)
+	{
+		pIndexPackage->m_enIndexType = IT_32BIT;
+	}
+
+	if (isPointCloud)
+	{
+		delete pIndexPackage;
+		pIndexPackage = NULL;
+	}
+	else
+	{
+		arrIndexPackage.push_back(pIndexPackage);
+	}
+	return true;
+}
+
 bool S3MB::DracoTool::DracoDecompressImpl(const char *pInputData, unsigned int sizeInBytes, bool isPointCloud, int nPosUniqueID, int nNormalUniqueID, int nVertexColorUniqueID,
 	int pTexCoordUniqueID[8], int* pVertexAttUniqueID, unsigned int nVertexAttCount, float*& pVertices, unsigned int& nVerticesCount, unsigned short& nVertexDim,
 	float*& pNormals, unsigned int& nNormalCount, unsigned short& nNormalDim, unsigned int *& pVertexColor, unsigned int& nVertexColorCount, 
@@ -674,6 +760,288 @@ bool S3MB::DracoTool::DracoDecompressImpl(const char *pInputData, unsigned int s
 		uint16_t* pUnshortIndex = 0;
 
 		uint32_t nNumFace = static_cast<uint32_t> (mesh->num_faces()); // 索引数量
+		nIndexesCount = nNumFace * 3;
+		if (bUseUint)
+		{
+			pUintIndex = new uint32_t[nIndexesCount];
+		}
+		else
+		{
+			pUnshortIndex = new uint16_t[nIndexesCount];
+		}
+		for (int i = 0; i < nNumFace; i++)
+		{
+			draco::FaceIndex faceID(i);
+			std::array<draco::PointIndex, 3> faces = mesh->face(faceID);
+			for (int j = 0; j < 3; j++)
+			{
+				if (bUseUint)
+				{
+					pUintIndex[i * 3 + j] = faces[j].value();
+				}
+				else
+				{
+					pUnshortIndex[i * 3 + j] = faces[j].value();
+				}
+			}
+		}
+
+		if (bUseUint)
+		{
+			pIndex = (unsigned short*)pUintIndex;
+		}
+		else
+		{
+			pIndex = pUnshortIndex;
+		}
+	}
+	return true;
+}
+
+bool S3MB::DracoTool::DracoDecompressImpl_descript(const char *pInputData, unsigned int sizeInBytes, bool isPointCloud,
+	const std::vector<std::string>& vecVertexAttDescript,
+	float*& pVertices, unsigned int& nVerticesCount, unsigned short& nVertexDim,
+	float*& pNormals, unsigned int& nNormalCount, unsigned short& nNormalDim,
+	unsigned int *& pVertexColor, unsigned int& nVertexColorCount,
+	unsigned int *& pSecondColor, unsigned int& nSecondColorCount,
+	float**& pTexCoords, unsigned int*& pTexCoordCount, unsigned short*& pTexCoordDim,
+	void**& pVertexAttData, unsigned short*& pVertexAttDataType, unsigned int*& pVertexAttCount, unsigned short*& pVertexAttDim,
+	unsigned short*& pIndex, unsigned int& nIndexesCount, bool& bUseUint)
+{
+	draco::Decoder decoder;
+	draco::DecoderBuffer out;
+	out.Init(pInputData, sizeInBytes);
+
+	draco::Mesh *mesh = 0;
+	draco::PointCloud *pointCloud = 0;
+	std::unique_ptr<draco::PointCloud> pCloud;
+	std::unique_ptr<draco::Mesh> pMesh;
+	if (isPointCloud)
+	{
+		pCloud = decoder.DecodePointCloudFromBuffer(&out).value();
+		pointCloud = pCloud.get();
+	}
+	else
+	{
+		pMesh = decoder.DecodeMeshFromBuffer(&out).value();
+		mesh = pMesh.get();
+		pointCloud = mesh;
+	}
+
+	if (pointCloud == nullptr)
+	{
+		return false;
+	}
+
+	const draco::PointAttribute *posAtt = pointCloud->GetNamedAttribute(draco::GeometryAttribute::POSITION);
+	const draco::PointAttribute *normalAtt = pointCloud->GetNamedAttribute(draco::GeometryAttribute::NORMAL);
+	const draco::PointAttribute *colorAtt = pointCloud->GetNamedAttribute(draco::GeometryAttribute::COLOR);
+	const draco::PointAttribute *texCoord0Att = pointCloud->GetNamedAttribute(draco::GeometryAttribute::TEX_COORD);
+
+	draco::AttributeValueIndex posAttValueIndex;
+	draco::AttributeValueIndex nornamlAttValueIndex;
+	draco::AttributeValueIndex colorAttValueIndex;
+	draco::AttributeValueIndex texCoord0AttValueIndex;
+	draco::AttributeValueIndex secondColorAttValueIndex;
+	draco::AttributeValueIndex vertexAttrAttValueIndex;
+
+	bool isScale = false;
+	double dScaleX = 1.0, dScaleY = 1.0;
+	uint32_t nNumPoints = pointCloud->num_points();
+	if (posAtt != 0) {
+		nVertexDim = posAtt->num_components();
+		pVertices = new float[nVertexDim * nNumPoints];
+		nVerticesCount = nNumPoints;
+
+		const draco::AttributeMetadata *pMetadata = pointCloud->GetAttributeMetadataByAttributeId(posAtt->unique_id());
+		if (pMetadata != 0)
+		{
+			isScale |= pMetadata->GetEntryDouble(c_key_scale_x, &dScaleX);
+			isScale |= pMetadata->GetEntryDouble(c_key_scale_y, &dScaleY);
+		}
+	}
+	if (normalAtt != 0) {
+		nNormalDim = normalAtt->num_components();
+		pNormals = new float[nNormalDim * nNumPoints];
+		nNormalCount = nNumPoints;
+	}
+
+	if (texCoord0Att != 0) {
+		pTexCoordDim[0] = texCoord0Att->num_components();
+		pTexCoordCount[0] = nNumPoints;
+		pTexCoords[0] = new float[pTexCoordDim[0] * nNumPoints];
+	}
+
+	bool hasFeatureId = false;
+	std::vector<int32_t> vecFeatureIds;
+	const draco::PointAttribute *secondColorAtt = 0;
+	const draco::AttributeMetadata* pFeatureIndexMetadata = pointCloud->GetAttributeMetadataByStringEntry(c_key_attribute_type, c_value_attribute_feature_index);
+	if (pFeatureIndexMetadata != 0)
+	{
+		pSecondColor = new uint32_t[nNumPoints];
+		nSecondColorCount = nNumPoints;
+
+		secondColorAtt = pointCloud->GetAttributeByUniqueId(pFeatureIndexMetadata->att_unique_id());
+		hasFeatureId = pFeatureIndexMetadata->GetEntryIntArray(c_key_feature_ids, &vecFeatureIds);
+	}
+
+	unsigned char* pReadColor = 0;
+	if (colorAtt != 0) {
+		pVertexColor = new uint32_t[nNumPoints];
+		nVertexColorCount = nNumPoints;
+		pReadColor = new unsigned char[colorAtt->num_components() * sizeof(float)];
+	}
+
+
+	for (int i = 0; i < nNumPoints; i++)
+	{
+		if (posAtt != 0) {
+			posAttValueIndex = posAtt->mapped_index(draco::PointIndex(i));
+			float* pWriteVertex = pVertices + i * nVertexDim;
+			posAtt->GetValue(posAttValueIndex, pWriteVertex);
+
+			if (nVertexDim >= 2 && isScale)
+			{
+				pWriteVertex[0] = pWriteVertex[0] * dScaleX;
+				pWriteVertex[1] = pWriteVertex[1] * dScaleY;
+			}
+		}
+
+		if (normalAtt != 0) {
+			nornamlAttValueIndex = normalAtt->mapped_index(draco::PointIndex(i));
+			float* pWriteVertex = pNormals + i * nNormalDim;
+			normalAtt->GetValue(nornamlAttValueIndex, pWriteVertex);
+		}
+		if (texCoord0Att != 0) {
+			texCoord0AttValueIndex = texCoord0Att->mapped_index(draco::PointIndex(i));
+			float* pWriteVertex = pTexCoords[0] + i * pTexCoordDim[0];
+			texCoord0Att->GetValue(texCoord0AttValueIndex, pWriteVertex);
+		}
+
+		if (colorAtt != 0) {
+			colorAttValueIndex = colorAtt->mapped_index(draco::PointIndex(i));
+			colorAtt->GetValue(colorAttValueIndex, pReadColor);
+			uint32_t vertexColor = Palette::RGBA(pReadColor[0], pReadColor[1], pReadColor[2], pReadColor[3]);
+			pVertexColor[i] = vertexColor;
+		}
+
+		if (secondColorAtt != 0) {
+			secondColorAttValueIndex = secondColorAtt->mapped_index(draco::PointIndex(i));
+			uint32_t* pWriteVertex = pSecondColor + i;
+			if (hasFeatureId)
+			{
+				uint32_t nIndex = 0;
+				secondColorAtt->GetValue(secondColorAttValueIndex, &nIndex);
+				if (nIndex < vecFeatureIds.size())
+				{
+					*pWriteVertex = vecFeatureIds[nIndex];
+				}
+			}
+			else
+			{
+				secondColorAtt->GetValue(secondColorAttValueIndex, pWriteVertex);
+			}
+		}
+
+	}
+
+	//自定义属性
+	for (int i = 0; i < vecVertexAttDescript.size(); i++)
+	{
+		const draco::AttributeMetadata* pMetadata = pointCloud->GetAttributeMetadataByStringEntry(c_key_attribute_type, vecVertexAttDescript[i]);
+		if (pMetadata == 0)
+		{
+			assert(false);
+			continue;
+		}
+
+		const draco::PointAttribute* pVertexAtt = pointCloud->GetAttributeByUniqueId(pMetadata->att_unique_id());
+		if (pVertexAtt != 0)
+		{
+			pVertexAttDim[i] = pVertexAtt->num_components();
+			pVertexAttCount[i] = nNumPoints;
+
+			switch (pVertexAtt->data_type())
+			{
+			case draco::DT_UINT32:
+			{
+				pVertexAttDataType[i] = 0;//AT_32BIT
+				pVertexAttData[i] = new uint32_t[pVertexAttDim[i] * nNumPoints];
+				for (int j = 0; j < nNumPoints; j++)
+				{
+					vertexAttrAttValueIndex = pVertexAtt->mapped_index(draco::PointIndex(j));
+					uint32_t* pWriteVertex = (uint32_t*)pVertexAttData[i] + j * pVertexAttDim[i];
+					pVertexAtt->GetValue(vertexAttrAttValueIndex, pWriteVertex);
+				}
+			}
+			break;
+			case draco::DT_FLOAT32:
+			{
+				pVertexAttDataType[i] = 1;//AT_FLOAT
+				pVertexAttData[i] = new float[pVertexAttDim[i] * nNumPoints];
+				for (int j = 0; j < nNumPoints; j++)
+				{
+					vertexAttrAttValueIndex = pVertexAtt->mapped_index(draco::PointIndex(j));
+					float* pWriteVertex = (float*)pVertexAttData[i] + j * pVertexAttDim[i];
+					pVertexAtt->GetValue(vertexAttrAttValueIndex, pWriteVertex);
+				}
+			}
+			break;
+			case draco::DT_FLOAT64:
+			{
+				pVertexAttDataType[i] = 2;//AT_DOUBLE
+				pVertexAttData[i] = new double[pVertexAttDim[i] * nNumPoints];
+				for (int j = 0; j < nNumPoints; j++)
+				{
+					vertexAttrAttValueIndex = pVertexAtt->mapped_index(draco::PointIndex(j));
+					double* pWriteVertex = (double*)pVertexAttData[i] + j * pVertexAttDim[i];
+					pVertexAtt->GetValue(vertexAttrAttValueIndex, pWriteVertex);
+				}
+			}
+			break;
+			case draco::DT_UINT16:
+			{
+				pVertexAttDataType[i] = 3;//AT_16BIT
+				pVertexAttData[i] = new uint16_t[pVertexAttDim[i] * nNumPoints];
+				for (int j = 0; j < nNumPoints; j++)
+				{
+					vertexAttrAttValueIndex = pVertexAtt->mapped_index(draco::PointIndex(j));
+					uint16_t* pWriteVertex = (uint16_t*)pVertexAttData[i] + j * pVertexAttDim[i];
+					pVertexAtt->GetValue(vertexAttrAttValueIndex, pWriteVertex);
+				}
+			}
+			break;
+			case draco::DT_UINT8:
+			{
+				pVertexAttDataType[i] = 4;//AT_8BIT
+				pVertexAttData[i] = new uint8_t[pVertexAttDim[i] * nNumPoints];
+				for (int j = 0; j < nNumPoints; j++)
+				{
+					vertexAttrAttValueIndex = pVertexAtt->mapped_index(draco::PointIndex(j));
+					uint8_t* pWriteVertex = (uint8_t*)pVertexAttData[i] + j * pVertexAttDim[i];
+					pVertexAtt->GetValue(vertexAttrAttValueIndex, pWriteVertex);
+				}
+			}
+			break;
+			default:
+				break;
+			}
+		}
+	}
+
+	if (pReadColor != 0)
+	{
+		delete[] pReadColor;
+		pReadColor = 0;
+	}
+
+	if (mesh != 0)
+	{
+		bUseUint = nNumPoints > 65535;
+		uint32_t* pUintIndex = 0;
+		uint16_t* pUnshortIndex = 0;
+
+		uint32_t nNumFace = static_cast<uint32_t> (mesh->num_faces()); //索引数量
 		nIndexesCount = nNumFace * 3;
 		if (bUseUint)
 		{
