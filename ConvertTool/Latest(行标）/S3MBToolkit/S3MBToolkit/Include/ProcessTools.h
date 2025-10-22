@@ -5,7 +5,9 @@
 #include <string>
 #include "stdafx.h"
 #include "BoundingSphere.h"
+#include "I3SParams.h"
 #include "Point3D.h"
+#include "ProcessParams.h"
 #include "S3MBEnums.h"
 #include "S3MBLayerInfos.h"
 #include "Shell.h"
@@ -21,14 +23,6 @@
 
 namespace S3MB
 {
-	class STK_API ProcessParams
-	{
-	public:
-		ProcessParams();
-
-		virtual ProcessType GetProcessType();
-	};
-
 	class STK_API ThreeDTilesParams : public ProcessParams
 	{
 	public:
@@ -240,6 +234,8 @@ namespace S3MB
 		bool OSGBToS3MB(const OSGBParams& params);
 		//! \brief OBJ转成S3MB
 		bool OBJToS3MB(const OBJParams& params);
+		//! \brief I3S转成S3MB
+		bool I3SToS3MB(const I3SParams& params);
 
 	private:
 		void SaveGroup(GLTFTreeNode* pNode, std::wstring strOutPath, RenderOperationGroup* pGroup);
@@ -258,23 +254,18 @@ namespace S3MB
 		void ParseIDRangeFromI3DM(MemoryStream& stream);
 
 #pragma region glTF 1.0
-		void MeshToGroup_V1(GLTFTreeNode * pNode, unsigned char*& pBuffer, std::wstring strOutputPath, RenderOperationGroup* pGroup, std::wstring strParentPath, Point3D& pntCenter);
-		void* GetAttributeData_V1(unsigned char*& pBuffer, std::wstring& strName, int& nDim);
-		void GetTextureData_V1(unsigned char*& pBuffer, std::wstring& strMaterialName, std::wstring& strOutputDir, std::map<std::wstring, TextureDataInfo*>& texList, TextureDataInfo*& texPtr);
+		void MeshToGroup(GLTFTreeNode * pNode, GLTFTileInfos_1 *& pTileInfos, std::wstring strOutputPath, RenderOperationGroup* pGroup, std::wstring strParentPath, Point3D& pntCenter);
+		void GetTextureData(GLTFTileInfos_1 *& pTileInfos, std::wstring& strMaterialName, std::wstring& strOutputDir, std::map<std::wstring, TextureDataInfo*>& texList, TextureDataInfo*& texPtr);
 #pragma endregion
 
 #pragma region glTF 2.0
-		void MeshToGroup(GLTFTreeNode* pNode, std::wstring strOutputPath, RenderOperationGroup* pGroup, std::wstring strParentPath, Point3D& pntCenter);
-        bool MeshToGeode(GLTFTreeNode* pNode, unsigned int nMeshIndex, std::wstring strOutputPath, RenderOperationGeode* pGeode, std::map<std::wstring, Skeleton*>& mapSkeleton, std::map<std::wstring, Material*>& mapMaterial, std::map<std::wstring, TextureDataInfo*>& mapTexture, std::map<int, TextureDataInfo*>& textureLists, BoundingBox& entileBox, Point3D& pntCenter);
-        bool ProcessSkeleton(GLTFTreeNode* pNode, Skeleton*& pSkeleton, GLTFPrimitive& gltfPrimitive, Matrix4d mat, std::wstring strMaterialName, Point3D& pntCenter);
-		void ProcessMaterial(std::wstring strOutputPath, GLTFPrimitive& gltfPrimitive, Material* pMaterial, std::map<int, TextureDataInfo*>& textureLists, std::vector<TextureDataInfo*>& vecTexPtr);
-		void* GetAttributeData(int & index, int & nDim);
-		void GetTextureData(int nTexIndex, std::wstring& strOutputDir, std::map<int, TextureDataInfo*>& texList, TextureDataInfo*& texPtr);
+		void MeshToGroup(GLTFTreeNode* pNode, GLTFTileInfos_2*& pTileInfos, std::wstring strOutputPath, RenderOperationGroup* pGroup, std::wstring strParentPath, Point3D& pntCenter);
+        bool MeshToGeode(GLTFTreeNode* pNode, GLTFTileInfos_2*& pTileInfos, unsigned int nMeshIndex, std::wstring strOutputPath, RenderOperationGeode* pGeode, std::map<std::wstring, Skeleton*>& mapSkeleton, std::map<std::wstring, Material*>& mapMaterial, std::map<std::wstring, TextureDataInfo*>& mapTexture, std::map<int, TextureDataInfo*>& textureLists, BoundingBox& entileBox, Point3D& pntCenter);
+        bool ProcessSkeleton(GLTFTreeNode* pNode, GLTFTileInfos_2*& pTileInfos, Skeleton*& pSkeleton, GLTFPrimitive& gltfPrimitive, Matrix4d mat, std::wstring strMaterialName, Point3D& pntCenter);
+		void ProcessMaterial(GLTFTileInfos_2*& pTileInfos, std::wstring strOutputPath, GLTFPrimitive& gltfPrimitive, Material* pMaterial, std::map<int, TextureDataInfo*>& textureLists, std::vector<TextureDataInfo*>& vecTexPtr);
+		void GetTextureData(GLTFTileInfos_2*& pTileInfos, int nTexIndex, std::wstring& strOutputDir, std::map<int, TextureDataInfo*>& texList, TextureDataInfo*& texPtr);
 #pragma endregion
 
-		bool TrannsFormIndex(IndexPackage *pIndexPackage);
-		//! \brief 去掉没使用的顶点，重建索引
-		void RebuildVertexAndIndexPackage(VertexDataPackage* pVertexDataPackage, std::vector<IndexPackage*>& vecIndexPackage, std::vector<IDInfo*>& vecIDInfo);
 		void SplitSkeletonByIndex(VertexDataPackage* pDataPackage, IndexPackage* pIndexPackage);
 		bool CreateInstanceInfo(VertexDataPackage* pVertexDataPackage, BoundingBox& entireBox, std::vector<Matrix4d>& vecMat, std::vector<unsigned int>& vecId);
 
@@ -283,7 +274,6 @@ namespace S3MB
 		static TileContentType ParseTileContentType(MemoryStream& stream, bool bReset = true);
 		static FieldType GetFieldType(std::string strType);
 		static int NumOfComponents(std::string strType);
-		static OperationType GetDrawOperationType(unsigned int nType);
 
 	private:
 		//! \brief 3DTiles解析器

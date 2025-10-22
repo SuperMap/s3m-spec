@@ -19,6 +19,7 @@ private slots:
 	void handleS3MBTo3DTilesClickedEvent();
     void handleOSGBToS3MBClickedEvent();
     void handleOBJToS3MBClickedEvent();
+	void handleI3SToS3MBClickedEvent();
 
 private:
     Ui::S3MBToolkit ui;

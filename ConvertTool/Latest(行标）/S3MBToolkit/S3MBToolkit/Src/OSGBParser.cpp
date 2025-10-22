@@ -2,7 +2,7 @@
 #include "ImageOperator.h"
 #include "S3MBCommon.h"
 #include "S3MBUtils.h"
-#include "Utils.h"
+#include "Utils/Utils.h"
 
 #include "tinyxml2.h"
 #include <osg/BlendFunc>

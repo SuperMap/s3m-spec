@@ -1,64 +1,25 @@
 #if _MSC_VER >= 1600
 #pragma execution_character_set("utf-8")
 #endif
-#include "Dialog3DTilesToS3MB.h"
+#include "DialogI3SToS3MB.h"
 #include <QRadioButton>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QFormLayout>
 #include <QStringListModel>
 #include <QMessageBox>
+#include "I3SParams.h"
 #include "ProcessTools.h"
 #include "ProcessThread.h"
 
 using namespace S3MB;
 
-const char* FileTypeModel = "三维切片";
-const char* FileTypeObliquePhotogrammetry = "倾斜摄影";
-const char* TexCompDXT = "DXT";
-const char* TexCompNONE = "不压缩";
-const char* VerCompNONE = "不压缩";
+const char* S3MVersion3 = "3.0";
+const char* S3MVersion3_0_1 = "3.01";
+const char* IsTrue = "true";
+const char* IsFalse = "false";
 
-#ifdef WIN32
-QString TypeModel = FileTypeModel;
-QString TypeObliquePhotogrammetry = FileTypeObliquePhotogrammetry;
-QString TexDXT = TexCompDXT;
-QString TexNONE = TexCompNONE;
-QString VerNONE = VerCompNONE;
-QString buttonOK = "确定";
-QString buttonCancle = "取消";
-QString waitText = "...";
-QString sourceSCP = "源配置文件:";
-QString outputDir = "目标路径:";
-QString fileType = "文件类型:";
-QString texCompressType = "纹理压缩格式:";
-QString vertexCompressType = "顶点优化方式:";
-QString exeResult = "执行结果";
-QString isDone = "完成";
-QString waiting = "正在执行...";
-QString openFile = "打开";
-#else
-QTextCodec* codec = QTextCodec::codecForName("GBK");
-QString TypeModel = codec->toUnicode(FileTypeModel);
-QString TypeObliquePhotogrammetry = codec->toUnicode(FileTypeObliquePhotogrammetry);
-QString TexDXT = codec->toUnicode(TexCompDXT);
-QString TexNONE = codec->toUnicode(TexCompNONE);
-QString VerNONE = codec->toUnicode(VerCompNONE);
-QString buttonOK = codec->toUnicode("确定");
-QString buttonCancle = codec->toUnicode("取消");
-QString waitText = codec->toUnicode("...");
-QString sourceSCP = codec->toUnicode("源配置文件:");
-QString outputDir = codec->toUnicode("目标路径:");
-QString fileType = codec->toUnicode("文件类型:");
-QString texCompressType = codec->toUnicode("纹理压缩格式:");
-QString vertexCompressType = codec->toUnicode("顶点优化方式:");
-QString exeResult = codec->toUnicode("执行结果");
-QString isDone = codec->toUnicode("完成:");
-QString waiting = codec->toUnicode("正在执行...");
-QString openFile = codec->toUnicode("打开");
-#endif
-
-Dialog3DTilesToS3MB::Dialog3DTilesToS3MB(QWidget *parent)
+DialogI3SToS3MB::DialogI3SToS3MB(QWidget *parent)
 	: QDialog(parent)
 {
 	QVBoxLayout* vctLayout = new QVBoxLayout(this);
@@ -70,20 +31,15 @@ Dialog3DTilesToS3MB::Dialog3DTilesToS3MB(QWidget *parent)
     connect(m_srcEdit, SIGNAL(textEdited(QString)), this, SLOT(handleTextEditedEvent()));
     connect(m_desEdit, SIGNAL(textEdited(QString)), this, SLOT(handleTextEditedEvent()));
 
-	QStringListModel* fileTypeModel = new QStringListModel(this);
-    fileTypeModel->setStringList(QStringList()<< TypeModel << TypeObliquePhotogrammetry);
-	m_fileTypeBox = new QComboBox();
-	m_fileTypeBox->setModel(fileTypeModel);
+	QStringListModel* s3mVersionModel = new QStringListModel(this);
+	s3mVersionModel->setStringList(QStringList()<< S3MVersion3 << S3MVersion3_0_1);
+	m_s3mVersionBox = new QComboBox();
+	m_s3mVersionBox->setModel(s3mVersionModel);
 
-	QStringListModel* texCompModel = new QStringListModel(this);
-    texCompModel->setStringList(QStringList()<< TexDXT << TexNONE);
-	m_texCompBox = new QComboBox();
-	m_texCompBox->setModel(texCompModel);
-
-	QStringListModel* verCompModel = new QStringListModel(this);
-    verCompModel->setStringList(QStringList()<< VerNONE);
-	m_verCompBox = new QComboBox();
-	m_verCompBox->setModel(verCompModel);
+	QStringListModel* lonLatCoordModel = new QStringListModel(this);
+	lonLatCoordModel->setStringList(QStringList() << IsTrue << IsFalse);
+	m_lonLatCoordBox = new QComboBox();
+	m_lonLatCoordBox->setModel(lonLatCoordModel);
 
     m_confirmButton = new QPushButton(buttonOK);
 	m_confirmButton->setEnabled(false);
@@ -111,9 +67,8 @@ Dialog3DTilesToS3MB::Dialog3DTilesToS3MB(QWidget *parent)
 	formLayout->setVerticalSpacing(10);
     formLayout->addRow(sourceSCP, gridSrcLayout);
     formLayout->addRow(outputDir, gridDesLayout);
-    formLayout->addRow(fileType, m_fileTypeBox);
-    formLayout->addRow(texCompressType, m_texCompBox);
-    formLayout->addRow(vertexCompressType, m_verCompBox);
+    formLayout->addRow(s3mVersion, m_s3mVersionBox);
+	formLayout->addRow(isLonLatCoord, m_lonLatCoordBox);
 
 	QHBoxLayout* bottomLayout = new QHBoxLayout();
 	bottomLayout->addStretch();
@@ -127,7 +82,7 @@ Dialog3DTilesToS3MB::Dialog3DTilesToS3MB(QWidget *parent)
 	vctLayout->setSizeConstraint(QLayout::SetFixedSize);
 }
 
-void Dialog3DTilesToS3MB::handleTextEditedEvent()
+void DialogI3SToS3MB::handleTextEditedEvent()
 {
     QString strSrcPath = m_srcEdit->text();
     QString strDesPath = m_desEdit->text();
@@ -147,7 +102,7 @@ void Dialog3DTilesToS3MB::handleTextEditedEvent()
 	m_confirmButton->setEnabled(isEnabled);
 }
 
-void Dialog3DTilesToS3MB::handleThreadFinishedEvent()
+void DialogI3SToS3MB::handleThreadFinishedEvent()
 {
 	if (m_progressDialog != nullptr)
 	{
@@ -158,30 +113,31 @@ void Dialog3DTilesToS3MB::handleThreadFinishedEvent()
     QMessageBox::information(this, exeResult, isDone);
 }
 
-void Dialog3DTilesToS3MB::handleConfirmButtonClickedEvent()
+void DialogI3SToS3MB::handleConfirmButtonClickedEvent()
 {
     std::wstring strSrcPath = StringUtil::UTF8_to_UNICODE(m_srcEdit->text().toStdString());
     std::wstring strDesPath = StringUtil::UTF8_to_UNICODE(m_desEdit->text().toStdString());
 
-	bool isModel = true;
-	QString fileType = m_fileTypeBox->currentText();
-    if (fileType == FileTypeObliquePhotogrammetry)
+	float fS3MVersion = S3MB_VERSIONV3;
+	QString strS3MVersion = m_s3mVersionBox->currentText();
+    if (strS3MVersion == S3MVersion3)
 	{
-		isModel = false;
+		fS3MVersion = S3MB_VERSIONV3;
+	}
+	else if (strS3MVersion == S3MVersion3_0_1)
+	{
+		fS3MVersion = S3MB_VERSIONV3_0_1;
 	}
 
-	TextureCompressType texCompType = TC_NONE;
-	QString texComp = m_texCompBox->currentText();
-	if (texComp == TexCompDXT)
+	bool bLonLatCoord = true;
+	QString strLonLatCoord = m_lonLatCoordBox->currentText();
+	if (strLonLatCoord == IsTrue)
 	{
-		texCompType = TC_DXT5;
+		bLonLatCoord = true;
 	}
-
-	S3MBVertexTag verCompType = SV_Standard;
-	QString verComp = m_verCompBox->currentText();
-	if (verComp == VerCompNONE)
+	else if (strLonLatCoord == IsFalse)
 	{
-		verCompType = SV_Standard;
+		bLonLatCoord = false;
 	}
 
 	m_progressDialog = new QProgressDialog(this);
@@ -193,12 +149,11 @@ void Dialog3DTilesToS3MB::handleConfirmButtonClickedEvent()
 	m_progressDialog->setWindowFlags(Qt::Window | Qt::WindowTitleHint);
 	m_progressDialog->show();
 
-	ThreeDTilesParams* pParam = new ThreeDTilesParams();
-	pParam->SetTilesetPath(strSrcPath);
-	pParam->SetOutputDir(strDesPath);
-	pParam->SetTextureCompressType(texCompType);
-	pParam->SetVertexCompressType(verCompType);
-	pParam->SetIsModel(isModel);
+	I3SParams* pParam = new I3SParams();
+	pParam->SetInputPath(strSrcPath);
+	pParam->SetOutputPath(strDesPath);
+	pParam->SetS3MVersion(fS3MVersion);
+	pParam->SetIsLonLatCoordinates(bLonLatCoord);
 	
 	ProcessThread* pThread = new ProcessThread(pParam);
     connect(pThread, SIGNAL(finished()), this, SLOT(handleThreadFinishedEvent()));
@@ -206,21 +161,21 @@ void Dialog3DTilesToS3MB::handleConfirmButtonClickedEvent()
 	pThread->start();
 }
 
-void Dialog3DTilesToS3MB::handleCancelButtonClickedEvent()
+void DialogI3SToS3MB::handleCancelButtonClickedEvent()
 {
 	this->close();
 }
 
-void Dialog3DTilesToS3MB::handleSrcFileButtonClickedEvent()
+void DialogI3SToS3MB::handleSrcFileButtonClickedEvent()
 {
     QFileDialog* pFileSelectDialog = new QFileDialog(this);
     pFileSelectDialog->setWindowTitle(openFile);
-    pFileSelectDialog->setNameFilter("Json files(*.json)");
+    pFileSelectDialog->setNameFilter(tr("File(*.json)"));
     m_srcEdit->setText(pFileSelectDialog->getOpenFileName());
     handleTextEditedEvent();
 }
 
-void Dialog3DTilesToS3MB::handleDesFileButtonClickedEvent()
+void DialogI3SToS3MB::handleDesFileButtonClickedEvent()
 {
     QFileDialog* pFileSelectDialog = new QFileDialog(this);
     pFileSelectDialog->setWindowTitle(openFile);

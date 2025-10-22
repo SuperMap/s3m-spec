@@ -1,7 +1,8 @@
 # 关于
 用于实现S3MB数据与3D Tiles数据的相互转换，以及OSGB、OBJ等数据转换为S3MB数据，支持跨平台。
 - S3MB数据符合CH/T 9040-2023《空间三维模型瓦片数据格式》行业标准的规定，但目前仅支持普通材质。
-- 3D Tiles数据是符合OGC 3D Tiles标准规定的\*.b3dm、\*.i3dm、\*.cmpt数据。
+- 支持符合0GC 3D Tiles标准规定的[3D Tiles](https://github.com/CesiumGS/3d-tiles)数据，支持格式包括:\*.b3dm、\*.i3dm、\*.cmpt数据。
+- 支持符合Github社区规范的[13S](https://github.com/Esri/i3s-spec) 1.7及以上版本的数据。支持的原始数据类型包括：倾斜摄影三维模型、建筑白模、城市精模、BIM、点云、点外挂模型。
 
 # 目录
 1. 3rdParty：包含生成所需第三方库的CMake脚本，以及在Visual Studio 2017、C++15环境下编译的S3MBTooklkit所需的第三方库。

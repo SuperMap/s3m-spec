@@ -115,6 +115,9 @@ namespace S3MB
 			double dZ,
 			double dRadius = GLOBAL_RADIUS);
 
+		//! \brief 获取椭球的插入点矩阵
+		static Matrix4d GetEllipsoidWorldView(const Vector3d& vecPos);
+
 		//! \brief 判断浮点型的正负。
 		//! \param fValue 传入的浮点型值[in]。
 		//! \return 正数返回1，负数返回-1，0返回0.0。

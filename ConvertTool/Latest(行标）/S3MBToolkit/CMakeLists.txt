@@ -9,6 +9,9 @@ endif()
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+if (NOT WIN32)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_GLIBCXX_USE_CXX11_ABI=1 -std=c++11")
+endif()
 
 #If not found Qt5, please install Qt5 On divices
 if(NOT ${Qt5_INSTALL_DIR})
@@ -39,24 +42,30 @@ set(libuuid_LIBRARY_DIR ${THIRD_PARTY_DIR}/libuuid/lib)
 endif()
 set(pcre_LIBRARY_DIR ${THIRD_PARTY_DIR}/pcre/lib)
 set(tinyxml2_LIBRARY_DIR ${THIRD_PARTY_DIR}/tinyxml2/lib)
+set(zlib_LIBRARY_DIR ${THIRD_PARTY_DIR}/zlib/lib)
 set(OPENSCENEGRAPH_LIBRARY_DIR ${THIRD_PARTY_DIR}/openscenegraph/lib)
 
-AUX_SOURCE_DIRECTORY(S3MBToolkit/Src S3MBToolkit_SRCS)
-
-file(GLOB_RECURSE S3MBToolkit_INCS ${PROJECT_SOURCE_DIR}/S3MBToolkit/Include/*.h)
+file(GLOB S3MBToolkit_INCS ${PROJECT_SOURCE_DIR}/S3MBToolkit/Include/*.h)
+file(GLOB S3MBToolkit_INCS_UTILS ${PROJECT_SOURCE_DIR}/S3MBToolkit/Include/Utils/*.h)
 source_group("Header Files" FILES ${S3MBToolkit_INCS})
+source_group("Header Files/Utils" FILES ${S3MBToolkit_INCS_UTILS})
+
+file(GLOB S3MBToolkit_SRCS ${PROJECT_SOURCE_DIR}/S3MBToolkit/Src/*.cpp)
+file(GLOB S3MBToolkit_SRCS_UTILS ${PROJECT_SOURCE_DIR}/S3MBToolkit/Src/Utils/*.cpp)
+source_group("Source Files" FILES ${S3MBToolkit_SRCS})
+source_group("Source Files/Utils" FILES ${S3MBToolkit_SRCS_UTILS})
 
 if (WIN32)
-link_directories(${s3m_LIBRARY_DIR} ${COLLADA2GLTF_LIBRARY_DIR} ${pcre_LIBRARY_DIR} ${OPENSCENEGRAPH_LIBRARY_DIR} ${tinyxml2_LIBRARY_DIR} ${Qt5_INSTALL_DIR}/lib)
+link_directories(${s3m_LIBRARY_DIR} ${COLLADA2GLTF_LIBRARY_DIR} ${pcre_LIBRARY_DIR} ${OPENSCENEGRAPH_LIBRARY_DIR} ${tinyxml2_LIBRARY_DIR} ${zlib_LIBRARY_DIR} ${Qt5_INSTALL_DIR}/lib)
 else()
-link_directories(${s3m_LIBRARY_DIR} ${COLLADA2GLTF_LIBRARY_DIR} ${libuuid_LIBRARY_DIR} ${pcre_LIBRARY_DIR} ${OPENSCENEGRAPH_LIBRARY_DIR} ${tinyxml2_LIBRARY_DIR} ${Qt5_INSTALL_DIR}/lib)
+link_directories(${s3m_LIBRARY_DIR} ${COLLADA2GLTF_LIBRARY_DIR} ${libuuid_LIBRARY_DIR} ${pcre_LIBRARY_DIR} ${OPENSCENEGRAPH_LIBRARY_DIR} ${tinyxml2_LIBRARY_DIR} ${zlib_LIBRARY_DIR} ${Qt5_INSTALL_DIR}/lib)
 endif()
 
 if(WIN32)
 	link_directories(${THIRD_PARTY_DIR}/libxml2/lib ${OPENSCENEGRAPH_LIBRARY_DIR}/osgPlugins)
 endif()
 
-add_executable(S3MBToolkit ${S3MBToolkit_SRCS} ${S3MBToolkit_INCS} )
+add_executable(S3MBToolkit ${S3MBToolkit_INCS} ${S3MBToolkit_INCS_UTILS} ${S3MBToolkit_SRCS} ${S3MBToolkit_SRCS_UTILS} )
 if(WIN32)
 	target_compile_definitions(S3MBToolkit PRIVATE -D_UNICODE -DUNICODE -DS3MB_LIB)
 	target_compile_definitions(S3MBToolkit PRIVATE -DSTK_EXPORTS -DOSG_LIBRARY_STATIC)
@@ -87,14 +96,18 @@ target_include_directories(S3MBToolkit PRIVATE
 	${THIRD_PARTY_DIR}/s3m/include
 	${THIRD_PARTY_DIR}/openscenegraph/include
 	${THIRD_PARTY_DIR}/tinyxml2/include
+	${THIRD_PARTY_DIR}/zlib/include
+	if (NOT WIN32)
+	${CMAKE_BINARY_DIR}/S3MBToolkit_autogen/include
+	endif()
 	${Qt5Gui_INCLUDE_DIRS}
 	${Qt5Core_INCLUDE_DIRS}
 	${Qt5_INCLUDE_DIRS}
 	${Qt5Widgets_INCLUDE_DIRS})
 
 if(WIN32)
-target_link_libraries(S3MBToolkit s3m jpeg libpng16 zlib libxml2 pcre draco squish jsoncpp tinyxml2 osg osgDB osgGA osgText osgSim osgAnimation osgUtil OpenThreads osgdb_obj osgdb_osg osgdb_jpeg osgdb_png osgdb_deprecated_osg osgdb_deprecated_osgtext osgdb_deprecated_osganimation osgdb_serializers_osg COLLADA2GLTF gltf GLTF COLLADASaxFrameworkLoader COLLADABaseUtils GeneratedSaxParser COLLADAFramework MathMLSolver Qt5Widgets Qt5Gui Qt5Core)
+target_link_libraries(S3MBToolkit s3m jpeg libpng16 zlib minizip libxml2 pcre draco squish jsoncpp tinyxml2 osg osgDB osgGA osgText osgSim osgAnimation osgUtil OpenThreads osgdb_obj osgdb_osg osgdb_jpeg osgdb_png osgdb_deprecated_osg osgdb_deprecated_osgtext osgdb_deprecated_osganimation osgdb_serializers_osg COLLADA2GLTF gltf GLTF COLLADASaxFrameworkLoader COLLADABaseUtils GeneratedSaxParser COLLADAFramework MathMLSolver Qt5Widgets Qt5Gui Qt5Core)
 else()
-target_link_libraries(S3MBToolkit GL pthread s3m png16 jpeg z draco squish jsoncpp uuid tinyxml2 osg osgDB osgUtil OpenThreads osgdb_obj osgdb_osg osgdb_jpeg osgdb_png osgdb_serializers_osg COLLADA2GLTF dracogltf2 GLTF COLLADASaxFrameworkLoader COLLADABaseUtils GeneratedSaxParser COLLADAFramework MathMLSolver Qt5Widgets Qt5Gui Qt5Core)
+target_link_libraries(S3MBToolkit GL pthread s3m png16 jpeg z minizip draco squish jsoncpp uuid tinyxml2 osg osgDB osgUtil OpenThreads osgdb_obj osgdb_osg osgdb_jpeg osgdb_png osgdb_serializers_osg COLLADA2GLTF dracogltf2 GLTF COLLADASaxFrameworkLoader COLLADABaseUtils GeneratedSaxParser COLLADAFramework MathMLSolver Qt5Widgets Qt5Gui Qt5Core)
 endif()
 

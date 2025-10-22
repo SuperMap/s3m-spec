@@ -1,7 +1,7 @@
 #include "OBJConfig.h"
 #include "JsonValue.h"
 #include "S3MBUtils.h"
-#include "Utils.h"
+#include "Utils/Utils.h"
 
 #include <osg/ref_ptr>
 #include <osgDB/ReadFile>

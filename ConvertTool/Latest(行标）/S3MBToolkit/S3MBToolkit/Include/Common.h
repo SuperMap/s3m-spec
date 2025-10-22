@@ -5,8 +5,17 @@
 #include "stdafx.h"
 #include "S3MBEnums.h"
 
+#include <string>
+#include <utility>
+
 namespace S3MB
 {
+    #ifdef WIN32
+    typedef unsigned long long     ulong;
+    #else
+    typedef unsigned long long int ulong;
+    #endif
+
 	//! Multiplier for degrees to radians
 	#define DTOR    0.0174532925199432957692369077
 
@@ -34,8 +43,31 @@ namespace S3MB
 	#define ATT_VERTEXWEIGHT							U("VertexWeight")
 	#endif
 
+	#ifndef ATT_UVREGION
+	#define ATT_UVREGION								U("UVRegion")
+	#endif
+
+	#ifndef ATT_POINTCLOUD_INTENSITY
+	#define ATT_POINTCLOUD_INTENSITY					U("PointCloudIntensity")
+	#endif
+
+	#ifndef ATT_POINTCLOUD_CLASSCODE
+	#define ATT_POINTCLOUD_CLASSCODE					U("PointCloudClassCode")
+	#endif
+
+	#define CONFIG_ATTRIBUTEEXTENTNAME					U("s3m:AttributeExtentName")
+
     //! If folding case, make lower case
     #define FOLD(c)          ((flags&FILEMATCH_CASEFOLD)?tolower(c):(c))
+
+	// ceil 数值
+	#define CEIL(x) ((int)ceil(x))
+
+	#define SIZE_PER_INSTANCE 17
+
+	#ifndef FILE_EXT_GZ
+	#define FILE_EXT_GZ U(".gz")
+	#endif
 
 	enum AxisUpType
 	{
@@ -51,6 +83,7 @@ namespace S3MB
 		P_S3MBTo3DTiles,
 		P_OSGBToS3MB,
 		P_OBJToS3MB,
+		P_I3SToS3MB,
 	};
 
 	enum STKPixelFormat
@@ -122,6 +155,31 @@ namespace S3MB
         /// Matching is case-insensitive
         LIST_CASEFOLD = 128
     };
+
+	//24位真彩
+	typedef struct
+	{
+		unsigned char blue;
+		unsigned char green;
+		unsigned char red;
+	} RGB24;
+
+	//32位真彩
+	typedef struct
+	{
+		unsigned char blue;
+		unsigned char green;
+		unsigned char red;
+		unsigned char alpha;
+	} RGBA32;
+
+	typedef struct
+	{
+		// 属性文件名称
+		std::wstring m_strAttributeFileName;
+		// id范围
+		std::pair<int, int> m_pairIdRange;
+	} AttributeIndexInfo;
 }
 
 #endif

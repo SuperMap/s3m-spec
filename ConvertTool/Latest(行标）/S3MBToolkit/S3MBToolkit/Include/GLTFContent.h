@@ -12,6 +12,49 @@
 
 namespace S3MB
 {
+	struct GLBHeader
+	{
+		unsigned int m_nMagic;
+		unsigned int m_nVersion;
+		unsigned int m_nLength;
+
+		GLBHeader()
+		{
+			m_nMagic = 0;
+			m_nVersion = 0;
+			m_nLength = 0;
+		}
+	};
+
+	struct GLBChunk
+	{
+		unsigned int m_nLength;
+		unsigned int m_nType;
+		unsigned char* m_pData;
+
+		GLBChunk()
+		{
+			m_nLength = 0;
+			m_nType = 0;
+			m_pData = nullptr;
+		}
+
+		unsigned char* Give()
+		{
+			unsigned char* pData = m_pData;
+			m_pData = nullptr;
+			return pData;
+		}
+
+		~GLBChunk()
+		{
+			m_nLength = 0;
+			m_nType = 0;
+			delete[] m_pData;
+			m_pData = nullptr;
+		}
+	};
+
 	struct GLTFAttributes
 	{
 		int m_nBatchIds;
@@ -282,15 +325,15 @@ namespace S3MB
 		GLTFBuffer()
 		{
 			m_nByteLength = 0;
-			m_pBuffer = NULL;
+			m_pBuffer = nullptr;
 			m_bManageBuffer = false;
 		}
 		~GLTFBuffer()
 		{
-			if (m_bManageBuffer && m_pBuffer != NULL)
+			if (m_bManageBuffer && m_pBuffer != nullptr)
 			{
-				delete m_pBuffer;
-				m_pBuffer = NULL;
+				delete[] m_pBuffer;
+				m_pBuffer = nullptr;
 			}
 		}
 	};
@@ -328,7 +371,7 @@ namespace S3MB
 		GLTFTreeNode()
 		{
 			m_nLod = 0;
-			m_pParentNode = NULL;
+			m_pParentNode = nullptr;
 			m_RelatMat = Matrix4d::IDENTITY;
 			m_RootMat = Matrix4d::IDENTITY;
 			m_dGeometryError = 0;
@@ -339,6 +382,38 @@ namespace S3MB
 		~GLTFTreeNode()
 		{
 		}
+	};
+
+	struct GLTFTileInfos_1
+	{
+		std::map<std::wstring, Matrix4d> m_mapMeshTOLocalView;
+		std::map<std::wstring, std::vector<std::wstring> > m_mapMeshSet;
+		std::map<std::wstring, GLTFMesh> m_mapMeshs;
+		std::map<std::wstring, GLTFAccessor> m_mapAccessors;
+		std::map<std::wstring, GLTFBufferView> m_mapBufferViews;
+		std::map<std::wstring, GLTFBuffer> m_mapBuffers;
+		std::map<std::wstring, GLTFMaterial> m_mapMaterials;
+		std::map<std::wstring, GLTFTexture> m_mapTextures;
+		std::map<std::wstring, GLTFImage> m_mapImages;
+		// 向上轴类型
+		AxisUpType m_nAxisUpType = AxisUpType::Y_UP;
+		Vector3d m_vCesuimRTC = Vector3d();
+	};
+
+	struct GLTFTileInfos_2
+	{
+		std::map<unsigned int, Matrix4d> m_mapMeshToLocalView;
+		std::map<unsigned int, std::vector<unsigned int> > m_mapMeshSet;
+		std::map<unsigned int, GLTFMesh> m_mapMeshs;
+		std::map<unsigned int, GLTFAccessor> m_mapAccessors;
+		std::map<unsigned int, GLTFBufferView> m_mapBufferViews;
+		std::map<unsigned int, GLTFBuffer> m_mapBuffers;
+		std::map<unsigned int, std::vector<GLTFMaterial> > m_mapMaterials;
+		std::map<unsigned int, GLTFTexture> m_mapTextures;
+		std::map<unsigned int, GLTFImage> m_mapImages;
+		// 向上轴类型
+		AxisUpType m_nAxisUpType;
+		Vector3d m_vCesuimRTC = Vector3d();
 	};
 }
 

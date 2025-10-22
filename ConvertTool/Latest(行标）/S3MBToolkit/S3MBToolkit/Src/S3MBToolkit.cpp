@@ -7,12 +7,13 @@
 #include "DialogS3MBTo3DTiles.h"
 #include "DialogOSGBToS3MB.h"
 #include "DialogOBJToS3MB.h"
+#include "DialogI3SToS3MB.h"
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QPushButton>
 #include <QTextCodec>
-
+#include "S3MBToolkit.h"
 using namespace S3MB;
 QTextCodec* codec1 = QTextCodec::codecForName("GBK");
 #ifdef WIN32
@@ -20,17 +21,19 @@ QString t1 = "3DTilesתS3MB";
 QString t2 = "S3MBת3DTiles";
 QString t3 = "OSGBתS3MB";
 QString t4 = "OBJתS3MB";
+QString t5 = "I3SתS3MB";
 #else
 QString t1 = codec1->toUnicode("3DTilesתS3MB");
 QString t2 = codec1->toUnicode("S3MBת3DTiles");
 QString t3 = codec1->toUnicode("OSGBתS3MB");
 QString t4 = codec1->toUnicode("OBJתS3MB");
+QString t5 = codec1->toUnicode("I3SתS3MB");
 #endif
 
-S3MBToolkit::S3MBToolkit(QWidget *parent)
-	: QMainWindow(parent)
+S3MBToolkit::S3MBToolkit(QWidget *parent):
+      QMainWindow(parent)
 {
-	ui.setupUi(this);
+    ui.setupUi(this);
 
 	QWidget* widget = new QWidget(this);
 	QVBoxLayout* mainLayout = new QVBoxLayout();
@@ -68,6 +71,11 @@ S3MBToolkit::S3MBToolkit(QWidget *parent)
     connect(buttonOBJToS3MB, SIGNAL(clicked()), this, SLOT(handleOBJToS3MBClickedEvent()));
 	vctLayout->addWidget(buttonOBJToS3MB);
 
+	QPushButton* buttonI3SToS3MB = new QPushButton(this);
+	buttonI3SToS3MB->setText(t5);
+	connect(buttonI3SToS3MB, SIGNAL(clicked()), this, SLOT(handleI3SToS3MBClickedEvent()));
+	vctLayout->addWidget(buttonI3SToS3MB);
+
 	mainLayout->addLayout(horLayout);
 	mainLayout->addLayout(vctLayout);
 	mainLayout->addStretch();
@@ -103,6 +111,14 @@ void S3MBToolkit::handleOBJToS3MBClickedEvent()
 {
 	DialogOBJToS3MB dialog;
     dialog.setWindowTitle(t4);
+	dialog.setFixedSize(526, 400);
+	dialog.exec();
+}
+
+void S3MBToolkit::handleI3SToS3MBClickedEvent()
+{
+	DialogI3SToS3MB dialog;
+	dialog.setWindowTitle(t4);
 	dialog.setFixedSize(526, 400);
 	dialog.exec();
 }

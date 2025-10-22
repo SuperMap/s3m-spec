@@ -4,7 +4,7 @@
 #include "MathEngine.h"
 #include "S3MBReader.h"
 #include "S3MBUtils.h"
-#include "Utils.h"
+#include "Utils/Utils.h"
 
 #include "document.h"
 #include "istreamwrapper.h"

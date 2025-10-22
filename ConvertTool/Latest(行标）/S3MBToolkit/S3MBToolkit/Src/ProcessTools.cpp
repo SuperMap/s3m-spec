@@ -1,8 +1,10 @@
 #include "ProcessTools.h"
 #include "Common.h"
+#include "GLTFParser.h"
+#include "I3STool.h"
 #include "MathEngine.h"
 #include "S3MBUtils.h"
-#include "Utils.h"
+#include "Utils/Utils.h"
 #include "S3MBCommon.h"
 #include "Shell.h"
 #include "ImageOperator.h"
@@ -19,16 +21,6 @@
 
 namespace S3MB
 {
-	ProcessParams::ProcessParams()
-	{
-
-	}
-
-	ProcessType ProcessParams::GetProcessType()
-	{
-		return ProcessType::P_Unknow;
-	}
-
 	ThreeDTilesParams::ThreeDTilesParams()
 	{
 		m_nVertexCompressType = S3MBVertexTag::SV_Standard;
@@ -988,6 +980,12 @@ namespace S3MB
 		return true;
 	}
 
+	bool ProcessTools::I3SToS3MB(const I3SParams& params)
+	{
+		I3STool tool;
+		return tool.ToS3M(params);
+	}
+
 	void ProcessTools::SaveGroup(GLTFTreeNode* pNode, std::wstring strOutPath, RenderOperationGroup* pGroup)
 	{
 		BoundingSphere bSphere;
@@ -1750,21 +1748,24 @@ namespace S3MB
 			m_3DTilesParser.SetBufferSize(nBufferSize - nJsonLenth);
 			if (EQUAL(nGltfVersion, 2.0))
 			{
-				Point3D pntCesiumRTC;
-				if (m_3DTilesParser.ParseGLTF(pNode, pBuffer, nJsonLenth, strOutputPath, pntCesiumRTC))
+				GLTFTileInfos_2* pTileInfos = m_3DTilesParser.ParseGLTF(pNode, pBuffer, nJsonLenth, strOutputPath);
+				if (pTileInfos != nullptr)
 				{
-					Point3D pntRtcCenter(pntCenter.x + pntCesiumRTC.x, pntCenter.y + pntCesiumRTC.y, pntCenter.z + pntCesiumRTC.z);
-					MeshToGroup(pNode, strOutputPath, pGroup, strParentPath, pntRtcCenter);
+					Point3D pntRtcCenter(pntCenter.x + pTileInfos->m_vCesuimRTC.x, pntCenter.y + pTileInfos->m_vCesuimRTC.y, pntCenter.z + pTileInfos->m_vCesuimRTC.z);
+					MeshToGroup(pNode, pTileInfos, strOutputPath, pGroup, strParentPath, pntRtcCenter);
+					delete pTileInfos;
+					pTileInfos = nullptr;
 				}
 			}
 			else if (EQUAL(nGltfVersion, 1.0))
 			{
-				Point3D pntCesiumRTC;
-				if (m_3DTilesParser.ParseGLTF_V1(pBuffer, nJsonLenth, strOutputPath, pntCesiumRTC))
+				GLTFTileInfos_1* pTileInfos = m_3DTilesParser.ParseGLTF_V1(pBuffer, nJsonLenth, strOutputPath);
+				if (pTileInfos != nullptr)
 				{
-					Point3D pntRtcCenter(pntCenter.x + pntCesiumRTC.x, pntCenter.y + pntCesiumRTC.y, pntCenter.z + pntCesiumRTC.z);
-					unsigned char* pTempBuffer = pBuffer + nJsonLenth;
-					MeshToGroup_V1(pNode, pTempBuffer, strOutputPath, pGroup, strParentPath, pntRtcCenter);
+					Point3D pntRtcCenter(pntCenter.x + pTileInfos->m_vCesuimRTC.x, pntCenter.y + pTileInfos->m_vCesuimRTC.y, pntCenter.z + pTileInfos->m_vCesuimRTC.z);
+					MeshToGroup(pNode, pTileInfos, strOutputPath, pGroup, strParentPath, pntRtcCenter);
+					delete pTileInfos;
+					pTileInfos = nullptr;
 				}
 			}
 			m_3DTilesParser.Clear();
@@ -2073,21 +2074,24 @@ namespace S3MB
 			m_3DTilesParser.SetBufferSize(nBufferSize - nJsonLenth);
 			if (EQUAL(nGltfVersion, 2.0))
 			{
-				Point3D pntCesiumRTC;
-				if (m_3DTilesParser.ParseGLTF(pNode, pBuffer, nJsonLenth, strOutDir, pntCesiumRTC))
+				GLTFTileInfos_2* pTileInfos = m_3DTilesParser.ParseGLTF(pNode, pBuffer, nJsonLenth, strOutDir);
+				if (pTileInfos != nullptr)
 				{
-					Point3D pntRtcCenter(ptTileCenter.x + pntCesiumRTC.x, ptTileCenter.y + pntCesiumRTC.y, ptTileCenter.z + pntCesiumRTC.z);
-					MeshToGroup(pNode, strOutDir, pGroup, strFatherFileName, pntRtcCenter);
+					Point3D pntRtcCenter(ptTileCenter.x + pTileInfos->m_vCesuimRTC.x, ptTileCenter.y + pTileInfos->m_vCesuimRTC.y, ptTileCenter.z + pTileInfos->m_vCesuimRTC.z);
+					MeshToGroup(pNode, pTileInfos, strOutDir, pGroup, strFatherFileName, pntRtcCenter);
+					delete pTileInfos;
+					pTileInfos = nullptr;
 				}
 			}
 			else if (EQUAL(nGltfVersion, 1.0))
 			{
-				Point3D pntCesiumRTC;
-				if (m_3DTilesParser.ParseGLTF_V1(pBuffer, nJsonLenth, strOutDir, pntCesiumRTC))
+				GLTFTileInfos_1* pTileInfos = m_3DTilesParser.ParseGLTF_V1(pBuffer, nJsonLenth, strOutDir);
+				if (pTileInfos != nullptr)
 				{
-					Point3D pntRtcCenter(ptTileCenter.x + pntCesiumRTC.x, ptTileCenter.y + pntCesiumRTC.y, ptTileCenter.z + pntCesiumRTC.z);
-					unsigned char* pTempBuffer = pBuffer + nJsonLenth;
-					MeshToGroup_V1(pNode, pTempBuffer, strOutDir, pGroup, strFatherFileName, pntRtcCenter);
+					Point3D pntRtcCenter(ptTileCenter.x + pTileInfos->m_vCesuimRTC.x, ptTileCenter.y + pTileInfos->m_vCesuimRTC.y, ptTileCenter.z + pTileInfos->m_vCesuimRTC.z);
+					MeshToGroup(pNode, pTileInfos, strOutDir, pGroup, strFatherFileName, pntRtcCenter);
+					delete pTileInfos;
+					pTileInfos = nullptr;
 				}
 			}
 			m_3DTilesParser.Clear();
@@ -2256,7 +2260,7 @@ namespace S3MB
 		}
 	}
 
-	void ProcessTools::MeshToGroup_V1(GLTFTreeNode * pNode, unsigned char*& pBuffer, std::wstring strOutputPath, RenderOperationGroup* pGroup, std::wstring strParentPath, Point3D& pntCenter)
+	void ProcessTools::MeshToGroup(GLTFTreeNode * pNode, GLTFTileInfos_1 *& pTileInfos, std::wstring strOutputPath, RenderOperationGroup* pGroup, std::wstring strParentPath, Point3D& pntCenter)
 	{
 		RenderOperationPagedLOD* pLOD = new RenderOperationPagedLOD();
 		pLOD->SetName(StringUtil::GetName(strParentPath));
@@ -2267,7 +2271,7 @@ namespace S3MB
 		std::map<std::wstring, Material*>& mapMaterial = pGroup->GetMaterials();
 		std::map<std::wstring, TextureDataInfo*>& mapTexture = pGroup->GetTextureData();
 
-		const std::map<std::wstring, std::vector<std::wstring> >& mapMeshSet = m_3DTilesParser.GetMeshSets_V1();
+		const std::map<std::wstring, std::vector<std::wstring> >& mapMeshSet = pTileInfos->m_mapMeshSet;
 		std::map<std::wstring, std::vector<std::wstring> >::const_iterator it = mapMeshSet.begin();
 		while (it != mapMeshSet.end())
 		{
@@ -2278,8 +2282,8 @@ namespace S3MB
 				TextureDataInfo* texPtr = nullptr;
 				RenderOperationGeode* pGeode = new RenderOperationGeode;
 
-				const GLTFMesh& gltfMesh = m_3DTilesParser.GetMesh(it->second[i]);
-				mat = m_3DTilesParser.GetMeshToLocalViewMatrix(it->second[i]);
+				const GLTFMesh& gltfMesh = pTileInfos->m_mapMeshs[it->second[i]];
+				mat = pTileInfos->m_mapMeshTOLocalView[it->second[i]];
 
 				unsigned int nPosSize = gltfMesh.m_vecStrPos.size();
 
@@ -2287,9 +2291,9 @@ namespace S3MB
 				{
 					std::wstring strPosName = gltfMesh.m_vecStrPos[j];
 					//---------------- 顶点----------------------------------------------------------------------------
-					const GLTFAccessor& gltfPosAccessor = m_3DTilesParser.GetAccessor(strPosName);
+					const GLTFAccessor& gltfPosAccessor = pTileInfos->m_mapAccessors[strPosName];
 					int nPosDim = 3;
-					float* pPosData = (float*)GetAttributeData_V1(pBuffer, strPosName, nPosDim);
+					float* pPosData = (float*)GLTFParser::GetAttributeData(pTileInfos, strPosName, nPosDim);
 					//---------------- 顶点颜色---------------------------------------------------------------------------
 					float* pColorData = nullptr;
 					GLTFAccessor gltfVecColor;
@@ -2297,8 +2301,8 @@ namespace S3MB
 					if (gltfMesh.m_vecStrColor.size() > j)
 					{
 						std::wstring strColorName = gltfMesh.m_vecStrColor[j];
-						gltfVecColor = m_3DTilesParser.GetAccessor(strColorName);
-						pColorData = (float*)GetAttributeData_V1(pBuffer, strColorName, nColorDim);
+						gltfVecColor = pTileInfos->m_mapAccessors[strColorName];
+						pColorData = (float*)GLTFParser::GetAttributeData(pTileInfos, strColorName, nColorDim);
 					}
 					//--------------- 法线----------------------------------------------------------------------------
 					GLTFAccessor gltfNormalAccessor;
@@ -2307,8 +2311,8 @@ namespace S3MB
 					if (gltfMesh.m_vecStrNormal.size() > j)
 					{
 						std::wstring strNormalName = gltfMesh.m_vecStrNormal[j];
-						gltfNormalAccessor = m_3DTilesParser.GetAccessor(strNormalName);
-						pNormalData = (float*)GetAttributeData_V1(pBuffer, strNormalName, nNormalDim);
+						gltfNormalAccessor = pTileInfos->m_mapAccessors[strNormalName];
+						pNormalData = (float*)GLTFParser::GetAttributeData(pTileInfos, strNormalName, nNormalDim);
 					}
 
 					//--------------- 纹理----------------------------------------------------------------------------
@@ -2318,15 +2322,15 @@ namespace S3MB
 					if (gltfMesh.m_vecStrTex.size() > j)
 					{
 						std::wstring strTexName = gltfMesh.m_vecStrTex[j];
-						gltfTexAccessor = m_3DTilesParser.GetAccessor(strTexName);
-						pTexData = (float*)GetAttributeData_V1(pBuffer, strTexName, nTexDim);
+						gltfTexAccessor = pTileInfos->m_mapAccessors[strTexName];
+						pTexData = (float*)GLTFParser::GetAttributeData(pTileInfos, strTexName, nTexDim);
 					}
 					//--------------- 材质纹理-------------------------------------------------------------------------
 					if (gltfMesh.m_vecStrMaterial.size() > j)
 					{
 						std::wstring strMaterialName = gltfMesh.m_vecStrMaterial[j];
 						std::wstring strDir = StringUtil::GetDir(strOutputPath);
-						GetTextureData_V1(pBuffer, strMaterialName, strDir, textureLists, texPtr);
+						GetTextureData(pTileInfos, strMaterialName, strDir, textureLists, texPtr);
 					}
 					//--------------- 索引-----------------------------------------------------------------------------------
 					GLTFAccessor gltfIndicesAccessor;
@@ -2337,16 +2341,16 @@ namespace S3MB
 					if (gltfMesh.m_vecStrIndices.size() > j)
 					{
 						std::wstring strIndiceName = gltfMesh.m_vecStrIndices[j];
-						gltfIndicesAccessor = m_3DTilesParser.GetAccessor(strIndiceName);
+						gltfIndicesAccessor = pTileInfos->m_mapAccessors[strIndiceName];
 						nIndicesCount = gltfIndicesAccessor.m_nCount;
 
 						if (gltfIndicesAccessor.m_nComponentType == 5122 || gltfIndicesAccessor.m_nComponentType == 5123)
 						{
-							pUShortIndicesData = (unsigned short*)GetAttributeData_V1(pBuffer, strIndiceName, nIndicesDim);
+							pUShortIndicesData = (unsigned short*)GLTFParser::GetAttributeData(pTileInfos, strIndiceName, nIndicesDim);
 						}
 						else
 						{
-							pUIntIndicesData = (unsigned int*)GetAttributeData_V1(pBuffer, strIndiceName, nIndicesDim);
+							pUIntIndicesData = (unsigned int*)GLTFParser::GetAttributeData(pTileInfos, strIndiceName, nIndicesDim);
 						}
 					}
 
@@ -2420,7 +2424,7 @@ namespace S3MB
 					}
 
 					IndexPackage* pIndexPackage = new IndexPackage;
-					pIndexPackage->m_OperationType = GetDrawOperationType(gltfMesh.m_vecDrawType[j]);
+					pIndexPackage->m_OperationType = GLTFParser::ToDrawOperationType(gltfMesh.m_vecDrawType[j]);
 					pIndexPackage->m_strPassName.push_back(strMaterialName);
 					pIndexPackage->m_nIndexesCount = nIndicesCount;
 					if (pUShortIndicesData != nullptr)
@@ -2482,88 +2486,26 @@ namespace S3MB
 		}
 	}
 
-	void * ProcessTools::GetAttributeData_V1(unsigned char*& pBuffer, std::wstring& strName, int& nDim)
-	{
-		if (strName.length() == 0)
-		{
-			return nullptr;
-		}
-
-		const GLTFAccessor& gltfAccessor = m_3DTilesParser.GetAccessor(strName);
-		unsigned int nCount = gltfAccessor.m_nCount;
-		std::wstring strDataType = gltfAccessor.m_strType;
-		unsigned int nComponentType = gltfAccessor.m_nComponentType;
-		unsigned int nByteOffset = gltfAccessor.m_nByteOffset;
-		unsigned int nByteWidth = 4;
-		unsigned int nConWidth = 0;
-		if (StringUtil::CompareNoCase(strDataType, U("SCALAR")))
-		{
-			nConWidth = 1;
-			nDim = 1;
-		}
-		else if (StringUtil::CompareNoCase(strDataType, U("VEC3")))
-		{
-			nConWidth = 3;
-			nDim = 3;
-		}
-		else if (StringUtil::CompareNoCase(strDataType, U("VEC2")))
-		{
-			nConWidth = 2;
-			nDim = 2;
-		}
-		else if (StringUtil::CompareNoCase(strDataType, U("VEC4")))
-		{
-			nConWidth = 4;
-			nDim = 2;
-		}
-
-		if (nComponentType == 5120 || nComponentType == 5121)
-		{
-			nByteWidth = 1;
-		}
-		else if (nComponentType == 5122 || nComponentType == 5123)
-		{
-			nByteWidth = 2;
-		}
-		else if (nComponentType == 5126)
-		{
-			nByteWidth = 4;
-		}
-
-		if (gltfAccessor.m_strBufferViewName.length() == 0 || nConWidth == 0)
-		{
-			return nullptr;
-		}
-
-		const GLTFBufferView& gltfBufferView = m_3DTilesParser.GetBufferView(gltfAccessor.m_strBufferViewName);
-
-		// 获取buffer
-		unsigned int nBufferSize = nCount * nConWidth * nByteWidth;
-		unsigned char* pData = new unsigned char[nBufferSize];
-		memcpy(pData, pBuffer + gltfBufferView.m_nByteOffset + nByteOffset, nBufferSize);
-		return pData;
-	}
-
-	void ProcessTools::GetTextureData_V1(unsigned char*& pBuffer, std::wstring& strMaterialName, std::wstring& strOutputDir, std::map<std::wstring, TextureDataInfo*>& texList, TextureDataInfo*& texPtr)
+	void ProcessTools::GetTextureData(GLTFTileInfos_1 *& pTileInfos, std::wstring& strMaterialName, std::wstring& strOutputDir, std::map<std::wstring, TextureDataInfo*>& texList, TextureDataInfo*& texPtr)
 	{
 		if (strMaterialName.length() == 0)
 		{
 			return;
 		}
 
-		const GLTFMaterial& gltfMaterial = m_3DTilesParser.GetMaterial(strMaterialName);
+		const GLTFMaterial& gltfMaterial = pTileInfos->m_mapMaterials[strMaterialName];
 		if (gltfMaterial.m_strTextureName.length() == 0)
 		{
 			return;
 		}
 
-		const GLTFTexture& gltfTexture = m_3DTilesParser.GetTexture(gltfMaterial.m_strTextureName);
+		const GLTFTexture& gltfTexture = pTileInfos->m_mapTextures[gltfMaterial.m_strTextureName];
 		if (gltfTexture.m_strImageName.length() == 0)
 		{
 			return;
 		}
 
-		const GLTFImage& gltfImage = m_3DTilesParser.GetImage(gltfTexture.m_strImageName);
+		const GLTFImage& gltfImage = pTileInfos->m_mapImages[gltfTexture.m_strImageName];
 		if (gltfImage.m_strBufferViewName.length() == 0)
 		{
 			return;
@@ -2579,11 +2521,11 @@ namespace S3MB
 			}
 		}
 
-		const GLTFBufferView & gltfBufferView = m_3DTilesParser.GetBufferView(gltfImage.m_strBufferViewName);
+		const GLTFBufferView & gltfBufferView = pTileInfos->m_mapBufferViews[gltfImage.m_strBufferViewName];
 
 		unsigned int nBufferSize = gltfBufferView.m_nByteLength;
 		unsigned char* pData = new unsigned char[nBufferSize];
-		memcpy(pData, pBuffer + gltfBufferView.m_nByteOffset, nBufferSize);
+		memcpy(pData, pTileInfos->m_mapBuffers[gltfBufferView.m_strBufferName].m_pBuffer + gltfBufferView.m_nByteOffset, nBufferSize);
 
 		std::wstring strImageType = gltfImage.m_strImageType;
 		int nTypeLength = strImageType.length();
@@ -2637,7 +2579,7 @@ namespace S3MB
 		return;
 	}
 
-	void ProcessTools::MeshToGroup(GLTFTreeNode* pNode, std::wstring strOutputPath, RenderOperationGroup* pGroup, std::wstring strParentPath, Point3D& pntCenter)
+	void ProcessTools::MeshToGroup(GLTFTreeNode* pNode, GLTFTileInfos_2*& pTileInfos, std::wstring strOutputPath, RenderOperationGroup* pGroup, std::wstring strParentPath, Point3D& pntCenter)
 	{
 		std::map<int, TextureDataInfo*> textureLists;
         std::map<std::wstring, Skeleton*>& mapSkeleton = pGroup->GetSkeleton();
@@ -2658,7 +2600,7 @@ namespace S3MB
 		pLOD->SetName(StringUtil::GetName(strParentPath));
 
 		BoundingBox entileBox;
-		const std::map<unsigned int, std::vector<unsigned int> >& mapMeshSet = m_3DTilesParser.GetMeshSets();
+		const std::map<unsigned int, std::vector<unsigned int> >& mapMeshSet = pTileInfos->m_mapMeshSet;
 		std::map<unsigned int, std::vector<unsigned int> >::const_iterator it = mapMeshSet.begin();
 		while (it != mapMeshSet.end())
 		{
@@ -2666,7 +2608,7 @@ namespace S3MB
 			for (unsigned int i = 0; i < nMeshSize; i++)
 			{
 				RenderOperationGeode* pGeode = new RenderOperationGeode;
-				if (!MeshToGeode(pNode, it->second[i], strOutputPath, pGeode, mapSkeleton, mapMaterial, mapTexture, textureLists, entileBox, pntCenter))
+				if (!MeshToGeode(pNode, pTileInfos, it->second[i], strOutputPath, pGeode, mapSkeleton, mapMaterial, mapTexture, textureLists, entileBox, pntCenter))
 				{
 					delete pGeode;
 					pGeode = nullptr;
@@ -2721,10 +2663,10 @@ namespace S3MB
 		}
 	}
 
-    bool ProcessTools::MeshToGeode(GLTFTreeNode* pNode, unsigned int nMeshIndex, std::wstring strOutputPath, RenderOperationGeode* pGeode, std::map<std::wstring, Skeleton*>& mapSkeleton, std::map<std::wstring, Material*>& mapMaterial, std::map<std::wstring, TextureDataInfo*>& mapTexture, std::map<int, TextureDataInfo*>& textureLists, BoundingBox& entileBox, Point3D& pntCenter)
+    bool ProcessTools::MeshToGeode(GLTFTreeNode* pNode, GLTFTileInfos_2*& pTileInfos, unsigned int nMeshIndex, std::wstring strOutputPath, RenderOperationGeode* pGeode, std::map<std::wstring, Skeleton*>& mapSkeleton, std::map<std::wstring, Material*>& mapMaterial, std::map<std::wstring, TextureDataInfo*>& mapTexture, std::map<int, TextureDataInfo*>& textureLists, BoundingBox& entileBox, Point3D& pntCenter)
 	{
-		const GLTFMesh& gltfMesh = m_3DTilesParser.GetMesh(nMeshIndex);
-		Matrix4d mat = m_3DTilesParser.GetMeshToLocalViewMatrix(nMeshIndex);
+		const GLTFMesh& gltfMesh = pTileInfos->m_mapMeshs[nMeshIndex];
+		Matrix4d mat = pTileInfos->m_mapMeshToLocalView[nMeshIndex];
 
 		for (unsigned int i = 0; i < gltfMesh.m_vecGLTFPrimitive.size(); i++)
 		{
@@ -2737,10 +2679,10 @@ namespace S3MB
             Skeleton* pSkeleton = new Skeleton;
 			Material* pMaterial = new Material;
 			std::vector<TextureDataInfo*> vecTexPtr;
-			ProcessMaterial(StringUtil::GetDir(strOutputPath), gltfPrimitive, pMaterial, textureLists, vecTexPtr);
+			ProcessMaterial(pTileInfos, StringUtil::GetDir(strOutputPath), gltfPrimitive, pMaterial, textureLists, vecTexPtr);
 
 			std::wstring strMaterialName = pMaterial->m_strName;
-			if (!ProcessSkeleton(pNode, pSkeleton, gltfPrimitive, mat, strMaterialName, pntCenter))
+			if (!ProcessSkeleton(pNode, pTileInfos, pSkeleton, gltfPrimitive, mat, strMaterialName, pntCenter))
 			{
 				delete pSkeleton;
 				pSkeleton = nullptr;
@@ -2778,7 +2720,7 @@ namespace S3MB
 		return true;
 	}
 
-    bool ProcessTools::ProcessSkeleton(GLTFTreeNode* pNode, Skeleton*& pSkeleton, GLTFPrimitive& gltfPrimitive, Matrix4d mat, std::wstring strMaterialName, Point3D& pntCenter)
+    bool ProcessTools::ProcessSkeleton(GLTFTreeNode* pNode, GLTFTileInfos_2*& pTileInfos, Skeleton*& pSkeleton, GLTFPrimitive& gltfPrimitive, Matrix4d mat, std::wstring strMaterialName, Point3D& pntCenter)
 	{
 		GLTFAttributes& gltfAttributes = gltfPrimitive.m_gltfAttributes;
 		GLTFDraco& gltfDraco = gltfPrimitive.m_gltfDraco;
@@ -2789,17 +2731,17 @@ namespace S3MB
 		// 骨架数据没有做Draco压缩
 		if (gltfDraco.m_nBufferViewIndex == -1)
 		{
-			const GLTFAccessor& gltfPosAccessor = m_3DTilesParser.GetAccessor(gltfAttributes.m_nPosIndex);
+			const GLTFAccessor& gltfPosAccessor = pTileInfos->m_mapAccessors[gltfAttributes.m_nPosIndex];
 			int nPosDim = 3;
-			float* pPosData = (float*)GetAttributeData(gltfAttributes.m_nPosIndex, nPosDim);
+			float* pPosData = (float*)GLTFParser::GetAttributeData(pTileInfos, gltfAttributes.m_nPosIndex, nPosDim);
 			//----------------------- 顶点颜色-------------------------------------------------------------
 			float* pColorData = nullptr;
 			GLTFAccessor gltfVecColor;
 			int nColorDim = 3;
 			if (gltfAttributes.m_nColorIndex != -1)
 			{
-				gltfVecColor = m_3DTilesParser.GetAccessor(gltfAttributes.m_nColorIndex);
-				pColorData = (float*)GetAttributeData(gltfAttributes.m_nColorIndex, nColorDim);
+				gltfVecColor = pTileInfos->m_mapAccessors[gltfAttributes.m_nColorIndex];
+				pColorData = (float*)GLTFParser::GetAttributeData(pTileInfos, gltfAttributes.m_nColorIndex, nColorDim);
 			}
 			//----------------------- 法线----------------------------------------------------------------
 			float* pNormalData = nullptr;
@@ -2807,8 +2749,8 @@ namespace S3MB
 			int nNormalDim = 3;
 			if (gltfAttributes.m_nNormalIndex != -1)
 			{
-				gltfNormalAccessor = m_3DTilesParser.GetAccessor(gltfAttributes.m_nNormalIndex);
-				pNormalData = (float*)GetAttributeData(gltfAttributes.m_nNormalIndex, nNormalDim);
+				gltfNormalAccessor = pTileInfos->m_mapAccessors[gltfAttributes.m_nNormalIndex];
+				pNormalData = (float*)GLTFParser::GetAttributeData(pTileInfos, gltfAttributes.m_nNormalIndex, nNormalDim);
 			}
 			//------------------------ 纹理坐标 ---------------------------------------------------------------------
 			float* pTexData = nullptr;
@@ -2816,8 +2758,8 @@ namespace S3MB
 			int nTexDim = 2;
 			if (gltfAttributes.m_nTex1Index != -1)
 			{
-				gltfTexAccessor = m_3DTilesParser.GetAccessor(gltfAttributes.m_nTex1Index);
-				pTexData = (float*)GetAttributeData(gltfAttributes.m_nTex1Index, nTexDim);
+				gltfTexAccessor = pTileInfos->m_mapAccessors[gltfAttributes.m_nTex1Index];
+				pTexData = (float*)GLTFParser::GetAttributeData(pTileInfos, gltfAttributes.m_nTex1Index, nTexDim);
 			}
 			//----------------------- 第二重纹理坐标----------------------------------------------------------------
 			float* pTexData2 = nullptr;
@@ -2825,8 +2767,8 @@ namespace S3MB
 			int nTexDim2 = 2;
 			if (gltfAttributes.m_nTex2Index != -1)
 			{
-				gltfTexAccessor2 = m_3DTilesParser.GetAccessor(gltfAttributes.m_nTex2Index);
-				pTexData2 = (float*)GetAttributeData(gltfAttributes.m_nTex2Index, nTexDim2);
+				gltfTexAccessor2 = pTileInfos->m_mapAccessors[gltfAttributes.m_nTex2Index];
+				pTexData2 = (float*)GLTFParser::GetAttributeData(pTileInfos, gltfAttributes.m_nTex2Index, nTexDim2);
 			}
 			//-----------------------BatchId--------------------------------------------------
 			GLTFAccessor gltfBatchIdsAccessor;
@@ -2838,24 +2780,24 @@ namespace S3MB
 			int nBatchIdsDim = 1;
 			if (m_3DTilesParams.GetIsModel() && gltfAttributes.m_nBatchIds != -1)
 			{
-				gltfBatchIdsAccessor = m_3DTilesParser.GetAccessor(gltfAttributes.m_nBatchIds);
+				gltfBatchIdsAccessor = pTileInfos->m_mapAccessors[gltfAttributes.m_nBatchIds];
 				nBatchIdsCount = gltfBatchIdsAccessor.m_nCount;
 
 				if (gltfBatchIdsAccessor.m_nComponentType == 5122 || gltfBatchIdsAccessor.m_nComponentType == 5123)
 				{
-					pUShortBatchIdsData = (unsigned short*)GetAttributeData(gltfAttributes.m_nBatchIds, nBatchIdsDim);
+					pUShortBatchIdsData = (unsigned short*)GLTFParser::GetAttributeData(pTileInfos, gltfAttributes.m_nBatchIds, nBatchIdsDim);
 				}
 				else if (gltfBatchIdsAccessor.m_nComponentType == 5125)
 				{
-					pUIntBatchIdsData = (unsigned int*)GetAttributeData(gltfAttributes.m_nBatchIds, nBatchIdsDim);
+					pUIntBatchIdsData = (unsigned int*)GLTFParser::GetAttributeData(pTileInfos, gltfAttributes.m_nBatchIds, nBatchIdsDim);
 				}
 				else if (gltfBatchIdsAccessor.m_nComponentType == 5120 || gltfBatchIdsAccessor.m_nComponentType == 5121)
 				{
-					pByteBatchIdData = (unsigned char*)GetAttributeData(gltfAttributes.m_nBatchIds, nBatchIdsDim);
+					pByteBatchIdData = (unsigned char*)GLTFParser::GetAttributeData(pTileInfos, gltfAttributes.m_nBatchIds, nBatchIdsDim);
 				}
 				else if (gltfBatchIdsAccessor.m_nComponentType == 5126)
 				{
-					pfloatBatchIdData = (float*)GetAttributeData(gltfAttributes.m_nBatchIds, nBatchIdsDim);
+					pfloatBatchIdData = (float*)GLTFParser::GetAttributeData(pTileInfos, gltfAttributes.m_nBatchIds, nBatchIdsDim);
 				}
 			}
 			//----------------------- 索引---------------------------------------------------------
@@ -2866,16 +2808,16 @@ namespace S3MB
 			int nIndicesDim = 1;
 			if (gltfPrimitive.m_nIndices != -1)
 			{
-				gltfIndicesAccessor = m_3DTilesParser.GetAccessor(gltfPrimitive.m_nIndices);
+				gltfIndicesAccessor = pTileInfos->m_mapAccessors[gltfPrimitive.m_nIndices];
 				nIndicesCount = gltfIndicesAccessor.m_nCount;
 
 				if (gltfIndicesAccessor.m_nComponentType == 5122 || gltfIndicesAccessor.m_nComponentType == 5123)
 				{
-					pUShortIndicesData = (unsigned short*)GetAttributeData(gltfPrimitive.m_nIndices, nIndicesDim);
+					pUShortIndicesData = (unsigned short*)GLTFParser::GetAttributeData(pTileInfos, gltfPrimitive.m_nIndices, nIndicesDim);
 				}
 				else if (gltfIndicesAccessor.m_nComponentType == 5120 || gltfIndicesAccessor.m_nComponentType == 5121)
 				{
-					unsigned char* pUByteIndicesData = (unsigned char*)GetAttributeData(gltfPrimitive.m_nIndices, nIndicesDim);
+					unsigned char* pUByteIndicesData = (unsigned char*)GLTFParser::GetAttributeData(pTileInfos, gltfPrimitive.m_nIndices, nIndicesDim);
 					pUShortIndicesData = new unsigned short[nIndicesCount];
 					for (int iIndexIndx = 0; iIndexIndx < nIndicesCount; iIndexIndx++)
 					{
@@ -2885,7 +2827,7 @@ namespace S3MB
 				}
 				else
 				{
-					pUIntIndicesData = (unsigned int*)GetAttributeData(gltfPrimitive.m_nIndices, nIndicesDim);
+					pUIntIndicesData = (unsigned int*)GLTFParser::GetAttributeData(pTileInfos, gltfPrimitive.m_nIndices, nIndicesDim);
 				}
 				//判断下顶点个数是否小于65536，小于就再转下
 				if (pUIntIndicesData != nullptr && gltfPosAccessor.m_nCount < 65536)
@@ -2911,7 +2853,7 @@ namespace S3MB
 			if (pColorData != nullptr)
 			{
 				unsigned int* pColor = new unsigned int[gltfVecColor.m_nCount];
-				bool bIsTrans = m_3DTilesParser.GetAccessor(gltfAttributes.m_nColorIndex).m_strType == U("VEC4");
+				bool bIsTrans = pTileInfos->m_mapAccessors[gltfAttributes.m_nColorIndex].m_strType == U("VEC4");
 				for (int i = 0; i < gltfVecColor.m_nCount; i++)
 				{
 					float r, g, b, a;
@@ -3116,7 +3058,7 @@ namespace S3MB
 				pfloatBatchIdData = nullptr;
 			}
 			IndexPackage* pIndexPackage = new IndexPackage;
-			pIndexPackage->m_OperationType = GetDrawOperationType(gltfPrimitive.m_nDrawType);
+			pIndexPackage->m_OperationType = GLTFParser::ToDrawOperationType(gltfPrimitive.m_nDrawType);
 			pIndexPackage->m_strPassName.push_back(strMaterialName);
 			pIndexPackage->m_nIndexesCount = nIndicesCount;
 			if (pUShortIndicesData != nullptr)
@@ -3154,7 +3096,7 @@ namespace S3MB
 
 			if (pIndexPackage->m_OperationType == OT_TRIANGLE_STRIP || pIndexPackage->m_OperationType == OT_TRIANGLE_FAN)
 			{
-				TrannsFormIndex(pIndexPackage);
+				SkeletonUtils::TranslateIndices(pIndexPackage);
 			}
 
 			unsigned int nErrorID = 0xffffffff;
@@ -3190,7 +3132,7 @@ namespace S3MB
 
 			std::vector<IndexPackage*> arrIndexPackage;
 			arrIndexPackage.push_back(pIndexPackage);
-			RebuildVertexAndIndexPackage(pDataPackage, arrIndexPackage, vecIDInfo);
+			SkeletonUtils::RebuildVertexAndIndexPackage(pDataPackage, arrIndexPackage, vecIDInfo);
 			pSkeleton->m_pVertexDataPackage = pDataPackage;
 			pSkeleton->m_arrIndexPackage = arrIndexPackage;
 			pSkeleton->m_arrIDInfo = vecIDInfo;
@@ -3209,14 +3151,14 @@ namespace S3MB
 		return true;
 	}
 
-	void ProcessTools::ProcessMaterial(std::wstring strOutputPath, GLTFPrimitive& gltfPrimitive, Material* pMaterial, std::map<int, TextureDataInfo*>& textureLists, std::vector<TextureDataInfo*>& vecTexPtr)
+	void ProcessTools::ProcessMaterial(GLTFTileInfos_2*& pTileInfos, std::wstring strOutputPath, GLTFPrimitive& gltfPrimitive, Material* pMaterial, std::map<int, TextureDataInfo*>& textureLists, std::vector<TextureDataInfo*>& vecTexPtr)
 	{
 		TextureDataInfo* texPtr = nullptr;
 		TextureDataInfo* texPtr2 = nullptr;
 		if (m_3DTilesParams.GetIsModel())
 		{//模型才使用pbr
 			int nMatIndex = gltfPrimitive.m_nMaterialIndex;
-			const std::vector<GLTFMaterial>& vecMaterial = m_3DTilesParser.GetMaterials(nMatIndex);
+			const std::vector<GLTFMaterial>& vecMaterial = pTileInfos->m_mapMaterials[nMatIndex];
 			if (!vecMaterial.empty())
 			{
 				GLTFMaterial gltfMat = vecMaterial[0];
@@ -3240,7 +3182,7 @@ namespace S3MB
 
 				if (gltfMat.m_PBR.m_nBaseColorTextureIndex > -1)
 				{
-					GetTextureData(gltfMat.m_PBR.m_nBaseColorTextureIndex, strOutputPath, textureLists, texPtr);
+					GetTextureData(pTileInfos, gltfMat.m_PBR.m_nBaseColorTextureIndex, strOutputPath, textureLists, texPtr);
 					if (texPtr != nullptr)
 					{
 						pPbrParam->m_nBaseColorTextureCoordIndex = gltfMat.m_PBR.m_nBaseColorTextureCoordIndex;
@@ -3252,7 +3194,7 @@ namespace S3MB
 				}
 				if (gltfMat.m_PBR.m_nMetallicRoughnessTextureIndex > -1)
 				{
-					GetTextureData(gltfMat.m_PBR.m_nMetallicRoughnessTextureIndex, strOutputPath, textureLists, texPtr);
+					GetTextureData(pTileInfos, gltfMat.m_PBR.m_nMetallicRoughnessTextureIndex, strOutputPath, textureLists, texPtr);
 					if (texPtr != nullptr)
 					{
 						pPbrParam->m_nMetallicRoughnessTextureCoordIndex = gltfMat.m_PBR.m_nMetallicRoughnessTextureCoordIndex;
@@ -3264,7 +3206,7 @@ namespace S3MB
 				}
 				if (gltfMat.m_nNormalTextureIndex > -1)
 				{
-					GetTextureData(gltfMat.m_nNormalTextureIndex, strOutputPath, textureLists, texPtr);
+					GetTextureData(pTileInfos, gltfMat.m_nNormalTextureIndex, strOutputPath, textureLists, texPtr);
 					if (texPtr != nullptr)
 					{
 						pPbrParam->m_nNormalTextureCoordIndex = gltfMat.m_nNormalTextureCoordIndex;
@@ -3278,7 +3220,7 @@ namespace S3MB
 				}
 				if (gltfMat.m_nOcclusionTextureIndex > -1)
 				{
-					GetTextureData(gltfMat.m_nOcclusionTextureIndex, strOutputPath, textureLists, texPtr);
+					GetTextureData(pTileInfos, gltfMat.m_nOcclusionTextureIndex, strOutputPath, textureLists, texPtr);
 					if (texPtr != nullptr)
 					{
 						pPbrParam->m_nOcclusionTextureCoordIndex = gltfMat.m_nOcclusionTextureCoordIndex;
@@ -3290,7 +3232,7 @@ namespace S3MB
 				}
 				if (gltfMat.m_nEmissiveTextureIndex > -1)
 				{
-					GetTextureData(gltfMat.m_PBR.m_nBaseColorTextureIndex, strOutputPath, textureLists, texPtr);
+					GetTextureData(pTileInfos, gltfMat.m_PBR.m_nBaseColorTextureIndex, strOutputPath, textureLists, texPtr);
 					if (texPtr != nullptr)
 					{
 						pPbrParam->m_nEmissiveTextureCoordIndex = gltfMat.m_nEmissiveTextureCoordIndex;
@@ -3308,14 +3250,14 @@ namespace S3MB
 		//----------------------- 材质纹理----------------------------------------------------------------
 		if (gltfPrimitive.m_nMaterialIndex != -1)
 		{
-			const std::vector<GLTFMaterial>& vecMaterial = m_3DTilesParser.GetMaterials(gltfPrimitive.m_nMaterialIndex);
+			const std::vector<GLTFMaterial>& vecMaterial = pTileInfos->m_mapMaterials[gltfPrimitive.m_nMaterialIndex];
 			if (vecMaterial.size() > 0)
 			{//第一重纹理
-				GetTextureData(vecMaterial[0].m_PBR.m_nBaseColorTextureIndex, strOutputPath, textureLists, texPtr);
+				GetTextureData(pTileInfos, vecMaterial[0].m_PBR.m_nBaseColorTextureIndex, strOutputPath, textureLists, texPtr);
 			}
 			if (vecMaterial.size() > 1)
 			{//第二重纹理
-				GetTextureData(vecMaterial[1].m_PBR.m_nBaseColorTextureIndex, strOutputPath, textureLists, texPtr2);
+				GetTextureData(pTileInfos, vecMaterial[1].m_PBR.m_nBaseColorTextureIndex, strOutputPath, textureLists, texPtr2);
 			}
 		}
 
@@ -3338,7 +3280,7 @@ namespace S3MB
 			MaterialUtils::MakeDefault(pMaterial);
 		}
 
-		const std::vector<GLTFMaterial>& vecMaterial = m_3DTilesParser.GetMaterials(gltfPrimitive.m_nMaterialIndex);
+		const std::vector<GLTFMaterial>& vecMaterial = pTileInfos->m_mapMaterials[gltfPrimitive.m_nMaterialIndex];
 		if (vecMaterial.size() > 0)
 		{
 			ColorValue color = vecMaterial[0].m_colorV;
@@ -3374,89 +3316,14 @@ namespace S3MB
 		}
 	}
 
-	void* ProcessTools::GetAttributeData(int & index, int & nDim)
+	void ProcessTools::GetTextureData(GLTFTileInfos_2*& pTileInfos, int nTexIndex, std::wstring& strOutputDir, std::map<int, TextureDataInfo*>& texList, TextureDataInfo*& texPtr)
 	{
-		if (index == -1)
-		{
-			return nullptr;
-		}
-
-		const GLTFAccessor& gltfAccessor = m_3DTilesParser.GetAccessor(index);
-		unsigned int nCount = gltfAccessor.m_nCount;
-		std::wstring strDataType = gltfAccessor.m_strType;
-		unsigned int nComponentType = gltfAccessor.m_nComponentType;
-		unsigned int nByteOffset = gltfAccessor.m_nByteOffset;
-		unsigned int nByteWidth = 4;
-		unsigned int nConWidth = 0;
-		if (StringUtil::CompareNoCase(strDataType, U("SCALAR")))
-		{
-			nConWidth = 1;
-			nDim = 1;
-		}
-		else if (StringUtil::CompareNoCase(strDataType, U("VEC3")))
-		{
-			nConWidth = 3;
-			nDim = 3;
-		}
-		else if (StringUtil::CompareNoCase(strDataType, U("VEC2")))
-		{
-			nConWidth = 2;
-			nDim = 2;
-		}
-		else if (StringUtil::CompareNoCase(strDataType, U("VEC4")))
-		{
-			nConWidth = 4;
-			nDim = 4;
-		}
-
-		if (nComponentType == 5120 || nComponentType == 5121)
-		{
-			nByteWidth = 1;
-		}
-		else if (nComponentType == 5122 || nComponentType == 5123)
-		{
-			nByteWidth = 2;
-		}
-		else if (nComponentType == 5126 || nComponentType == 5125)
-		{
-			nByteWidth = 4;
-		}
-
-		if (gltfAccessor.m_nBufferViewIndex == -1 || nConWidth == 0)
-		{
-			return nullptr;
-		}
-
-		const GLTFBufferView& gltfBufferView = m_3DTilesParser.GetBufferView(gltfAccessor.m_nBufferViewIndex);
-
-		// 获取buffer
-		unsigned int nBufferSize = nCount * nConWidth * nByteWidth;
-		unsigned char* pBuffer = new unsigned char[nBufferSize];
-		const GLTFBuffer& gltfBuffer = m_3DTilesParser.GetBuffer(gltfBufferView.m_nBufferIndex);
-
-		if (gltfBufferView.m_nByteStride == 0)
-		{
-			memcpy(pBuffer, gltfBuffer.m_pBuffer + gltfBufferView.m_nByteOffset + nByteOffset, nBufferSize);
-		}
-		else if (gltfBufferView.m_nByteStride != 0)
-		{
-			for (int i = 0; i < nCount; i++)
-			{
-				memcpy(pBuffer + i * nConWidth * nByteWidth, gltfBuffer.m_pBuffer + i * gltfBufferView.m_nByteStride + gltfBufferView.m_nByteOffset + nByteOffset, nConWidth * nByteWidth);
-			}
-		}
-
-		return pBuffer;
-	}
-
-	void ProcessTools::GetTextureData(int nTexIndex, std::wstring& strOutputDir, std::map<int, TextureDataInfo*>& texList, TextureDataInfo*& texPtr)
-	{
-		if (nTexIndex == -1)
+		if (nTexIndex == -1 || nTexIndex >= pTileInfos->m_mapTextures.size())
 		{
 			return;
 		}
 
-		const GLTFTexture& gltfTexture = m_3DTilesParser.GetTexture(nTexIndex);
+		const GLTFTexture& gltfTexture = pTileInfos->m_mapTextures[nTexIndex];
 		if (gltfTexture.m_nImageIndex == -1)
 		{
 			return;
@@ -3464,7 +3331,7 @@ namespace S3MB
 
 		bool bTo2N = gltfTexture.m_GLTFSampler.m_nWrapS == 10497 || gltfTexture.m_GLTFSampler.m_nWrapT == 10497;
 
-		const GLTFImage& gltfImage = m_3DTilesParser.GetImage(gltfTexture.m_nImageIndex);
+		const GLTFImage& gltfImage = pTileInfos->m_mapImages[gltfTexture.m_nImageIndex];
 		if (gltfImage.m_nBufferViewIndex == -1 && gltfImage.m_strFileName.length() == 0)
 		{
 			return;
@@ -3484,11 +3351,11 @@ namespace S3MB
 		std::wstring strTexExt;
 		if (gltfImage.m_strFileName.length() == 0)
 		{
-			const GLTFBufferView& gltfBufferView = m_3DTilesParser.GetBufferView(gltfImage.m_nBufferViewIndex);
+			const GLTFBufferView& gltfBufferView = pTileInfos->m_mapBufferViews[gltfImage.m_nBufferViewIndex];
 
 			unsigned int nBufferSize = gltfBufferView.m_nByteLength;
 			unsigned char* pBuffer = new unsigned char[nBufferSize];
-			const GLTFBuffer& gltfBuffer = m_3DTilesParser.GetBuffer(gltfBufferView.m_nBufferIndex);
+			const GLTFBuffer& gltfBuffer = pTileInfos->m_mapBuffers[gltfBufferView.m_nBufferIndex];
 			memcpy(pBuffer, gltfBuffer.m_pBuffer + gltfBufferView.m_nByteOffset, nBufferSize);
 
 			// 存纹理文件
@@ -3580,494 +3447,6 @@ namespace S3MB
 
 		texPtr = pTexDataInfo;
 		texList[gltfImage.m_nBufferViewIndex] = texPtr;
-	}
-
-	bool ProcessTools::TrannsFormIndex(IndexPackage *pIndexPackage)
-	{
-		if (pIndexPackage->m_OperationType != OT_TRIANGLE_FAN && pIndexPackage->m_OperationType != OT_TRIANGLE_STRIP)
-		{
-			return false;
-		}
-		unsigned int nIndicesCount = pIndexPackage->m_nIndexesCount;
-		if (nIndicesCount == 0)
-		{
-			pIndexPackage->m_bUseIndex = false;
-		}
-		unsigned int nCount = MAX(nIndicesCount - 2, 0);
-		pIndexPackage->m_nIndexesCount = nCount * 3;
-
-		unsigned short* pIndices = pIndexPackage->m_pIndexes;
-		unsigned short* pIndicesTemp = new unsigned short[pIndexPackage->m_nIndexesCount];
-
-		for (unsigned int i = 0; i < nCount; i++)
-		{
-			if (pIndexPackage->m_OperationType == OT_TRIANGLE_STRIP)
-			{
-				if (i % 2)
-				{
-					pIndicesTemp[i * 3] = pIndices[i + 1];
-					pIndicesTemp[i * 3 + 1] = pIndices[i];
-					pIndicesTemp[i * 3 + 2] = pIndices[i + 2];
-				}
-				else
-				{
-					pIndicesTemp[i * 3] = pIndices[i];
-					pIndicesTemp[i * 3 + 1] = pIndices[i + 1];
-					pIndicesTemp[i * 3 + 2] = pIndices[i + 2];
-
-				}
-			}
-			else if (pIndexPackage->m_OperationType == OT_TRIANGLE_FAN)
-			{
-				pIndicesTemp[i * 3] = pIndices[0];
-				pIndicesTemp[i * 3 + 1] = pIndices[i + 1];
-				pIndicesTemp[i * 3 + 2] = pIndices[i + 2];
-			}
-		}
-
-		pIndexPackage->m_OperationType = OT_TRIANGLE_LIST;
-
-		delete[] pIndices;
-		pIndexPackage->m_pIndexes = pIndicesTemp;
-		pIndicesTemp = nullptr;
-		return true;
-	}
-
-	void ProcessTools::RebuildVertexAndIndexPackage(VertexDataPackage* pVertexDataPackage, std::vector<IndexPackage*>& vecIndexPackage, std::vector<IDInfo*>& vecIDInfo)
-	{
-		if (pVertexDataPackage == nullptr || vecIndexPackage.size() == 0)
-		{
-			return;
-		}
-
-		// 重建顶点和索引
-		unsigned int i = 0, j = 0;
-		bool bExistTexCoord[SMSCN_MAX_TEXTURE_COORD_SETS];
-		for (int i = 0; i < SMSCN_MAX_TEXTURE_COORD_SETS; i++)
-		{
-			bExistTexCoord[i] = false;
-		}
-		bool bUseIndex_uInt = false;
-		if (pVertexDataPackage->m_nVerticesCount > 65535)
-		{
-			bUseIndex_uInt = true;
-		}
-
-		bool* pUseVertex = new bool[pVertexDataPackage->m_nVerticesCount];
-		memset(pUseVertex, 0, sizeof(bool) * pVertexDataPackage->m_nVerticesCount);
-
-		int nCurrentVertex = 0;
-		for (i = 0; i < vecIndexPackage.size(); i++)
-		{
-			IndexPackage* pIndexPackage = vecIndexPackage[i];
-			if (pIndexPackage == nullptr || pIndexPackage->m_OperationType == OT_LINE_LIST)
-			{
-				continue;
-			}
-
-			unsigned int* pUGuint = (unsigned int*)pIndexPackage->m_pIndexes;
-			for (j = 0; j < pIndexPackage->m_nIndexesCount; j++)
-			{
-				bool bOriUseuInt = pIndexPackage->m_enIndexType == IT_32BIT ? true : false;
-				int nIndex = 0;
-				if (bOriUseuInt)
-				{
-					nIndex = pUGuint[j];
-				}
-				else
-				{
-					nIndex = pIndexPackage->m_pIndexes[j];
-				}
-
-				if (!pUseVertex[nIndex])
-				{
-					nCurrentVertex++;
-				}
-
-				pUseVertex[nIndex] = true;
-			}
-		}
-
-
-		for (int k = 0; k < SMSCN_MAX_TEXTURE_COORD_SETS; k++)
-		{
-			if (pVertexDataPackage->m_TexCoordCount[k] == 0 || pVertexDataPackage->m_pTexCoords[k] == nullptr)
-			{
-				continue;
-			}
-
-			bExistTexCoord[k] = true;
-		}
-
-		std::map<int, int> mapIndex;
-		int nVertexDim = pVertexDataPackage->m_nVertexDimension;
-		int nNormalDim = pVertexDataPackage->m_nNormalDimension;
-		float* pVertex = new float[nCurrentVertex * nVertexDim];
-		float* pNormal = nullptr;
-		unsigned int* pVertexColor = nullptr;
-		unsigned int* pVertexSecondeColor = nullptr;
-		float* pTexCoord[SMSCN_MAX_TEXTURE_COORD_SETS];
-		for (i = 0; i < SMSCN_MAX_TEXTURE_COORD_SETS; i++)
-		{
-			pTexCoord[i] = nullptr;
-		}
-
-		if (pVertexDataPackage->m_nNormalCount > 0)
-		{
-			pNormal = new float[nCurrentVertex * nNormalDim];
-		}
-
-		if (pVertexDataPackage->m_nVertexColorCount > 0)
-		{
-			pVertexColor = new unsigned int[nCurrentVertex];
-		}
-
-		unsigned int* pSecondVertexColor = nullptr;
-		if (!vecIDInfo.empty())
-		{
-			unsigned int nSize = pVertexDataPackage->m_nVerticesCount;
-			pSecondVertexColor = new unsigned int[nSize];
-			for (size_t i = 0; i < vecIDInfo.size(); i++)
-			{
-				IDInfo* pIDInfo = vecIDInfo[i];
-				if (pIDInfo == nullptr)
-				{
-					continue;
-				}
-
-				for (size_t j = 0; j < pIDInfo->m_arrVertexColorOffsetAndCount.size(); j++)
-				{
-					std::pair<int, int> pair = pIDInfo->m_arrVertexColorOffsetAndCount[j];
-					for (size_t k = 0; k < pair.second; k++)
-					{
-						pSecondVertexColor[pair.first + k] = pIDInfo->m_nID;
-					}
-				}
-				delete pIDInfo;
-			}
-			vecIDInfo.clear();
-
-			pVertexSecondeColor = new unsigned int[nCurrentVertex];
-		}
-
-		for (i = 0; i < SMSCN_MAX_TEXTURE_COORD_SETS; i++)
-		{
-			if (!bExistTexCoord[i])
-			{
-				continue;
-			}
-			int nTexDim = pVertexDataPackage->m_nTexDimensions[i];
-			pTexCoord[i] = new float[nCurrentVertex * nTexDim];
-		}
-
-		unsigned int nVertexAttCount = pVertexDataPackage->m_nVertexAttCount;
-		std::vector<unsigned int> vecVertexAttDataCount;
-		std::vector<unsigned short> vecVertexAttDataDimension;
-		std::vector<VertexAttributeType> vecVertexAttDataType;
-		std::vector<void*> vecVertexAttData;
-		for (i = 0; i < nVertexAttCount; i++)
-		{
-			vecVertexAttDataCount.push_back(nCurrentVertex);
-
-			unsigned short nAttDim = pVertexDataPackage->m_vecVertexAttDataDimension[i];
-			vecVertexAttDataDimension.push_back(nAttDim);
-
-			vecVertexAttDataType.push_back(pVertexDataPackage->m_vecVertexAttDataType[i]);
-
-			void* pAttData = nullptr;
-			switch (pVertexDataPackage->m_vecVertexAttDataType[i])
-			{
-			case AT_32BIT:
-			{
-				unsigned int* pBuffer = new unsigned int[nCurrentVertex * nAttDim];
-				pAttData = (void*)pBuffer;
-			}
-			break;
-			case AT_FLOAT:
-			{
-				float* pBuffer = new float[nCurrentVertex * nAttDim];
-				pAttData = (void*)pBuffer;
-			}
-			break;
-			case AT_DOUBLE:
-			{
-				double* pBuffer = new double[nCurrentVertex * nAttDim];
-				pAttData = (void*)pBuffer;
-			}
-			break;
-			case AT_16BIT:
-			{
-				unsigned short* pBuffer = new unsigned short[nCurrentVertex * nAttDim];
-				pAttData = (void*)pBuffer;
-			}
-			break;
-			default:
-				break;
-			}
-			vecVertexAttData.push_back(pAttData);
-		}
-
-		nCurrentVertex = 0;
-		for (i = 0; i < pVertexDataPackage->m_nVerticesCount; i++)
-		{
-			if (pUseVertex[i])
-			{
-				memcpy(pVertex + nCurrentVertex * nVertexDim, pVertexDataPackage->m_pVertices + i * nVertexDim, nVertexDim * sizeof(float));
-
-				if (pNormal != nullptr)
-				{
-					memcpy(pNormal + nCurrentVertex * nNormalDim, pVertexDataPackage->m_pNormals + i * nNormalDim, nNormalDim * sizeof(float));
-				}
-
-				if (pVertexColor != nullptr)
-				{
-					pVertexColor[nCurrentVertex] = pVertexDataPackage->m_pVertexColor[i];
-				}
-
-				if (pVertexSecondeColor != nullptr)
-				{
-					pVertexSecondeColor[nCurrentVertex] = pSecondVertexColor[i];
-				}
-
-				for (j = 0; j < SMSCN_MAX_TEXTURE_COORD_SETS; j++)
-				{
-					if (pTexCoord[j] == nullptr || pVertexDataPackage->m_pTexCoords[j] == nullptr)
-					{
-						continue;
-					}
-
-					int nTexDim = pVertexDataPackage->m_nTexDimensions[j];
-					memcpy(pTexCoord[j] + nCurrentVertex * nTexDim, pVertexDataPackage->m_pTexCoords[j] + i * nTexDim, nTexDim * sizeof(float));
-				}
-
-				for (j = 0; j < nVertexAttCount; j++)
-				{
-					unsigned short nAttDim = vecVertexAttDataDimension[j];
-					unsigned int nAttElementSize = 0;
-					switch (vecVertexAttDataType[j])
-					{
-					case AT_32BIT:
-					{
-						nAttElementSize = nAttDim * sizeof(unsigned int);
-						memcpy((unsigned int*)vecVertexAttData[j] + nCurrentVertex * nAttDim, (unsigned int*)pVertexDataPackage->m_vecVertexAttData[j] + i * nAttDim, nAttElementSize);
-					}
-					break;
-					case AT_FLOAT:
-					{
-						nAttElementSize = nAttDim * sizeof(float);
-						memcpy((float*)vecVertexAttData[j] + nCurrentVertex * nAttDim, (float*)pVertexDataPackage->m_vecVertexAttData[j] + i * nAttDim, nAttElementSize);
-					}
-					break;
-					case AT_DOUBLE:
-					{
-						nAttElementSize = nAttDim * sizeof(double);
-						memcpy((double*)vecVertexAttData[j] + nCurrentVertex * nAttDim, (double*)pVertexDataPackage->m_vecVertexAttData[j] + i * nAttDim, nAttElementSize);
-					}
-					break;
-					case AT_16BIT:
-					{
-						nAttElementSize = nAttDim * sizeof(unsigned short);
-						memcpy((unsigned short*)vecVertexAttData[j] + nCurrentVertex * nAttDim, (unsigned short*)pVertexDataPackage->m_vecVertexAttData[j] + i * nAttDim, nAttElementSize);
-					}
-					break;
-					default:
-						break;
-					}
-				}
-
-				mapIndex[i] = nCurrentVertex++;
-			}
-		}
-
-		delete[] pUseVertex;
-		pUseVertex = nullptr;
-
-		delete[] pVertexDataPackage->m_pVertices;
-		delete[] pVertexDataPackage->m_pNormals;
-		delete[] pVertexDataPackage->m_pVertexColor;
-		delete[] pSecondVertexColor;
-		pVertexDataPackage->m_pVertices = pVertex;
-		pVertexDataPackage->m_nVerticesCount = nCurrentVertex;
-
-		if (pNormal != nullptr)
-		{
-			pVertexDataPackage->m_pNormals = pNormal;
-			pVertexDataPackage->m_nNormalCount = nCurrentVertex;
-		}
-
-		if (pVertexColor != nullptr)
-		{
-			pVertexDataPackage->m_pVertexColor = pVertexColor;
-			pVertexDataPackage->m_nVertexColorCount = nCurrentVertex;
-		}
-		else
-		{
-			pVertexDataPackage->m_pVertexColor = nullptr;
-			pVertexDataPackage->m_nVertexColorCount = 0;
-		}
-
-		if (pVertexSecondeColor != nullptr)
-		{
-			std::map<unsigned int, std::vector<SelectInfo*> > mapSelectInfo;
-			unsigned int nID = pVertexSecondeColor[0];
-
-			SelectInfo* pSelectInfo = new SelectInfo;
-			pSelectInfo->m_nVertexColorOffset = 0;
-			pSelectInfo->m_nVertexColorCount = 0;
-
-			std::vector<SelectInfo*> vecSelectInfo;
-			vecSelectInfo.push_back(pSelectInfo);
-			mapSelectInfo[nID] = vecSelectInfo;
-
-			for (unsigned int i = 0; i < nCurrentVertex; i++)
-			{
-				unsigned int nCurrentID = pVertexSecondeColor[i];
-				if (nCurrentID == nID)
-				{
-					pSelectInfo->m_nVertexColorCount++;
-				}
-				else
-				{
-					pSelectInfo = new SelectInfo;
-					pSelectInfo->m_nVertexColorOffset = i;
-					pSelectInfo->m_nVertexColorCount = 1;
-
-					if (mapSelectInfo.find(nCurrentID) == mapSelectInfo.end())
-					{
-						std::vector<SelectInfo*> vecCurrentSelectInfo;
-						vecCurrentSelectInfo.push_back(pSelectInfo);
-						mapSelectInfo[nCurrentID] = vecCurrentSelectInfo;
-					}
-					else
-					{
-						mapSelectInfo[nCurrentID].push_back(pSelectInfo);
-					}
-					nID = nCurrentID;
-				}
-			}
-
-			unsigned int nErrorID = 0xffffffff;
-			if (mapSelectInfo.find(nErrorID) != mapSelectInfo.end())
-			{
-				std::vector<SelectInfo*>& vecInfo = mapSelectInfo[nErrorID];
-				for (unsigned int i = 0; i < vecInfo.size(); i++)
-				{
-					delete vecInfo[i];
-					vecInfo[i] = nullptr;
-				}
-				mapSelectInfo.erase(nErrorID);
-			}
-
-			std::map<unsigned int, std::vector<SelectInfo*> >::iterator itor;
-			for (itor = mapSelectInfo.begin(); itor != mapSelectInfo.end(); itor++)
-			{
-				IDInfo* pIDInfo = new IDInfo;
-				pIDInfo->m_nID = itor->first;
-				std::vector<std::pair<int, int> >& vecOffsetAndCount = pIDInfo->m_arrVertexColorOffsetAndCount;
-				std::vector<SelectInfo*>& vecInfo = itor->second;
-				for (unsigned int i = 0; i < vecInfo.size(); i++)
-				{
-					vecOffsetAndCount.push_back(std::make_pair(vecInfo[i]->m_nVertexColorOffset, vecInfo[i]->m_nVertexColorCount));
-					delete vecInfo[i];
-					vecInfo[i] = nullptr;
-				}
-				vecInfo.clear();
-				vecIDInfo.push_back(pIDInfo);
-			}
-			mapSelectInfo.clear();
-		}
-
-		for (i = 0; i < SMSCN_MAX_TEXTURE_COORD_SETS; i++)
-		{
-			if (pTexCoord[i] == nullptr)
-			{
-				continue;
-			}
-			delete[] pVertexDataPackage->m_pTexCoords[i];
-			pVertexDataPackage->m_pTexCoords[i] = pTexCoord[i];
-			pVertexDataPackage->m_TexCoordCount[i] = nCurrentVertex;
-		}
-
-		if (nVertexAttCount > 0)
-		{
-			pVertexDataPackage->m_vecVertexAttDataCount = vecVertexAttDataCount;
-			pVertexDataPackage->m_vecVertexAttDataDimension = vecVertexAttDataDimension;
-			pVertexDataPackage->m_vecVertexAttDataType = vecVertexAttDataType;
-			for (i = 0; i < nVertexAttCount; i++)
-			{
-				switch (vecVertexAttDataType[i])
-				{
-				case AT_32BIT:
-				{
-					delete[](unsigned int*)pVertexDataPackage->m_vecVertexAttData[i];
-				}
-				break;
-				case AT_FLOAT:
-				{
-					delete[](float*)pVertexDataPackage->m_vecVertexAttData[i];
-				}
-				break;
-				case AT_DOUBLE:
-				{
-					delete[](double*)pVertexDataPackage->m_vecVertexAttData[i];
-				}
-				break;
-				case AT_16BIT:
-				{
-					delete[](unsigned short*)pVertexDataPackage->m_vecVertexAttData[i];
-				}
-				break;
-				default:
-					break;
-				}
-			}
-			pVertexDataPackage->m_vecVertexAttData = vecVertexAttData;
-		}
-
-		for (i = 0; i < vecIndexPackage.size(); i++)
-		{
-			IndexPackage* pIndexPackage = vecIndexPackage[i];
-			if (pIndexPackage == nullptr)
-			{
-				continue;
-			}
-
-			bool bOriUseuInt = pIndexPackage->m_enIndexType == IT_32BIT ? true : false;
-
-			unsigned int* pUGuint = (unsigned int*)pIndexPackage->m_pIndexes;
-			if (nCurrentVertex <= 65535 && bOriUseuInt)
-			{
-				pIndexPackage->m_enIndexType = IT_16BIT;
-				pIndexPackage->m_pIndexes = new unsigned short[pIndexPackage->m_nIndexesCount];
-			}
-
-			for (j = 0; j < pIndexPackage->m_nIndexesCount; j++)
-			{
-				int nIndex = 0;
-				if (bOriUseuInt)
-				{
-					nIndex = mapIndex[pUGuint[j]];
-					if (pIndexPackage->m_enIndexType == IT_16BIT)
-					{
-						pIndexPackage->m_pIndexes[j] = nIndex;
-					}
-					else if (pIndexPackage->m_enIndexType == IT_32BIT)
-					{
-						pUGuint[j] = nIndex;
-					}
-				}
-				else
-				{
-					pIndexPackage->m_pIndexes[j] = mapIndex[pIndexPackage->m_pIndexes[j]];
-				}
-			}
-
-			if (nCurrentVertex <= 65535 && bOriUseuInt)
-			{
-				delete pUGuint;
-				pUGuint = nullptr;
-			}
-		}
 	}
 
 	void ProcessTools::SplitSkeletonByIndex(VertexDataPackage* pDataPackage, IndexPackage* pIndexPackage)
@@ -4426,19 +3805,5 @@ namespace S3MB
 			assert(false);
 		}
 		return nNum;
-	}
-
-	OperationType ProcessTools::GetDrawOperationType(unsigned int nType)
-	{
-		switch (nType)
-		{
-		case 0: return OT_POINT_LIST;
-		case 1: return OT_LINE_LIST;
-		case 3: return OT_LINE_STRIP;
-        case 4: return OT_TRIANGLE_LIST;
-		case 5: return OT_TRIANGLE_STRIP;
-		case 6: return OT_TRIANGLE_FAN;
-		default: return OT_TRIANGLE_LIST;
-		}
 	}
 }

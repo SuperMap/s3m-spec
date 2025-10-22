@@ -40,5 +40,10 @@ void ProcessThread::run()
 		OBJParams* pOBJParam = (OBJParams*)m_pParam;
 		tools.OBJToS3MB(*pOBJParam);
 	}
+	else if (nType == ProcessType::P_I3SToS3MB)
+	{
+		I3SParams* pI3SParam = (I3SParams*)m_pParam;
+		tools.I3SToS3MB(*pI3SParam);
+	}
 	finished();
 }

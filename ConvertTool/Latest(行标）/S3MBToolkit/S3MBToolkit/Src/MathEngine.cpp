@@ -1,6 +1,6 @@
 #include "MathEngine.h"
 #include "S3MBCommon.h"
-#include "Utils.h"
+#include "Utils/Utils.h"
 #include <cmath>
 #include <assert.h>
 
@@ -259,6 +259,21 @@ namespace S3MB
 		Vector3d vCar = Vector3d(dX, dY, dZ).MultiplyMatrix(rotateMat * posMat);
 		Vector3d v = CartesianToSphericalD(vCar.x, vCar.y, vCar.z, ST_EARTH_SPHERICAL);
 		return Vector3d(v.x * RTOD, v.y * RTOD, v.z - GLOBAL_RADIUS);
+	}
+
+	Matrix4d MathEngine::GetEllipsoidWorldView(const Vector3d& vecPos)
+	{
+		Matrix4d matWorldView = Matrix4d::IDENTITY;
+
+		Matrix4d matR = Matrix4d(
+			0.0, 0.0, 1.0, 0.0,
+			1.0, 0.0, 0.0, 0.0,
+			0.0, 1.0, 0.0, 0.0,
+			0.0, 0.0, 0.0, 1.0);
+		matWorldView = MathEngine::EllipsoidalENUToWGS84(vecPos);
+		matWorldView = matWorldView * matR;
+
+		return matWorldView;
 	}
 
 	double MathEngine::Sign(double fValue)
