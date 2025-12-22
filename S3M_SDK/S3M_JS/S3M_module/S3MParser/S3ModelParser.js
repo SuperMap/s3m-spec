@@ -1140,11 +1140,8 @@ function parseSkeleton(buffer, view, bytesOffset, geoPackage, version) {
             bytesOffset = parseIndexPackage(buffer, view, bytesOffset, arrIndexPackage, version);
         }
 
-
+        // 暂不支持带线框的S3M模型
         let edgeGeometry = undefined;
-        if(arrIndexPackage.length === 2 && arrIndexPackage[1].primitiveType === 13 && arrIndexPackage[1].indicesCount >= 3){
-            edgeGeometry = S3MEdgeProcessor.createEdgeDataByIndices(vertexPackage, arrIndexPackage[1]);
-        }
 
         geoPackage[geometryName] = {
             vertexPackage: vertexPackage,
