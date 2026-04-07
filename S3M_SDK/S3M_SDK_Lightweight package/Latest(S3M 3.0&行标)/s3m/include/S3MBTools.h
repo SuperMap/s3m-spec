@@ -195,6 +195,10 @@ namespace S3MB
 			MemoryStream& streamShell, MemoryStream& streamSkeleton, \
 			wstring& strJsonMaterials, MemoryStream& streamTexture, \
 			bool bHasIDInfo, MemoryStream& streamIDInfo, wstring& strExtensions, float fVersion);
+		// 保存流到二进制
+		static bool SaveStreamData2Buffer(MemoryStream& streamShell, MemoryStream& streamSkeleton, \
+			wstring& strJsonMaterials, MemoryStream& streamTexture, \
+			bool bHasIDInfo, MemoryStream& streamIDInfo, wstring& strExtensions, float fVersion, unsigned char*& pBuffer, unsigned int& bufferSize);
 
 		private:
 			static bool CanUseDraco(VertexDataPackage* pVertexPack, std::vector<IndexPackage*> vecIndexPack);

@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 	else 
 	{
 		// ÆÕÍ¨²ÄÖÊ·¶Àı
-		ROGroupLite::sampleV1();
+		ROGroupLite::sampleV1(true);
 	}
 	system("pause");
 	return 0;

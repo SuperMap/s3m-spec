@@ -159,6 +159,19 @@ namespace S3MB
 		
 	}
 
+	bool S3MBWriter::WriteBuffer(unsigned char*& s3mbBuffer, unsigned int& bufferSize)
+	{
+		if (!EQUAL(m_fVersion, S3MB_VERSIONV3) && !EQUAL(m_fVersion, S3MB_VERSIONV3_0_1))
+		{
+			assert(false);
+			return false;
+		}
+		ProcessEntities();
+
+		return S3MBTools::SaveStreamData2Buffer(m_streamShell, m_streamSkeleton, m_strJsonMaterials, m_streamTexture, \
+			m_bHasIDInfo, m_streamIDInfo, m_strExtensions, m_fVersion, s3mbBuffer, bufferSize);
+	}
+
 	void S3MBWriter::SetVersion(const float& fVersion)
 	{
 		m_fVersion = fVersion;

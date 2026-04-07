@@ -1266,7 +1266,60 @@ namespace S3MB
 		ofs.write((char*)pZippedData, nZippedSize);
 		
 		ofs.close();
+		delete pZippedData;
+		return true;
+	}
+
+	bool S3MBTools::SaveStreamData2Buffer(MemoryStream& streamShell, MemoryStream& streamSkeleton, \
+		wstring& strJsonMaterials, MemoryStream& streamTexture, \
+		bool bHasIDInfo, MemoryStream& streamIDInfo, wstring& strExtensions, float fVersion, unsigned char*& pBuffer, unsigned int& bufferSize)
+	{
+		// 流合并
+		MemoryStream memStreamTotal, memStream;
+		memStream.Init();
+		memStreamTotal.Init();
+		memStream << fVersion;
+		unsigned int nOptions = bHasIDInfo ? SVO_HasIDInfo : 0;
+		memStreamTotal << nOptions;
+
+		SaveStream(memStreamTotal, streamShell);
+		SaveStream(memStreamTotal, streamSkeleton);
+		SaveStream(memStreamTotal, streamTexture);
+		memStreamTotal << strJsonMaterials;
+
+		if (bHasIDInfo)
+		{
+			unsigned int nIDInfoOption = 1;
+			memStreamTotal << nIDInfoOption;
+			SaveStream(memStreamTotal, streamIDInfo);
+		}
+		memStreamTotal << strExtensions;
+
+		// 压缩流
+		unsigned char* pZippedData = NULL;
+		unsigned int nZippedSize = 0;
+
+		// 压缩类型
+		// 0表示不压缩，1表示zip压缩
+		unsigned int nCompressedType = 1;
+
+		unsigned int nTotalLength = (unsigned int)memStreamTotal.GetLength();
+		pZippedData = new unsigned char[nTotalLength];
+		nZippedSize = nTotalLength;
+
+		bool result = Utils::Zip(pZippedData, nZippedSize, memStreamTotal.GetDataPtr(), (unsigned int)memStreamTotal.GetLength());
+
+		memStream << nCompressedType;
+		memStream << nTotalLength;
+		memStream << nZippedSize;
+		memStream.Save(pZippedData, nZippedSize);
+		bufferSize = memStream.GetLength();
+
+		pBuffer = new unsigned char[bufferSize];
+		::memcpy(pBuffer, memStream.GetDataPtr(), bufferSize);
 		delete[] pZippedData;
+		pZippedData = NULL;
+		nZippedSize = 0;
 		return true;
 	}
 

@@ -12,7 +12,7 @@
 #include <unistd.h>
 #endif
 
-void ROGroupLite::sampleV1()
+void ROGroupLite::sampleV1(bool bReadRoInfoFromStream/* = false*/)
 {
 	///************************************************************************/
 	//*          1.创建一个立方体数据并写入S3MB文件
@@ -36,6 +36,14 @@ void ROGroupLite::sampleV1()
 	//m_S3MBWriter.SetSkeletonCompressParam(GeoCompParam);
 
 	m_S3MBWriter.WriteFile(strS3mbFile);
+
+	//S3MB信息写入二进制流
+	unsigned char* s3mbBuffer = NULL;
+	unsigned int bufferSize;
+	if (bReadRoInfoFromStream)
+	{
+		m_S3MBWriter.WriteBuffer(s3mbBuffer, bufferSize);
+	}
 	m_S3MBWriter.Clear();
 	delete pGroup;
 
@@ -66,8 +74,18 @@ void ROGroupLite::sampleV1()
 	//*        2:通过指定的s3mb文件，读取出来Ro信息，并进行输出                                                                     */
 	///************************************************************************/
 	S3MBReader m_S3MBReaderRo;
-	wstring strS3MBFileSrc = L"./cube1.s3mb";
-	m_S3MBReaderRo.ReadFile(strS3MBFileSrc);
+	wstring strS3MBFileSrc = L"./cube1.s3mb"; 
+	if (bReadRoInfoFromStream)
+	{
+		//从s3mb的二进制流中读取Ro信息
+		m_S3MBReaderRo.LoadS3MBFromStream(s3mbBuffer, bufferSize);
+	}
+	else
+	{
+		//从S3MB文件中读取Ro信息
+		m_S3MBReaderRo.ReadFile(strS3MBFileSrc);
+	}
+
 	m_S3MBReaderRo.OutputSkeletonInfoToConsole();
 	pGroup = m_S3MBReaderRo.GetRenderOperationGroup();
 	pGroup->ReComputeBoundingBox(true);
@@ -127,9 +145,11 @@ void ROGroupLite::sampleV1()
 	pS3MBConfig->WriteFile(strFilePatch);
 	delete pS3MBConfig;
 	pS3MBConfig = NULL;
+	delete[] s3mbBuffer;
+	s3mbBuffer = NULL;
 }
 
-void ROGroupLite::sampleV2()
+void ROGroupLite::sampleV2(bool bReadRoInfoFromStream/* = false*/)
 {	
 	///************************************************************************/
 	//*          1.创建一个立方体数据并写入S3MB文件
@@ -144,6 +164,14 @@ void ROGroupLite::sampleV2()
 	m_S3MBWriter.SetIsChangeTexture(true, true);// DXT压缩
 	wstring strS3mbFileWrite = U("./sampleV2.s3mb");
 	m_S3MBWriter.WriteFile(strS3mbFileWrite);
+
+	//S3MB信息写入二进制流
+	unsigned char* s3mbBuffer = NULL;
+	unsigned int bufferSize;
+	if (bReadRoInfoFromStream)
+	{
+		m_S3MBWriter.WriteBuffer(s3mbBuffer, bufferSize);
+	}
 	delete pGroup;
 	m_S3MBWriter.Clear();
 
@@ -154,7 +182,16 @@ void ROGroupLite::sampleV2()
 	///************************************************************************/
 	S3MBReader m_S3MBReaderRo;
 	wstring strS3MBFileRead = U("./sampleV2.s3mb");
-	m_S3MBReaderRo.ReadFile(strS3MBFileRead);
+	if (bReadRoInfoFromStream)
+	{
+		//从s3mb的二进制流中读取Ro信息
+		m_S3MBReaderRo.LoadS3MBFromStream(s3mbBuffer, bufferSize);
+	}
+	else
+	{
+		//从S3MB文件中读取Ro信息
+		m_S3MBReaderRo.ReadFile(strS3MBFileRead);
+	}
 	m_S3MBReaderRo.OutputSkeletonInfoToConsole();
 	pGroup = m_S3MBReaderRo.GetRenderOperationGroup();
 	pGroup->ReComputeBoundingBox();
@@ -207,6 +244,8 @@ void ROGroupLite::sampleV2()
 	pS3MBConfig->WriteFile(strFilePatch);
 	delete pS3MBConfig;
 	pS3MBConfig = NULL;
+	delete[] s3mbBuffer;
+	s3mbBuffer = NULL;
 }
 
 RenderOperationGroup* ROGroupLite::CreateROGroupLiteV1(int lodId, wstring texturePath)

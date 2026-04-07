@@ -68,9 +68,9 @@ public:
 		}
 	} MtlData;
 
-	static void sampleV1();
+	static void sampleV1(bool bReadRoInfoFromStream = false);
 
-	static void sampleV2();
+	static void sampleV2(bool bReadRoInfoFromStream = false);
 
 	static RenderOperationGroup* CreateROGroupLiteV1(int lodId, wstring texturePath);
 

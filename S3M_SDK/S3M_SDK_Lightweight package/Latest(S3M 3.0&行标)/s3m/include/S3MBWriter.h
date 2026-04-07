@@ -26,6 +26,8 @@ namespace S3MB
 		void FillEntityPack(Material* pMaterial3D);
 		// 保存文件到本地
 		bool WriteFile(const wstring& filePath);
+		// 保存S3MB到二进制
+		bool WriteBuffer(unsigned char*& s3mbBuffer, unsigned int& bufferSize);
 		// 设置版本号
 		void SetVersion(const float& fVersion);
 		// 设置需要写入文件的RenderOperationGroup
