@@ -1,0 +1,117 @@
+{
+	"asset" : "SuperMap",
+	"compressedPackageType" : "Zip",
+	"crs" : "epsg:0",
+	"dataType" : "GaussianSplatting3D",
+	"extensions" : 
+	{
+		"attachFiles" : [],
+		"crs" : "<sml:CoordinateReferenceSystem>\r\n<sml:Name>Planar Coordinate System---m</sml:Name>\r\n<sml:Type>0</sml:Type>\r\n<sml:EPSGCode>0</sml:EPSGCode>\r\n<sml:SRS/>\r\n<sml:Units>METER</sml:Units>\r\n<sml:DistUnits>METER</sml:DistUnits>\r\n</sml:CoordinateReferenceSystem>\r\n",
+		"filteringAttributeFields" : [],
+		"gaussianSplatInfo" : 
+		{
+			"totalGaussians" : "53195"
+		},
+		"globeType" : "Ellipsoid_WGS84",
+		"levels" : [],
+		"pointCloudLayers" : 
+		[
+			{
+				"layerBounds" : 
+				{
+					"bottom" : 4.9929523468017578,
+					"left" : -3.0163097381591801,
+					"right" : -1.9756177663803101,
+					"top" : 6.15802001953125
+				},
+				"layerName" : "root"
+			}
+		],
+		"s3m:FileType" : "PointCloudFile",
+		"s3m:ProcessType" : "Normal",
+		"s3m:RenderMode" : "Normal",
+		"s3m:TileSplitType" : "LOCAL",
+		"s3m:VertexCompressionType" : "DRACO",
+		"scales" : [],
+		"simplificationRate" : [],
+		"vol" : []
+	},
+	"geoBounds" : 
+	{
+		"bottom" : 4.9929523468017578,
+		"left" : -3.0163097381591801,
+		"right" : -1.9756177663803101,
+		"top" : 6.15802001953125
+	},
+	"heightRange" : 
+	{
+		"max" : 679.27624500000002,
+		"min" : 678.56768799999998
+	},
+	"idFieldName" : "",
+	"lodType" : "Replace",
+	"position" : 
+	{
+		"point3D" : 
+		{
+			"x" : -2.4959637522697449,
+			"y" : 5.5754861831665039,
+			"z" : 678.92196655273438
+		},
+		"unit" : "Meter"
+	},
+	"pyramidSplitType" : "QuadTree",
+	"rootTiles" : 
+	[
+		{
+			"boundingBox" : 
+			{
+				"center" : 
+				{
+					"x" : 0.0,
+					"y" : 0.0,
+					"z" : 0.0
+				},
+				"xExtent" : 
+				{
+					"x" : 0.52034598588943481,
+					"y" : 0.0,
+					"z" : 0.0
+				},
+				"yExtent" : 
+				{
+					"x" : 0.0,
+					"y" : 0.58253383636474609,
+					"z" : 0.0
+				},
+				"zExtent" : 
+				{
+					"x" : 0.0,
+					"y" : 0.0,
+					"z" : 0.354278564453125
+				}
+			},
+			"url" : "./1.s3mb"
+		}
+	],
+	"version" : "3.01",
+	"vertexAttributeDescript" : 
+	[
+		{
+			"category" : "VertexWeight",
+			"componentType" : "float",
+			"range" : 
+			{
+				"dimension" : 1,
+				"max" : 
+				[
+					0.0
+				],
+				"min" : 
+				[
+					0.0
+				]
+			}
+		}
+	]
+}

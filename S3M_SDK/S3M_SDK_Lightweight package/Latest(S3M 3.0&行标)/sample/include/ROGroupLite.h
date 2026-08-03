@@ -72,6 +72,8 @@ public:
 
 	static void sampleV2(bool bReadRoInfoFromStream = false);
 
+	static void SampleGaussianSplatting();
+
 	static RenderOperationGroup* CreateROGroupLiteV1(int lodId, wstring texturePath);
 
 	static RenderOperationGroup* CreateROGroupLiteV2(int lodId);

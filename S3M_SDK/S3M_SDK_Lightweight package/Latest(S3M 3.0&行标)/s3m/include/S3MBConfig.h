@@ -74,6 +74,10 @@ namespace S3MB
 		void SetVertexAttributeDescripts(std::vector<CategoryDescript>& vecDescript);
 		void GetVertexAttributeDescripts(std::vector<CategoryDescript>& vecDescript);
 
+		// 设置/获取高斯溅射信息
+		void SetGaussianSplatInfo(const GaussianSplatInfo& info);
+		GaussianSplatInfo GetGaussianSplatInfo() const;
+
 		// 设置/获取扩展信息
 		void SetExtension(const wstring& strKey, const wstring& strValue);
 		bool HasExtension(const wstring& strKey);
@@ -148,6 +152,9 @@ namespace S3MB
 
 		// 点云图层名
 		std::vector<wstring> m_vecPointCloudLayer;
+
+		// 高斯溅射信息
+		GaussianSplatInfo m_gaussianSplatInfo;
 
 		// ==============  扩展信息 ================
 

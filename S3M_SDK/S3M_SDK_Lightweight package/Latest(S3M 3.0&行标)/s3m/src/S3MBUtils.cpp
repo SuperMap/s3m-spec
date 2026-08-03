@@ -939,6 +939,23 @@ namespace S3MB
 		return false;
 	}
 
+	unsigned int StringUtil::WstringToUint(const std::wstring& s)
+	{
+		size_t pos = 0;
+		unsigned long value = std::stoul(s, &pos, 10);
+		if (pos != s.size())
+		{
+			throw std::invalid_argument("invalid unsigned int string");
+		}
+
+		if (value > UINT_MAX)
+		{
+			throw std::out_of_range("value too large for unsigned int");
+		}
+
+		return static_cast<unsigned int>(value);
+	}
+
 	bool FileUtil::MkDirEx(const std::wstring& strDir)
 	{
 

@@ -279,6 +279,10 @@ namespace S3MB
 	#define SCPS_JSON_POINTCLOUD_LAYERNAME		        U("layerName")
 	#define SCPS_JSON_POINTCLOUD_LAYERBOUNDS	        U("layerBounds")
 
+	#define SCPS_JSON_GAUSSIANSPLAT_INFO				U("gaussianSplatInfo")
+	#define SCPS_JSON_GAUSSIANSPLAT_TOTALGAUSSIANS		U("totalGaussians")
+	#define SCPS_JSON_GAUSSIANSPLAT_VERSION				U("version")
+
     // SCP标签枚举值
 	#define SCPS_ASSET_VALUE							U("SuperMap")
 	#define SCPS_UNKNOWN								U("Unknown")
@@ -289,6 +293,7 @@ namespace S3MB
 	#define SCPS_DATATYPE_NETWORK						U("Network")				// 网络数据
 	#define SCPS_DATATYPE_INSTANCEMODEL					U("InstanceModel")			// 外挂模型
 	#define SCPS_DATATYPE_ARTIFICIALMODEL				U("ArtificialModel")		// 人工模型
+	#define SCPS_DATATYPE_GAUSSIANSPLATTING3D			U("GaussianSplatting3D")	// 高斯溅射
 
 	#define SCPS_PYRAMIDSPLITTYPE_OCTREE				U("Octree")					// 八叉树
 	#define SCPS_PYRAMIDSPLITTYPE_QUADTREE				U("QuadTree")				// 四叉树
@@ -596,6 +601,14 @@ namespace S3MB
 
 		// 顶点属性或分类信息的维度
 		int m_nDimension;
+	};
+
+	struct GaussianSplatInfo
+	{
+		// 高斯球数量
+		unsigned int m_nTotalGaussians;
+		// 版本号
+		wstring m_strVersion;
 	};
 
 	inline bool Equal(double dValue1, double dValue2)

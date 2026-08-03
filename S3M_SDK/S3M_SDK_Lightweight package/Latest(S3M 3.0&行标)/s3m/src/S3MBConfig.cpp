@@ -180,7 +180,7 @@ namespace S3MB
 		bool bHasPrj = jsonConfig.GetValue(SCPS_JSON_PRJCOORD, strElemValue);
 		if (bHasPrj)
 		{
-			strElemValue = SCPS_JSON_PRJCOORD_EPSG;
+			strElemValue = StringUtil::TrimLeftString(strElemValue, SCPS_JSON_PRJCOORD_EPSG);
 #ifdef WIN32
 			m_prjCoordEPSG = _wtoi(strElemValue.c_str());
 #else
@@ -299,6 +299,25 @@ namespace S3MB
 					{
 						delete pJsonPointCloudLayers;
 						pJsonPointCloudLayers = NULL;
+					}
+				}
+				else if (StringUtil::CompareNoCase(strKey, SCPS_JSON_GAUSSIANSPLAT_INFO))
+				{
+					// GaussianSplatInfo
+					JsonValue* pJsonGaussianSplatInfo = NULL;
+					if (pJsonExtensions->GetValue(SCPS_JSON_GAUSSIANSPLAT_INFO, pJsonGaussianSplatInfo))
+					{
+						wstring strTotalGaussians;
+						pJsonGaussianSplatInfo->GetValue(SCPS_JSON_GAUSSIANSPLAT_TOTALGAUSSIANS, strTotalGaussians);
+						m_gaussianSplatInfo.m_nTotalGaussians = StringUtil::WstringToUint(strTotalGaussians);
+
+						pJsonGaussianSplatInfo->GetValue(SCPS_JSON_GAUSSIANSPLAT_VERSION, m_gaussianSplatInfo.m_strVersion);
+					}
+
+					if (pJsonGaussianSplatInfo != nullptr)
+					{
+						delete pJsonGaussianSplatInfo;
+						pJsonGaussianSplatInfo = nullptr;
 					}
 				}
 				else
@@ -554,6 +573,18 @@ namespace S3MB
 			jsonExtensions.Add(SCPS_JSON_POINTCLOUD_LAYERS, jsonPointCloudLayers);
 		}
 
+		// GaussianSplatInfo
+		if (!m_gaussianSplatInfo.m_strVersion.empty())
+		{
+			JsonValue jsonGaussianSplatInfo(objectValue);
+
+			wstring strTotalGaussians = std::to_wstring(m_gaussianSplatInfo.m_nTotalGaussians);
+			jsonGaussianSplatInfo.Add(SCPS_JSON_GAUSSIANSPLAT_TOTALGAUSSIANS, strTotalGaussians);
+			jsonGaussianSplatInfo.Add(SCPS_JSON_GAUSSIANSPLAT_VERSION, m_gaussianSplatInfo.m_strVersion);
+
+			jsonExtensions.Add(SCPS_JSON_GAUSSIANSPLAT_INFO, jsonGaussianSplatInfo);
+		}
+
 		jsonHeader.Add(SCPS_JSON_EXTENSIONS, jsonExtensions);
 	}
 
@@ -582,6 +613,9 @@ namespace S3MB
 			break;
 		case SDT_ArtificialModel:
 			strResult = SCPS_DATATYPE_ARTIFICIALMODEL;
+			break;
+		case SDT_GaussianSplatting:
+			strResult = SCPS_DATATYPE_GAUSSIANSPLATTING3D;
 			break;
 		default:
 			break;
@@ -619,6 +653,10 @@ namespace S3MB
 		else if (StringUtil::CompareNoCase(SCPS_DATATYPE_ARTIFICIALMODEL, strDataType))
 		{
 			enType = SDT_ArtificialModel;
+		}
+		else if (StringUtil::CompareNoCase(SCPS_DATATYPE_GAUSSIANSPLATTING3D, strDataType))
+		{
+			enType = SDT_GaussianSplatting;
 		}
 		return enType;
 	}
@@ -902,6 +940,17 @@ namespace S3MB
 		vecDescript.clear();
 		vecDescript = m_vecVertexAttributeDescript;
 	}
+
+	void S3MBConfig::SetGaussianSplatInfo(const GaussianSplatInfo& info)
+	{
+		m_gaussianSplatInfo = info;
+	}
+
+	GaussianSplatInfo S3MBConfig::GetGaussianSplatInfo() const
+	{
+		return m_gaussianSplatInfo;
+	}
+
 	void S3MBConfig::SetExtension(const wstring & strKey, const wstring & strValue)
 	{
 		m_mapExtensions[strKey] = strValue;

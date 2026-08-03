@@ -105,6 +105,10 @@ namespace S3MB
 		static wstring GetExt(wstring filePath);
 		// 判断文件是否存在
 		static bool IsFileExist(wstring path);
+
+		// 字符串转无符号整型
+		static unsigned int WstringToUint(const std::wstring& s);
+
 #ifndef WIN32
         static std::string wchar_to_char(const wchar_t* str);
         static int GetModuleFileName(void* Fun, char* &sFilePath);

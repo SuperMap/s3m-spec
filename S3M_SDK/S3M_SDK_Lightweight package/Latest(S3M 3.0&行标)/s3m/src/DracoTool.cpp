@@ -20,7 +20,6 @@ void AddAttributeData(draco::PointCloud* & pPointCloud, std::vector<T> &attribut
 	const int componentCount = nDimension;
 	const int vertexCount = attributeData.size() / componentCount;
 
-	uint32_t unique_id = 0;
 	draco::PointAttribute att;
 	att.Init(attType, componentCount, dataType, false, vertexCount);
 	att_id = pPointCloud->AddAttribute(att, true, vertexCount);
@@ -279,7 +278,7 @@ bool S3MB::DracoTool::DracoCompress(const DracoCompressParam& param, DracoCompre
 		pVertexAttCount = new unsigned int[pVertexDataPackage->m_nVertexAttCount];
 		pVertexAttDim = new unsigned short[pVertexDataPackage->m_nVertexAttCount];
 		pVertexAttUniqueID = new int[pVertexDataPackage->m_nVertexAttCount];
-		for (int i = 0; i < pVertexDataPackage->m_nVertexAttCount; i++)
+		for (unsigned int i = 0; i < pVertexDataPackage->m_nVertexAttCount; i++)
 		{
 			pVertexAttData[i] = pVertexDataPackage->m_vecVertexAttData[i];
 			pVertexAttDataType[i] = (unsigned short)pVertexDataPackage->m_vecVertexAttDataType[i];
@@ -347,14 +346,14 @@ bool S3MB::DracoTool::DracoCompress(const DracoCompressParam& param, DracoCompre
 	}
 
 
-	for (int i = 0; i < pVertexDataPackage->m_nVertexAttCount; i++)
+	for (unsigned int i = 0; i < pVertexDataPackage->m_nVertexAttCount; i++)
 	{
 		convertParam.m_pVertexAttInfo[i].SetUniqueID(pVertexAttUniqueID[i]);
 	}
 
 	if (pVertexAttData != NULL)
 	{
-		for (int i = 0; i < pVertexDataPackage->m_nVertexAttCount; i++)
+		for (unsigned int i = 0; i < pVertexDataPackage->m_nVertexAttCount; i++)
 		{
 			pVertexAttData[i] = NULL;
 		}
@@ -444,8 +443,6 @@ bool S3MB::DracoTool::DracoDecompress(const DracoCompressedInfo& convertParam, c
 			pVertexDataPackage->m_vecVertexAttData.push_back(pVertexAttData[i]);
 			pVertexAttData[i] = NULL;
 		}
-		wstring strKey = U("VertexWeight");
-		pVertexDataPackage->m_mapVertexAttributeDescript[strKey] = 0;
 
 		delete[] pVertexAttDataType;
 		pVertexAttDataType = NULL;
@@ -634,17 +631,11 @@ bool S3MB::DracoTool::DracoDecompressImpl(const char *pInputData, unsigned int s
 		pTexCoords[1] = new float[pTexCoordDim[1] * nNumPoints];
 	}
 
-	char* pReadColor = 0;
+	unsigned char* pReadColor = 0;
 	if (colorAtt != 0) {
 		pVertexColor = new uint32_t[nNumPoints];
 		nVertexColorCount = nNumPoints;
-		pReadColor = new char[colorAtt->num_components()];
-	}
-
-	if (pVertexAtt != 0) {
-		pVertexAttDim[0] = pVertexAtt->num_components();
-		pVertexAttCount[0] = nNumPoints;
-		pVertexAttData[0] = new float[pVertexAttDim[0] * nNumPoints];
+		pReadColor = new unsigned char[colorAtt->num_components() * sizeof(float)];
 	}
 
 	for (int i = 0; i < nNumPoints; i++)
@@ -674,7 +665,34 @@ bool S3MB::DracoTool::DracoDecompressImpl(const char *pInputData, unsigned int s
 		if (colorAtt != 0) {
 			colorAttValueIndex = colorAtt->mapped_index(draco::PointIndex(i));
 			colorAtt->GetValue(colorAttValueIndex, pReadColor);
-			uint32_t vertexColor = Palette::RGBA(pReadColor[0], pReadColor[1], pReadColor[2], pReadColor[3]);
+			uint32_t vertexColor;
+			if (colorAtt->data_type() == draco::DT_FLOAT32)
+			{
+				unsigned char red = static_cast<unsigned char>(((float*)pReadColor)[0] * 255);
+				unsigned char green = static_cast<unsigned char>(((float*)pReadColor)[1] * 255);
+				unsigned char blue = static_cast<unsigned char>(((float*)pReadColor)[2] * 255);
+
+				if (colorAtt->num_components() == 4)
+				{
+					unsigned char alpha = static_cast<unsigned char>(((float*)pReadColor)[3] * 255);
+					vertexColor = Palette::RGBA(red, green, blue, alpha);
+				}
+				else
+				{
+					vertexColor = Palette::RGBA(red, green, blue, 255);
+				}
+			}
+			else
+			{
+				if (colorAtt->num_components() == 4)
+				{
+					vertexColor = Palette::RGBA(pReadColor[0], pReadColor[1], pReadColor[2], pReadColor[3]);
+				}
+				else
+				{
+					vertexColor = Palette::RGBA(pReadColor[0], pReadColor[1], pReadColor[2], 255);
+				}
+			}
 			pVertexColor[i] = vertexColor;
 		}
 	}
@@ -695,11 +713,11 @@ bool S3MB::DracoTool::DracoDecompressImpl(const char *pInputData, unsigned int s
 				case draco::DT_UINT32:
 				{
 					pVertexAttDataType[i] = 0;//AT_32BIT
-					pVertexAttData[i] = new uint32_t[pVertexAttDim[0] * nNumPoints];
+					pVertexAttData[i] = new uint32_t[pVertexAttDim[i] * nNumPoints];
 					for (int j = 0; j < nNumPoints; j++)
 					{
 						vertexAttrAttValueIndex = pVertexAtt->mapped_index(draco::PointIndex(j));
-						uint32_t* pWriteVertex = (uint32_t*)pVertexAttData[i] + j * pVertexAttDim[0];
+						uint32_t* pWriteVertex = (uint32_t*)pVertexAttData[i] + j * pVertexAttDim[i];
 						pVertexAtt->GetValue(vertexAttrAttValueIndex, pWriteVertex);
 					}
 				}
@@ -707,11 +725,11 @@ bool S3MB::DracoTool::DracoDecompressImpl(const char *pInputData, unsigned int s
 				case draco::DT_FLOAT32:
 				{
 					pVertexAttDataType[i] = 1;//AT_FLOAT
-					pVertexAttData[i] = new float[pVertexAttDim[0] * nNumPoints];
+					pVertexAttData[i] = new float[pVertexAttDim[i] * nNumPoints];
 					for (int j = 0; j < nNumPoints; j++)
 					{
 						vertexAttrAttValueIndex = pVertexAtt->mapped_index(draco::PointIndex(j));
-						float* pWriteVertex = (float*)pVertexAttData[i] + j * pVertexAttDim[0];
+						float* pWriteVertex = (float*)pVertexAttData[i] + j * pVertexAttDim[i];
 						pVertexAtt->GetValue(vertexAttrAttValueIndex, pWriteVertex);
 					}
 				}
@@ -719,11 +737,11 @@ bool S3MB::DracoTool::DracoDecompressImpl(const char *pInputData, unsigned int s
 				case draco::DT_FLOAT64:
 				{
 					pVertexAttDataType[i] = 2;//AT_DOUBLE
-					pVertexAttData[i] = new double[pVertexAttDim[0] * nNumPoints];
+					pVertexAttData[i] = new double[pVertexAttDim[i] * nNumPoints];
 					for (int j = 0; j < nNumPoints; j++)
 					{
 						vertexAttrAttValueIndex = pVertexAtt->mapped_index(draco::PointIndex(j));
-						double* pWriteVertex = (double*)pVertexAttData[i] + j * pVertexAttDim[0];
+						double* pWriteVertex = (double*)pVertexAttData[i] + j * pVertexAttDim[i];
 						pVertexAtt->GetValue(vertexAttrAttValueIndex, pWriteVertex);
 					}
 				}
@@ -731,11 +749,11 @@ bool S3MB::DracoTool::DracoDecompressImpl(const char *pInputData, unsigned int s
 				case draco::DT_UINT16:
 				{
 					pVertexAttDataType[i] = 3;//AT_16BIT
-					pVertexAttData[i] = new uint16_t[pVertexAttDim[0] * nNumPoints];
+					pVertexAttData[i] = new uint16_t[pVertexAttDim[i] * nNumPoints];
 					for (int j = 0; j < nNumPoints; j++)
 					{
 						vertexAttrAttValueIndex = pVertexAtt->mapped_index(draco::PointIndex(j));
-						uint16_t* pWriteVertex = (uint16_t*)pVertexAttData[i] + j * pVertexAttDim[0];
+						uint16_t* pWriteVertex = (uint16_t*)pVertexAttData[i] + j * pVertexAttDim[i];
 						pVertexAtt->GetValue(vertexAttrAttValueIndex, pWriteVertex);
 					}
 				}
@@ -743,11 +761,11 @@ bool S3MB::DracoTool::DracoDecompressImpl(const char *pInputData, unsigned int s
 				case draco::DT_UINT8:
 				{
 					pVertexAttDataType[i] = 4;//AT_8BIT
-					pVertexAttData[i] = new uint8_t[pVertexAttDim[0] * nNumPoints];
+					pVertexAttData[i] = new uint8_t[pVertexAttDim[i] * nNumPoints];
 					for (int j = 0; j < nNumPoints; j++)
 					{
 						vertexAttrAttValueIndex = pVertexAtt->mapped_index(draco::PointIndex(j));
-						uint8_t* pWriteVertex = (uint8_t*)pVertexAttData[i] + j * pVertexAttDim[0];
+						uint8_t* pWriteVertex = (uint8_t*)pVertexAttData[i] + j * pVertexAttDim[i];
 						pVertexAtt->GetValue(vertexAttrAttValueIndex, pWriteVertex);
 					}
 				}
@@ -1268,7 +1286,11 @@ void S3MB::DracoTool::DracoCompressImpl(int nPosQuantizationBits, int nTexcoords
 	}
 
 	pPointCloud->DeduplicateAttributeValues();
-	pPointCloud->DeduplicatePointIds();
+
+	if (pIndex != 0)
+	{
+		pPointCloud->DeduplicatePointIds();
+	}
 
 	// Ñ¹Ëõ
 	CompressDracoMesh(nPosQuantizationBits, nTexcoordsQuantizationBits, nNormalsQuantizationBits, nGenericQuantizationBits, nEncodeSpeed, nDecodeSpeed,

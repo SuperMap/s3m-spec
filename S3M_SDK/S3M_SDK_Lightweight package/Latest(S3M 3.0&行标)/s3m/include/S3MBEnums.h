@@ -263,7 +263,8 @@ namespace S3MB
 		SDT_Vector,					// 矢量
 		SDT_Network,				// 网络
 		SDT_InstanceModel,			// 实例化
-		SDT_ArtificialModel			// 精模
+		SDT_ArtificialModel,		// 精模
+		SDT_GaussianSplatting		// 高斯溅射
 	};
 
 	enum SCPSPyramidSplitType

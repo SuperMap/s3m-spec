@@ -248,6 +248,46 @@ void ROGroupLite::sampleV2(bool bReadRoInfoFromStream/* = false*/)
 	s3mbBuffer = NULL;
 }
 
+void ROGroupLite::SampleGaussianSplatting()
+{
+	wstring strScpName = U("sculpture.scp");
+	wstring strScpPath = SAMPLEDATA_DIR;
+	strScpPath = strScpPath + U("/gaussianSplatting/") + strScpName;
+
+	wstring strS3MBName = U("1.s3mb");
+	wstring strS3MBPath = SAMPLEDATA_DIR;
+	strS3MBPath = strS3MBPath + U("/gaussianSplatting/") + strS3MBName;
+
+	wstring strOutputDir = StringUtil::GetAbsolutePath(U("./gaussianSplatting/"));
+	FileUtil::MkDirEx(strOutputDir);
+
+	// 读取scp文件
+	S3MBConfig config;
+	config.ReadFile(strScpPath);
+
+	// 生成scp文件
+	config.WriteFile(strOutputDir + strScpName);
+
+	// 读取s3mb文件
+	S3MBReader reader;
+	reader.ReadFile(strS3MBPath);
+	RenderOperationGroup* pGroup = reader.GetRenderOperationGroup();
+	wstring strExtensions = reader.GetExtensions();
+
+	// 生成s3mb文件
+	S3MBWriter writer;
+	writer.SetROGroup(pGroup);
+	writer.SetExtensions(strExtensions);
+	writer.WriteFile(strOutputDir + strS3MBName);
+	writer.SetROGroup(nullptr);
+
+	// 说明：
+	// 1、s3mb文件extensions的GaussianSplatting标签记录是否是高斯溅射数据、版本号;
+	// 2、高斯溅射数据的颜色f_dc_0、f_dc_1、f_dc_2、opacity存储在顶点的m_pVertexColor里;
+	// 3、高斯溅射数据的缩放scale_0、scale_1、scale_2存储在顶点的扩展属性m_vecVertexAttData里，语义是GS_Scale，维度是3;
+	// 4、高斯溅射数据的旋转rot_0、rot_1、rot_2、rot_3存储在顶点的扩展属性m_vecVertexAttData里，语义是GS_Rotation，维度是4;
+}
+
 RenderOperationGroup* ROGroupLite::CreateROGroupLiteV1(int lodId, wstring texturePath)
 {
 	MeshParamInfo info = CreateMeshData(lodId);

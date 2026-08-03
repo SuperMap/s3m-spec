@@ -117,8 +117,9 @@ namespace S3MB
 			{
 				continue;
 			}
-
-			assert(pVertexDataPackage != NULL && arrIndexPackage.size() > 0);
+#ifdef NDEBUG
+            assert(pVertexDataPackage != NULL && arrIndexPackage.size() > 0);
+#endif
 			Skeleton* pSkeleton = new Skeleton();
 			pSkeleton->m_strGeoName = strGeoName;
 			if (arrIndexPackage.size() > 0 && arrIndexPackage[0]->m_strPassName.size() > 0)
@@ -289,17 +290,22 @@ namespace S3MB
 		stream >> strVertexAttributeDescript;
 		StreamAlign(stream, true);
 
-		JsonValue jsonVertexAtts;
-		if (!jsonVertexAtts.LoadValueFromString(strVertexAttributeDescript))
+		if (strVertexAttributeDescript.empty())
 		{
-			return false;
+			wstring strKey = U("VertexWeight");
+			pVertexDataPack->m_mapVertexAttributeDescript[strKey] = 0;
 		}
-		vector<wstring> arrKeys;
-		jsonVertexAtts.GetAllKeys(arrKeys);
 
-		for (int i = 0; i < arrKeys.size(); i++)
+		JsonValue jsonVertexAtts;
+		if (jsonVertexAtts.LoadValueFromString(strVertexAttributeDescript))
 		{
-			jsonVertexAtts.GetValue(arrKeys[i], pVertexDataPack->m_mapVertexAttributeDescript[arrKeys[i]]);
+			vector<wstring> arrKeys;
+			jsonVertexAtts.GetAllKeys(arrKeys);
+
+			for (int i = 0; i < arrKeys.size(); i++)
+			{
+				jsonVertexAtts.GetValue(arrKeys[i], pVertexDataPack->m_mapVertexAttributeDescript[arrKeys[i]]);
+			}
 		}
 
 		return bDecompressResult;
@@ -1484,7 +1490,9 @@ namespace S3MB
 		{
 			stream >> strSkeletonName;
 			Skeleton* pSkeleton = pROGroup->GetSkeleton(strSkeletonName);
-			assert(pSkeleton != NULL);
+#ifdef NDEBUG
+            assert(pSkeleton != NULL);
+#endif
 			pGeode->AddSkeleton(pSkeleton);
 		}
 		pGeode->ComputerBoundingBox();
