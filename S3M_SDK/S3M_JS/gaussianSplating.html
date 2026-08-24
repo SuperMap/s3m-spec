@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <title>高斯泼溅解析与渲染</title>
+  <!-- 注意：加载S3M格式高斯模型时，需要Cesium版本支持RGBA_INTEGER纹理格式（PixelFormat.RGBA_INTEGER） -->
+  <link href="../Build-1.139/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <script src="../Build-1.139/Cesium/Cesium.js"></script>
+
+  <style>
+    html, body, #cesiumContainer {
+      width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+<div id="cesiumContainer">
+</div>
+<script  type="module">
+    import S3MTilesLayer from './S3M_module/S3MTiles/S3MTilesLayer.js';
+    let viewer = new Cesium.Viewer('cesiumContainer',{
+      contextOptions:{
+        requestWebgl2: true  // 若没有开启webgl2则需要开启
+      }
+    });
+    let scene = viewer.scene;
+    let layer = new S3MTilesLayer({
+        context : scene._context,
+        url: 'https://www.supermapol.com/realspace/services/3D-ShouNingGe/rest/realspace/datas/%E5%AF%BF%E5%AE%81%E9%98%81/config'  
+    });
+
+    scene.primitives.add(layer);
+
+    layer.readyPromise.then(()=> {
+      console.log(layer)
+        scene.camera.setView({
+            destination: Cesium.Cartesian3.fromDegrees(layer.lon, layer.lat, 300)
+        });
+    })
+
+</script>
+</body>
+</html>

@@ -209,6 +209,7 @@ function parseGeodes(layer, content, materialTable, pagelodNode, pagelod) {
                 boundingVolume : geodeBoundingVolume,
                 material : material,
                 edgeGeometry : geoPackage.edgeGeometry,
+                extensions : content.extensions, //扩展信息
                 geoName : geoName
             });
             pagelod.renderEntities.push(renderEntity);

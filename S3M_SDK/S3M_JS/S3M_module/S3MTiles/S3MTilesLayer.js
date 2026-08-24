@@ -8,6 +8,7 @@ import defer from './defer.js';
 import Uri from './Uri.js';
 import CRNTranscoder from "./Core/CRNTranscoder.js";
 import TextureCompressType from './Enum/TextureCompressType.js';
+import GaussianSplatController from './GaussianSplats3D/GaussianSplatController.js';
 
 var transform_2d = new Cesium.Matrix4(
     0.0, 0.0, 1.0, 0.0,
@@ -15,8 +16,15 @@ var transform_2d = new Cesium.Matrix4(
     0.0, 1.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 1.0);
 
+    // 兼容高版本废弃了defaultValue
+if(Cesium.defaultValue === undefined) {
+    Cesium.defaultValue = (value, defaultValue)=>{
+        return value ?? defaultValue;
+    };
+}
+
 function S3MTilesLayer(options) {
-    options = Cesium.defaultValue(options, Cesium.defaultValue.EMPTY_OBJECT);
+    options = Cesium.defaultValue(options, {});
     Cesium.Check.defined('options.context', options.context);
     // Cesium.Check.defined('Authentication error', options.rss);
     this.id = Cesium.createGuid();
@@ -458,6 +466,10 @@ S3MTilesLayer.prototype.loadConfig = function(url) {
                     that._textureCompressType = extensions["s3m:TextureCompressionType"];
                 }
 
+                if(extensions.hasOwnProperty("gaussianSplatInfo")){
+                    that._gaussianSplatInfo = extensions["gaussianSplatInfo"];
+                }
+
                 // 3.0 为rootTiles
                 const tiles = config.tiles ||  config.rootTiles;
 
@@ -629,6 +641,10 @@ function processTiles(layer, frameState) {
 }
 
 function updateTiles(layer, frameState) {
+    if(layer._has3DGS()){
+        layer._gaussianSplatController.update(frameState, layer._renderQueue);
+        return ;
+    }
     for(let i = 0,j = layer._renderQueue.length;i < j;i++){
         const renderEntity = layer._renderQueue[i];
         renderEntity.update(frameState, layer);
@@ -939,6 +955,11 @@ S3MTilesLayer.prototype.update = function(frameState) {
         return ;
     }
 
+    if(this._has3DGS() && !this._gaussianSplatController){
+        this._gaussianSplatController = new GaussianSplatController();
+        frameState.gaussianSplatController = this._gaussianSplatController;
+    }
+
     if(!CRNTranscoder.wasmReady) {
         CRNTranscoder.init();
         return ;
@@ -954,6 +975,14 @@ S3MTilesLayer.prototype.update = function(frameState) {
         this._style3D._dirty = false;
     }
     this._frameState = frameState;
+};
+
+/**
+ * @private
+ * 图层是否有3D高斯，兼容之前数据图层
+ */
+S3MTilesLayer.prototype._has3DGS = function(){
+    return this._hasGaussianSplatting || Cesium.defined(this._gaussianSplatInfo);
 };
 
 

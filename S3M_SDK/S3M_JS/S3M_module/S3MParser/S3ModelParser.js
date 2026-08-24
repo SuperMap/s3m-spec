@@ -1280,7 +1280,12 @@ function unpackColor(array, startingIndex, result) {
 }
 
 let LEFT_16 = 65536;
+const SVO_HasInstSelInfo = 1;  //S3MVertexOptions
 function parsePickInfo(buffer, view, bytesOffset, nOptions, geoPackage, version) {
+    let hasSelectionInfo = (nOptions & SVO_HasInstSelInfo) === SVO_HasInstSelInfo;
+    if(!hasSelectionInfo){
+        return bytesOffset;
+    }
     if(version >= 3){
         nOptions = view.getUint32(bytesOffset, true);
         bytesOffset += Uint32Array.BYTES_PER_ELEMENT;
@@ -1475,8 +1480,13 @@ S3ModelParser.parseBuffer = function(buffer) {
 
         bytesOffset = parseMaterial(unzipBuffer, view, bytesOffset, result);
 
-        parsePickInfo(unzipBuffer, view, bytesOffset, nOptions, result.geoPackage, result.version);
+        bytesOffset = parsePickInfo(unzipBuffer, view, bytesOffset, nOptions, result.geoPackage, result.version);
 
+        if (result.version >= 3) {
+            let res = parseString(unzipBuffer, view, bytesOffset);
+            let strJsonExtensions = res?.string || "";
+            result.extensions = strJsonExtensions !== "" ? JSON.parse(strJsonExtensions) : void 0;
+        }
         return result;
 };
 

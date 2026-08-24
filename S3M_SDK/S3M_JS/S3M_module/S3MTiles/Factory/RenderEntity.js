@@ -99,7 +99,7 @@ function createShaderProgram(renderEntity, frameState) {
 }
 
 function createBatchTable(renderEntity, frameState) {
-    if(Cesium.defined(renderEntity.batchTable) || !renderEntity.pickInfo){
+    if(Cesium.defined(renderEntity.batchTable) || !renderEntity.pickInfo || Object.keys(renderEntity.pickInfo).length === 0){
         return ;
     }
 
