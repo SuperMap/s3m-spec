@@ -834,14 +834,14 @@ namespace S3MB
 						return false;
 						// }
 					}
-					else if (iLine % pTextureData->m_nWidth == 0 && iLine != 0)
-					{
+					//else if (iLine % pTextureData->m_nWidth == 0 && iLine != 0)
+					//{
 						// Restart();
 						// if (setjmp(m_jmpContext) != 0)
 						// {
-						return false;
+					//	return false;
 						// }
-					}
+					//}
 					while (iLine > m_nLastLineRead)
 					{
 						png_read_rows(m_pPngPtr, &row, NULL, 1);
